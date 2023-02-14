@@ -1,14 +1,14 @@
 'use client';
 
 import {memo, useEffect, useRef, useState} from 'react';
+import useKeypress from 'react-use-keypress';
 import dynamic from 'next/dynamic';
+import CarouselAnimatedImage from './AnimatedImage';
 import CarouselDetails from './Details';
 import CarouselImage from './Image';
 import CarouselMobilePagination from './MobilePagination';
 import useAnalytics from '@/hooks/useAnalytics';
-import useKeyPress from '@/hooks/useKeyPress';
 import {useWindowWidth} from '@react-hook/window-size';
-import clsx from 'clsx';
 
 const CarouselSwipeNavigation = dynamic(() => import('./SwipeNavigation'), {ssr: false});
 
@@ -20,24 +20,22 @@ interface Props {
 const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
     const {trackEvent} = useAnalytics();
     const allPhotos = collection.photosCollection.items;
-    const defaultPhotoIndex = allPhotos.findIndex(item => item.slug === photo);
     const $container = useRef<HTMLDivElement>(null);
     const windowWidth = useWindowWidth();
     const [containerWidth, setContainerWidth] = useState<number>(0);
+    const defaultPhotoIndex = allPhotos.findIndex(item => item.slug === photo);
+    const [direction, setDirection] = useState<number>(0);
     const [activeIndex, setActiveIndex] = useState<number>(defaultPhotoIndex);
-    const [hasLoaded, setHasLoaded] = useState<boolean>(false);
-    const leftKeyPressed = useKeyPress('ArrowLeft');
-    const rightKeyPressed = useKeyPress('ArrowRight');
     const activePhoto = allPhotos[activeIndex];
     const prevPhoto = allPhotos[activeIndex === 0 ? allPhotos.length - 1 : activeIndex - 1];
     const nextPhoto = allPhotos[activeIndex === allPhotos.length - 1 ? 0 : activeIndex + 1];
 
     const navigateToNextPhoto = (
-        direction: 'left' | 'right',
+        nextDirection: 'left' | 'right',
         type: 'hidden' | 'keyboard' | 'mobile' | 'swipe'
     ) => {
         const {items} = collection.photosCollection;
-        let nextPhotoIndex = direction === 'left' ? activeIndex - 1 : activeIndex + 1;
+        let nextPhotoIndex = nextDirection === 'left' ? activeIndex - 1 : activeIndex + 1;
 
         if (nextPhotoIndex < 0) {
             nextPhotoIndex = items.length - 1;
@@ -46,6 +44,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
         }
 
         setActiveIndex(nextPhotoIndex);
+        setDirection(nextDirection === 'left' ? -1 : 1);
         trackEvent('Carousel navigation', {collection: collection.slug, type});
 
         // This will be replaced once the app directory supports soft navigation for dynamic routes
@@ -58,26 +57,19 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
         document.title = document.title.replace(activePhoto.title, items[nextPhotoIndex].title);
     };
 
+    useKeypress('ArrowLeft', () => {
+        navigateToNextPhoto('left', 'keyboard');
+    });
+
+    useKeypress('ArrowRight', () => {
+        navigateToNextPhoto('right', 'keyboard');
+    });
+
     useEffect(() => {
         if ($container.current) {
             setContainerWidth($container.current.offsetWidth);
         }
     }, [windowWidth]);
-
-    useEffect(() => {
-        // This is a workaround to prevent seeing the carousel animate its scroll position
-        // when the page loads
-        if ($container.current && !hasLoaded) {
-            setTimeout(() => setHasLoaded(true), 200);
-        }
-    }, [$container, hasLoaded]);
-
-    useEffect(() => {
-        if (leftKeyPressed || rightKeyPressed) {
-            navigateToNextPhoto(leftKeyPressed ? 'left' : 'right', 'keyboard');
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [leftKeyPressed, rightKeyPressed]);
 
     return (
         <div
@@ -87,33 +79,17 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
             {containerWidth ? (
                 <>
                     <div className="relative flex w-full overflow-hidden md:h-auto md:w-full md:flex-grow">
-                        <div
-                            className={clsx(
-                                'relative flex w-full md:h-auto md:w-full md:flex-grow',
-                                {'transition duration-300 ease-in-out md:duration-500': hasLoaded}
-                            )}
-                            style={{
-                                transform: `translateX(${activeIndex * containerWidth * -1}px)`
-                            }}
-                        >
-                            {allPhotos.map((photo, index) => (
-                                <div
-                                    key={photo.slug}
-                                    className="mx-auto w-full flex-shrink-0 sm:h-full md:absolute md:block"
-                                    style={{
-                                        transform:
-                                            window.innerWidth > 768
-                                                ? `translateX(${index * containerWidth}px)`
-                                                : ''
-                                    }}
-                                >
-                                    <CarouselImage isActive={index === activeIndex} {...photo} />
-                                </div>
-                            ))}
-                        </div>
                         <div className="opacity-0">
                             <CarouselImage isActive={false} {...prevPhoto} />
                             <CarouselImage isActive={false} {...nextPhoto} />
+                        </div>
+                        <div className="relative flex w-full md:h-auto md:flex-grow">
+                            <CarouselAnimatedImage
+                                activeIndex={activeIndex}
+                                containerWidth={containerWidth}
+                                direction={direction}
+                                photo={allPhotos[activeIndex]}
+                            />
                         </div>
                         <CarouselSwipeNavigation
                             handleNext={() => navigateToNextPhoto('right', 'swipe')}
