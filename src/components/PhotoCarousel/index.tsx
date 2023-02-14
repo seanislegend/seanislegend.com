@@ -1,12 +1,12 @@
 'use client';
 
 import {memo, useEffect, useRef, useState} from 'react';
+import useKeypress from 'react-use-keypress';
 import dynamic from 'next/dynamic';
 import CarouselDetails from './Details';
 import CarouselImage from './Image';
 import CarouselMobilePagination from './MobilePagination';
 import useAnalytics from '@/hooks/useAnalytics';
-import useKeyPress from '@/hooks/useKeyPress';
 import {useWindowWidth} from '@react-hook/window-size';
 import clsx from 'clsx';
 
@@ -26,8 +26,6 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
     const [containerWidth, setContainerWidth] = useState<number>(0);
     const [activeIndex, setActiveIndex] = useState<number>(defaultPhotoIndex);
     const [hasLoaded, setHasLoaded] = useState<boolean>(false);
-    const leftKeyPressed = useKeyPress('ArrowLeft');
-    const rightKeyPressed = useKeyPress('ArrowRight');
     const activePhoto = allPhotos[activeIndex];
     const prevPhoto = allPhotos[activeIndex === 0 ? allPhotos.length - 1 : activeIndex - 1];
     const nextPhoto = allPhotos[activeIndex === allPhotos.length - 1 ? 0 : activeIndex + 1];
@@ -58,6 +56,14 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
         document.title = document.title.replace(activePhoto.title, items[nextPhotoIndex].title);
     };
 
+    useKeypress('ArrowLeft', () => {
+        navigateToNextPhoto('left', 'keyboard');
+    });
+
+    useKeypress('ArrowRight', () => {
+        navigateToNextPhoto('right', 'keyboard');
+    });
+
     useEffect(() => {
         if ($container.current) {
             setContainerWidth($container.current.offsetWidth);
@@ -71,13 +77,6 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
             setTimeout(() => setHasLoaded(true), 200);
         }
     }, [$container, hasLoaded]);
-
-    useEffect(() => {
-        if (leftKeyPressed || rightKeyPressed) {
-            navigateToNextPhoto(leftKeyPressed ? 'left' : 'right', 'keyboard');
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [leftKeyPressed, rightKeyPressed]);
 
     return (
         <div
