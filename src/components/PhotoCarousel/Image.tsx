@@ -12,8 +12,6 @@ interface Props extends Photo {
 const CarouselImage: React.FC<Props> = ({fullSize, isActive, title}) => {
     const [hasLoaded, setHasLoaded] = useState(false);
 
-    if (!fullSize) return null;
-
     return (
         <div className="w-full bg-gray-100 dark:bg-gray-900 md:bg-transparent">
             <Spinner hasLoaded={hasLoaded} isActive={isActive} />

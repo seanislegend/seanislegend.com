@@ -9,6 +9,7 @@ import CarouselMobilePagination from './MobilePagination';
 import useAnalytics from '@/hooks/useAnalytics';
 import {useWindowWidth} from '@react-hook/window-size';
 import clsx from 'clsx';
+import {AnimatePresence, motion} from 'framer-motion';
 
 const CarouselSwipeNavigation = dynamic(() => import('./SwipeNavigation'), {ssr: false});
 
@@ -20,22 +21,22 @@ interface Props {
 const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
     const {trackEvent} = useAnalytics();
     const allPhotos = collection.photosCollection.items;
-    const defaultPhotoIndex = allPhotos.findIndex(item => item.slug === photo);
     const $container = useRef<HTMLDivElement>(null);
     const windowWidth = useWindowWidth();
     const [containerWidth, setContainerWidth] = useState<number>(0);
+    const defaultPhotoIndex = allPhotos.findIndex(item => item.slug === photo);
+    const [direction, setDirection] = useState<number>(0);
     const [activeIndex, setActiveIndex] = useState<number>(defaultPhotoIndex);
-    const [hasLoaded, setHasLoaded] = useState<boolean>(false);
     const activePhoto = allPhotos[activeIndex];
     const prevPhoto = allPhotos[activeIndex === 0 ? allPhotos.length - 1 : activeIndex - 1];
     const nextPhoto = allPhotos[activeIndex === allPhotos.length - 1 ? 0 : activeIndex + 1];
 
     const navigateToNextPhoto = (
-        direction: 'left' | 'right',
+        nextDirection: 'left' | 'right',
         type: 'hidden' | 'keyboard' | 'mobile' | 'swipe'
     ) => {
         const {items} = collection.photosCollection;
-        let nextPhotoIndex = direction === 'left' ? activeIndex - 1 : activeIndex + 1;
+        let nextPhotoIndex = nextDirection === 'left' ? activeIndex - 1 : activeIndex + 1;
 
         if (nextPhotoIndex < 0) {
             nextPhotoIndex = items.length - 1;
@@ -44,6 +45,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
         }
 
         setActiveIndex(nextPhotoIndex);
+        setDirection(nextDirection === 'left' ? -1 : 1);
         trackEvent('Carousel navigation', {collection: collection.slug, type});
 
         // This will be replaced once the app directory supports soft navigation for dynamic routes
@@ -70,13 +72,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
         }
     }, [windowWidth]);
 
-    useEffect(() => {
-        // This is a workaround to prevent seeing the carousel animate its scroll position
-        // when the page loads
-        if ($container.current && !hasLoaded) {
-            setTimeout(() => setHasLoaded(true), 200);
-        }
-    }, [$container, hasLoaded]);
+    const containerAnimationWidth = containerWidth / 2;
 
     return (
         <div
@@ -86,33 +82,52 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
             {containerWidth ? (
                 <>
                     <div className="relative flex w-full overflow-hidden md:h-auto md:w-full md:flex-grow">
-                        <div
-                            className={clsx(
-                                'relative flex w-full md:h-auto md:w-full md:flex-grow',
-                                {'transition duration-300 ease-in-out md:duration-500': hasLoaded}
-                            )}
-                            style={{
-                                transform: `translateX(${activeIndex * containerWidth * -1}px)`
-                            }}
-                        >
-                            {allPhotos.map((photo, index) => (
-                                <div
-                                    key={photo.slug}
-                                    className="mx-auto w-full flex-shrink-0 sm:h-full md:absolute md:block"
-                                    style={{
-                                        transform:
-                                            window.innerWidth > 768
-                                                ? `translateX(${index * containerWidth}px)`
-                                                : ''
-                                    }}
-                                >
-                                    <CarouselImage isActive={index === activeIndex} {...photo} />
-                                </div>
-                            ))}
-                        </div>
                         <div className="opacity-0">
                             <CarouselImage isActive={false} {...prevPhoto} />
                             <CarouselImage isActive={false} {...nextPhoto} />
+                        </div>
+                        <div className="relative flex w-full md:h-auto md:flex-grow">
+                            <AnimatePresence initial={false} custom={direction}>
+                                <motion.div
+                                    animate="center"
+                                    className="mx-auto w-full flex-shrink-0 sm:h-full md:absolute md:block"
+                                    custom={direction}
+                                    exit="exit"
+                                    key={activeIndex}
+                                    initial="enter"
+                                    transition={{
+                                        duration: 1.5,
+                                        damping: 20,
+                                        type: 'spring',
+                                        velocity: 1
+                                    }}
+                                    variants={{
+                                        enter: (direction: number) => ({
+                                            opacity: 0,
+                                            position: 'absolute',
+                                            x:
+                                                direction > 0
+                                                    ? -containerAnimationWidth
+                                                    : containerAnimationWidth
+                                        }),
+                                        center: {
+                                            opacity: 1,
+                                            position: 'relative',
+                                            x: 0
+                                        },
+                                        exit: (direction: number) => ({
+                                            opacity: 0,
+                                            position: 'absolute',
+                                            x:
+                                                direction > 0
+                                                    ? containerAnimationWidth
+                                                    : -containerAnimationWidth
+                                        })
+                                    }}
+                                >
+                                    <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
                         <CarouselSwipeNavigation
                             handleNext={() => navigateToNextPhoto('right', 'swipe')}
