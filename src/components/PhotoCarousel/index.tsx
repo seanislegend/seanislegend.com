@@ -3,13 +3,12 @@
 import {memo, useEffect, useRef, useState} from 'react';
 import useKeypress from 'react-use-keypress';
 import dynamic from 'next/dynamic';
+import CarouselAnimatedImage from './AnimatedImage';
 import CarouselDetails from './Details';
 import CarouselImage from './Image';
 import CarouselMobilePagination from './MobilePagination';
 import useAnalytics from '@/hooks/useAnalytics';
 import {useWindowWidth} from '@react-hook/window-size';
-import clsx from 'clsx';
-import {AnimatePresence, motion} from 'framer-motion';
 
 const CarouselSwipeNavigation = dynamic(() => import('./SwipeNavigation'), {ssr: false});
 
@@ -72,8 +71,6 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
         }
     }, [windowWidth]);
 
-    const containerAnimationWidth = containerWidth / 2;
-
     return (
         <div
             className="relative min-h-[200px] w-full overflow-hidden md:flex md:h-full md:max-h-[calc(100vh-2rem)] md:flex-col"
@@ -87,47 +84,12 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                             <CarouselImage isActive={false} {...nextPhoto} />
                         </div>
                         <div className="relative flex w-full md:h-auto md:flex-grow">
-                            <AnimatePresence initial={false} custom={direction}>
-                                <motion.div
-                                    animate="center"
-                                    className="mx-auto w-full flex-shrink-0 sm:h-full md:absolute md:block"
-                                    custom={direction}
-                                    exit="exit"
-                                    key={activeIndex}
-                                    initial="enter"
-                                    transition={{
-                                        duration: 1.5,
-                                        damping: 20,
-                                        type: 'spring',
-                                        velocity: 1
-                                    }}
-                                    variants={{
-                                        enter: (direction: number) => ({
-                                            opacity: 0,
-                                            position: 'absolute',
-                                            x:
-                                                direction > 0
-                                                    ? -containerAnimationWidth
-                                                    : containerAnimationWidth
-                                        }),
-                                        center: {
-                                            opacity: 1,
-                                            position: 'relative',
-                                            x: 0
-                                        },
-                                        exit: (direction: number) => ({
-                                            opacity: 0,
-                                            position: 'absolute',
-                                            x:
-                                                direction > 0
-                                                    ? containerAnimationWidth
-                                                    : -containerAnimationWidth
-                                        })
-                                    }}
-                                >
-                                    <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
-                                </motion.div>
-                            </AnimatePresence>
+                            <CarouselAnimatedImage
+                                activeIndex={activeIndex}
+                                containerWidth={containerWidth}
+                                direction={direction}
+                                photo={allPhotos[activeIndex]}
+                            />
                         </div>
                         <CarouselSwipeNavigation
                             handleNext={() => navigateToNextPhoto('right', 'swipe')}
