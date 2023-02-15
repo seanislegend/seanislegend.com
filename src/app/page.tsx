@@ -19,9 +19,11 @@ export const generateMetadata = async () => {
         const collectionSeo = getCollectionSeo(collection);
 
         if (collectionSeo.openGraph) {
-            collectionSeo.openGraph.images = [
+            const images = [
                 {alt: '', height: 630, width: 1200, url: getGeneratedCollectionOgUrl(collection)}
             ];
+            collectionSeo.openGraph.images = images;
+            collectionSeo.twitter.images = images.map(i => i.url);
         }
 
         return {...config.seo, ...collectionSeo};
