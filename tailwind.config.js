@@ -1,5 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
@@ -11,8 +9,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['NeueMontreal-Regular', ...defaultTheme.fontFamily.sans],
-                serif: ['PPEiko', ...defaultTheme.fontFamily.serif]
+                sans: ['var(--font-body)'],
+                serif: ['var(--font-title)']
             }
         }
     }
