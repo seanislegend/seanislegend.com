@@ -3,6 +3,7 @@ import {redirect} from 'next/navigation';
 
 export const GET = async (request: Request) => {
     const {searchParams} = new URL(request.url);
+    const returnUrl = searchParams.get('return');
     const secret = searchParams.get('secret');
 
     if (secret !== process.env.PREVIEW_SECRET) {
@@ -10,5 +11,5 @@ export const GET = async (request: Request) => {
     }
 
     draftMode().enable();
-    redirect('/');
+    redirect(returnUrl || '/');
 };
