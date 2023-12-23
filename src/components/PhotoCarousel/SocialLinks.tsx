@@ -1,8 +1,5 @@
-'use client';
-
 import Link from 'next/link';
 import {InstagramIcon} from '@/components/Icon';
-import useAnalytics from '@/hooks/useAnalytics';
 import {getExternalUrl} from '@/utils/helpers';
 
 interface Props {
@@ -10,8 +7,6 @@ interface Props {
 }
 
 const CarouselSocialLinks: React.FC<Props> = ({photo}) => {
-    const {trackEvent} = useAnalytics();
-
     const getInstagramLabel = (): string | undefined => {
         if (photo.instagramLabel) {
             return photo.instagramLabel;
@@ -20,13 +15,7 @@ const CarouselSocialLinks: React.FC<Props> = ({photo}) => {
         }
     };
 
-    const handleClick = (category: string, url: string) => {
-        trackEvent('Photo URL visited', {category, url});
-    };
-
-    if (!photo?.instagramUrl) {
-        return null;
-    }
+    if (!photo?.instagramUrl) return null;
 
     return (
         <div className="flex flex-col space-y-2 text-sm sm:flex-row sm:items-end sm:space-x-2 sm:space-y-0">
@@ -34,7 +23,6 @@ const CarouselSocialLinks: React.FC<Props> = ({photo}) => {
                 <div>
                     <Link
                         href={getExternalUrl(photo.instagramUrl)}
-                        onClick={() => handleClick('instagram', photo?.instagramUrl || '')}
                         target="_blank"
                         rel="noreferrer"
                         className="group flex items-center space-x-1 align-top text-xs tracking-[0.5px] text-gray-500 decoration-2 underline-offset-2 outline-none transition duration-200 hover:text-black hover:underline dark:text-gray-600 dark:hover:text-white"
