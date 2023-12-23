@@ -1,3 +1,4 @@
+import localFont from 'next/font/local';
 import AnalyticsWrapper from '@/components/Analytics';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
@@ -6,10 +7,23 @@ import SiteMenuMobile from '@/components/SiteMenu/Mobile';
 import config from '@/utils/config';
 import './globals.css';
 
+const titleFont = localFont({
+    display: 'swap',
+    src: '../../public/fonts/PPEiko-Medium.woff2',
+    weight: '500',
+    variable: '--font-title'
+});
+const bodyFont = localFont({
+    display: 'swap',
+    src: '../../public/fonts/NeueMontreal-Regular.woff2',
+    weight: '300',
+    variable: '--font-body'
+});
+
 const RootLayout = async ({children}: {children: React.ReactNode}) => (
     <html
         lang="en"
-        className="flex flex-grow flex-col bg-white antialiased md:min-h-full dark:bg-black"
+        className={`flex flex-grow flex-col bg-white antialiased md:min-h-full dark:bg-black ${titleFont.variable} ${bodyFont.variable}`}
     >
         <body className="animate-entrance opacity-0 sm:min-h-full md:flex md:flex-grow md:flex-row">
             <div className="relative z-[100] flex-shrink-0 flex-grow-0 px-4 md:flex md:w-[260px] md:flex-grow md:flex-col lg:w-[300px]">

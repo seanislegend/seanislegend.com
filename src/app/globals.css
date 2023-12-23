@@ -18,18 +18,3 @@
     }
 }
 
-@font-face {
-    font-family: 'PPEiko';
-    src: url('../../public/fonts/PPEiko-Medium.woff2') format('woff2'),
-        url('../../public/fonts/PPEiko-Medium.woff') format('woff');
-    font-display: swap;
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'NeueMontreal-Regular';
-    src: url('../../public/fonts/NeueMontreal-Regular.woff2') format('woff2'),
-        url('../../public/fonts/NeueMontreal-Regular.woff') format('woff');
-    font-display: swap;
-    font-weight: 300;
-}
