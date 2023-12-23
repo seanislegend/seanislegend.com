@@ -2,24 +2,14 @@
 
 import {useAtom} from 'jotai';
 import Link from 'next/link';
-import {usePathname} from 'next/navigation';
 import {CrossIcon, MenuIcon} from '@/components/Icon';
 import Logo from '@/components/Logo';
-import useAnalytics from '@/hooks/useAnalytics';
 import {isMenuOpenAtom} from '@/utils/store';
 
 const SiteHeader: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useAtom(isMenuOpenAtom);
-    const {trackEvent} = useAnalytics();
-    const pathname = usePathname();
 
-    const toggleMenuClick = () => {
-        setIsMenuOpen(!isMenuOpen);
-
-        if (!isMenuOpen) {
-            trackEvent('Mobile menu opened', {pathname});
-        }
-    };
+    const toggleMenuClick = () => setIsMenuOpen(!isMenuOpen);
 
     return (
         <header className="top-0 flex h-8 bg-white pt-4 md:sticky md:z-50 md:h-10 dark:bg-black">

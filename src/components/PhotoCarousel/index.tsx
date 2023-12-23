@@ -2,13 +2,12 @@
 
 import {memo, useEffect, useRef, useState} from 'react';
 import useKeypress from 'react-use-keypress';
+import {useWindowWidth} from '@react-hook/window-size';
 import dynamic from 'next/dynamic';
 import CarouselAnimatedImage from './AnimatedImage';
 import CarouselDetails from './Details';
 import CarouselImage from './Image';
 import CarouselMobilePagination from './MobilePagination';
-import useAnalytics from '@/hooks/useAnalytics';
-import {useWindowWidth} from '@react-hook/window-size';
 
 const CarouselSwipeNavigation = dynamic(() => import('./SwipeNavigation'), {ssr: false});
 
@@ -18,7 +17,6 @@ interface Props {
 }
 
 const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
-    const {trackEvent} = useAnalytics();
     const allPhotos = collection.photosCollection.items;
     const $container = useRef<HTMLDivElement>(null);
     const windowWidth = useWindowWidth();
@@ -45,7 +43,6 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
 
         setActiveIndex(nextPhotoIndex);
         setDirection(nextDirection === 'left' ? -1 : 1);
-        trackEvent('Carousel navigation', {collection: collection.slug, type});
 
         // This will be replaced once the app directory supports soft navigation for dynamic routes
         // The downsides to have a new refresh when navigating away are minimal compared to the
@@ -96,12 +93,12 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                             handlePrevious={() => navigateToNextPhoto('left', 'swipe')}
                         />
                         <button
-                            className="tap-transparent absolute top-0 left-0 z-10 hidden h-full w-1/2 cursor-[url(../../public/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
+                            className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(../../public/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
                             onClick={() => navigateToNextPhoto('left', 'hidden')}
                             type="button"
                         />
                         <button
-                            className="tap-transparent absolute top-0 right-0 z-10 hidden h-full w-1/2 cursor-[url(../../public/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
+                            className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(../../public/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
                             onClick={() => navigateToNextPhoto('right', 'hidden')}
                             type="button"
                         />

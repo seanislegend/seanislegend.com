@@ -1,7 +1,4 @@
-'use client';
-
 import {InstagramIcon, TwitterIcon} from '@/components/Icon';
-import useAnalytics from '@/hooks/useAnalytics';
 
 const LINKS = [
     {label: 'Instagram', url: 'https://www.instagram.com/seanislegend/'},
@@ -12,34 +9,25 @@ const ICONS: {[key: string]: any} = {
     twitter: TwitterIcon
 };
 
-const SiteMenuSocialLinks: React.FC = () => {
-    const {trackEvent} = useAnalytics();
+const SiteMenuSocialLinks: React.FC = () => (
+    <div className="flex items-center space-x-4 md:justify-center">
+        {LINKS.map(link => {
+            const Icon = ICONS[link.label.toLowerCase()];
 
-    const handleSocialLinkClick = (site: string) => {
-        trackEvent('Social link clicked', {site});
-    };
-
-    return (
-        <div className="flex items-center space-x-4 md:justify-center">
-            {LINKS.map(link => {
-                const Icon = ICONS[link.label.toLowerCase()];
-
-                return (
-                    <a
-                        key={link.url}
-                        aria-label={link.label}
-                        href={link.url}
-                        className="font-serif text-xl tracking-tight text-black duration-200 ease-out hover:opacity-60 focus:outline-dotted focus:outline-2 focus:outline-offset-2 focus:outline-black md:text-xl lg:text-2xl dark:text-white dark:focus:outline-white"
-                        rel="noreferrer"
-                        onClick={() => handleSocialLinkClick(link.label)}
-                        target="_blank"
-                    >
-                        <Icon className="size-5 text-current" />
-                    </a>
-                );
-            })}
-        </div>
-    );
-};
+            return (
+                <a
+                    key={link.url}
+                    aria-label={link.label}
+                    href={link.url}
+                    className="font-serif text-xl tracking-tight text-black duration-200 ease-out hover:opacity-60 focus:outline-dotted focus:outline-2 focus:outline-offset-2 focus:outline-black md:text-xl lg:text-2xl dark:text-white dark:focus:outline-white"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    <Icon className="size-5 text-current" />
+                </a>
+            );
+        })}
+    </div>
+);
 
 export default SiteMenuSocialLinks;

@@ -1,5 +1,5 @@
+import {Analytics} from '@vercel/analytics/react';
 import localFont from 'next/font/local';
-import AnalyticsWrapper from '@/components/Analytics';
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import SiteMenu from '@/components/SiteMenu';
@@ -40,7 +40,7 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => (
             <main className="p-4 md:mt-0 md:flex md:w-[calc(100%-260px)] md:flex-grow md:flex-col lg:w-[calc(100%-300px)]">
                 {children}
             </main>
-            {process.env.NODE_ENV !== 'development' && <AnalyticsWrapper />}
+            {process.env.NODE_ENV !== 'development' && <Analytics />}
         </body>
     </html>
 );
