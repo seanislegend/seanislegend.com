@@ -1,12 +1,12 @@
 'use client';
 
+import clsx from 'clsx';
+import {useAtom} from 'jotai';
 import {LINKS} from '@/components/SiteFooter';
 import SiteMenuLink from '@/components/SiteMenu/Link';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 import UnderlineLink from '@/components/UnderlineLink';
 import {isMenuOpenAtom} from '@/utils/store';
-import {motion} from 'framer-motion';
-import {useAtom} from 'jotai';
 
 interface Props {
     links: Link[];
@@ -17,45 +17,38 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
 
     return (
         <>
-            <motion.div
-                className="absolute top-10 z-[100] w-full md:hidden"
-                animate={isMenuOpen ? 'open' : 'closed'}
-                initial="closed"
-                transition={{type: 'spring', duration: 1, velocity: 1}}
-                variants={{
-                    open: {
-                        opacity: 1,
-                        height: '100vh',
-                        transition: {height: {duration: 0}}
-                    },
-                    closed: {
-                        opacity: 0,
-                        transition: {delay: 0.2},
-                        transitionEnd: {
-                            height: 0,
-                            overflow: 'hidden'
-                        }
-                    }
+            <div
+                className={clsx('absolute top-10 z-[100] w-full md:hidden', {
+                    'animate-menu-open': isMenuOpen,
+                    'animate-menu-closed': !isMenuOpen
+                })}
+                style={{
+                    height: isMenuOpen ? '100vh' : '0',
+                    opacity: isMenuOpen ? 1 : 0.8,
+                    overflow: isMenuOpen ? 'visible' : 'hidden'
                 }}
             >
-                <div className="bg-white py-8 px-4 dark:bg-black md:hidden">
-                    <motion.div
-                        animate={isMenuOpen ? 'open' : 'closed'}
-                        className="flex space-x-10"
-                        initial="closed"
-                        transition={{type: 'spring', duration: 1, velocity: 1}}
-                        variants={{
-                            open: {opacity: 1, transition: {delay: 0.2}},
-                            closed: {opacity: 0}
-                        }}
+                <div className="bg-white px-4 py-8 md:hidden dark:bg-black">
+                    <div
+                        className={clsx('flex space-x-10', {
+                            'animate-menu-open': isMenuOpen,
+                            'animate-menu-closed': !isMenuOpen
+                        })}
+                        style={{opacity: isMenuOpen ? 1 : 0}}
                     >
-                        <nav className="flex-grow space-y-1 sm:columns-2">
+                        <nav
+                            key={isMenuOpen ? 'collections-open' : 'collections-closed'}
+                            className="flex-grow animate-fadeInUp space-y-1 sm:columns-2"
+                        >
                             {links?.map(link => (
                                 <SiteMenuLink key={link.url} {...link} />
                             ))}
                             <SiteMenuLink url="/collections" title="All collections" />
                         </nav>
-                        <nav className="flex min-w-[100px] flex-col items-end space-y-2 md:hidden">
+                        <nav
+                            key={isMenuOpen ? 'pages-open' : 'pages-closed'}
+                            className="flex min-w-[100px] animate-fadeInUp flex-col items-end space-y-2 animate-delay-75 md:hidden"
+                        >
                             {LINKS.map(link => (
                                 <UnderlineLink
                                     href={link.url}
@@ -70,31 +63,19 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                 <SocialLinks />
                             </div>
                         </nav>
-                    </motion.div>
+                    </div>
                 </div>
                 <div className="h-44 bg-gradient-to-b from-white dark:from-black" />
-            </motion.div>
-            <motion.div
-                className="fixed top-0 left-0 right-0 z-[99] h-0 bg-white dark:bg-black md:hidden"
-                animate={isMenuOpen ? 'open' : 'closed'}
-                initial="closed"
-                variants={{
-                    open: {
-                        height: '100vh',
-                        opacity: 0.8,
-                        transition: {
-                            easing: 'linear',
-                            height: {duration: 0}
-                        }
-                    },
-                    closed: {
-                        opacity: 0,
-                        transitionEnd: {
-                            height: 0,
-                            overflow: 'hidden'
-                        }
+            </div>
+            <div
+                className={clsx(
+                    'fixed left-0 right-0 top-0 z-[99] h-0 bg-white md:hidden dark:bg-black',
+                    {
+                        'animate-menu-open-overlay': isMenuOpen,
+                        'animate-menu-closed-overlay': !isMenuOpen
                     }
-                }}
+                )}
+                style={{height: isMenuOpen ? '100vh' : '0', opacity: isMenuOpen ? 0.8 : 0}}
             />
         </>
     );
