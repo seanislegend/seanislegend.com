@@ -1,14 +1,18 @@
 import {cache} from 'react';
 import 'server-only';
 
-const fetchContent = cache(async (query: string) => {
+const fetchContent = cache(async (query: string, preview: boolean = false) => {
     try {
         const data = await fetch(
             `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
             {
                 method: 'POST',
                 headers: {
-                    Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_API_KEY}`,
+                    Authorization: `Bearer ${
+                        preview
+                            ? process.env.CONTENTFUL_PREVIEW_API_KEY
+                            : process.env.CONTENTFUL_DELIVERY_API_KEY
+                    }`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({query})
@@ -38,7 +42,7 @@ const addLinkedFromCollection = (items: any[]) => {
         if (photo.linkedFrom?.collectionCollection?.items?.length > 1) {
             const categoryPages = ['home', 'street', 'travel', 'beer'];
             const filteredCollection = photo.linkedFrom.collectionCollection.items.find(
-                (item: any) => !categoryPages.includes(item.slug)
+                (item: any) => !categoryPages.includes(item?.slug)
             );
 
             // In the case that the photo is featured on the home page only, it will
@@ -160,13 +164,20 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
     return items || [];
 };
 
-export const fetchAllCollections = async (): Promise<PhotoCollection[] | null> => {
+export const fetchAllCollections = async (
+    preview: boolean = false
+): Promise<PhotoCollection[] | null> => {
     // NB: We will need to batch fetch collections.
     // Because of the nesting involved with this query, Contentful errors because of
     // the max complexity allowed. Once we exceed this limit we will need to write the
     // batch multiple requests.
     const query = `query {
-        collectionCollection(where: {category_not: ""}, limit: 35, order: [date_DESC]) {
+        collectionCollection(
+            limit: 35,
+            order: [date_DESC],
+            preview: ${preview ? 'true' : 'false'},
+            where: {category_not: ""}
+        ) {
             items {
                 title
                 slug
@@ -201,7 +212,7 @@ export const fetchAllCollections = async (): Promise<PhotoCollection[] | null> =
             }
         }
     }`;
-    const response: any = await fetchContent(query);
+    const response: any = await fetchContent(query, preview);
 
     if (response.data?.collectionCollection?.items) {
         const formattedCollections = response.data.collectionCollection.items.map(
@@ -223,13 +234,17 @@ export const fetchAllCollections = async (): Promise<PhotoCollection[] | null> =
     return null;
 };
 
-export const fetchCollection = async (slug: string): Promise<PhotoCollection | null> => {
+export const fetchCollection = async (
+    slug: string,
+    preview: boolean = false
+): Promise<PhotoCollection | null> => {
     // This call is used by both page ISR where we know the content slug and
     // in revalidation calls, where we only know the entry ID.
     const query = `query {
         collectionCollection(
-            where: {OR: [{slug: "${slug}"}, {sys: {id: "${slug}"}}]},
-            limit: 1
+            limit: 1,
+            preview: ${preview ? 'true' : 'false'},
+            where: {OR: [{slug: "${slug}"}, {sys: {id: "${slug}"}}]}
         ) {
             items {
                 title
@@ -279,7 +294,7 @@ export const fetchCollection = async (slug: string): Promise<PhotoCollection | n
             }
         }
     }`;
-    const response: any = await fetchContent(query);
+    const response: any = await fetchContent(query, preview);
 
     if (response?.data?.collectionCollection?.items?.length > 0) {
         const collection = response.data.collectionCollection.items[0];

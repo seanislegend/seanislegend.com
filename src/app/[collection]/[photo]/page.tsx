@@ -1,3 +1,4 @@
+import {draftMode} from 'next/headers';
 import {redirect} from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
 import PhotoCarousel from '@/components/PhotoCarousel';
@@ -9,15 +10,24 @@ interface Props {
     params: {collection: string; photo: string};
 }
 
-const getCollectionAndPhoto = async (collectionSlug: string, photoSlug: string) => {
-    const collection = await fetchCollection(collectionSlug);
+const getCollectionAndPhoto = async (
+    collectionSlug: string,
+    photoSlug: string,
+    preview: boolean = false
+) => {
+    const collection = await fetchCollection(collectionSlug, preview);
     const photo = collection?.photosCollection.items.find(p => p.slug === photoSlug);
 
     return {collection, photo};
 };
 
 const PhotoPage = async ({params}: Props) => {
-    const {collection} = await getCollectionAndPhoto(params.collection, params.photo);
+    const {isEnabled: isDraftModeEnabled} = draftMode();
+    const {collection} = await getCollectionAndPhoto(
+        params.collection,
+        params.photo,
+        isDraftModeEnabled
+    );
     if (!collection) redirect('/');
 
     return (
