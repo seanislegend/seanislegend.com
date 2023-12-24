@@ -3,8 +3,8 @@
 import {memo, useEffect, useRef, useState} from 'react';
 import useKeypress from 'react-use-keypress';
 import {useWindowWidth} from '@react-hook/window-size';
+import clsx from 'clsx';
 import dynamic from 'next/dynamic';
-import CarouselAnimatedImage from './AnimatedImage';
 import CarouselDetails from './Details';
 import CarouselImage from './Image';
 import CarouselMobilePagination from './MobilePagination';
@@ -81,24 +81,30 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                             <CarouselImage isActive={false} {...nextPhoto} />
                         </div>
                         <div className="relative flex w-full md:h-auto md:flex-grow">
-                            <CarouselAnimatedImage
-                                activeIndex={activeIndex}
-                                containerWidth={containerWidth}
-                                direction={direction}
-                                photo={allPhotos[activeIndex]}
-                            />
+                            <div
+                                key={activeIndex}
+                                className={clsx(
+                                    'mx-auto w-full flex-shrink-0 animate-fadeIn sm:h-full md:absolute md:block',
+                                    {
+                                        'opacity-1 relative': direction > 0,
+                                        'absolute opacity-0': direction < 0
+                                    }
+                                )}
+                            >
+                                <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
+                            </div>
                         </div>
                         <CarouselSwipeNavigation
                             handleNext={() => navigateToNextPhoto('right', 'swipe')}
                             handlePrevious={() => navigateToNextPhoto('left', 'swipe')}
                         />
                         <button
-                            className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(../../public/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
+                            className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
                             onClick={() => navigateToNextPhoto('left', 'hidden')}
                             type="button"
                         />
                         <button
-                            className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(../../public/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
+                            className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
                             onClick={() => navigateToNextPhoto('right', 'hidden')}
                             type="button"
                         />
