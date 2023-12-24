@@ -1,3 +1,4 @@
+import {draftMode} from 'next/headers';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
@@ -7,7 +8,8 @@ import {fetchAllCollections} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
 
 const CollectionsPage = async () => {
-    const collections = await fetchAllCollections();
+    const {isEnabled: isDraftModeEnabled} = draftMode();
+    const collections = await fetchAllCollections(isDraftModeEnabled);
     if (!collections) redirect('/');
 
     const sortedCollections = collections
@@ -24,7 +26,7 @@ const CollectionsPage = async () => {
                         key={collection.slug}
                         href={`/${collection.slug}`}
                     >
-                        <ThumbnailImage {...collection.photosCollection.items[0].thumbnail} />
+                        <ThumbnailImage {...collection.photosCollection.items[0]?.thumbnail} />
                         <span className="block pb-2 pt-1 text-sm tracking-wide text-gray-600 underline-offset-4 group-hover:underline group-focus:underline sm:pb-4 sm:pt-2 dark:text-gray-400 dark:group-hover:text-white">
                             {collection.title}
                         </span>
