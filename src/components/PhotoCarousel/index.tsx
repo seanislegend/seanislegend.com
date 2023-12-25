@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import dynamic from 'next/dynamic';
 import CarouselDetails from './Details';
 import CarouselImage from './Image';
+import ImageContainer from './ImageContainer';
 import CarouselMobilePagination from './MobilePagination';
 
 const CarouselSwipeNavigation = dynamic(() => import('./SwipeNavigation'), {ssr: false});
@@ -66,7 +67,10 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
         if ($container.current) {
             setContainerWidth($container.current.offsetWidth);
         }
-    }, [windowWidth]);
+    }, [windowWidth, activeIndex]);
+
+    const orientation =
+        activePhoto?.fullSize?.width > activePhoto?.fullSize?.height ? 'landscape' : 'portrait';
 
     return (
         <div
@@ -80,20 +84,13 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                             <CarouselImage isActive={false} {...prevPhoto} />
                             <CarouselImage isActive={false} {...nextPhoto} />
                         </div>
-                        <div className="relative flex w-full md:h-auto md:flex-grow">
-                            <div
-                                key={activeIndex}
-                                className={clsx(
-                                    'mx-auto w-full flex-shrink-0 animate-fadeIn sm:h-full md:absolute md:block',
-                                    {
-                                        'opacity-1 relative': direction > 0,
-                                        'absolute opacity-0': direction < 0
-                                    }
-                                )}
-                            >
-                                <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
-                            </div>
-                        </div>
+                        <ImageContainer
+                            activeIndex={activeIndex}
+                            direction={direction}
+                            orientation={orientation}
+                        >
+                            <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
+                        </ImageContainer>
                         <CarouselSwipeNavigation
                             handleNext={() => navigateToNextPhoto('right', 'swipe')}
                             handlePrevious={() => navigateToNextPhoto('left', 'swipe')}

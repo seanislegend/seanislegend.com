@@ -14,6 +14,12 @@ module.exports = {
                 {'animate-delay': value => ({'animation-delay': value})},
                 {values: theme('transitionDelay')}
             );
+        }),
+        plugin(({matchUtilities, theme}) => {
+            matchUtilities(
+                {'animate-duration': value => ({'animation-duration': value})},
+                {values: theme('transitionDuration')}
+            );
         })
     ],
     theme: {
