@@ -52,6 +52,12 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
         }
     }, [windowWidth, activeIndex]);
 
+    useEffect(() => {
+        // prefetch the next/previous photo
+        router.prefetch(`/${collection.slug}/${prevPhoto.slug}`);
+        router.prefetch(`/${collection.slug}/${nextPhoto.slug}`);
+    }, [collection, nextPhoto, prevPhoto, router]);
+
     return (
         <div
             className="relative min-h-[200px] w-full overflow-hidden md:flex md:h-full md:max-h-[calc(100vh-2rem)] md:flex-col"
