@@ -2,18 +2,15 @@
 
 import {PropsWithChildren, useEffect, useRef, useState} from 'react';
 import {useWindowSize} from '@react-hook/window-size';
-import clsx from 'clsx';
 
 interface Props {
     activeIndex: number;
-    direction: number;
     orientation: 'landscape' | 'portrait';
 }
 
 const PhotoCarouselImageContainer: React.FC<PropsWithChildren<Props>> = ({
     activeIndex,
     children,
-    direction,
     orientation
 }) => {
     const windowSize = useWindowSize();
@@ -43,10 +40,7 @@ const PhotoCarouselImageContainer: React.FC<PropsWithChildren<Props>> = ({
         <div ref={$container} className="relative flex w-full md:h-auto md:flex-grow">
             <div
                 key={activeIndex}
-                className={clsx(
-                    'mx-auto h-full w-full flex-shrink-0 animate-fadeIn md:absolute md:left-1/2 md:top-1/2 md:block md:-translate-x-1/2 md:-translate-y-1/2 -sm:!relative -sm:!h-full -sm:!w-full',
-                    {'opacity-1 relative': direction > 0, 'absolute opacity-0': direction < 0}
-                )}
+                className="mx-auto h-full w-full flex-shrink-0 animate-fadeIn md:absolute md:left-1/2 md:top-1/2 md:block md:-translate-x-1/2 md:-translate-y-1/2 -sm:!relative -sm:!h-full -sm:!w-full"
                 style={
                     orientation === 'portrait'
                         ? {

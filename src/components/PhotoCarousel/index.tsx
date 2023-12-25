@@ -3,14 +3,12 @@
 import {memo, useEffect, useRef, useState} from 'react';
 import useKeypress from 'react-use-keypress';
 import {useWindowWidth} from '@react-hook/window-size';
-import clsx from 'clsx';
-import dynamic from 'next/dynamic';
+import {useRouter} from 'next/navigation';
 import CarouselDetails from './Details';
 import CarouselImage from './Image';
 import ImageContainer from './ImageContainer';
 import CarouselMobilePagination from './MobilePagination';
-
-const CarouselSwipeNavigation = dynamic(() => import('./SwipeNavigation'), {ssr: false});
+import CarouselSwipeNavigation from './SwipeNavigation';
 
 interface Props {
     collection: PhotoCollection;
@@ -18,21 +16,21 @@ interface Props {
 }
 
 const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
-    const allPhotos = collection.photosCollection.items;
+    const router = useRouter();
     const $container = useRef<HTMLDivElement>(null);
     const windowWidth = useWindowWidth();
     const [containerWidth, setContainerWidth] = useState<number>(0);
-    const defaultPhotoIndex = allPhotos.findIndex(item => item.slug === photo);
-    const [direction, setDirection] = useState<number>(0);
-    const [activeIndex, setActiveIndex] = useState<number>(defaultPhotoIndex);
+
+    const allPhotos = collection.photosCollection.items;
+    const activeIndex = allPhotos.findIndex(item => item.slug === photo);
     const activePhoto = allPhotos[activeIndex];
+    // get the next/previous photo so we can render them (hidden) for faster navigation
     const prevPhoto = allPhotos[activeIndex === 0 ? allPhotos.length - 1 : activeIndex - 1];
     const nextPhoto = allPhotos[activeIndex === allPhotos.length - 1 ? 0 : activeIndex + 1];
+    const orientation =
+        activePhoto?.fullSize?.width > activePhoto?.fullSize?.height ? 'landscape' : 'portrait';
 
-    const navigateToNextPhoto = (
-        nextDirection: 'left' | 'right',
-        type: 'hidden' | 'keyboard' | 'mobile' | 'swipe'
-    ) => {
+    const navigateToNextPhoto = (nextDirection: 'left' | 'right') => {
         const {items} = collection.photosCollection;
         let nextPhotoIndex = nextDirection === 'left' ? activeIndex - 1 : activeIndex + 1;
 
@@ -42,35 +40,17 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
             nextPhotoIndex = 0;
         }
 
-        setActiveIndex(nextPhotoIndex);
-        setDirection(nextDirection === 'left' ? -1 : 1);
-
-        // This will be replaced once the app directory supports soft navigation for dynamic routes
-        // The downsides to have a new refresh when navigating away are minimal compared to the
-        // benefits of having a smooth transition between photos and the ability to have a shareable
-        // link to the active photo
-        // https://beta.nextjs.org/docs/routing/linking-and-navigating#soft-navigation
-        window.history.replaceState({}, '', `/${collection.slug}/${items[nextPhotoIndex].slug}`);
-        // Update the page title show it reflects in the tab
-        document.title = document.title.replace(activePhoto.title, items[nextPhotoIndex].title);
+        router.push(`/${collection.slug}/${items[nextPhotoIndex].slug}`);
     };
 
-    useKeypress('ArrowLeft', () => {
-        navigateToNextPhoto('left', 'keyboard');
-    });
-
-    useKeypress('ArrowRight', () => {
-        navigateToNextPhoto('right', 'keyboard');
-    });
+    useKeypress('ArrowLeft', () => navigateToNextPhoto('left'));
+    useKeypress('ArrowRight', () => navigateToNextPhoto('right'));
 
     useEffect(() => {
         if ($container.current) {
             setContainerWidth($container.current.offsetWidth);
         }
     }, [windowWidth, activeIndex]);
-
-    const orientation =
-        activePhoto?.fullSize?.width > activePhoto?.fullSize?.height ? 'landscape' : 'portrait';
 
     return (
         <div
@@ -84,25 +64,21 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                             <CarouselImage isActive={false} {...prevPhoto} />
                             <CarouselImage isActive={false} {...nextPhoto} />
                         </div>
-                        <ImageContainer
-                            activeIndex={activeIndex}
-                            direction={direction}
-                            orientation={orientation}
-                        >
+                        <ImageContainer activeIndex={activeIndex} orientation={orientation}>
                             <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
                         </ImageContainer>
                         <CarouselSwipeNavigation
-                            handleNext={() => navigateToNextPhoto('right', 'swipe')}
-                            handlePrevious={() => navigateToNextPhoto('left', 'swipe')}
+                            handleNext={() => navigateToNextPhoto('right')}
+                            handlePrevious={() => navigateToNextPhoto('left')}
                         />
                         <button
                             className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
-                            onClick={() => navigateToNextPhoto('left', 'hidden')}
+                            onClick={() => navigateToNextPhoto('left')}
                             type="button"
                         />
                         <button
                             className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
-                            onClick={() => navigateToNextPhoto('right', 'hidden')}
+                            onClick={() => navigateToNextPhoto('right')}
                             type="button"
                         />
                     </div>
@@ -113,8 +89,8 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                         total={allPhotos.length}
                     />
                     <CarouselMobilePagination
-                        handleNext={() => navigateToNextPhoto('right', 'mobile')}
-                        handlePrevious={() => navigateToNextPhoto('left', 'mobile')}
+                        handleNext={() => navigateToNextPhoto('right')}
+                        handlePrevious={() => navigateToNextPhoto('left')}
                     />
                 </>
             ) : null}
