@@ -72,6 +72,9 @@ module.exports = {
                     '0%': {opacity: '0.8', height: '100vh'},
                     '100%': {opacity: '0', height: '0'}
                 }
+            },
+            screens: {
+                '-sm': {max: '639px'}
             }
         }
     }

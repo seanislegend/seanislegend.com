@@ -44,7 +44,7 @@ const PhotoCarouselImageContainer: React.FC<PropsWithChildren<Props>> = ({
             <div
                 key={activeIndex}
                 className={clsx(
-                    'left-1/2 top-1/2 mx-auto h-full w-full flex-shrink-0 -translate-x-1/2 -translate-y-1/2 animate-fadeIn md:absolute md:block',
+                    'mx-auto h-full w-full flex-shrink-0 animate-fadeIn md:absolute md:left-1/2 md:top-1/2 md:block md:-translate-x-1/2 md:-translate-y-1/2 -sm:!h-full -sm:!w-full',
                     {'opacity-1 relative': direction > 0, 'absolute opacity-0': direction < 0}
                 )}
                 style={
