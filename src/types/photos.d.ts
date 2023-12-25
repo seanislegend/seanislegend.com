@@ -7,6 +7,7 @@ interface Image {
 }
 
 interface Photo {
+    base64?: string;
     collection?: string;
     date?: string;
     description?: string;

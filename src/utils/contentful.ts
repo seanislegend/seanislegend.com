@@ -207,6 +207,7 @@ export const fetchAllCollections = async (
                             width
                             url(transform: {format: WEBP, width: 800})
                         }
+                        base64
                     }
                 }
             }
@@ -289,6 +290,7 @@ export const fetchCollection = async (
                             width
                             url(transform: {format: WEBP, width: 1000})
                         }
+                        base64
                     }
                 }
             }

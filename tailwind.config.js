@@ -14,6 +14,12 @@ module.exports = {
                 {'animate-delay': value => ({'animation-delay': value})},
                 {values: theme('transitionDelay')}
             );
+        }),
+        plugin(({matchUtilities, theme}) => {
+            matchUtilities(
+                {'animate-duration': value => ({'animation-duration': value})},
+                {values: theme('transitionDuration')}
+            );
         })
     ],
     theme: {
@@ -66,6 +72,9 @@ module.exports = {
                     '0%': {opacity: '0.8', height: '100vh'},
                     '100%': {opacity: '0', height: '0'}
                 }
+            },
+            screens: {
+                '-sm': {max: '639px'}
             }
         }
     }

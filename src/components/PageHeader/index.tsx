@@ -41,7 +41,7 @@ const PageHeader: React.FC<Props> = ({
         </div>
         {(children || description || ctaUrl) && (
             <div
-                className="mt-4 animate-fadeInUp opacity-0 animate-delay-75 md:mt-6"
+                className="mt-4 animate-fadeIn opacity-0 animate-delay-75 md:mt-6"
                 key={description || children?.toString()}
             >
                 {description && (

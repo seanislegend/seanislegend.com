@@ -26,7 +26,10 @@ const CollectionsPage = async () => {
                         key={collection.slug}
                         href={`/${collection.slug}`}
                     >
-                        <ThumbnailImage {...collection.photosCollection.items[0]?.thumbnail} />
+                        <ThumbnailImage
+                            {...collection.photosCollection.items[0]?.thumbnail}
+                            base64={collection.photosCollection.items[0]?.base64}
+                        />
                         <span className="block pb-2 pt-1 text-sm tracking-wide text-gray-600 underline-offset-4 group-hover:underline group-focus:underline sm:pb-4 sm:pt-2 dark:text-gray-400 dark:group-hover:text-white">
                             {collection.title}
                         </span>

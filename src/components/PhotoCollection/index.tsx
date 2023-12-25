@@ -1,13 +1,14 @@
 'use client';
 
+import clsx from 'clsx';
 import PhotoThumbnail from '@/components/PhotoCollection/Thumbnail';
 import usePhotoCollection from '@/hooks/usePhotoCollection';
-import clsx from 'clsx';
 
 type Props = Pick<PhotoCollection, 'photosCollection' | 'slug'>;
 
 const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
     const {maxSize, photoGroups} = usePhotoCollection(photosCollection);
+
     const columnClasses: {[key: number]: string} = {
         1: 'w-12/12',
         2: 'w-6/12',
@@ -18,7 +19,7 @@ const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
     const columnClass = columnClasses[columnSize];
 
     return (
-        <div className="-ml-2 -mb-2 flex flex-row flex-wrap">
+        <div className="-mb-2 -ml-2 flex animate-fadeIn flex-row flex-wrap animate-duration-700">
             {photoGroups?.map((row, index) => (
                 <div key={index} className={`self-start pl-2 ${columnClass}`}>
                     {row.map((photo, index2) => {
@@ -36,6 +37,7 @@ const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
                                     })}
                                 >
                                     <PhotoThumbnail
+                                        base64={photo.base64}
                                         loading={index2 < 6 ? 'eager' : 'lazy'}
                                         path={`/${photo.collection || slug}/${photo.slug}`}
                                         slug={photo.slug}
