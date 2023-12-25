@@ -19,14 +19,12 @@ const CarouselDetails: React.FC<Props> = ({activeIndex, activePhoto, collection,
             >
                 {collection.title}
             </Link>
-            <div key={activeIndex} className="animate-fadeIn">
-                <div className="space-y-2 text-gray-600 md:flex md:items-baseline md:space-x-2 dark:text-gray-300">
-                    {activePhoto?.title && (
-                        <span className="block break-normal text-sm sm:text-base">
-                            {activePhoto.title}
-                        </span>
-                    )}
-                </div>
+            <div className="space-y-2 text-gray-600 md:flex md:items-baseline md:space-x-2 dark:text-gray-300">
+                {activePhoto?.title && (
+                    <span className="block break-normal text-sm sm:text-base">
+                        {activePhoto.title}
+                    </span>
+                )}
             </div>
             {/* {activePhoto?.description && (
                     <p className="mt-2 text-sm tracking-wide text-gray-400 dark:text-gray-600">

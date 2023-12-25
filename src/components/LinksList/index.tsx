@@ -5,12 +5,10 @@ interface Props {
 }
 
 const LinksList: React.FC<Props> = ({links}: Props) => (
-    <div className="animate-fadeInUp">
-        <div className="divide-y divide-gray-200">
-            {links.map((link: Props['links'][0]) => (
-                <LinkCard key={link.title} {...link} />
-            ))}
-        </div>
+    <div className="divide-y divide-gray-200">
+        {links.map((link: Props['links'][0]) => (
+            <LinkCard key={link.title} {...link} />
+        ))}
     </div>
 );
 

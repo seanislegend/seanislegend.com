@@ -38,7 +38,7 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => (
                 </div>
             </div>
             <SiteMenuMobile />
-            <main className="p-4 md:mt-0 md:flex md:w-[calc(100%-260px)] md:flex-grow md:flex-col lg:w-[calc(100%-300px)]">
+            <main className="animate-fadeIn p-4 md:mt-0 md:flex md:w-[calc(100%-260px)] md:flex-grow md:flex-col lg:w-[calc(100%-300px)]">
                 {children}
             </main>
             {process.env.NODE_ENV !== 'development' && (
