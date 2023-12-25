@@ -22,8 +22,8 @@ const PageHeader: React.FC<Props> = ({
     description,
     title
 }: Props) => (
-    <div className="py-5 sm:pb-8" id="hero">
-        <div className="animate-fadeInUp">
+    <div className="py-4 sm:pb-8" id="hero">
+        <>
             {backUrl ? (
                 <Link
                     href={backUrl}
@@ -38,12 +38,9 @@ const PageHeader: React.FC<Props> = ({
                     <span>{title}</span>
                 </h1>
             )}
-        </div>
+        </>
         {(children || description || ctaUrl) && (
-            <div
-                className="mt-4 animate-fadeIn opacity-0 animate-delay-75 md:mt-6"
-                key={description || children?.toString()}
-            >
+            <div className="mt-4 md:mt-6" key={description || children?.toString()}>
                 {description && (
                     <Markdown className="prose-sm max-w-2xl leading-relaxed tracking-wide lg:prose-base dark:prose-invert prose-p:text-gray-500 lg:max-w-4xl lg:prose-p:leading-relaxed lg:prose-p:tracking-wide dark:prose-p:text-gray-400">
                         {description}
