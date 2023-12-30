@@ -26,7 +26,7 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => (
         lang="en"
         className={`flex flex-grow flex-col bg-white antialiased md:min-h-full dark:bg-black ${titleFont.variable} ${bodyFont.variable}`}
     >
-        <body className="animate-entrance opacity-0 sm:min-h-full md:flex md:flex-grow md:flex-row">
+        <body className="sm:min-h-full md:flex md:flex-grow md:flex-row">
             <div className="relative z-[100] flex-shrink-0 flex-grow-0 px-4 md:flex md:w-[260px] md:flex-grow md:flex-col lg:w-[300px]">
                 <SiteHeader />
                 <div className="hidden flex-grow flex-col justify-between space-y-8 md:flex">

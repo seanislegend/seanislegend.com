@@ -1,11 +1,11 @@
 'use client';
 
 import {useTransition} from 'react';
+import clsx from 'clsx';
+import {useAtom} from 'jotai';
 import Link from 'next/link';
 import {useSelectedLayoutSegments} from 'next/navigation';
 import {isMenuOpenAtom} from '@/utils/store';
-import clsx from 'clsx';
-import {useAtom} from 'jotai';
 
 const SiteMenuLink: React.FC<Link> = ({published, title, url}) => {
     const [collection] = useSelectedLayoutSegments();
@@ -37,7 +37,7 @@ const SiteMenuLink: React.FC<Link> = ({published, title, url}) => {
             onClick={handleClick}
         >
             <span
-                className={clsx('underline-offset-4 transition duration-200', {
+                className={clsx('underline-offset-4 transition duration-200 hover:duration-500', {
                     'text-gray-500 group-hover:text-black group-hover:underline group-focus:text-black  group-focus:underline dark:hover:text-white dark:group-hover:text-white dark:group-focus:text-white':
                         !isActive,
                     'text-black underline dark:text-white': isActive
@@ -48,7 +48,7 @@ const SiteMenuLink: React.FC<Link> = ({published, title, url}) => {
             {isNew && (
                 <span
                     className={clsx(
-                        'rounded-xl bg-black px-1.5 py-1 text-[9px] uppercase leading-[1.2] tracking-[1px] dark:bg-white sm:leading-none md:font-semibold',
+                        'rounded-xl bg-black px-1.5 py-1 text-[9px] uppercase leading-[1.2] tracking-[1px] sm:leading-none md:font-semibold dark:bg-white',
                         {
                             'bg-opacity-10 text-black transition duration-200 ease-in-out group-hover:bg-opacity-100 group-hover:text-white dark:bg-opacity-20 dark:text-white dark:group-hover:text-black':
                                 !isActive,
