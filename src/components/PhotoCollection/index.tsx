@@ -7,7 +7,10 @@ import usePhotoCollection from '@/hooks/usePhotoCollection';
 type Props = Pick<PhotoCollection, 'photosCollection' | 'slug'>;
 
 const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
-    const {maxSize, photoGroups} = usePhotoCollection(photosCollection);
+    const {maxSize, photoGroups} = usePhotoCollection(
+        photosCollection,
+        slug === 'home' ? 'home' : 'default'
+    );
 
     const columnClasses: {[key: number]: string} = {
         1: 'w-12/12',
