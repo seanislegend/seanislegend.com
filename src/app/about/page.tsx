@@ -9,17 +9,18 @@ const AboutPage = async () => {
 
     return (
         <>
-            <PageHeader title={page.pageTitle} description={page.content} />
-            <Image
-                alt=""
-                className="mt-4 max-w-full sm:max-w-[260px]"
-                height={page.photo.height}
-                placeholder="empty"
-                priority={false}
-                quality={90}
-                src={page.photo.url}
-                width={page.photo.width}
-            />
+            <PageHeader title={page.pageTitle} description={page.content}>
+                <Image
+                    alt=""
+                    className="mt-4 max-w-full sm:max-w-[260px]"
+                    height={page.photo.height}
+                    placeholder="empty"
+                    priority={false}
+                    quality={90}
+                    src={page.photo.url}
+                    width={page.photo.width}
+                />
+            </PageHeader>
         </>
     );
 };

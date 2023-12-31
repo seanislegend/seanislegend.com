@@ -22,7 +22,7 @@ const PageHeader: React.FC<Props> = ({
     description,
     title
 }: Props) => (
-    <div className="py-4 sm:pb-8" id="hero">
+    <div className="animate-fadeIn py-4 sm:pb-8" id="hero">
         <>
             {backUrl ? (
                 <Link

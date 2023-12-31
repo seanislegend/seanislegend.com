@@ -19,7 +19,7 @@ const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
     const columnClass = columnClasses[columnSize];
 
     return (
-        <div className="-mb-2 -ml-2 flex animate-fadeIn flex-row flex-wrap animate-duration-700">
+        <div className="-mb-2 -ml-2 flex animate-fadeIn flex-row flex-wrap animate-duration-1000">
             {photoGroups?.map((row, index) => (
                 <div key={index} className={`self-start pl-2 ${columnClass}`}>
                     {row.map((photo, index2) => {
