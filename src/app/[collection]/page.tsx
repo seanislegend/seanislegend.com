@@ -1,5 +1,6 @@
 import {draftMode} from 'next/headers';
 import {notFound, redirect} from 'next/navigation';
+import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
 import PhotoCollection from '@/components/PhotoCollection';
 import config from '@/utils/config';
@@ -18,12 +19,12 @@ const CollectionPage = async ({params}: Props) => {
 
     return (
         <>
-            {params.collection !== 'home' && (
+            <div className={params.collection === 'home' ? 'md:hidden' : ''}>
                 <PageHeader
                     {...collection}
                     description={collection?.showDescription ? collection.description : null}
                 />
-            )}
+            </div>
             <PhotoCollection {...collection} key={collection.slug} />
         </>
     );
