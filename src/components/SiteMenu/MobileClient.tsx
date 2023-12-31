@@ -47,7 +47,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         </nav>
                         <nav
                             key={isMenuOpen ? 'pages-open' : 'pages-closed'}
-                            className="flex min-w-[100px] animate-fadeInUp flex-col items-end space-y-2 animate-delay-75 md:hidden"
+                            className="flex min-w-[100px] animate-fadeInUp flex-col items-end space-y-2 opacity-0 animate-delay-75 md:hidden"
                         >
                             {LINKS.map(link => (
                                 <UnderlineLink
