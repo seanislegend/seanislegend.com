@@ -7,7 +7,10 @@ import usePhotoCollection from '@/hooks/usePhotoCollection';
 type Props = Pick<PhotoCollection, 'photosCollection' | 'slug'>;
 
 const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
-    const {maxSize, photoGroups} = usePhotoCollection(photosCollection);
+    const {maxSize, photoGroups} = usePhotoCollection(
+        photosCollection,
+        slug === 'home' ? 'home' : 'default'
+    );
 
     const columnClasses: {[key: number]: string} = {
         1: 'w-12/12',
@@ -19,15 +22,15 @@ const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
     const columnClass = columnClasses[columnSize];
 
     return (
-        <div className="-mb-2 -ml-2 flex animate-fadeIn flex-row flex-wrap animate-duration-1000">
+        <div className="-mb-1.5 -ml-1.5 flex animate-fadeIn flex-row flex-wrap animate-duration-1000 sm:-mb-2 sm:-ml-2">
             {photoGroups?.map((row, index) => (
-                <div key={index} className={`self-start pl-2 ${columnClass}`}>
+                <div key={index} className={`self-start pl-1.5 sm:pl-2 ${columnClass}`}>
                     {row.map((photo, index2) => {
                         const padding = (photo.fullSize.height / maxSize) * 100;
 
                         return (
                             <div
-                                className="mb-2 h-0 w-full overflow-hidden"
+                                className="mb-1.5 h-0 w-full overflow-hidden sm:mb-2"
                                 key={index2}
                                 style={{paddingBottom: `${padding}%`}}
                             >

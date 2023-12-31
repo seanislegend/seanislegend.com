@@ -7,15 +7,26 @@ type PhotoGroups = Photo[][];
 
 const MAX_SIZE = 1800;
 const BREAKPOINT_COLUMNS = {
-    240: 1,
-    360: 2,
-    640: 3,
-    768: 2,
-    1024: 3,
-    1536: 4
+    default: {
+        240: 1,
+        360: 2,
+        640: 3,
+        768: 2,
+        1024: 3,
+        1536: 4
+    },
+    home: {
+        240: 1,
+        360: 3,
+        768: 3,
+        1024: 4
+    }
 };
 
-const usePhotoCollection = (photosCollection: PhotoCollection['photosCollection']) => {
+const usePhotoCollection = (
+    photosCollection: PhotoCollection['photosCollection'],
+    breakpointSize: keyof typeof BREAKPOINT_COLUMNS = 'default'
+) => {
     const [sortedGroups, setSortedGroups] = useState<PhotoGroups | null>(null);
     const windowWidth = useWindowWidth();
 
@@ -53,9 +64,10 @@ const usePhotoCollection = (photosCollection: PhotoCollection['photosCollection'
     };
 
     const getColumnsForCurrentBreakpoint = () => {
+        const columns = BREAKPOINT_COLUMNS[breakpointSize];
         // Sort the breakpoints from smallest to largest so we can loop through them
         // and find the first breakpoint that is smaller than the current window width
-        const breakpointWidths = Object.keys(BREAKPOINT_COLUMNS)
+        const breakpointWidths = Object.keys(columns)
             .map(breakpoint => parseInt(breakpoint))
             .sort((a, b) => a - b)
             .reverse();
@@ -71,7 +83,7 @@ const usePhotoCollection = (photosCollection: PhotoCollection['photosCollection'
             }
         }, 0);
 
-        return BREAKPOINT_COLUMNS[currentBreakpoint as keyof typeof BREAKPOINT_COLUMNS];
+        return columns[currentBreakpoint as keyof typeof columns];
     };
 
     // The photos are sorted by their 'priority' (their relevance/importance in the collection).
