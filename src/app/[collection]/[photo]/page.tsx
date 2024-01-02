@@ -32,13 +32,11 @@ const PhotoPage = async ({params}: Props) => {
 
     return (
         <>
-            <div className="md:hidden">
-                <PageHeader
-                    animate={false}
-                    backUrl={`/${collection.slug}`}
-                    title={collection.pageTitle || collection.title}
-                />
-            </div>
+            <PageHeader
+                animate={false}
+                backUrl={`/${collection.slug}`}
+                title={collection.pageTitle || collection.title}
+            />
             <PhotoCarousel photo={params.photo} collection={collection} />
             <div className="md:hidden">
                 <PageHeader

@@ -28,7 +28,7 @@ const PageHeader: React.FC<Props> = ({
     title
 }: Props) => (
     <div
-        className={clsx('pt-4', {'pb-4 sm:pb-8': hasBottomPadding, 'animate-fadeIn': animate})}
+        className={clsx('pt-2', {'pb-4 sm:pb-8': hasBottomPadding, 'animate-fadeIn': animate})}
         id="hero"
     >
         {title && (

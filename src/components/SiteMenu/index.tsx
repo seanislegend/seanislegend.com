@@ -10,7 +10,7 @@ const SiteMenu: React.FC = async () => {
                 <SiteMenuLink key={link.url} {...link} />
             ))}
             <div>
-                <div className="mt-2 max-w-[160px] border-t-2 border-gray-800 pt-2">
+                <div className="mt-2 max-w-[160px] border-t-2 border-gray-200 pt-2 dark:border-gray-800">
                     <SiteMenuLink title="All collections" url="/collections" />
                 </div>
             </div>

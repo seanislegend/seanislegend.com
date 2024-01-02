@@ -44,7 +44,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                 <SiteMenuLink key={link.url} {...link} />
                             ))}
                             <div>
-                                <div className="mt-4 w-[160px] border-t-2 border-gray-800 pt-2">
+                                <div className="mt-4 w-[160px] border-t-2 border-gray-200 pt-2 dark:border-gray-800">
                                     <SiteMenuLink title="All collections" url="/collections" />
                                 </div>
                             </div>
