@@ -9,7 +9,11 @@ const SiteMenu: React.FC = async () => {
             {links?.map(link => (
                 <SiteMenuLink key={link.url} {...link} />
             ))}
-            <SiteMenuLink title="All collections" url="/collections" />
+            <div>
+                <div className="mt-2 max-w-[160px] border-t-2 border-gray-800 pt-2">
+                    <SiteMenuLink title="All collections" url="/collections" />
+                </div>
+            </div>
         </nav>
     );
 };
