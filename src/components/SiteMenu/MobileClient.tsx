@@ -43,7 +43,11 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                             {links?.map(link => (
                                 <SiteMenuLink key={link.url} {...link} />
                             ))}
-                            <SiteMenuLink url="/collections" title="All collections" />
+                            <div>
+                                <div className="mt-4 w-[160px] border-t-2 border-gray-200 pt-2 dark:border-gray-800">
+                                    <SiteMenuLink title="All collections" url="/collections" />
+                                </div>
+                            </div>
                         </nav>
                         <nav
                             key={isMenuOpen ? 'pages-open' : 'pages-closed'}

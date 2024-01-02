@@ -27,7 +27,7 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => (
         className={`flex flex-grow flex-col bg-white antialiased md:min-h-full dark:bg-black ${titleFont.variable} ${bodyFont.variable}`}
     >
         <body className="sm:min-h-full md:flex md:flex-grow md:flex-row">
-            <div className="relative z-[100] flex-shrink-0 flex-grow-0 px-4 md:flex md:w-[260px] md:flex-grow md:flex-col lg:w-[300px]">
+            <div className="relative z-[100] flex-shrink-0 flex-grow-0 px-4 md:flex md:w-[240px] md:flex-grow md:flex-col lg:w-[260px]">
                 <SiteHeader />
                 <div className="hidden flex-grow flex-col justify-between space-y-8 md:flex">
                     <SiteMenu />
@@ -40,6 +40,9 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => (
             <SiteMenuMobile />
             <main className="animate-fadeIn p-4 md:mt-0 md:flex md:w-[calc(100%-260px)] md:flex-grow md:flex-col lg:w-[calc(100%-300px)]">
                 {children}
+                <div className="-mb-4 mt-10 md:hidden">
+                    <SiteFooter />
+                </div>
             </main>
             {process.env.NODE_ENV !== 'development' && (
                 <>
