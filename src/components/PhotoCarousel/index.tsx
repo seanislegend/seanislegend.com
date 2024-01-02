@@ -63,43 +63,40 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
             className="relative min-h-[200px] w-full overflow-hidden md:flex md:h-full md:max-h-[calc(100vh-2rem)] md:flex-col"
             ref={$container}
         >
-            {containerWidth ? (
-                <>
-                    <div className="relative flex w-full overflow-hidden md:h-auto md:w-full md:flex-grow">
-                        <div className="opacity-0">
-                            <CarouselImage isActive={false} {...prevPhoto} />
-                            <CarouselImage isActive={false} {...nextPhoto} />
-                        </div>
-                        <ImageContainer activeIndex={activeIndex} orientation={orientation}>
-                            <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
-                        </ImageContainer>
-                        <CarouselSwipeNavigation
-                            handleNext={() => navigateToNextPhoto('right')}
-                            handlePrevious={() => navigateToNextPhoto('left')}
-                        />
-                        <button
-                            className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
-                            onClick={() => navigateToNextPhoto('left')}
-                            type="button"
-                        />
-                        <button
-                            className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
-                            onClick={() => navigateToNextPhoto('right')}
-                            type="button"
-                        />
-                    </div>
-                    <CarouselDetails
-                        activeIndex={activeIndex}
-                        activePhoto={activePhoto}
-                        collection={collection}
-                        total={allPhotos.length}
-                    />
-                    <CarouselMobilePagination
-                        handleNext={() => navigateToNextPhoto('right')}
-                        handlePrevious={() => navigateToNextPhoto('left')}
-                    />
-                </>
-            ) : null}
+            <div className="relative flex w-full overflow-hidden md:h-auto md:w-full md:flex-grow">
+                <div className="opacity-0">
+                    <CarouselImage isActive={false} {...prevPhoto} />
+                    <CarouselImage isActive={false} {...nextPhoto} />
+                </div>
+                <ImageContainer activeIndex={activeIndex} orientation={orientation}>
+                    <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
+                </ImageContainer>
+                <CarouselSwipeNavigation
+                    handleNext={() => navigateToNextPhoto('right')}
+                    handlePrevious={() => navigateToNextPhoto('left')}
+                />
+                <button
+                    className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
+                    onClick={() => navigateToNextPhoto('left')}
+                    type="button"
+                />
+                <button
+                    className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
+                    onClick={() => navigateToNextPhoto('right')}
+                    type="button"
+                />
+            </div>
+            <CarouselDetails
+                activeIndex={activeIndex}
+                activePhoto={activePhoto}
+                collection={collection}
+                total={allPhotos.length}
+            />
+            <CarouselMobilePagination
+                handleBack={() => router.push(`/${collection.slug}#${activePhoto.slug}`)}
+                handleNext={() => navigateToNextPhoto('right')}
+                handlePrevious={() => navigateToNextPhoto('left')}
+            />
         </div>
     );
 };

@@ -11,14 +11,8 @@ interface Props {
 }
 
 const CarouselDetails: React.FC<Props> = ({activeIndex, activePhoto, collection, total}) => (
-    <footer className="relative z-50 mt-4 flex items-center justify-between border-b-2 border-t-2 border-black py-2 sm:py-4 md:min-h-[44px] md:border-b-0 md:pb-0 dark:border-gray-600">
+    <footer className="relative z-50 mt-2 flex items-end justify-between md:min-h-[44px] md:border-t-2 md:border-black dark:border-gray-600">
         <div className="flex items-center">
-            <Link
-                className="hidden break-normal pr-4 font-serif text-black underline-offset-2 hover:underline md:block dark:text-white"
-                href={`/${collection.slug}`}
-            >
-                {collection.title}
-            </Link>
             <div className="space-y-2 text-gray-600 md:flex md:items-baseline md:space-x-2 dark:text-gray-300">
                 {activePhoto?.title && (
                     <span className="block break-normal text-sm sm:text-base">
