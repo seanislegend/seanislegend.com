@@ -33,8 +33,23 @@ module.exports = {
     },
     async redirects() {
         return [
+            {source: '/adnams-signifier', destination: '/adnams', permanent: true},
+            {source: '/adnams', destination: '/adnams-brewery-southwold', permanent: true},
+            {
+                source: '/hukins-hops',
+                destination: '/hukins-hops-annual-hop-harvest',
+                permanent: true
+            },
+            {source: '/iceland', destination: '/iceland-on-film', permanent: true},
+            {source: '/india', destination: '/travelling-across-india', permanent: true},
             {source: '/jw-lees-unrated', destination: '/jw-lees', permanent: true},
-            {source: '/adnams-signifier', destination: '/adnams', permanent: true}
+            {source: '/jw-lees', destination: '/jw-lees-harvest-ale', permanent: true},
+            {source: '/tynt-meadow', destination: '/tynt-meadow-trappist-beer', permanent: true},
+            {
+                source: '/uppers-and-downers',
+                destination: '/uppers-and-downers-coffee-and-beer-festival',
+                permanent: true
+            }
         ];
     },
     images: {
