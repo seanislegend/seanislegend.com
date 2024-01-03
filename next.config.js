@@ -45,7 +45,7 @@ module.exports = {
             {source: '/india', destination: '/travelling-across-india', permanent: true},
             {source: '/jw-lees-unrated', destination: '/jw-lees', permanent: true},
             {source: '/jw-lees', destination: '/jw-lees-harvest-ale', permanent: true},
-            {source: '/tynt-meadow', destination: '/tynt-meadow-trappist-beer', permanent: true},
+            {source: '/tynt-meadow', destination: '/tynt-meadow-trappist-ale', permanent: true},
             {
                 source: '/uppers-and-downers',
                 destination: '/uppers-and-downers-coffee-and-beer-festival',

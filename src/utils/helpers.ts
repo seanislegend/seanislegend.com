@@ -21,7 +21,11 @@ export const getCollectionSeo = (collection: PhotoCollection) => {
     const title = collection.title;
 
     return {
-        canonical: `${config.seo.canonical}/${collection.slug}`,
+        alternates: {
+            canonical: `${config.seo.canonical}${
+                collection.slug === 'home' ? '' : `/${collection.slug}`
+            }`
+        },
         description,
         openGraph: {description},
         title,
@@ -34,7 +38,9 @@ export const getPhotoSeo = (collection: PhotoCollection, photo: Photo) => {
     const title = `${photo.title} | ${collection.title}`;
 
     return {
-        canonical: `${config.seo.canonical}/${collection.slug}/${photo.slug}`,
+        alternates: {
+            canonical: `${config.seo.canonical}/${collection.slug}/${photo.slug}`
+        },
         description,
         openGraph: {description},
         title,
@@ -46,7 +52,9 @@ export const getEditorialSeo = (page: Editorial) => {
     const description = removeMarkdown(`${page?.content?.substring(0, 160)}...`);
 
     return {
-        canonical: `${config.seo.canonical}/${page.slug}`,
+        alternates: {
+            canonical: `${config.seo.canonical}/${page.slug}`
+        },
         description,
         openGraph: {description},
         title: page.title,
