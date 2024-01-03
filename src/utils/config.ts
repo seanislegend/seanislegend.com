@@ -1,15 +1,13 @@
 const config = {
     seo: {
         title: {
-            default: 'photography by seanislegend',
-            template: '%s | photography by seanislegend'
+            default: 'Beer, street, travel photography by seanislegend',
+            template: '%s | Beer, street, travel photography by seanislegend'
         },
         description:
-            'I am a photographer based in London, UK. I specialise in capturing the beauty of everyday people and events, as well as documenting my travel experiences and the stories behind good beers.',
+            'I am a London-based photographer specialising in capturing the stories of UK beer, breweries and the people behind them. My photography also focuses on the beauty of people and everyday life as well as my travel experiences.',
         canonical: 'https://seanislegend.com',
         openGraph: {
-            description:
-                'I am a photographer based in London, UK. I specialise in capturing the beauty of everyday people and events, as well as documenting my travel experiences and the stories behind good beers.',
             images: [
                 {alt: '', height: 630, url: 'https://seanislegend.com/images/og.jpg', width: 1200}
             ],
@@ -21,11 +19,9 @@ const config = {
         twitter: {
             card: 'summary_large_image',
             creator: '@seanislegend',
-            description:
-                'I am a photographer based in London, UK. I specialise in capturing the beauty of everyday people and events, as well as documenting my travel experiences and the stories behind good beers.',
             image: 'https://seanislegend.com/images/og.jpg',
             site: '@seanislegend',
-            title: 'Photography by seanislegend'
+            title: 'Beer, street, travel photography by seanislegend'
         },
         icons: {
             shortcut: '/images/favicon-32x32.png'
