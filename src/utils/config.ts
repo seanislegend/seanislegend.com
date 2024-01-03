@@ -2,7 +2,7 @@ const config = {
     seo: {
         title: {
             default: 'Beer, street, travel photography by seanislegend',
-            template: '%s | Beer, street, travel photography by seanislegend'
+            template: '%s | Photography by seanislegend'
         },
         description:
             'I am a London-based photographer specialising in capturing the stories of UK beer, breweries and the people behind them. My photography also focuses on the beauty of people and everyday life and my travel experiences.',

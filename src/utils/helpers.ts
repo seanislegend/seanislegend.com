@@ -18,7 +18,7 @@ export const getCollectionSeo = (collection: PhotoCollection) => {
     if (!collection) return {};
 
     const description = removeMarkdown(collection?.description || '');
-    const title = collection.title;
+    const title = collection.pageTitle || collection.title;
 
     return {
         alternates: {
@@ -57,7 +57,7 @@ export const getEditorialSeo = (page: Editorial) => {
         },
         description,
         openGraph: {description},
-        title: page.title,
+        title: page.pageTitle || page.title,
         twitter: {description}
     };
 };
