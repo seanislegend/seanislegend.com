@@ -33,6 +33,7 @@ module.exports = {
     },
     async redirects() {
         return [
+            {source: '/about-town', destination: '/london-street-photography', permanent: true},
             {source: '/adnams-signifier', destination: '/adnams', permanent: true},
             {source: '/adnams', destination: '/adnams-brewery-southwold', permanent: true},
             {
