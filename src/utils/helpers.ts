@@ -18,9 +18,7 @@ export const getCollectionSeo = (collection: PhotoCollection) => {
     if (!collection) return {};
 
     const description = removeMarkdown(collection?.description || '');
-    const title = `${collection.pageTitle || collection.title} | ${capitalize(
-        collection.category
-    )}`;
+    const title = collection.title;
 
     return {
         canonical: `${config.seo.canonical}/${collection.slug}`,
@@ -33,7 +31,7 @@ export const getCollectionSeo = (collection: PhotoCollection) => {
 
 export const getPhotoSeo = (collection: PhotoCollection, photo: Photo) => {
     const description = removeMarkdown(photo?.description || collection?.description || '');
-    const title = `${photo.title}, from "${collection.title}" | ${capitalize(collection.category)}`;
+    const title = `${photo.title} | ${collection.title}`;
 
     return {
         canonical: `${config.seo.canonical}/${collection.slug}/${photo.slug}`,

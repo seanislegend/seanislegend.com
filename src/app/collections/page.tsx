@@ -18,7 +18,10 @@ const CollectionsPage = async () => {
 
     return (
         <>
-            <PageHeader title="All collections" />
+            <PageHeader
+                description="All the photo collections covering my beer, street, and travel photography."
+                title="All photo collections"
+            />
             <div className="grid animate-fadeIn grid-cols-2 gap-3 animate-duration-1000 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {sortedCollections.map(collection => (
                     <Link
@@ -49,7 +52,10 @@ const CollectionsPage = async () => {
 };
 
 export const generateMetadata = async () => {
-    return {...config.seo, ...getEditorialSeo({slug: 'collections', title: 'All collections'})};
+    return {
+        ...config.seo,
+        ...getEditorialSeo({slug: 'collections', title: 'All photo collections'})
+    };
 };
 
 export const revalidate = 60;
