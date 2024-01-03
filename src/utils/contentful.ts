@@ -187,6 +187,7 @@ export const fetchAllCollections = async (
                 ctaUrl
                 isFeatured
                 showDescription
+                description
                 photoSort
                 photosCollection(limit: 50) {
                     items {
