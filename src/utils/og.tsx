@@ -31,12 +31,11 @@ export const getOgImage = async (type: 'og' | 'twitter', photo: string, title?: 
                     </div>
                 )}
                 <div
-                    style={{
-                        backgroundImage: `url(${process.env.NEXT_PUBLIC_URL}/images/og-logo.png)`,
-                        backgroundSize: '100% 100%'
-                    }}
-                    tw="absolute bottom-5 left-8 h-14 w-14"
-                />
+                    style={{backgroundColor: 'rgba(0,0,0,0.75)'}}
+                    tw="py-1.5 px-2 rounded absolute bottom-5 right-5 text-white"
+                >
+                    seanislegend
+                </div>
             </div>
         ),
         {
