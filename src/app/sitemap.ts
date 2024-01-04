@@ -1,9 +1,14 @@
 import {type MetadataRoute} from 'next';
 import {fetchCollectionsForSitemap} from '@/utils/contentful';
 
-const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
-    // if (process.env.VERCEL_ENV !== 'production') return [];
+const getLastModifiedDate = (date: string) => {
+    const minimum = new Date(process.env.SITEMAP_LAST_MODIFIED_MINIMUM || '');
+    const lastModified = new Date(date);
 
+    return lastModified.getTime() > minimum.getTime() ? lastModified : minimum;
+};
+
+const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
     const allCollections = await fetchCollectionsForSitemap();
     if (!allCollections?.length) return [];
 
@@ -18,9 +23,9 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
                 collection.slug === 'home' ? '' : collection.slug
             }`,
             priority: collection.slug === 'home' || collection.isFeatured ? 1 : 0.8,
-            lastModified: new Date(collection.sys.publishedAt).toISOString(),
+            lastModified: getLastModifiedDate(collection.sys.publishedAt).toISOString(),
             changeFrequency:
-                collection.publishedAt === collection.firstPublishedAt ? 'never' : 'weekly'
+                collection.publishedAt === collection.firstPublishedAt ? 'monthly' : 'weekly'
         };
         const filteredPhotoItems = collection.photosCollection?.items?.filter((i: any) => i);
 
@@ -32,8 +37,8 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
             filteredPhotoItems.map((photo: any) => ({
                 url: `${process.env.NEXT_PUBLIC_URL}/${collection.slug}/${photo.slug}`,
                 priority: collection.slug === 'home' || collection.isFeatured ? 1 : 0.8,
-                lastModified: new Date(photo.sys.publishedAt).toISOString(),
-                changeFrequency: photo.publishedAt === photo.firstPublishedAt ? 'never' : 'weekly'
+                lastModified: getLastModifiedDate(photo.sys.publishedAt).toISOString(),
+                changeFrequency: photo.publishedAt === photo.firstPublishedAt ? 'monthly' : 'weekly'
             })) || [];
 
         return [...acc, collectionItem, ...photoItems];
