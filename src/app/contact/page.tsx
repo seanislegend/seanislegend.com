@@ -5,7 +5,12 @@ import {getEditorialSeo} from '@/utils/helpers';
 
 const ContactPage = async () => {
     const page = await fetchEditorialPage('contact');
-    return <PageHeader title={page.pageTitle} description={page.content} />;
+
+    return (
+        <div className="max-w-[700px]">
+            <PageHeader title={page.pageTitle} description={page.content} />
+        </div>
+    );
 };
 
 export const generateMetadata = async () => {
