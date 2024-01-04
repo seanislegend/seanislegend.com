@@ -5,12 +5,10 @@ const handler = async ({params}: {params: {collection: string}}) => {
     const collection = await fetchCollection(params.collection);
     if (!collection) return;
 
-    const photos = collection.photosCollection.items.filter((photo, index) => {
-        return photo.fullSize.width > photo.fullSize.height && index < 4;
-    });
-    if (!photos) return;
+    const photo = collection.photosCollection.items?.[0]?.fullSize;
+    if (!photo) return;
 
-    return getOgImage(photos.map(photo => photo.fullSize.url));
+    return getOgImage(photo.url, collection.pageTitle || collection.title);
 };
 
 export const runtime = 'edge';
