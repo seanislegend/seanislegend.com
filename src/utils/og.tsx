@@ -19,20 +19,20 @@ export const getOgImage = async (type: 'og' | 'twitter', photo: string, title?: 
                         backgroundPosition: '0 -15%'
                     }}
                 />
-                {type === 'twitter' && (
-                    <div
-                        style={{backgroundImage: 'linear-gradient(to top, transparent, black)'}}
-                        tw="absolute h-8/12 -mt-6 w-full"
-                    />
-                )}
                 {type === 'twitter' && title && (
-                    <div tw="absolute w-8/12 flex items-end align-start top-6 left-12">
-                        <p tw="text-5xl text-white leading-normal wrap-balance">{title}</p>
-                    </div>
+                    <>
+                        <div
+                            style={{backgroundImage: 'linear-gradient(to top, transparent, black)'}}
+                            tw="absolute h-8/12 -mt-6 w-full"
+                        />
+                        <div tw="absolute w-8/12 flex items-end align-start top-10s left-12">
+                            <p tw="text-5xl text-white leading-normal wrap-balance">{title}</p>
+                        </div>
+                    </>
                 )}
                 <div
-                    style={{backgroundColor: 'rgba(0,0,0,0.75)'}}
-                    tw="py-1.5 px-2 rounded absolute bottom-5 right-5 text-white"
+                    style={{backgroundColor: 'rgba(0,0,0,0.75)', fontSize: 15, letterSpacing: 0.4}}
+                    tw="py-1.5 px-2 rounded absolute bottom-8 right-8 text-white"
                 >
                     seanislegend
                 </div>
@@ -57,5 +57,8 @@ export const getCollectionOg = async (
     const photo = photoSlug ? items.find(i => i.slug === photoSlug)?.fullSize : items[0].fullSize;
     if (!photo) return;
 
-    return getOgImage(type, photo.url, collection.pageTitle || collection.title);
+    // don't include title for home page
+    const title = collectionSlug === 'home' ? '' : collection.pageTitle || collection.title;
+
+    return getOgImage(type, photo.url, title);
 };
