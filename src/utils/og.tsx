@@ -1,6 +1,7 @@
 import {ImageResponse} from '@vercel/og';
+import {fetchCollection} from '@/utils/contentful';
 
-export const getOgImage = async (photo: string, title?: string) => {
+export const getOgImage = async (type: 'og' | 'twitter', photo: string, title?: string) => {
     const titleFont = await fetch(
         new URL('@/../public/fonts/PPEiko-Medium.ttf', import.meta.url)
     ).then(res => res.arrayBuffer());
@@ -18,11 +19,13 @@ export const getOgImage = async (photo: string, title?: string) => {
                         backgroundPosition: '0 -15%'
                     }}
                 />
-                <div
-                    style={{backgroundImage: 'linear-gradient(to top, transparent, black)'}}
-                    tw="absolute h-8/12 -mt-6 w-full"
-                />
-                {title && (
+                {type === 'twitter' && (
+                    <div
+                        style={{backgroundImage: 'linear-gradient(to top, transparent, black)'}}
+                        tw="absolute h-8/12 -mt-6 w-full"
+                    />
+                )}
+                {type === 'twitter' && title && (
                     <div tw="absolute w-8/12 flex items-end align-start top-6 left-12">
                         <p tw="text-5xl text-white leading-normal wrap-balance">{title}</p>
                     </div>
@@ -38,8 +41,22 @@ export const getOgImage = async (photo: string, title?: string) => {
         ),
         {
             fonts: [{name: 'PPEiko-Medium', data: titleFont, style: 'normal', weight: 600}],
-            height: 630,
-            width: 1200
+            ...(type === 'twitter' ? {width: 1200, height: 675} : {width: 1200, height: 630})
         }
     );
+};
+
+export const getCollectionOg = async (
+    type: 'og' | 'twitter',
+    collectionSlug: string,
+    photoSlug?: string
+) => {
+    const collection = await fetchCollection(collectionSlug);
+    if (!collection) return;
+
+    const items = collection.photosCollection.items;
+    const photo = photoSlug ? items.find(i => i.slug === photoSlug)?.fullSize : items[0].fullSize;
+    if (!photo) return;
+
+    return getOgImage(type, photo.url, collection.pageTitle || collection.title);
 };
