@@ -37,6 +37,12 @@ module.exports = {
             {source: '/adnams-signifier', destination: '/adnams', permanent: true},
             {source: '/adnams', destination: '/adnams-brewery-southwold', permanent: true},
             {
+                source: '/fish-and-chips/:slug*',
+                destination: '/london-street-photography/fish-and-chips',
+                permanent: true
+            },
+            {source: '/gbh-b-roll', destination: '/good-beer-hunting-b-roll', permanent: true},
+            {
                 source: '/hukins-hops',
                 destination: '/hukins-hops-annual-hop-harvest',
                 permanent: true
