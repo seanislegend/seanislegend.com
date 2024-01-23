@@ -1,8 +1,10 @@
 import {type MetadataRoute} from 'next';
 import {fetchCollectionsForSitemap} from '@/utils/contentful';
 
-const getLastModifiedDate = (date: string) => {
-    const minimum = new Date(process.env.SITEMAP_LAST_MODIFIED_MINIMUM || '');
+const getLastModifiedDate = (date?: string) => {
+    if (!date || !process.env.SITEMAP_LAST_MODIFIED_MINIMUM) return new Date();
+
+    const minimum = new Date(process.env.SITEMAP_LAST_MODIFIED_MINIMUM);
     const lastModified = new Date(date);
 
     return lastModified.getTime() > minimum.getTime() ? lastModified : minimum;
@@ -23,7 +25,7 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
                 collection.slug === 'home' ? '' : collection.slug
             }`,
             priority: collection.slug === 'home' || collection.isFeatured ? 1 : 0.8,
-            lastModified: getLastModifiedDate(collection.sys.publishedAt).toISOString(),
+            lastModified: getLastModifiedDate(collection?.sys?.publishedAt).toISOString(),
             changeFrequency:
                 collection.publishedAt === collection.firstPublishedAt ? 'monthly' : 'weekly'
         };
@@ -37,7 +39,7 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
             filteredPhotoItems.map((photo: any) => ({
                 url: `${process.env.NEXT_PUBLIC_URL}/${collection.slug}/${photo.slug}`,
                 priority: collection.slug === 'home' || collection.isFeatured ? 1 : 0.8,
-                lastModified: getLastModifiedDate(photo.sys.publishedAt).toISOString(),
+                lastModified: getLastModifiedDate(photo?.sys?.publishedAt).toISOString(),
                 changeFrequency: photo.publishedAt === photo.firstPublishedAt ? 'monthly' : 'weekly'
             })) || [];
 
