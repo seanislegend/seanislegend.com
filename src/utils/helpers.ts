@@ -11,7 +11,10 @@ export const getExternalUrl = (url: string = '') => {
 };
 
 export const getTransformedContentfulImageUrl = (url: string = '') => {
-    return url.replace('https://images.ctfassets.net', 'https://seanislegend.com/images/photos');
+    return url.replace(
+        'https://images.ctfassets.net',
+        'https://www.seanislegend.com/images/photos'
+    );
 };
 
 export const getCollectionSeo = (collection: PhotoCollection) => {
