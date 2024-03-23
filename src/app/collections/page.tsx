@@ -2,10 +2,11 @@ import {draftMode} from 'next/headers';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
+import NewBadge from '@/components/PhotoCollection/New';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import config from '@/utils/config';
 import {fetchAllCollections} from '@/utils/contentful';
-import {getEditorialSeo} from '@/utils/helpers';
+import {getEditorialSeo, isCollectionNew} from '@/utils/helpers';
 
 const CollectionsPage = async () => {
     const {isEnabled: isDraftModeEnabled} = draftMode();
@@ -33,15 +34,22 @@ const CollectionsPage = async () => {
                             {...collection.photosCollection.items[0]?.thumbnail}
                             base64={collection.photosCollection.items[0]?.base64}
                         />
-                        <span className="block pb-2 pt-1 text-sm tracking-wide text-gray-600 underline-offset-4 group-hover:underline group-focus:underline sm:pb-4 sm:pt-2 dark:text-gray-400 dark:group-hover:text-white">
-                            {collection.pageTitle ? (
-                                <>
-                                    <span className="hidden sm:block">{collection.pageTitle}</span>
-                                    <span className="sm:hidden">{collection.title}</span>
-                                </>
-                            ) : (
-                                collection.title
-                            )}
+                        <span className="flex flex-row justify-between space-x-4 pb-2 pt-2 sm:pb-4">
+                            <span className="text-sm tracking-wide text-gray-600 underline-offset-4 group-hover:underline group-focus:underline dark:text-gray-400 dark:group-hover:text-white">
+                                {collection.pageTitle ? (
+                                    <>
+                                        <span className="hidden sm:inline-block">
+                                            {collection.pageTitle}
+                                        </span>
+                                        <span className="sm:hidden">{collection.title}</span>
+                                    </>
+                                ) : (
+                                    collection.title
+                                )}
+                            </span>
+                            <span>
+                                {isCollectionNew(collection.sys?.published) && <NewBadge />}
+                            </span>
                         </span>
                         <span className="hidden text-sm">{collection.description}</span>
                     </Link>
