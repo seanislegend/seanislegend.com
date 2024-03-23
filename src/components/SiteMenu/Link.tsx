@@ -5,6 +5,8 @@ import clsx from 'clsx';
 import {useAtom} from 'jotai';
 import Link from 'next/link';
 import {useSelectedLayoutSegments} from 'next/navigation';
+import NewBadge from '@/components/PhotoCollection/New';
+import {isCollectionNew} from '@/utils/helpers';
 import {isMenuOpenAtom} from '@/utils/store';
 
 const SiteMenuLink: React.FC<Link> = ({published, title, url}) => {
@@ -14,10 +16,6 @@ const SiteMenuLink: React.FC<Link> = ({published, title, url}) => {
     // This ensures we capture nested pages, but also ensuring '/about' does not match
     // to, for example, '/about-town'.
     const isActive = url.includes(collection) && collection.length >= url.slice(0, 1).length;
-    // A collection can be considered new if it's been published in the last 4 months.
-    const isNew = published
-        ? new Date(published).getTime() > new Date().setMonth(new Date().getMonth() - 4)
-        : false;
 
     const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
         // Adding a delay to the menu closing to prevent 'flickering' between
@@ -45,20 +43,7 @@ const SiteMenuLink: React.FC<Link> = ({published, title, url}) => {
             >
                 {title}
             </span>
-            {isNew && (
-                <span
-                    className={clsx(
-                        'rounded-xl bg-black px-1.5 py-1 text-[9px] uppercase leading-[1.2] tracking-[1px] sm:leading-none md:font-semibold dark:bg-white',
-                        {
-                            'bg-opacity-10 text-black transition duration-200 ease-in-out group-hover:bg-opacity-100 group-hover:text-white dark:bg-opacity-20 dark:text-white dark:group-hover:text-black':
-                                !isActive,
-                            'text-white dark:text-black': isActive
-                        }
-                    )}
-                >
-                    New
-                </span>
-            )}
+            {isCollectionNew(published) && <NewBadge isActive={isActive} />}
         </Link>
     );
 };
