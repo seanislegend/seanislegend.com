@@ -13,7 +13,7 @@ const CarouselExternalLink: React.FC<Props> = ({photo}) => {
             href={getExternalUrl(photo.url)}
             target="_blank"
             rel="noreferrer"
-            className="text-sm tracking-wide text-gray-500 decoration-2 underline-offset-2 hover:text-black hover:underline focus:outline-dotted focus:outline-2 focus:outline-offset-2 focus:outline-black"
+            className="text-sm tracking-wide text-gray-500 decoration-2 underline-offset-2 hover:text-sean-black hover:underline focus:outline-dotted focus:outline-2 focus:outline-offset-2 focus:outline-black"
         >
             <span>{photo.urlLabel || photo.url}</span>
         </Link>

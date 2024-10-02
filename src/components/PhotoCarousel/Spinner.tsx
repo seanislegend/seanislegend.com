@@ -14,7 +14,7 @@ const CarouselSpinner: React.FC<Props> = ({hasLoaded, isActive}) => (
         )}
     >
         <div className="absolute left-1/2 top-1/2 size-6 animate-spin">
-            <SpinnerIcon className="size-6 text-black dark:text-white" />
+            <SpinnerIcon className="size-6 text-sean-black dark:text-white" />
         </div>
     </div>
 );

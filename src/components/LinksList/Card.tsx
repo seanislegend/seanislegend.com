@@ -19,7 +19,7 @@ const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
                     rel="noopener noreferrer"
                     className="group"
                 >
-                    <h2 className="underline-2 font-serif text-lg leading-snug text-black underline-offset-2 group-hover:underline sm:text-xl dark:text-white">
+                    <h2 className="underline-2 font-serif text-lg leading-snug text-sean-black underline-offset-2 group-hover:underline sm:text-xl dark:text-white">
                         {title}
                     </h2>
                 </a>

@@ -19,7 +19,7 @@ const SiteMenuSocialLinks: React.FC = () => (
                     key={link.url}
                     aria-label={link.label}
                     href={link.url}
-                    className="font-serif text-xl tracking-tight text-black duration-200 ease-out hover:opacity-60 focus:outline-dotted focus:outline-2 focus:outline-offset-2 focus:outline-black md:text-xl lg:text-2xl dark:text-white dark:focus:outline-white"
+                    className="font-serif text-xl tracking-tight text-sean-black duration-200 ease-out hover:opacity-60 focus:outline-dotted focus:outline-2 focus:outline-offset-2 focus:outline-black md:text-xl lg:text-2xl dark:text-white dark:focus:outline-white"
                     rel="noreferrer"
                     target="_blank"
                 >

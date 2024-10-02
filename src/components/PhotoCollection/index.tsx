@@ -1,58 +1,49 @@
-'use client';
-
-import clsx from 'clsx';
-import PhotoThumbnail from '@/components/PhotoCollection/Thumbnail';
-import usePhotoCollection from '@/hooks/usePhotoCollection';
+import HukinsHopsCustomLayout from '@/components/PhotoCollection/CustomLayouts/HukinsHops';
+import PrizeOldAleCustomLayout from '@/components/PhotoCollection/CustomLayouts/PrizeOldAle';
+import Column from './Column';
+import TyntMeadowCustomLayout from './CustomLayouts/TyntMeadow';
+import Grid from './Grid';
+import PhotoThumbnail from './Thumbnail';
 
 type Props = Pick<PhotoCollection, 'photosCollection' | 'slug'>;
 
+export interface CustomLayoutProps {
+    renderPhoto: (index: number) => React.ReactNode;
+}
+
 const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
-    const {maxSize, photoGroups} = usePhotoCollection(
-        photosCollection,
-        slug === 'home' ? 'home' : 'default'
+    const photos = photosCollection.items;
+
+    const renderPhoto = (index: number) => (
+        <PhotoThumbnail
+            base64={photos[index].base64}
+            path={`/${photos[index].collection || slug}/${photos[index].slug}`}
+            slug={photos[index].slug}
+            title={photos[index].title}
+            thumbnail={photos[index].thumbnail}
+        />
     );
 
-    const columnClasses: {[key: number]: string} = {
-        1: 'w-12/12',
-        2: 'w-6/12',
-        3: 'w-4/12',
-        4: 'w-3/12'
+    const customLayouts: Record<string, React.FC<CustomLayoutProps>> = {
+        'dark-star-gales-prize-old-ale': PrizeOldAleCustomLayout,
+        'hukins-hops-annual-hop-harvest': HukinsHopsCustomLayout,
+        'tynt-meadow-trappist-ale': TyntMeadowCustomLayout
     };
-    const columnSize = photoGroups ? photoGroups.length : 0;
-    const columnClass = columnClasses[columnSize];
+    const CustomLayout = customLayouts?.[slug];
+
+    if (CustomLayout) {
+        return <CustomLayout renderPhoto={renderPhoto} />;
+    }
 
     return (
-        <div className="-mb-1.5 -ml-1.5 flex animate-fadeIn flex-row flex-wrap animate-duration-1000 sm:-mb-2 sm:-ml-2">
-            {photoGroups?.map((row, index) => (
-                <div key={index} className={`self-start pl-1.5 sm:pl-2 ${columnClass}`}>
-                    {row.map((photo, index2) => {
-                        const padding = (photo.fullSize.height / maxSize) * 100;
-
-                        return (
-                            <div
-                                className="mb-1.5 h-0 w-full overflow-hidden sm:mb-2"
-                                key={index2}
-                                style={{paddingBottom: `${padding}%`}}
-                            >
-                                <div
-                                    className={clsx({
-                                        'mt-[-8%]': photo.fullSize.height > photo.fullSize.width
-                                    })}
-                                >
-                                    <PhotoThumbnail
-                                        base64={photo.base64}
-                                        loading={index2 < 6 ? 'eager' : 'lazy'}
-                                        path={`/${photo.collection || slug}/${photo.slug}`}
-                                        slug={photo.slug}
-                                        title={photo.title}
-                                        thumbnail={photo.thumbnail}
-                                    />
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            ))}
+        <div className="mx-4 space-y-10 md:mx-8">
+            <Grid>
+                {photos.map((photo, index) => (
+                    <Column key={photo.slug} span={3}>
+                        {renderPhoto(index)}
+                    </Column>
+                ))}
+            </Grid>
         </div>
     );
 };

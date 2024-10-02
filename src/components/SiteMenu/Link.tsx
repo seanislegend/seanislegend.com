@@ -38,9 +38,9 @@ const SiteMenuLink: React.FC<Link> = ({published, title, url}) => {
         >
             <span
                 className={clsx('underline-offset-4 transition duration-200 hover:duration-500', {
-                    'text-gray-500 group-hover:text-black group-hover:underline group-focus:text-black  group-focus:underline dark:hover:text-white dark:group-hover:text-white dark:group-focus:text-white':
+                    'text-gray-500 group-hover:text-sean-black group-hover:underline group-focus:text-sean-black  group-focus:underline dark:hover:text-white dark:group-hover:text-white dark:group-focus:text-white':
                         !isActive,
-                    'text-black underline dark:text-white': isActive
+                    'text-sean-black underline dark:text-white': isActive
                 })}
             >
                 {title}
@@ -50,9 +50,9 @@ const SiteMenuLink: React.FC<Link> = ({published, title, url}) => {
                     className={clsx(
                         'rounded-xl bg-black px-1.5 py-1 text-[9px] uppercase leading-[1.2] tracking-[1px] sm:leading-none md:font-semibold dark:bg-white',
                         {
-                            'bg-opacity-10 text-black transition duration-200 ease-in-out group-hover:bg-opacity-100 group-hover:text-white dark:bg-opacity-20 dark:text-white dark:group-hover:text-black':
+                            'bg-opacity-10 text-sean-black transition duration-200 ease-in-out group-hover:bg-opacity-100 group-hover:text-white dark:bg-opacity-20 dark:text-white dark:group-hover:text-sean-black':
                                 !isActive,
-                            'text-white dark:text-black': isActive
+                            'text-white dark:text-sean-black': isActive
                         }
                     )}
                 >

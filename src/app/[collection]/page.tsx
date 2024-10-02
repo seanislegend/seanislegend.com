@@ -19,12 +19,10 @@ const CollectionPage = async ({params}: Props) => {
 
     return (
         <>
-            <div className={params.collection === 'home' ? 'md:hidden' : ''}>
-                <PageHeader
-                    {...collection}
-                    description={collection?.showDescription ? collection.description : null}
-                />
-            </div>
+            <PageHeader
+                {...collection}
+                description={collection?.showDescription ? collection.description : null}
+            />
             <PhotoCollection {...collection} key={collection.slug} />
         </>
     );

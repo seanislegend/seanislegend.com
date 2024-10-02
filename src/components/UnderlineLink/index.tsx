@@ -1,9 +1,9 @@
 'use client';
 
 import {ReactNode} from 'react';
+import clsx from 'clsx';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
-import clsx from 'clsx';
 
 interface Props {
     children: ReactNode;
@@ -16,7 +16,7 @@ const UnderlineLink: React.FC<Props> = ({className = '', href = '', children, ..
     const pathname = usePathname();
     const isActive = href && href !== '/' && pathname === href;
     const baseClassName = clsx(
-        'outline-none duration-200 ease-in-out font-serif inline-flex space-x-1 items-center transition underline-offset-4 text-black dark:text-white',
+        'outline-none duration-200 ease-in-out font-serif inline-flex space-x-1 items-center transition underline-offset-4 text-sean-black dark:text-white',
         {'underline decoration-2': isActive, 'hover:underline': !isActive}
     );
 

@@ -21,7 +21,7 @@ const PhotoThumbnail: React.FC<Props> = ({
 }: Props) => (
     <Link
         aria-label={`View '${title}'`}
-        className="group relative z-50 block"
+        className="group"
         href={path}
         id={slug}
         title={`View '${title}'`}
@@ -29,7 +29,7 @@ const PhotoThumbnail: React.FC<Props> = ({
     >
         <ThumbnailImage {...thumbnail} base64={base64} loading={loading} />
         {label && (
-            <span className="mt-2 block break-normal font-serif text-sm uppercase text-gray-400 transition duration-200 ease-out group-hover:text-black group-hover:underline group-hover:underline-offset-2">
+            <span className="mt-2 block break-normal font-serif text-sm uppercase text-gray-400 transition duration-200 ease-out group-hover:text-sean-black group-hover:underline group-hover:underline-offset-2">
                 {label}
             </span>
         )}
