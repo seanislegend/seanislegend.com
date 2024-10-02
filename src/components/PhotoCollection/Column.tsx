@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Column: React.FC<React.PropsWithChildren<Props>> = ({children, className, span}) => (
-    <div className={clsx(['w-full', columnSpan[span], className])}>{children}</div>
+    <div className={clsx([columnSpan[span], className])}>{children}</div>
 );
 
 export default Column;

@@ -26,7 +26,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     title
 }) => (
     <Container asChild>
-        <div className="grid grid-cols-12 pb-16 pt-20" id="hero">
+        <div className="grid grid-cols-12 gap-10 pb-16 pt-20" id="hero">
             {title && (
                 <div className="col-span-6">
                     <Condition
@@ -40,7 +40,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 </div>
             )}
             {(children || description || ctaUrl) && (
-                <div className="col-span-5" key={description || children?.toString()}>
+                <div className="col-span-6" key={description || children?.toString()}>
                     {description && (
                         <Markdown className="prose-sm max-w-2xl text-balance leading-relaxed tracking-wide lg:prose-base dark:prose-invert lg:max-w-5xl lg:prose-p:leading-relaxed lg:prose-p:tracking-wide dark:prose-p:text-gray-400">
                             {description}

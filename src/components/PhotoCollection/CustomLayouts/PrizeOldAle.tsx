@@ -3,11 +3,11 @@ import Grid from '../Grid';
 import {type CustomLayoutProps} from '../index';
 
 const PrizeOldAleCustomLayout: React.FC<CustomLayoutProps> = ({renderPhoto}) => (
-    <div className="mx-4 space-y-10 md:mx-8">
+    <>
         <Grid>
             <Column span={6}>{renderPhoto(0)}</Column>
             <Column span={6}>
-                <Grid gridCols="grid-cols-12" gridGap="gap-4">
+                <Grid>
                     <Column span={6}>{renderPhoto(3)}</Column>
                     <Column span={6}>{renderPhoto(2)}</Column>
                     <Column span={12}>{renderPhoto(10)}</Column>
@@ -32,7 +32,7 @@ const PrizeOldAleCustomLayout: React.FC<CustomLayoutProps> = ({renderPhoto}) => 
             <Column span={5}>{renderPhoto(14)}</Column>
             <Column span={1} />
         </Grid>
-    </div>
+    </>
 );
 
 export default PrizeOldAleCustomLayout;

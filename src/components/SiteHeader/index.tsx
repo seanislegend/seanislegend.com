@@ -53,7 +53,7 @@ const SiteHeader: React.FC = () => {
                     </Link>
                 </span>
                 <nav className="row flex items-center gap-4">
-                    <Link href="/collections/all">Collections</Link>
+                    <Link href="/collections">Collections</Link>
                     <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
                     <Link href="/links">Links</Link>

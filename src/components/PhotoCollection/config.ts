@@ -1,4 +1,4 @@
-export const gap = 'gap-10';
+export const gap = 'gap-4 lg:gap-6 2xl:gap-12';
 
 export const columnSpan: Record<number, string> = {
     1: 'col-span-1',
