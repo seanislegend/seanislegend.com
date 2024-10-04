@@ -1,4 +1,5 @@
 import PageHeader from '@/components/PageHeader';
+import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchEditorialPage} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
@@ -7,9 +8,9 @@ const ContactPage = async () => {
     const page = await fetchEditorialPage('contact');
 
     return (
-        <div className="max-w-[700px]">
+        <Container>
             <PageHeader title={page.pageTitle} description={page.content} />
-        </div>
+        </Container>
     );
 };
 
