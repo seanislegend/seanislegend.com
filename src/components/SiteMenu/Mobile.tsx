@@ -3,7 +3,7 @@
 import {useEffect, useState} from 'react';
 import {usePathname} from 'next/navigation';
 import {CrossIcon, MenuIcon} from '@/components/Icon';
-import {LINKS} from '@/components/SiteFooter';
+import {MENU_ITEMS} from '@/components/SiteMenu';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 import Container from '@/components/UI/Container';
 import SiteMenuLink from './Link';
@@ -56,10 +56,10 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                 <SiteMenuLink href="/collections">All collections</SiteMenuLink>
                             </nav>
                             <nav className="flex min-w-[100px] flex-col items-end space-y-2 lg:hidden">
-                                {LINKS.map(link => (
+                                {MENU_ITEMS.map(link => (
                                     <SiteMenuLink
-                                        href={link.url}
-                                        key={link.url}
+                                        key={link.href}
+                                        href={link.href}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         {link.label}

@@ -1,6 +1,7 @@
 import {Analytics} from '@vercel/analytics/react';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import localFont from 'next/font/local';
+import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
 import config from '@/utils/config';
 import './globals.css';
@@ -25,6 +26,7 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => (
         <body className="sm:min-h-full">
             <SiteHeader />
             <main className="animate duration-500 ease-in fade-in">{children}</main>
+            <SiteFooter />
             {process.env.NODE_ENV !== 'development' && (
                 <>
                     <Analytics />

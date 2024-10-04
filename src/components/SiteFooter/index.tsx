@@ -1,21 +1,21 @@
+import Logo from '@/components/Logo';
+import {MENU_ITEMS} from '@/components/SiteMenu';
+import SiteHeaderLink from '@/components/SiteMenu/Link';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
-import UnderlineLink from '@/components/UnderlineLink';
-
-export const LINKS = [
-    {label: 'About', url: '/about'},
-    {label: 'Contact', url: '/contact'},
-    {label: 'Links', url: '/links'}
-];
 
 const SiteFooter: React.FC = () => (
-    <nav className="relative z-50 flex items-end space-x-3 border-t-2 border-transparent bg-white pb-4 dark:bg-black">
-        {LINKS.map(link => (
-            <UnderlineLink href={link.url} key={link.url} className="text-sm">
-                {link.label}
-            </UnderlineLink>
-        ))}
-        <SocialLinks />
-    </nav>
+    <footer className="mx-4 mt-8 flex items-center justify-between gap-4 border-t-2 border-sean-beige-100 py-4 md:mx-8">
+        <Logo size="sm" />
+        <nav className="flex flex-row justify-end gap-0.5">
+            {MENU_ITEMS.map(link => (
+                <SiteHeaderLink href={link.href} key={link.href}>
+                    {link.label}
+                </SiteHeaderLink>
+            ))}
+            <span className="pr-4" />
+            <SocialLinks />
+        </nav>
+    </footer>
 );
 
 export default SiteFooter;

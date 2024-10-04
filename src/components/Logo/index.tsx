@@ -14,7 +14,7 @@ const SIZES: Record<string, string> = {
 const Logo: React.FC<Props> = ({className, size = 'md'}) => (
     <span className={clsx([SIZES[size], className])}>
         <span className="font-serif tracking-[-0.5px] underline-offset-4 group-hover:underline">
-            seanislegend
+            @seanislegend
         </span>{' '}
     </span>
 );
