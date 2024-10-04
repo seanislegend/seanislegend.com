@@ -31,7 +31,11 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 <div className="col-span-6">
                     <Condition
                         condition={!!backUrl}
-                        wrapper={children => <Link href={backUrl!}>{children}</Link>}
+                        wrapper={children => (
+                            <Link className="underline-offset-4 hover:underline" href={backUrl!}>
+                                {children}
+                            </Link>
+                        )}
                     >
                         <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-3xl leading-tight text-sean-black underline-offset-4 group-hover:underline md:text-5xl md:leading-tight dark:text-white">
                             <span>{pageTitle || title}</span>

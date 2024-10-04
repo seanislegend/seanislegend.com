@@ -34,14 +34,14 @@ const PhotoPage = async ({params}: Props) => {
     return (
         <>
             <PageHeader
-                animate={false}
                 backUrl={`/${collection.slug}`}
                 title={collection.pageTitle || collection.title}
             />
-            <PhotoCarousel photo={allParams.photo} collection={collection} />
+            <div className="mx-auto max-w-[75rem]">
+                <PhotoCarousel photo={allParams.photo} collection={collection} />
+            </div>
             <div className="md:hidden">
                 <PageHeader
-                    animate={false}
                     backUrl={`/${collection.slug}`}
                     ctaLabel={collection.ctaLabel}
                     ctaUrl={collection.ctaUrl}
