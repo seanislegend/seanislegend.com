@@ -2,18 +2,22 @@ import Column from '../Column';
 import Grid from '../Grid';
 import {type CustomLayoutProps} from '../index';
 
-const IcelandCustomLayout: React.FC<CustomLayoutProps> = ({renderPhoto}) => (
+const HomeCustomLayout: React.FC<CustomLayoutProps> = ({renderPhoto}) => (
     <>
         <Grid className="place-items-start">
-            <Column span={4}>{renderPhoto(3)}</Column>
             <Column span={4}>{renderPhoto(0)}</Column>
-            <Column span={4}>{renderPhoto(4)}</Column>
+            <Column span={4}>{renderPhoto(3)}</Column>
+            <Column span={4}>{renderPhoto(1)}</Column>
         </Grid>
         <Grid>
-            <Column span={1} />
-            <Column span={5}>{renderPhoto(1)}</Column>
-            <Column span={5}>{renderPhoto(2)}</Column>
-            <Column span={1} />
+            <Column span={4}>{renderPhoto(4)}</Column>
+            <Column className="h-full w-full" span={2}>
+                {renderPhoto(8, true)}
+            </Column>
+            <Column span={4}>{renderPhoto(2)}</Column>
+            <Column className="h-full w-full" span={2}>
+                {renderPhoto(9, true)}
+            </Column>
         </Grid>
         <Grid className="place-items-end">
             <Column span={6}>{renderPhoto(10)}</Column>
@@ -54,4 +58,4 @@ const IcelandCustomLayout: React.FC<CustomLayoutProps> = ({renderPhoto}) => (
     </>
 );
 
-export default IcelandCustomLayout;
+export default HomeCustomLayout;

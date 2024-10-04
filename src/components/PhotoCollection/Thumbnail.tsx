@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import ThumbnailImage from './ThumbnailImage';
 
@@ -21,13 +22,15 @@ const PhotoThumbnail: React.FC<Props> = ({
 }: Props) => (
     <Link
         aria-label={`View '${title}'`}
-        className="group"
+        className={clsx('group', {
+            'block h-full w-full': props?.fill
+        })}
         href={path}
         id={slug}
         title={`View '${title}'`}
         {...props}
     >
-        <ThumbnailImage {...thumbnail} base64={base64} loading={loading} />
+        <ThumbnailImage fill={props?.fill} {...thumbnail} base64={base64} loading={loading} />
         {label && (
             <span className="mt-2 block break-normal font-serif text-sm uppercase text-gray-400 transition duration-200 ease-out group-hover:text-sean-black group-hover:underline group-hover:underline-offset-2">
                 {label}

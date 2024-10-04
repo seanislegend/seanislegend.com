@@ -14,10 +14,16 @@ const PrizeOldAleCustomLayout: React.FC<CustomLayoutProps> = ({renderPhoto}) => 
                 </Grid>
             </Column>
         </Grid>
+        <Grid className="px-20">
+            <Column span={1} />
+            <Column span={5}>{renderPhoto(9)}</Column>
+            <Column span={5}>{renderPhoto(14)}</Column>
+            <Column span={1} />
+        </Grid>
         <Grid>
-            <Column span={4}>{renderPhoto(4)}</Column>
             <Column span={4}>{renderPhoto(7)}</Column>
             <Column span={4}>{renderPhoto(5)}</Column>
+            <Column span={4}>{renderPhoto(4)}</Column>
         </Grid>
         <Grid className="mx-auto">
             <Column span={4}>{renderPhoto(11)}</Column>
@@ -25,12 +31,6 @@ const PrizeOldAleCustomLayout: React.FC<CustomLayoutProps> = ({renderPhoto}) => 
             <Column className="self-end" span={4}>
                 {renderPhoto(12)}
             </Column>
-        </Grid>
-        <Grid className="px-20">
-            <Column span={1} />
-            <Column span={5}>{renderPhoto(9)}</Column>
-            <Column span={5}>{renderPhoto(14)}</Column>
-            <Column span={1} />
         </Grid>
     </>
 );
