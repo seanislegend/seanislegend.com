@@ -26,7 +26,10 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     title
 }) => (
     <Container asChild>
-        <div className="grid gap-4 pb-10 pt-6 sm:grid-cols-12 sm:gap-8 sm:pb-12 sm:pt-16" id="hero">
+        <div
+            className="grid gap-4 pb-10 pt-6 sm:grid-cols-12 sm:gap-8 sm:pb-12 sm:pt-16 xl:pb-20"
+            id="hero"
+        >
             {title && (
                 <div className="col-span-6">
                     <Condition
@@ -37,7 +40,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                             </Link>
                         )}
                     >
-                        <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-3xl leading-tight text-sean-black underline-offset-4 group-hover:underline md:text-5xl md:leading-tight dark:text-white">
+                        <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-3xl leading-tight text-sean-black underline-offset-4 group-hover:underline md:text-4xl md:leading-tight  lg:text-5xl lg:leading-tight dark:text-white">
                             <span>{pageTitle || title}</span>
                         </h1>
                     </Condition>
