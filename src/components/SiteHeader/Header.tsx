@@ -30,7 +30,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                 }
             )}
         >
-            <Container className="relative z-30 flex justify-between">
+            <div className="relative z-30 flex justify-between px-4 md:px-8">
                 <span
                     className={clsx(
                         'relative z-30 inline-flex flex-grow items-baseline gap-1.5 transition duration-100 ease-linear'
@@ -53,7 +53,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                     </Link>
                 </span>
                 {children}
-            </Container>
+            </div>
         </header>
     );
 };
