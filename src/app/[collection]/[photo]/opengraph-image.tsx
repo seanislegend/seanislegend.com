@@ -1,8 +1,13 @@
 import {fetchCollection} from '@/utils/contentful';
 import {getOgImage} from '@/utils/og';
 
-const handler = async ({params}: {params: {collection: string}}) => {
-    const collection = await fetchCollection(params.collection);
+interface Props {
+    params: Promise<{collection: string}>;
+}
+
+const handler = async ({params}: Props) => {
+    const allParams = await params;
+    const collection = await fetchCollection(allParams.collection);
     if (!collection) return;
 
     const photo = collection.photosCollection.items.filter((photo, index) => {

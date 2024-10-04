@@ -1,4 +1,3 @@
-import {use} from 'react';
 import {draftMode} from 'next/headers';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
@@ -10,7 +9,7 @@ import {fetchAllCollections} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
 
 const CollectionsPage = async () => {
-    const draftModeConfig = use(draftMode());
+    const draftModeConfig = await draftMode();
     const collections = await fetchAllCollections(draftModeConfig.isEnabled);
     if (!collections) redirect('/');
 

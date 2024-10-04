@@ -1,4 +1,3 @@
-import {use} from 'react';
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
@@ -8,12 +7,13 @@ import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
 import {getCollectionSeo} from '@/utils/helpers';
 
 interface Props {
-    params: {collection: string};
+    params: Promise<{collection: string}>;
 }
 
 const CollectionPage = async ({params}: Props) => {
-    const draftModeConfig = use(draftMode());
-    const collection = await fetchCollection(params.collection, draftModeConfig.isEnabled);
+    const allParams = await params;
+    const draftModeConfig = await draftMode();
+    const collection = await fetchCollection(allParams.collection, draftModeConfig.isEnabled);
 
     if (!collection) return notFound();
 
@@ -36,7 +36,8 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({params}: Props) => {
-    const collection = await fetchCollection(params.collection);
+    const allParams = await params;
+    const collection = await fetchCollection(allParams.collection);
     if (!collection) return null;
 
     const collectionSeo = getCollectionSeo(collection);
