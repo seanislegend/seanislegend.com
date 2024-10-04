@@ -7,7 +7,7 @@ interface Props {
 
 const SIZES: Record<string, string> = {
     sm: 'text-xl',
-    md: 'text-2xl',
+    md: 'text-xl sm:text-2xl',
     lg: 'text-4xl'
 };
 
