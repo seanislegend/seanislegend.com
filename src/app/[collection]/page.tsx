@@ -1,3 +1,4 @@
+import {use} from 'react';
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const CollectionPage = async ({params}: Props) => {
-    const draftModeConfig = await draftMode();
+    const draftModeConfig = use(draftMode());
     const collection = await fetchCollection(params.collection, draftModeConfig.isEnabled);
 
     if (!collection) return notFound();

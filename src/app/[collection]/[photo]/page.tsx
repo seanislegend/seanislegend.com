@@ -1,3 +1,4 @@
+import {use} from 'react';
 import {draftMode} from 'next/headers';
 import {redirect} from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
@@ -22,7 +23,7 @@ const getCollectionAndPhoto = async (
 };
 
 const PhotoPage = async ({params}: Props) => {
-    const draftModeConfig = await draftMode();
+    const draftModeConfig = use(draftMode());
     const {collection} = await getCollectionAndPhoto(
         params.collection,
         params.photo,
