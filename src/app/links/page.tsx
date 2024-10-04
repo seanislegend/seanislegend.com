@@ -9,12 +9,9 @@ const LinksPage = async () => {
     const page = await fetchLinksPage();
 
     return (
-        <>
-            <PageHeader title="Links" />
-            <Container>
-                <LinksList links={page.linksCollection?.items} />
-            </Container>
-        </>
+        <PageHeader title="Links">
+            <LinksList links={page.linksCollection?.items} />
+        </PageHeader>
     );
 };
 
