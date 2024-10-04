@@ -9,8 +9,8 @@ import {fetchAllCollections} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
 
 const CollectionsPage = async () => {
-    const {isEnabled: isDraftModeEnabled} = draftMode();
-    const collections = await fetchAllCollections(isDraftModeEnabled);
+    const draftModeConfig = await draftMode();
+    const collections = await fetchAllCollections(draftModeConfig.isEnabled);
     if (!collections) redirect('/');
 
     const sortedCollections = collections

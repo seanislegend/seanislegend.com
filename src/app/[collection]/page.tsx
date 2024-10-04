@@ -1,6 +1,5 @@
 import {draftMode} from 'next/headers';
-import {notFound, redirect} from 'next/navigation';
-import Markdown from '@/components/Markdown';
+import {notFound} from 'next/navigation';
 import PageHeader from '@/components/PageHeader';
 import PhotoCollection from '@/components/PhotoCollection';
 import config from '@/utils/config';
@@ -12,8 +11,8 @@ interface Props {
 }
 
 const CollectionPage = async ({params}: Props) => {
-    const {isEnabled: isDraftModeEnabled} = draftMode();
-    const collection = await fetchCollection(params.collection, isDraftModeEnabled);
+    const draftModeConfig = await draftMode();
+    const collection = await fetchCollection(params.collection, draftModeConfig.isEnabled);
 
     if (!collection) return notFound();
 

@@ -22,11 +22,11 @@ const getCollectionAndPhoto = async (
 };
 
 const PhotoPage = async ({params}: Props) => {
-    const {isEnabled: isDraftModeEnabled} = draftMode();
+    const draftModeConfig = await draftMode();
     const {collection} = await getCollectionAndPhoto(
         params.collection,
         params.photo,
-        isDraftModeEnabled
+        draftModeConfig.isEnabled
     );
     if (!collection) redirect('/');
 
