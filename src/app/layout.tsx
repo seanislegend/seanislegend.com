@@ -7,21 +7,20 @@ import './globals.css';
 
 const titleFont = localFont({
     display: 'swap',
-    src: '../../public/fonts/LibreCaslonCondensed-Regular.woff2',
+    src: '../../public/fonts/title.woff2',
     weight: '500',
     variable: '--font-title'
 });
 const bodyFont = localFont({
     display: 'swap',
-    src: '../../public/fonts/NeueMontreal-Regular.woff2',
-    weight: '300',
+    src: '../../public/fonts/body.woff2',
     variable: '--font-body'
 });
 
 const RootLayout = async ({children}: {children: React.ReactNode}) => (
     <html
         lang="en"
-        className={`flex flex-grow flex-col bg-sean-beige text-sean-black antialiased md:min-h-full dark:bg-black ${titleFont.variable} ${bodyFont.variable}`}
+        className={`flex flex-grow flex-col bg-sean-beige-50 text-sean-black antialiased md:min-h-full dark:bg-black ${titleFont.variable} ${bodyFont.variable}`}
     >
         <body className="sm:min-h-full">
             <SiteHeader />
