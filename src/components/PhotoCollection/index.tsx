@@ -55,7 +55,7 @@ const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
     const CustomLayout = customLayouts?.[slug];
 
     return (
-        <div className="mx-4 space-y-4 md:mx-8 lg:space-y-6 2xl:space-y-12">
+        <div className="mx-4 space-y-4 opacity-0 delay-100 duration-500 animate-in animate-out slide-in-from-bottom-4 fill-mode-forwards md:mx-8 lg:space-y-6 2xl:space-y-12">
             {CustomLayout ? (
                 <CustomLayout renderPhoto={renderPhoto} />
             ) : (

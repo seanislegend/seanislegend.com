@@ -3,7 +3,9 @@
 import {memo, useEffect, useRef, useState} from 'react';
 import useKeypress from 'react-use-keypress';
 import {useWindowWidth} from '@react-hook/window-size';
+import clsx from 'clsx';
 import {useRouter} from 'next/navigation';
+import Container from '@/components/UI/Container';
 import CarouselDetails from './Details';
 import CarouselImage from './Image';
 import ImageContainer from './ImageContainer';
@@ -11,11 +13,20 @@ import CarouselMobilePagination from './MobilePagination';
 import CarouselSwipeNavigation from './SwipeNavigation';
 
 interface Props {
+    canNavigate?: boolean;
     collection: PhotoCollection;
+    hasDetails?: boolean;
+    isModal?: boolean;
     photo: string;
 }
 
-const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
+const PhotoCarousel: React.FC<Props> = ({
+    canNavigate,
+    collection,
+    hasDetails = true,
+    isModal = false,
+    photo
+}) => {
     const router = useRouter();
     const $container = useRef<HTMLDivElement>(null);
     const windowWidth = useWindowWidth();
@@ -59,45 +70,55 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
     }, [collection, nextPhoto, prevPhoto, router]);
 
     return (
-        <div
-            className="relative min-h-[200px] w-full overflow-hidden md:flex md:h-full md:max-h-[calc(100vh-2rem)] md:flex-col"
-            ref={$container}
-        >
-            <div className="relative flex w-full overflow-hidden md:h-auto md:w-full md:flex-grow">
-                <div className="opacity-0">
-                    <CarouselImage isActive={false} {...prevPhoto} />
-                    <CarouselImage isActive={false} {...nextPhoto} />
+        <Container asChild>
+            <div
+                className={clsx('relative w-full overflow-hidden md:flex md:flex-col', {
+                    'max-h-[90vh] overflow-hidden': isModal
+                })}
+                ref={$container}
+            >
+                <div className="relative flex w-full flex-col overflow-hidden">
+                    <CarouselImage isActive={true} isModal={isModal} {...allPhotos[activeIndex]} />
+                    {canNavigate && (
+                        <>
+                            <div className="opacity-0">
+                                <CarouselImage isActive={false} isModal={isModal} {...prevPhoto} />
+                                <CarouselImage isActive={false} isModal={isModal} {...nextPhoto} />
+                            </div>
+                            <CarouselSwipeNavigation
+                                handleNext={() => navigateToNextPhoto('right')}
+                                handlePrevious={() => navigateToNextPhoto('left')}
+                            />
+                            <button
+                                className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
+                                onClick={() => navigateToNextPhoto('left')}
+                                type="button"
+                            />
+                            <button
+                                className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
+                                onClick={() => navigateToNextPhoto('right')}
+                                type="button"
+                            />
+                        </>
+                    )}
                 </div>
-                <ImageContainer activeIndex={activeIndex} orientation={orientation}>
-                    <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
-                </ImageContainer>
-                <CarouselSwipeNavigation
-                    handleNext={() => navigateToNextPhoto('right')}
-                    handlePrevious={() => navigateToNextPhoto('left')}
-                />
-                <button
-                    className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
-                    onClick={() => navigateToNextPhoto('left')}
-                    type="button"
-                />
-                <button
-                    className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-none md:block"
-                    onClick={() => navigateToNextPhoto('right')}
-                    type="button"
-                />
+                {hasDetails && (
+                    <CarouselDetails
+                        activeIndex={activeIndex}
+                        activePhoto={activePhoto}
+                        collection={collection}
+                        total={allPhotos.length}
+                    />
+                )}
+                {canNavigate && (
+                    <CarouselMobilePagination
+                        handleBack={() => router.push(`/${collection.slug}#${activePhoto.slug}`)}
+                        handleNext={() => navigateToNextPhoto('right')}
+                        handlePrevious={() => navigateToNextPhoto('left')}
+                    />
+                )}
             </div>
-            <CarouselDetails
-                activeIndex={activeIndex}
-                activePhoto={activePhoto}
-                collection={collection}
-                total={allPhotos.length}
-            />
-            <CarouselMobilePagination
-                handleBack={() => router.push(`/${collection.slug}#${activePhoto.slug}`)}
-                handleNext={() => navigateToNextPhoto('right')}
-                handlePrevious={() => navigateToNextPhoto('left')}
-            />
-        </div>
+        </Container>
     );
 };
 

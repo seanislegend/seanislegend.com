@@ -10,7 +10,7 @@ interface Props {
     params: Promise<{collection: string; photo: string}>;
 }
 
-const getCollectionAndPhoto = async (
+export const getCollectionAndPhoto = async (
     collectionSlug: string,
     photoSlug: string,
     preview: boolean = false

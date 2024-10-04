@@ -40,7 +40,7 @@ const PhotoCarouselImageContainer: React.FC<PropsWithChildren<Props>> = ({
         <div ref={$container} className="relative flex w-full md:h-auto md:flex-grow">
             <div
                 key={activeIndex}
-                className="mx-auto h-full w-full flex-shrink-0 md:absolute md:left-1/2 md:top-1/2 md:block md:-translate-x-1/2 md:-translate-y-1/2 -sm:!h-full -sm:!w-full"
+                className="mx-auto h-full w-full flex-shrink-0 md:left-1/2 md:block md:-translate-x-1/2"
                 style={
                     orientation === 'portrait'
                         ? {

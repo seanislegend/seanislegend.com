@@ -18,7 +18,12 @@ const bodyFont = localFont({
     variable: '--font-body'
 });
 
-const RootLayout = async ({children}: {children: React.ReactNode}) => (
+interface Props {
+    children: React.ReactNode;
+    modal: React.ReactNode;
+}
+
+const RootLayout = async ({children, modal}: Props) => (
     <html
         lang="en"
         className={`flex flex-grow flex-col bg-sean-beige-50 text-sean-black antialiased md:min-h-full dark:bg-black ${titleFont.variable} ${bodyFont.variable}`}
@@ -27,6 +32,7 @@ const RootLayout = async ({children}: {children: React.ReactNode}) => (
             <SiteHeader />
             <main className="animate duration-500 ease-in fade-in">{children}</main>
             <SiteFooter />
+            {modal}
             {process.env.NODE_ENV !== 'development' && (
                 <>
                     <Analytics />
