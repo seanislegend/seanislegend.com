@@ -20,7 +20,7 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
     return (
         <Comp
             className={clsx([
-                'inline-block rounded bg-[#ece8df] px-4 py-2.5 text-sm tracking-wide text-sean-black underline-offset-4 transition duration-200 ease-out hover:underline dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800',
+                'inline-block rounded bg-sean-beige-100 px-4 py-2 font-semibold tracking-wide text-sean-black transition duration-200 ease-out hover:bg-sean-beige-200 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800',
                 className
             ])}
             href={href as Url}

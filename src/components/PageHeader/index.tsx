@@ -30,8 +30,8 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
             {title && (
                 <div className="col-span-6">
                     <Condition
-                        condition={backUrl}
-                        wrapper={children => <Link href={backUrl}>{children}</Link>}
+                        condition={!!backUrl}
+                        wrapper={children => <Link href={backUrl!}>{children}</Link>}
                     >
                         <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-xl leading-tight text-sean-black underline-offset-4 group-hover:underline sm:text-2xl md:text-5xl md:leading-tight dark:text-white">
                             <span>{pageTitle || title}</span>
@@ -40,7 +40,10 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 </div>
             )}
             {(children || description || ctaUrl) && (
-                <div className="col-span-6" key={description || children?.toString()}>
+                <div
+                    className="col-span-6 place-content-end"
+                    key={description || children?.toString()}
+                >
                     {description && (
                         <Markdown className="prose-sm max-w-2xl text-balance leading-relaxed tracking-wide lg:prose-base dark:prose-invert lg:max-w-5xl lg:prose-p:leading-relaxed lg:prose-p:tracking-wide dark:prose-p:text-gray-400">
                             {description}
