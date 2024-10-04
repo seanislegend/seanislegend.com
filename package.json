@@ -17,7 +17,6 @@
     "@vercel/speed-insights": "^1.0.2",
     "add": "^2.0.6",
     "clsx": "^1.2.1",
-    "date-fns": "^3.0.6",
     "next": "canary",
     "react": "canary",
     "react-dom": "canary",
