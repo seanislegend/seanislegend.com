@@ -22,7 +22,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     return (
         <header
             className={clsx(
-                'top-0 bg-sean-beige-50 transition-all duration-300 md:sticky md:z-30 dark:bg-black',
+                'sticky top-0 z-30 bg-sean-beige-50 transition-all duration-300 dark:bg-black',
                 {
                     'border-b-2 border-sean-beige-100 py-3 shadow-2xl shadow-sean-beige-800/10':
                         isScrolled,
