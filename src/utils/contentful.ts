@@ -142,9 +142,20 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
                     items {
                         title
                         slug
+                        pageTitle
                         category
                         sys {
                             published: firstPublishedAt
+                        }
+                        photosCollection(where:{isFeatured:true}, limit:1) {
+                            items {
+                                base64
+                                thumbnail: photo {
+                                    height
+                                    width
+                                    url(transform: {format: WEBP, width: 800})
+                                }
+                            }
                         }
                     }
                 }
@@ -154,11 +165,17 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
     const response: any = await fetchContent(query);
     const items =
         response?.data?.collectionNavigationCollection?.items?.[0]?.collectionsCollection?.items?.map(
-            (item: PhotoCollection) => ({
-                published: item?.sys?.published,
-                title: item.title,
-                url: `/${item.slug}`
-            })
+            (item: PhotoCollection) => {
+                const photo = item?.photosCollection?.items?.[0];
+                return {
+                    isFeatured: !!photo,
+                    photo,
+                    published: item?.sys?.published,
+                    pageTitle: item.pageTitle,
+                    title: item.title,
+                    url: `/${item.slug}`
+                };
+            }
         );
 
     return items || [];
@@ -289,7 +306,7 @@ export const fetchCollection = async (
                         thumbnail: photo {
                             height
                             width
-                            url(transform: {format: WEBP, width: 1000})
+                            url(transform: {format: WEBP, width: 1600})
                         }
                         base64
                     }

@@ -23,7 +23,7 @@ const SiteMenuSocialLinks: React.FC = () => (
                     rel="noreferrer"
                     target="_blank"
                 >
-                    <Icon className="size-5 text-current" />
+                    <Icon className="size-6 text-current" />
                 </a>
             );
         })}
