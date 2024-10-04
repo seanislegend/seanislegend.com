@@ -14,10 +14,10 @@ const SiteHeaderAllCollections: React.FC<Props> = ({links}) => (
                 <li key={link.url} className="flex">
                     <NavigationMenu.Item asChild>
                         <TextLink className="group flex-grow hover:no-underline" href={link.url}>
-                            <span className="translate-y-[2px] pr-2 leading-none text-sean-beige-300 transition duration-100 group-hover:text-sean-black">
+                            <span className="translate-y-[2px] pr-2 leading-none text-sean-beige-300 transition duration-100 group-hover:text-sean-black group-data-[active=true]:text-sean-black">
                                 &mdash;
                             </span>
-                            <span>{link.title}</span>
+                            <span className="group-data-[active=true]:underline">{link.title}</span>
                         </TextLink>
                     </NavigationMenu.Item>
                 </li>
