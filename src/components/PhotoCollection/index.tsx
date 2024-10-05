@@ -36,7 +36,7 @@ const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
             ) : (
                 <Grid>
                     {photos.map((photo, index) => (
-                        <Column key={photo.slug} span={4}>
+                        <Column key={photo.slug} className="col-span-6 md:col-span-4">
                             {renderPhoto(index)}
                         </Column>
                     ))}
