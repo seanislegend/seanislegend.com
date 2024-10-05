@@ -17,7 +17,7 @@ const Grid: React.FC<React.PropsWithChildren<Props>> = ({
         className={clsx([
             'mx-auto grid w-full max-w-[110rem] place-items-start',
             gridGap || gap,
-            gridCols || 'grid-cols-1 sm:grid-cols-12',
+            gridCols || 'grid-cols-12',
             className
         ])}
     >
