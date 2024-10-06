@@ -1,6 +1,7 @@
 import Column from '@/components/PhotoCollection/Column';
 import Grid from '@/components/PhotoCollection/Grid';
 import Condition from '@/components/UI/Condition';
+import {type PhotoBlock, type PhotoBlockComponent} from '@/types/photo-blocks';
 
 interface Props {
     blocks: PhotoBlock[];
@@ -236,27 +237,29 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({phot
     </Grid>
 );
 
-const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto}) => {
-    const layouts: Partial<Record<PhotoBlockLayout, React.FC<any>>> = {
-        FourInARow,
-        LandscapeOneBigTwoMedium,
-        LandscapeTwoBigFourSmall,
-        LandscapeTwoBigTwoSmall,
-        LandscapeTwoBigTwoMediumFourSmall,
-        OneLandScapeTwoPortrait,
-        OnePortraitOneLandscapeMediumTwoLandscapeSmall,
-        OnePortraitOneLandscapeMediumFourLandscapeSmall,
-        OnePortraitTwoLandscape,
-        OnePortraitTwoLandscapeMediumTwoLandscapeSmall,
-        OnePortraitTwoTopAndBottomLandscape,
-        SixInARow,
-        ThreeInARow,
-        ThreeInARowWithPadding,
-        TwoInARow,
-        TwoInARowWithPadding,
-        TwoPortraitOneLandscapeWithPadding
-    };
+export type PhotoBlockLayout = keyof typeof layouts;
 
+const layouts: Partial<Record<string, React.FC<any>>> = {
+    FourInARow,
+    LandscapeOneBigTwoMedium,
+    LandscapeTwoBigFourSmall,
+    LandscapeTwoBigTwoSmall,
+    LandscapeTwoBigTwoMediumFourSmall,
+    OneLandScapeTwoPortrait,
+    OnePortraitOneLandscapeMediumTwoLandscapeSmall,
+    OnePortraitOneLandscapeMediumFourLandscapeSmall,
+    OnePortraitTwoLandscape,
+    OnePortraitTwoLandscapeMediumTwoLandscapeSmall,
+    OnePortraitTwoTopAndBottomLandscape,
+    SixInARow,
+    ThreeInARow,
+    ThreeInARowWithPadding,
+    TwoInARow,
+    TwoInARowWithPadding,
+    TwoPortraitOneLandscapeWithPadding
+};
+
+const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto}) => {
     return (
         <div className="space-y-4 lg:space-y-6 2xl:space-y-12">
             {blocks.map(block => {

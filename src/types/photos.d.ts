@@ -51,33 +51,3 @@ interface PhotoCategory {
     sys?: {published: string};
     title: string;
 }
-
-type PhotoBlockLayout =
-    | 'FourInARow'
-    | 'LandscapeTwoBigFourSmall'
-    | 'LandscapeOneBigTwoMedium'
-    | 'LandscapeTwoBigTwoSmall'
-    | 'LandscapeTwoBigTwoMediumFourSmall'
-    | 'OneLandScapeTwoPortrait'
-    | 'OnePortraitOneLandscapeMediumTwoLandscapeSmall'
-    | 'OnePortraitOneLandscapeMediumFourLandscapeSmall'
-    | 'OnePortraitTwoLandscape'
-    | 'OnePortraitTwoLandscapeMediumTwoLandscapeSmall'
-    | 'OnePortraitTwoTopAndBottomLandscape'
-    | 'SixInARow'
-    | 'ThreeInARow'
-    | 'ThreeInARowWithPadding'
-    | 'TwoInARow'
-    | 'TwoInARowWithPadding'
-    | 'TwoPortraitOneLandscapeWithPadding';
-
-interface PhotoBlock {
-    layout: PhotoBlockLayout;
-    photos: number[];
-    props?: Record<string, any>;
-}
-
-interface PhotoBlockComponent {
-    photos: React.ReactNode[];
-    [key: string]: any;
-}
