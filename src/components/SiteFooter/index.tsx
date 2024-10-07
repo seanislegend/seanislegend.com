@@ -1,6 +1,5 @@
 import Logo from '@/components/Logo';
-import {MENU_ITEMS} from '@/components/SiteMenu';
-import SiteHeaderLink from '@/components/SiteMenu/Link';
+import SiteHeaderMenu from '@/components/SiteMenu';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 
 const SiteFooter: React.FC = () => (
@@ -9,13 +8,7 @@ const SiteFooter: React.FC = () => (
             <Logo size="sm" />
             <SocialLinks />
         </div>
-        <nav className="flex flex-row gap-0.5 sm:justify-end">
-            {MENU_ITEMS.map(link => (
-                <SiteHeaderLink href={link.href} key={link.href}>
-                    {link.label}
-                </SiteHeaderLink>
-            ))}
-        </nav>
+        <SiteHeaderMenu />
     </footer>
 );
 
