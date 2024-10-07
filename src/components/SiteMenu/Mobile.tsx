@@ -29,7 +29,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
             >
-                <ToggleButtonIcon className="h-auto w-6 text-sean-black dark:text-sean-beige-50" />
+                <ToggleButtonIcon className="h-auto w-6 text-[var(--text)] dark:text-[var(--dark-text)]" />
             </button>
             <div
                 className="absolute left-0 top-10 z-[30] w-full lg:hidden"
@@ -39,7 +39,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                     overflow: isMenuOpen ? 'visible' : 'hidden'
                 }}
             >
-                <div className="bg-sean-beige-50 py-8 lg:hidden dark:bg-sean-black">
+                <div className="bg-[var(--bg)] py-8 lg:hidden dark:bg-[var(--dark-bg)]">
                     <Container asChild>
                         <div className="flex space-x-10">
                             <nav
@@ -72,10 +72,10 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         </div>
                     </Container>
                 </div>
-                <div className="h-44 bg-gradient-to-b from-sean-beige-50 dark:from-sean-black" />
+                <div className="h-44 bg-gradient-to-b from-[var(--bg)] dark:from-[var(--dark-bg)]" />
             </div>
             <div
-                className="fixed left-0 right-0 top-0 z-[20] h-0 bg-sean-beige-50 lg:hidden dark:bg-sean-black"
+                className="fixed left-0 right-0 top-0 z-[20] h-0 bg-[var(--bg)] lg:hidden dark:bg-[var(--dark-bg)]"
                 style={{height: isMenuOpen ? '100vh' : '0', opacity: isMenuOpen ? 0.8 : 0}}
             />
         </>

@@ -39,7 +39,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                                 </Container>
                             </NavigationMenu.Content>
                         </NavigationMenu.Trigger>
-                        <div className="fixed left-0 top-[4.75rem] hidden h-screen w-screen bg-sean-black/80 duration-500 animate-in fade-in peer-data-[state=open]:block peer-data-[state=open]:duration-200" />
+                        <div className="bg-[var(--photo-bg-color)]/80 fixed left-0 top-[4.75rem] hidden h-screen w-screen duration-500 animate-in fade-in peer-data-[state=open]:block peer-data-[state=open]:duration-200" />
                     </NavigationMenu.Item>
                     {MENU_ITEMS.map(item => (
                         <NavigationMenu.Item key={item.href} asChild>
@@ -47,11 +47,11 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                         </NavigationMenu.Item>
                     ))}
                     <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-20 flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
-                        <div className="relative top-[-5px] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-sean-beige-100" />
+                        <div className="relative top-[-5px] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-[var(--button-bg)]" />
                     </NavigationMenu.Indicator>
                 </NavigationMenu.List>
                 <div className="fixed left-0 top-0 flex w-screen" style={{perspective: '1000px'}}>
-                    <NavigationMenu.Viewport className="relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 border-sean-beige-100 bg-sean-beige-50 data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8" />
+                    <NavigationMenu.Viewport className="relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 border-[var(--accent)] bg-[var(--bg)] data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8" />
                 </div>
             </NavigationMenu.Root>
             <SiteMenuMobile links={[...featuredLinks, ...otherLinks]} />

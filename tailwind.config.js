@@ -9,21 +9,26 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'sean-black': '#2e2d29',
-                'sean-beige': {
-                    50: '#faf7ef',
-                    100: '#ece8df',
-                    200: '#dfd8c9',
-                    300: '#cabda7',
-                    400: '#b49f83',
-                    500: '#a4896b',
-                    600: '#97795f',
-                    700: '#7e6350',
-                    800: '#675145',
-                    900: '#554339',
-                    950: '#2d231d'
-                },
-                'sean-orange': '#ff7d43'
+                'bg-color': 'var(--theme-beige-50)',
+                'text-color': 'var(--theme-black)',
+                'accent-color': 'var(--theme-beige-100)',
+                'button-bg-color': 'var(--theme-beige-100)',
+                'button-text-color': 'var(--theme-black)',
+                'button-bg-color-hover': 'var(--theme-beige-300)',
+                'photo-border-color': 'var(--theme-black)',
+                'link-text-color': 'var(--theme-beige-black)',
+                'link-text-color-hover': 'var(--theme-black)',
+                'overlay-bg-color': 'var(--theme-black)',
+                'dark-bg-color': 'var(--theme-beige-950)',
+                'dark-text-color': 'var(--theme-beige-50)',
+                'dark-accent-color': 'var(--theme-beige-950)',
+                'dark-button-bg-color': 'var(--theme-beige-950)',
+                'dark-button-text-color': 'var(--theme-beige-50)',
+                'dark-button-bg-color-hover': 'var(--theme-beige-900)',
+                'dark-photo-border-color': 'var(--theme-beige-50)',
+                'dark-link-text-color': 'var(--theme-beige-50)',
+                'dark-link-text-color-hover': 'var(--theme-beige-100)',
+                'dark-overlay-bg-color': 'var(--theme-beige-50)'
             },
             fontFamily: {
                 sans: ['var(--font-body)'],

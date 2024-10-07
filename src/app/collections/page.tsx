@@ -1,6 +1,7 @@
 import {draftMode} from 'next/headers';
 import Link from 'next/link';
 import {redirect} from 'next/navigation';
+import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
@@ -18,7 +19,7 @@ const CollectionsPage = async () => {
         .sort((a, b) => a.slug.localeCompare(b.slug));
 
     return (
-        <>
+        <DefaultLayout theme="light">
             <PageHeader
                 description="All the photo collections covering my beer, street, and travel photography."
                 title="All photo collections"
@@ -52,7 +53,7 @@ const CollectionsPage = async () => {
                     ))}
                 </div>
             </Container>
-        </>
+        </DefaultLayout>
     );
 };
 

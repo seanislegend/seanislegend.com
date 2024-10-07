@@ -1,8 +1,6 @@
 import {Analytics} from '@vercel/analytics/react';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import localFont from 'next/font/local';
-import SiteFooter from '@/components/SiteFooter';
-import SiteHeader from '@/components/SiteHeader';
 import config from '@/utils/config';
 import './globals.css';
 
@@ -25,12 +23,10 @@ interface Props {
 const RootLayout = async ({children}: Props) => (
     <html
         lang="en"
-        className={`flex flex-grow flex-col bg-sean-beige-50 text-sean-black antialiased md:min-h-full dark:bg-black ${titleFont.variable} ${bodyFont.variable}`}
+        className={`flex flex-grow flex-col antialiased md:min-h-full ${titleFont.variable} ${bodyFont.variable}`}
     >
         <body className="flex flex-grow flex-col sm:min-h-full">
-            <SiteHeader />
-            <main className="animate flex-grow duration-500 ease-in fade-in">{children}</main>
-            <SiteFooter />
+            {children}
             {process.env.NODE_ENV !== 'development' && (
                 <>
                     <Analytics />

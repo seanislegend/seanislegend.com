@@ -1,5 +1,6 @@
 import {draftMode} from 'next/headers';
 import {redirect} from 'next/navigation';
+import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import PhotoCarousel from '@/components/PhotoCarousel';
 import config from '@/utils/config';
@@ -32,7 +33,7 @@ const PhotoPage = async ({params}: Props) => {
     if (!collection) redirect('/');
 
     return (
-        <>
+        <DefaultLayout theme="light">
             <PageHeader
                 backUrl={`/${collection.slug}`}
                 title={collection.pageTitle || collection.title}
@@ -49,7 +50,7 @@ const PhotoPage = async ({params}: Props) => {
                     hasBottomPadding={false}
                 />
             </div>
-        </>
+        </DefaultLayout>
     );
 };
 

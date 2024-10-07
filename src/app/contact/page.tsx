@@ -1,3 +1,4 @@
+import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
@@ -8,9 +9,11 @@ const ContactPage = async () => {
     const page = await fetchEditorialPage('contact');
 
     return (
-        <Container>
-            <PageHeader title={page.pageTitle} description={page.content} />
-        </Container>
+        <DefaultLayout theme="dark">
+            <Container>
+                <PageHeader title={page.pageTitle} description={page.content} />
+            </Container>
+        </DefaultLayout>
     );
 };
 

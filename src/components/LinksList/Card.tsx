@@ -19,13 +19,13 @@ const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
                     rel="noopener noreferrer"
                     className="group"
                 >
-                    <h2 className="underline-2 dark:text-beige-50 font-serif text-lg leading-snug text-sean-black underline-offset-2 group-hover:underline sm:text-xl">
+                    <h2 className="underline-2 dark:text-beige-50 font-serif text-lg leading-snug text-[var(--title-text)] underline-offset-2 group-hover:underline sm:text-xl">
                         {title}
                     </h2>
                 </a>
             )}
             {text && (
-                <Markdown className="prose-sm mt-2 max-w-2xl leading-relaxed tracking-wide md:prose-base dark:prose-invert prose-p:text-sean-black md:prose-p:leading-relaxed md:prose-p:tracking-wide lg:max-w-3xl dark:prose-p:text-sean-beige-50">
+                <Markdown className="prose-sm mt-2 max-w-2xl leading-relaxed tracking-wide md:prose-base dark:prose-invert prose-p:text-[var(--text)] md:prose-p:leading-relaxed md:prose-p:tracking-wide lg:max-w-3xl dark:prose-p:text-[var(--dark-text)]">
                     {text}
                 </Markdown>
             )}

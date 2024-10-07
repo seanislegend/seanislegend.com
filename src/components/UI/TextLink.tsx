@@ -15,7 +15,7 @@ const TextLink: React.FC<React.PropsWithChildren<Props>> = ({children, className
     return (
         <Link
             className={clsx([
-                'inline-block font-medium underline-offset-4 hover:underline hover:decoration-sean-black hover:decoration-2',
+                'inline-block font-medium underline-offset-4 hover:underline hover:decoration-[var(--text)] hover:decoration-2',
                 className
             ])}
             data-active={isActive ? 'true' : 'false'}

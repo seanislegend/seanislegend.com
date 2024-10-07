@@ -12,15 +12,15 @@ const FeaturedCollectionItem: React.FC<Props> = ({link, size = 'lg'}) => (
     <NavigationMenu.Item asChild>
         <Link
             href={link.url}
-            className={clsx('group/link relative flex w-full flex-col justify-end bg-sean-black', {
-                'aspect-[4/3]': size === 'sm',
-                'aspect-[3.95/3]': size === 'lg'
-            })}
+            className={clsx(
+                'group/link relative flex w-full flex-col justify-end bg-[var(--photo-border)]',
+                {'aspect-[4/3]': size === 'sm', 'aspect-[3.95/3]': size === 'lg'}
+            )}
         >
             <Image
                 alt={link.title}
                 blurDataURL={link.photo!.base64}
-                className="absolute inset-0 border-2 border-sean-black object-cover transition-opacity duration-300 ease-in-out hover:duration-100 group-hover/link:opacity-60"
+                className="absolute inset-0 border-2 border-[var(--photo-border)] object-cover transition-opacity duration-300 ease-in-out hover:duration-100 group-hover/link:opacity-60"
                 fill={true}
                 placeholder="blur"
                 quality={85}
@@ -29,19 +29,19 @@ const FeaturedCollectionItem: React.FC<Props> = ({link, size = 'lg'}) => (
             />
             <div
                 className={clsx(
-                    'absolute bottom-0 left-0 right-0 flex h-[60%] flex-col justify-end bg-gradient-to-t from-black to-transparent',
+                    'absolute bottom-[2px] left-[2px] flex h-[60%] w-[calc(100%-4px)] flex-col justify-end bg-gradient-to-t from-[var(--dark)] to-transparent',
                     {'p-5': size === 'lg', 'p-3': size === 'sm'}
                 )}
             >
                 <h4
                     className={clsx(
-                        'text-balance font-serif text-sean-beige-50 underline-offset-4 group-hover/link:underline',
+                        'text-balance font-serif text-[var(--light)] underline-offset-4 group-hover/link:underline',
                         {'text-2xl': size === 'lg', 'text-lg leading-snug': size === 'sm'}
                     )}
                 >
                     {link.title}
                 </h4>
-                <p className="mt-0.5 hidden text-balance text-[14px] leading-tight text-sean-beige-50 xl:block">
+                <p className="mt-0.5 hidden text-balance text-[14px] leading-tight text-[var(--light)] xl:block">
                     {link.pageTitle}
                 </p>
             </div>

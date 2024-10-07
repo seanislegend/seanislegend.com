@@ -22,9 +22,9 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     return (
         <header
             className={clsx(
-                'sticky top-0 z-30 bg-sean-beige-50 transition-all duration-300 dark:bg-black',
+                'sticky top-0 z-30 bg-[var(--bg)] transition-all duration-300 dark:bg-[var(--dark-bg)]',
                 {
-                    'border-b-2 border-sean-beige-100 py-3 shadow-2xl shadow-sean-beige-800/10':
+                    'shadow-[var(--accent)]/10 border-b-2 border-[var(--accent)] py-3 shadow-2xl':
                         isScrolled,
                     'py-6': !isScrolled
                 }
@@ -45,7 +45,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                     </span>{' '}
                     <Link aria-label="Home" className="group outline-none" href="/">
                         <Logo
-                            className={`text-sean-black transition-all duration-300 ease-in-out dark:text-white ${
+                            className={`text-[var(--text)] transition-all duration-300 ease-in-out dark:text-[var(--dark-text)] ${
                                 isScrolled ? 'h-8 w-8' : 'h-10 w-10'
                             }`}
                             size={isScrolled ? 'sm' : 'md'}
