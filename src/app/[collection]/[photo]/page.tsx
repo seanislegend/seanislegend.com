@@ -11,7 +11,7 @@ interface Props {
     params: Promise<{collection: string; photo: string}>;
 }
 
-export const getCollectionAndPhoto = async (
+const getCollectionAndPhoto = async (
     collectionSlug: string,
     photoSlug: string,
     preview: boolean = false

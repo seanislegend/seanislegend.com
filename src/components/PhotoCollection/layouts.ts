@@ -1,3 +1,5 @@
+import {type PhotoBlock} from '@/types/photo-blocks';
+
 export const layouts: Record<string, PhotoBlock[]> = {
     'adnams-brewery-southwold': [
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 1, 2, 3, 4, 5]},

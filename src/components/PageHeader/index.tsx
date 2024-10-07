@@ -39,7 +39,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                             </Link>
                         )}
                     >
-                        <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-3xl leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight  lg:text-5xl lg:leading-tight dark:text-white">
+                        <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-3xl leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight  lg:text-5xl lg:leading-tight dark:text-[var(--dark-title-text)]">
                             <span>{pageTitle || title}</span>
                         </h1>
                     </Condition>
