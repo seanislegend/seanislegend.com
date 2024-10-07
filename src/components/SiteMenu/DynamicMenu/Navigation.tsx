@@ -51,7 +51,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                     </NavigationMenu.Indicator>
                 </NavigationMenu.List>
                 <div className="fixed left-0 top-0 flex w-screen" style={{perspective: '1000px'}}>
-                    <NavigationMenu.Viewport className="data-[state=closed]:duration-[400ms] relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 border-sean-beige-100 bg-sean-beige-50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8" />
+                    <NavigationMenu.Viewport className="relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 border-sean-beige-100 bg-sean-beige-50 data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8" />
                 </div>
             </NavigationMenu.Root>
             <SiteMenuMobile links={[...featuredLinks, ...otherLinks]} />
