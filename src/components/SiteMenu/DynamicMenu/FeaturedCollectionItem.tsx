@@ -13,7 +13,7 @@ const FeaturedCollectionItem: React.FC<Props> = ({link, size = 'lg'}) => (
         <Link
             href={link.url}
             className={clsx(
-                'group/link relative flex w-full flex-col justify-end bg-[var(--photo-border)]',
+                'group/link relative flex w-full flex-col justify-end bg-[var(--theme-black)]',
                 {'aspect-[4/3]': size === 'sm', 'aspect-[3.95/3]': size === 'lg'}
             )}
         >
@@ -29,19 +29,19 @@ const FeaturedCollectionItem: React.FC<Props> = ({link, size = 'lg'}) => (
             />
             <div
                 className={clsx(
-                    'absolute bottom-[2px] left-[2px] flex h-[60%] w-[calc(100%-4px)] flex-col justify-end bg-gradient-to-t from-[var(--dark)] to-transparent',
+                    'absolute bottom-[2px] left-[2px] flex h-[60%] w-[calc(100%-4px)] flex-col justify-end bg-gradient-to-t from-[var(--theme-black)] to-transparent',
                     {'p-5': size === 'lg', 'p-3': size === 'sm'}
                 )}
             >
                 <h4
                     className={clsx(
-                        'text-balance font-serif text-[var(--light)] underline-offset-4 group-hover/link:underline',
+                        'text-balance font-serif text-[var(--theme-beige-50)] underline-offset-4 group-hover/link:underline',
                         {'text-2xl': size === 'lg', 'text-lg leading-snug': size === 'sm'}
                     )}
                 >
                     {link.title}
                 </h4>
-                <p className="mt-0.5 hidden text-balance text-[14px] leading-tight text-[var(--light)] xl:block">
+                <p className="mt-0.5 hidden text-balance text-[14px] leading-tight text-[var(--theme-beige-50)] xl:block">
                     {link.pageTitle}
                 </p>
             </div>
