@@ -25,7 +25,7 @@ const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
                 </a>
             )}
             {text && (
-                <Markdown className="prose-sm mt-2 max-w-2xl leading-relaxed tracking-wide md:prose-base dark:prose-invert prose-p:text-[var(--text)] md:prose-p:leading-relaxed md:prose-p:tracking-wide lg:max-w-3xl dark:prose-p:text-[var(--dark-text)]">
+                <Markdown className="prose-sm mt-2 max-w-2xl leading-relaxed md:prose-base dark:prose-invert prose-p:text-[var(--text)] md:prose-p:leading-relaxed lg:max-w-3xl dark:prose-p:text-[var(--dark-text)]">
                     {text}
                 </Markdown>
             )}

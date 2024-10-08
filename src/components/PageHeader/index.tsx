@@ -11,7 +11,7 @@ export interface Props {
     ctaUrl?: string;
     description?: string | null;
     hasBottomPadding?: boolean;
-    pageTitle?: string;
+    pageTitle?: string | React.ReactNode;
     title?: string;
 }
 
@@ -51,7 +51,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                     key={description || children?.toString()}
                 >
                     {description && (
-                        <Markdown className="prose-sm max-w-2xl text-balance leading-relaxed tracking-wide lg:prose-base dark:prose-invert lg:max-w-5xl lg:prose-p:leading-relaxed lg:prose-p:tracking-wide dark:prose-p:text-gray-400">
+                        <Markdown className="prose-sm max-w-2xl text-balance leading-relaxed lg:prose-base dark:prose-invert lg:max-w-5xl lg:prose-p:leading-relaxed dark:prose-p:text-gray-400">
                             {description}
                         </Markdown>
                     )}

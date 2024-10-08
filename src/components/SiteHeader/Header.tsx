@@ -4,7 +4,6 @@ import {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
-import Container from '@/components/UI/Container';
 
 const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -31,23 +30,16 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
             )}
         >
             <div className="relative z-30 flex justify-between px-4 md:px-8">
-                <span
-                    className={clsx(
-                        'relative z-30 inline-flex flex-grow items-baseline gap-1.5 transition duration-100 ease-linear'
-                    )}
-                >
-                    <span
-                        className={clsx(
-                            'transition duration-100 ease-linear group-hover:opacity-50'
-                        )}
-                    >
+                <span className="relative z-30 inline-flex flex-grow items-baseline gap-1.5 transition duration-100 ease-linear">
+                    <span className="transition duration-100 ease-linear group-hover:opacity-50">
                         photography by
                     </span>{' '}
                     <Link aria-label="Home" className="group outline-none" href="/">
                         <Logo
-                            className={`text-[var(--text)] transition-all duration-300 ease-in-out dark:text-[var(--dark-text)] ${
-                                isScrolled ? 'h-8 w-8' : 'h-10 w-10'
-                            }`}
+                            className={clsx(
+                                'text-[var(--text)] transition-all duration-300 ease-in-out dark:text-[var(--dark-text)]',
+                                {'h-8 w-8': isScrolled, 'h-10 w-10': !isScrolled}
+                            )}
                             size={isScrolled ? 'sm' : 'md'}
                         />
                     </Link>

@@ -21,7 +21,7 @@ const CarouselDetails: React.FC<Props> = ({activeIndex, activePhoto, collection,
                 )}
             </div>
             {/* {activePhoto?.description && (
-                    <p className="mt-2 text-sm tracking-wide text-gray-400 dark:text-gray-600">
+                    <p className="mt-2 text-sm text-gray-400 dark:text-gray-600">
                         {activePhoto.description}
                     </p>
                 )} */}

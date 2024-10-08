@@ -32,6 +32,8 @@ module.exports = {
             },
             fontFamily: {
                 sans: ['var(--font-body)'],
+                'sans-semibold': ['var(--font-body-semibold)'],
+                'sans-medium': ['var(--font-body-medium)'],
                 serif: ['var(--font-title)']
             }
         }
