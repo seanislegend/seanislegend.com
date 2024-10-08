@@ -59,6 +59,9 @@ module.exports = {
             }
         ];
     },
+    experimental: {
+        reactCompiler: true
+    },
     images: {
         formats: ['image/webp'],
         minimumCacheTTL: 31536000, // 1 year
