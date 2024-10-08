@@ -331,30 +331,6 @@ export const fetchCollection = async (
     return null;
 };
 
-// Fetch all collections that contain a specific photo
-export const fetchPhotosLinkedCollections = async (entryId: string) => {
-    const query = `query {
-        photoCollection (where:{sys:{id:"${entryId}"}}) {
-            items {
-                linkedFrom {
-                    collectionCollection(limit: 5) {
-                        items {
-                            slug
-                        }
-                    }
-                }
-            }
-        }
-    }`;
-    const response: any = await fetchContent(query);
-    const collectionSlugs =
-        response.data?.photoCollection?.items?.[0]?.linkedFrom?.collectionCollection?.items?.map(
-            (i: any) => i.slug
-        ) || [];
-
-    return collectionSlugs;
-};
-
 export const fetchCollectionsForSitemap = async () => {
     const query = `query {
         collectionCollection(where: {category_not: ""}, limit: 35) {

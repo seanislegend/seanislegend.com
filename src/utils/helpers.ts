@@ -1,20 +1,8 @@
 import removeMarkdown from 'remove-markdown';
 import config from '@/utils/config';
 
-export const capitalize = (string: string = '') => {
-    if (typeof string !== 'string') return '';
-    return string.charAt(0).toUpperCase() + string.slice(1);
-};
-
 export const getExternalUrl = (url: string = '') => {
     return `${url}?utm_source=seanislegend.com&utm_medium=referral`;
-};
-
-export const getTransformedContentfulImageUrl = (url: string = '') => {
-    return url.replace(
-        'https://images.ctfassets.net',
-        'https://www.seanislegend.com/images/photos'
-    );
 };
 
 export const getCollectionSeo = (collection: PhotoCollection) => {

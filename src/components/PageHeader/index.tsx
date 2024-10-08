@@ -3,7 +3,7 @@ import Markdown from '@/components/Markdown';
 import Container from '@/components/UI/Container';
 import {getExternalUrl} from '@/utils/helpers';
 
-export interface Props {
+interface Props {
     ctaLabel?: string;
     ctaUrl?: string;
     description?: string | null;

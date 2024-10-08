@@ -8,7 +8,7 @@ interface Props extends Pick<PhotoCollection, 'photosCollection' | 'slug' | 'tit
     linksTo?: 'collection' | 'photo';
 }
 
-export interface CustomLayoutProps {
+interface CustomLayoutProps {
     renderPhoto: (index: number, fillContainer?: boolean) => React.ReactNode;
 }
 
