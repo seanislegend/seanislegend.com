@@ -11,7 +11,7 @@ interface Props {
 const RootLayout = async ({children}: Props) => (
     <html
         lang="en"
-        className={`flex flex-grow flex-col antialiased md:min-h-full ${GeistSans.className}`}
+        className={`flex min-h-full flex-grow flex-col antialiased ${GeistSans.className}`}
     >
         <body className="flex flex-grow flex-col sm:min-h-full">
             {children}

@@ -13,6 +13,7 @@ export interface Props {
     hasBottomPadding?: boolean;
     pageTitle?: string | React.ReactNode;
     title?: string;
+    titleAside?: React.ReactNode;
 }
 
 const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
@@ -22,7 +23,8 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     ctaUrl,
     description,
     pageTitle,
-    title
+    title,
+    titleAside
 }) => (
     <Container asChild>
         <div
@@ -47,6 +49,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                                 <span>{pageTitle || title}</span>
                             </h1>
                         </Condition>
+                        {titleAside}
                     </div>
                     <div className="col-span-2 sm:col-span-4 md:hidden" />
                 </>
@@ -55,7 +58,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 <>
                     <div className="hidden xl:col-span-1 xl:block" />
                     <div
-                        className="col-span-10 place-content-end sm:col-span-8 md:col-span-6 xl:col-span-5"
+                        className="col-span-10 sm:col-span-8 md:col-span-6 xl:col-span-5"
                         key={description || children?.toString()}
                     >
                         {description && (
