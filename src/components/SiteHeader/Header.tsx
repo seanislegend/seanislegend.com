@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
@@ -8,24 +8,24 @@ import Logo from '@/components/Logo';
 const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     const [isScrolled, setIsScrolled] = useState(false);
 
+    const handleScroll = useCallback(() => {
+        setIsScrolled(window.scrollY > 0);
+    }, []);
+
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 0);
         handleScroll();
         window.addEventListener('scroll', handleScroll);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [handleScroll]);
 
     return (
         <header
             className={clsx(
-                'sticky top-0 z-30 bg-[var(--bg)] transition-all duration-300 dark:bg-[var(--dark-bg)]',
-                {
-                    'border-b-2 border-[var(--accent)] py-3': isScrolled,
-                    'py-6': !isScrolled
-                }
+                'sticky top-0 z-30 border-b-2 border-transparent bg-[var(--bg)] py-6 transition-all duration-300 dark:bg-[var(--dark-bg)]',
+                {'!border-[var(--accent)] !py-3': isScrolled}
             )}
         >
             <div className="relative z-30 flex justify-between px-4 md:px-8">
