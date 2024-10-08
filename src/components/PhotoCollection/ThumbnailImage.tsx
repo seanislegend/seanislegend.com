@@ -11,14 +11,13 @@ interface Props extends ThumbnailPhoto {
 const ThumbnailImage: React.FC<Props> = ({base64, fill, height, loading = 'lazy', width, url}) => (
     <span
         className={clsx(
-            'relative block min-h-[50px] overflow-hidden bg-[var(--photo-border)] transition duration-200 ease-in-out hover:duration-500 group-focus:outline-none dark:bg-[var(--dark-photo-border)] dark:group-focus:ring-white',
+            'relative z-20 block min-h-[50px] overflow-hidden bg-[var(--photo-border)] group-focus:outline-none dark:bg-[var(--dark-photo-border)] dark:group-focus:ring-white',
             {'h-full': fill}
         )}
     >
         <Image
             alt=""
             blurDataURL={base64 || ''}
-            className="transition duration-500 ease-in-out hover:duration-200 sm:group-hover:opacity-70"
             fill={fill}
             placeholder={base64 ? 'blur' : 'empty'}
             loading={loading}

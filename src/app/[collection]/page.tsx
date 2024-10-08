@@ -24,7 +24,11 @@ const CollectionPage = async ({params}: Props) => {
                 {...collection}
                 description={collection?.showDescription ? collection.description : null}
             />
-            <PhotoCollection {...collection} key={collection.slug} />
+            <PhotoCollection
+                {...collection}
+                linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
+                key={collection.slug}
+            />
         </DefaultLayout>
     );
 };

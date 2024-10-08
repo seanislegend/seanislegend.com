@@ -5,14 +5,7 @@ interface Props {
 }
 
 const Logo: React.FC<Props> = ({className}) => (
-    <span
-        className={clsx([
-            'font-medium uppercase underline-offset-4 group-hover:underline',
-            className
-        ])}
-    >
-        @seanislegend
-    </span>
+    <span className={clsx(['font-medium uppercase', className])}>@seanislegend</span>
 );
 
 export default Logo;

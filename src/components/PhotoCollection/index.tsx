@@ -4,24 +4,33 @@ import Grid from './Grid';
 import PhotoThumbnail from './Thumbnail';
 import {layouts} from './layouts';
 
-type Props = Pick<PhotoCollection, 'photosCollection' | 'slug'>;
+interface Props extends Pick<PhotoCollection, 'photosCollection' | 'slug' | 'title'> {
+    linksTo?: 'collection' | 'photo';
+}
 
 export interface CustomLayoutProps {
     renderPhoto: (index: number, fillContainer?: boolean) => React.ReactNode;
 }
 
-const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
+const PhotosCollection: React.FC<Props> = ({linksTo = 'photo', photosCollection, slug}) => {
     const photos = photosCollection.items;
     const layout = layouts?.[slug];
 
     const renderPhoto = (index: number, fillContainer?: boolean) => {
         if (!photos[index]) return null;
 
+        let path = `/${photos[index].collection || slug}`;
+
+        if (linksTo === 'photo') {
+            path = `${path}/${photos[index].slug}`;
+        }
+
         return (
             <PhotoThumbnail
                 base64={photos[index].base64}
                 fill={fillContainer}
-                path={`/${photos[index].collection || slug}/${photos[index].slug}`}
+                linksTo={linksTo}
+                path={path}
                 slug={photos[index].slug}
                 title={photos[index].title}
                 thumbnail={photos[index].thumbnail}
