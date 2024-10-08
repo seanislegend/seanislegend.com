@@ -13,7 +13,7 @@ interface Props {
 const CarouselDetails: React.FC<Props> = ({activeIndex, activePhoto, collection, total}) => (
     <footer className="relative z-50 mt-4 flex items-end justify-between md:min-h-[44px]">
         <div className="flex items-center">
-            <div className="space-y-2 text-gray-600 md:flex md:items-baseline md:space-x-2 dark:text-gray-300">
+            <div className="space-y-2 text-gray-600 md:flex md:items-baseline md:space-x-2">
                 {activePhoto?.title && (
                     <span className="block break-normal text-sm sm:text-base">
                         {activePhoto.title}
@@ -21,7 +21,7 @@ const CarouselDetails: React.FC<Props> = ({activeIndex, activePhoto, collection,
                 )}
             </div>
             {/* {activePhoto?.description && (
-                    <p className="mt-2 text-sm text-gray-400 dark:text-gray-600">
+                    <p className="mt-2 text-sm text-gray-400">
                         {activePhoto.description}
                     </p>
                 )} */}

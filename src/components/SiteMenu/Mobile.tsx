@@ -29,7 +29,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
             >
-                <ToggleButtonIcon className="h-auto w-6 text-[var(--text)] dark:text-[var(--dark-text)]" />
+                <ToggleButtonIcon className="h-auto w-6 text-[var(--text)]" />
             </button>
             <div
                 className="absolute left-0 top-[var(--site-header-height)] z-30 w-full lg:hidden"
@@ -39,7 +39,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                     overflow: isMenuOpen ? 'visible' : 'hidden'
                 }}
             >
-                <div className="bg-[var(--bg)] py-4 lg:hidden dark:bg-[var(--dark-bg)]">
+                <div className="bg-[var(--bg)] py-4 lg:hidden">
                     <Container asChild>
                         <div className="flex space-x-10">
                             <nav
@@ -74,7 +74,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 </div>
             </div>
             <div
-                className="fixed left-0 right-0 top-[var(--site-header-height)] z-[20] h-0 bg-[var(--overlay-bg)] lg:hidden dark:bg-[var(--dark-overlay-bg)]"
+                className="fixed left-0 right-0 top-[var(--site-header-height)] z-[20] h-0 bg-[var(--overlay-bg)] lg:hidden"
                 style={{height: isMenuOpen ? '100vh' : '0', opacity: isMenuOpen ? 0.8 : 0}}
             />
         </>

@@ -11,7 +11,7 @@ interface Props extends ThumbnailPhoto {
 const ThumbnailImage: React.FC<Props> = ({base64, fill, height, loading = 'lazy', width, url}) => (
     <span
         className={clsx(
-            'relative z-20 block min-h-[50px] overflow-hidden bg-[var(--photo-border)] group-focus:outline-none dark:bg-[var(--dark-photo-border)] dark:group-focus:ring-white',
+            'relative z-20 block min-h-[50px] overflow-hidden bg-[var(--photo-border)] group-focus:outline-none',
             {'h-full': fill}
         )}
     >

@@ -13,7 +13,7 @@ const FeaturedCollectionItem: React.FC<Props> = ({link, size = 'lg'}) => (
         <Link
             href={link.url}
             className={clsx(
-                'group/link relative flex w-full flex-col justify-end bg-[var(--theme-black)] focus:outline-none focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2 dark:focus:ring-[var(--dark-text)]',
+                'group/link relative flex w-full flex-col justify-end bg-[var(--theme-black)] focus:outline-none focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2',
                 {'aspect-[4/3]': size === 'sm', 'aspect-[3.95/3]': size === 'lg'}
             )}
         >

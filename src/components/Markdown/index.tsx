@@ -9,7 +9,7 @@ interface Props {
 const MarkdownLink = (props: any) => (
     <a
         {...props}
-        className="dark:[var(--dark-link-text)] text-[var(--link-text)] underline underline-offset-2 transition duration-200 ease-in-out hover:decoration-2 focus:outline-none focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2 sm:underline-offset-4 dark:focus:ring-[var(--dark-text)]"
+        className="text-[var(--link-text)] underline underline-offset-2 transition duration-200 ease-in-out hover:decoration-2 focus:outline-none focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2 sm:underline-offset-4"
     >
         {props.children}
     </a>
@@ -18,7 +18,7 @@ const MarkdownLink = (props: any) => (
 const Markdown: React.FC<Props> = ({children, className = ''}: Props) => (
     <ReactMarkdown
         className={clsx([
-            'space-y-6 text-sm leading-relaxed dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] dark:prose-p:text-[var(--dark-dimmed-text)]',
+            'space-y-6 text-sm leading-relaxed dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px]',
             className
         ])}
         components={{a: ({...props}) => <MarkdownLink {...props} />}}

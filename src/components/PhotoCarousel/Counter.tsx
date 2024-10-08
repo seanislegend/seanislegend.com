@@ -4,11 +4,9 @@ interface Props {
 }
 
 const CarouselCounter: React.FC<Props> = ({activeIndex, total}) => (
-    <div className="flex items-center space-x-1  text-xs text-[var(--title-text)] sm:text-sm dark:text-[var(--dark-title-text)]">
+    <div className="flex items-center space-x-1  text-xs text-[var(--title-text)] sm:text-sm">
         <span className="inline-block">{activeIndex + 1}</span>
-        <span className="text-xs text-[var(--dimmed-text)] dark:text-[var(--dark-dimmed-text)]">
-            /
-        </span>
+        <span className="text-xs text-[var(--dimmed-text)]">/</span>
         <span className="inline-block">{total}</span>
     </div>
 );

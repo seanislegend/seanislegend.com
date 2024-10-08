@@ -25,7 +25,7 @@ const CarouselSocialLinks: React.FC<Props> = ({photo}) => {
                         href={getExternalUrl(photo.instagramUrl)}
                         target="_blank"
                         rel="noreferrer"
-                        className="group flex items-center space-x-1 align-top text-xs tracking-[0.5px] text-[var(--dimmed-text)] decoration-2 underline-offset-2 outline-none transition duration-200 hover:text-[var(--link-text)] hover:underline dark:text-[var(--dark-dimmed-text)] dark:hover:text-[var(--dark-link-text)]"
+                        className="group flex items-center space-x-1 align-top text-xs tracking-[0.5px] text-[var(--dimmed-text)] decoration-2 underline-offset-2 outline-none transition duration-200 hover:text-[var(--link-text)] hover:underline"
                     >
                         <InstagramIcon className="size-3 transition duration-200 ease-out" />
                         <span>{getInstagramLabel()}</span>

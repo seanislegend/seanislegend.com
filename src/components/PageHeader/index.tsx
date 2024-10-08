@@ -28,7 +28,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
 }) => (
     <Container asChild>
         <div
-            className="grid grid-cols-12 gap-4 py-6 duration-700 animate-in fade-in slide-in-from-bottom-4 sm:gap-8 sm:py-12 xl:py-20"
+            className="grid grid-cols-12 gap-4 py-6 duration-700 animate-in fade-in sm:gap-8 sm:py-12 xl:py-20"
             id="hero"
         >
             {title && (
@@ -45,7 +45,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                                 </Link>
                             )}
                         >
-                            <h1 className="max-w-5xl space-x-2 text-balance break-normal text-2xl font-medium uppercase leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight dark:text-[var(--dark-title-text)]">
+                            <h1 className="max-w-5xl space-x-2 text-balance break-normal text-2xl font-medium uppercase leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight">
                                 <span>{pageTitle || title}</span>
                             </h1>
                         </Condition>
