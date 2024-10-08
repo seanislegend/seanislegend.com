@@ -23,7 +23,7 @@ const SiteHeaderAllCollections: React.FC<Props> = ({links}) => (
             ))}
         </ul>
         <NavigationMenu.Item asChild>
-            <Button href="/collections">View all collections</Button>
+            <Button href="/collections">View all</Button>
         </NavigationMenu.Item>
     </>
 );

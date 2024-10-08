@@ -28,6 +28,15 @@
         --theme-beige-800: #675145;
         --theme-beige-900: #554339;
         --theme-beige-950: #2d231d;
+        --site-header-height: 3.125rem;
+        --site-header-height-scrolled: 3.125rem;
+    }
+
+    @media (min-width: 768px) {
+        :root {
+            --site-header-height: 4.5rem;
+            --site-header-height-scrolled: 3.125rem;
+        }
     }
     
     [data-theme="light"] {

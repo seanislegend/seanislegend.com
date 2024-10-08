@@ -26,7 +26,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                             Collections
                             <NavigationMenu.Content className="absolute left-0 top-0 w-screen pt-12 data-[motion^=to-]:delay-200 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out">
                                 <Container asChild>
-                                    <div className="mt-5 grid w-full grid-cols-12 gap-12 p-8 xl:p-16">
+                                    <div className="mt-5 grid w-full grid-cols-12 gap-12 p-8 xl:pb-16">
                                         {featuredLinks.length > 0 && (
                                             <div className="col-span-9">
                                                 <FeaturedCollections links={featuredLinks} />
