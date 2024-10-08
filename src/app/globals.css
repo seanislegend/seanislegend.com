@@ -4,17 +4,7 @@
 
 html {
     scroll-padding-top: var(--site-header-height);
-}
-
-.image-container > span {
-    vertical-align: top;
-}
-
-.thumbnail-container {
-    height: 0;
-    overflow: hidden;
-    padding-bottom: 15%;
-    width: 100%;
+    scroll-behavior: smooth;
 }
 
 @layer base {

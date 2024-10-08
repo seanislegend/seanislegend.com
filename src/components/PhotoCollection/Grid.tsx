@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import {gap} from './config';
 
 interface Props {
     className?: string;
@@ -16,7 +15,7 @@ const Grid: React.FC<React.PropsWithChildren<Props>> = ({
     <div
         className={clsx([
             'mx-auto grid w-full max-w-[110rem] place-items-start',
-            gridGap || gap,
+            gridGap || 'gap-4 lg:gap-6 2xl:gap-12',
             gridCols || 'grid-cols-12',
             className
         ])}
