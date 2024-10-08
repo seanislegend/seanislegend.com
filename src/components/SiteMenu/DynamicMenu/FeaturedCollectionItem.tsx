@@ -36,7 +36,10 @@ const FeaturedCollectionItem: React.FC<Props> = ({link, size = 'lg'}) => (
                 <h4
                     className={clsx(
                         'text-balance font-medium uppercase tracking-tight text-[var(--theme-beige-50)] underline-offset-4 group-hover/link:underline',
-                        {'text-2xl': size === 'lg', 'text-lg leading-snug': size === 'sm'}
+                        {
+                            'text-xl xl:text-2xl': size === 'lg',
+                            'leading-snug xl:text-lg': size === 'sm'
+                        }
                     )}
                 >
                     {link.title}

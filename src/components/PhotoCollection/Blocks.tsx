@@ -259,22 +259,20 @@ const layouts: Partial<Record<string, React.FC<any>>> = {
     TwoPortraitOneLandscapeWithPadding
 };
 
-const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto}) => {
-    return (
-        <div className="space-y-4 lg:space-y-6 2xl:space-y-12">
-            {blocks.map(block => {
-                const Layout = layouts[block.layout];
-                if (!Layout) return null;
-                return (
-                    <Layout
-                        key={block.layout}
-                        photos={block.photos.map(photo => renderPhoto(photo))}
-                        {...block.props}
-                    />
-                );
-            })}
-        </div>
-    );
-};
+const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto}) => (
+    <div className="space-y-4 lg:space-y-6 2xl:space-y-12">
+        {blocks.map((block, index) => {
+            const Layout = layouts[block.layout];
+            if (!Layout) return null;
+            return (
+                <Layout
+                    key={`${index}-${block.layout}`}
+                    photos={block.photos.map(photo => renderPhoto(photo))}
+                    {...block.props}
+                />
+            );
+        })}
+    </div>
+);
 
 export default PhotoCollectionBlocks;

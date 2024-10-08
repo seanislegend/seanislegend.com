@@ -20,7 +20,6 @@ const CollectionPage = async ({params}: Props) => {
         <PhotoCollection
             {...collection}
             linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
-            key={collection.slug}
         />
     );
 };

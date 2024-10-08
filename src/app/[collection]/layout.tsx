@@ -5,10 +5,7 @@ import PageHeader from '@/components/PageHeader';
 import {fetchCollection} from '@/utils/contentful';
 
 interface Props {
-    params: Promise<{
-        collection: string;
-        photo?: string;
-    }>;
+    params: Promise<{collection: string; photo?: string}>;
 }
 
 const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = async ({
