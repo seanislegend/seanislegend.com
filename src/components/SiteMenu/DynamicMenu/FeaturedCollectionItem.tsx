@@ -20,7 +20,7 @@ const FeaturedCollectionItem: React.FC<Props> = ({link, size = 'lg'}) => (
             <Image
                 alt={link.title}
                 blurDataURL={link.photo!.base64}
-                className="absolute inset-0 border-2 border-[var(--photo-border)] object-cover transition-opacity duration-300 ease-in-out hover:duration-100 group-hover/link:opacity-60"
+                className="absolute inset-0 object-cover transition-opacity duration-300 ease-in-out hover:duration-100 group-hover/link:opacity-60"
                 fill={true}
                 placeholder="blur"
                 quality={85}
@@ -29,13 +29,13 @@ const FeaturedCollectionItem: React.FC<Props> = ({link, size = 'lg'}) => (
             />
             <div
                 className={clsx(
-                    'absolute bottom-[2px] left-[2px] flex h-[60%] w-[calc(100%-4px)] flex-col justify-end bg-gradient-to-t from-[var(--theme-black)] to-transparent',
+                    'absolute bottom-0 left-0 flex h-[60%] w-full flex-col justify-end bg-gradient-to-t from-[var(--theme-black)] to-transparent',
                     {'p-5': size === 'lg', 'p-3': size === 'sm'}
                 )}
             >
                 <h4
                     className={clsx(
-                        'text-balance font-serif text-[var(--theme-beige-50)] underline-offset-4 group-hover/link:underline',
+                        'text-balance font-medium uppercase tracking-tight text-[var(--theme-beige-50)] underline-offset-4 group-hover/link:underline',
                         {'text-2xl': size === 'lg', 'text-lg leading-snug': size === 'sm'}
                     )}
                 >

@@ -31,9 +31,7 @@ module.exports = {
                 'dark-overlay-bg-color': 'var(--theme-beige-50)'
             },
             fontFamily: {
-                sans: ['var(--font-body)'],
-                'sans-medium': ['var(--font-body-medium)'],
-                serif: ['var(--font-title)']
+                sans: ['var(--font-geist-sans)']
             }
         }
     }

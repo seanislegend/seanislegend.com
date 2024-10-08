@@ -32,7 +32,7 @@ const PhotoThumbnail: React.FC<Props> = ({
     >
         <ThumbnailImage fill={props?.fill} {...thumbnail} base64={base64} loading={loading} />
         {label && (
-            <span className="mt-2 block break-normal font-serif text-sm text-[var(--dimmed-text)] transition duration-200 ease-out group-hover:text-[var(--link-text)] group-hover:underline group-hover:underline-offset-2">
+            <span className="mt-2 block break-normal  text-sm text-[var(--dimmed-text)] transition duration-200 ease-out group-hover:text-[var(--link-text)] group-hover:underline group-hover:underline-offset-2">
                 {label}
             </span>
         )}

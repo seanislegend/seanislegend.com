@@ -16,8 +16,7 @@ const CarouselImage: React.FC<Props> = ({base64, fullSize, isActive, isModal, ti
             className={clsx('w-full align-top transition ease-in-out animate-in fade-in', {
                 'opacity-0': !isActive,
                 'opacity-100': isActive,
-                'h-[85vh] object-contain object-center': isModal,
-                'border-4 border-[var(--photo-border)]': !isModal
+                'h-[85vh] object-contain object-center': isModal
             })}
             height={fullSize.height}
             placeholder={base64 ? 'blur' : 'empty'}

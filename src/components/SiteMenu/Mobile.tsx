@@ -25,7 +25,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
     return (
         <>
             <button
-                className="relative z-30 size-6 translate-y-[-2px] lg:hidden"
+                className="relative z-30 size-6 lg:hidden"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
             >

@@ -23,8 +23,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
             className={clsx(
                 'sticky top-0 z-30 bg-[var(--bg)] transition-all duration-300 dark:bg-[var(--dark-bg)]',
                 {
-                    'shadow-[var(--accent)]/10 border-b-2 border-[var(--accent)] py-3 shadow-2xl':
-                        isScrolled,
+                    'border-b-2 border-[var(--accent)] py-3': isScrolled,
                     'py-6': !isScrolled
                 }
             )}
@@ -35,13 +34,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                         photography by
                     </span>{' '}
                     <Link aria-label="Home" className="group outline-none" href="/">
-                        <Logo
-                            className={clsx(
-                                'text-[var(--text)] transition-all duration-300 ease-in-out dark:text-[var(--dark-text)]',
-                                {'h-8 w-8': isScrolled, 'h-10 w-10': !isScrolled}
-                            )}
-                            size={isScrolled ? 'sm' : 'md'}
-                        />
+                        <Logo className="text-[var(--text)] transition-all duration-300 ease-in-out dark:text-[var(--dark-text)]" />
                     </Link>
                 </span>
                 {children}

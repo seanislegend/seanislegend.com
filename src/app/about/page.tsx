@@ -15,7 +15,7 @@ const AboutPage = async () => {
                 <PageHeader description={page.content} title={page.pageTitle}>
                     <Image
                         alt=""
-                        className="max-w-full border-2 border-[var(--photo-border)] sm:max-w-[260px] lg:mt-10"
+                        className="max-w-full sm:max-w-[260px] lg:mt-10"
                         height={page.photo.height}
                         placeholder="empty"
                         priority={false}

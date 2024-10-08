@@ -1,25 +1,8 @@
 import {Analytics} from '@vercel/analytics/react';
 import {SpeedInsights} from '@vercel/speed-insights/next';
-import localFont from 'next/font/local';
+import {GeistSans} from 'geist/font/sans';
 import config from '@/utils/config';
 import './globals.css';
-
-const titleFont = localFont({
-    display: 'swap',
-    src: '../../public/fonts/title.woff2',
-    weight: '500',
-    variable: '--font-title'
-});
-const bodyFont = localFont({
-    display: 'swap',
-    src: '../../public/fonts/body.woff2',
-    variable: '--font-body'
-});
-const bodyMediumFont = localFont({
-    display: 'swap',
-    src: '../../public/fonts/body-medium.woff2',
-    variable: '--font-body-medium'
-});
 
 interface Props {
     children: React.ReactNode;
@@ -28,7 +11,7 @@ interface Props {
 const RootLayout = async ({children}: Props) => (
     <html
         lang="en"
-        className={`flex flex-grow flex-col antialiased md:min-h-full ${titleFont.variable} ${bodyFont.variable} ${bodyMediumFont.variable}`}
+        className={`flex flex-grow flex-col antialiased md:min-h-full ${GeistSans.className}`}
     >
         <body className="flex flex-grow flex-col sm:min-h-full">
             {children}

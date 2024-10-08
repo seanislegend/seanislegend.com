@@ -47,7 +47,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                         </NavigationMenu.Item>
                     ))}
                     <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-20 flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
-                        <div className="relative top-[-5px] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-[var(--button-bg)]" />
+                        <div className="relative top-[-5px] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-[var(--secondary-button-bg-hover)]" />
                     </NavigationMenu.Indicator>
                 </NavigationMenu.List>
                 <div className="fixed left-0 top-0 flex w-screen" style={{perspective: '1000px'}}>

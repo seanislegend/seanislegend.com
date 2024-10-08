@@ -8,16 +8,15 @@ interface Props {
 
 const SiteHeaderAllCollections: React.FC<Props> = ({links}) => (
     <>
-        <h3 className="mb-4 font-serif text-2xl">Other collections</h3>
+        <h3 className="mb-4 text-xl font-medium uppercase">Other collections</h3>
         <ul className="mb-4 list-outside space-y-1.5">
             {links.map(link => (
                 <li key={link.url} className="flex">
                     <NavigationMenu.Item asChild>
                         <TextLink className="group flex-grow hover:no-underline" href={link.url}>
-                            <span className="translate-y-[2px] pr-2 leading-none text-[var(--dimmed-text)] transition duration-100 group-hover:text-[var(--link-text)] group-data-[active=true]:text-[var(--link-text)]">
-                                &mdash;
+                            <span className="inline-block transition-transform duration-500 ease-in-out group-hover:translate-x-1 group-hover:duration-100 group-data-[active=true]:underline">
+                                {link.title}
                             </span>
-                            <span className="group-data-[active=true]:underline">{link.title}</span>
                         </TextLink>
                     </NavigationMenu.Item>
                 </li>

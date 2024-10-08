@@ -26,47 +26,56 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
 }) => (
     <Container asChild>
         <div
-            className="grid gap-4 pb-10 pt-6 duration-700 animate-in fade-in slide-in-from-bottom-4 sm:grid-cols-12 sm:gap-8 sm:pb-12 sm:pt-16  xl:pb-20"
+            className="grid grid-cols-12 gap-4 py-6 duration-700 animate-in fade-in slide-in-from-bottom-4 sm:gap-8 sm:py-12 xl:py-20"
             id="hero"
         >
             {title && (
-                <div className="col-span-6">
-                    <Condition
-                        condition={!!backUrl}
-                        wrapper={children => (
-                            <Link className="underline-offset-4 hover:underline" href={backUrl!}>
-                                {children}
-                            </Link>
-                        )}
-                    >
-                        <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-3xl leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight dark:text-[var(--dark-title-text)]">
-                            <span>{pageTitle || title}</span>
-                        </h1>
-                    </Condition>
-                </div>
+                <>
+                    <div className="col-span-12 md:col-span-6">
+                        <Condition
+                            condition={!!backUrl}
+                            wrapper={children => (
+                                <Link
+                                    className="underline-offset-4 hover:underline"
+                                    href={backUrl!}
+                                >
+                                    {children}
+                                </Link>
+                            )}
+                        >
+                            <h1 className="max-w-5xl space-x-2 text-balance break-normal text-3xl font-medium uppercase leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight dark:text-[var(--dark-title-text)]">
+                                <span>{pageTitle || title}</span>
+                            </h1>
+                        </Condition>
+                    </div>
+                    <div className="col-span-2 sm:col-span-4 md:hidden" />
+                </>
             )}
             {(children || description || ctaUrl) && (
-                <div
-                    className="col-span-6 place-content-end"
-                    key={description || children?.toString()}
-                >
-                    {description && (
-                        <Markdown className="leading max-w-2xl text-pretty pr-10 leading-relaxed dark:prose-invert prose-p:tracking-[.0185rem] lg:leading-[1.7] 2xl:max-w-5xl 2xl:prose-p:text-[17px] dark:prose-p:text-[var(--dark-dimmed-text)]">
-                            {description}
-                        </Markdown>
-                    )}
-                    {ctaLabel && ctaUrl && (
-                        <Button
-                            className="mt-6"
-                            href={getExternalUrl(ctaUrl)}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            {ctaLabel}
-                        </Button>
-                    )}
-                    {children && children}
-                </div>
+                <>
+                    <div className="hidden xl:col-span-1 xl:block" />
+                    <div
+                        className="col-span-10 place-content-end sm:col-span-8 md:col-span-6 xl:col-span-5"
+                        key={description || children?.toString()}
+                    >
+                        {description && (
+                            <Markdown className="leading max-w-2xl text-pretty text-sm leading-relaxed dark:prose-invert prose-p:tracking-[.0185rem] lg:leading-[1.7] 2xl:max-w-5xl 2xl:prose-p:text-[17px] dark:prose-p:text-[var(--dark-dimmed-text)]">
+                                {description}
+                            </Markdown>
+                        )}
+                        {ctaLabel && ctaUrl && (
+                            <Button
+                                className="mt-6"
+                                href={getExternalUrl(ctaUrl)}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                {ctaLabel}
+                            </Button>
+                        )}
+                        {children && children}
+                    </div>
+                </>
             )}
         </div>
     </Container>

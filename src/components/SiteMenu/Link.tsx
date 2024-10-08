@@ -9,7 +9,7 @@ interface Props extends LinkProps {
 }
 
 export const linkClasses =
-    'rounded px-2.5 py-1 font-sans-medium relative z-30 inline-block transition duration-200 data-[state=open]:bg-[var(--accent)] ease-in-out hover:bg-[var(--accent)]';
+    'px-2.5 py-1 font-medium text-sm relative z-30 inline-block transition duration-200 data-[state=open]:bg-[var(--secondary-button-bg-hover)] ease-in-out hover:bg-[var(--secondary-button-bg-hover)] uppercase';
 
 const SiteHeaderLink: React.FC<React.PropsWithChildren<Props>> = ({children, href, ...props}) => {
     const pathname = usePathname();
@@ -17,7 +17,7 @@ const SiteHeaderLink: React.FC<React.PropsWithChildren<Props>> = ({children, hre
 
     return (
         <Link
-            className={clsx([linkClasses, isActive && 'bg-[var(--accent)]'])}
+            className={clsx([linkClasses, isActive && 'bg-[var(--secondary-button-bg)]'])}
             href={href}
             {...props}
         >

@@ -11,7 +11,7 @@ interface Props {
 }
 
 const CarouselDetails: React.FC<Props> = ({activeIndex, activePhoto, collection, total}) => (
-    <footer className="relative z-50 mt-4 flex items-end justify-between md:min-h-[44px] md:border-t-2 md:border-gray-200 dark:border-gray-800">
+    <footer className="relative z-50 mt-4 flex items-end justify-between md:min-h-[44px]">
         <div className="flex items-center">
             <div className="space-y-2 text-gray-600 md:flex md:items-baseline md:space-x-2 dark:text-gray-300">
                 {activePhoto?.title && (
