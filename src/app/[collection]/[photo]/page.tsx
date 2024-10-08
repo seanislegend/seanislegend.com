@@ -1,7 +1,5 @@
 import {draftMode} from 'next/headers';
 import {redirect} from 'next/navigation';
-import DefaultLayout from '@/components/Layouts/Default';
-import PageHeader from '@/components/PageHeader';
 import PhotoCarousel from '@/components/PhotoCarousel';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
@@ -32,26 +30,7 @@ const PhotoPage = async ({params}: Props) => {
     );
     if (!collection) redirect('/');
 
-    return (
-        <DefaultLayout theme="light">
-            <PageHeader
-                backUrl={`/${collection.slug}`}
-                title={collection.pageTitle || collection.title}
-            />
-            <div className="mx-auto max-w-[75rem]">
-                <PhotoCarousel photo={allParams.photo} collection={collection} />
-            </div>
-            <div className="md:hidden">
-                <PageHeader
-                    backUrl={`/${collection.slug}`}
-                    ctaLabel={collection.ctaLabel}
-                    ctaUrl={collection.ctaUrl}
-                    description={collection.description}
-                    hasBottomPadding={false}
-                />
-            </div>
-        </DefaultLayout>
-    );
+    return <PhotoCarousel photo={allParams.photo} collection={collection} />;
 };
 
 export const generateStaticParams = async () => {

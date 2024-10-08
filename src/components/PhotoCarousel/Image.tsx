@@ -3,10 +3,9 @@ import Image from 'next/image';
 
 interface Props extends Photo {
     isActive: boolean;
-    isModal: boolean;
 }
 
-const CarouselImage: React.FC<Props> = ({base64, fullSize, isActive, isModal, title}) => {
+const CarouselImage: React.FC<Props> = ({base64, fullSize, isActive, title}) => {
     if (!fullSize) return null;
 
     return (
@@ -15,8 +14,7 @@ const CarouselImage: React.FC<Props> = ({base64, fullSize, isActive, isModal, ti
             blurDataURL={base64 || ''}
             className={clsx('w-full align-top transition ease-in-out animate-in fade-in', {
                 'opacity-0': !isActive,
-                'opacity-100': isActive,
-                'h-[85vh] object-contain object-center': isModal
+                'opacity-100': isActive
             })}
             height={fullSize.height}
             placeholder={base64 ? 'blur' : 'empty'}

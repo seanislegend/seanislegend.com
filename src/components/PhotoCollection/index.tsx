@@ -22,7 +22,7 @@ const PhotosCollection: React.FC<Props> = ({linksTo = 'photo', photosCollection,
         let path = `/${photos[index].collection || slug}`;
 
         if (linksTo === 'photo') {
-            path = `${path}/${photos[index].slug}`;
+            path = `${path}/${photos[index].slug}#photo`;
         }
 
         return (

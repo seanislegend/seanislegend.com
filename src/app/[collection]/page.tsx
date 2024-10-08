@@ -1,7 +1,5 @@
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
-import DefaultLayout from '@/components/Layouts/Default';
-import PageHeader from '@/components/PageHeader';
 import PhotoCollection from '@/components/PhotoCollection';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
@@ -19,17 +17,11 @@ const CollectionPage = async ({params}: Props) => {
     if (!collection) return notFound();
 
     return (
-        <DefaultLayout theme="light">
-            <PageHeader
-                {...collection}
-                description={collection?.showDescription ? collection.description : null}
-            />
-            <PhotoCollection
-                {...collection}
-                linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
-                key={collection.slug}
-            />
-        </DefaultLayout>
+        <PhotoCollection
+            {...collection}
+            linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
+            key={collection.slug}
+        />
     );
 };
 

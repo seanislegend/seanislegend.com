@@ -6,18 +6,15 @@ import Container from '@/components/UI/Container';
 import {getExternalUrl} from '@/utils/helpers';
 
 export interface Props {
-    backUrl?: string;
     ctaLabel?: string;
     ctaUrl?: string;
     description?: string | null;
-    hasBottomPadding?: boolean;
     pageTitle?: string | React.ReactNode;
     title?: string;
     titleAside?: React.ReactNode;
 }
 
 const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
-    backUrl,
     children,
     ctaLabel,
     ctaUrl,
@@ -27,28 +24,13 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     titleAside
 }) => (
     <Container asChild>
-        <div
-            className="grid grid-cols-12 gap-4 py-6 duration-700 animate-in fade-in sm:gap-8 sm:py-12 xl:py-20"
-            id="hero"
-        >
+        <div className="grid grid-cols-12 gap-4 pb-10 pt-6 sm:gap-8 sm:py-12 xl:py-20" id="hero">
             {title && (
                 <>
                     <div className="col-span-12 md:col-span-6">
-                        <Condition
-                            condition={!!backUrl}
-                            wrapper={children => (
-                                <Link
-                                    className="underline-offset-4 hover:underline"
-                                    href={backUrl!}
-                                >
-                                    {children}
-                                </Link>
-                            )}
-                        >
-                            <h1 className="max-w-5xl space-x-2 text-balance break-normal text-2xl font-medium uppercase leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight">
-                                <span>{pageTitle || title}</span>
-                            </h1>
-                        </Condition>
+                        <h1 className="max-w-5xl space-x-2 text-balance break-normal text-2xl font-medium uppercase leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight">
+                            <span>{pageTitle || title}</span>
+                        </h1>
                         {titleAside}
                     </div>
                     <div className="col-span-2 sm:col-span-4 md:hidden" />
