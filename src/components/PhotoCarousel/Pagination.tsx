@@ -8,13 +8,12 @@ interface Props {
 
 const CarouselPagination: React.FC<Props> = ({collectionUrl, nextUrl, previousUrl}) => (
     <div className="flex items-center justify-between gap-2 sm:sticky sm:bottom-0">
-        <Button className="flex-grow text-center" href={previousUrl} rel="prev" scroll={false}>
+        <Button href={collectionUrl}>Back</Button>
+        <div className="flex-grow" />
+        <Button className="self-end" href={previousUrl} rel="prev" scroll={false}>
             Prev
         </Button>
-        <Button className="flex-grow text-center" href={collectionUrl}>
-            Back
-        </Button>
-        <Button className="flex-grow text-center" href={nextUrl} rel="next" scroll={false}>
+        <Button className="self-end" href={nextUrl} rel="next" scroll={false}>
             Next
         </Button>
     </div>
