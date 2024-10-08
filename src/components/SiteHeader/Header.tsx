@@ -9,7 +9,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     const [isScrolled, setIsScrolled] = useState(false);
 
     const handleScroll = useCallback(() => {
-        setIsScrolled(window.scrollY > 0);
+        setIsScrolled(window.scrollY > 50);
     }, []);
 
     useEffect(() => {

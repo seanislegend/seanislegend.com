@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import clsx from 'clsx';
 
 interface Props {
     children: string;
@@ -16,7 +17,10 @@ const MarkdownLink = (props: any) => (
 
 const Markdown: React.FC<Props> = ({children, className = ''}: Props) => (
     <ReactMarkdown
-        className={className}
+        className={clsx([
+            'space-y-6 text-sm leading-relaxed dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] dark:prose-p:text-[var(--dark-dimmed-text)]',
+            className
+        ])}
         components={{a: ({...props}) => <MarkdownLink {...props} />}}
     >
         {children}

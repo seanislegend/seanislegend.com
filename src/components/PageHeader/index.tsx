@@ -62,7 +62,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                         key={description || children?.toString()}
                     >
                         {description && (
-                            <Markdown className="leading max-w-2xl text-pretty text-sm leading-relaxed dark:prose-invert prose-p:tracking-[.0185rem] 2xl:max-w-5xl 2xl:prose-p:text-[17px] dark:prose-p:text-[var(--dark-dimmed-text)]">
+                            <Markdown className="max-w-2xl text-pretty 2xl:max-w-5xl">
                                 {description}
                             </Markdown>
                         )}
