@@ -57,7 +57,7 @@ html {
         --photo-border: var(--theme-black);
         --link-text: var(--theme-beige-black);
         --link-text-hover: var(--theme-black);
-        --overlay-bg: var(--theme-black);
+        --overlay-bg: color-mix(in srgb, var(--theme-black) 80%, transparent);
         --light: var(--theme-beige-50);
         --dark: var(--theme-black);
         
@@ -72,7 +72,7 @@ html {
         --dark-photo-border: var(--theme-beige-50);
         --dark-link-text: var(--theme-beige-50);
         --dark-link-text-hover: var(--theme-beige-100);
-        --dark-overlay-bg: var(--theme-beige-50);
+        --dark-overlay-bg: color-mix(in srgb, var(--theme-beige-50) 80%, transparent);
         --dark-light: var(--theme-black);
         --dark-dark: var(--theme-beige-50);
 
@@ -92,7 +92,7 @@ html {
         --photo-border: var(--theme-beige-50);
         --link-text: var(--theme-beige-50);
         --link-text-hover: var(--theme-beige-100);
-        --overlay-bg: var(--theme-beige-50);
+        --overlay-bg: color-mix(in srgb, var(--theme-beige-50) 80%, transparent);
         --light: var(--theme-black);
         --dark: var(--theme-beige-50);
 
@@ -107,7 +107,7 @@ html {
         --dark-photo-border: var(--theme-black);
         --dark-link-text: var(--theme-beige-black);
         --dark-link-text-hover: var(--theme-black);
-        --dark-overlay-bg: var(--theme-black);
+        --dark-overlay-bg: color-mix(in srgb, var(--theme-beige-50) 80%, transparent);
         --dark-light: var(--theme-beige-50);
         --dark-dark: var(--theme-black);
 

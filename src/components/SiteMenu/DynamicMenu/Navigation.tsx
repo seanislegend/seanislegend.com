@@ -39,7 +39,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                                 </Container>
                             </NavigationMenu.Content>
                         </NavigationMenu.Trigger>
-                        <div className="bg-[var(--photo-bg-color)]/80 fixed left-0 top-[4.75rem] hidden h-screen w-screen duration-500 animate-in fade-in peer-data-[state=open]:block peer-data-[state=open]:duration-200" />
+                        <div className="fixed left-0 top-[4.75rem] hidden h-screen w-screen bg-[var(--overlay-bg)] duration-500 animate-in fade-in peer-data-[state=open]:block peer-data-[state=open]:duration-200" />
                     </NavigationMenu.Item>
                     {MENU_ITEMS.map(item => (
                         <NavigationMenu.Item key={item.href} asChild>
@@ -51,7 +51,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                     </NavigationMenu.Indicator>
                 </NavigationMenu.List>
                 <div className="fixed left-0 top-0 flex w-screen" style={{perspective: '1000px'}}>
-                    <NavigationMenu.Viewport className="relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 border-[var(--accent)] bg-[var(--bg)] data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8" />
+                    <NavigationMenu.Viewport className="relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 border-[var(--accent)] bg-[var(--bg)] duration-700 data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8" />
                 </div>
             </NavigationMenu.Root>
             <SiteMenuMobile links={[...featuredLinks, ...otherLinks]} />

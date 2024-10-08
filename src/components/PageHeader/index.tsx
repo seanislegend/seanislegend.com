@@ -26,7 +26,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
 }) => (
     <Container asChild>
         <div
-            className="grid gap-4 pb-10 pt-6 sm:grid-cols-12 sm:gap-8 sm:pb-12 sm:pt-16 xl:pb-20"
+            className="grid gap-4 pb-10 pt-6 duration-700 animate-in fade-in slide-in-from-bottom-4 sm:grid-cols-12 sm:gap-8 sm:pb-12 sm:pt-16  xl:pb-20"
             id="hero"
         >
             {title && (
@@ -39,7 +39,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                             </Link>
                         )}
                     >
-                        <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-3xl leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight  lg:text-5xl lg:leading-tight dark:text-[var(--dark-title-text)]">
+                        <h1 className="max-w-5xl space-x-2 text-balance break-normal font-serif text-3xl leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight dark:text-[var(--dark-title-text)]">
                             <span>{pageTitle || title}</span>
                         </h1>
                     </Condition>
@@ -51,7 +51,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                     key={description || children?.toString()}
                 >
                     {description && (
-                        <Markdown className="prose-sm max-w-2xl text-balance leading-relaxed lg:prose-base dark:prose-invert lg:max-w-5xl lg:prose-p:leading-relaxed dark:prose-p:text-gray-400">
+                        <Markdown className="leading max-w-2xl text-pretty pr-10 leading-relaxed dark:prose-invert prose-p:tracking-[.0185rem] lg:leading-[1.7] 2xl:max-w-5xl 2xl:prose-p:text-[17px] dark:prose-p:text-[var(--dark-dimmed-text)]">
                             {description}
                         </Markdown>
                     )}

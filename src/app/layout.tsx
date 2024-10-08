@@ -20,11 +20,6 @@ const bodyMediumFont = localFont({
     src: '../../public/fonts/body-medium.woff2',
     variable: '--font-body-medium'
 });
-const bodySemiBoldFont = localFont({
-    display: 'swap',
-    src: '../../public/fonts/body-semibold.woff2',
-    variable: '--font-body-semibold'
-});
 
 interface Props {
     children: React.ReactNode;
@@ -33,7 +28,7 @@ interface Props {
 const RootLayout = async ({children}: Props) => (
     <html
         lang="en"
-        className={`flex flex-grow flex-col antialiased md:min-h-full ${titleFont.variable} ${bodyFont.variable} ${bodySemiBoldFont.variable} ${bodyMediumFont.variable}`}
+        className={`flex flex-grow flex-col antialiased md:min-h-full ${titleFont.variable} ${bodyFont.variable} ${bodyMediumFont.variable}`}
     >
         <body className="flex flex-grow flex-col sm:min-h-full">
             {children}
