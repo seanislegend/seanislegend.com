@@ -1,7 +1,9 @@
+import {Suspense} from 'react';
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
+import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
 import {fetchCollection} from '@/utils/contentful';
 
 interface Props {
@@ -23,6 +25,13 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
             <PageHeader
                 {...collection}
                 description={collection?.showDescription ? collection.description : null}
+                titleAside={
+                    <div className="hidden flex-grow flex-col justify-end sm:flex">
+                        <Suspense>
+                            <BackToCollectionButton />
+                        </Suspense>
+                    </div>
+                }
             />
             {children}
         </DefaultLayout>

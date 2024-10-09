@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import Button from '@/components/Button';
+import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
+import CarouselCounter from '@/components/PhotoCarousel/Counter';
 import Container from '@/components/UI/Container';
-import CarouselDetails from './Details';
 import CarouselImage from './Image';
 import KeyboardNavigation from './KeyboardNavigation';
-import CarouselPagination from './Pagination';
 
 interface Props {
     collection: PhotoCollection;
@@ -20,19 +21,24 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
     const nextPhotoUrl = `/${collection.slug}/${nextPhoto.slug}`;
 
     return (
-        <Container asChild>
+        <Container>
+            <div className="flex items-end justify-between">
+                {activePhoto?.title ? (
+                    <p className="break-normal text-sm font-medium sm:text-base">
+                        {activePhoto.title}
+                    </p>
+                ) : (
+                    <span />
+                )}
+                <CarouselCounter activeIndex={activeIndex} total={allPhotos.length} />
+            </div>
             <div
                 id="#photo"
-                className="relative w-full space-y-4 overflow-hidden md:flex md:flex-col"
+                className="relative my-4 w-full overflow-hidden sm:h-[calc(100vh-var(--site-header-height)-7rem)] sm:bg-[var(--dark)] md:flex md:flex-col"
             >
-                <CarouselDetails
-                    activeIndex={activeIndex}
-                    activePhoto={activePhoto}
-                    total={allPhotos.length}
-                />
-                <div className="relative w-full overflow-hidden">
+                <div className="relative w-full overflow-hidden bg-[var(--dark)]">
                     <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
-                    <div className="left-o absolute top-0 w-full opacity-0">
+                    <div className="absolute left-0 top-0 w-full opacity-0">
                         <CarouselImage isActive={false} {...prevPhoto} />
                         <CarouselImage isActive={false} {...nextPhoto} />
                     </div>
@@ -49,17 +55,23 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                         type="button"
                     />
                 </div>
-                <CarouselPagination
-                    collectionUrl={`/${collection.slug}#${activePhoto.slug}`}
-                    nextUrl={nextPhotoUrl}
-                    previousUrl={prevPhotoUrl}
-                />
-                <KeyboardNavigation
-                    collection={collection}
-                    prevPhotoUrl={prevPhotoUrl}
-                    nextPhotoUrl={nextPhotoUrl}
-                />
             </div>
+            <div className="z-50 mt-4 flex flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center sm:gap-2">
+                <BackToCollectionButton />
+                <div className="flex flex-row gap-2 [&>a]:flex-grow">
+                    <Button className="text-center" href={prevPhotoUrl} rel="prev" scroll={false}>
+                        Previous photo
+                    </Button>
+                    <Button className="text-center" href={nextPhotoUrl} rel="next" scroll={false}>
+                        Next photo
+                    </Button>
+                </div>
+            </div>
+            <KeyboardNavigation
+                collection={collection}
+                prevPhotoUrl={prevPhotoUrl}
+                nextPhotoUrl={nextPhotoUrl}
+            />
         </Container>
     );
 };

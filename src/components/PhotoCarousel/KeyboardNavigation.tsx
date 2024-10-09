@@ -18,7 +18,7 @@ const PhotoCarouselKeyboardNavigation: React.FC<Props> = ({
     const router = useRouter();
 
     const navigateToNextPhoto = (nextDirection: 'left' | 'right') => {
-        router.push(nextDirection === 'left' ? prevPhotoUrl : nextPhotoUrl);
+        router.push(nextDirection === 'left' ? prevPhotoUrl : nextPhotoUrl, {scroll: false});
     };
 
     useKeypress('ArrowLeft', () => navigateToNextPhoto('left'));
