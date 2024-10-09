@@ -24,6 +24,7 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
         <DefaultLayout theme="light">
             <PageHeader
                 {...collection}
+                backUrl={`/${collection.slug}`}
                 description={collection?.showDescription ? collection.description : null}
                 titleAside={
                     <div className="hidden flex-grow flex-col justify-end sm:flex">

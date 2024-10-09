@@ -1,17 +1,33 @@
 'use client';
 
+import {useCallback, useEffect} from 'react';
+import {useSetAtom} from 'jotai';
 import Link from 'next/link';
 import {useParams} from 'next/navigation';
-import {LeftArrowIcon} from '@/components/Icon';
+import {pageHeaderDataAtom} from '@/utils/store';
 
 const BackToCollectionButton: React.FC = () => {
+    const setPageHeaderData = useSetAtom(pageHeaderDataAtom);
     const params = useParams<{collection: string; photo?: string}>();
+
+    const path = `/${params.collection}#${params.photo}`;
+
+    const updatePageHeaderData = useCallback(() => {
+        if (params.photo) {
+            setPageHeaderData(prev => ({...prev, path}));
+        }
+    }, [params.photo, path, setPageHeaderData]);
+
+    useEffect(() => {
+        updatePageHeaderData();
+    }, [updatePageHeaderData]);
+
     if (!params.photo) return null;
 
     return (
         <Link
             className="flex-shrink text-sm font-medium underline underline-offset-4 duration-300 ease-in-out animate-in fade-in hover:decoration-2 sm:text-base"
-            href={`/${params.collection}#${params.photo}`}
+            href={path}
         >
             Back to all photos
         </Link>

@@ -34,7 +34,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
             </div>
             <div
                 id="#photo"
-                className="relative my-4 w-full overflow-hidden sm:h-[calc(100vh-var(--site-header-height)-7rem)] sm:bg-[var(--dark)] md:flex md:flex-col"
+                className="relative my-4 w-full overflow-hidden duration-500 animate-in fade-in sm:h-[calc(100vh-var(--site-header-height)-7rem)] sm:bg-[var(--dark)] md:flex md:flex-col"
             >
                 <div className="relative w-full overflow-hidden bg-[var(--dark)]">
                     <CarouselImage isActive={true} {...allPhotos[activeIndex]} />

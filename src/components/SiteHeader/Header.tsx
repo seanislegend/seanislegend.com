@@ -1,42 +1,16 @@
 'use client';
 
-import {useCallback, useEffect, useState} from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {LeftArrowIcon} from '@/components/Icon';
 import Logo from '@/components/Logo';
+import PageHeaderTitlePreview from '@/components/SiteHeader/PageHeaderTitlePreview';
+import useScrollStatus from '@/hooks/useScrollStatus';
 
 const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     const pathname = usePathname();
-    const [isScrolled, setIsScrolled] = useState(false);
-    const scrollThreshold = 50;
-    const bufferZone = 10;
-
-    const handleScroll = useCallback(() => {
-        setIsScrolled(prevState => {
-            const shouldBeScrolled = window.scrollY > scrollThreshold;
-
-            if (shouldBeScrolled !== prevState) {
-                if (shouldBeScrolled && window.scrollY > scrollThreshold + bufferZone) {
-                    return true;
-                } else if (!shouldBeScrolled && window.scrollY < scrollThreshold - bufferZone) {
-                    return false;
-                }
-            }
-
-            return prevState;
-        });
-    }, []);
-
-    useEffect(() => {
-        handleScroll();
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [handleScroll]);
+    const {isScrolled} = useScrollStatus();
 
     return (
         <header
@@ -45,12 +19,12 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                 {'h-[var(--site-header-height-scrolled)] !border-[var(--accent)]': isScrolled}
             )}
         >
-            <div className="flex w-full items-center justify-between px-4 md:px-8">
-                <span className="relative z-30">
+            <div className="flex w-full items-center justify-between gap-8 px-4 md:px-8">
+                <span className="relative z-30 flex flex-nowrap items-center gap-2">
                     <Link
                         aria-label="Home"
                         className={clsx(
-                            'group relative flex items-center py-2 text-sm outline-none md:text-base',
+                            'group relative inline-flex flex-shrink-0 items-center py-2 text-sm outline-none md:text-base',
                             {'pointer-events-none': pathname === '/'}
                         )}
                         href="/"
@@ -63,6 +37,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                             photography by <Logo className="text-[var(--text)]" />
                         </span>
                     </Link>
+                    <PageHeaderTitlePreview />
                 </span>
                 {children}
             </div>
