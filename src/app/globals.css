@@ -44,7 +44,8 @@ html {
         --secondary-button-bg: var(--theme-beige-100);
         --secondary-button-bg-hover: var(--theme-beige-100);
         --secondary-button-text: var(--theme-black);
-        --photo-border: var(--theme-black);
+        --photo-bg: color-mix(in srgb, var(--theme-black) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--theme-black) 70%, transparent);
         --link-text: var(--theme-beige-black);
         --link-text-hover: var(--theme-black);
         --overlay-bg: color-mix(in srgb, var(--theme-black) 80%, transparent);
@@ -72,7 +73,8 @@ html {
         --secondary-button-bg: #000;
         --secondary-button-bg-hover: var(--theme-beige-950);
         --secondary-button-text: var(--theme-beige-50);
-        --photo-border: var(--theme-beige-50);
+        --photo-bg: color-mix(in srgb, var(--theme-black) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--theme-black) 70%, transparent);
         --link-text: var(--theme-beige-50);
         --link-text-hover: var(--theme-beige-100);
         --overlay-bg: rgba(0, 0, 0, 0.8);
@@ -116,7 +118,8 @@ html {
             --secondary-button-bg: var(--theme-beige-900);
             --secondary-button-bg-hover: var(--theme-beige-900);
             --secondary-button-text: var(--theme-beige-50);
-            --photo-border: var(--theme-beige-50);
+            --photo-bg: color-mix(in srgb, var(--theme-black) 40%, transparent);
+            --photo-bg-badge: color-mix(in srgb, var(--theme-black) 70%, transparent);
             --link-text: var(--theme-beige-50);
             --link-text-hover: var(--theme-beige-100);
             --overlay-bg: color-mix(in srgb, var(--theme-black) 90%, transparent);
@@ -135,7 +138,8 @@ html {
             --secondary-button-bg: var(--theme-beige-800);
             --secondary-button-bg-hover: var(--theme-beige-700);
             --secondary-button-text: var(--theme-beige-100);
-            --photo-border: var(--theme-beige-600);
+            --photo-bg: color-mix(in srgb, var(--theme-black) 40%, transparent);
+            --photo-bg-badge: color-mix(in srgb, var(--theme-black) 70%, transparent);
             --link-text: var(--theme-beige-200);
             --link-text-hover: var(--theme-beige-50);
             --overlay-bg: color-mix(in srgb, var(--theme-black) 90%, transparent);

@@ -39,7 +39,11 @@ const PhotoThumbnail: React.FC<Props> = ({
                 {children}
                 <span
                     className={clsx(
-                        'absolute inset-0 z-30 w-full bg-[var(--overlay-bg)] opacity-0 transition-opacity duration-500 ease-in-out group-hover/photo:opacity-100 group-hover/photo:duration-200'
+                        'absolute inset-0 z-30 w-full opacity-0 transition-opacity duration-500 ease-in-out group-hover/photo:opacity-100 group-hover/photo:duration-200',
+                        {
+                            'bg-[var(--photo-bg)]': linksTo !== 'collection',
+                            'bg-[var(--photo-bg-badge)]': linksTo === 'collection'
+                        }
                     )}
                 />
                 {linksTo === 'collection' && (
