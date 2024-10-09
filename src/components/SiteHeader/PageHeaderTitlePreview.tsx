@@ -2,16 +2,21 @@ import React from 'react';
 import clsx from 'clsx';
 import {useAtomValue} from 'jotai';
 import Link from 'next/link';
+import {usePathname} from 'next/navigation';
 import {LeftArrowIcon} from '@/components/Icon/LeftArrow';
 import Condition from '@/components/UI/Condition';
 import useScrollStatus from '@/hooks/useScrollStatus';
 import {pageHeaderDataAtom} from '@/utils/store';
 
 const PageHeaderTitlePreview: React.FC = () => {
+    const pathname = usePathname();
     const pageHeaderData = useAtomValue(pageHeaderDataAtom);
     const {isScrolled} = useScrollStatus(pageHeaderData?.height);
 
     if (!pageHeaderData) return null;
+
+    const pageHeaderPathMinusAnchor = pageHeaderData.path.split('#')[0];
+    const isPathEqualToPageHeaderPath = pathname === pageHeaderPathMinusAnchor;
 
     return (
         <span
@@ -22,10 +27,10 @@ const PageHeaderTitlePreview: React.FC = () => {
         >
             <span className="mx-4">&mdash;</span>
             <Condition
-                condition={pageHeaderData.path}
+                condition={pageHeaderData.path && !isPathEqualToPageHeaderPath}
                 wrapper={children => (
                     <Link
-                        className="group relative inline-block truncate underline-offset-4 hover:underline"
+                        className="group relative inline-block truncate underline underline-offset-4 hover:underline"
                         href={pageHeaderData.path}
                     >
                         <span className="absolute bottom-0 left-0 top-0 flex translate-x-2 items-center gap-1 opacity-0 duration-300 ease-in-out group-hover:translate-x-0 group-hover:opacity-100">
