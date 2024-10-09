@@ -23,7 +23,8 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
 
     return (
         <Container>
-            <div className="flex items-end justify-between" id="photo">
+            <ScrollToContainerFix />
+            <div className="flex items-end justify-between">
                 {activePhoto?.title ? (
                     <p className="break-normal text-sm font-medium sm:text-base">
                         {activePhoto.title}
@@ -70,7 +71,6 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                 prevPhotoUrl={prevPhotoUrl}
                 nextPhotoUrl={nextPhotoUrl}
             />
-            <ScrollToContainerFix />
         </Container>
     );
 };

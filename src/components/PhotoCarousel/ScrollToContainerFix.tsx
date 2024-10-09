@@ -1,20 +1,21 @@
 'use client';
 
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 
 const ScrollToContainerFix: React.FC = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         const scrollToPhoto = () => {
-            const photoElement = document.getElementById('photo');
-            if (photoElement) {
-                photoElement.scrollIntoView();
+            if (containerRef.current) {
+                containerRef.current.scrollIntoView();
             }
         };
-        const timeoutId = setTimeout(scrollToPhoto, 200);
+        const timeoutId = setTimeout(scrollToPhoto, 100);
         return () => clearTimeout(timeoutId);
     }, []);
 
-    return null;
+    return <div ref={containerRef} />;
 };
 
 export default ScrollToContainerFix;
