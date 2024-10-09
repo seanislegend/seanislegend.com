@@ -15,7 +15,7 @@ const PageHeaderTitlePreview: React.FC = () => {
     return (
         <span
             className={clsx('hidden truncate transition duration-300 md:inline-flex', {
-                '-translate-x-2 opacity-0': !isScrolled,
+                'pointer-events-none -translate-x-2 opacity-0': !isScrolled,
                 'translate-x-0 opacity-100': isScrolled
             })}
         >

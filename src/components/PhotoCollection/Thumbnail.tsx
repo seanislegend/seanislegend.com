@@ -34,7 +34,6 @@ const PhotoThumbnail: React.FC<Props> = ({
                 )}
                 href={path}
                 id={slug}
-                scroll={false}
                 {...props}
             >
                 {children}
