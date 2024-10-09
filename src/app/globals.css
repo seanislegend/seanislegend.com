@@ -129,5 +129,16 @@ html {
             --dark: var(--theme-black);
         }
     }
-    
+
+    @media print {
+        [data-theme] {
+            --text: #000 ;
+            --bg: #fff ;
+            --accent: #000 ;
+            --title-text: #000 ;
+            --link-text: #000 ;
+            --link-text-hover: #000 ;
+            --overlay-bg: #fff ;
+        }
+    }
 }

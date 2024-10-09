@@ -25,14 +25,14 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
     return (
         <>
             <button
-                className="relative z-30 size-6 lg:hidden"
+                className="relative z-30 size-6 lg:hidden print:hidden"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
             >
                 <ToggleButtonIcon className="h-auto w-6 text-[var(--text)]" />
             </button>
             <div
-                className="absolute left-0 top-[var(--site-header-height)] z-30 w-full lg:hidden"
+                className="absolute left-0 top-[var(--site-header-height)] z-30 w-full lg:hidden print:hidden"
                 style={{
                     height: isMenuOpen ? '100vh' : '0',
                     opacity: isMenuOpen ? 1 : 0.8,

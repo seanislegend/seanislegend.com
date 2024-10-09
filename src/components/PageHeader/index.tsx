@@ -76,7 +76,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                             )}
                             {ctaLabel && ctaUrl && (
                                 <Button
-                                    className="mt-6"
+                                    className="mt-6 print:hidden"
                                     href={getExternalUrl(ctaUrl)}
                                     rel="noopener noreferrer"
                                     target="_blank"

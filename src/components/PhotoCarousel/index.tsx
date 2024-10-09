@@ -54,7 +54,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                     />
                 </div>
             </div>
-            <div className="z-50 mt-4 flex flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center sm:gap-2">
+            <div className="z-50 mt-4 flex flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center sm:gap-2 print:hidden">
                 <BackToCollectionButton />
                 <div className="flex flex-row gap-2 [&>a]:flex-grow">
                     <Button className="text-center" href={prevPhotoUrl} rel="prev" scroll={false}>
