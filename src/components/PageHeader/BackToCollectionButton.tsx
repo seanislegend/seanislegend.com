@@ -25,12 +25,14 @@ const BackToCollectionButton: React.FC = () => {
     if (!params.photo) return null;
 
     return (
-        <Link
-            className="flex-shrink text-sm font-medium underline underline-offset-4 duration-300 ease-in-out animate-in fade-in hover:decoration-2 sm:text-base"
-            href={path}
-        >
-            Back to all photos
-        </Link>
+        <span>
+            <Link
+                className="focus:ring-offset-2text-sm font-medium underline underline-offset-4 duration-300 ease-in-out animate-in fade-in hover:decoration-2 focus:outline-none focus:ring-2 focus:ring-[var(--text)] sm:text-base"
+                href={path}
+            >
+                Back to all photos
+            </Link>
+        </span>
     );
 };
 

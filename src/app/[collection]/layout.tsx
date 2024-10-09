@@ -27,7 +27,7 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
                 backUrl={`/${collection.slug}`}
                 description={collection?.showDescription ? collection.description : null}
                 titleAside={
-                    <div className="hidden flex-grow flex-col justify-end sm:flex">
+                    <div className="hidden flex-grow flex-col justify-end md:flex">
                         <Suspense>
                             <BackToCollectionButton />
                         </Suspense>

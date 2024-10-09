@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Button from '@/components/Button';
 import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
 import CarouselCounter from '@/components/PhotoCarousel/Counter';
+import ScrollToContainerFix from '@/components/PhotoCarousel/ScrollToContainerFix';
 import Container from '@/components/UI/Container';
 import CarouselImage from './Image';
 import KeyboardNavigation from './KeyboardNavigation';
@@ -22,7 +23,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
 
     return (
         <Container>
-            <div className="flex items-end justify-between">
+            <div className="flex items-end justify-between" id="photo">
                 {activePhoto?.title ? (
                     <p className="break-normal text-sm font-medium sm:text-base">
                         {activePhoto.title}
@@ -32,10 +33,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                 )}
                 <CarouselCounter activeIndex={activeIndex} total={allPhotos.length} />
             </div>
-            <div
-                id="#photo"
-                className="relative my-4 w-full overflow-hidden duration-500 animate-in fade-in sm:h-[calc(100vh-var(--site-header-height)-7rem)] sm:bg-[var(--dark)] md:flex md:flex-col"
-            >
+            <div className="relative my-4 w-full overflow-hidden duration-500 animate-in fade-in sm:max-h-[calc(100vh-var(--site-header-height)-7rem)] sm:bg-[var(--dark)] md:flex md:flex-col">
                 <div className="relative w-full overflow-hidden bg-[var(--dark)]">
                     <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
                     <div className="absolute left-0 top-0 w-full opacity-0">
@@ -72,6 +70,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                 prevPhotoUrl={prevPhotoUrl}
                 nextPhotoUrl={nextPhotoUrl}
             />
+            <ScrollToContainerFix />
         </Container>
     );
 };
