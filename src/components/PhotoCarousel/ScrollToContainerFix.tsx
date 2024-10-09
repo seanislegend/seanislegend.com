@@ -6,14 +6,8 @@ const ScrollToContainerFix: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const scrollToPhoto = () => {
-            if (containerRef.current) {
-                containerRef.current.scrollIntoView();
-            }
-        };
-        const timeoutId = setTimeout(scrollToPhoto, 100);
-        return () => clearTimeout(timeoutId);
-    }, []);
+        containerRef.current?.scrollIntoView();
+    }, [containerRef]);
 
     return <div ref={containerRef} />;
 };
