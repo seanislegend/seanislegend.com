@@ -19,10 +19,12 @@ const PhotosCollection: React.FC<Props> = ({linksTo = 'photo', photosCollection,
     const renderPhoto = (index: number, fillContainer?: boolean) => {
         if (!photos[index]) return null;
 
-        let path = `/${photos[index].collection || slug}#${photos[index].slug}`;
+        let path = `/${photos[index].collection || slug}`;
 
         if (linksTo === 'photo') {
             path = `${path}/${photos[index].slug}#photo`;
+        } else {
+            path = `${path}#${photos[index].slug}`;
         }
 
         return (

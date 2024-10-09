@@ -54,7 +54,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 {title && (
                     <>
                         <div className="col-span-12 flex flex-col space-y-4 md:col-span-6">
-                            <h1 className="max-w-5xl space-x-2 text-balance break-normal text-2xl font-medium uppercase leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-4xl md:leading-tight">
+                            <h1 className="max-w-5xl space-x-2 text-balance break-normal text-2xl font-medium uppercase leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-3xl md:leading-tight lg:text-4xl">
                                 <span>{pageTitle || title}</span>
                             </h1>
                             {titleAside}
