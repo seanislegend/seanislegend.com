@@ -228,6 +228,9 @@ export const fetchAllCollections = async (
                         base64
                     }
                 }
+                sys {
+                    published: firstPublishedAt
+                }
             }
         }
     }`;
