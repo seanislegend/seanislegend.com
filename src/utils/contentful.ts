@@ -138,7 +138,7 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
     const query = `query {
         collectionNavigationCollection(limit: 1, order: [sys_publishedAt_DESC]) {
             items {
-                collectionsCollection{
+                collectionsCollection {
                     items {
                         title
                         slug
@@ -164,19 +164,19 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
     }`;
     const response: any = await fetchContent(query);
     const items =
-        response?.data?.collectionNavigationCollection?.items?.[0]?.collectionsCollection?.items?.map(
-            (item: PhotoCollection) => {
+        response?.data?.collectionNavigationCollection?.items?.[0]?.collectionsCollection?.items
+            ?.filter((item: PhotoCollection) => !!item?.slug)
+            ?.map((item: PhotoCollection) => {
                 const photo = item?.photosCollection?.items?.[0];
                 return {
                     isFeatured: !!photo,
                     photo,
                     published: item?.sys?.published,
-                    pageTitle: item.pageTitle,
+                    pageTitle: item?.pageTitle ?? item?.title,
                     title: item.title,
                     url: `/${item.slug}`
                 };
-            }
-        );
+            });
 
     return items || [];
 };
