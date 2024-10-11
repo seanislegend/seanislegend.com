@@ -17,6 +17,17 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'ThreeInARow', photos: [7, 5, 4]},
         {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [11, 6, 12]}
     ],
+    'euros-final-2024': [
+        {layout: 'LandscapeTwoBigFourSmall', photos: [0, 6, 2, 4, 19, 20]},
+        {
+            layout: 'LandscapeTwoBigFourSmall',
+            photos: [22, 3, 7, 8, 9, 11],
+            props: {reverse: true}
+        },
+        {layout: 'ThreeInARow', photos: [23, 21, 18]},
+        {layout: 'FourInARow', photos: [5, 10, 24, 16]},
+        {layout: 'ThreeInARow', photos: [13, 15, 14]}
+    ],
     'good-beer-hunting-b-roll': [
         {layout: 'LandscapeTwoBigTwoMediumFourSmall', photos: [1, 6, 2, 7, 8, 3, 4, 5]}
     ],
@@ -71,6 +82,22 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [15, 16, 19, 20]},
         {layout: 'ThreeInARowWithPadding', photos: [14, 18, 17]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [22, 25, 27, 21, 23, 24]}
+    ],
+    'reviving-tradition-at-lacons-brewery': [
+        {layout: 'LandscapeOneBigTwoMedium', photos: [0, 3, 8]},
+        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [3, 1, 37]},
+        {layout: 'FourInARow', photos: [26, 20, 39, 45]},
+        {layout: 'ThreeInARow', photos: [16, 17, 35]},
+        {layout: 'TwoInARowWithPadding', photos: [40, 24]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [4, 6, 28, 23, 33, 5]},
+        {layout: 'ThreeInARowWithPadding', photos: [2, 38, 22]},
+        {layout: 'FourInARow', photos: [30, 41, 12, 19]},
+        {layout: 'TwoInARowWithPadding', photos: [43, 29]},
+        {layout: 'TwoInARowWithPadding', photos: [14, 15, 16, 17]},
+        {layout: 'FourInARow', photos: [7, 21, 34, 27]},
+        {layout: 'LandscapeOneBigTwoMedium', photos: [32, 44, 31], props: {reverse: true}},
+        {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [9, 11, 10]},
+        {layout: 'FourInARow', photos: [18, 13, 25, 36]}
     ],
     'tynt-meadow-trappist-ale': [
         {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 3, 2, 1]},
