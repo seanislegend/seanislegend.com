@@ -5,13 +5,14 @@ import DynamicMenuNavigation from './Navigation';
 
 const SiteMenuDynamic: React.FC = async () => {
     const links = await fetchCollectionNavigation();
-
     if (!links) return null;
 
-    const featuredLinks = links.filter(link => link.isFeatured);
-    const otherLinks = links.filter(link => !link.isFeatured);
+    const linksWithAllCollectionsLink = [
+        ...links,
+        {title: 'View all collections', url: '/collections'}
+    ];
 
-    return <DynamicMenuNavigation featuredLinks={featuredLinks} otherLinks={otherLinks} />;
+    return <DynamicMenuNavigation links={linksWithAllCollectionsLink} />;
 };
 
 export default SiteMenuDynamic;

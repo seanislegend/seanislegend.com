@@ -4,17 +4,14 @@ import {MENU_ITEMS} from '../';
 import SiteHeaderLink, {linkClasses} from '../Link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {usePathname} from 'next/navigation';
+import Collection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SiteMenuMobile from '@/components/SiteMenu/Mobile';
-import Container from '@/components/UI/Container';
-import AllCollections from './AllCollections';
-import FeaturedCollections from './FeaturedCollections';
 
 interface Props {
-    featuredLinks: Link[];
-    otherLinks: Link[];
+    links: Link[];
 }
 
-const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherLinks}) => {
+const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
     const pathname = usePathname();
 
     return (
@@ -24,19 +21,14 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                     <NavigationMenu.Item>
                         <NavigationMenu.Trigger className={`${linkClasses} peer relative z-30`}>
                             Collections
-                            <NavigationMenu.Content className="absolute left-0 top-0 w-screen pt-12 data-[motion^=to-]:delay-200 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out">
-                                <Container asChild>
-                                    <div className="mt-5 grid w-full grid-cols-12 gap-12 p-8 xl:pb-16">
-                                        {featuredLinks.length > 0 && (
-                                            <div className="col-span-9">
-                                                <FeaturedCollections links={featuredLinks} />
-                                            </div>
-                                        )}
-                                        <div className="col-span-3 w-full">
-                                            <AllCollections links={otherLinks} />
-                                        </div>
+                            <NavigationMenu.Content className="absolute left-0 top-0 w-screen pt-8 data-[motion^=to-]:delay-200 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out">
+                                <div className="mt-5 w-full p-4 sm:p-8">
+                                    <div className="grid grid-cols-6 gap-4">
+                                        {links.map(link => (
+                                            <Collection key={link.url} link={link} />
+                                        ))}
                                     </div>
-                                </Container>
+                                </div>
                             </NavigationMenu.Content>
                         </NavigationMenu.Trigger>
                         <div className="fixed left-0 top-[4.75rem] hidden h-screen w-screen bg-[var(--overlay-bg)] duration-500 animate-in fade-in peer-data-[state=open]:block peer-data-[state=open]:duration-200" />
@@ -54,7 +46,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({featuredLinks, otherL
                     <NavigationMenu.Viewport className="relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 border-[var(--accent)] bg-[var(--bg)] duration-700 data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8" />
                 </div>
             </NavigationMenu.Root>
-            <SiteMenuMobile links={[...featuredLinks, ...otherLinks]} />
+            <SiteMenuMobile links={links} />
         </>
     );
 };
