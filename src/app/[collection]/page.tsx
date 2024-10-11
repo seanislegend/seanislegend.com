@@ -1,6 +1,7 @@
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 import PhotoCollection from '@/components/PhotoCollection';
+import PhotoCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
 import {getCollectionSeo} from '@/utils/helpers';
@@ -17,10 +18,15 @@ const CollectionPage = async ({params}: Props) => {
     if (!collection) return notFound();
 
     return (
-        <PhotoCollection
-            {...collection}
-            linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
-        />
+        <>
+            <PhotoCollection
+                {...collection}
+                linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
+            />
+            {process.env.NEXT_PUBLIC_ADMIN_TOOLS && (
+                <PhotoCollectionAdminTools collection={collection} />
+            )}
+        </>
     );
 };
 
