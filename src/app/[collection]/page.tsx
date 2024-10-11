@@ -1,31 +1,31 @@
 import {draftMode} from 'next/headers';
-import {notFound, redirect} from 'next/navigation';
-import Markdown from '@/components/Markdown';
-import PageHeader from '@/components/PageHeader';
+import {notFound} from 'next/navigation';
 import PhotoCollection from '@/components/PhotoCollection';
+import PhotoCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
 import {getCollectionSeo} from '@/utils/helpers';
 
 interface Props {
-    params: {collection: string};
+    params: Promise<{collection: string}>;
 }
 
 const CollectionPage = async ({params}: Props) => {
-    const {isEnabled: isDraftModeEnabled} = draftMode();
-    const collection = await fetchCollection(params.collection, isDraftModeEnabled);
+    const allParams = await params;
+    const draftModeConfig = await draftMode();
+    const collection = await fetchCollection(allParams.collection, draftModeConfig.isEnabled);
 
     if (!collection) return notFound();
 
     return (
         <>
-            <div className={params.collection === 'home' ? 'md:hidden' : ''}>
-                <PageHeader
-                    {...collection}
-                    description={collection?.showDescription ? collection.description : null}
-                />
-            </div>
-            <PhotoCollection {...collection} key={collection.slug} />
+            <PhotoCollection
+                {...collection}
+                linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
+            />
+            {process.env.NEXT_PUBLIC_ADMIN_TOOLS && (
+                <PhotoCollectionAdminTools collection={collection} />
+            )}
         </>
     );
 };
@@ -38,7 +38,8 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({params}: Props) => {
-    const collection = await fetchCollection(params.collection);
+    const allParams = await params;
+    const collection = await fetchCollection(allParams.collection);
     if (!collection) return null;
 
     const collectionSeo = getCollectionSeo(collection);

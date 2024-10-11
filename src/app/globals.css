@@ -2,16 +2,161 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    @media screen and (prefers-reduced-motion: reduce) {
-        html {
-            scroll-behavior: auto;
-        }
-    }
+html {
+    scroll-padding-top: var(--site-header-height);
+    scroll-behavior: smooth;
 }
 
-@layer utilities {
-    .tap-transparent {
-        -webkit-tap-highlight-color: transparent;
+@layer base {
+    :root {
+        --theme-black: #2e2d29;
+        --theme-beige-50: #faf7ef;
+        --theme-beige-100: #ece8df;
+        --theme-beige-200: #dfd8c9;
+        --theme-beige-300: #cabda7;
+        --theme-beige-400: #b49f83;
+        --theme-beige-500: #a4896b;
+        --theme-beige-600: #97795f;
+        --theme-beige-700: #7e6350;
+        --theme-beige-800: #675145;
+        --theme-beige-900: #554339;
+        --theme-beige-950: #2d231d;
+        --site-header-height: 3.125rem;
+        --site-header-height-scrolled: 3.125rem;
+    }
+    
+    @media (min-width: 768px) {
+        :root {
+            --site-header-height: 4.5rem;
+            --site-header-height-scrolled: 3.125rem;
+        }
+    }
+    
+    [data-theme="light"] {
+        --bg: var(--theme-beige-50);
+        --text: var(--theme-black);
+        --dimmed-text: var(--theme-beige-800);
+        --title-text: var(--theme-black);
+        --accent: var(--theme-beige-100);
+        --button-bg: var(--theme-black);
+        --button-text: var(--theme-beige-50);
+        --button-bg-hover: #000;
+        --secondary-button-bg: var(--theme-beige-100);
+        --secondary-button-bg-hover: var(--theme-beige-100);
+        --secondary-button-text: var(--theme-black);
+        --photo-bg: color-mix(in srgb, var(--theme-black) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--theme-black) 70%, transparent);
+        --link-text: var(--theme-beige-black);
+        --link-text-hover: var(--theme-black);
+        --overlay-bg: color-mix(in srgb, var(--theme-black) 80%, transparent);
+        --light: var(--theme-beige-50);
+        --dark: var(--theme-black);
+
+        background-color: var(--bg);
+        color: var(--text);
+
+        ::selection {
+            background-color: var(--theme-beige-100);
+            color: var(--theme-black);
+        }
+    }
+    
+    [data-theme="dark"] {
+        --bg: var(--theme-black);
+        --text: var(--theme-beige-50);
+        --dimmed-text: var(--theme-beige-800);
+        --title-text: var(--theme-beige-50);
+        --accent: var(--theme-beige-950);
+        --button-bg: #000;
+        --button-text: var(--theme-beige-50);
+        --button-bg-hover: var(--theme-beige-950);
+        --secondary-button-bg: #000;
+        --secondary-button-bg-hover: var(--theme-beige-950);
+        --secondary-button-text: var(--theme-beige-50);
+        --photo-bg: color-mix(in srgb, var(--theme-black) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--theme-black) 70%, transparent);
+        --link-text: var(--theme-beige-50);
+        --link-text-hover: var(--theme-beige-100);
+        --overlay-bg: rgba(0, 0, 0, 0.8);
+        --light: var(--theme-black);
+        --dark: var(--theme-beige-50);
+
+        background-color: var(--bg);
+        color: var(--text);
+
+        ::selection {
+            background-color: var(--theme-beige-950);
+            color: var(--theme-beige-50);
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --theme-black: #131414;
+            --theme-beige-50: #f5f6f6;
+            --theme-beige-100: #e4e7e9;
+            --theme-beige-200: #ccd3d5;
+            --theme-beige-300: #a9b3b7;
+            --theme-beige-400: #7e8d92;
+            --theme-beige-500: #637277;
+            --theme-beige-600: #556065;
+            --theme-beige-700: #495255;
+            --theme-beige-800: #40464a;
+            --theme-beige-900: #393d40;
+            --theme-beige-950: #1e2123;
+        }
+       
+        [data-theme="light"] {
+            --bg: var(--theme-beige-950);
+            --text: var(--theme-beige-50);
+            --dimmed-text: var(--theme-beige-800);
+            --title-text: var(--theme-beige-50);
+            --accent: var(--theme-beige-950);
+            --button-bg: var(--theme-beige-950);
+            --button-text: var(--theme-beige-50);
+            --button-bg: var(--theme-beige-900);
+            --secondary-button-bg: var(--theme-beige-900);
+            --secondary-button-bg-hover: var(--theme-beige-900);
+            --secondary-button-text: var(--theme-beige-50);
+            --photo-bg: color-mix(in srgb, var(--theme-black) 40%, transparent);
+            --photo-bg-badge: color-mix(in srgb, var(--theme-black) 70%, transparent);
+            --link-text: var(--theme-beige-50);
+            --link-text-hover: var(--theme-beige-100);
+            --overlay-bg: color-mix(in srgb, var(--theme-black) 90%, transparent);
+            --light: var(--theme-black);
+            --dark: var(--theme-black);
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--theme-beige-900);
+            --text: var(--theme-beige-100);
+            --dimmed-text: var(--theme-beige-300);
+            --title-text: var(--theme-beige-50);
+            --accent: var(--theme-beige-800);
+            --button-bg: var(--theme-beige-700);
+            --button-text: var(--theme-beige-50);
+            --secondary-button-bg: var(--theme-beige-800);
+            --secondary-button-bg-hover: var(--theme-beige-700);
+            --secondary-button-text: var(--theme-beige-100);
+            --photo-bg: color-mix(in srgb, var(--theme-black) 40%, transparent);
+            --photo-bg-badge: color-mix(in srgb, var(--theme-black) 70%, transparent);
+            --link-text: var(--theme-beige-200);
+            --link-text-hover: var(--theme-beige-50);
+            --overlay-bg: color-mix(in srgb, var(--theme-black) 90%, transparent);
+            --light: var(--theme-beige-100);
+            --dark: var(--theme-beige-950);
+        }
+    }
+
+    @media print {
+        [data-theme] {
+            --text: #000 ;
+            --bg: #fff ;
+            --accent: #000 ;
+            --title-text: #000 ;
+            --link-text: #000 ;
+            --link-text-hover: #000 ;
+            --overlay-bg: #fff ;
+        }
     }
 }

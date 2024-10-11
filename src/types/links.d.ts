@@ -1,7 +1,12 @@
 interface Link {
+    isFeatured?: boolean;
+    pageTitle?: string;
+    photo?: {
+        base64: string;
+        thumbnail: Image;
+    };
     published?: string;
     text?: string;
-    thumbnail?: Image;
     title: string;
     type?: string;
     url: string;

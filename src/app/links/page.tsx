@@ -1,3 +1,4 @@
+import DefaultLayout from '@/components/Layouts/Default';
 import LinksList from '@/components/LinksList';
 import PageHeader from '@/components/PageHeader';
 import config from '@/utils/config';
@@ -8,10 +9,11 @@ const LinksPage = async () => {
     const page = await fetchLinksPage();
 
     return (
-        <>
-            <PageHeader title="Links" />
-            <LinksList links={page.linksCollection?.items} />
-        </>
+        <DefaultLayout theme="dark">
+            <PageHeader title="Links">
+                <LinksList links={page.linksCollection?.items} />
+            </PageHeader>
+        </DefaultLayout>
     );
 };
 

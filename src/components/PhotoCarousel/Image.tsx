@@ -7,17 +7,17 @@ interface Props extends Photo {
 
 const CarouselImage: React.FC<Props> = ({base64, fullSize, isActive, title}) => {
     if (!fullSize) return null;
-
     return (
         <Image
             alt={title}
             blurDataURL={base64 || ''}
             className={clsx(
-                'w-full animate-fadeIn transition ease-in-out md:absolute md:block md:h-full md:flex-shrink-0 md:object-contain md:object-center',
-                {'absolute opacity-0 lg:block': !isActive, 'relative block opacity-100': isActive}
+                'h-full w-full object-contain transition duration-500 ease-in-out animate-in fade-in',
+                {'opacity-0': !isActive, 'opacity-100': isActive}
             )}
             height={fullSize.height}
             placeholder={base64 ? 'blur' : 'empty'}
+            priority={isActive}
             quality={75}
             sizes="(max-width: 1024px) 100vw, 90vw"
             src={fullSize.url}

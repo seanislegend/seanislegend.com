@@ -1,13 +1,12 @@
 import {draftMode} from 'next/headers';
 import {redirect} from 'next/navigation';
-import PageHeader from '@/components/PageHeader';
 import PhotoCarousel from '@/components/PhotoCarousel';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
 import {getPhotoSeo} from '@/utils/helpers';
 
 interface Props {
-    params: {collection: string; photo: string};
+    params: Promise<{collection: string; photo: string}>;
 }
 
 const getCollectionAndPhoto = async (
@@ -22,34 +21,16 @@ const getCollectionAndPhoto = async (
 };
 
 const PhotoPage = async ({params}: Props) => {
-    const {isEnabled: isDraftModeEnabled} = draftMode();
+    const allParams = await params;
+    const draftModeConfig = await draftMode();
     const {collection} = await getCollectionAndPhoto(
-        params.collection,
-        params.photo,
-        isDraftModeEnabled
+        allParams.collection,
+        allParams.photo,
+        draftModeConfig.isEnabled
     );
     if (!collection) redirect('/');
 
-    return (
-        <>
-            <PageHeader
-                animate={false}
-                backUrl={`/${collection.slug}`}
-                title={collection.pageTitle || collection.title}
-            />
-            <PhotoCarousel photo={params.photo} collection={collection} />
-            <div className="md:hidden">
-                <PageHeader
-                    animate={false}
-                    backUrl={`/${collection.slug}`}
-                    ctaLabel={collection.ctaLabel}
-                    ctaUrl={collection.ctaUrl}
-                    description={collection.description}
-                    hasBottomPadding={false}
-                />
-            </div>
-        </>
-    );
+    return <PhotoCarousel photo={allParams.photo} collection={collection} />;
 };
 
 export const generateStaticParams = async () => {
@@ -67,7 +48,8 @@ export const generateStaticParams = async () => {
 };
 
 export const generateMetadata = async ({params}: Props) => {
-    const {collection, photo} = await getCollectionAndPhoto(params.collection, params.photo);
+    const allParams = await params;
+    const {collection, photo} = await getCollectionAndPhoto(allParams.collection, allParams.photo);
     if (!collection || !photo) return null;
 
     return {...config.seo, ...getPhotoSeo(collection, photo)};

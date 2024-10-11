@@ -67,6 +67,5 @@ module.exports = {
             {protocol: 'https', hostname: 'downloads.ctfassets.net'}
         ]
     },
-    reactStrictMode: true,
-    swcMinify: true
+    reactStrictMode: true
 };

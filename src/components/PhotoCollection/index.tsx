@@ -1,58 +1,58 @@
-'use client';
+import PhotoCollectionBlocks from '@/components/PhotoCollection/Blocks';
+import Column from './Column';
+import Grid from './Grid';
+import PhotoThumbnail from './Thumbnail';
+import {layouts} from './layouts';
 
-import clsx from 'clsx';
-import PhotoThumbnail from '@/components/PhotoCollection/Thumbnail';
-import usePhotoCollection from '@/hooks/usePhotoCollection';
+interface Props extends Pick<PhotoCollection, 'photosCollection' | 'slug' | 'title'> {
+    linksTo?: 'collection' | 'photo';
+}
 
-type Props = Pick<PhotoCollection, 'photosCollection' | 'slug'>;
+interface CustomLayoutProps {
+    renderPhoto: (index: number, fillContainer?: boolean) => React.ReactNode;
+}
 
-const PhotosCollection: React.FC<Props> = ({photosCollection, slug}) => {
-    const {maxSize, photoGroups} = usePhotoCollection(
-        photosCollection,
-        slug === 'home' ? 'home' : 'default'
-    );
+const PhotosCollection: React.FC<Props> = ({linksTo = 'photo', photosCollection, slug}) => {
+    const photos = photosCollection.items;
+    const layout = layouts?.[slug];
 
-    const columnClasses: {[key: number]: string} = {
-        1: 'w-12/12',
-        2: 'w-6/12',
-        3: 'w-4/12',
-        4: 'w-3/12'
+    const renderPhoto = (index: number, fillContainer?: boolean) => {
+        if (!photos[index]) return null;
+
+        let path = `/${photos[index].collection || slug}`;
+
+        if (linksTo === 'photo') {
+            path = `${path}/${photos[index].slug}#photo`;
+        } else {
+            path = `${path}#${photos[index].slug}`;
+        }
+
+        return (
+            <PhotoThumbnail
+                base64={photos[index].base64}
+                fill={fillContainer}
+                linksTo={linksTo}
+                path={path}
+                slug={photos[index].slug}
+                title={photos[index].title}
+                thumbnail={photos[index].thumbnail}
+            />
+        );
     };
-    const columnSize = photoGroups ? photoGroups.length : 0;
-    const columnClass = columnClasses[columnSize];
 
     return (
-        <div className="-mb-1.5 -ml-1.5 flex animate-fadeIn flex-row flex-wrap animate-duration-1000 sm:-mb-2 sm:-ml-2">
-            {photoGroups?.map((row, index) => (
-                <div key={index} className={`self-start pl-1.5 sm:pl-2 ${columnClass}`}>
-                    {row.map((photo, index2) => {
-                        const padding = (photo.fullSize.height / maxSize) * 100;
-
-                        return (
-                            <div
-                                className="mb-1.5 h-0 w-full overflow-hidden sm:mb-2"
-                                key={index2}
-                                style={{paddingBottom: `${padding}%`}}
-                            >
-                                <div
-                                    className={clsx({
-                                        'mt-[-8%]': photo.fullSize.height > photo.fullSize.width
-                                    })}
-                                >
-                                    <PhotoThumbnail
-                                        base64={photo.base64}
-                                        loading={index2 < 6 ? 'eager' : 'lazy'}
-                                        path={`/${photo.collection || slug}/${photo.slug}`}
-                                        slug={photo.slug}
-                                        title={photo.title}
-                                        thumbnail={photo.thumbnail}
-                                    />
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div>
-            ))}
+        <div className="mx-4 opacity-0 delay-100 duration-500 animate-in animate-out slide-in-from-bottom-4 fill-mode-forwards md:mx-8">
+            {layout ? (
+                <PhotoCollectionBlocks blocks={layout} renderPhoto={renderPhoto} />
+            ) : (
+                <Grid>
+                    {photos.map((photo, index) => (
+                        <Column key={photo.slug} className="col-span-6 md:col-span-4">
+                            {renderPhoto(index)}
+                        </Column>
+                    ))}
+                </Grid>
+            )}
         </div>
     );
 };
