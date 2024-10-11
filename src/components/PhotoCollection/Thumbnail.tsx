@@ -28,12 +28,14 @@ const PhotoThumbnail: React.FC<Props> = ({
         condition={!path.includes('/home')}
         wrapper={children => (
             <Link
+                aria-label={`View photo: ${title}`}
                 className={clsx(
                     'group/photo relative block focus:outline-none focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2',
                     {'block h-full w-full': props?.fill}
                 )}
                 href={path}
                 id={slug}
+                title={`View photo: ${title}`}
                 {...props}
             >
                 {children}
