@@ -1,4 +1,5 @@
 interface Link {
+    badge?: string;
     isFeatured?: boolean;
     pageTitle?: string;
     photo?: {

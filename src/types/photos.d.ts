@@ -32,12 +32,15 @@ interface PhotoCollection {
     };
     description?: string;
     isFeatured?: boolean;
+    pageTitle?: string;
+    photoSort?: 'asc' | 'desc';
     showInMenu?: boolean;
     showDescription?: boolean;
     slug: string;
-    pageTitle?: string;
-    photoSort?: 'asc' | 'desc';
-    sys?: {published: string};
+    sys?: {
+        firstPublishedAt: string;
+        publishedAt: string;
+    };
     title: string;
 }
 

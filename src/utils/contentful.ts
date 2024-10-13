@@ -136,6 +136,31 @@ export const fetchLinksPage = async () => {
     return response.data?.linksPageCollection?.items?.[0] || null;
 };
 
+const isWithinDateRange = (date: string | undefined, range: number) => {
+    if (!date) return false;
+
+    const dateToCheck = new Date(date);
+    const currentDate = new Date();
+    const rangeMonthsAgo = new Date(currentDate);
+    rangeMonthsAgo.setMonth(currentDate.getMonth() - range);
+
+    return dateToCheck >= rangeMonthsAgo && dateToCheck <= currentDate;
+};
+
+const getBadgeForCollection = (item: PhotoCollection) => {
+    const isNew = isWithinDateRange(item?.sys?.firstPublishedAt, 4);
+    const isUpdated = isWithinDateRange(item?.sys?.publishedAt, 1);
+    let badge = null;
+
+    if (isNew) {
+        badge = 'New';
+    } else if (isUpdated) {
+        badge = 'Updated';
+    }
+
+    return badge;
+};
+
 export const fetchCollectionNavigation = async (): Promise<Link[]> => {
     const query = `query {
         collectionNavigationCollection(limit: 1, order: [sys_publishedAt_DESC]) {
@@ -147,7 +172,8 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
                         pageTitle
                         category
                         sys {
-                            published: firstPublishedAt
+                            publishedAt
+                            firstPublishedAt
                         }
                         photosCollection(where:{isFeatured:true}, limit:1) {
                             items {
@@ -170,10 +196,13 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
             ?.filter((item: PhotoCollection) => !!item?.slug)
             ?.map((item: PhotoCollection) => {
                 const photo = item?.photosCollection?.items?.[0];
+                const badge = getBadgeForCollection(item);
+
                 return {
+                    badge,
                     isFeatured: !!photo,
                     photo,
-                    published: item?.sys?.published,
+                    published: item?.sys?.publishedAt,
                     pageTitle: item?.pageTitle ?? item?.title,
                     title: item.title,
                     url: `/${item.slug}`
