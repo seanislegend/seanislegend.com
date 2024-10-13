@@ -2,6 +2,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
+import Badge from '@/components/UI/Badge';
 
 interface Props {
     link: Link;
@@ -29,9 +30,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link}) => (
             <div className="absolute bottom-0 left-0 flex h-[60%] w-full flex-col justify-end bg-gradient-to-t from-[var(--theme-black)] to-transparent px-4 py-3">
                 {link.badge && (
                     <span>
-                        <span className="mb-1 inline-block rounded-full bg-[var(--dark)] px-2 py-1 text-[10px] font-medium uppercase leading-none text-[var(--text)]">
-                            {link.badge}
-                        </span>
+                        <Badge>{link.badge}</Badge>
                     </span>
                 )}
                 <h4 className="text-balance font-medium uppercase leading-tight tracking-tight text-[var(--theme-beige-50)] underline-offset-4 group-hover/link:underline 2xl:text-lg 2xl:leading-tight">
