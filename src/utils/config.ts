@@ -17,7 +17,7 @@ const config = {
                 }
             ],
             locale: 'en_GB',
-            siteName: 'seanislegend Photography',
+            siteName: 'Photography by @seanislegend',
             type: 'website',
             url: 'https://www.seanislegend.com'
         },
@@ -26,7 +26,7 @@ const config = {
             creator: '@seanislegend',
             image: 'https://www.seanislegend.com/images/og.jpg',
             site: '@seanislegend',
-            title: 'Beer, street, travel photography by Sean McEmerson'
+            title: 'Beer, street, travel photography by @seanislegend'
         },
         icons: {
             shortcut: '/images/favicon-32x32.png'
