@@ -29,12 +29,21 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'ThreeInARow', photos: [13, 15, 14]}
     ],
     'exploring-new-york': [
-        {layout: 'ThreeInARow', photos: [0, 7, 2]},
-        {layout: 'FourInARow', photos: [22, 23, 4, 10]},
-        {layout: 'FourInARow', photos: [11, 5, 12, 13]},
-        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [3, 6, 1]},
-        {layout: 'FourInARow', photos: [24, 16, 15, 14]},
-        {layout: 'ThreeInARowWithPadding', photos: [25, 26, 27]}
+        {layout: 'ThreeInARow', photos: [32, 23, 33]},
+        {layout: 'TwoInARow', photos: [40, 37]},
+        {layout: 'TwoInARowWithPadding', photos: [51, 52]},
+        {layout: 'ThreeInARow', photos: [41, 56, 43]},
+        {layout: 'ThreeInARow', photos: [0, 15, 1]},
+        {layout: 'FourInARow', photos: [11, 9, 22, 59]},
+        {layout: 'TwoInARowWithPadding', photos: [24, 25]},
+        {layout: 'ThreeInARow', photos: [48, 50, 53]},
+        {layout: 'FourInARow', photos: [44, 47, 45, 42]},
+        {layout: 'ThreeInARowWithPadding', photos: [4, 5, 20]},
+        {layout: 'FourInARow', photos: [26, 28, 29, 55]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [6, 8, 2, 3, 16, 13]},
+        {layout: 'FourInARow', photos: [54, 38, 34, 31]},
+        {layout: 'ThreeInARow', photos: [39, 38, 42]},
+        {layout: 'SixInARow', photos: [61, 60, 39, 14, 17, 19]}
     ],
     'good-beer-hunting-b-roll': [
         {layout: 'LandscapeTwoBigTwoMediumFourSmall', photos: [7, 1, 2, 8, 4, 5, 0, 3]}
@@ -43,7 +52,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'SixInARow', photos: [6, 7, 8, 9, 17, 18]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 4, 11, 2, 3]},
         {layout: 'ThreeInARow', photos: [10, 5, 13]},
-        {layout: 'FourInARow', photos: [12, 14, 15, 16]}
+        {layout: 'FourInARow', photos: [12, 14, 15, 16, 17]}
     ],
     'hukins-hops-annual-hop-harvest': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 8]},
@@ -84,9 +93,14 @@ export const layouts: Record<string, PhotoBlock[]> = {
     ],
     'london-street-photography': [
         {layout: 'ThreeInARow', photos: [0, 1, 2]},
-        {layout: 'FourInARow', photos: [13, 14, 20, 22]},
+        {layout: 'FourInARow', photos: [34, 38, 32, 41]},
         {layout: 'ThreeInARowWithPadding', photos: [7, 8, 17]},
-        {layout: 'ThreeInARow', photos: [5, 3, 21]},
+        {layout: 'ThreeInARow', photos: [31, 35, 30]},
+        {layout: 'FourInARow', photos: [5, 14, 20, 22]},
+        {layout: 'ThreeInARowWithPadding', photos: [39, 36, 40]},
+        {layout: 'ThreeInARow', photos: [13, 3, 21]},
+        {layout: 'TwoInARowWithPadding', photos: [33, 29]},
+        {layout: 'FourInARow', photos: [42, 43, 44, 37]},
         {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [10, 15, 9]},
         {layout: 'FourInARow', photos: [28, 18, 24, 26]},
         {layout: 'ThreeInARowWithPadding', photos: [12, 16, 11]}
