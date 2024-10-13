@@ -155,7 +155,7 @@ const getBadgeForCollection = (item: PhotoCollection) => {
     if (isNew) {
         badge = 'New';
     } else if (isUpdated) {
-        badge = 'Updated';
+        // badge = 'Updated';
     }
 
     return badge;
