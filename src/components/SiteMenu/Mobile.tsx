@@ -5,6 +5,7 @@ import {usePathname} from 'next/navigation';
 import {CrossIcon, MenuIcon} from '@/components/Icon';
 import {MENU_ITEMS} from '@/components/SiteMenu';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
+import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
 import SiteMenuLink from './Link';
 
@@ -44,12 +45,17 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         <div className="flex space-x-10">
                             <nav
                                 key={isMenuOpen ? 'collections-open' : 'collections-closed'}
-                                className="flex-grow -translate-x-2 space-y-1 duration-500  animate-in fade-in sm:columns-2"
+                                className="flex-grow -translate-x-2 space-y-1.5 duration-500 animate-in fade-in sm:columns-2"
                             >
                                 {links?.map(link => (
                                     <span className="block " key={link.url}>
                                         <SiteMenuLink href={link.url} {...link}>
-                                            {link.title}
+                                            <span className="flex flex-row items-center gap-2">
+                                                <span className="truncate leading-none">
+                                                    {link.title}
+                                                </span>
+                                                {link.badge && <Badge>{link.badge}</Badge>}
+                                            </span>
                                         </SiteMenuLink>
                                     </span>
                                 ))}

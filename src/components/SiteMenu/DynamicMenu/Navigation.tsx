@@ -13,6 +13,9 @@ interface Props {
 
 const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
     const pathname = usePathname();
+    const hasAnyNewOrUpdatedCollections = links.some(
+        link => link.badge === 'New' || link.badge === 'Updated'
+    );
 
     return (
         <>
@@ -20,7 +23,12 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
                 <NavigationMenu.List className="row hidden items-center gap-1 lg:flex">
                     <NavigationMenu.Item>
                         <NavigationMenu.Trigger className={`${linkClasses} peer relative z-30`}>
-                            Collections
+                            <span className="inline-flex items-center gap-1.5">
+                                Collections
+                                {hasAnyNewOrUpdatedCollections && (
+                                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--text)]" />
+                                )}
+                            </span>
                             <NavigationMenu.Content className="absolute left-0 top-0 w-screen pt-8 data-[motion^=to-]:delay-200 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out">
                                 <div className="mt-5 w-full p-4 sm:p-8">
                                     <div className="grid grid-cols-6 gap-4">
