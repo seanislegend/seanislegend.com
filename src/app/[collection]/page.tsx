@@ -23,7 +23,7 @@ const CollectionPage = async ({params}: Props) => {
                 {...collection}
                 linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
             />
-            {process.env.NEXT_PUBLIC_ADMIN_TOOLS && (
+            {process.env.NEXT_PUBLIC_ADMIN_TOOLS === '1' && (
                 <PhotoCollectionAdminTools collection={collection} />
             )}
         </>
