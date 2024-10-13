@@ -36,27 +36,29 @@ const sortPhotos = (collection: PhotoCollection) => {
 };
 
 const addLinkedFromCollection = (items: any[]) => {
-    const formattedCollection = items.map(photo => {
-        // If there is only one linked collection then this photo is not
-        // featured on the home or category collection pages.
-        if (photo.linkedFrom?.collectionCollection?.items?.length > 1) {
-            const categoryPages = ['home', 'street', 'travel', 'beer'];
-            const filteredCollection = photo.linkedFrom.collectionCollection.items.find(
-                (item: any) => !categoryPages.includes(item?.slug)
-            );
+    const formattedCollection = items
+        .filter(photo => !!photo)
+        .map(photo => {
+            // If there is only one linked collection then this photo is not
+            // featured on the home or category collection pages.
+            if (photo?.linkedFrom?.collectionCollection?.items?.length > 1) {
+                const categoryPages = ['home', 'street', 'travel', 'beer'];
+                const filteredCollection = photo.linkedFrom.collectionCollection.items.find(
+                    (item: any) => !categoryPages.includes(item?.slug)
+                );
 
-            // In the case that the photo is featured on the home page only, it will
-            // not return a filtered collection
-            if (filteredCollection) {
-                return {
-                    ...photo,
-                    collection: filteredCollection?.slug
-                };
+                // In the case that the photo is featured on the home page only, it will
+                // not return a filtered collection
+                if (filteredCollection) {
+                    return {
+                        ...photo,
+                        collection: filteredCollection?.slug
+                    };
+                }
             }
-        }
 
-        return photo;
-    });
+            return photo;
+        });
 
     return formattedCollection;
 };
