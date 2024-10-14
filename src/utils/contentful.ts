@@ -345,6 +345,27 @@ export const fetchCollection = async (
                         base64
                     }
                 }
+                relatedCollectionsCollection(limit: 4) {
+                    items {
+                        title
+                        slug
+                        pageTitle
+                        photosCollection(limit: 1, where: {isFeatured: true}) {
+                            items {
+                                base64
+                                thumbnail: photo {
+                                    height  
+                                    url(transform: {format: WEBP, width: 800})
+                                    width
+                                }
+                            }
+                        }
+                        sys {
+                            publishedAt
+                            firstPublishedAt
+                        }
+                    }
+                }
             }
         }
     }`;
@@ -356,6 +377,13 @@ export const fetchCollection = async (
 
         return {
             ...collection,
+            relatedCollectionsCollection: {
+                items:
+                    collection.relatedCollectionsCollection?.items?.map((item: any) => ({
+                        ...item,
+                        badge: getBadgeForCollection(item)
+                    })) ?? []
+            },
             photosCollection: {
                 items: collectionPhotos
             }
