@@ -24,6 +24,7 @@ interface Photo {
 }
 
 interface PhotoCollection {
+    badge?: string;
     category: string;
     ctaLabel?: string;
     ctaUrl?: string;
@@ -34,6 +35,12 @@ interface PhotoCollection {
     isFeatured?: boolean;
     pageTitle?: string;
     photoSort?: 'asc' | 'desc';
+    relatedCollectionsCollection: {
+        items: Pick<
+            PhotoCollection,
+            'badge' | 'pageTitle' | 'title' | 'slug' | 'photosCollection'
+        >[];
+    };
     showInMenu?: boolean;
     showDescription?: boolean;
     slug: string;

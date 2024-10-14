@@ -2,6 +2,7 @@ import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 import PhotoCollection from '@/components/PhotoCollection';
 import PhotoCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
+import RelatedCollections from '@/components/PhotoCollection/RelatedCollections';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
 import {getCollectionSeo} from '@/utils/helpers';
@@ -23,6 +24,10 @@ const CollectionPage = async ({params}: Props) => {
                 {...collection}
                 linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
             />
+            {collection?.relatedCollectionsCollection &&
+                collection?.relatedCollectionsCollection?.items?.length > 0 && (
+                    <RelatedCollections items={collection.relatedCollectionsCollection.items} />
+                )}
             {process.env.NEXT_PUBLIC_ADMIN_TOOLS === '1' && (
                 <PhotoCollectionAdminTools collection={collection} />
             )}
