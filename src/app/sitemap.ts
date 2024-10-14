@@ -35,15 +35,7 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
             return [...acc, collectionItem];
         }
 
-        const photoItems =
-            filteredPhotoItems.map((photo: any) => ({
-                url: `${process.env.NEXT_PUBLIC_URL}/${collection.slug}/${photo.slug}`,
-                priority: collection.slug === 'home' || collection.isFeatured ? 1 : 0.8,
-                lastModified: getLastModifiedDate(photo?.sys?.publishedAt).toISOString(),
-                changeFrequency: photo.publishedAt === photo.firstPublishedAt ? 'monthly' : 'weekly'
-            })) || [];
-
-        return [...acc, collectionItem, ...photoItems];
+        return [...acc, collectionItem];
     }, [] as any[]);
 
     return items;
