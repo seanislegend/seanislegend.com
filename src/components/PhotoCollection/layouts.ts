@@ -49,8 +49,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'LandscapeTwoBigTwoMediumFourSmall', photos: [7, 1, 2, 8, 4, 5, 0, 3]}
     ],
     home: [
-        {layout: 'SixInARow', photos: [6, 7, 8, 9, 17, 18]},
-        {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 4, 11, 2, 3]},
+        {layout: 'SixInARow', photos: [6, 7, 8, 9, 19, 18]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 20, 11, 2, 3]},
         {layout: 'ThreeInARow', photos: [10, 5, 13]},
         {layout: 'FourInARow', photos: [12, 14, 15, 16, 17]}
     ],
@@ -83,9 +83,12 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'ThreeInARowWithPadding', photos: [14, 19, 16]},
         {layout: 'TwoInARow', photos: [17, 18]},
         {layout: 'ThreeInARowWithPadding', photos: [9, 10, 11]},
+        {layout: 'TwoInARow', photos: [26, 27]},
         {layout: 'LandscapeOneBigTwoMedium', photos: [12, 20, 13], props: {reverse: true}},
         {layout: 'ThreeInARowWithPadding', photos: [8, 6, 7]},
-        {layout: 'LandscapeOneBigTwoMedium', photos: [21, 2, 22]}
+        {layout: 'LandscapeOneBigTwoMedium', photos: [21, 2, 24]},
+        {layout: 'ThreeInARowWithPadding', photos: [34, 33, 31]},
+        {layout: 'FourInARow', photos: [28, 29, 30, 32]}
     ],
     'loch-lomond': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 2]},
