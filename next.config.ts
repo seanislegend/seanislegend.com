@@ -1,4 +1,5 @@
-/** @type {import('next').NextConfig} */
+import type {NextConfig} from 'next';
+
 // https://nextjs.org/docs/advanced-features/security-headers
 const securityHeaders = [
     {key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload'},
@@ -11,7 +12,7 @@ const securityHeaders = [
     }
 ];
 
-module.exports = {
+const nextConfig: NextConfig = {
     async headers() {
         return [
             {
@@ -28,7 +29,9 @@ module.exports = {
                     destination: 'https://images.ctfassets.net/:path*'
                 },
                 {source: '/', destination: '/home'}
-            ]
+            ],
+            afterFiles: [],
+            fallback: []
         };
     },
     async redirects() {
@@ -59,9 +62,7 @@ module.exports = {
             }
         ];
     },
-    experiments: {
-        reactCompiler: true
-    },
+    experimental: {reactCompiler: true},
     images: {
         formats: ['image/webp'],
         minimumCacheTTL: 31536000, // 1 year
@@ -72,3 +73,5 @@ module.exports = {
     },
     reactStrictMode: true
 };
+
+export default nextConfig;
