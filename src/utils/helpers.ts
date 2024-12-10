@@ -13,7 +13,7 @@ export const getCollectionSeo = (collection: PhotoCollection) => {
 
     return {
         alternates: {
-            canonical: `${config.seo.canonical}${
+            canonical: `${config.seo.alternates.canonical}${
                 collection.slug === 'home' ? '' : `/${collection.slug}`
             }`
         },
@@ -30,7 +30,7 @@ export const getPhotoSeo = (collection: PhotoCollection, photo: Photo) => {
 
     return {
         alternates: {
-            canonical: `${config.seo.canonical}/${collection.slug}/${photo.slug}`
+            canonical: `${config.seo.alternates.canonical}/${collection.slug}/${photo.slug}`
         },
         description,
         openGraph: {description},
@@ -44,7 +44,7 @@ export const getEditorialSeo = (page: Editorial) => {
 
     return {
         alternates: {
-            canonical: `${config.seo.canonical}/${page.slug}`
+            canonical: `${config.seo.alternates.canonical}/${page.slug}`
         },
         description,
         openGraph: {description},
