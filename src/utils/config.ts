@@ -6,7 +6,9 @@ const config = {
         },
         description:
             'I am a London-based photographer specialising in capturing the stories of UK beer, breweries and the people behind them. My photography also focuses on the beauty of people, everyday life and my travel experiences.',
-        canonical: 'https://www.seanislegend.com',
+        alternates: {
+            canonical: 'https://www.seanislegend.com'
+        },
         openGraph: {
             images: [
                 {

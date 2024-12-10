@@ -26,8 +26,8 @@ const RootLayout = async ({children}: Props) => (
 );
 
 export const metadata = {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_URL || ''),
-    ...config.seo
+    ...config.seo,
+    metadataBase: new URL(process.env.NEXT_PUBLIC_URL || '')
 };
 
 export default RootLayout;
