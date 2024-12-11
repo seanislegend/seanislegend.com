@@ -11,7 +11,7 @@ interface Props {
 
 const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
     <div className="flex items-start space-x-12 py-6">
-        <div className="flex-grow">
+        <div className="grow">
             {title && url && (
                 <a
                     href={getExternalUrl(url)}
