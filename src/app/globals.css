@@ -50,7 +50,7 @@
         --site-header-height-scrolled: 3.125rem;
     }
     
-    @media (min-width: 768px) {
+    @media (min-width: 64rem) {
         :root {
             --site-header-height: 4.5rem;
             --site-header-height-scrolled: 3.125rem;
