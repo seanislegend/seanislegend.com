@@ -45,7 +45,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         <div className="flex space-x-10">
                             <nav
                                 key={isMenuOpen ? 'collections-open' : 'collections-closed'}
-                                className="flex-grow -translate-x-2 space-y-1.5 duration-500 animate-in fade-in sm:columns-2"
+                                className="grow -translate-x-2 space-y-1.5 duration-500 animate-in fade-in sm:columns-2"
                             >
                                 {links?.map(link => (
                                     <span className="block " key={link.url}>
@@ -80,7 +80,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 </div>
             </div>
             <div
-                className="fixed left-0 right-0 top-[var(--site-header-height)] z-[20] h-0 bg-[var(--overlay-bg)] lg:hidden"
+                className="fixed left-0 right-0 top-[var(--site-header-height)] z-20 h-0 bg-[var(--overlay-bg)] lg:hidden"
                 style={{height: isMenuOpen ? '100vh' : '0', opacity: isMenuOpen ? 0.8 : 0}}
             />
         </>

@@ -9,7 +9,7 @@ interface Props {
 const MarkdownLink = (props: any) => (
     <a
         {...props}
-        className="text-[var(--link-text)] underline underline-offset-2 transition duration-200 ease-in-out hover:decoration-2 focus:outline-none focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2 sm:underline-offset-4 print:no-underline"
+        className="text-[var(--link-text)] underline underline-offset-2 transition duration-200 ease-in-out hover:decoration-2 focus:outline-hidden focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2 sm:underline-offset-4 print:no-underline"
     >
         {props.children}
     </a>

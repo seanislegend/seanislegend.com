@@ -13,7 +13,7 @@ const SiteHeaderAllCollections: React.FC<Props> = ({links}) => (
             {links.map(link => (
                 <li key={link.url} className="flex">
                     <NavigationMenu.Item asChild>
-                        <TextLink className="group flex-grow hover:no-underline" href={link.url}>
+                        <TextLink className="group grow hover:no-underline" href={link.url}>
                             <span className="inline-block transition-transform duration-500 ease-in-out group-hover:translate-x-1 group-hover:duration-100 group-data-[active=true]:underline">
                                 {link.title}
                             </span>

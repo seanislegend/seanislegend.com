@@ -16,7 +16,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
         <header
             className={clsx(
                 'sticky top-0 z-30 flex h-[var(--site-header-height)] items-center border-b-2 border-transparent bg-[var(--bg)] transition-all duration-300 print:relative print:border-none',
-                {'h-[var(--site-header-height-scrolled)] !border-[var(--accent)]': isScrolled}
+                {'h-[var(--site-header-height-scrolled)] border-(--accent)!': isScrolled}
             )}
         >
             <div className="flex w-full items-center justify-between gap-8 px-4 md:px-8">
@@ -24,7 +24,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                     <Link
                         aria-label="Home"
                         className={clsx(
-                            'group relative inline-flex flex-shrink-0 items-center py-2 text-sm outline-none md:text-base',
+                            'group relative inline-flex shrink-0 items-center py-2 text-sm outline-hidden md:text-base',
                             {'pointer-events-none': pathname === '/'}
                         )}
                         href="/"

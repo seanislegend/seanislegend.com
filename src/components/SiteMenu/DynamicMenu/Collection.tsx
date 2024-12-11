@@ -12,7 +12,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link}) => (
     <NavigationMenu.Item asChild>
         <Link
             href={link.url}
-            className="group/link relative flex aspect-[4/3] w-full flex-col justify-end bg-[var(--theme-black)] focus:outline-none focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2"
+            className="group/link relative flex aspect-4/3 w-full flex-col justify-end bg-[var(--theme-black)] focus:outline-hidden focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2"
             scroll={true}
         >
             {link.photo?.thumbnail?.url && (
@@ -27,7 +27,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link}) => (
                     src={link.photo.thumbnail.url}
                 />
             )}
-            <div className="absolute bottom-0 left-0 flex h-[60%] w-full flex-col justify-end bg-gradient-to-t from-[var(--theme-black)] to-transparent px-4 py-3">
+            <div className="absolute bottom-0 left-0 flex h-[60%] w-full flex-col justify-end bg-linear-to-t from-[var(--theme-black)] to-transparent px-4 py-3">
                 {link.badge && (
                     <span>
                         <Badge>{link.badge}</Badge>
