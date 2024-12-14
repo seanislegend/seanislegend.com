@@ -237,7 +237,7 @@ export const fetchAllCollections = async (
                 showDescription
                 description
                 photoSort
-                photosCollection(limit: 50) {
+                photosCollection(limit: 50, where: {isFeatured: true}) {
                     items {
                         linkedFrom {
                             collectionCollection(limit: 3) {
