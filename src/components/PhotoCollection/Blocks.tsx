@@ -1,14 +1,14 @@
 import Column from '@/components/PhotoCollection/Column';
 import Grid from '@/components/PhotoCollection/Grid';
 import Condition from '@/components/UI/Condition';
-import {type PhotoBlock,type PhotoBlockComponent} from '@/types/photo-blocks';
+import {type PhotoBlock, type PhotoBlockComponent} from '@/types/photo-blocks';
 
 interface Props {
     blocks: PhotoBlock[];
     renderPhoto: (index: number) => React.ReactNode;
 }
 
-const FourInARow: React.FC<PhotoBlockComponent>=({photos}) => (
+const FourInARow: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="col-span-6 md:col-span-3">{photos[0]}</Column>
         <Column className="col-span-6 md:col-span-3">{photos[1]}</Column>
@@ -17,7 +17,7 @@ const FourInARow: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const LandscapeTwoBigFourSmall: React.FC<PhotoBlockComponent>=({photos}) => (
+const LandscapeTwoBigFourSmall: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="col-span-12 md:col-span-6">
             <Grid>
@@ -36,7 +36,7 @@ const LandscapeTwoBigFourSmall: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent>=({photos,reverse}) => (
+const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({photos, reverse}) => (
     <Grid>
         <Condition
             condition={reverse}
@@ -66,7 +66,7 @@ const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent>=({photos,reverse})
     </Grid>
 );
 
-const LandscapeTwoBigTwoSmall: React.FC<PhotoBlockComponent>=({photos}) => (
+const LandscapeTwoBigTwoSmall: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="col-span-12 md:col-span-6">{photos[0]}</Column>
         <Column className="col-span-12 md:col-span-6">
@@ -79,7 +79,7 @@ const LandscapeTwoBigTwoSmall: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent>=({photos}) => (
+const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="col-span-12 md:col-span-6">
             <Grid>
@@ -100,7 +100,7 @@ const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent>=({photos}
     </Grid>
 );
 
-const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent>=({photos}) => (
+const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid className="place-items-end">
         <Column className="col-span-12 md:col-span-6">{photos[0]}</Column>
         <Column className="col-span-6 md:col-span-3">{photos[1]}</Column>
@@ -108,7 +108,7 @@ const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const OnePortraitOneLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockComponent>=({
+const OnePortraitOneLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockComponent> = ({
     photos
 }) => (
     <Grid className="place-items-end">
@@ -123,7 +123,7 @@ const OnePortraitOneLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockCompone
     </Grid>
 );
 
-const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockComponent>=({
+const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockComponent> = ({
     photos
 }) => (
     <Grid>
@@ -144,7 +144,7 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
     </Grid>
 );
 
-const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent>=({photos}) => (
+const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="col-span-6">{photos[0]}</Column>
         <Column className="col-span-6 h-full">
@@ -156,7 +156,7 @@ const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const OnePortraitTwoLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockComponent>=({
+const OnePortraitTwoLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockComponent> = ({
     photos
 }) => (
     <Grid className="place-items-end">
@@ -172,7 +172,7 @@ const OnePortraitTwoLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockCompone
     </Grid>
 );
 
-const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent>=({photos}) => (
+const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid className="mx-auto">
         <Column className="order-1 col-span-6 md:order-1 md:col-span-4">{photos[0]}</Column>
         <Column className="order-2 col-span-6 md:order-1 md:col-span-4">{photos[1]}</Column>
@@ -182,7 +182,7 @@ const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent>=({photo
     </Grid>
 );
 
-const SixInARow: React.FC<PhotoBlockComponent>=({photos}) => (
+const SixInARow: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="col-span-4 md:col-span-2">{photos[0]}</Column>
         <Column className="col-span-4 md:col-span-2">{photos[1]}</Column>
@@ -193,7 +193,7 @@ const SixInARow: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const ThreeInARow: React.FC<PhotoBlockComponent>=({photos}) => (
+const ThreeInARow: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="col-span-12 md:col-span-4">{photos[0]}</Column>
         <Column className="col-span-6 md:col-span-4">{photos[1]}</Column>
@@ -201,7 +201,7 @@ const ThreeInARow: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const ThreeInARowWithPadding: React.FC<PhotoBlockComponent>=({photos}) => (
+const ThreeInARowWithPadding: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid className="md:px-20">
         <Column className="col-span-12 md:col-span-4">{photos[0]}</Column>
         <Column className="col-span-6 md:col-span-4">{photos[1]}</Column>
@@ -209,14 +209,14 @@ const ThreeInARowWithPadding: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const TwoInARow: React.FC<PhotoBlockComponent>=({photos}) => (
+const TwoInARow: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="col-span-6">{photos[0]}</Column>
         <Column className="col-span-6">{photos[1]}</Column>
     </Grid>
 );
 
-const TwoInARowWithPadding: React.FC<PhotoBlockComponent>=({photos}) => (
+const TwoInARowWithPadding: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid>
         <Column className="hidden md:col-span-1 md:block" />
         <Column className="col-span-6 md:col-span-5">{photos[0]}</Column>
@@ -225,10 +225,10 @@ const TwoInARowWithPadding: React.FC<PhotoBlockComponent>=({photos}) => (
     </Grid>
 );
 
-const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent>=({photos}) => (
+const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({photos}) => (
     <Grid className="place-items-center">
-        <Column className="col-span-3 flex items-center h-full">{photos[0]}</Column>
-        <Column className="col-span-3 flex items-center h-full">{photos[1]}</Column>
+        <Column className="col-span-3 flex h-full items-center">{photos[0]}</Column>
+        <Column className="col-span-3 flex h-full items-center">{photos[1]}</Column>
         <Column className="col-span-6 flex h-full">
             <div className="mx-auto flex w-full max-w-[80%] items-center justify-center">
                 {photos[2]}
@@ -237,9 +237,9 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent>=({photos
     </Grid>
 );
 
-export type PhotoBlockLayout=keyof typeof layouts;
+export type PhotoBlockLayout = keyof typeof layouts;
 
-const layouts: Partial<Record<string,React.FC<any>>>={
+const layouts: Partial<Record<string, React.FC<any>>> = {
     FourInARow,
     LandscapeOneBigTwoMedium,
     LandscapeTwoBigFourSmall,
@@ -259,11 +259,11 @@ const layouts: Partial<Record<string,React.FC<any>>>={
     TwoPortraitOneLandscapeWithPadding
 };
 
-const PhotoCollectionBlocks: React.FC<Props>=({blocks,renderPhoto}) => (
+const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto}) => (
     <div className="space-y-4 lg:space-y-6 2xl:space-y-12">
-        {blocks.map((block,index) => {
-            const Layout=layouts[block.layout];
-            if(!Layout) return null;
+        {blocks.map((block, index) => {
+            const Layout = layouts[block.layout];
+            if (!Layout) return null;
             return (
                 <Layout
                     key={`${index}-${block.layout}`}

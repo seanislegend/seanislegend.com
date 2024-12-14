@@ -41,7 +41,7 @@ const PhotosCollection: React.FC<Props> = ({linksTo = 'photo', photosCollection,
     };
 
     return (
-        <div className="mx-4 opacity-0 delay-100 duration-500 animate-in animate-out slide-in-from-bottom-4 fill-mode-forwards md:mx-8">
+        <div className="animate-in animate-out slide-in-from-bottom-4 fill-mode-forwards mx-4 opacity-0 delay-100 duration-500 md:mx-8">
             {layout ? (
                 <PhotoCollectionBlocks blocks={layout} renderPhoto={renderPhoto} />
             ) : (

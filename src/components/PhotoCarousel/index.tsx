@@ -26,7 +26,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
             <ScrollToContainerFix />
             <div className="flex items-end justify-between">
                 {activePhoto?.title ? (
-                    <p className="break-normal text-sm font-medium sm:text-base">
+                    <p className="text-sm font-medium break-normal sm:text-base">
                         {activePhoto.title}
                     </p>
                 ) : (
@@ -34,20 +34,20 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                 )}
                 <CarouselCounter activeIndex={activeIndex} total={allPhotos.length} />
             </div>
-            <div className="relative my-4 w-full overflow-hidden bg-[var(--dark)] duration-500 animate-in fade-in md:flex md:flex-col lg:aspect-3/2 lg:max-h-[calc(100vh-var(--site-header-height)-7rem)]">
+            <div className="animate-in fade-in relative my-4 w-full overflow-hidden bg-[var(--dark)] duration-500 md:flex md:flex-col lg:aspect-3/2 lg:max-h-[calc(100vh-var(--site-header-height)-7rem)]">
                 <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
-                <div className="absolute left-0 top-0 w-full opacity-0">
+                <div className="absolute top-0 left-0 w-full opacity-0">
                     <CarouselImage isActive={false} {...prevPhoto} />
                     <CarouselImage isActive={false} {...nextPhoto} />
                 </div>
                 <Link
-                    className="tap-transparent absolute left-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-hidden md:block"
+                    className="tap-transparent absolute top-0 left-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-hidden md:block"
                     href={prevPhotoUrl}
                     scroll={false}
                     type="button"
                 />
                 <Link
-                    className="tap-transparent absolute right-0 top-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-hidden md:block"
+                    className="tap-transparent absolute top-0 right-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-hidden md:block"
                     href={nextPhotoUrl}
                     scroll={false}
                     type="button"

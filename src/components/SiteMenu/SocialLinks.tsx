@@ -19,7 +19,7 @@ const SiteMenuSocialLinks: React.FC = () => (
                     key={link.url}
                     aria-label={link.label}
                     href={link.url}
-                    className="bg-[var(--secondary-button-bg)] p-1.5 text-xl tracking-tight text-[var(--secondary-button-text)] duration-200 ease-out hover:bg-[var(--secondary-button-bg-hover)] focus:outline-dotted focus:outline-2 focus:outline-offset-2 focus:outline-[var(--accent)] md:text-xl lg:text-2xl"
+                    className="bg-[var(--secondary-button-bg)] p-1.5 text-xl tracking-tight text-[var(--secondary-button-text)] duration-200 ease-out hover:bg-[var(--secondary-button-bg-hover)] focus:outline-2 focus:outline-offset-2 focus:outline-[var(--accent)] focus:outline-dotted md:text-xl lg:text-2xl"
                     rel="noreferrer"
                     target="_blank"
                 >

@@ -9,10 +9,7 @@ interface Props {
 }
 
 const RootLayout = async ({children}: Props) => (
-    <html
-        lang="en"
-        className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}
-    >
+    <html lang="en" className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}>
         <body className="flex grow flex-col sm:min-h-full">
             {children}
             {process.env.NODE_ENV !== 'development' && (

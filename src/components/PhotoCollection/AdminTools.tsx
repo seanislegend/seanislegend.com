@@ -31,7 +31,7 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
                                 width={200}
                                 src={photo.thumbnail.url}
                             />
-                            <div className="absolute left-2 top-2 bg-black/60 p-1">{index}</div>
+                            <div className="absolute top-2 left-2 bg-black/60 p-1">{index}</div>
                         </div>
                     ))}
                 </div>

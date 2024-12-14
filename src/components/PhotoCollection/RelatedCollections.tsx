@@ -9,11 +9,11 @@ const RelatedCollections = ({items}: Props) => {
     if (!items?.length) return null;
 
     return (
-        <div className="-mb-8 mt-16 bg-[var(--button-bg)] py-8 text-[var(--button-text)]">
+        <div className="mt-16 -mb-8 bg-[var(--button-bg)] py-8 text-[var(--button-text)]">
             <Container>
                 <div className="grid grid-cols-12 gap-4">
                     <div className="col-span-12 md:col-span-4 lg:col-span-3">
-                        <h2 className="mb-2 text-balance break-normal text-xl font-medium uppercase leading-tight md:text-2xl md:leading-tight">
+                        <h2 className="mb-2 text-xl leading-tight font-medium text-balance break-normal uppercase md:text-2xl md:leading-tight">
                             More like this
                         </h2>
                         <p className="text-balance">

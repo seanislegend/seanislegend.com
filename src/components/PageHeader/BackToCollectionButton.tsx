@@ -27,7 +27,7 @@ const BackToCollectionButton: React.FC = () => {
     return (
         <span>
             <Link
-                className="focus:ring-offset-2text-sm font-medium underline underline-offset-4 duration-300 ease-in-out animate-in fade-in hover:decoration-2 focus:outline-hidden focus:ring-2 focus:ring-[var(--text)] sm:text-base print:hidden"
+                className="focus:ring-offset-2text-sm animate-in fade-in font-medium underline underline-offset-4 duration-300 ease-in-out hover:decoration-2 focus:ring-2 focus:ring-[var(--text)] focus:outline-hidden sm:text-base print:hidden"
                 href={path}
             >
                 Back to all photos

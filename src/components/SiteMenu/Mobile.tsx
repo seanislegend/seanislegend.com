@@ -33,7 +33,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 <ToggleButtonIcon className="h-auto w-6 text-[var(--text)]" />
             </button>
             <div
-                className="absolute left-0 top-[var(--site-header-height)] z-30 w-full lg:hidden print:hidden"
+                className="absolute top-[var(--site-header-height)] left-0 z-30 w-full lg:hidden print:hidden"
                 style={{
                     height: isMenuOpen ? '100vh' : '0',
                     opacity: isMenuOpen ? 1 : 0.8,
@@ -45,10 +45,10 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         <div className="flex space-x-10">
                             <nav
                                 key={isMenuOpen ? 'collections-open' : 'collections-closed'}
-                                className="grow -translate-x-2 space-y-1.5 duration-500 animate-in fade-in sm:columns-2"
+                                className="animate-in fade-in grow -translate-x-2 space-y-1.5 duration-500 sm:columns-2"
                             >
                                 {links?.map(link => (
-                                    <span className="block " key={link.url}>
+                                    <span className="block" key={link.url}>
                                         <SiteMenuLink href={link.url} {...link}>
                                             <span className="flex flex-row items-center gap-2">
                                                 <span className="truncate leading-none">
@@ -80,7 +80,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 </div>
             </div>
             <div
-                className="fixed left-0 right-0 top-[var(--site-header-height)] z-20 h-0 bg-[var(--overlay-bg)] lg:hidden"
+                className="fixed top-[var(--site-header-height)] right-0 left-0 z-20 h-0 bg-[var(--overlay-bg)] lg:hidden"
                 style={{height: isMenuOpen ? '100vh' : '0', opacity: isMenuOpen ? 0.8 : 0}}
             />
         </>

@@ -4,7 +4,7 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --font-sans: var(--font-geist-sans);
+    --font-sans: var(--font-geist-sans);
 }
 
 /*
@@ -16,20 +16,20 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
 }
 
 @layer utilities {
-  html {
-    scroll-padding-top: var(--site-header-height);
-    scroll-behavior: smooth;
-  }
+    html {
+        scroll-padding-top: var(--site-header-height);
+        scroll-behavior: smooth;
+    }
 }
 
 @layer base {
@@ -49,15 +49,15 @@
         --site-header-height: 3.125rem;
         --site-header-height-scrolled: 3.125rem;
     }
-    
+
     @media (min-width: 64rem) {
         :root {
             --site-header-height: 4.5rem;
             --site-header-height-scrolled: 3.125rem;
         }
     }
-    
-    [data-theme="light"] {
+
+    [data-theme='light'] {
         --bg: var(--theme-beige-50);
         --text: var(--theme-black);
         --dimmed-text: var(--theme-beige-800);
@@ -85,8 +85,8 @@
             color: var(--theme-black);
         }
     }
-    
-    [data-theme="dark"] {
+
+    [data-theme='dark'] {
         --bg: var(--theme-black);
         --text: var(--theme-beige-50);
         --dimmed-text: var(--theme-beige-800);
@@ -130,8 +130,8 @@
             --theme-beige-900: #393d40;
             --theme-beige-950: #1e2123;
         }
-       
-        [data-theme="light"] {
+
+        [data-theme='light'] {
             --bg: var(--theme-beige-950);
             --text: var(--theme-beige-50);
             --dimmed-text: var(--theme-beige-800);
@@ -152,7 +152,7 @@
             --dark: var(--theme-black);
         }
 
-        [data-theme="dark"] {
+        [data-theme='dark'] {
             --bg: var(--theme-beige-900);
             --text: var(--theme-beige-100);
             --dimmed-text: var(--theme-beige-300);
@@ -175,13 +175,13 @@
 
     @media print {
         [data-theme] {
-            --text: #000 ;
-            --bg: #fff ;
-            --accent: #000 ;
-            --title-text: #000 ;
-            --link-text: #000 ;
-            --link-text-hover: #000 ;
-            --overlay-bg: #fff ;
+            --text: #000;
+            --bg: #fff;
+            --accent: #000;
+            --title-text: #000;
+            --link-text: #000;
+            --link-text-hover: #000;
+            --overlay-bg: #fff;
         }
     }
 }

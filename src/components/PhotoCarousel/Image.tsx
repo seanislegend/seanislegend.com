@@ -12,7 +12,7 @@ const CarouselImage: React.FC<Props> = ({base64, fullSize, isActive, title}) => 
             alt={title}
             blurDataURL={base64 || ''}
             className={clsx(
-                'h-full w-full object-contain transition duration-500 ease-in-out animate-in fade-in',
+                'animate-in fade-in h-full w-full object-contain transition duration-500 ease-in-out',
                 {'opacity-0': !isActive, 'opacity-100': isActive}
             )}
             height={fullSize.height}

@@ -48,13 +48,13 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     return (
         <Container asChild>
             <div
-                className="grid grid-cols-12 gap-4 pb-10 pt-6 sm:gap-8 sm:py-12 xl:py-20"
+                className="grid grid-cols-12 gap-4 pt-6 pb-10 sm:gap-8 sm:py-12 xl:py-20"
                 ref={containerRef}
             >
                 {title && (
                     <>
                         <div className="col-span-12 flex flex-col space-y-4 md:col-span-6">
-                            <h1 className="max-w-5xl space-x-2 text-balance break-normal text-2xl font-medium uppercase leading-tight text-[var(--title-text)] underline-offset-4 group-hover:underline md:text-3xl md:leading-tight lg:text-4xl">
+                            <h1 className="max-w-5xl space-x-2 text-2xl leading-tight font-medium text-balance break-normal text-[var(--title-text)] uppercase underline-offset-4 group-hover:underline md:text-3xl md:leading-tight lg:text-4xl">
                                 <span>{pageTitle || title}</span>
                             </h1>
                             {titleAside}
