@@ -10,8 +10,8 @@ interface Props {
 }
 
 const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
-    <div className="flex items-start space-x-12 py-6">
-        <div className="grow">
+    <div className="link-item grid items-start gap-4 py-4 sm:grid-cols-12">
+        <div className="sm:col-span-5">
             {title && url && (
                 <a
                     href={getExternalUrl(url)}
@@ -24,17 +24,19 @@ const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
                     </h2>
                 </a>
             )}
+        </div>
+        <div className="sm:col-span-7">
             {text && (
-                <Markdown className="prose-sm mt-2 max-w-2xl leading-relaxed md:prose-base dark:prose-invert prose-p:text-[var(--text)] md:prose-p:leading-relaxed lg:max-w-3xl">
+                <Markdown className="prose-sm md:prose-base dark:prose-invert prose-p:text-[var(--text)] md:prose-p:leading-relaxed mt-2 max-w-2xl leading-relaxed lg:max-w-3xl">
                     {text}
                 </Markdown>
             )}
         </div>
-        {url && (
+        {/* {url&&(
             <Button href={getExternalUrl(url)} target="_blank" rel="noopener noreferrer">
                 Visit
             </Button>
-        )}
+        )} */}
     </div>
 );
 

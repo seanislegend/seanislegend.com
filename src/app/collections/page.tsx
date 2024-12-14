@@ -22,19 +22,21 @@ const CollectionsPage = async () => {
         <DefaultLayout theme="light">
             <PageHeader title="All photo collections" />
             <Container asChild>
-                <div className="animate-fadeIn animate-duration-1000 -my-3 [&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50">
+                <div className="animate-fadeIn animate-duration-1000 -my-4 [&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50">
                     {sortedCollections.map(collection => (
                         <Link
-                            className="link-item group relative grid grid-cols-12 gap-4 py-3 opacity-100"
+                            className="link-item group relative grid gap-4 py-4 opacity-100 sm:grid-cols-12"
                             key={collection.slug}
                             href={`/${collection.slug}`}
                         >
-                            <div className="col-span-5">
+                            <div className="sm:col-span-5">
                                 <strong className="font-medium uppercase underline-offset-4 group-hover:underline lg:block">
                                     {collection.title}
                                 </strong>
                             </div>
-                            <div className="col-span-7">{collection.description}</div>
+                            <div className="line-clamp-2 sm:col-span-7 sm:line-clamp-none">
+                                {collection.description}
+                            </div>
                             <Image
                                 alt=""
                                 blurDataURL={collection.photosCollection.items[0]?.base64}

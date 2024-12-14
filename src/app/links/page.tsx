@@ -1,6 +1,7 @@
 import DefaultLayout from '@/components/Layouts/Default';
 import LinksList from '@/components/LinksList';
 import PageHeader from '@/components/PageHeader';
+import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchLinksPage} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
@@ -10,9 +11,8 @@ const LinksPage = async () => {
 
     return (
         <DefaultLayout theme="dark">
-            <PageHeader title="Links">
-                <LinksList links={page.linksCollection?.items} />
-            </PageHeader>
+            <PageHeader title="Links" />
+            <LinksList links={page.linksCollection?.items} />
         </DefaultLayout>
     );
 };
