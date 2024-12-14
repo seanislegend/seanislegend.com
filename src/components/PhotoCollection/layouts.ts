@@ -48,11 +48,20 @@ export const layouts: Record<string, PhotoBlock[]> = {
     'good-beer-hunting-b-roll': [
         {layout: 'LandscapeTwoBigTwoMediumFourSmall', photos: [7, 1, 2, 8, 4, 5, 0, 3]}
     ],
+    'grilled-fish-abacha-barracks-abuja': [
+        {layout: 'TwoInARow', photos: [16, 21]},
+        {layout: 'LandscapeOneBigTwoMedium', photos: [1, 6, 8]},
+        {layout: 'TwoInARowWithPadding', photos: [0, 13]},
+        {layout: 'ThreeInARow', photos: [14, 15, 23]},
+        {layout: 'TwoInARowWithPadding', photos: [20, 24]},
+        {layout: 'FourInARow', photos: [2, 11, 18, 4]}
+    ],
     home: [
         {layout: 'SixInARow', photos: [6, 7, 8, 9, 19, 18]},
-        {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 20, 11, 2, 3]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 21, 11, 2, 3]},
         {layout: 'ThreeInARow', photos: [10, 5, 13]},
-        {layout: 'FourInARow', photos: [12, 14, 15, 16, 17]}
+        {layout: 'FourInARow', photos: [12, 14, 15, 16, 17]},
+        {layout: 'ThreeInARow', photos: [22, 23, 20]}
     ],
     'hukins-hops-annual-hop-harvest': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 8]},
