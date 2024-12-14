@@ -1,7 +1,7 @@
 'use client';
 
 import {MENU_ITEMS} from '../';
-import SiteHeaderLink, {linkClasses} from '../Link';
+import SiteHeaderLink,{linkClasses} from '../Link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {usePathname} from 'next/navigation';
 import Collection from '@/components/SiteMenu/DynamicMenu/Collection';
@@ -11,10 +11,10 @@ interface Props {
     links: Link[];
 }
 
-const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
-    const pathname = usePathname();
-    const hasAnyNewOrUpdatedCollections = links.some(
-        link => link.badge === 'New' || link.badge === 'Updated'
+const SiteHeaderDynamicMenuNavigation: React.FC<Props>=({links}) => {
+    const pathname=usePathname();
+    const hasAnyNewOrUpdatedCollections=links.some(
+        link => link.badge==='New'||link.badge==='Updated'
     );
 
     return (
@@ -25,7 +25,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
                         <NavigationMenu.Trigger className={`${linkClasses} peer relative z-30`}>
                             <span className="inline-flex items-center gap-1.5">
                                 Collections
-                                {hasAnyNewOrUpdatedCollections && (
+                                {hasAnyNewOrUpdatedCollections&&(
                                     <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--text)]" />
                                 )}
                             </span>
