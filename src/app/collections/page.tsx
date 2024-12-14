@@ -3,52 +3,52 @@ import Link from 'next/link';
 import {redirect} from 'next/navigation';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
-import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchAllCollections} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
+import Image from 'next/image';
 
-const CollectionsPage = async () => {
-    const draftModeConfig = await draftMode();
-    const collections = await fetchAllCollections(draftModeConfig.isEnabled);
-    if (!collections) redirect('/');
+const CollectionsPage=async () => {
+    const draftModeConfig=await draftMode();
+    const collections=await fetchAllCollections(draftModeConfig.isEnabled);
+    if(!collections) redirect('/');
 
-    const sortedCollections = collections
-        .filter(collection => collection.slug !== collection.category && collection.slug !== 'home')
-        .sort((a, b) => a.slug.localeCompare(b.slug));
+    const sortedCollections=collections
+        .filter(collection => collection.slug!==collection.category&&collection.slug!=='home')
+        .sort((a,b) => a.title.localeCompare(b.title));
 
     return (
         <DefaultLayout theme="light">
-            <PageHeader
-                description="All the photo collections covering my beer, street, and travel photography."
-                title="All photo collections"
-            />
+            <PageHeader title="All photo collections" />
             <Container asChild>
-                <div className="animate-fadeIn animate-duration-1000 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                <div className="animate-fadeIn animate-duration-1000 -my-3 [&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50">
                     {sortedCollections.map(collection => (
                         <Link
-                            className="group w-full"
+                            className="grid grid-cols-12 gap-4 py-3 relative opacity-100 link-item group"
                             key={collection.slug}
                             href={`/${collection.slug}`}
                         >
-                            <ThumbnailImage
-                                {...collection.photosCollection.items[0]?.thumbnail}
-                                base64={collection.photosCollection.items[0]?.base64}
+                            <div className="col-span-5">
+                                <strong className="lg:block font-medium group-hover:underline underline-offset-4 uppercase">
+                                    {collection.title}
+                                </strong>
+                            </div>
+                            <div className="col-span-7">
+                                {collection.description}
+                            </div>
+                            <Image
+                                alt=""
+                                blurDataURL={collection.photosCollection.items[0]?.base64}
+                                className="absolute w-100 left-0 h-auto top-1/2 -translate-y-1/2 opacity-0 duration-200 xl:group-hover:opacity-100 will-change-transform z-20 xl:group-hover:animate-in xl:group-hover:slide-in-from-top-10 xl:slide-out-to-bottom-10 xl:shadow-2xl"
+                                height={collection.photosCollection.items[0]?.thumbnail.height}
+                                placeholder="blur"
+                                loading="lazy"
+                                quality={85}
+                                sizes="(max-width: 240px) 100vw, (max-width: 360px) 50vw, (max-width: 640px) 33vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
+                                src={collection.photosCollection.items[0]?.thumbnail.url}
+                                width={collection.photosCollection.items[0]?.thumbnail.width}
                             />
-                            <span className="block pb-2 pt-1 text-sm text-gray-600 underline-offset-4 group-hover:underline group-focus:underline sm:pb-4 sm:pt-2">
-                                {collection.pageTitle ? (
-                                    <>
-                                        <span className="hidden sm:block">
-                                            {collection.pageTitle}
-                                        </span>
-                                        <span className="sm:hidden">{collection.title}</span>
-                                    </>
-                                ) : (
-                                    collection.title
-                                )}
-                            </span>
-                            <span className="hidden text-sm">{collection.description}</span>
                         </Link>
                     ))}
                 </div>
@@ -57,13 +57,13 @@ const CollectionsPage = async () => {
     );
 };
 
-export const generateMetadata = async () => {
+export const generateMetadata=async () => {
     return {
         ...config.seo,
-        ...getEditorialSeo({slug: 'collections', title: 'All photo collections'})
+        ...getEditorialSeo({slug: 'collections',title: 'All photo collections'})
     };
 };
 
-export const revalidate = 60;
+export const revalidate=60;
 
 export default CollectionsPage;
