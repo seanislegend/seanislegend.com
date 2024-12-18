@@ -237,6 +237,10 @@ export const fetchAllCollections = async (
                 showDescription
                 description
                 photoSort
+                sys {
+                    publishedAt
+                    firstPublishedAt
+                }
                 photosCollection(limit: 50, where: {isFeatured: true}) {
                     items {
                         linkedFrom {
@@ -271,9 +275,11 @@ export const fetchAllCollections = async (
         const formattedCollections = response.data.collectionCollection.items.map(
             (collection: any) => {
                 const collectionPhotos = getFormattedCollection(collection);
+                const badge = getBadgeForCollection(collection);
 
                 return {
                     ...collection,
+                    badge,
                     photosCollection: {
                         items: collectionPhotos
                     }

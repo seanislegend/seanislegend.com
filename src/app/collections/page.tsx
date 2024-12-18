@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {redirect} from 'next/navigation';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
+import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchAllCollections} from '@/utils/contentful';
@@ -17,7 +18,7 @@ const CollectionsPage = async () => {
     const sortedCollections = collections
         .filter(collection => collection.slug !== collection.category && collection.slug !== 'home')
         .sort((a, b) => a.title.localeCompare(b.title));
-
+    console.log(collections);
     return (
         <DefaultLayout theme="light">
             <PageHeader title="All photo collections" />
@@ -29,10 +30,11 @@ const CollectionsPage = async () => {
                             key={collection.slug}
                             href={`/${collection.slug}`}
                         >
-                            <div className="sm:col-span-5">
+                            <div className="flex items-center gap-4 sm:col-span-5">
                                 <strong className="font-medium uppercase underline-offset-4 group-hover:underline lg:block">
                                     {collection.title}
                                 </strong>
+                                {collection.badge && <Badge>{collection.badge}</Badge>}
                             </div>
                             <div className="line-clamp-2 sm:col-span-7 sm:line-clamp-none">
                                 {collection.description}
