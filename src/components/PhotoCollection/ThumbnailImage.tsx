@@ -4,29 +4,49 @@ import Image from 'next/image';
 type ThumbnailPhoto = Pick<Photo['thumbnail'], 'height' | 'width' | 'url'>;
 interface Props extends ThumbnailPhoto {
     base64?: string;
+    columnSize?: number;
     fill?: boolean;
     loading?: 'eager' | 'lazy';
 }
 
-const ThumbnailImage: React.FC<Props> = ({base64, fill, height, loading = 'lazy', width, url}) => (
-    <span
-        className={clsx(
-            'relative z-20 block min-h-[50px] overflow-hidden group-focus:outline-hidden',
-            {'h-full': fill, 'aspect-3/2': width > height, 'aspect-2/3': width < height}
-        )}
-    >
-        <Image
-            alt=""
-            blurDataURL={base64 || ''}
-            fill={fill}
-            placeholder={base64 ? 'blur' : 'empty'}
-            loading={loading}
-            quality={85}
-            sizes="(max-width: 240px) 100vw, (max-width: 360px) 50vw, (max-width: 640px) 33vw"
-            src={url}
-            {...(fill ? {} : {height, width})}
-        />
-    </span>
-);
+const ThumbnailImage: React.FC<Props> = ({
+    base64,
+    columnSize,
+    fill,
+    height,
+    loading = 'lazy',
+    width,
+    url
+}) => {
+    // calculate the scaling factor based on 12-column grid
+    const imageHeight = columnSize ? height * (columnSize / 12) : height;
+    const imageWidth = columnSize ? width * (columnSize / 12) : width;
+
+    return (
+        <span
+            className={clsx(
+                'relative z-20 block min-h-[50px] overflow-hidden group-focus:outline-hidden',
+                {
+                    'h-full': fill,
+                    'aspect-3/2': imageWidth > imageHeight,
+                    'aspect-2/3': imageWidth < imageHeight
+                }
+            )}
+        >
+            <Image
+                alt=""
+                blurDataURL={base64 || ''}
+                className="w-full"
+                fill={fill}
+                placeholder={base64 ? 'blur' : 'empty'}
+                loading={loading}
+                quality={85}
+                sizes="(max-width: 240px) 100vw, (max-width: 360px) 50vw, (max-width: 640px) 33vw"
+                src={url}
+                {...(fill ? {} : {height: imageHeight, width: imageWidth})}
+            />
+        </span>
+    );
+};
 
 export default ThumbnailImage;

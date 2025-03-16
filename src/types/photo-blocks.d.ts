@@ -7,6 +7,7 @@ interface PhotoBlock {
 }
 
 interface PhotoBlockComponent {
-    photos: React.ReactNode[];
+    photos: number[];
+    renderPhoto: (photos: number[], index: number, columnSize?: number) => React.ReactNode;
     [key: string]: any;
 }
