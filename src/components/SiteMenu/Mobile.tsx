@@ -30,17 +30,17 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
             >
-                <ToggleButtonIcon className="h-auto w-6 text-[var(--text)]" />
+                <ToggleButtonIcon className="text-theme-text h-auto w-6" />
             </button>
             <div
-                className="absolute top-[var(--site-header-height)] left-0 z-30 w-full lg:hidden print:hidden"
+                className="top-site-header absolute left-0 z-30 w-full lg:hidden print:hidden"
                 style={{
                     height: isMenuOpen ? '100vh' : '0',
                     opacity: isMenuOpen ? 1 : 0.8,
                     overflow: isMenuOpen ? 'visible' : 'hidden'
                 }}
             >
-                <div className="bg-[var(--bg)] py-4 lg:hidden">
+                <div className="bg-theme-bg py-4 lg:hidden">
                     <Container asChild>
                         <div className="flex space-x-10">
                             <nav
@@ -80,7 +80,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 </div>
             </div>
             <div
-                className="fixed top-[var(--site-header-height)] right-0 left-0 z-20 h-0 bg-[var(--overlay-bg)] lg:hidden"
+                className="bg-overlay-bg top-site-header fixed right-0 left-0 z-20 h-0 lg:hidden"
                 style={{height: isMenuOpen ? '100vh' : '0', opacity: isMenuOpen ? 0.8 : 0}}
             />
         </>

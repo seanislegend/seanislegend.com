@@ -12,7 +12,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link}) => (
     <NavigationMenu.Item asChild>
         <Link
             href={link.url}
-            className="group/link relative flex aspect-square w-full flex-col justify-end bg-[var(--theme-black)] focus:ring-2 focus:ring-[var(--text)] focus:ring-offset-2 focus:outline-hidden 2xl:aspect-4/3"
+            className="group/link bg-theme-black focus:ring-theme-text relative flex aspect-square w-full flex-col justify-end focus:ring-2 focus:ring-offset-2 focus:outline-hidden 2xl:aspect-4/3"
             scroll={true}
         >
             {link.photo?.thumbnail?.url && (
@@ -27,19 +27,19 @@ const DynamicMenuCollection: React.FC<Props> = ({link}) => (
                     src={link.photo.thumbnail.url}
                 />
             )}
-            <div className="absolute bottom-0 left-0 flex h-[60%] w-full flex-col justify-end bg-linear-to-t from-[var(--theme-black)] to-transparent px-4 py-3">
+            <div className="absolute bottom-0 left-0 flex h-[60%] w-full flex-col justify-end bg-linear-to-t from-black to-transparent px-4 py-3">
                 {link.badge && (
                     <span>
                         <Badge>{link.badge}</Badge>
                     </span>
                 )}
                 {link.title && (
-                    <h4 className="leading-tight font-medium tracking-tight text-balance text-[var(--theme-beige-50)] uppercase underline-offset-4 group-hover/link:underline 2xl:text-lg 2xl:leading-tight">
+                    <h4 className="text-beige-50 leading-tight font-medium tracking-tight text-balance uppercase underline-offset-4 group-hover/link:underline 2xl:text-lg 2xl:leading-tight">
                         {link.title}
                     </h4>
                 )}
                 {link.pageTitle && (
-                    <p className="mt-1 hidden text-[14px] leading-tight text-balance text-[var(--theme-beige-50)] xl:block">
+                    <p className="text-beige-50 mt-1 hidden text-[14px] leading-tight text-balance xl:block">
                         {link.pageTitle}
                     </p>
                 )}

@@ -26,7 +26,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
                             <span className="inline-flex items-center gap-1.5">
                                 Collections
                                 {hasAnyNewOrUpdatedCollections && (
-                                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[var(--text)]" />
+                                    <span className="bg-theme-text inline-block h-1.5 w-1.5 rounded-full" />
                                 )}
                             </span>
                             <NavigationMenu.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out absolute top-0 left-0 w-screen pt-8 data-[motion^=to-]:delay-200">
@@ -39,7 +39,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
                                 </div>
                             </NavigationMenu.Content>
                         </NavigationMenu.Trigger>
-                        <div className="animate-in fade-in fixed top-[4.75rem] left-0 hidden h-screen w-screen bg-[var(--overlay-bg)] duration-500 peer-data-[state=open]:block peer-data-[state=open]:duration-200" />
+                        <div className="animate-in fade-in bg-overlay-bg fixed top-[4.75rem] left-0 hidden h-screen w-screen duration-500 peer-data-[state=open]:block peer-data-[state=open]:duration-200" />
                     </NavigationMenu.Item>
                     {MENU_ITEMS.map(item => (
                         <NavigationMenu.Item key={item.href} asChild>
@@ -47,11 +47,11 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
                         </NavigationMenu.Item>
                     ))}
                     <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-20 flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
-                        <div className="relative top-[-5px] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-[var(--secondary-button-bg-hover)]" />
+                        <div className="bg-secondary-button-bg-hover relative top-[-5px] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px]" />
                     </NavigationMenu.Indicator>
                 </NavigationMenu.List>
                 <div className="fixed top-0 left-0 flex w-screen" style={{perspective: '1000px'}}>
-                    <NavigationMenu.Viewport className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8 relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 border-[var(--accent)] bg-[var(--bg)] duration-700 data-[state=closed]:duration-300" />
+                    <NavigationMenu.Viewport className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:slide-out-to-top-4 data-[state=open]:slide-in-from-top-8 border-accent bg-theme-bg relative left-0 z-20 h-[var(--radix-navigation-menu-viewport-height)] w-screen transform-cpu overflow-hidden border-b-2 duration-700 data-[state=closed]:duration-300" />
                 </div>
             </NavigationMenu.Root>
             <SiteMenuMobile links={links} />

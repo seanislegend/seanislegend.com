@@ -1,6 +1,6 @@
 import SiteFooter from '@/components/SiteFooter';
 import SiteHeader from '@/components/SiteHeader';
-import {Theme} from '@/components/UI/Theme';
+import Theme from '@/components/UI/Theme';
 
 interface Props {
     theme: ThemeType;
