@@ -11,29 +11,27 @@ const AboutPage = async () => {
 
     return (
         <DefaultLayout theme="dark">
-            <Container>
-                <PageHeader
-                    description={page.content}
-                    title={page.pageTitle}
-                    titleAside={
-                        <div className="mt-8 grid grid-cols-12 gap-4">
-                            <div className="col-span-6 hidden md:block" />
-                            <div className="col-span-6 flex justify-end">
-                                <Image
-                                    alt=""
-                                    className="max-w-full sm:max-w-[260px] lg:mt-10"
-                                    height={page.photo.height}
-                                    placeholder="empty"
-                                    priority={false}
-                                    quality={90}
-                                    src={page.photo.url}
-                                    width={page.photo.width}
-                                />
-                            </div>
+            <PageHeader
+                description={page.content}
+                title={page.pageTitle}
+                titleAside={
+                    <div className="mt-8 grid grid-cols-12 gap-4">
+                        <div className="col-span-6 hidden md:block" />
+                        <div className="col-span-6 flex justify-end">
+                            <Image
+                                alt=""
+                                className="max-w-full sm:max-w-[260px] lg:mt-10"
+                                height={page.photo.height}
+                                placeholder="empty"
+                                priority={false}
+                                quality={90}
+                                src={page.photo.url}
+                                width={page.photo.width}
+                            />
                         </div>
-                    }
-                />
-            </Container>
+                    </div>
+                }
+            />
         </DefaultLayout>
     );
 };

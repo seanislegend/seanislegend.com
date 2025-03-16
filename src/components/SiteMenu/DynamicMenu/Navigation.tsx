@@ -20,7 +20,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
     return (
         <>
             <NavigationMenu.Root delayDuration={0} key={pathname}>
-                <NavigationMenu.List className="row hidden items-center gap-1 lg:flex">
+                <NavigationMenu.List className="-mr-2 hidden flex-row items-center gap-1 lg:flex">
                     <NavigationMenu.Item>
                         <NavigationMenu.Trigger className={`${linkClasses} peer relative z-30`}>
                             <span className="inline-flex items-center gap-1.5">

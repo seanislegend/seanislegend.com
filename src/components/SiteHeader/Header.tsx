@@ -15,11 +15,11 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     return (
         <header
             className={clsx(
-                'bg-theme-bg h-site-header sticky top-0 z-30 flex items-center border-b-2 border-transparent transition-all duration-300 print:relative print:border-none',
+                'bg-theme-bg h-site-header sticky top-0 z-30 flex items-center border-b-2 border-transparent px-4 transition-all duration-300 md:px-8 print:relative print:border-none',
                 {'border-accent! h-site-header-scrolled': isScrolled}
             )}
         >
-            <div className="flex w-full items-center justify-between gap-8 px-4 md:px-8">
+            <div className="mx-auto flex w-full max-w-[110rem] items-center justify-between gap-8">
                 <span className="relative z-30 flex flex-nowrap items-center gap-2">
                     <Link
                         aria-label="Home"

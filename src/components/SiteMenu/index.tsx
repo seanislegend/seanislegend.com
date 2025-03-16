@@ -7,7 +7,7 @@ export const MENU_ITEMS = [
 ];
 
 const SiteHeaderMenu: React.FC = () => (
-    <nav className="row hidden items-center gap-1 lg:flex">
+    <nav className="row -mr-2 hidden items-center gap-1 lg:flex">
         <SiteHeaderLink href="/collections">Collections</SiteHeaderLink>
         {MENU_ITEMS.map(item => (
             <SiteHeaderLink key={item.href} href={item.href}>

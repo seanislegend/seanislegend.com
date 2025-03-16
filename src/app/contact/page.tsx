@@ -10,9 +10,7 @@ const ContactPage = async () => {
 
     return (
         <DefaultLayout theme="dark">
-            <Container>
-                <PageHeader title={page.pageTitle} description={page.content} />
-            </Container>
+            <PageHeader title={page.pageTitle} description={page.content} />
         </DefaultLayout>
     );
 };
