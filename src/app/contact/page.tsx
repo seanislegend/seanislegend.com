@@ -22,6 +22,4 @@ export const generateMetadata = async () => {
     return {...config.seo, ...getEditorialSeo(page)};
 };
 
-export const revalidate = 60;
-
 export default ContactPage;

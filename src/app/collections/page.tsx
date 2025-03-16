@@ -70,6 +70,4 @@ export const generateMetadata = async () => {
     };
 };
 
-export const revalidate = 60;
-
 export default CollectionsPage;

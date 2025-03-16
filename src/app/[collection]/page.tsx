@@ -51,6 +51,4 @@ export const generateMetadata = async ({params}: Props) => {
     return {...config.seo, ...collectionSeo};
 };
 
-export const revalidate = 60;
-
 export default CollectionPage;

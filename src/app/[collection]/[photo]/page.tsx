@@ -55,6 +55,4 @@ export const generateMetadata = async ({params}: Props) => {
     return {...config.seo, ...getPhotoSeo(collection, photo)};
 };
 
-export const revalidate = 60;
-
 export default PhotoPage;

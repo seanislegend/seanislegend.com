@@ -27,4 +27,8 @@ export const metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_URL || '')
 };
 
+export const revalidate = 86400;
+
+export const dynamic = 'force-static';
+
 export default RootLayout;
