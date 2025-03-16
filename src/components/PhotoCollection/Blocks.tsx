@@ -5,7 +5,7 @@ import {type PhotoBlock, type PhotoBlockComponent} from '@/types/photo-blocks';
 
 interface Props {
     blocks: PhotoBlock[];
-    renderPhoto: (index: number) => React.ReactNode;
+    renderPhoto: (blockPhotos: number[], index: number) => React.ReactNode;
 }
 
 const FourInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
