@@ -1,7 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import Link, {type LinkProps} from 'next/link';
+import {Link} from 'next-view-transitions';
+import {type LinkProps} from 'next/link';
 import {usePathname} from 'next/navigation';
 
 interface Props extends LinkProps {

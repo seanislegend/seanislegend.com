@@ -1,7 +1,6 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import clsx from 'clsx';
+import {Link} from 'next-view-transitions';
 import Image from 'next/image';
-import Link from 'next/link';
 import Badge from '@/components/UI/Badge';
 
 interface Props {
