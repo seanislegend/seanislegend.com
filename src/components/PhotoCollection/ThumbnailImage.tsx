@@ -19,8 +19,8 @@ const ThumbnailImage: React.FC<Props> = ({
     url
 }) => {
     // calculate the scaling factor based on 12-column grid
-    const imageHeight = columnSize ? height * (columnSize / 12) : height;
-    const imageWidth = columnSize ? width * (columnSize / 12) : width;
+    const imageHeight = columnSize ? Math.floor(height * (columnSize / 12)) : height;
+    const imageWidth = columnSize ? Math.floor(width * (columnSize / 12)) : width;
 
     return (
         <span
