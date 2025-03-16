@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Link from 'next/link';
+import {Link} from 'next-view-transitions';
 import {RightArrowIcon} from '@/components/Icon';
 import Condition from '@/components/UI/Condition';
 import ThumbnailImage from './ThumbnailImage';

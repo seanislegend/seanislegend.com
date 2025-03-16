@@ -1,6 +1,6 @@
 import clsx from 'clsx';
+import {Link} from 'next-view-transitions';
 import {Url} from 'next/dist/shared/lib/router/router';
-import Link from 'next/link';
 
 interface Props {
     className?: string;

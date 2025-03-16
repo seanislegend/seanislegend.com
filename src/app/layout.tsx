@@ -1,6 +1,7 @@
 import {Analytics} from '@vercel/analytics/react';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import {GeistSans} from 'geist/font/sans';
+import {ViewTransitions} from 'next-view-transitions';
 import config from '@/utils/config';
 import './globals.css';
 
@@ -9,17 +10,22 @@ interface Props {
 }
 
 const RootLayout = async ({children}: Props) => (
-    <html lang="en" className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}>
-        <body className="flex grow flex-col sm:min-h-full">
-            {children}
-            {process.env.NODE_ENV !== 'development' && (
-                <>
-                    <Analytics />
-                    <SpeedInsights />
-                </>
-            )}
-        </body>
-    </html>
+    <ViewTransitions>
+        <html
+            lang="en"
+            className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}
+        >
+            <body className="flex grow flex-col sm:min-h-full">
+                {children}
+                {process.env.NODE_ENV !== 'development' && (
+                    <>
+                        <Analytics />
+                        <SpeedInsights />
+                    </>
+                )}
+            </body>
+        </html>
+    </ViewTransitions>
 );
 
 export const metadata = {

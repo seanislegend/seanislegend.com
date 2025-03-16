@@ -1,6 +1,6 @@
+import {Link} from 'next-view-transitions';
 import {draftMode} from 'next/headers';
 import Image from 'next/image';
-import Link from 'next/link';
 import {redirect} from 'next/navigation';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';

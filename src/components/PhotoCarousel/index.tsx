@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import {Link} from 'next-view-transitions';
 import Button from '@/components/Button';
 import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
 import CarouselCounter from '@/components/PhotoCarousel/Counter';
