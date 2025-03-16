@@ -34,7 +34,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                 )}
                 <CarouselCounter activeIndex={activeIndex} total={allPhotos.length} />
             </div>
-            <div className="animate-in fade-in relative my-4 w-full overflow-hidden bg-[var(--dark)] duration-500 md:flex md:flex-col lg:aspect-3/2 lg:max-h-[calc(100vh-var(--site-header-height)-7rem)]">
+            <div className="animate-in fade-in bg-dark relative my-4 w-full overflow-hidden duration-500 md:flex md:flex-col lg:aspect-3/2 lg:max-h-[calc(100vh-var(--site-header)-7rem)]">
                 <CarouselImage isActive={true} {...allPhotos[activeIndex]} />
                 <div className="absolute top-0 left-0 w-full opacity-0">
                     <CarouselImage isActive={false} {...prevPhoto} />

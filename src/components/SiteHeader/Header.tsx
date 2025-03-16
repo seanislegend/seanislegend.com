@@ -15,8 +15,8 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     return (
         <header
             className={clsx(
-                'sticky top-0 z-30 flex h-[var(--site-header-height)] items-center border-b-2 border-transparent bg-[var(--bg)] transition-all duration-300 print:relative print:border-none',
-                {'h-[var(--site-header-height-scrolled)] border-(--accent)!': isScrolled}
+                'bg-theme-bg h-site-header sticky top-0 z-30 flex items-center border-b-2 border-transparent transition-all duration-300 print:relative print:border-none',
+                {'border-accent! h-site-header-scrolled': isScrolled}
             )}
         >
             <div className="flex w-full items-center justify-between gap-8 px-4 md:px-8">
@@ -34,7 +34,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                             <span>Go to homepage</span>
                         </span>
                         <span className="duration-500 ease-in-out sm:group-hover:translate-x-1 sm:group-hover:opacity-0 sm:group-hover:duration-200">
-                            photography by <Logo className="text-[var(--text)]" />
+                            photography by <Logo className="text-theme-text" />
                         </span>
                     </Link>
                     <PageHeaderTitlePreview />

@@ -9,7 +9,7 @@ interface Props extends LinkProps {
 }
 
 export const linkClasses =
-    'px-2.5 py-1.5 font-medium text-[14px] relative z-30 inline-block transition duration-500 hover:duration-200 data-[state=open]:bg-[var(--secondary-button-bg-hover)] focus:outline-hidden focus:ring-2 focus:ring-[var(--secondary-button-bg-hover)] ease-in-out hover:bg-[var(--secondary-button-bg-hover)] focus:ring-offset-2 uppercase';
+    'px-2.5 py-1.5 font-medium text-[14px] relative z-30 inline-block transition duration-500 hover:duration-200 data-[state=open]:bg-secondary-button-bg-hover focus:outline-hidden focus:ring-2 focus:ring-secondary-button-bg-hover ease-in-out hover:bg-secondary-button-bg-hover focus:ring-offset-2 uppercase';
 
 const SiteHeaderLink: React.FC<React.PropsWithChildren<Props>> = ({children, href, ...props}) => {
     const pathname = usePathname();
@@ -17,7 +17,7 @@ const SiteHeaderLink: React.FC<React.PropsWithChildren<Props>> = ({children, hre
 
     return (
         <Link
-            className={clsx([linkClasses, isActive && 'bg-[var(--secondary-button-bg)]'])}
+            className={clsx([linkClasses, isActive && 'bg-secondary-button-bg'])}
             href={href}
             {...props}
         >
