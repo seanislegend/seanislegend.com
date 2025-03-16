@@ -40,13 +40,13 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                     overflow: isMenuOpen ? 'visible' : 'hidden'
                 }}
             >
-                <div className="bg-theme-bg py-4 lg:hidden">
+                <div
+                    key={isMenuOpen ? 'collections-open' : 'collections-closed'}
+                    className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 py-4 duration-300 lg:hidden"
+                >
                     <Container asChild>
                         <div className="flex space-x-10">
-                            <nav
-                                key={isMenuOpen ? 'collections-open' : 'collections-closed'}
-                                className="animate-in fade-in grow -translate-x-2 space-y-1.5 duration-500 sm:columns-2"
-                            >
+                            <nav className="grow -translate-x-2 space-y-1.5 sm:columns-2">
                                 {links?.map(link => (
                                     <span className="block" key={link.url}>
                                         <SiteMenuLink href={link.url} {...link}>
