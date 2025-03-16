@@ -18,7 +18,7 @@ const CollectionsPage = async () => {
     const sortedCollections = collections
         .filter(collection => collection.slug !== collection.category && collection.slug !== 'home')
         .sort((a, b) => a.title.localeCompare(b.title));
-    console.log(collections);
+
     return (
         <DefaultLayout theme="light">
             <PageHeader title="All photo collections" />
