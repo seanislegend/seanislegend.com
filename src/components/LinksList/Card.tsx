@@ -10,7 +10,7 @@ interface Props {
 }
 
 const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
-    <div className="link-item grid items-start gap-4 py-4 sm:grid-cols-12">
+    <div className="link-item grid items-start gap-4 py-4 transition-opacity duration-200 sm:grid-cols-12">
         <div className="sm:col-span-5">
             {title && url && (
                 <a

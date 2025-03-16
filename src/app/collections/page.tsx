@@ -23,10 +23,10 @@ const CollectionsPage = async () => {
         <DefaultLayout theme="light">
             <PageHeader title="All photo collections" />
             <Container asChild>
-                <div className="animate-fadeIn animate-duration-1000 -my-4 lg:[&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50">
+                <div className="-my-4 lg:[&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50">
                     {sortedCollections.map(collection => (
                         <Link
-                            className="link-item group relative grid gap-2 py-4 opacity-100 sm:grid-cols-12 sm:gap-4"
+                            className="link-item group relative grid gap-2 py-4 opacity-100 transition-opacity duration-200 sm:grid-cols-12 sm:gap-4"
                             key={collection.slug}
                             href={`/${collection.slug}`}
                         >
