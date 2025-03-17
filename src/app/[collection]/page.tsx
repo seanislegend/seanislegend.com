@@ -1,5 +1,5 @@
 import {draftMode} from 'next/headers';
-import {notFound} from 'next/navigation';
+import {notFound, permanentRedirect} from 'next/navigation';
 import PhotoCollection from '@/components/PhotoCollection';
 import PhotoCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
 import RelatedCollections from '@/components/PhotoCollection/RelatedCollections';
