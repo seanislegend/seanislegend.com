@@ -64,7 +64,7 @@ const nextConfig: NextConfig = {
     },
     experimental: {reactCompiler: true},
     images: {
-        formats: ['image/webp'],
+        formats: ['image/avif', 'image/webp'],
         minimumCacheTTL: 31536000, // 1 year
         remotePatterns: [
             {protocol: 'https', hostname: 'images.ctfassets.net'},
