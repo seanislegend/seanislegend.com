@@ -8,8 +8,15 @@ export const getExternalUrl = (url: string = '') => {
 export const getCollectionSeo = (collection: PhotoCollection) => {
     if (!collection) return {};
 
-    const description = removeMarkdown(collection?.description || '');
-    const title = collection.pageTitle || collection.title;
+    let description = removeMarkdown(collection?.description || '');
+    let title = collection.pageTitle || collection.title;
+
+    if (collection.metaDescription) {
+        description = collection.metaDescription;
+    }
+    if (collection.metaTitle) {
+        title = collection.metaTitle;
+    }
 
     return {
         alternates: {
@@ -40,7 +47,15 @@ export const getPhotoSeo = (collection: PhotoCollection, photo: Photo) => {
 };
 
 export const getEditorialSeo = (page: Editorial) => {
-    const description = removeMarkdown(`${page?.content?.substring(0, 160)}...`);
+    let title = page.pageTitle || page.title;
+    let description = removeMarkdown(`${page?.content?.substring(0, 160)}...`);
+
+    if (page.metaDescription) {
+        description = page.metaDescription;
+    }
+    if (page.metaTitle) {
+        title = page.metaTitle;
+    }
 
     return {
         alternates: {
@@ -48,8 +63,8 @@ export const getEditorialSeo = (page: Editorial) => {
         },
         description,
         openGraph: {description},
-        title: page.pageTitle || page.title,
-        twitter: {description}
+        title,
+        twitter: {description, title}
     };
 };
 

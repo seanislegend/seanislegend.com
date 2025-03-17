@@ -28,6 +28,8 @@ interface PhotoCollection {
     category: string;
     ctaLabel?: string;
     ctaUrl?: string;
+    metaDescription?: string;
+    metaTitle?: string;
     photosCollection: {
         items: Photo[];
     };

@@ -80,6 +80,8 @@ export const fetchEditorialPage = async (slug: string) => {
             items {
                 title
                 slug
+                metaTitle
+                metaDescription
                 pageTitle
                 content
                 ctaLabel
@@ -308,6 +310,8 @@ export const fetchCollection = async (
             items {
                 title
                 slug
+                metaTitle
+                metaDescription
                 category
                 ctaLabel
                 ctaUrl
