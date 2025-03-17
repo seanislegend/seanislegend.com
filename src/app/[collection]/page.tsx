@@ -16,7 +16,9 @@ const CollectionPage = async ({params}: Props) => {
     const draftModeConfig = await draftMode();
     const collection = await fetchCollection(allParams.collection, draftModeConfig.isEnabled);
 
-    if (!collection) return notFound();
+    if (!collection) {
+        notFound();
+    }
 
     return (
         <>

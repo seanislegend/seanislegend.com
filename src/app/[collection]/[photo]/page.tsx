@@ -1,5 +1,5 @@
 import {draftMode} from 'next/headers';
-import {redirect} from 'next/navigation';
+import {notFound, permanentRedirect} from 'next/navigation';
 import PhotoCarousel from '@/components/PhotoCarousel';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
@@ -28,7 +28,18 @@ const PhotoPage = async ({params}: Props) => {
         allParams.photo,
         draftModeConfig.isEnabled
     );
-    if (!collection) redirect('/');
+
+    if (!collection) {
+        return notFound();
+    }
+
+    const collectionHasPhoto = collection.photosCollection.items.some(
+        photo => photo.slug === allParams.photo
+    );
+
+    if (!collectionHasPhoto) {
+        return permanentRedirect(`/${allParams.collection}`);
+    }
 
     return <PhotoCarousel photo={allParams.photo} collection={collection} />;
 };
