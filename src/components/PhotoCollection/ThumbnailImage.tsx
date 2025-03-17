@@ -41,7 +41,6 @@ const ThumbnailImage: React.FC<Props> = ({
                 placeholder={base64 ? 'blur' : 'empty'}
                 loading={loading}
                 quality={85}
-                sizes="(max-width: 240px) 100vw, (max-width: 360px) 50vw, (max-width: 640px) 33vw"
                 src={url}
                 {...(fill ? {} : {height: imageHeight, width: imageWidth})}
             />
