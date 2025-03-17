@@ -6,6 +6,7 @@ import ThumbnailImage from './ThumbnailImage';
 
 type ThumbnailPhoto = Pick<Photo, 'base64' | 'slug' | 'thumbnail' | 'title'>;
 interface Props extends ThumbnailPhoto {
+    columnSize?: number;
     label?: string;
     loading?: 'eager' | 'lazy';
     linksTo?: 'collection' | 'photo';
@@ -15,6 +16,7 @@ interface Props extends ThumbnailPhoto {
 
 const PhotoThumbnail: React.FC<Props> = ({
     base64,
+    columnSize,
     label,
     linksTo,
     loading = 'lazy',
@@ -63,7 +65,13 @@ const PhotoThumbnail: React.FC<Props> = ({
             </Link>
         )}
     >
-        <ThumbnailImage fill={props?.fill} {...thumbnail} base64={base64} loading={loading} />
+        <ThumbnailImage
+            columnSize={columnSize}
+            fill={props?.fill}
+            {...thumbnail}
+            base64={base64}
+            loading={loading}
+        />
     </Condition>
 );
 
