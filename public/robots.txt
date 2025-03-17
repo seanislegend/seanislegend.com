@@ -1,3 +1,4 @@
 User-agent: *
+Disallow: */open-graph*
 Allow: /
 Sitemap: https://www.seanislegend.com/sitemap.xml
