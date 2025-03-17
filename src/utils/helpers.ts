@@ -5,6 +5,14 @@ export const getExternalUrl = (url: string = '') => {
     return `${url}?utm_source=seanislegend.com&utm_medium=referral`;
 };
 
+const titleWithCategoryPrefix = (title: string, category?: string) => {
+    if (category) {
+        return `${title} | ${category} ${config.titleTemplate}`;
+    } else {
+        return `${title} | ${config.titleTemplate}`;
+    }
+};
+
 export const getCollectionSeo = (collection: PhotoCollection) => {
     if (!collection) return {};
 
@@ -17,6 +25,8 @@ export const getCollectionSeo = (collection: PhotoCollection) => {
     if (collection.metaTitle) {
         title = collection.metaTitle;
     }
+
+    title = titleWithCategoryPrefix(title, collection.category);
 
     return {
         alternates: {
@@ -32,8 +42,14 @@ export const getCollectionSeo = (collection: PhotoCollection) => {
 };
 
 export const getPhotoSeo = (collection: PhotoCollection, photo: Photo) => {
-    const description = removeMarkdown(photo?.description || collection?.description || '');
-    const title = `${photo.title} | ${collection.title}`;
+    let description = removeMarkdown(photo?.description || collection?.description || '');
+    let title = `${photo.title} | ${collection.title}`;
+
+    if (collection.metaDescription) {
+        description = collection.metaDescription;
+    }
+
+    title = titleWithCategoryPrefix(title, collection.category);
 
     return {
         alternates: {
@@ -56,6 +72,8 @@ export const getEditorialSeo = (page: Editorial) => {
     if (page.metaTitle) {
         title = page.metaTitle;
     }
+
+    title = titleWithCategoryPrefix(title);
 
     return {
         alternates: {
