@@ -36,27 +36,39 @@ const nextConfig: NextConfig = {
     },
     async redirects() {
         return [
-            {source: '/about-town', destination: '/london-street-photography', permanent: true},
-            {source: '/adnams-signifier', destination: '/adnams', permanent: true},
-            {source: '/adnams', destination: '/adnams-brewery-southwold', permanent: true},
+            {
+                source: '/about-town/:slug*',
+                destination: '/london-street-photography',
+                permanent: true
+            },
+            {source: '/adnams-signifier/:slug*', destination: '/adnams', permanent: true},
+            {source: '/adnams/:slug*', destination: '/adnams-brewery-southwold', permanent: true},
             {
                 source: '/fish-and-chips/:slug*',
                 destination: '/london-street-photography/fish-and-chips',
                 permanent: true
             },
-            {source: '/gbh-b-roll', destination: '/good-beer-hunting-b-roll', permanent: true},
             {
-                source: '/hukins-hops',
+                source: '/gbh-b-roll/:slug*',
+                destination: '/good-beer-hunting-b-roll',
+                permanent: true
+            },
+            {
+                source: '/hukins-hops/:slug*',
                 destination: '/hukins-hops-annual-hop-harvest',
                 permanent: true
             },
-            {source: '/iceland', destination: '/iceland-on-film', permanent: true},
-            {source: '/india', destination: '/travelling-across-india', permanent: true},
-            {source: '/jw-lees-unrated', destination: '/jw-lees', permanent: true},
-            {source: '/jw-lees', destination: '/jw-lees-harvest-ale', permanent: true},
-            {source: '/tynt-meadow', destination: '/tynt-meadow-trappist-ale', permanent: true},
+            {source: '/iceland/:slug*', destination: '/iceland-on-film', permanent: true},
+            {source: '/india/:slug*', destination: '/travelling-across-india', permanent: true},
+            {source: '/jw-lees-unrated/:slug*', destination: '/jw-lees', permanent: true},
+            {source: '/jw-lees/:slug*', destination: '/jw-lees-harvest-ale', permanent: true},
             {
-                source: '/uppers-and-downers',
+                source: '/tynt-meadow/:slug*',
+                destination: '/tynt-meadow-trappist-ale',
+                permanent: true
+            },
+            {
+                source: '/uppers-and-downers/:slug*',
                 destination: '/uppers-and-downers-coffee-and-beer-festival',
                 permanent: true
             }
