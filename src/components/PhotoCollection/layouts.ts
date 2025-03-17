@@ -11,6 +11,24 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [6, 7, 8, 9]},
         {layout: 'ThreeInARow', photos: [3, 4, 5]}
     ],
+    'community-and-craft-beer-in-hebden-bridge': [
+        {layout: 'TwoInARow', photos: [63, 17]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [0, 61, 27, 8, 4, 46]},
+        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [34, 65, 67]},
+        {layout: 'ThreeInARow', photos: [54, 14, 23]},
+        {layout: 'ThreeInARow', photos: [3, 20, 21]},
+        {layout: 'ThreeInARowWithPadding', photos: [9, 19, 18]},
+        {layout: 'TwoInARow', photos: [36, 38]},
+        {layout: 'TwoInARow', photos: [56, 43]},
+        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [48, 68, 53]},
+        {layout: 'FourInARow', photos: [55, 40, 32, 12]},
+        {
+            layout: 'OnePortraitOneLandscapeMediumFourLandscapeSmall',
+            photos: [35, 24, 51, 2, 70, 16]
+        },
+        {layout: 'FourInARow', photos: [28, 62, 64, 69]},
+        {layout: 'TwoInARow', photos: [42, 13]}
+    ],
     'dark-star-gales-prize-old-ale': [
         {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 3, 2, 10]},
         {layout: 'TwoInARowWithPadding', photos: [9, 14]},
