@@ -133,18 +133,18 @@
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --theme-black: #131414;
-            --theme-beige-50: #f5f6f6;
-            --theme-beige-100: #e4e7e9;
-            --theme-beige-200: #ccd3d5;
-            --theme-beige-300: #a9b3b7;
-            --theme-beige-400: #7e8d92;
-            --theme-beige-500: #637277;
-            --theme-beige-600: #556065;
-            --theme-beige-700: #495255;
-            --theme-beige-800: #40464a;
-            --theme-beige-900: #393d40;
-            --theme-beige-950: #1e2123;
+            --color-black: #131414;
+            --color-beige-50: #f5f6f6;
+            --color-beige-100: #e4e7e9;
+            --color-beige-200: #ccd3d5;
+            --color-beige-300: #a9b3b7;
+            --color-beige-400: #7e8d92;
+            --color-beige-500: #637277;
+            --color-beige-600: #556065;
+            --color-beige-700: #495255;
+            --color-beige-800: #40464a;
+            --color-beige-900: #393d40;
+            --color-beige-950: #1e2123;
         }
 
         [data-theme='light'] {
