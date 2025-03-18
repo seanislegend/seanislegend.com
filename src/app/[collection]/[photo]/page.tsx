@@ -1,6 +1,7 @@
 import {draftMode} from 'next/headers';
 import {notFound, permanentRedirect} from 'next/navigation';
 import PhotoCarousel from '@/components/PhotoCarousel';
+import {getAllPhotoIdsForLayout} from '@/components/PhotoCollection/layouts';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
 import {getPhotoSeo} from '@/utils/helpers';
@@ -15,7 +16,7 @@ const getCollectionAndPhoto = async (
     preview: boolean = false
 ) => {
     const collection = await fetchCollection(collectionSlug, preview);
-    const photo = collection?.photosCollection.items.find(p => p.slug === photoSlug);
+    const photo = collection?.photosCollection.items.find(p => p?.slug === photoSlug);
 
     return {collection, photo};
 };
@@ -48,14 +49,18 @@ export const generateStaticParams = async () => {
     const allCollections = await fetchAllCollections();
     if (!allCollections) return [];
 
-    return allCollections
+    const slugs = allCollections
         .map(collection => {
-            return collection.photosCollection.items.map(photo => ({
+            const photos = collection.photosCollection.items.map(photo => ({
                 collection: collection.slug,
                 photo: photo.slug
             }));
+
+            return photos;
         })
         .flatMap(photo => photo);
+
+    return slugs;
 };
 
 export const generateMetadata = async ({params}: Props) => {

@@ -176,3 +176,14 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [6, 8, 7, 9]}
     ]
 };
+
+export const getAllPhotoIdsForLayout = (id: string) => {
+    const layout = layouts?.[id];
+    if (!layout) return [];
+
+    const layoutPhotoIds = Object.entries(layout)
+        .map(([_, value]) => value.photos)
+        .flat();
+
+    return layoutPhotoIds;
+};

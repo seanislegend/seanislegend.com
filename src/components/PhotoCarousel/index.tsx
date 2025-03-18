@@ -3,7 +3,7 @@ import Button from '@/components/Button';
 import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
 import CarouselCounter from '@/components/PhotoCarousel/Counter';
 import ScrollToContainerFix from '@/components/PhotoCarousel/ScrollToContainerFix';
-import {layouts} from '@/components/PhotoCollection/layouts';
+import {getAllPhotoIdsForLayout} from '@/components/PhotoCollection/layouts';
 import Container from '@/components/UI/Container';
 import CarouselImage from './Image';
 import KeyboardNavigation from './KeyboardNavigation';
@@ -17,10 +17,7 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
     // the photos are defined in the collection
     const allPhotos = collection.photosCollection.items;
     // the order is defined in the layout file, not the order of the photos in the collection
-    const layout = layouts?.[collection.slug];
-    const layoutPhotoIds = Object.entries(layout)
-        .map(([key, value]) => value.photos)
-        .flat();
+    const layoutPhotoIds = getAllPhotoIdsForLayout(collection.slug);
     // find the index of the photo in the collection
     const activeAllPhotosIndex = allPhotos.findIndex(item => item.slug === photo);
     // find the index of the photo in the layout
@@ -35,8 +32,8 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
 
     const prevPhoto = allPhotos[layoutPhotoIds[prevLayoutIndex]];
     const nextPhoto = allPhotos[layoutPhotoIds[nextLayoutIndex]];
-    const prevPhotoUrl = `/${collection.slug}/${prevPhoto.slug}`;
-    const nextPhotoUrl = `/${collection.slug}/${nextPhoto.slug}`;
+    const prevPhotoUrl = `/${collection?.slug}/${prevPhoto?.slug}`;
+    const nextPhotoUrl = `/${collection?.slug}/${nextPhoto?.slug}`;
 
     return (
         <Container>
