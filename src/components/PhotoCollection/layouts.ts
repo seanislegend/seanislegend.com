@@ -26,7 +26,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
             layout: 'OnePortraitOneLandscapeMediumFourLandscapeSmall',
             photos: [35, 24, 51, 2, 70, 16]
         },
-        {layout: 'FourInARow', photos: [28, 62, 64, 69]},
+        {layout: 'ThreeInARowWithPadding', photos: [62, 64, 69]},
         {layout: 'TwoInARow', photos: [42, 13]}
     ],
     'dark-star-gales-prize-old-ale': [
@@ -75,11 +75,11 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [2, 11, 18, 4]}
     ],
     home: [
-        {layout: 'SixInARow', photos: [6, 7, 8, 9, 19, 18]},
+        {layout: 'SixInARow', photos: [6, 7, 8, 25, 9, 19]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 21, 11, 2, 3]},
         {layout: 'ThreeInARow', photos: [10, 5, 13]},
-        {layout: 'FourInARow', photos: [12, 14, 15, 16, 17]},
-        {layout: 'ThreeInARow', photos: [22, 23, 20]}
+        {layout: 'FourInARow', photos: [12, 26, 15, 16, 17]},
+        {layout: 'ThreeInARow', photos: [22, 27, 23]}
     ],
     'hukins-hops-annual-hop-harvest': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 8]},
