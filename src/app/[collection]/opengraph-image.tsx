@@ -1,3 +1,4 @@
+import {layouts} from '@/components/PhotoCollection/layouts';
 import {fetchCollection} from '@/utils/contentful';
 import {getOgImage} from '@/utils/og';
 
@@ -10,12 +11,20 @@ const handler = async ({params}: Props) => {
     const collection = await fetchCollection(allParams.collection);
     if (!collection) return;
 
-    const photos = collection.photosCollection.items.filter((photo, index) => {
-        return photo.fullSize.width > photo.fullSize.height && index < 4;
-    });
+    const photos = collection.photosCollection.items;
     if (!photos) return;
 
-    return getOgImage(photos.map(photo => photo.fullSize.url));
+    const layout = layouts?.[collection.slug];
+    if (!layout) {
+        return getOgImage(photos.slice(0, 4).map(photo => photo.fullSize.url));
+    }
+
+    const allPhotos = Object.values(layout)
+        .flatMap(layout => layout.photos)
+        .slice(0, 4);
+    const layoutPhotos = allPhotos.map(photo => photos[photo]);
+
+    return getOgImage(layoutPhotos.map(photo => photo.fullSize.url));
 };
 
 export const runtime = 'edge';
