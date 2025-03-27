@@ -6,6 +6,11 @@ interface Props {
     params: Promise<{collection: string}>;
 }
 
+const getFirstFourLandscapePhotos = (photos: Photo[]) => {
+    const landscapePhotos = photos.filter(photo => photo.fullSize.width > photo.fullSize.height);
+    return landscapePhotos.slice(0, 4).map(photo => photo.fullSize.url);
+};
+
 const handler = async ({params}: Props) => {
     const allParams = await params;
     const collection = await fetchCollection(allParams.collection);
@@ -16,15 +21,15 @@ const handler = async ({params}: Props) => {
 
     const layout = layouts?.[collection.slug];
     if (!layout) {
-        return getOgImage(photos.slice(0, 4).map(photo => photo.fullSize.url));
+        const photoGroup = getFirstFourLandscapePhotos(photos);
+        return getOgImage(photoGroup);
     }
 
     const allPhotos = Object.values(layout)
         .flatMap(layout => layout.photos)
-        .slice(0, 4);
-    const layoutPhotos = allPhotos.map(photo => photos[photo]);
-
-    return getOgImage(layoutPhotos.map(photo => photo.fullSize.url));
+        .map(photoIndex => photos[photoIndex]);
+    const landscapePhotos = getFirstFourLandscapePhotos(allPhotos);
+    return getOgImage(landscapePhotos);
 };
 
 export const runtime = 'edge';
