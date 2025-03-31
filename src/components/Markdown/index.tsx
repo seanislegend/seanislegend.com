@@ -16,15 +16,16 @@ const MarkdownLink = (props: any) => (
 );
 
 const Markdown: React.FC<Props> = ({children, className = ''}: Props) => (
-    <ReactMarkdown
+    <div
         className={clsx([
             'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] space-y-6 text-sm leading-relaxed',
             className
         ])}
-        components={{a: ({...props}) => <MarkdownLink {...props} />}}
     >
-        {children}
-    </ReactMarkdown>
+        <ReactMarkdown components={{a: ({...props}) => <MarkdownLink {...props} />}}>
+            {children}
+        </ReactMarkdown>
+    </div>
 );
 
 export default Markdown;
