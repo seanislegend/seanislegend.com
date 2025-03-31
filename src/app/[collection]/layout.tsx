@@ -1,6 +1,7 @@
 import {Suspense} from 'react';
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
+import CollectionLinksCarousel from '@/components/CollectionLinksCarousel';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
@@ -33,7 +34,9 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
                         </Suspense>
                     </div>
                 }
-            />
+            >
+                {collection.slug === 'home' && <CollectionLinksCarousel />}
+            </PageHeader>
             {children}
         </DefaultLayout>
     );

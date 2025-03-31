@@ -39,6 +39,21 @@
 
     --spacing-site-header: var(--site-header-height);
     --spacing-site-header-scrolled: var(--site-header-height-scrolled);
+
+    --animate-carousel-item-slide-in: carousel-item-slide-in 0.4s ease-out;
+
+    @keyframes carousel-item-slide-in {
+        from {
+            opacity: 0;
+            transform: translateY(4px);
+            filter: blur(4px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+    }
 }
 
 /*
