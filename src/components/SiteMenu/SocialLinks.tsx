@@ -1,11 +1,13 @@
-import {InstagramIcon, TwitterIcon} from '@/components/Icon';
+import {InstagramIcon, ThreadsIcon, TwitterIcon} from '@/components/Icon';
 
 const LINKS = [
     {label: 'Instagram', url: 'https://www.instagram.com/seanislegend/'},
-    {label: 'Twitter', url: 'https://twitter.com/seanislegend'}
+    {label: 'Twitter', url: 'https://twitter.com/seanislegend'},
+    {label: 'Threads', url: 'https://www.threads.net/@seanislegend'}
 ];
 const ICONS: {[key: string]: any} = {
     instagram: InstagramIcon,
+    threads: ThreadsIcon,
     twitter: TwitterIcon
 };
 
