@@ -48,7 +48,7 @@ const CollectionLinksCarousel: React.FC<Props> = ({links = []}) => {
                         className="animate-carousel-item-slide-in absolute inset-0 flex w-full items-center"
                     >
                         <Link
-                            className="text-primary line-clamp-1 inline-block overflow-ellipsis whitespace-nowrap underline underline-offset-4 hover:decoration-2"
+                            className="text-primary focus:ring-accent line-clamp-1 inline-block rounded-xs overflow-ellipsis whitespace-nowrap underline underline-offset-4 hover:decoration-2 focus:ring-2 focus:ring-offset-2 focus:outline-none"
                             href={currentLink.href}
                         >
                             {currentLink.label}

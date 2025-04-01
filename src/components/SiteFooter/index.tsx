@@ -3,9 +3,9 @@ import SiteHeaderMenu from '@/components/SiteMenu';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 
 const SiteFooter: React.FC = () => (
-    <footer className="border-accent mx-auto mt-8 flex w-full max-w-[110rem] flex-col items-center gap-4 border-t-2 px-4 py-4 sm:flex-row sm:justify-between md:px-8 print:border-none">
+    <footer className="border-accent mx-auto mt-8 flex w-full max-w-[110rem] flex-col items-center gap-4 border-t-2 py-4 sm:flex-row sm:justify-between print:border-none">
         <div className="flex items-center gap-4 print:hidden!">
-            <Logo />
+            <Logo className="text-sm" />
             <SocialLinks />
         </div>
         <SiteHeaderMenu />

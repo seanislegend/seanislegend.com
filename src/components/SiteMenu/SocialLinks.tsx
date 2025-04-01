@@ -10,7 +10,7 @@ const ICONS: {[key: string]: any} = {
 };
 
 const SiteMenuSocialLinks: React.FC = () => (
-    <div className="flex items-center gap-2 md:justify-center">
+    <div className="flex items-center gap-1 md:justify-center">
         {LINKS.map(link => {
             const Icon = ICONS[link.label.toLowerCase()];
 
@@ -19,7 +19,7 @@ const SiteMenuSocialLinks: React.FC = () => (
                     key={link.url}
                     aria-label={link.label}
                     href={link.url}
-                    className="bg-secondary-button-bg text-secondary-button-text hover:bg-secondary-button-bg-hover focus:outline-accent overflow-hidden rounded-xs p-1.5 text-xl tracking-tight duration-200 ease-out focus:outline-2 focus:outline-offset-2 focus:outline-dotted md:text-xl lg:text-2xl"
+                    className="text-secondary-button-text hover:bg-secondary-button-bg-hover focus:outline-accent overflow-hidden rounded-xs p-1.5 text-xl tracking-tight duration-200 ease-out focus:outline-2 focus:outline-offset-2 focus:outline-dotted md:text-xl lg:text-2xl"
                     rel="noreferrer"
                     target="_blank"
                 >
