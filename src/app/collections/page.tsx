@@ -44,7 +44,7 @@ const CollectionsPage = async () => {
                             <span className="line-clamp-2 opacity-100 transition-opacity duration-200 sm:col-span-7 sm:line-clamp-none">
                                 {collection.description}
                             </span>
-                            <span className="group-hover:animate-in group-hover:slide-in-from-top-10 slide-out-to-bottom-10 absolute top-1/2 left-4/12 z-30 -translate-y-1/2 opacity-0 transition-all duration-100 will-change-transform group-hover:opacity-100">
+                            <span className="group-hover:animate-in group-hover:slide-in-from-top-10 slide-out-to-bottom-10 absolute top-1/2 left-4/12 z-30 -translate-y-1/2 overflow-hidden rounded-xs opacity-0 transition-all duration-100 will-change-transform group-hover:opacity-100">
                                 <Image
                                     alt=""
                                     blurDataURL={collection.photosCollection.items[0]?.base64}

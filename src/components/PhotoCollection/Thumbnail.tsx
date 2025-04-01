@@ -32,7 +32,7 @@ const PhotoThumbnail: React.FC<Props> = ({
             <Link
                 aria-label={`View photo: ${title}`}
                 className={clsx(
-                    'group/photo focus:ring-text relative block focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
+                    'group/photo focus:ring-text relative block overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
                     {'block h-full w-full': props?.fill}
                 )}
                 href={path}

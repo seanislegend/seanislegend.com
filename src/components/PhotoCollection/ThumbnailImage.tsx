@@ -25,7 +25,7 @@ const ThumbnailImage: React.FC<Props> = ({
     return (
         <span
             className={clsx(
-                'relative z-20 block min-h-[50px] overflow-hidden group-focus:outline-hidden',
+                'relative z-20 block min-h-[50px] overflow-hidden rounded-xs group-focus:outline-hidden',
                 {
                     'h-full': fill,
                     'aspect-3/2': imageWidth > imageHeight,

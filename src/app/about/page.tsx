@@ -20,7 +20,7 @@ const AboutPage = async () => {
                         <div className="col-span-6 flex justify-end">
                             <Image
                                 alt=""
-                                className="max-w-full sm:max-w-[260px] lg:mt-10"
+                                className="max-w-full overflow-hidden rounded-xs sm:max-w-[260px] lg:mt-10"
                                 height={page.photo.height}
                                 placeholder="empty"
                                 priority={false}
