@@ -6,14 +6,10 @@ const CollectionLinks: React.FC = async () => {
 
     if (!collections) return null;
 
-    const links = collections
-        .map(collection => ({
-            label: collection.pageTitle ?? collection.title,
-            url: collection.url
-        }))
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 20);
-
+    const links = collections.map(collection => ({
+        href: collection.url,
+        label: collection.pageTitle ?? collection.title
+    }));
     if (!links.length) return null;
 
     return <Carousel links={links} />;

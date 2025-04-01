@@ -20,3 +20,8 @@ interface LinksPage {
     text?: string;
     title: string;
 }
+
+interface HrefLink {
+    label: string;
+    href: string;
+}
