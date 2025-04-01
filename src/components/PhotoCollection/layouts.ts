@@ -76,9 +76,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
     ],
     home: [
         {layout: 'SixInARow', photos: [6, 7, 8, 25, 9, 19]},
-        {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 21, 11, 2, 3]},
-        {layout: 'ThreeInARow', photos: [10, 5, 13]},
-        {layout: 'FourInARow', photos: [12, 26, 15, 16, 17]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 21, 11, 2, 26]},
+        {layout: 'ThreeInARow', photos: [10, 3, 5]},
+        {layout: 'FourInARow', photos: [12, 13, 15, 16, 17]},
         {layout: 'ThreeInARow', photos: [22, 27, 23]}
     ],
     'hukins-hops-annual-hop-harvest': [
