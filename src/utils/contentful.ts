@@ -236,7 +236,6 @@ export const fetchAllCollections = async (
                 ctaLabel
                 ctaUrl
                 isFeatured
-                showInMenu
                 showDescription
                 description
                 photoSort
