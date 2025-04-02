@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
+import PublishedWorkLogos from '@/components/PublishedWorkLogos';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchEditorialPage} from '@/utils/contentful';
@@ -31,7 +32,10 @@ const AboutPage = async () => {
                         </div>
                     </div>
                 }
-            />
+            >
+                <div className="h-12 lg:h-20" />
+                <PublishedWorkLogos />
+            </PageHeader>
         </DefaultLayout>
     );
 };
