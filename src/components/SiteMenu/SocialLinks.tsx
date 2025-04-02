@@ -1,14 +1,16 @@
-import {InstagramIcon, ThreadsIcon, TwitterIcon} from '@/components/Icon';
+import {BlueskyIcon, InstagramIcon, ThreadsIcon, XIcon} from '@/components/Icon';
 
 const LINKS = [
     {label: 'Instagram', url: 'https://www.instagram.com/seanislegend/'},
-    {label: 'Twitter', url: 'https://twitter.com/seanislegend'},
-    {label: 'Threads', url: 'https://www.threads.net/@seanislegend'}
+    {label: 'X', url: 'https://x.com/seanislegend'},
+    {label: 'Threads', url: 'https://www.threads.net/@seanislegend'},
+    {label: 'Bluesky', url: 'https://bsky.app/profile/seanislegend.com'}
 ];
 const ICONS: {[key: string]: any} = {
     instagram: InstagramIcon,
     threads: ThreadsIcon,
-    twitter: TwitterIcon
+    x: XIcon,
+    bluesky: BlueskyIcon
 };
 
 const SiteMenuSocialLinks: React.FC = () => (

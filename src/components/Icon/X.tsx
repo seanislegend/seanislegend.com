@@ -2,7 +2,7 @@ interface Props {
     className?: string;
 }
 
-export const TwitterIcon: React.FC<Props> = ({className = 'size-6 fill-current'}) => (
+export const XIcon: React.FC<Props> = ({className = 'size-6 fill-current'}) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" className={className}>
         <g clipPath="url(#a)">
             <path
