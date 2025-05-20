@@ -33,7 +33,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 3, 2, 10]},
         {layout: 'TwoInARowWithPadding', photos: [9, 14]},
         {layout: 'ThreeInARow', photos: [7, 5, 4]},
-        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [11, 6, 12]}
+        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [11, 6, 12]},
+        {layout: 'ContentSection', sections: [0]}
     ],
     'euros-final-2024': [
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 6, 2, 4, 19, 20]},
@@ -78,6 +79,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'SixInARow', photos: [6, 7, 8, 25, 9, 19]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 21, 11, 2, 26]},
         {layout: 'ThreeInARow', photos: [10, 3, 5]},
+        {layout: 'ContentSection', sections: [0]},
         {layout: 'FourInARow', photos: [12, 13, 15, 16, 17]},
         {layout: 'ThreeInARow', photos: [22, 27, 23]}
     ],
@@ -158,7 +160,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [7, 21, 34, 27]},
         {layout: 'LandscapeOneBigTwoMedium', photos: [32, 44, 31], props: {reverse: true}},
         {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [9, 11, 10]},
-        {layout: 'FourInARow', photos: [18, 13, 25, 36]}
+        {layout: 'FourInARow', photos: [18, 13, 25, 36]},
+        {layout: 'ContentSection', sections: [0]}
     ],
     'tynt-meadow-trappist-ale': [
         {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 3, 2, 1]},
@@ -169,7 +172,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [16, 17, 18, 19]},
         {layout: 'SixInARow', photos: [20, 21, 22, 23, 24, 25]},
         {layout: 'OnePortraitOneLandscapeMediumTwoLandscapeSmall', photos: [26, 28, 27, 30]},
-        {layout: 'TwoInARow', photos: [29, 31]}
+        {layout: 'TwoInARow', photos: [29, 31]},
+        {layout: 'ContentSection', sections: [0]}
     ],
     'uppers-and-downers-coffee-and-beer-festival': [
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 1, 2, 3, 4, 5]},
