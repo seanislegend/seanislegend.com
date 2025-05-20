@@ -9,7 +9,7 @@ const RelatedCollections = ({items}: Props) => {
     if (!items?.length) return null;
 
     return (
-        <div className="bg-button-bg text-button-text mt-16 -mb-8 py-8">
+        <div className="bg-button-bg text-button-text mt-16 -mb-8 px-4 py-8 md:px-8">
             <div className="mx-auto grid max-w-[110rem] grid-cols-12 gap-4">
                 <div className="col-span-12 md:col-span-4 lg:col-span-3">
                     <h2 className="mb-2 text-xl leading-tight font-medium text-balance break-normal uppercase md:text-2xl md:leading-tight">
