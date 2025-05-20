@@ -271,7 +271,7 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
 );
 
 const contentSectionThemes = {
-    default: '',
+    default: 'py-4 lg:py-6',
     callout: 'bg-accent rounded p-4 lg:p-8 xl:p-12'
 };
 
@@ -282,19 +282,19 @@ export const ContentSection: React.FC<ContentSection> = ({
     theme,
     title
 }) => (
-    <div
-        className={clsx('mx-auto w-full max-w-[110rem]', contentSectionThemes[theme ?? 'default'])}
-    >
-        <h2 className="text-title-text max-w-5xl space-x-2 text-lg leading-tight font-medium text-balance break-normal uppercase underline-offset-4 group-hover:underline md:text-xl md:leading-tight lg:text-2xl">
-            {title}
-        </h2>
-        <Markdown className="mt-4 max-w-7xl text-balance">{content}</Markdown>
-        {ctaLabel && ctaUrl && (
-            <div className="mt-4">
-                <Button href={ctaUrl}>{ctaLabel}</Button>
-            </div>
-        )}
-    </div>
+    <Grid className={contentSectionThemes[theme ?? 'default']}>
+        <Column className="col-span-12 md:col-span-8">
+            <h2 className="text-title-text max-w-5xl space-x-2 text-lg leading-tight font-medium text-balance break-normal uppercase underline-offset-4 group-hover:underline md:text-xl md:leading-tight lg:text-2xl">
+                {title}
+            </h2>
+            <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
+            {ctaLabel && ctaUrl && (
+                <div className="mt-4">
+                    <Button href={ctaUrl}>{ctaLabel}</Button>
+                </div>
+            )}
+        </Column>
+    </Grid>
 );
 
 const ContentSectionGroup: React.FC<SectionBlockComponent> = ({renderSection, sections}) => (
