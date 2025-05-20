@@ -3,8 +3,10 @@ import {type PhotoBlock} from '@/types/photo-blocks';
 export const layouts: Record<string, PhotoBlock[]> = {
     'adnams-brewery-southwold': [
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 1, 2, 3, 4, 5]},
+        {layout: 'ContentSection', sections: [1]},
         {layout: 'ThreeInARow', photos: [11, 6, 12]},
-        {layout: 'ThreeInARow', photos: [9, 14, 13]}
+        {layout: 'ThreeInARow', photos: [9, 14, 13]},
+        {layout: 'ContentSection', sections: [0]}
     ],
     'at-the-seaside': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [1, 2, 0], props: {reverse: true}},
@@ -16,6 +18,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 61, 27, 8, 4, 46]},
         {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [34, 65, 67]},
         {layout: 'ThreeInARow', photos: [54, 14, 23]},
+        {layout: 'ContentSection', sections: [0]},
         {layout: 'ThreeInARow', photos: [3, 20, 21]},
         {layout: 'ThreeInARowWithPadding', photos: [9, 19, 18]},
         {layout: 'TwoInARow', photos: [36, 38]},
@@ -27,14 +30,16 @@ export const layouts: Record<string, PhotoBlock[]> = {
             photos: [35, 24, 51, 2, 70, 16]
         },
         {layout: 'ThreeInARowWithPadding', photos: [62, 64, 69]},
-        {layout: 'TwoInARow', photos: [42, 13]}
+        {layout: 'TwoInARow', photos: [42, 13]},
+        {layout: 'ContentSection', sections: [1]}
     ],
     'dark-star-gales-prize-old-ale': [
         {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 3, 2, 10]},
         {layout: 'TwoInARowWithPadding', photos: [9, 14]},
+        {layout: 'ContentSection', sections: [0]},
         {layout: 'ThreeInARow', photos: [7, 5, 4]},
         {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [11, 6, 12]},
-        {layout: 'ContentSection', sections: [0]}
+        {layout: 'ContentSection', sections: [1]}
     ],
     'euros-final-2024': [
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 6, 2, 4, 19, 20]},
@@ -88,6 +93,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'TwoInARow', photos: [4, 10]},
         {layout: 'ThreeInARow', photos: [3, 9, 7]},
         {layout: 'ThreeInARow', photos: [29, 28, 2]},
+        {layout: 'ContentSection', sections: [0]},
         {layout: 'TwoInARowWithPadding', photos: [5, 6]},
         {layout: 'FourInARow', photos: [10, 12, 11, 13]},
         {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [19, 25, 18]},
@@ -95,7 +101,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {
             layout: 'OnePortraitOneLandscapeMediumFourLandscapeSmall',
             photos: [24, 30, 20, 21, 31, 23]
-        }
+        },
+        {layout: 'ContentSection', sections: [1]}
     ],
     'iceland-on-film': [
         {layout: 'ThreeInARow', photos: [3, 0, 4]},
@@ -113,11 +120,13 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'TwoInARow', photos: [17, 18]},
         {layout: 'ThreeInARowWithPadding', photos: [9, 10, 11]},
         {layout: 'TwoInARow', photos: [26, 27]},
+        {layout: 'ContentSection', sections: [0]},
         {layout: 'LandscapeOneBigTwoMedium', photos: [12, 20, 13], props: {reverse: true}},
         {layout: 'ThreeInARowWithPadding', photos: [8, 6, 7]},
         {layout: 'LandscapeOneBigTwoMedium', photos: [21, 2, 24]},
         {layout: 'ThreeInARowWithPadding', photos: [34, 33, 31]},
-        {layout: 'FourInARow', photos: [28, 29, 30, 32]}
+        {layout: 'FourInARow', photos: [28, 29, 30, 32]},
+        {layout: 'ContentSection', sections: [1]}
     ],
     'loch-lomond': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 2]},
@@ -152,6 +161,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [26, 20, 39, 45]},
         {layout: 'ThreeInARow', photos: [16, 17, 35]},
         {layout: 'TwoInARowWithPadding', photos: [40, 24]},
+        {layout: 'ContentSection', sections: [0]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [4, 6, 28, 23, 33, 5]},
         {layout: 'ThreeInARowWithPadding', photos: [2, 38, 22]},
         {layout: 'FourInARow', photos: [30, 41, 12, 19]},
@@ -161,19 +171,20 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'LandscapeOneBigTwoMedium', photos: [32, 44, 31], props: {reverse: true}},
         {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [9, 11, 10]},
         {layout: 'FourInARow', photos: [18, 13, 25, 36]},
-        {layout: 'ContentSection', sections: [0]}
+        {layout: 'ContentSection', sections: [1]}
     ],
     'tynt-meadow-trappist-ale': [
         {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 3, 2, 1]},
         {layout: 'TwoInARowWithPadding', photos: [4, 5]},
         {layout: 'OneLandScapeTwoPortrait', photos: [6, 7, 8]},
         {layout: 'FourInARow', photos: [9, 10, 11, 12]},
+        {layout: 'ContentSection', sections: [0]},
         {layout: 'LandscapeOneBigTwoMedium', photos: [13, 15, 14]},
         {layout: 'FourInARow', photos: [16, 17, 18, 19]},
         {layout: 'SixInARow', photos: [20, 21, 22, 23, 24, 25]},
         {layout: 'OnePortraitOneLandscapeMediumTwoLandscapeSmall', photos: [26, 28, 27, 30]},
         {layout: 'TwoInARow', photos: [29, 31]},
-        {layout: 'ContentSection', sections: [0]}
+        {layout: 'ContentSection', sections: [1]}
     ],
     'uppers-and-downers-coffee-and-beer-festival': [
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 1, 2, 3, 4, 5]},
