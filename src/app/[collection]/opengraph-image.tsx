@@ -27,6 +27,7 @@ const handler = async ({params}: Props) => {
 
     const allPhotos = Object.values(layout)
         .flatMap(layout => layout.photos)
+        .filter(photoIndex => photoIndex !== undefined)
         .map(photoIndex => photos[photoIndex]);
     const landscapePhotos = getFirstFourLandscapePhotos(allPhotos);
     return getOgImage(landscapePhotos);
