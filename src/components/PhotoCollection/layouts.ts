@@ -187,6 +187,7 @@ export const getAllPhotoIdsForLayout = (id: string) => {
 
     const layoutPhotoIds = Object.entries(layout)
         .map(([_, value]) => value.photos)
+        .filter(photos => photos !== undefined)
         .flat();
 
     return layoutPhotoIds;
