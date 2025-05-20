@@ -1,11 +1,20 @@
+import clsx from 'clsx';
+import Button from '@/components/Button';
+import Markdown from '@/components/Markdown';
 import Column from '@/components/PhotoCollection/Column';
 import Grid from '@/components/PhotoCollection/Grid';
 import Condition from '@/components/UI/Condition';
-import {type PhotoBlock, type PhotoBlockComponent} from '@/types/photo-blocks';
+import Container from '@/components/UI/Container';
+import {
+    type PhotoBlock,
+    type PhotoBlockComponent,
+    type SectionBlockComponent
+} from '@/types/photo-blocks';
 
 interface Props {
     blocks: PhotoBlock[];
     renderPhoto: (blockPhotos: number[], index: number) => React.ReactNode;
+    renderSection: (section: number) => React.ReactNode;
 }
 
 const FourInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
@@ -261,9 +270,40 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
     </Grid>
 );
 
-export type PhotoBlockLayout = keyof typeof layouts;
+const contentSectionThemes = {
+    default: '',
+    callout: 'bg-accent rounded p-4 lg:p-8 xl:p-12'
+};
 
-const layouts: Partial<Record<string, React.FC<any>>> = {
+export const ContentSection: React.FC<ContentSection> = ({
+    ctaLabel,
+    ctaUrl,
+    content,
+    theme,
+    title
+}) => (
+    <div
+        className={clsx('mx-auto w-full max-w-[110rem]', contentSectionThemes[theme ?? 'default'])}
+    >
+        <h2 className="text-title-text max-w-5xl space-x-2 text-lg leading-tight font-medium text-balance break-normal uppercase underline-offset-4 group-hover:underline md:text-xl md:leading-tight lg:text-2xl">
+            {title}
+        </h2>
+        <Markdown className="mt-4 max-w-7xl text-balance">{content}</Markdown>
+        {ctaLabel && ctaUrl && (
+            <div className="mt-4">
+                <Button href={ctaUrl}>{ctaLabel}</Button>
+            </div>
+        )}
+    </div>
+);
+
+const ContentSectionGroup: React.FC<SectionBlockComponent> = ({renderSection, sections}) => (
+    <div className="space-y-8">{sections.map(section => renderSection(section))}</div>
+);
+
+export type PhotoBlockLayout = keyof typeof photoLayouts;
+
+const photoLayouts: Partial<Record<string, React.FC<any>>> = {
     FourInARow,
     LandscapeOneBigTwoMedium,
     LandscapeTwoBigFourSmall,
@@ -283,14 +323,30 @@ const layouts: Partial<Record<string, React.FC<any>>> = {
     TwoPortraitOneLandscapeWithPadding
 };
 
-const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto}) => (
+const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto, renderSection}) => (
     <div className="space-y-4 lg:space-y-6 2xl:space-y-12">
         {blocks.map((block, index) => {
-            const Layout = layouts[block.layout];
+            const key = `${index}-${block.layout}`;
+
+            if (block.layout === 'ContentSection') {
+                if (!block.sections) return null;
+
+                return (
+                    <ContentSectionGroup
+                        key={key}
+                        sections={block.sections}
+                        renderSection={renderSection}
+                        {...block.props}
+                    />
+                );
+            }
+
+            const Layout = photoLayouts[block.layout];
             if (!Layout) return null;
+
             return (
                 <Layout
-                    key={`${index}-${block.layout}`}
+                    key={key}
                     photos={block.photos}
                     renderPhoto={renderPhoto}
                     {...block.props}

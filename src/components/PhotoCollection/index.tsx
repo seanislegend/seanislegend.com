@@ -1,15 +1,25 @@
-import PhotoCollectionBlocks from './Blocks';
+import PhotoCollectionBlocks, {ContentSection} from './Blocks';
 import Column from './Column';
 import Grid from './Grid';
 import PhotoThumbnail from './Thumbnail';
 import {layouts} from './layouts';
 
-interface Props extends Pick<PhotoCollection, 'photosCollection' | 'slug' | 'title'> {
+interface Props
+    extends Pick<
+        PhotoCollection,
+        'contentSectionsCollection' | 'photosCollection' | 'slug' | 'title'
+    > {
     linksTo?: 'collection' | 'photo';
 }
 
-const PhotosCollection: React.FC<Props> = ({linksTo = 'photo', photosCollection, slug}) => {
+const PhotosCollection: React.FC<Props> = ({
+    contentSectionsCollection,
+    linksTo = 'photo',
+    photosCollection,
+    slug
+}) => {
     const photos = photosCollection.items;
+    const sections = contentSectionsCollection.items;
     const layout = layouts?.[slug];
 
     const renderPhoto = (
@@ -43,10 +53,21 @@ const PhotosCollection: React.FC<Props> = ({linksTo = 'photo', photosCollection,
         );
     };
 
+    const renderSection = (index: number) => {
+        const section = sections[index];
+        if (!section) return null;
+
+        return <ContentSection key={section.title} {...section} />;
+    };
+
     return (
         <div className="animate-in animate-out fill-mode-forwards mx-4 opacity-0 delay-100 duration-500 md:mx-8">
             {layout ? (
-                <PhotoCollectionBlocks blocks={layout} renderPhoto={renderPhoto} />
+                <PhotoCollectionBlocks
+                    blocks={layout}
+                    renderPhoto={renderPhoto}
+                    renderSection={renderSection}
+                />
             ) : (
                 <Grid>
                     {photos.map((photo, index) => (
