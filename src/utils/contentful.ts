@@ -376,6 +376,15 @@ export const fetchCollection = async (
                         }
                     }
                 }
+                contentSectionsCollection {
+                    items {
+                        content
+                        ctaLabel
+                        ctaUrl
+                        theme
+                        title 
+                    }
+                }
             }
         }
     }`;

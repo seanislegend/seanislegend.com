@@ -11,3 +11,11 @@ interface Editorial {
     slug: string;
     title: string;
 }
+
+interface ContentSection {
+    content: string;
+    ctaLabel?: string;
+    ctaUrl?: string;
+    theme: 'default' | 'callout' | null;
+    title: string;
+}
