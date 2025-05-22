@@ -11,7 +11,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link}) => (
     <NavigationMenu.Item asChild>
         <Link
             href={link.url}
-            className="group/link bg-theme-black focus:ring-theme-text relative flex aspect-square w-full flex-col justify-end overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden 2xl:aspect-4/3"
+            className="group/link bg-theme-black focus:ring-theme-text @container/navitem relative flex aspect-square w-full flex-col justify-end overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden 2xl:aspect-4/3"
             scroll={true}
         >
             {link.photo?.thumbnail?.url && (
@@ -38,7 +38,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link}) => (
                     </h4>
                 )}
                 {link.pageTitle && (
-                    <p className="text-beige-50 mt-1 hidden text-[14px] leading-tight text-balance xl:block">
+                    <p className="text-beige-50 mt-1 hidden text-[14px] leading-tight text-balance @min-[160px]/navitem:block">
                         {link.pageTitle}
                     </p>
                 )}

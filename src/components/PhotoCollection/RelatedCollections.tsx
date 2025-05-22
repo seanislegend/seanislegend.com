@@ -19,22 +19,29 @@ const RelatedCollections = ({items}: Props) => {
                         Here&apos;s suggestions of what you might like to see next.
                     </p>
                 </div>
-                <div className="col-span-12 grid grid-cols-2 gap-8 sm:grid-cols-4 md:col-span-8 lg:col-span-9">
-                    {items.map(item => (
-                        <DynamicMenuCollection
-                            key={item.title}
-                            link={{
-                                badge: item.badge,
-                                pageTitle: item.pageTitle ?? item.title,
-                                photo: {
-                                    base64: item.photosCollection?.items?.[0]?.base64 ?? '',
-                                    thumbnail: item.photosCollection?.items?.[0]?.thumbnail
-                                },
-                                title: '',
-                                url: `/${item.slug}`
-                            }}
-                        />
-                    ))}
+                <div className="col-span-12 md:col-span-8 lg:col-span-9">
+                    <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:mx-0 md:snap-none md:overflow-x-visible md:px-0 md:pb-0">
+                        {items.map(item => (
+                            <div key={item.title} className="md:w-full">
+                                <div className="w-[55vw] snap-center flex-row min-[450px]:w-[40vw] md:w-full">
+                                    <DynamicMenuCollection
+                                        link={{
+                                            badge: item.badge,
+                                            pageTitle: item.pageTitle ?? item.title,
+                                            photo: {
+                                                base64:
+                                                    item.photosCollection?.items?.[0]?.base64 ?? '',
+                                                thumbnail:
+                                                    item.photosCollection?.items?.[0]?.thumbnail
+                                            },
+                                            title: '',
+                                            url: `/${item.slug}`
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
