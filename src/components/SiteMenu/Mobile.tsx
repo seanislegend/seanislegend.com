@@ -2,8 +2,7 @@
 
 import {useEffect, useState} from 'react';
 import FocusLock from 'react-focus-lock';
-import {RemoveScroll} from 'react-remove-scroll';
-import Image from 'next/image';
+// import {RemoveScroll} from 'react-remove-scroll';
 import {usePathname} from 'next/navigation';
 import {CrossIcon, MenuIcon} from '@/components/Icon';
 import {MENU_ITEMS} from '@/components/SiteMenu';
@@ -30,14 +29,15 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
     return (
         <>
             <button
-                className="relative z-30 size-6 lg:hidden print:hidden"
+                className="relative z-30 size-6 focus:ring-2 focus:outline-none lg:hidden print:hidden"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
             >
                 <ToggleButtonIcon className="text-theme-text h-auto w-6" />
             </button>
             {isMenuOpen && (
-                <RemoveScroll
+                // <RemoveScroll
+                <div
                     className="top-site-header absolute left-0 z-30 w-full lg:hidden print:hidden"
                     style={{
                         height: isMenuOpen ? '100vh' : '0',
@@ -76,7 +76,8 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                             </div>
                         </Container>
                     </FocusLock>
-                </RemoveScroll>
+                </div>
+                // </RemoveScroll>
             )}
             <div
                 className="bg-overlay-bg top-site-header fixed right-0 left-0 z-20 h-0 lg:hidden"
