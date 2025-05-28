@@ -1,10 +1,13 @@
 'use client';
 
 import {useEffect, useState} from 'react';
+import FocusLock from 'react-focus-lock';
 import {RemoveScroll} from 'react-remove-scroll';
+import Image from 'next/image';
 import {usePathname} from 'next/navigation';
 import {CrossIcon, MenuIcon} from '@/components/Icon';
 import {MENU_ITEMS} from '@/components/SiteMenu';
+import DynamicMenuCollection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
@@ -38,28 +41,22 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                     className="top-site-header absolute left-0 z-30 w-full lg:hidden print:hidden"
                     style={{
                         height: isMenuOpen ? '100vh' : '0',
-                        opacity: isMenuOpen ? 1 : 0.8,
-                        overflow: isMenuOpen ? 'visible' : 'hidden'
+                        opacity: isMenuOpen ? 1 : 0.8
                     }}
                 >
-                    <div
+                    <FocusLock
                         key={isMenuOpen ? 'collections-open' : 'collections-closed'}
-                        className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 py-4 duration-300 lg:hidden"
+                        className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] duration-300 lg:hidden"
                     >
                         <Container asChild>
-                            <div className="flex space-x-10">
-                                <nav className="grow -translate-x-2 space-y-1.5 sm:columns-2">
+                            <div className="flex h-full flex-col space-y-10 overflow-auto py-4">
+                                <nav className="grid grow grid-cols-2 gap-4 md:grid-cols-3">
                                     {links?.map(link => (
-                                        <span className="block" key={link.url}>
-                                            <SiteMenuLink href={link.url} {...link}>
-                                                <span className="flex flex-row items-center gap-2">
-                                                    <span className="truncate leading-none">
-                                                        {link.title}
-                                                    </span>
-                                                    {link.badge && <Badge>{link.badge}</Badge>}
-                                                </span>
-                                            </SiteMenuLink>
-                                        </span>
+                                        <DynamicMenuCollection
+                                            key={link.url}
+                                            hasNavigationWrapper={false}
+                                            link={link}
+                                        />
                                     ))}
                                 </nav>
                                 <nav className="flex min-w-[100px] flex-col items-end space-y-2 lg:hidden">
@@ -78,7 +75,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                 </nav>
                             </div>
                         </Container>
-                    </div>
+                    </FocusLock>
                 </RemoveScroll>
             )}
             <div
