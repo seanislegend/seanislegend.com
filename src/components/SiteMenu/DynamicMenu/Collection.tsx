@@ -2,13 +2,18 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {Link} from 'next-view-transitions';
 import Image from 'next/image';
 import Badge from '@/components/UI/Badge';
+import Condition from '@/components/UI/Condition';
 
 interface Props {
+    hasNavigationWrapper?: boolean;
     link: Link;
 }
 
-const DynamicMenuCollection: React.FC<Props> = ({link}) => (
-    <NavigationMenu.Item asChild>
+const DynamicMenuCollection: React.FC<Props> = ({hasNavigationWrapper = true, link}) => (
+    <Condition
+        condition={hasNavigationWrapper}
+        wrapper={children => <NavigationMenu.Item asChild>{children}</NavigationMenu.Item>}
+    >
         <Link
             href={link.url}
             className="group/link bg-theme-black focus:ring-theme-text @container/navitem relative flex aspect-square w-full flex-col justify-end overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden 2xl:aspect-4/3"
@@ -44,7 +49,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link}) => (
                 )}
             </div>
         </Link>
-    </NavigationMenu.Item>
+    </Condition>
 );
 
 export default DynamicMenuCollection;
