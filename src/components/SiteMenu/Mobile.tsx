@@ -8,7 +8,6 @@ import {CrossIcon, MenuIcon} from '@/components/Icon';
 import {MENU_ITEMS} from '@/components/SiteMenu';
 import DynamicMenuCollection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
-import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
 import SiteMenuLink from './Link';
 
@@ -59,8 +58,13 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                         />
                                     ))}
                                 </nav>
-                                <nav className="-mx-2 flex min-w-[100px] flex-row items-center justify-between pb-8 lg:hidden">
-                                    <span>
+                                <nav
+                                    className="-mx-2 flex min-w-[100px] flex-row items-center justify-between lg:hidden"
+                                    style={{
+                                        paddingBottom: `calc(6rem + env(safe-area-inset-bottom, 0px))`
+                                    }}
+                                >
+                                    <span className="flex items-center">
                                         {MENU_ITEMS.map(link => (
                                             <SiteMenuLink
                                                 key={link.href}
