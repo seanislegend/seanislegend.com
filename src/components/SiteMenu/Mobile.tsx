@@ -50,7 +50,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                     >
                         <Container asChild>
                             <div className="flex h-full flex-col space-y-10 overflow-auto py-4">
-                                <nav className="grid grow grid-cols-2 gap-4 md:grid-cols-3">
+                                <nav className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-4">
                                     {links?.map(link => (
                                         <DynamicMenuCollection
                                             key={link.url}
@@ -59,19 +59,19 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                         />
                                     ))}
                                 </nav>
-                                <nav className="flex min-w-[100px] flex-col items-end space-y-2 lg:hidden">
-                                    {MENU_ITEMS.map(link => (
-                                        <SiteMenuLink
-                                            key={link.href}
-                                            href={link.href}
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            {link.label}
-                                        </SiteMenuLink>
-                                    ))}
-                                    <div className="pt-4">
-                                        <SocialLinks />
-                                    </div>
+                                <nav className="-mx-2 flex min-w-[100px] flex-row items-center justify-between pb-8 lg:hidden">
+                                    <span>
+                                        {MENU_ITEMS.map(link => (
+                                            <SiteMenuLink
+                                                key={link.href}
+                                                href={link.href}
+                                                onClick={() => setIsMenuOpen(false)}
+                                            >
+                                                {link.label}
+                                            </SiteMenuLink>
+                                        ))}
+                                    </span>
+                                    <SocialLinks />
                                 </nav>
                             </div>
                         </Container>
