@@ -49,7 +49,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] duration-300 lg:hidden"
                     >
                         <Container asChild>
-                            <div className="flex h-full flex-col space-y-10 overflow-auto py-4">
+                            <div className="flex h-full flex-col space-y-10 overflow-x-hidden overflow-y-auto py-4">
                                 <nav className="grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-4">
                                     {links?.map(link => (
                                         <DynamicMenuCollection
