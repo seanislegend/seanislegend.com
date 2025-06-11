@@ -5,6 +5,8 @@ import {useSetAtom} from 'jotai';
 import Button from '@/components/Button';
 import Markdown from '@/components/Markdown';
 import Container from '@/components/UI/Container';
+import {Heading1} from '@/components/UI/Headings';
+import TitleTextGrid from '@/components/UI/TitleTextGrid';
 import {getExternalUrl} from '@/utils/helpers';
 import {pageHeaderDataAtom} from '@/utils/store';
 
@@ -46,49 +48,34 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     }, [updatePageHeaderData]);
 
     return (
-        <Container asChild>
-            <div
-                className="grid grid-cols-12 gap-4 pt-6 pb-10 sm:gap-8 sm:py-12 xl:py-20"
-                ref={containerRef}
+        <Container>
+            <div ref={containerRef} />
+            <TitleTextGrid
+                className="pt-6 pb-10 sm:py-12 xl:py-20"
+                heading={
+                    <>
+                        <Heading1>{pageTitle || title}</Heading1>
+                        {titleAside}
+                    </>
+                }
             >
-                {title && (
-                    <>
-                        <div className="col-span-12 flex flex-col space-y-4 md:col-span-6">
-                            <h1 className="text-title-text max-w-5xl space-x-2 text-2xl leading-tight font-medium text-balance break-normal uppercase underline-offset-4 group-hover:underline md:text-3xl md:leading-tight lg:text-4xl">
-                                <span>{pageTitle || title}</span>
-                            </h1>
-                            {titleAside}
-                        </div>
-                        <div className="col-span-2 sm:col-span-4 md:hidden" />
-                    </>
+                {description && (
+                    <Markdown className="max-w-2xl text-pretty 2xl:max-w-5xl">
+                        {description}
+                    </Markdown>
                 )}
-                {(children || description || ctaUrl) && (
-                    <>
-                        <div className="hidden xl:col-span-1 xl:block" />
-                        <div
-                            className="col-span-10 sm:col-span-8 md:col-span-6 xl:col-span-5"
-                            key={description || children?.toString()}
-                        >
-                            {description && (
-                                <Markdown className="max-w-2xl text-pretty 2xl:max-w-5xl">
-                                    {description}
-                                </Markdown>
-                            )}
-                            {ctaLabel && ctaUrl && (
-                                <Button
-                                    className="mt-6 print:hidden"
-                                    href={getExternalUrl(ctaUrl)}
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                >
-                                    {ctaLabel}
-                                </Button>
-                            )}
-                            {children && children}
-                        </div>
-                    </>
+                {ctaLabel && ctaUrl && (
+                    <Button
+                        className="mt-6 print:hidden"
+                        href={getExternalUrl(ctaUrl)}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
+                        {ctaLabel}
+                    </Button>
                 )}
-            </div>
+                {children && children}
+            </TitleTextGrid>
         </Container>
     );
 };
