@@ -95,6 +95,25 @@ export const fetchEditorialPage = async (slug: string) => {
                     width
                 }
                 photoNote
+                photosCollection(limit: 20) {
+                    items {
+                        base64
+                        thumbnail: photo {
+                            height  
+                            url(transform: {format: WEBP, width: 800})
+                            width
+                        }
+                    }
+                }
+                contentSectionsCollection(limit: 10) {
+                    items {
+                        content
+                        ctaLabel
+                        ctaUrl
+                        theme
+                        title 
+                    }
+                }
             }
         }
     }`;
