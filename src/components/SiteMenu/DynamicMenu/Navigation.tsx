@@ -3,7 +3,9 @@
 import {MENU_ITEMS} from '../';
 import SiteHeaderLink, {linkClasses} from '../Link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import {Link} from 'next-view-transitions';
 import {usePathname} from 'next/navigation';
+import {RightArrowIcon} from '@/components/Icon';
 import Collection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SiteMenuMobile from '@/components/SiteMenu/Mobile';
 
@@ -36,6 +38,15 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
                                             <Collection key={link.url} link={link} />
                                         ))}
                                     </div>
+                                </div>
+                                <div className="flex justify-end px-4 pb-8 md:px-8">
+                                    <Link
+                                        href="/collections"
+                                        className="group inline-flex items-center gap-1 font-medium underline underline-offset-4 hover:decoration-2"
+                                    >
+                                        <span>View all collections</span>
+                                        <RightArrowIcon className="h-5 w-5 fill-current transition-transform group-hover:translate-x-0.5" />
+                                    </Link>
                                 </div>
                             </NavigationMenu.Content>
                         </NavigationMenu.Trigger>

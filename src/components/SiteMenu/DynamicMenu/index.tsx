@@ -7,12 +7,7 @@ const SiteMenuDynamic: React.FC = async () => {
     const links = await fetchCollectionNavigation();
     if (!links) return null;
 
-    const linksWithAllCollectionsLink = [
-        ...links,
-        {title: 'View all collections', url: '/collections'}
-    ];
-
-    return <DynamicMenuNavigation links={linksWithAllCollectionsLink} />;
+    return <DynamicMenuNavigation links={links} />;
 };
 
 export default SiteMenuDynamic;

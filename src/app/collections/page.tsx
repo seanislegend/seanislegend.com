@@ -57,8 +57,10 @@ const CollectionsPage = async () => {
                                     src={collection.photosCollection.items[0]?.thumbnail.url}
                                     width={collection.photosCollection.items[0]?.thumbnail.width}
                                 />
-                                <span className="bg-button-bg-hover text-button-text absolute right-2 bottom-2 z-40 flex h-full w-auto items-center gap-2 overflow-hidden p-1 sm:h-[2.25rem] sm:p-2">
-                                    <span>View collection</span>
+                                <span className="bg-button-bg-hover text-button-text absolute right-2 bottom-2 z-40 flex h-full w-auto items-center gap-2 overflow-hidden p-1 sm:h-[2.25rem] sm:p-2 sm:px-3">
+                                    <span className="text-sm font-medium uppercase">
+                                        View collection
+                                    </span>
                                     <RightArrowIcon className="h-5 w-5 fill-current" />
                                 </span>
                             </span>
