@@ -26,6 +26,7 @@ interface PhotoGridPhoto {
         width: number;
         url: string;
     };
+    slug: string;
 }
 
 interface PhotoGridItem {
