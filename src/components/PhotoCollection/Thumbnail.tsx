@@ -27,7 +27,7 @@ const PhotoThumbnail: React.FC<Props> = ({
     ...props
 }: Props) => (
     <Condition
-        condition={!path.includes('/home')}
+        condition={path && !path.includes('/home')}
         fallbackWrapper={children => (
             <span className="bg-accent block overflow-hidden rounded-xs">{children}</span>
         )}
