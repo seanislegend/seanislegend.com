@@ -6,6 +6,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {Link} from 'next-view-transitions';
 import {usePathname} from 'next/navigation';
 import {RightArrowIcon} from '@/components/Icon';
+import {CaretDownIcon} from '@/components/Icon/CaretDown';
 import Collection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SiteMenuMobile from '@/components/SiteMenu/Mobile';
 
@@ -15,23 +16,20 @@ interface Props {
 
 const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
     const pathname = usePathname();
-    const hasAnyNewOrUpdatedCollections = links.some(
-        link => link.badge === 'New' || link.badge === 'Updated'
-    );
 
     return (
         <>
             <NavigationMenu.Root delayDuration={0} key={pathname}>
                 <NavigationMenu.List className="-mr-2 hidden flex-row items-center gap-1 lg:flex">
                     <NavigationMenu.Item>
-                        <NavigationMenu.Trigger className={`${linkClasses} peer relative z-30`}>
+                        <NavigationMenu.Trigger
+                            className={`${linkClasses} group peer relative z-30`}
+                        >
                             <span className="inline-flex items-center gap-1.5">
-                                Collections
-                                {hasAnyNewOrUpdatedCollections && (
-                                    <span className="bg-theme-text inline-block h-1.5 w-1.5 rounded-full" />
-                                )}
+                                <span>Collections</span>
+                                <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-200 ease-in-out group-data-[state=open]:rotate-180" />
                             </span>
-                            <NavigationMenu.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out absolute top-0 left-0 w-screen pt-8 data-[motion^=to-]:delay-200">
+                            <NavigationMenu.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out absolute -top-4 left-0 w-screen pt-8 data-[motion^=to-]:delay-200">
                                 <div className="mt-5 w-full p-4 sm:p-8">
                                     <div className="grid grid-cols-6 gap-2">
                                         {links.map(link => (
