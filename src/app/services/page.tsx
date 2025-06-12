@@ -15,7 +15,7 @@ const ServicesPage = async () => {
     return (
         <DefaultLayout theme="light">
             <PageHeader description={page.content} title={page.pageTitle} />
-            <Container className="space-y-8 md:space-y-16 lg:space-y-24 [&:has(.grid-item:hover)_.grid-item:not(:hover)]:opacity-50">
+            <Container className="space-y-16 lg:space-y-24">
                 {page.contentSectionsCollection.items.map((section: ContentSection) => (
                     <div key={section.title}>
                         <TitleTextGrid heading={<Heading2>{section.title}</Heading2>}>
