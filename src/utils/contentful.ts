@@ -95,23 +95,37 @@ export const fetchEditorialPage = async (slug: string) => {
                     width
                 }
                 photoNote
-                photosCollection(limit: 20) {
-                    items {
-                        base64
-                        thumbnail: photo {
-                            height  
-                            url(transform: {format: WEBP, width: 800})
-                            width
-                        }
-                    }
-                }
                 contentSectionsCollection(limit: 10) {
                     items {
                         content
                         ctaLabel
                         ctaUrl
                         theme
-                        title 
+                        title
+                        photoGrid {
+                            photosCollection {
+                                items {
+                                    label
+                                    photo {
+                                        linkedFrom {
+                                            collectionCollection(limit: 3) {
+                                                items {
+                                                    title
+                                                    slug
+                                                }
+                                            }
+                                        }
+                                        photo {
+                                            height
+                                            url(transform: {width: 600})
+                                            width
+                                        }
+                                        slug
+                                    }
+                                    url
+                                }
+                            }
+                        }
                     }
                 }
             }
