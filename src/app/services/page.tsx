@@ -18,9 +18,15 @@ const ServicesPage = async () => {
             <Container className="space-y-16 lg:space-y-24">
                 {page.contentSectionsCollection.items.map((section: ContentSection) => (
                     <div key={section.title}>
-                        <TitleTextGrid heading={<Heading2>{section.title}</Heading2>}>
+                        {section.photoGrid?.photosCollection?.items && (
+                            <PhotosGrid photos={section.photoGrid.photosCollection.items} />
+                        )}
+                        <TitleTextGrid
+                            className="mt-8"
+                            heading={<Heading2>{section.title}</Heading2>}
+                        >
                             {section.content}
-                            <p className="mt-4 mb-8">
+                            <p className="mt-4">
                                 <TextLink
                                     href={`${section?.ctaUrl ?? '/contact'}?service=${section.title}`}
                                 >
@@ -31,9 +37,6 @@ const ServicesPage = async () => {
                                 </TextLink>
                             </p>
                         </TitleTextGrid>
-                        {section.photoGrid?.photosCollection?.items && (
-                            <PhotosGrid photos={section.photoGrid.photosCollection.items} />
-                        )}
                     </div>
                 ))}
             </Container>
