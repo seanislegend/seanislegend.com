@@ -2,7 +2,7 @@ import {Analytics} from '@vercel/analytics/react';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import {GeistSans} from 'geist/font/sans';
 import {ViewTransitions} from 'next-view-transitions';
-import config from '@/utils/config';
+import config, {jsonLd} from '@/utils/config';
 import './globals.css';
 
 interface Props {
@@ -15,6 +15,12 @@ const RootLayout = async ({children}: Props) => (
             lang="en"
             className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}
         >
+            <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+                />
+            </head>
             <body className="flex grow flex-col sm:min-h-full">
                 {children}
                 {process.env.NODE_ENV !== 'development' && (

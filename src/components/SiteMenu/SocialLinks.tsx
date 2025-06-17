@@ -1,11 +1,6 @@
 import {BlueskyIcon, InstagramIcon, ThreadsIcon, XIcon} from '@/components/Icon';
+import {SITE_LINKS} from '@/utils/config';
 
-const LINKS = [
-    {label: 'Instagram', url: 'https://www.instagram.com/seanislegend/'},
-    {label: 'X', url: 'https://x.com/seanislegend'},
-    {label: 'Threads', url: 'https://www.threads.net/@seanislegend'},
-    {label: 'Bluesky', url: 'https://bsky.app/profile/seanislegend.com'}
-];
 const ICONS: {[key: string]: any} = {
     instagram: InstagramIcon,
     threads: ThreadsIcon,
@@ -15,7 +10,7 @@ const ICONS: {[key: string]: any} = {
 
 const SiteMenuSocialLinks: React.FC = () => (
     <div className="flex items-center gap-1 md:justify-center">
-        {LINKS.map(link => {
+        {SITE_LINKS.map(link => {
             const Icon = ICONS[link.label.toLowerCase()];
 
             return (
