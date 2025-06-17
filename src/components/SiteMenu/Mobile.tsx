@@ -5,7 +5,8 @@ import FocusLock from 'react-focus-lock';
 import {Link} from 'next-view-transitions';
 // import {RemoveScroll} from 'react-remove-scroll';
 import {usePathname} from 'next/navigation';
-import {CrossIcon, MenuIcon, RightArrowIcon} from '@/components/Icon';
+import Button from '@/components/Button';
+import {CrossIcon, MenuIcon} from '@/components/Icon';
 import {MENU_ITEMS} from '@/components/SiteMenu';
 import DynamicMenuCollection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
@@ -49,8 +50,19 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] duration-300 lg:hidden"
                     >
                         <Container asChild>
-                            <div className="flex h-full flex-col space-y-10 overflow-x-hidden overflow-y-auto py-4">
-                                <nav className="-m-2 grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-4">
+                            <div className="flex h-full flex-col space-y-4 overflow-x-hidden overflow-y-auto py-4">
+                                <nav className="-mr-2 flex justify-end sm:-mr-3">
+                                    {MENU_ITEMS.map(link => (
+                                        <SiteMenuLink
+                                            key={link.href}
+                                            href={link.href}
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            {link.label}
+                                        </SiteMenuLink>
+                                    ))}
+                                </nav>
+                                <nav className="-mx-2 grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-4">
                                     {links?.map(link => (
                                         <DynamicMenuCollection
                                             key={link.url}
@@ -58,33 +70,20 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                             link={link}
                                         />
                                     ))}
-                                    <Link
-                                        href="/collections"
-                                        className="group mx-2 mt-4 mb-8 inline-flex items-center gap-1 font-medium underline underline-offset-4 hover:decoration-2"
-                                    >
-                                        <span>View all collections</span>
-                                    </Link>
+                                    <span className="min-w-[200px]">
+                                        <Button className="mt-2 ml-2" href="/collections">
+                                            View all collections
+                                        </Button>
+                                    </span>
                                 </nav>
-
-                                <nav
-                                    className="-mx-2 flex min-w-[100px] flex-row items-center justify-between lg:hidden"
+                                <div
+                                    className="pt-8 lg:hidden"
                                     style={{
                                         paddingBottom: `calc(6rem + env(safe-area-inset-bottom, 0px))`
                                     }}
                                 >
-                                    <span className="flex items-center">
-                                        {MENU_ITEMS.map(link => (
-                                            <SiteMenuLink
-                                                key={link.href}
-                                                href={link.href}
-                                                onClick={() => setIsMenuOpen(false)}
-                                            >
-                                                {link.label}
-                                            </SiteMenuLink>
-                                        ))}
-                                    </span>
                                     <SocialLinks />
-                                </nav>
+                                </div>
                             </div>
                         </Container>
                     </FocusLock>

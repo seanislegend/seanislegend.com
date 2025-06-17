@@ -5,6 +5,7 @@ import SiteHeaderLink, {linkClasses} from '../Link';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {Link} from 'next-view-transitions';
 import {usePathname} from 'next/navigation';
+import Button from '@/components/Button';
 import {RightArrowIcon} from '@/components/Icon';
 import {CaretDownIcon} from '@/components/Icon/CaretDown';
 import Collection from '@/components/SiteMenu/DynamicMenu/Collection';
@@ -37,14 +38,8 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
                                         ))}
                                     </div>
                                 </div>
-                                <div className="flex justify-end px-4 pb-8 md:px-8">
-                                    <Link
-                                        href="/collections"
-                                        className="group inline-flex items-center gap-1 font-medium underline underline-offset-4 hover:decoration-2"
-                                    >
-                                        <span>View all collections</span>
-                                        <RightArrowIcon className="h-5 w-5 fill-current transition-transform group-hover:translate-x-0.5" />
-                                    </Link>
+                                <div className="-mt-4 mr-2 flex justify-end px-4 pb-4 md:px-8">
+                                    <Button href="/collections">View all collections</Button>
                                 </div>
                             </NavigationMenu.Content>
                         </NavigationMenu.Trigger>
