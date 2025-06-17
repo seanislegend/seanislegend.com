@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 interface Props {
     heading?: React.ReactNode | string;
-    ref?: React.RefObject<HTMLDivElement>;
+    ref?: React.RefObject<HTMLDivElement | null>;
     text?: string;
 }
 
