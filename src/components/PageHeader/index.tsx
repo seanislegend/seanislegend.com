@@ -49,7 +49,6 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
 
     return (
         <Container>
-            <div ref={containerRef} />
             <TitleTextGrid
                 className="pt-6 pb-10 sm:py-12 xl:py-20"
                 heading={
@@ -58,6 +57,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                         {titleAside}
                     </>
                 }
+                ref={containerRef}
             >
                 {description && (
                     <Markdown className="max-w-2xl text-pretty 2xl:max-w-5xl">
