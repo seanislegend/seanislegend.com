@@ -10,34 +10,27 @@ interface Props {
 }
 
 const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
-    <div className="link-item grid items-start gap-4 py-4 transition-opacity duration-200 sm:grid-cols-12">
-        <div className="sm:col-span-5">
-            {title && url && (
-                <a
-                    href={getExternalUrl(url)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group"
-                >
-                    <h2 className="underline-2 text-title-text text-lg leading-snug underline-offset-2 group-hover:underline sm:text-xl">
-                        {title}
-                    </h2>
-                </a>
+    <a
+        className="link-item group grid grid-cols-12 items-start gap-4 py-4 transition-opacity duration-200"
+        href={getExternalUrl(url)}
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <div className="col-span-12 md:col-span-5">
+            {title && (
+                <h2 className="font-medium uppercase underline-offset-4 group-hover:underline lg:block">
+                    {title}
+                </h2>
             )}
         </div>
-        <div className="sm:col-span-7">
+        <div className="col-span-12 pl-[20%] md:col-span-7 md:pl-0">
             {text && (
-                <Markdown className="prose-sm md:prose-base dark:prose-invert prose-p:text-theme-text md:prose-p:leading-relaxed mt-2 max-w-2xl leading-relaxed lg:max-w-3xl">
+                <Markdown className="prose-sm md:prose-base dark:prose-invert prose-p:text-theme-text md:prose-p:leading-relaxed max-w-2xl leading-relaxed lg:max-w-3xl">
                     {text}
                 </Markdown>
             )}
         </div>
-        {/* {url&&(
-            <Button href={getExternalUrl(url)} target="_blank" rel="noopener noreferrer">
-                Visit
-            </Button>
-        )} */}
-    </div>
+    </a>
 );
 
 export default LinkCard;

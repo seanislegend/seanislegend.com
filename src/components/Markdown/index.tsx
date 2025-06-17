@@ -2,6 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import clsx from 'clsx';
 
 interface Props {
+    allowLinks?: boolean;
     children: string;
     className?: string;
 }
@@ -15,14 +16,23 @@ const MarkdownLink = (props: any) => (
     </a>
 );
 
-const Markdown: React.FC<Props> = ({children, className = ''}: Props) => (
+const Markdown: React.FC<Props> = ({allowLinks, children, className = ''}: Props) => (
     <div
         className={clsx([
             'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] space-y-6 text-sm leading-relaxed',
             className
         ])}
     >
-        <ReactMarkdown components={{a: ({...props}) => <MarkdownLink {...props} />}}>
+        <ReactMarkdown
+            components={{
+                a: ({...props}) => {
+                    if (!allowLinks) {
+                        return <span {...props} />;
+                    }
+                    return <MarkdownLink {...props} />;
+                }
+            }}
+        >
             {children}
         </ReactMarkdown>
     </div>

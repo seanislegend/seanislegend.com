@@ -4,6 +4,7 @@ import Image from 'next/image';
 import {redirect} from 'next/navigation';
 import {RightArrowIcon} from '@/components/Icon';
 import DefaultLayout from '@/components/Layouts/Default';
+import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
 import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
@@ -27,11 +28,11 @@ const CollectionsPage = async () => {
                 <div className="lg:[&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50">
                     {sortedCollections.map(collection => (
                         <Link
-                            className="link-item group relative grid gap-2 py-4 sm:grid-cols-12 sm:gap-4"
+                            className="link-item group relative grid grid-cols-12 gap-2 py-4 md:gap-4"
                             key={collection.slug}
                             href={`/${collection.slug}`}
                         >
-                            <span className="flex gap-4 opacity-100 transition-opacity duration-200 sm:col-span-5">
+                            <span className="col-span-12 flex gap-4 opacity-100 transition-opacity duration-200 md:col-span-5">
                                 <strong className="font-medium uppercase underline-offset-4 group-hover:underline lg:block">
                                     {collection.title}
                                 </strong>
@@ -41,10 +42,15 @@ const CollectionsPage = async () => {
                                     </span>
                                 )}
                             </span>
-                            <span className="line-clamp-2 opacity-100 transition-opacity duration-200 sm:col-span-7 sm:line-clamp-none">
-                                {collection.description}
-                            </span>
-                            <span className="group-hover:animate-in group-hover:slide-in-from-top-10 slide-out-to-bottom-10 absolute top-1/2 left-4/12 z-30 -translate-y-1/2 overflow-hidden rounded-xs opacity-0 transition-all duration-100 will-change-transform group-hover:opacity-100">
+                            {collection.description && (
+                                <Markdown
+                                    allowLinks={false}
+                                    className="col-span-12 line-clamp-4 pl-[20%] opacity-100 transition-opacity duration-200 md:col-span-7 md:line-clamp-none md:pl-0"
+                                >
+                                    {collection.description}
+                                </Markdown>
+                            )}
+                            <span className="group-hover:animate-in group-hover:slide-in-from-top-10 slide-out-to-bottom-10 absolute top-1/2 left-4/12 z-30 hidden -translate-y-1/2 overflow-hidden rounded-xs opacity-0 transition-all duration-100 will-change-transform group-hover:opacity-100 sm:block">
                                 <Image
                                     alt=""
                                     blurDataURL={collection.photosCollection.items[0]?.base64}
