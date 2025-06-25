@@ -38,7 +38,7 @@ const PhotosGridItem: React.FC<PhotoGridItem> = ({photo, label}) => {
 
 const PhotosGrid: React.FC<Props> = ({photos}) => (
     <div
-        className={clsx('grid gap-4', {
+        className={clsx('grid gap-4 lg:gap-6', {
             'grid-cols-2 md:grid-cols-4': photos.length === 4,
             'grid-cols-3': photos.length === 3,
             'grid-cols-2': photos.length === 2,
