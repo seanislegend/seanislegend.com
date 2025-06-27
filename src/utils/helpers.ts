@@ -1,7 +1,12 @@
 import removeMarkdown from 'remove-markdown';
 import config from '@/utils/config';
 
+export const isExternalUrl = (url: string | undefined) => {
+    return url?.toString().startsWith('http');
+};
+
 export const getExternalUrl = (url: string = '') => {
+    if (!isExternalUrl(url)) return url;
     return `${url}?utm_source=seanislegend.com&utm_medium=referral`;
 };
 
