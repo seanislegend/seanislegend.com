@@ -10,7 +10,7 @@ interface Props {
     params: Promise<{slug: string}>;
 }
 
-const PhotoPage = async ({params}: Props) => {
+const TagDetailPage = async ({params}: Props) => {
     const allParams = await params;
     const {tag, photos} = await fetchAllPhotosForTag(allParams.slug);
 
@@ -53,4 +53,4 @@ export const generateMetadata = async ({params}: Props) => {
     return {...config.seo, ...getTagSeo(tag)};
 };
 
-export default PhotoPage;
+export default TagDetailPage;
