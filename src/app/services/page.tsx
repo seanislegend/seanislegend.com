@@ -1,4 +1,5 @@
 import DefaultLayout from '@/components/Layouts/Default';
+import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
 import Container from '@/components/UI/Container';
 import {Heading2} from '@/components/UI/Headings';
@@ -25,7 +26,9 @@ const ServicesPage = async () => {
                             className="mt-8"
                             heading={<Heading2>{section.title}</Heading2>}
                         >
-                            {section.content}
+                            <Markdown className="max-w-2xl text-pretty 2xl:max-w-5xl">
+                                {section.content}
+                            </Markdown>
                             <p className="mt-4">
                                 <TextLink
                                     href={`${section?.ctaUrl ?? '/contact'}?service=${section.title}`}
