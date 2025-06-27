@@ -25,9 +25,11 @@ const TagDetailPage = async ({params}: Props) => {
     return (
         <DefaultLayout theme="light">
             <PageHeader
-                ctaLabel="View all tags"
-                ctaUrl="/tags"
-                description={tag.description}
+                ctas={[
+                    {label: 'Get in touch', url: '/contact'},
+                    {label: 'View services', url: '/services'}
+                ]}
+                description={`${tag.description}\n\nIf you have any questions or would like to discuss a project, please get in touch.`}
                 pageTitle={`${tag.name} photos`}
                 title={`All photos tagged with "${tag.name}"`}
             />

@@ -3,6 +3,7 @@
 import {useCallback, useEffect, useRef} from 'react';
 import {useSetAtom} from 'jotai';
 import Button from '@/components/Button';
+import ButtonList from '@/components/Button/List';
 import Markdown from '@/components/Markdown';
 import Container from '@/components/UI/Container';
 import {Heading1} from '@/components/UI/Headings';
@@ -12,8 +13,10 @@ import {pageHeaderDataAtom} from '@/utils/store';
 
 interface Props {
     backUrl?: string;
-    ctaLabel?: string;
-    ctaUrl?: string;
+    ctas?: {
+        label: string;
+        url: string;
+    }[];
     description?: string | null;
     pageTitle?: string;
     title?: string;
@@ -23,8 +26,7 @@ interface Props {
 const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     backUrl,
     children,
-    ctaLabel,
-    ctaUrl,
+    ctas,
     description,
     pageTitle,
     title,
@@ -64,10 +66,18 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                         {description}
                     </Markdown>
                 )}
-                {ctaLabel && ctaUrl && (
-                    <Button className="mt-6 print:hidden" href={getExternalUrl(ctaUrl)}>
-                        {ctaLabel}
-                    </Button>
+                {ctas && ctas?.length > 0 && (
+                    <ButtonList className="mt-6 print:hidden">
+                        {ctas.map((cta, index) => (
+                            <Button
+                                key={cta.label}
+                                href={getExternalUrl(cta.url)}
+                                theme={index === 0 ? 'primary' : 'secondary'}
+                            >
+                                {cta.label}
+                            </Button>
+                        ))}
+                    </ButtonList>
                 )}
                 {children && children}
             </TitleTextGrid>

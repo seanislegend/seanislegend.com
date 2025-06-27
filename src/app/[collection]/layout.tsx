@@ -21,11 +21,21 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
 
     if (!collection) return notFound();
 
+    let ctas = [];
+
+    if (collection.slug !== 'home') {
+        ctas.push({label: 'Get in touch', url: '/contact'});
+        if (collection.ctaLabel && collection.ctaUrl) {
+            ctas.push({label: collection.ctaLabel, url: collection.ctaUrl});
+        }
+    }
+
     return (
         <DefaultLayout theme="light">
             <PageHeader
                 {...collection}
                 backUrl={`/${collection.slug}`}
+                ctas={ctas.filter(Boolean) as {label: string; url: string}[]}
                 description={collection?.showDescription ? collection.description : null}
                 titleAside={
                     <div className="hidden grow flex-col justify-end md:flex">
