@@ -9,9 +9,14 @@ const NotFound = () => (
                 Sorry, the page you are looking for does not exist. If you&apos;re looking for a
                 photo or collection, look through the links below.
             </p>
-            <Button className="mt-4" href="/collections">
-                View all collections
-            </Button>
+            <div className="flex flex-col gap-2 sm:flex-row">
+                <Button className="mt-4" href="/collections">
+                    View all collections
+                </Button>
+                <Button className="mt-4" href="/tags" theme="secondary">
+                    View all tags
+                </Button>
+            </div>
         </PageHeader>
     </DefaultLayout>
 );
