@@ -74,6 +74,7 @@ const CollectionsPage = async () => {
                     ))}
                 </div>
             </Container>
+            <div className="h-10 lg:h-20" />
         </DefaultLayout>
     );
 };
