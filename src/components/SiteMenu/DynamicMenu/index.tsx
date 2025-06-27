@@ -1,13 +1,14 @@
 'use server';
 
-import {fetchCollectionNavigation} from '@/utils/contentful';
+import {fetchAllTags, fetchCollectionNavigation} from '@/utils/contentful';
 import DynamicMenuNavigation from './Navigation';
 
 const SiteMenuDynamic: React.FC = async () => {
     const links = await fetchCollectionNavigation();
-    if (!links) return null;
+    const tags = await fetchAllTags();
+    if (!links || !tags) return null;
 
-    return <DynamicMenuNavigation links={links} />;
+    return <DynamicMenuNavigation links={links} tags={tags} />;
 };
 
 export default SiteMenuDynamic;

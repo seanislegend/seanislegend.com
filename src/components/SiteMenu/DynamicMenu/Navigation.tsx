@@ -8,14 +8,16 @@ import {usePathname} from 'next/navigation';
 import Button from '@/components/Button';
 import {RightArrowIcon} from '@/components/Icon';
 import {CaretDownIcon} from '@/components/Icon/CaretDown';
+import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Collection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SiteMenuMobile from '@/components/SiteMenu/Mobile';
 
 interface Props {
     links: Link[];
+    tags: Tag[];
 }
 
-const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
+const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
     const pathname = usePathname();
 
     return (
@@ -38,7 +40,11 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links}) => {
                                         ))}
                                     </div>
                                 </div>
-                                <div className="-mt-4 mr-2 flex justify-end px-4 pb-4 md:px-8">
+
+                                <div className="-mt-4 mr-2 flex justify-between px-4 pb-4 sm:flex-row md:px-8">
+                                    <div className="hidden lg:block">
+                                        <AllTagsList items={tags} />
+                                    </div>
                                     <Button href="/collections">View all collections</Button>
                                 </div>
                             </NavigationMenu.Content>
