@@ -31,7 +31,6 @@ const TagDetailPage = async ({params}: Props) => {
                 pageTitle={`${tag.name} photos`}
                 title={`All photos tagged with "${tag.name}"`}
             />
-
             <PhotoMasonry items={photos} />
             {allTags?.length > 0 && (
                 <Container className="my-10 lg:my-20">
