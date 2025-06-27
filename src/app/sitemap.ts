@@ -1,5 +1,5 @@
 import {type MetadataRoute} from 'next';
-import {fetchCollectionsForSitemap} from '@/utils/contentful';
+import {fetchAllTags, fetchCollectionsForSitemap} from '@/utils/contentful';
 
 const getLastModifiedDate = (date?: string) => {
     if (!date || !process.env.SITEMAP_LAST_MODIFIED_MINIMUM) return new Date();
@@ -38,7 +38,16 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
         return [...acc, collectionItem];
     }, [] as any[]);
 
-    return items;
+    const tags = await fetchAllTags();
+    if (!tags?.length) return items;
+
+    const tagItems = tags.map((tag: any) => ({
+        url: `${process.env.NEXT_PUBLIC_URL}/tags/${tag.slug}`,
+        priority: 0.8,
+        lastModified: getLastModifiedDate(tag?.sys?.publishedAt).toISOString()
+    }));
+
+    return [...items, ...tagItems];
 };
 
 export default getCollectionSeo;
