@@ -480,7 +480,7 @@ export const fetchCollectionsForSitemap = async () => {
 
 export const fetchAllTags = async () => {
     const query = `query {
-        tagCollection(limit: 100) {
+        tagCollection(limit: 100, order: [name_ASC]) {
             items {
                 description
                 name
