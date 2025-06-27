@@ -86,6 +86,13 @@ export const getEditorialSeo = (page: Editorial) => {
     };
 };
 
+export const getTagSeo = (tag: Tag) => {
+    return {
+        description: `Curated photos tagged with #${tag.slug}.`,
+        title: `#${tag.slug}`
+    };
+};
+
 // A collection can be considered new if it's been published in the last 4 months.
 export const isCollectionNew = (date: string | undefined) => {
     if (!date) return false;

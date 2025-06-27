@@ -477,3 +477,62 @@ export const fetchCollectionsForSitemap = async () => {
 
     return response.data.collectionCollection.items;
 };
+
+export const fetchAllTags = async () => {
+    const query = `query {
+        tagCollection(limit: 100) {
+            items {
+                description
+                name
+                slug
+            }
+        }
+    }`;
+    const response: any = await fetchContent(query);
+    return response.data.tagCollection.items;
+};
+
+export const fetchAllPhotosForTag = async (tag: string) => {
+    const query = `query {
+        tagCollection(where: {slug: "${tag}"}, limit: 1) {
+            items {
+                description
+                name
+                slug
+            }
+        }
+        photoCollection(where: {tags: {slug_contains: "${tag}"}}, limit: 100, order: [date_DESC]) {
+            items {
+                title
+                slug
+                url
+                base64
+                thumbnail: photo {
+                    height  
+                    url(transform: {format: WEBP, width: 800})
+                    width
+                }
+                linkedFrom {
+                    collectionCollection {
+                        items {
+                            slug
+                        }
+                    }
+                }
+            }
+        }
+    }`;
+    const response: any = await fetchContent(query);
+    const tagData = response.data?.tagCollection?.items?.[0];
+    if (!tagData) return {tag: null, photos: []};
+
+    const photosWithCollection = response.data.photoCollection.items.map((photo: any) => ({
+        ...photo,
+        collection: photo.linkedFrom?.collectionCollection?.items?.[0]?.slug
+    }));
+
+    return {
+        tag: tagData,
+        photos: photosWithCollection
+    };
+};

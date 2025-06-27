@@ -49,3 +49,9 @@ interface ContentSection {
     theme: 'default' | 'callout' | null;
     title: string;
 }
+
+interface Tag {
+    description: string;
+    name: string;
+    slug: string;
+}
