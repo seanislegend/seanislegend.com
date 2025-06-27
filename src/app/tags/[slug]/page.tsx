@@ -27,9 +27,8 @@ const PhotoPage = async ({params}: Props) => {
                 pageTitle={`${tag.name} photos`}
                 title={`All photos tagged with "${tag.name}"`}
             />
-            <div className="mx-auto max-w-[110rem]">
-                <PhotoMasonry items={photos} />
-            </div>
+
+            <PhotoMasonry items={photos} />
         </DefaultLayout>
     );
 };

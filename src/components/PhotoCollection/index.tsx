@@ -19,7 +19,7 @@ const PhotosCollection: React.FC<Props> = ({
     slug
 }) => {
     const photos = photosCollection.items;
-    const sections = contentSectionsCollection.items;
+    const sections = contentSectionsCollection?.items || [];
     const layout = layouts?.[slug];
 
     const renderPhoto = (
@@ -71,7 +71,10 @@ const PhotosCollection: React.FC<Props> = ({
             ) : (
                 <Grid>
                     {photos.map((photo, index) => (
-                        <Column key={photo.slug} className="col-span-6 md:col-span-4">
+                        <Column
+                            key={photo.slug}
+                            className="col-span-6 md:col-span-4 lg:col-span-3 2xl:col-span-2"
+                        >
                             {renderPhoto(
                                 photos.map((_, i) => i),
                                 index
