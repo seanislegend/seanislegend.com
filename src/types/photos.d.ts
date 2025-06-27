@@ -26,7 +26,7 @@ interface Photo {
 interface PhotoCollection {
     badge?: string;
     category: string;
-    contentSectionsCollection: {
+    contentSectionsCollection?: {
         items: ContentSection[];
     };
     ctaLabel?: string;
