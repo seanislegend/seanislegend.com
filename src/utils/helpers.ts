@@ -88,8 +88,8 @@ export const getEditorialSeo = (page: Editorial) => {
 
 export const getTagSeo = (tag: Tag) => {
     return {
-        description: `Curated photos tagged with #${tag.slug}.`,
-        title: `#${tag.slug}`
+        description: tag.description || `Curated photos tagged with "${tag.slug}".`,
+        title: `${tag.name} photos`
     };
 };
 
