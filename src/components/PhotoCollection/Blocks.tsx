@@ -324,7 +324,7 @@ const photoLayouts: Partial<Record<string, React.FC<any>>> = {
 };
 
 const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto, renderSection}) => (
-    <div className="space-y-4 lg:space-y-6 2xl:space-y-12">
+    <div className="space-y-4 lg:space-y-6">
         {blocks.map((block, index) => {
             const key = `${index}-${block.layout}`;
 

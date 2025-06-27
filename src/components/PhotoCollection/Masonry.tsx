@@ -14,7 +14,7 @@ const PhotoMasonry: React.FC<Props> = ({items}) => (
             items={items}
             config={{
                 columns: [2, 2, 3, 4],
-                gap: [12, 18, 18, 24],
+                gap: [16, 16, 16, 24],
                 media: [640, 768, 1024, 1280],
                 useBalancedLayout: true
             }}
