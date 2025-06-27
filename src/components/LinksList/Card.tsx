@@ -1,6 +1,5 @@
-import Button from '@/components/Button';
 import Markdown from '@/components/Markdown';
-import {getExternalUrl} from '@/utils/helpers';
+import LinkWrapper from '@/components/UI/LinkWrapper';
 
 interface Props {
     published?: string;
@@ -9,12 +8,10 @@ interface Props {
     url?: string;
 }
 
-const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
-    <a
+const LinkCard: React.FC<Props> = ({text, title, url}) => (
+    <LinkWrapper
         className="link-item group grid grid-cols-12 items-start gap-4 py-4 transition-opacity duration-200"
-        href={getExternalUrl(url)}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={url || '#'}
     >
         <div className="col-span-12 md:col-span-5">
             {title && (
@@ -30,7 +27,7 @@ const LinkCard: React.FC<Props> = ({published, text, title, url}) => (
                 </Markdown>
             )}
         </div>
-    </a>
+    </LinkWrapper>
 );
 
 export default LinkCard;

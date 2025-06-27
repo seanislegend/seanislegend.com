@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import {Link} from 'next-view-transitions';
 import {Url} from 'next/dist/shared/lib/router/router';
+import {isExternalUrl} from '@/utils/helpers';
 
 interface Props {
     className?: string;
@@ -20,9 +21,15 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
         className
     ]);
 
-    if (href?.toString().includes('http')) {
+    if (isExternalUrl(href as string)) {
         return (
-            <a className={classes} href={href as string} {...props}>
+            <a
+                className={classes}
+                href={href as string}
+                rel="noopener noreferrer"
+                target="_blank"
+                {...props}
+            >
                 {children}
             </a>
         );
