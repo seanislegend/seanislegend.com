@@ -24,8 +24,8 @@ const PhotosCollection: React.FC<Props> = ({
     const photos = photosCollection.items;
     const sections = contentSectionsCollection?.items || [];
     const tags = tagsCollection?.items || [];
-    // always add tags to the end of all collections
-    const layout = [...layouts?.[slug], {layout: 'Tags'}];
+    const layout = layouts?.[slug];
+    const layoutWithTags = layout ? [...layout, {layout: 'Tags'}] : null;
 
     const renderPhoto = (
         blockPhotos: number[],
@@ -78,7 +78,7 @@ const PhotosCollection: React.FC<Props> = ({
         <div className="animate-in animate-out fill-mode-forwards mx-4 opacity-0 delay-100 duration-500 md:mx-8">
             {layout ? (
                 <PhotoCollectionBlocks
-                    blocks={layout}
+                    blocks={layoutWithTags ?? layout}
                     renderPhoto={renderPhoto}
                     renderSection={renderSection}
                     renderTags={renderTags}
