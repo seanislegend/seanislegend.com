@@ -100,6 +100,8 @@ export const fetchEditorialPage = async (slug: string) => {
                         content
                         ctaLabel
                         ctaUrl
+                        secondaryCtaLabel
+                        secondaryCtaUrl
                         theme
                         title
                         photoGrid {
@@ -414,6 +416,8 @@ export const fetchCollection = async (
                         content
                         ctaLabel
                         ctaUrl
+                        secondaryCtaLabel
+                        secondaryCtaUrl
                         theme
                         title 
                     }
@@ -539,6 +543,8 @@ export const fetchAllPhotosForTag = async (tag: string) => {
                 content
                 ctaLabel
                 ctaUrl
+                secondaryCtaLabel
+                secondaryCtaUrl
                 theme
                 title
             }

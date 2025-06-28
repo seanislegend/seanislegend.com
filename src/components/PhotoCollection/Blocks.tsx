@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Button from '@/components/Button';
+import ButtonList from '@/components/Button/List';
 import Markdown from '@/components/Markdown';
 import Column from '@/components/PhotoCollection/Column';
 import Grid from '@/components/PhotoCollection/Grid';
@@ -274,13 +275,15 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
 
 const contentSectionThemes = {
     default: 'py-4 lg:py-6',
-    callout: 'bg-accent rounded p-4 lg:p-8 xl:p-12'
+    callout: 'bg-accent rounded !p-6 lg:p-8 xl:p-12'
 };
 
 export const ContentSection: React.FC<ContentSection> = ({
     ctaLabel,
     ctaUrl,
     content,
+    secondaryCtaLabel,
+    secondaryCtaUrl,
     theme,
     title
 }) => (
@@ -288,10 +291,15 @@ export const ContentSection: React.FC<ContentSection> = ({
         <Column className="col-span-12 md:col-span-8">
             <Heading2>{title}</Heading2>
             <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
-            {ctaLabel && ctaUrl && (
-                <div className="mt-4">
-                    <Button href={ctaUrl}>{ctaLabel}</Button>
-                </div>
+            {((ctaLabel && ctaUrl) || (secondaryCtaLabel && secondaryCtaUrl)) && (
+                <ButtonList className="mt-8">
+                    {ctaLabel && ctaUrl && <Button href={ctaUrl}>{ctaLabel}</Button>}
+                    {secondaryCtaLabel && secondaryCtaUrl && (
+                        <Button href={secondaryCtaUrl} theme="secondary">
+                            {secondaryCtaLabel}
+                        </Button>
+                    )}
+                </ButtonList>
             )}
         </Column>
     </Container>

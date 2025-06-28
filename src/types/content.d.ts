@@ -46,6 +46,8 @@ interface ContentSection {
     ctaLabel?: string;
     ctaUrl?: string;
     photoGrid?: PhotoGrid;
+    secondaryCtaLabel?: string;
+    secondaryCtaUrl?: string;
     theme: 'default' | 'callout' | null;
     title: string;
 }
