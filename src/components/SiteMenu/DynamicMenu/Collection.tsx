@@ -26,7 +26,7 @@ const DynamicMenuCollection: React.FC<Props> = ({hasNavigationWrapper = true, li
             <Link
                 href={link.url}
                 className={clsx(
-                    'group/link bg-theme-black focus:ring-theme-text @container/navitem relative flex aspect-square w-full flex-col justify-end overflow-hidden rounded-xs border-6 focus:ring-2 focus:outline-hidden 2xl:aspect-4/3',
+                    'group/link bg-theme-black focus:ring-theme-text @container/navitem relative flex aspect-square w-full flex-col justify-end overflow-hidden rounded-xs border-2 focus:ring-2 focus:outline-hidden 2xl:aspect-4/3',
                     {'border-accent': isActive, 'border-transparent': !isActive}
                 )}
                 scroll={true}

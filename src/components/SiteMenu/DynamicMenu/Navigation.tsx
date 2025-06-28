@@ -41,11 +41,13 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                     </div>
                                 </div>
 
-                                <div className="-mt-4 mr-2 flex justify-between px-4 pb-4 sm:flex-row md:px-8">
-                                    <div className="hidden lg:block">
+                                <div className="-mt-4 mr-2 flex items-center justify-between px-4 pb-4 sm:flex-row md:px-8">
+                                    <span className="hidden lg:block">
                                         <AllTagsList items={tags} />
-                                    </div>
-                                    <Button href="/collections">View all collections</Button>
+                                    </span>
+                                    <span>
+                                        <Button href="/collections">View all collections</Button>
+                                    </span>
                                 </div>
                             </NavigationMenu.Content>
                         </NavigationMenu.Trigger>
