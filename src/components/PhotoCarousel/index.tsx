@@ -17,7 +17,10 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
     // the photos are defined in the collection
     const allPhotos = collection.photosCollection.items;
     // the order is defined in the layout file, not the order of the photos in the collection
-    const layoutPhotoIds = getAllPhotoIdsForLayout(collection.slug);
+    const uniqueLayoutPhotoIds = getAllPhotoIdsForLayout(collection.slug);
+    // if no unique layout is defined, use the order of the photos in the collection instead
+    const layoutPhotoIds =
+        uniqueLayoutPhotoIds.length > 0 ? uniqueLayoutPhotoIds : allPhotos.map((_, i) => i);
     // find the index of the photo in the collection
     const activeAllPhotosIndex = allPhotos.findIndex(item => item.slug === photo);
     // find the index of the photo in the layout
