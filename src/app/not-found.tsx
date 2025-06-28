@@ -10,7 +10,7 @@ const NotFound = () => (
                 Sorry, the page you are looking for does not exist. If you&apos;re looking for a
                 photo or collection, look through the links below.
             </p>
-            <ButtonList>
+            <ButtonList className="mt-8">
                 <Button href="/collections">View all collections</Button>
                 <Button href="/tags" theme="secondary">
                     View all tags
