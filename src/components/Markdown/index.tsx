@@ -16,7 +16,7 @@ const MarkdownLink = (props: any) => (
     </a>
 );
 
-const Markdown: React.FC<Props> = ({allowLinks, children, className = ''}: Props) => (
+const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}: Props) => (
     <div
         className={clsx([
             'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] space-y-6 text-sm leading-relaxed',
