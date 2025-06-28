@@ -33,11 +33,17 @@ const ServicesPage = async () => {
                                 <TextLink
                                     href={`${section?.ctaUrl ?? '/contact'}?service=${section.title}`}
                                 >
-                                    {section?.ctaLabel ?? 'Enquire'}
-                                    <span className="sr-only">
-                                        about {section?.title?.toLowerCase()}
+                                    {section?.ctaLabel ?? 'Enquire'} about{' '}
+                                    {section?.title?.toLowerCase()}
+                                </TextLink>{' '}
+                                {section.id && (
+                                    <span>
+                                        or{' '}
+                                        <TextLink href={`/tags/${section.id}`}>
+                                            View more photos
+                                        </TextLink>
                                     </span>
-                                </TextLink>
+                                )}
                             </p>
                         </TitleTextGrid>
                     </div>

@@ -97,6 +97,7 @@ export const fetchEditorialPage = async (slug: string) => {
                 photoNote
                 contentSectionsCollection(limit: 10) {
                     items {
+                        id  
                         content
                         ctaLabel
                         ctaUrl

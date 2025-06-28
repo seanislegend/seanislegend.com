@@ -45,6 +45,7 @@ interface ContentSection {
     content: string;
     ctaLabel?: string;
     ctaUrl?: string;
+    id?: string;
     photoGrid?: PhotoGrid;
     secondaryCtaLabel?: string;
     secondaryCtaUrl?: string;
