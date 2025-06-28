@@ -501,7 +501,7 @@ export const fetchAllPhotosForTag = async (tag: string) => {
                 slug
             }
         }
-        photoCollection(where: {tags: {slug_contains: "${tag}"}}, limit: 100, order: [date_DESC]) {
+        photoCollection(where: {tags: {slug_contains: "${tag}"}}, limit: 100, order: [rank_ASC, date_DESC]) {
             items {
                 title
                 slug
