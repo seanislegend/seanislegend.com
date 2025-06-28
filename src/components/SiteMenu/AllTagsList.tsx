@@ -1,7 +1,7 @@
 import TextLink from '@/components/UI/TextLink';
 
 interface Props {
-    items?: Tag[];
+    items?: TagListItem[];
 }
 
 const AllTagsList: React.FC<Props> = ({items}) => {
@@ -12,7 +12,7 @@ const AllTagsList: React.FC<Props> = ({items}) => {
             <li>
                 <strong className="font-medium">Tags:</strong>
             </li>
-            {items.map((t: Tag) => (
+            {items.map((t: TagListItem) => (
                 <li key={t.slug}>
                     <TextLink href={`/tags/${t.slug}`}>{t.name}</TextLink>
                 </li>
