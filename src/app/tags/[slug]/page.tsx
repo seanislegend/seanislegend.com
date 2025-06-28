@@ -6,8 +6,6 @@ import {ContentSection} from '@/components/PhotoCollection/Blocks';
 import PhotoMasonry from '@/components/PhotoCollection/Masonry';
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Container from '@/components/UI/Container';
-import {Heading2} from '@/components/UI/Headings';
-import TextLink from '@/components/UI/TextLink';
 import config from '@/utils/config';
 import {fetchAllPhotosForTag, fetchAllTags} from '@/utils/contentful';
 import {getTagSeo} from '@/utils/helpers';
@@ -42,12 +40,7 @@ const TagDetailPage = async ({params}: Props) => {
             <PhotoMasonry items={photos} />
             <Container className="my-10 space-y-10 lg:my-20">
                 {contentSection && <ContentSection {...contentSection} />}
-                {allTags?.length > 0 && (
-                    <div>
-                        <Heading2>More tags</Heading2>
-                        <AllTagsList items={allTags} />
-                    </div>
-                )}
+                {allTags?.length > 0 && <AllTagsList items={allTags} />}
             </Container>
         </DefaultLayout>
     );
