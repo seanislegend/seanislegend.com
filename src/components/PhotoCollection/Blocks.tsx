@@ -284,7 +284,7 @@ export const ContentSection: React.FC<ContentSection> = ({
     theme,
     title
 }) => (
-    <Grid className={contentSectionThemes[theme ?? 'default']}>
+    <Container className={clsx([contentSectionThemes[theme ?? 'default'], 'my-12'])}>
         <Column className="col-span-12 md:col-span-8">
             <Heading2>{title}</Heading2>
             <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
@@ -294,7 +294,7 @@ export const ContentSection: React.FC<ContentSection> = ({
                 </div>
             )}
         </Column>
-    </Grid>
+    </Container>
 );
 
 const ContentSectionGroup: React.FC<SectionBlockComponent> = ({renderSection, sections}) => (
