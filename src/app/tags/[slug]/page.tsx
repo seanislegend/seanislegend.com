@@ -2,6 +2,7 @@ import {notFound} from 'next/navigation';
 import CollectionLinksCarousel from '@/components/CollectionLinksCarousel/Carousel';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
+import {ContentSection} from '@/components/PhotoCollection/Blocks';
 import PhotoMasonry from '@/components/PhotoCollection/Masonry';
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Container from '@/components/UI/Container';
@@ -18,7 +19,7 @@ interface Props {
 const TagDetailPage = async ({params}: Props) => {
     const allParams = await params;
     const allTags = await fetchAllTags();
-    const {collections, photos, tag} = await fetchAllPhotosForTag(allParams.slug);
+    const {collections, contentSection, photos, tag} = await fetchAllPhotosForTag(allParams.slug);
 
     if (!photos?.length || !tag) {
         notFound();
@@ -39,12 +40,15 @@ const TagDetailPage = async ({params}: Props) => {
                 {collections.length > 0 && <CollectionLinksCarousel links={collectionLinks} />}
             </PageHeader>
             <PhotoMasonry items={photos} />
-            {allTags?.length > 0 && (
-                <Container className="my-10 lg:my-20">
-                    <Heading2>More tags</Heading2>
-                    <AllTagsList items={allTags} />
-                </Container>
-            )}
+            <Container className="my-10 space-y-10 lg:my-20">
+                {contentSection && <ContentSection {...contentSection} />}
+                {allTags?.length > 0 && (
+                    <div>
+                        <Heading2>More tags</Heading2>
+                        <AllTagsList items={allTags} />
+                    </div>
+                )}
+            </Container>
         </DefaultLayout>
     );
 };

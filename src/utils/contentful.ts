@@ -528,6 +528,15 @@ export const fetchAllPhotosForTag = async (tag: string) => {
                 }
             }
         }
+        contentSectionCollection(where: {id_contains: "services-introduction"}) {
+            items {
+                content
+                ctaLabel
+                ctaUrl
+                theme
+                title
+            }
+        }
     }`;
     const response: any = await fetchContent(query);
     const tagData = response.data?.tagCollection?.items?.[0];
@@ -535,6 +544,7 @@ export const fetchAllPhotosForTag = async (tag: string) => {
     if (!tagData) {
         return {
             collections: [],
+            contentSection: null,
             photos: [],
             tag: null
         };
@@ -547,6 +557,7 @@ export const fetchAllPhotosForTag = async (tag: string) => {
 
     return {
         collections: response.data.collectionCollection.items,
+        contentSection: response.data.contentSectionCollection.items?.[0],
         photos: photosWithCollection,
         tag: tagData
     };
