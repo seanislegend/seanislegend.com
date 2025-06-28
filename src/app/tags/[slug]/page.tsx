@@ -20,7 +20,7 @@ const TagDetailPage = async ({params}: Props) => {
     const allTags = await fetchAllTags();
     const {collections, photos, tag} = await fetchAllPhotosForTag(allParams.slug);
 
-    if (!collections?.length || !photos?.length || !tag) {
+    if (!photos?.length || !tag) {
         notFound();
     }
 
@@ -36,7 +36,7 @@ const TagDetailPage = async ({params}: Props) => {
                 pageTitle={`${tag.name} photos`}
                 title={`All photos tagged with "${tag.name}"`}
             >
-                <CollectionLinksCarousel links={collectionLinks} />
+                {collections.length > 0 && <CollectionLinksCarousel links={collectionLinks} />}
             </PageHeader>
             <PhotoMasonry items={photos} />
             {allTags?.length > 0 && (
