@@ -5,6 +5,7 @@ import Column from '@/components/PhotoCollection/Column';
 import Grid from '@/components/PhotoCollection/Grid';
 import Condition from '@/components/UI/Condition';
 import Container from '@/components/UI/Container';
+import {Heading2} from '@/components/UI/Headings';
 import {
     type PhotoBlock,
     type PhotoBlockComponent,
@@ -284,9 +285,7 @@ export const ContentSection: React.FC<ContentSection> = ({
 }) => (
     <Grid className={contentSectionThemes[theme ?? 'default']}>
         <Column className="col-span-12 md:col-span-8">
-            <h2 className="text-title-text max-w-5xl space-x-2 text-lg leading-tight font-medium text-balance break-normal uppercase underline-offset-4 group-hover:underline md:text-xl md:leading-tight lg:text-2xl">
-                {title}
-            </h2>
+            <Heading2>{title}</Heading2>
             <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
             {ctaLabel && ctaUrl && (
                 <div className="mt-4">
