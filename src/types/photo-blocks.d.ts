@@ -5,6 +5,7 @@ interface PhotoBlock {
     photos?: number[];
     props?: Record<string, any>;
     sections?: number[];
+    tags?: TagListItem[];
 }
 
 interface PhotoBlockComponent {

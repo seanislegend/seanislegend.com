@@ -418,6 +418,12 @@ export const fetchCollection = async (
                         title 
                     }
                 }
+                tagsCollection {
+                    items {
+                        name
+                        slug
+                    }
+                }
             }
         }
     }`;

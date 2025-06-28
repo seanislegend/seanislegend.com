@@ -16,6 +16,7 @@ interface Props {
     blocks: PhotoBlock[];
     renderPhoto: (blockPhotos: number[], index: number) => React.ReactNode;
     renderSection: (section: number) => React.ReactNode;
+    renderTags: () => React.ReactNode;
 }
 
 const FourInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
@@ -322,12 +323,19 @@ const photoLayouts: Partial<Record<string, React.FC<any>>> = {
     TwoPortraitOneLandscapeWithPadding
 };
 
-const PhotoCollectionBlocks: React.FC<Props> = ({blocks, renderPhoto, renderSection}) => (
+const PhotoCollectionBlocks: React.FC<Props> = ({
+    blocks,
+    renderPhoto,
+    renderSection,
+    renderTags
+}) => (
     <div className="space-y-4 lg:space-y-6">
         {blocks.map((block, index) => {
             const key = `${index}-${block.layout}`;
 
-            if (block.layout === 'ContentSection') {
+            if (block.layout === 'Tags') {
+                return renderTags();
+            } else if (block.layout === 'ContentSection') {
                 if (!block.sections) return null;
 
                 return (

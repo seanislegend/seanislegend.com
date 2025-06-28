@@ -55,3 +55,5 @@ interface Tag {
     name: string;
     slug: string;
 }
+
+type TagListItem = Pick<Tag, 'name' | 'slug'>;

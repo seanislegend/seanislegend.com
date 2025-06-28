@@ -53,6 +53,12 @@ interface PhotoCollection {
         firstPublishedAt: string;
         publishedAt: string;
     };
+    tagsCollection?: {
+        items: {
+            name: string;
+            slug: string;
+        }[];
+    };
     title: string;
 }
 
