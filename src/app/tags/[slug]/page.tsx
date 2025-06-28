@@ -1,4 +1,5 @@
 import {notFound} from 'next/navigation';
+import CollectionLinksCarousel from '@/components/CollectionLinksCarousel/Carousel';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import PhotoMasonry from '@/components/PhotoCollection/Masonry';
@@ -17,23 +18,26 @@ interface Props {
 const TagDetailPage = async ({params}: Props) => {
     const allParams = await params;
     const allTags = await fetchAllTags();
-    const {tag, photos} = await fetchAllPhotosForTag(allParams.slug);
+    const {collections, photos, tag} = await fetchAllPhotosForTag(allParams.slug);
 
-    if (!tag || !photos?.length) {
+    if (!collections?.length || !photos?.length || !tag) {
         notFound();
     }
+
+    const collectionLinks = collections.map((c: any) => ({
+        href: `/${c.slug}`,
+        label: c.pageTitle ?? c.title
+    }));
 
     return (
         <DefaultLayout theme="light">
             <PageHeader
-                ctas={[
-                    {label: 'Get in touch', url: '/contact'},
-                    {label: 'View services', url: '/services'}
-                ]}
-                description={`${tag.description}\n\nIf you have any questions or would like to discuss a project, please get in touch.`}
+                description={tag.description}
                 pageTitle={`${tag.name} photos`}
                 title={`All photos tagged with "${tag.name}"`}
-            />
+            >
+                <CollectionLinksCarousel links={collectionLinks} />
+            </PageHeader>
             <PhotoMasonry items={photos} />
             {allTags?.length > 0 && (
                 <Container className="my-10 lg:my-20">
