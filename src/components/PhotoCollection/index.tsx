@@ -1,4 +1,5 @@
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
+import Container from '@/components/UI/Container';
 import PhotoCollectionBlocks, {ContentSection} from './Blocks';
 import Column from './Column';
 import Grid from './Grid';
@@ -23,7 +24,8 @@ const PhotosCollection: React.FC<Props> = ({
     const photos = photosCollection.items;
     const sections = contentSectionsCollection?.items || [];
     const tags = tagsCollection?.items || [];
-    const layout = layouts?.[slug];
+    // always add tags to the end of all collections
+    const layout = [...layouts?.[slug], {layout: 'Tags'}];
 
     const renderPhoto = (
         blockPhotos: number[],
@@ -66,9 +68,9 @@ const PhotosCollection: React.FC<Props> = ({
     const renderTags = () => {
         if (!tags.length) return null;
         return (
-            <Grid className="mb-8" gridCols="_" gridGap="_">
+            <Container className="my-8 !px-0" key="tags">
                 <AllTagsList items={tags} />
-            </Grid>
+            </Container>
         );
     };
 
