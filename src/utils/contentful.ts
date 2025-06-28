@@ -501,6 +501,13 @@ export const fetchAllPhotosForTag = async (tag: string) => {
                 slug
             }
         }
+        collectionCollection(where: {tags: {slug_contains: "${tag}"}}) {
+            items {
+                pageTitle
+                slug
+                title
+            }
+        }
         photoCollection(where: {tags: {slug_contains: "${tag}"}}, limit: 100, order: [rank_ASC, date_DESC]) {
             items {
                 title
@@ -524,7 +531,14 @@ export const fetchAllPhotosForTag = async (tag: string) => {
     }`;
     const response: any = await fetchContent(query);
     const tagData = response.data?.tagCollection?.items?.[0];
-    if (!tagData) return {tag: null, photos: []};
+
+    if (!tagData) {
+        return {
+            collections: [],
+            photos: [],
+            tag: null
+        };
+    }
 
     const photosWithCollection = response.data.photoCollection.items.map((photo: any) => ({
         ...photo,
@@ -532,7 +546,8 @@ export const fetchAllPhotosForTag = async (tag: string) => {
     }));
 
     return {
-        tag: tagData,
-        photos: photosWithCollection
+        collections: response.data.collectionCollection.items,
+        photos: photosWithCollection,
+        tag: tagData
     };
 };
