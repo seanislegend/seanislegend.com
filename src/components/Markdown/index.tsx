@@ -7,6 +7,9 @@ interface Props {
     className?: string;
 }
 
+export const BASE_TEXT_CLASS =
+    'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] text-sm leading-relaxed';
+
 const MarkdownLink = (props: any) => (
     <a
         {...props}
@@ -17,12 +20,7 @@ const MarkdownLink = (props: any) => (
 );
 
 const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}: Props) => (
-    <div
-        className={clsx([
-            'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] space-y-6 text-sm leading-relaxed',
-            className
-        ])}
-    >
+    <div className={clsx([BASE_TEXT_CLASS, 'space-y-6', className])}>
         <ReactMarkdown
             components={{
                 a: ({...props}) => {
