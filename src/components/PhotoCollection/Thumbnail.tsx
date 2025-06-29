@@ -79,7 +79,7 @@ const PhotoThumbnail: React.FC<Props> = ({
                 loading={loading}
             />
         </Condition>
-        {process.env.NODE_ENV === 'development' && id && <PhotoEditButton id={id} />}
+        {id && <PhotoEditButton id={id} />}
     </>
 );
 
