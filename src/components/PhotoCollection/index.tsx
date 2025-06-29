@@ -49,6 +49,7 @@ const PhotosCollection: React.FC<Props> = ({
                 base64={photo.base64}
                 columnSize={columnSize}
                 fill={fillContainer}
+                id={photo.sys?.id}
                 linksTo={linksTo}
                 path={path}
                 slug={photo.slug}

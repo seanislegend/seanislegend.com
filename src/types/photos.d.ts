@@ -12,11 +12,15 @@ interface Photo {
     date?: string;
     description?: string;
     fullSize: Image;
+    id?: string;
     instagramLabel?: string;
     instagramUrl?: string;
     location?: string;
     openGraphImage?: {url: string};
     slug: string;
+    sys?: {
+        id: string;
+    };
     thumbnail: Image;
     title: string;
     url?: string;

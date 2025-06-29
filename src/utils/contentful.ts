@@ -389,6 +389,9 @@ export const fetchCollection = async (
                             url(transform: {format: WEBP, width: 1600})
                         }
                         base64
+                        sys {
+                            id
+                        }
                     }
                 }
                 relatedCollectionsCollection(limit: 4) {
@@ -536,6 +539,9 @@ export const fetchAllPhotosForTag = async (tag: string) => {
                             slug
                         }
                     }
+                }
+                sys {
+                    id
                 }
             }
         }

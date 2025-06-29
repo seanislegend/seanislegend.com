@@ -21,6 +21,7 @@ const PhotoMasonry: React.FC<Props> = ({items}) => (
             render={(item, index) => (
                 <PhotoThumbnail
                     base64={item.base64}
+                    id={item.sys?.id}
                     path={item.collection ? `/${item.collection}#${item.slug}` : ''}
                     slug={''}
                     title={item.title}
