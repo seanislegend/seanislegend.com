@@ -81,13 +81,13 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [2, 11, 18, 4]}
     ],
     home: [
-        {layout: 'SixInARow', photos: [6, 28, 8, 25, 19, 9]},
+        {layout: 'SixInARow', photos: [6, 28, 8, 25, 35, 34]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 29, 11, 2, 26]},
         {layout: 'ThreeInARow', photos: [10, 3, 31]},
         {layout: 'ContentSection', sections: [0]},
-        {layout: 'FourInARow', photos: [32, 13, 15, 16]},
-        {layout: 'ThreeInARow', photos: [30, 27, 23]},
-        {layout: 'FourInARow', photos: [12, 33, 4, 5]}
+        {layout: 'FourInARow', photos: [32, 13, 15, 23]},
+        {layout: 'ThreeInARow', photos: [30, 27, 16]},
+        {layout: 'FourInARow', photos: [12, 36, 4, 37]}
     ],
     'hukins-hops-annual-hop-harvest': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 8]},
