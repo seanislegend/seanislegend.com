@@ -174,6 +174,18 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [18, 13, 25, 36]},
         {layout: 'ContentSection', sections: [1]}
     ],
+    'travelling-across-india': [
+        {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 2]},
+        {layout: 'TwoInARowWithPadding', photos: [3, 8]},
+        {layout: 'FourInARow', photos: [5, 6, 7, 21]},
+        {layout: 'ThreeInARow', photos: [4, 10, 11]},
+        {layout: 'TwoInARow', photos: [32, 33]},
+        {layout: 'TwoInARowWithPadding', photos: [12, 34]},
+        {layout: 'TwoInARow', photos: [18, 13]},
+        {layout: 'TwoInARowWithPadding', photos: [23, 24]},
+        {layout: 'TwoInARow', photos: [27, 19]},
+        {layout: 'ThreeInARow', photos: [17, 29, 36]}
+    ],
     'tynt-meadow-trappist-ale': [
         {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 3, 2, 1]},
         {layout: 'TwoInARowWithPadding', photos: [4, 5]},
