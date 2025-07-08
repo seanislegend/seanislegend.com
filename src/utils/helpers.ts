@@ -92,10 +92,11 @@ export const getEditorialSeo = (page: Editorial) => {
 };
 
 export const getTagSeo = (tag: Tag) => {
-    return {
-        description: tag.description || `Curated photos tagged with "${tag.slug}".`,
+    return getEditorialSeo({
+        metaDescription: tag.description || `Curated photos tagged with "${tag.slug}".`,
+        slug: `tags/${tag.slug}`,
         title: `${tag.name} photos`
-    };
+    });
 };
 
 // A collection can be considered new if it's been published in the last 4 months.

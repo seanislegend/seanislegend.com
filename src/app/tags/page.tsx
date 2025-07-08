@@ -2,7 +2,9 @@ import {notFound} from 'next/navigation';
 import DefaultLayout from '@/components/Layouts/Default';
 import LinksList from '@/components/LinksList';
 import PageHeader from '@/components/PageHeader';
+import config from '@/utils/config';
 import {fetchAllTags} from '@/utils/contentful';
+import {getEditorialSeo} from '@/utils/helpers';
 
 const TagListPage = async () => {
     const tags = await fetchAllTags();
@@ -21,6 +23,10 @@ const TagListPage = async () => {
             <div className="h-10 lg:h-20" />
         </DefaultLayout>
     );
+};
+
+export const generateMetadata = async () => {
+    return {...config.seo, ...getEditorialSeo({slug: 'tags', title: 'Tags'})};
 };
 
 export default TagListPage;
