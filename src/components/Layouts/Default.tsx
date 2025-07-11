@@ -9,7 +9,9 @@ interface Props {
 const DefaultLayout: React.FC<React.PropsWithChildren<Props>> = ({children, theme}) => (
     <Theme className="flex grow flex-col sm:min-h-full" theme={theme}>
         <SiteHeader />
-        <main className="grow">{children}</main>
+        <main className="grow" data-testid="page-content">
+            {children}
+        </main>
         <SiteFooter />
     </Theme>
 );

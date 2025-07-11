@@ -23,7 +23,7 @@ const RootLayout = async ({children}: Props) => (
             </head>
             <body className="flex grow flex-col sm:min-h-full">
                 {children}
-                {process.env.NODE_ENV !== 'development' && (
+                {process.env.NODE_ENV === 'production' && (
                     <>
                         <Analytics />
                         <SpeedInsights />

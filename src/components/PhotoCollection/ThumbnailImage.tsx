@@ -37,6 +37,7 @@ const ThumbnailImage: React.FC<Props> = ({
                 alt=""
                 blurDataURL={base64 || ''}
                 className="w-full"
+                data-testid="photo-image"
                 fill={fill}
                 placeholder={base64 ? 'blur' : 'empty'}
                 loading={loading}
