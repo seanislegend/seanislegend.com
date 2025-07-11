@@ -33,7 +33,7 @@ const PhotoThumbnail: React.FC<Props> = ({
             condition={path && !path.includes('/home')}
             fallbackWrapper={children => (
                 <span
-                    className="bg-accent block overflow-hidden rounded-xs"
+                    className="bg-accent block w-full overflow-hidden rounded-xs"
                     data-testid="photo-wrapper"
                 >
                     {children}
@@ -43,8 +43,8 @@ const PhotoThumbnail: React.FC<Props> = ({
                 <Link
                     aria-label={`View photo: ${title}`}
                     className={clsx(
-                        'group/photo focus:ring-text bg-accent relative block overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
-                        {'block h-full w-full': props?.fill}
+                        'group/photo focus:ring-text bg-accent relative block w-full overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
+                        {'block h-full': props?.fill}
                     )}
                     data-testid="photo-link"
                     href={path}
