@@ -4,7 +4,7 @@ import 'server-only';
 const fetchContent = cache(async (query: string, preview: boolean = false) => {
     try {
         const data = await fetch(
-            `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+            `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT_ID}`,
             {
                 method: 'POST',
                 headers: {

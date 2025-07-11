@@ -6,7 +6,11 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "test": "playwright test",
+        "test:ui": "playwright test --ui",
+        "test:dev": "SKIP_BUILD=true playwright test --ui",
+        "test:install": "playwright install"
     },
     "dependencies": {
         "@radix-ui/react-navigation-menu": "^1.2.5",
@@ -30,6 +34,7 @@
         "server-only": "^0.0.1"
     },
     "devDependencies": {
+        "@playwright/test": "^1.53.2",
         "@tailwindcss/postcss": "^4.0.14",
         "@tailwindcss/typography": "^0.5.16",
         "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -38,6 +43,7 @@
         "@types/react-dom": "^19.1.6",
         "@types/remove-markdown": "^0.3.1",
         "babel-plugin-react-compiler": "^19.1.0-rc.2",
+        "dotenv": "^17.2.0",
         "eslint": "^8",
         "eslint-config-next": "14.0.4",
         "eslint-plugin-react-compiler": "^19.1.0-rc.2",

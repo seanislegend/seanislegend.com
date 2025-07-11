@@ -11,6 +11,7 @@ const PhotoMasonry: React.FC<Props> = ({items}) => (
     <div className="animate-in animate-out fill-mode-forwards mx-4 min-h-[100vh] opacity-0 delay-100 duration-500 md:mx-8">
         <Masonry
             className="mx-auto grid w-full max-w-[110rem]"
+            data-testid="masonry"
             items={items}
             config={{
                 columns: [2, 2, 3, 4],

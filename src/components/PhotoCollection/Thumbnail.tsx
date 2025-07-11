@@ -32,7 +32,12 @@ const PhotoThumbnail: React.FC<Props> = ({
         <Condition
             condition={path && !path.includes('/home')}
             fallbackWrapper={children => (
-                <span className="bg-accent block overflow-hidden rounded-xs">{children}</span>
+                <span
+                    className="bg-accent block overflow-hidden rounded-xs"
+                    data-testid="photo-wrapper"
+                >
+                    {children}
+                </span>
             )}
             wrapper={children => (
                 <Link
@@ -41,6 +46,7 @@ const PhotoThumbnail: React.FC<Props> = ({
                         'group/photo focus:ring-text bg-accent relative block overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
                         {'block h-full w-full': props?.fill}
                     )}
+                    data-testid="photo-link"
                     href={path}
                     id={slug}
                     title={`View photo: ${title}`}
