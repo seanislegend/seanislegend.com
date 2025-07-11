@@ -22,7 +22,7 @@ const PhotosGridItem: React.FC<PhotoGridItem> = ({photo, label}) => {
     const {path, slug} = getPathAndSlug();
 
     return (
-        <div key={photo.photo.url} className="flex items-center">
+        <div key={photo.photo.url} className="flex items-center w-full">
             <Thumbnail
                 linksTo={path ? 'collection' : undefined}
                 height={height}
