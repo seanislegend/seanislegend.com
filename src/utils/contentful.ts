@@ -489,7 +489,7 @@ export const fetchCollectionsForSitemap = async () => {
     }`;
     const response: any = await fetchContent(query);
 
-    return response.data.collectionCollection.items;
+    return response.data?.collectionCollection?.items;
 };
 
 export const fetchAllTags = async () => {
