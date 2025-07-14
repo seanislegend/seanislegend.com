@@ -11,12 +11,17 @@ const Container: React.FC<React.PropsWithChildren<Props>> = ({
     asChild = false,
     children,
     className,
-    ref
+    ref,
+    ...props
 }) => {
     const Comp = asChild ? Slot.Slot : 'div';
 
     return (
-        <Comp className={clsx('mx-auto max-w-[90rem] px-4 md:px-8', className)} ref={ref}>
+        <Comp
+            {...props}
+            className={clsx('mx-auto max-w-[90rem] px-4 md:px-8', className)}
+            ref={ref}
+        >
             {children}
         </Comp>
     );

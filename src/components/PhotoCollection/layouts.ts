@@ -41,6 +41,27 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [11, 6, 12]},
         {layout: 'ContentSection', sections: [1]}
     ],
+    // e2e tests
+    'example-collection-2': [
+        {layout: 'FourInARow', photos: [0, 0, 0, 0]},
+        {layout: 'LandscapeOneBigTwoMedium', photos: [0, 0, 0]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [0, 0, 0, 0, 0, 0]},
+        {layout: 'LandscapeTwoBigTwoMediumFourSmall', photos: [0, 0, 0, 0, 0, 0, 0, 0]},
+        {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 0, 0, 0]},
+        {layout: 'OneLandScapeTwoPortrait', photos: [0, 0, 0]},
+        {layout: 'OnePortraitOneLandscapeMediumFourLandscapeSmall', photos: [0, 0, 0, 0, 0, 0]},
+        {layout: 'OnePortraitOneLandscapeMediumTwoLandscapeSmall', photos: [0, 0, 0, 0]},
+        {layout: 'OnePortraitTwoLandscape', photos: [0, 0, 0]},
+        {layout: 'OnePortraitTwoLandscapeMediumTwoLandscapeSmall', photos: [0, 0, 0, 0, 0]},
+        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [0, 0, 0]},
+        {layout: 'SixInARow', photos: [0, 0, 0, 0, 0, 0]},
+        {layout: 'ThreeInARow', photos: [0, 0, 0]},
+        {layout: 'ThreeInARowWithPadding', photos: [0, 0, 0]},
+        {layout: 'TwoInARow', photos: [0, 0]},
+        {layout: 'TwoInARowWithPadding', photos: [0, 0]},
+        {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [0, 0, 0]},
+        {layout: 'ContentSection', sections: [0]}
+    ],
     'euros-final-2024': [
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 6, 2, 4, 19, 20]},
         {

@@ -4,13 +4,15 @@ interface Props {
     className?: string;
     gridCols?: string;
     gridGap?: string;
+    hasTestId?: boolean;
 }
 
 const Grid: React.FC<React.PropsWithChildren<Props>> = ({
     children,
     className,
     gridCols,
-    gridGap
+    gridGap,
+    hasTestId = true
 }) => (
     <div
         className={clsx([
@@ -19,6 +21,7 @@ const Grid: React.FC<React.PropsWithChildren<Props>> = ({
             gridCols || 'grid-cols-12',
             className
         ])}
+        data-testid={hasTestId ? 'photo-grid' : undefined}
     >
         {children}
     </div>

@@ -36,6 +36,7 @@ const CollectionLinksCarousel: React.FC<Props> = ({links = []}) => {
     return (
         <div
             className="mt-4 flex items-center gap-2 text-sm sm:mt-8 md:text-base"
+            data-testid="collection-links-carousel"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             ref={shuffleLinks}

@@ -22,7 +22,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
 
     return (
         <>
-            <NavigationMenu.Root delayDuration={0} key={pathname}>
+            <NavigationMenu.Root data-testid="main-navigation" delayDuration={0} key={pathname}>
                 <NavigationMenu.List className="-mr-2 hidden flex-row items-center gap-1 lg:flex">
                     <NavigationMenu.Item>
                         <NavigationMenu.Trigger
@@ -34,7 +34,10 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                             </span>
                             <NavigationMenu.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out absolute -top-4 left-0 w-screen pt-8 data-[motion^=to-]:delay-200">
                                 <div className="mt-5 w-full p-4 sm:p-8">
-                                    <div className="grid grid-cols-6 gap-2">
+                                    <div
+                                        className="grid grid-cols-6 gap-2"
+                                        data-testid="collections-grid"
+                                    >
                                         {links.map(link => (
                                             <Collection key={link.url} link={link} />
                                         ))}

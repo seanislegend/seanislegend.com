@@ -85,19 +85,22 @@ const PhotosCollection: React.FC<Props> = ({
                     renderTags={renderTags}
                 />
             ) : (
-                <Grid>
-                    {photos.map((photo, index) => (
-                        <Column
-                            key={photo.slug}
-                            className="col-span-6 md:col-span-4 lg:col-span-3 2xl:col-span-2"
-                        >
-                            {renderPhoto(
-                                photos.map((_, i) => i),
-                                index
-                            )}
-                        </Column>
-                    ))}
-                </Grid>
+                <>
+                    <Grid>
+                        {photos.map((photo, index) => (
+                            <Column
+                                key={photo.slug}
+                                className="col-span-6 md:col-span-4 lg:col-span-3 2xl:col-span-2"
+                            >
+                                {renderPhoto(
+                                    photos.map((_, i) => i),
+                                    index
+                                )}
+                            </Column>
+                        ))}
+                    </Grid>
+                    {renderTags()}
+                </>
             )}
         </div>
     );

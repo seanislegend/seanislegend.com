@@ -32,14 +32,14 @@ const FourInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
 const LandscapeTwoBigFourSmall: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid>
         <Column className="col-span-12 md:col-span-6">
-            <Grid>
+            <Grid hasTestId={false}>
                 <Column className="col-span-12">{renderPhoto(photos, 0)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
             </Grid>
         </Column>
         <Column className="col-span-12 md:col-span-6">
-            <Grid>
+            <Grid hasTestId={false}>
                 <Column className="col-span-6">{renderPhoto(photos, 3, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 4, 6)}</Column>
                 <Column className="col-span-12">{renderPhoto(photos, 5)}</Column>
@@ -90,7 +90,7 @@ const LandscapeTwoBigTwoSmall: React.FC<PhotoBlockComponent> = ({photos, renderP
     <Grid>
         <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
         <Column className="col-span-12 md:col-span-6">
-            <Grid>
+            <Grid hasTestId={false}>
                 <Column className="col-span-6 md:col-span-6">{renderPhoto(photos, 1, 6)}</Column>
                 <Column className="col-span-6 md:col-span-6">{renderPhoto(photos, 2, 6)}</Column>
                 <Column className="col-span-12 md:col-span-12">{renderPhoto(photos, 3)}</Column>
@@ -105,7 +105,7 @@ const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent> = ({
 }) => (
     <Grid>
         <Column className="col-span-12 md:col-span-6">
-            <Grid>
+            <Grid hasTestId={false}>
                 <Column className="col-span-12">{renderPhoto(photos, 0)}</Column>
                 <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 1, 3)}</Column>
                 <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 2, 3)}</Column>
@@ -114,7 +114,7 @@ const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent> = ({
             </Grid>
         </Column>
         <Column className="col-span-12 md:col-span-6">
-            <Grid>
+            <Grid hasTestId={false}>
                 <Column className="col-span-6">{renderPhoto(photos, 5, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 6, 6)}</Column>
                 <Column className="col-span-12">{renderPhoto(photos, 7)}</Column>
@@ -137,7 +137,7 @@ const OnePortraitOneLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockCompone
 }) => (
     <Grid className="place-items-end">
         <Column className="col-span-6">
-            <Grid>
+            <Grid hasTestId={false}>
                 <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
                 <Column className="col-span-12">{renderPhoto(photos, 2)}</Column>
@@ -153,14 +153,14 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
 }) => (
     <Grid>
         <Column className="col-span-12 flex h-full flex-col justify-between gap-4 md:col-span-6">
-            <Grid gridCols="grid-cols-12">
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
                 <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
             </Grid>
-            <Grid gridCols="grid-cols-12">
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
                 <Column className="col-span-12">{renderPhoto(photos, 3)}</Column>
             </Grid>
-            <Grid gridCols="grid-cols-12">
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
                 <Column className="col-span-6">{renderPhoto(photos, 4, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 5, 6)}</Column>
             </Grid>
@@ -188,7 +188,7 @@ const OnePortraitTwoLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockCompone
     <Grid className="place-items-end">
         <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
         <Column className="col-span-12 md:col-span-6">
-            <Grid>
+            <Grid hasTestId={false}>
                 <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
                 <Column className="col-span-12">{renderPhoto(photos, 3)}</Column>
@@ -287,7 +287,10 @@ export const ContentSection: React.FC<ContentSection> = ({
     theme,
     title
 }) => (
-    <Container className={clsx([contentSectionThemes[theme ?? 'default'], 'my-12'])}>
+    <Container
+        className={clsx([contentSectionThemes[theme ?? 'default'], 'my-12'])}
+        data-testid="content-section"
+    >
         <Column className="col-span-12 md:col-span-8">
             <Heading2>{title}</Heading2>
             <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
@@ -306,7 +309,9 @@ export const ContentSection: React.FC<ContentSection> = ({
 );
 
 const ContentSectionGroup: React.FC<SectionBlockComponent> = ({renderSection, sections}) => (
-    <div className="space-y-8">{sections.map(section => renderSection(section))}</div>
+    <div className="space-y-8" data-testid="content-section-group">
+        {sections.map(section => renderSection(section))}
+    </div>
 );
 
 export type PhotoBlockLayout = keyof typeof photoLayouts;
@@ -337,7 +342,7 @@ const PhotoCollectionBlocks: React.FC<Props> = ({
     renderSection,
     renderTags
 }) => (
-    <div className="space-y-4 lg:space-y-6">
+    <div className="space-y-4 lg:space-y-6" data-testid="blocks-container">
         {blocks.map((block, index) => {
             const key = `${index}-${block.layout}`;
 

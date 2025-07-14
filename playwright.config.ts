@@ -1,7 +1,6 @@
 import {defineConfig, devices} from '@playwright/test';
 import dotenv from 'dotenv';
 
-// load test environment variables
 dotenv.config({path: '.env.test'});
 
 export default defineConfig({
@@ -39,7 +38,7 @@ export default defineConfig({
         // }
     ],
     webServer: {
-        command: process.env.SKIP_BUILD ? 'bun start' : 'bun run build --turbo && bun start',
+        command: process.env.SKIP_BUILD ? 'bun start' : 'bun run test:prepare',
         url: 'http://localhost:3000',
         reuseExistingServer: !process.env.CI,
         env: {

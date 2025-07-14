@@ -21,8 +21,9 @@ const AboutPage = async () => {
                         <div className="col-span-6 flex justify-end">
                             {page.photo && (
                                 <Image
-                                    alt=""
+                                    alt="Portrait photo of Sean McEmerson"
                                     className="max-w-full overflow-hidden rounded-xs sm:max-w-[260px] lg:mt-10"
+                                    data-testid="portrait-photo"
                                     height={page.photo.height}
                                     placeholder="empty"
                                     priority={false}
