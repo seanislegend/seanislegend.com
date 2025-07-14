@@ -503,7 +503,7 @@ export const fetchAllTags = async () => {
         }
     }`;
     const response: any = await fetchContent(query);
-    return response.data.tagCollection.items;
+    return response.data?.tagCollection?.items;
 };
 
 export const fetchAllPhotosForTag = async (tag: string) => {
