@@ -19,9 +19,11 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
     }));
 
     const allCollections = await fetchCollectionsForSitemap();
-    const filteredCollections = allCollections.filter(
+    const filteredCollections = allCollections?.filter(
         (collection: any) => collection.photosCollection.items.length > 0
     );
+    if (!filteredCollections) return [];
+
     const collectionItems = filteredCollections.reduce((acc: any[], collection: any) => {
         const collectionItem = {
             url: `${process.env.NEXT_PUBLIC_URL}/${
