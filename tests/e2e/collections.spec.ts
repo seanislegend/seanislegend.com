@@ -3,7 +3,29 @@ import {expect, test} from '@playwright/test';
 test.describe('Collections', () => {
     test.describe('List page', () => {
         test.beforeEach(async ({page}) => {
-            await page.goto('/example-collection-1/');
+            await page.goto('/collections');
+        });
+
+        test('should load page successfully', async ({page}) => {
+            await expect(page).toHaveTitle(/All photo collections/);
+        });
+
+        test('should display a list of collections', async ({page}) => {
+            await expect(page.getByText('Example collection 1', {exact: true})).toBeVisible();
+            await expect(page.getByText('Example collection 1 description.')).toBeVisible();
+            await expect(page.getByText('Example collection 2', {exact: true})).toBeVisible();
+            await expect(page.getByText('Example collection 2 description.')).toBeVisible();
+        });
+
+        test('should link to a collection detail page', async ({page}) => {
+            await page.getByText('Example collection 1', {exact: true}).click();
+            await expect(page).toHaveURL('/example-collection-1');
+        });
+    });
+
+    test.describe('Detail page', () => {
+        test.beforeEach(async ({page}) => {
+            await page.goto('/example-collection-1');
         });
 
         test('should load page successfully', async ({page}) => {
@@ -67,7 +89,7 @@ test.describe('Collections', () => {
 
         test.describe('Optional views', () => {
             test.beforeEach(async ({page}) => {
-                await page.goto('/example-collection-2/');
+                await page.goto('/example-collection-2');
             });
 
             test('should not show custom cta link if not provided', async ({page}) => {
@@ -81,7 +103,7 @@ test.describe('Collections', () => {
 
         test.describe('Custom layouts', () => {
             test.beforeEach(async ({page}) => {
-                await page.goto('/example-collection-2/');
+                await page.goto('/example-collection-2');
             });
 
             test('should support custom layout if defined for collection', async ({page}) => {
@@ -188,7 +210,7 @@ test.describe('Collections', () => {
         });
     });
 
-    test.describe('Detail page', () => {
+    test.describe('Photo detail page', () => {
         test.beforeEach(async ({page}) => {
             await page.goto('/example-collection-1/example-photo-1-slug#photo');
         });
@@ -243,6 +265,7 @@ test.describe('Collections', () => {
         });
 
         test('should allow keyboard navigation between photos', async ({page}) => {
+            await page.getByRole('main').focus();
             await page.keyboard.press('ArrowRight');
             await expect(page).toHaveURL('/example-collection-1/example-photo-2-slug');
             await page.keyboard.press('ArrowLeft');
