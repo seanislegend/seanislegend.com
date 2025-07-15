@@ -27,7 +27,6 @@ jobs:
             - name: Run Playwright tests
               run: bun run test
               env:
-                  SKIP_BUILD: true
                   NODE_ENV: test
                   NEXT_PUBLIC_URL: http://localhost:3000
                   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
