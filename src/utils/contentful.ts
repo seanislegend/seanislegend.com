@@ -4,7 +4,7 @@ import 'server-only';
 const fetchContent = cache(async (query: string, preview: boolean = false) => {
     try {
         const data = await fetch(
-            `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+            `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT_ID}`,
             {
                 method: 'POST',
                 headers: {
@@ -489,7 +489,7 @@ export const fetchCollectionsForSitemap = async () => {
     }`;
     const response: any = await fetchContent(query);
 
-    return response.data.collectionCollection.items;
+    return response.data?.collectionCollection?.items;
 };
 
 export const fetchAllTags = async () => {
@@ -503,7 +503,7 @@ export const fetchAllTags = async () => {
         }
     }`;
     const response: any = await fetchContent(query);
-    return response.data.tagCollection.items;
+    return response.data?.tagCollection?.items;
 };
 
 export const fetchAllPhotosForTag = async (tag: string) => {

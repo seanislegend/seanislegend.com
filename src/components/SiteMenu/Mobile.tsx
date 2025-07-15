@@ -31,6 +31,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
         <>
             <button
                 className="relative z-30 size-6 focus:ring-2 focus:outline-none lg:hidden print:hidden"
+                data-testid="mobile-menu-toggle"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
             >
@@ -40,6 +41,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 // <RemoveScroll
                 <div
                     className="top-site-header absolute left-0 z-30 w-full lg:hidden print:hidden"
+                    data-testid="mobile-menu"
                     style={{
                         height: isMenuOpen ? '100vh' : '0',
                         opacity: isMenuOpen ? 1 : 0.8
@@ -51,7 +53,10 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                     >
                         <Container asChild>
                             <div className="flex h-full flex-col space-y-4 overflow-x-hidden overflow-y-auto py-4">
-                                <nav className="-mr-2 flex justify-end sm:-mr-3">
+                                <nav
+                                    className="-mr-2 flex justify-end sm:-mr-3"
+                                    data-testid="mobile-menu-main-navigation"
+                                >
                                     {MENU_ITEMS.map(link => (
                                         <SiteMenuLink
                                             key={link.href}
@@ -62,7 +67,10 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                         </SiteMenuLink>
                                     ))}
                                 </nav>
-                                <nav className="-mx-2 grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-4">
+                                <nav
+                                    className="-mx-2 grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-4"
+                                    data-testid="mobile-menu-collections-navigation"
+                                >
                                     {links?.map(link => (
                                         <DynamicMenuCollection
                                             key={link.url}

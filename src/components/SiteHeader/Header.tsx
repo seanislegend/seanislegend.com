@@ -18,6 +18,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                 'bg-theme-bg h-site-header sticky top-0 z-50 flex items-center border-b-2 border-transparent px-4 transition-all duration-300 md:px-8 print:relative print:border-none',
                 {'border-accent! h-site-header-scrolled': isScrolled}
             )}
+            data-testid="site-header"
         >
             <div className="mx-auto flex w-full max-w-[110rem] items-center justify-between gap-8">
                 <span className="relative z-30 flex flex-nowrap items-center gap-2">
@@ -27,6 +28,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                             'group relative inline-flex shrink-0 items-center py-2 text-sm outline-hidden md:text-base',
                             {'pointer-events-none': pathname === '/'}
                         )}
+                        data-testid="site-header-logo"
                         href="/"
                     >
                         <span className="absolute top-0 bottom-0 left-0 flex translate-x-2 items-center gap-1 opacity-0 duration-300 ease-in-out sm:group-hover:translate-x-0 sm:group-hover:opacity-100">

@@ -9,7 +9,7 @@ const ICONS: {[key: string]: any} = {
 };
 
 const SiteMenuSocialLinks: React.FC = () => (
-    <div className="flex items-center gap-1 md:justify-center">
+    <div className="flex items-center gap-1 md:justify-center" data-testid="social-links">
         {SITE_LINKS.map(link => {
             const Icon = ICONS[link.label.toLowerCase()];
 

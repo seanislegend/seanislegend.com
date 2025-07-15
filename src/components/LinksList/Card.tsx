@@ -11,6 +11,7 @@ interface Props {
 const LinkCard: React.FC<Props> = ({text, title, url}) => (
     <LinkWrapper
         className="link-item group grid grid-cols-12 items-start gap-4 py-4 transition-opacity duration-200"
+        data-testid="link-card"
         href={url || '#'}
     >
         <div className="col-span-12 md:col-span-5">

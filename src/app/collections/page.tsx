@@ -50,26 +50,32 @@ const CollectionsPage = async () => {
                                     {collection.description}
                                 </Markdown>
                             )}
-                            <span className="group-hover:animate-in group-hover:slide-in-from-top-10 slide-out-to-bottom-10 absolute top-1/2 left-4/12 z-30 hidden -translate-y-1/2 overflow-hidden rounded-xs opacity-0 transition-all duration-100 will-change-transform group-hover:opacity-100 sm:block">
-                                <Image
-                                    alt=""
-                                    blurDataURL={collection.photosCollection.items[0]?.base64}
-                                    className="h-auto w-100 shadow-2xl"
-                                    height={collection.photosCollection.items[0]?.thumbnail.height}
-                                    placeholder="blur"
-                                    loading="lazy"
-                                    quality={85}
-                                    sizes="(max-width: 240px) 100vw, (max-width: 360px) 50vw, (max-width: 640px) 33vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
-                                    src={collection.photosCollection.items[0]?.thumbnail.url}
-                                    width={collection.photosCollection.items[0]?.thumbnail.width}
-                                />
-                                <span className="bg-button-bg-hover text-button-text absolute right-2 bottom-2 z-40 flex h-full w-auto items-center gap-2 overflow-hidden p-1 sm:h-[2.25rem] sm:p-2 sm:px-3">
-                                    <span className="text-sm font-medium uppercase">
-                                        View collection
+                            {collection.photosCollection.items[0] && (
+                                <span className="group-hover:animate-in group-hover:slide-in-from-top-10 slide-out-to-bottom-10 absolute top-1/2 left-4/12 z-30 hidden -translate-y-1/2 overflow-hidden rounded-xs opacity-0 transition-all duration-100 will-change-transform group-hover:opacity-100 sm:block">
+                                    <Image
+                                        alt=""
+                                        blurDataURL={collection.photosCollection.items[0]?.base64}
+                                        className="h-auto w-100 shadow-2xl"
+                                        height={
+                                            collection.photosCollection.items[0]?.thumbnail.height
+                                        }
+                                        placeholder="blur"
+                                        loading="lazy"
+                                        quality={85}
+                                        sizes="(max-width: 240px) 100vw, (max-width: 360px) 50vw, (max-width: 640px) 33vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
+                                        src={collection.photosCollection.items[0]?.thumbnail.url}
+                                        width={
+                                            collection.photosCollection.items[0]?.thumbnail.width
+                                        }
+                                    />
+                                    <span className="bg-button-bg-hover text-button-text absolute right-2 bottom-2 z-40 flex h-full w-auto items-center gap-2 overflow-hidden p-1 sm:h-[2.25rem] sm:p-2 sm:px-3">
+                                        <span className="text-sm font-medium uppercase">
+                                            View collection
+                                        </span>
+                                        <RightArrowIcon className="h-5 w-5 fill-current" />
                                     </span>
-                                    <RightArrowIcon className="h-5 w-5 fill-current" />
                                 </span>
-                            </span>
+                            )}
                         </Link>
                     ))}
                 </div>

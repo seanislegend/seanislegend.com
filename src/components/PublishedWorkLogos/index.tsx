@@ -3,7 +3,7 @@ import gbhLogo from '@/../public/images/logos/good-beer-hunting.png';
 import pellicleLogo from '@/../public/images/logos/pellicle.png';
 
 const PublishedWorkLogos: React.FC = () => (
-    <div>
+    <div data-testid="published-work-logos">
         <h2 className="font-medium uppercase underline-offset-4 group-hover:underline lg:block">
             Published in
         </h2>

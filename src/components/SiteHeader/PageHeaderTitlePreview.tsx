@@ -24,6 +24,7 @@ const PageHeaderTitlePreview: React.FC = () => {
                 'pointer-events-none -translate-x-2 opacity-0': !isScrolled,
                 'translate-x-0 opacity-100': isScrolled
             })}
+            data-testid="page-header-title-preview"
         >
             <span className="mx-4">&mdash;</span>
             <Condition

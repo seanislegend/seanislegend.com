@@ -26,7 +26,7 @@ const TagListPage = async () => {
 };
 
 export const generateMetadata = async () => {
-    return {...config.seo, ...getEditorialSeo({slug: 'tags', title: 'Tags'})};
+    return {...config.seo, ...getEditorialSeo({slug: 'tags', title: 'All tags'})};
 };
 
 export default TagListPage;

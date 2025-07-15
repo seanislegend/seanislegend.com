@@ -1,7 +1,6 @@
 import {draftMode} from 'next/headers';
-import {notFound, permanentRedirect} from 'next/navigation';
+import {notFound} from 'next/navigation';
 import PhotoCarousel from '@/components/PhotoCarousel';
-import {getAllPhotoIdsForLayout} from '@/components/PhotoCollection/layouts';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
 import {getPhotoSeo} from '@/utils/helpers';
@@ -24,22 +23,14 @@ const getCollectionAndPhoto = async (
 const PhotoPage = async ({params}: Props) => {
     const allParams = await params;
     const draftModeConfig = await draftMode();
-    const {collection} = await getCollectionAndPhoto(
+    const {collection, photo} = await getCollectionAndPhoto(
         allParams.collection,
         allParams.photo,
         draftModeConfig.isEnabled
     );
 
-    if (!collection) {
-        return notFound();
-    }
-
-    const collectionHasPhoto = collection.photosCollection.items.some(
-        photo => photo.slug === allParams.photo
-    );
-
-    if (!collectionHasPhoto) {
-        return permanentRedirect(`/${allParams.collection}`);
+    if (!collection || !photo) {
+        notFound();
     }
 
     return <PhotoCarousel photo={allParams.photo} collection={collection} />;
@@ -66,7 +57,10 @@ export const generateStaticParams = async () => {
 export const generateMetadata = async ({params}: Props) => {
     const allParams = await params;
     const {collection, photo} = await getCollectionAndPhoto(allParams.collection, allParams.photo);
-    if (!collection || !photo) return null;
+
+    if (!collection || !photo) {
+        return config.seo;
+    }
 
     return {...config.seo, ...getPhotoSeo(collection, photo)};
 };

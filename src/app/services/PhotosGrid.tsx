@@ -22,7 +22,7 @@ const PhotosGridItem: React.FC<PhotoGridItem> = ({photo, label}) => {
     const {path, slug} = getPathAndSlug();
 
     return (
-        <div key={photo.photo.url} className="flex items-center w-full">
+        <div key={photo.photo.url} className="flex w-full items-center">
             <Thumbnail
                 linksTo={path ? 'collection' : undefined}
                 height={height}
@@ -44,6 +44,7 @@ const PhotosGrid: React.FC<Props> = ({photos}) => (
             'grid-cols-2': photos.length === 2,
             'grid-cols-1': photos.length === 1
         })}
+        data-testid="photo-grid"
     >
         {photos.map(item => (
             <PhotosGridItem key={item.photo.photo.url} {...item} />
