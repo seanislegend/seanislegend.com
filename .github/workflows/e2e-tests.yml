@@ -35,8 +35,5 @@ jobs:
               run: bun run test:install
             - name: Start application
               run: bun run start
-            - name: Wait for application to be ready
-              run: |
-                  timeout 60 bash -c 'until curl -f http://localhost:3000; do sleep 2; done'
             - name: Run Playwright tests
               run: bun run test
