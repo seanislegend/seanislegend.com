@@ -45,6 +45,8 @@ const PhotoPage = async ({params}: Props) => {
     return <PhotoCarousel photo={allParams.photo} collection={collection} />;
 };
 
+export const dynamicParams = false;
+
 export const generateStaticParams = async () => {
     const allCollections = await fetchAllCollections();
     if (!allCollections) return [];
