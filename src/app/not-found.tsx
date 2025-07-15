@@ -1,3 +1,5 @@
+'use client';
+
 import Button from '@/components/Button';
 import ButtonList from '@/components/Button/List';
 import DefaultLayout from '@/components/Layouts/Default';
