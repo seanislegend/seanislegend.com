@@ -25,6 +25,7 @@ jobs:
             - name: Build application
               run: bun run build
               env:
+                  SKIP_BUILD: true
                   NODE_ENV: test
                   NEXT_PUBLIC_URL: http://localhost:3000
                   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
@@ -33,7 +34,5 @@ jobs:
                   CONTENTFUL_PREVIEW_API_KEY: ${{ secrets.CONTENTFUL_PREVIEW_API_KEY }}
             - name: Install Playwright browsers
               run: bun run test:install
-            - name: Start application
-              run: bun run start
             - name: Run Playwright tests
-              run: bun run test
+              run: bun run start && bun run test
