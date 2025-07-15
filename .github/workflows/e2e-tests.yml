@@ -23,10 +23,15 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: '20'
-                  cache: 'npm'
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v1
+              with:
+                  bun-version: latest
             - name: Install dependencies
-              run: npm ci
+              run: bun install
+            - name: Build application
+              run: bun run build
             - name: Install Playwright browsers
-              run: npm run test:install
+              run: bun run test:install
             - name: Run Playwright tests
-              run: npm run test
+              run: bun run test
