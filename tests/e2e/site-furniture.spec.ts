@@ -26,8 +26,10 @@ test.describe('Site furniture', () => {
         test.use({viewport: {width: 1200, height: 500}});
 
         test('should display a main navigation', async ({page}) => {
-            await expect(page.getByTestId('main-navigation-static')).toBeVisible();
             await expect(page.getByTestId('main-navigation')).toBeVisible();
+            await expect(
+                page.getByTestId('site-footer').getByTestId('main-navigation-static')
+            ).toBeVisible();
         });
 
         test('should have a home link', async ({page}) => {
@@ -36,7 +38,7 @@ test.describe('Site furniture', () => {
             await expect(page).toHaveURL('/');
         });
 
-        test('should have functioning links', async ({page}) => {
+        test('should have functioning main links', async ({page}) => {
             const mainNavigation = page.getByTestId('main-navigation');
             await mainNavigation.getByText('About').click();
             await expect(page).toHaveURL('/about');
@@ -49,28 +51,29 @@ test.describe('Site furniture', () => {
         test('should display a dynamic collections menu', async ({page}) => {
             // hover over the collections trigger to open the menu
             await page.getByRole('button', {name: /collections/i}).hover();
-            const mainNavigation = page.getByTestId('main-navigation');
-            await expect(mainNavigation).toContainText('Collections');
-            const collectionsGrid = mainNavigation.getByTestId('collections-grid');
+            // navigation menu is rendered inside a portal inside main page layout,
+            // otherwise base ui renders into body by default
+            const mainNavigationPortal = page.getByTestId('page-content');
+            const collectionsGrid = mainNavigationPortal.getByTestId('collections-grid');
             await expect(collectionsGrid).toBeVisible();
             // links to all collections
-            await expect(mainNavigation.getByText('View all collections')).toBeVisible();
+            await expect(mainNavigationPortal.getByText('View all collections')).toBeVisible();
             // links to all tags
-            await expect(mainNavigation.getByTestId('tags-list')).toBeVisible();
+            await expect(mainNavigationPortal.getByTestId('tags-list')).toBeVisible();
         });
 
         test('should link to collections in the dynamic menu', async ({page}) => {
             // hover over the collections trigger to open the menu
             await page.getByRole('button', {name: /collections/i}).hover();
-            const mainNavigation = page.getByTestId('main-navigation');
-            const collectionsGrid = mainNavigation.getByTestId('collections-grid');
+            const mainNavigationPortal = page.getByTestId('page-content');
+            const collectionsGrid = mainNavigationPortal.getByTestId('collections-grid');
             await collectionsGrid.getByText('Example collection 1', {exact: true}).click();
             await expect(page).toHaveURL('/example-collection-1');
         });
 
         test('should handle keyboard navigation', async ({page}) => {
-            const mainNavigation = page.getByTestId('main-navigation');
-            const collectionsGrid = mainNavigation.getByTestId('collections-grid');
+            const mainNavigationPortal = page.getByTestId('page-content');
+            const collectionsGrid = mainNavigationPortal.getByTestId('collections-grid');
             // test keyboard navigation - press escape to close menu
             await page.keyboard.press('Escape');
             await expect(collectionsGrid).not.toBeVisible();

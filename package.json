@@ -3,6 +3,7 @@
     "private": true,
     "scripts": {
         "dev": "next dev --turbo",
+        "dev:test": "NODE_ENV=test next dev --turbo",
         "build": "next build",
         "build:test": "NODE_ENV=test next build",
         "start": "next start",
