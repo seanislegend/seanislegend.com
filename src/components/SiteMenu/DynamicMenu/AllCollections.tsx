@@ -1,4 +1,4 @@
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import {NavigationMenu} from '@base-ui-components/react/navigation-menu';
 import Button from '@/components/Button';
 import TextLink from '@/components/UI/TextLink';
 
@@ -12,19 +12,19 @@ const SiteHeaderAllCollections: React.FC<Props> = ({links}) => (
         <ul className="mb-4 list-outside space-y-1.5">
             {links.map(link => (
                 <li key={link.url} className="flex">
-                    <NavigationMenu.Item asChild>
-                        <TextLink className="group grow hover:no-underline" href={link.url}>
-                            <span className="inline-block transition-transform duration-500 ease-in-out group-hover:translate-x-1 group-hover:duration-100 group-data-[active=true]:underline">
-                                {link.title}
-                            </span>
-                        </TextLink>
-                    </NavigationMenu.Item>
+                    <NavigationMenu.Item
+                        render={() => (
+                            <TextLink className="group grow hover:no-underline" href={link.url}>
+                                <span className="inline-block transition-transform duration-500 ease-in-out group-hover:translate-x-1 group-hover:duration-100 group-data-[active=true]:underline">
+                                    {link.title}
+                                </span>
+                            </TextLink>
+                        )}
+                    />
                 </li>
             ))}
         </ul>
-        <NavigationMenu.Item asChild>
-            <Button href="/collections">View all</Button>
-        </NavigationMenu.Item>
+        <NavigationMenu.Item render={() => <Button href="/collections">View all</Button>} />
     </>
 );
 

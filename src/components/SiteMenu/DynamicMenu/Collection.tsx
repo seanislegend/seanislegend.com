@@ -1,6 +1,6 @@
 'use client';
 
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import {NavigationMenu} from '@base-ui-components/react/navigation-menu';
 import clsx from 'clsx';
 import {Link} from 'next-view-transitions';
 import Image from 'next/image';
@@ -21,7 +21,7 @@ const DynamicMenuCollection: React.FC<Props> = ({hasNavigationWrapper = true, li
     return (
         <Condition
             condition={hasNavigationWrapper}
-            wrapper={children => <NavigationMenu.Item asChild>{children}</NavigationMenu.Item>}
+            wrapper={children => <NavigationMenu.Item>{children}</NavigationMenu.Item>}
         >
             <Link
                 href={link.url}
