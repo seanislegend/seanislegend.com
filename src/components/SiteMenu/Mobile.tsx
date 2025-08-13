@@ -51,7 +51,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         key={isMenuOpen ? 'collections-open' : 'collections-closed'}
                         className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] duration-300 lg:hidden"
                     >
-                        <Container asChild>
+                        <Container>
                             <div className="flex h-full flex-col space-y-4 overflow-x-hidden overflow-y-auto py-4">
                                 <nav
                                     className="-mr-2 flex justify-end sm:-mr-3"
