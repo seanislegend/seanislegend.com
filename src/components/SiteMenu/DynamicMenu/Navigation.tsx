@@ -71,7 +71,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                 </NavigationMenu.List>
                 {isPortalReady && (
                     <NavigationMenu.Portal container={portal.current}>
-                        <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-10 hidden h-screen w-screen duration-500 data-[open]:block data-[open]:duration-200" />
+                        <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 hidden h-screen w-screen duration-500 data-[open]:block data-[open]:duration-200" />
                         <NavigationMenu.Positioner
                             className="!left-0 z-50"
                             collisionAvoidance={{side: 'none'}}

@@ -38,7 +38,7 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
                 ctas={ctas.filter(Boolean) as {label: string; url: string}[]}
                 description={collection?.showDescription ? collection.description : null}
                 titleAside={
-                    <div className="hidden grow flex-col justify-end md:flex">
+                    <div className="hidden grow flex-col justify-end md:flex" key={collection.slug}>
                         <Suspense>
                             <BackToCollectionButton />
                         </Suspense>
