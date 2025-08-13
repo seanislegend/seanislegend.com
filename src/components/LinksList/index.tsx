@@ -6,7 +6,7 @@ interface Props {
 }
 
 const LinksList: React.FC<Props> = ({links}: Props) => (
-    <Container asChild>
+    <Container>
         <div
             className="-my-4 [&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50"
             data-testid="link-list"

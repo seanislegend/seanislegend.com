@@ -24,7 +24,7 @@ const CollectionsPage = async () => {
     return (
         <DefaultLayout theme="light">
             <PageHeader title="All photo collections" />
-            <Container asChild>
+            <Container>
                 <div className="lg:[&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50">
                     {sortedCollections.map(collection => (
                         <Link
