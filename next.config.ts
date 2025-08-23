@@ -79,8 +79,7 @@ const nextConfig: NextConfig = {
             {protocol: 'https', hostname: 'downloads.ctfassets.net'}
         ]
     },
-    reactStrictMode: true,
-    typedRoutes: true
+    reactStrictMode: true
 };
 
 export default nextConfig;
