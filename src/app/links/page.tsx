@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import DefaultLayout from '@/components/Layouts/Default';
 import LinksList from '@/components/LinksList';
 import PageHeader from '@/components/PageHeader';
@@ -17,7 +18,7 @@ const LinksPage = async () => {
     );
 };
 
-export const generateMetadata = async () => {
+export const generateMetadata = async (): Promise<Metadata | null> => {
     return {...config.seo, ...getEditorialSeo({slug: 'links', title: 'Links'})};
 };
 

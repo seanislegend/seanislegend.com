@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import {draftMode} from 'next/headers';
 import {notFound, permanentRedirect} from 'next/navigation';
 import PhotoCollection from '@/components/PhotoCollection';
@@ -44,13 +45,14 @@ export const generateStaticParams = async () => {
     return allCollections.map(collection => ({collection: collection.slug}));
 };
 
-export const generateMetadata = async ({params}: Props) => {
+export const generateMetadata = async ({params}: Props): Promise<Metadata | null> => {
     const allParams = await params;
     const collection = await fetchCollection(allParams.collection);
     if (!collection) return null;
 
     const collectionSeo = getCollectionSeo(collection);
-    return {...config.seo, ...collectionSeo};
+    const meta = {...config.seo, ...collectionSeo};
+    return meta;
 };
 
 export default CollectionPage;

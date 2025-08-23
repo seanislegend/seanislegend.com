@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 import PhotoCarousel from '@/components/PhotoCarousel';
@@ -54,7 +55,7 @@ export const generateStaticParams = async () => {
     return slugs;
 };
 
-export const generateMetadata = async ({params}: Props) => {
+export const generateMetadata = async ({params}: Props): Promise<Metadata | null> => {
     const allParams = await params;
     const {collection, photo} = await getCollectionAndPhoto(allParams.collection, allParams.photo);
 
