@@ -2,8 +2,8 @@
 
 import {useEffect, useState} from 'react';
 import FocusLock from 'react-focus-lock';
+import {RemoveScroll} from 'react-remove-scroll';
 import {Link} from 'next-view-transitions';
-// import {RemoveScroll} from 'react-remove-scroll';
 import {usePathname} from 'next/navigation';
 import Button from '@/components/Button';
 import {CrossIcon, MenuIcon} from '@/components/Icon';
@@ -38,8 +38,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 <ToggleButtonIcon className="text-theme-text h-auto w-6" />
             </button>
             {isMenuOpen && (
-                // <RemoveScroll
-                <div
+                <RemoveScroll
                     className="top-site-header absolute left-0 z-30 w-full lg:hidden print:hidden"
                     data-testid="mobile-menu"
                     style={{
@@ -49,10 +48,10 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 >
                     <FocusLock
                         key={isMenuOpen ? 'collections-open' : 'collections-closed'}
-                        className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] duration-300 lg:hidden"
+                        className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] overflow-y-auto duration-300 lg:hidden"
                     >
                         <Container>
-                            <div className="flex h-full flex-col space-y-4 overflow-x-hidden overflow-y-auto py-4">
+                            <div className="flex h-full flex-col space-y-4 py-4">
                                 <nav
                                     className="-mr-2 flex justify-end sm:-mr-3"
                                     data-testid="mobile-menu-main-navigation"
@@ -95,8 +94,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                             </div>
                         </Container>
                     </FocusLock>
-                </div>
-                // </RemoveScroll>
+                </RemoveScroll>
             )}
             <div
                 className="bg-overlay-bg top-site-header fixed right-0 left-0 z-20 h-0 lg:hidden"
