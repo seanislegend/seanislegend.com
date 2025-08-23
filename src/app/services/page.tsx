@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import DefaultLayout from '@/components/Layouts/Default';
 import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
@@ -53,7 +54,7 @@ const ServicesPage = async () => {
     );
 };
 
-export const generateMetadata = async () => {
+export const generateMetadata = async (): Promise<Metadata | null> => {
     const page = await fetchEditorialPage('services');
     return {...config.seo, ...getEditorialSeo(page)};
 };

@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import DefaultLayout from '@/components/Layouts/Default';
 import LinksList from '@/components/LinksList';
@@ -25,7 +26,7 @@ const TagListPage = async () => {
     );
 };
 
-export const generateMetadata = async () => {
+export const generateMetadata = async (): Promise<Metadata | null> => {
     return {...config.seo, ...getEditorialSeo({slug: 'tags', title: 'All tags'})};
 };
 

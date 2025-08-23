@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import {Link} from 'next-view-transitions';
 import {draftMode} from 'next/headers';
 import Image from 'next/image';
@@ -85,7 +86,7 @@ const CollectionsPage = async () => {
     );
 };
 
-export const generateMetadata = async () => {
+export const generateMetadata = async (): Promise<Metadata | null> => {
     return {
         ...config.seo,
         ...getEditorialSeo({slug: 'collections', title: 'All photo collections'})

@@ -1,3 +1,4 @@
+import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import CollectionLinksCarousel from '@/components/CollectionLinksCarousel/Carousel';
 import DefaultLayout from '@/components/Layouts/Default';
@@ -55,7 +56,7 @@ export const generateStaticParams = async () => {
     return slugs;
 };
 
-export const generateMetadata = async ({params}: Props) => {
+export const generateMetadata = async ({params}: Props): Promise<Metadata | null> => {
     const allParams = await params;
     const tags = await fetchAllTags();
     if (!tags) return null;
