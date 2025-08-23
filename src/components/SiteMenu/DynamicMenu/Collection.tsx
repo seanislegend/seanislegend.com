@@ -43,7 +43,7 @@ const DynamicMenuCollection: React.FC<Props> = ({hasNavigationWrapper = true, li
                         )}
                         fill={true}
                         placeholder="blur"
-                        quality={85}
+                        quality={80}
                         sizes="(max-width: 240px) 600px, (max-width: 768px) 700px, (max-width: 1024px) 800px"
                         src={link.photo.thumbnail.url}
                     />

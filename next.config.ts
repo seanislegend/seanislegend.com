@@ -74,6 +74,7 @@ const nextConfig: NextConfig = {
     images: {
         formats: ['image/avif', 'image/webp'],
         minimumCacheTTL: 31536000, // 1 year
+        qualities: [80],
         remotePatterns: [
             {protocol: 'https', hostname: 'images.ctfassets.net'},
             {protocol: 'https', hostname: 'downloads.ctfassets.net'}
