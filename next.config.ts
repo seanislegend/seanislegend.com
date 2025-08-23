@@ -14,12 +14,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
     async headers() {
-        return [
-            {
-                source: '/:path*',
-                headers: securityHeaders
-            }
-        ];
+        return [{source: '/:path*', headers: securityHeaders}];
     },
     async rewrites() {
         return {
@@ -84,7 +79,8 @@ const nextConfig: NextConfig = {
             {protocol: 'https', hostname: 'downloads.ctfassets.net'}
         ]
     },
-    reactStrictMode: true
+    reactStrictMode: true,
+    typedRoutes: true
 };
 
 export default nextConfig;
