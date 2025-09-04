@@ -33,6 +33,16 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'TwoInARow', photos: [42, 13]},
         {layout: 'ContentSection', sections: [1]}
     ],
+    'craft-beer-channel-love-and-beer-festival': [
+        {layout: 'LandscapeTwoBigFourSmall', photos: [22, 11, 1, 7, 6, 30]},
+        {layout: 'FourInARow', photos: [5, 28, 8, 9]},
+        {layout: 'ThreeInARowWithPadding', photos: [21, 10, 12]},
+        {layout: 'TwoInARow', photos: [3, 46]},
+        {layout: 'FourInARow', photos: [32, 47, 40, 48]},
+        {layout: 'SixInARow', photos: [44, 50, 24, 25, 13, 39]},
+        {layout: 'ThreeInARowWithPadding', photos: [17, 34, 26]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [36, 41, 43, 49, 19, 18]}
+    ],
     'dark-star-gales-prize-old-ale': [
         {layout: 'LandscapeTwoBigTwoSmall', photos: [0, 3, 2, 10]},
         {layout: 'TwoInARowWithPadding', photos: [9, 14]},
