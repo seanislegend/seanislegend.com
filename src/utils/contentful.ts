@@ -199,9 +199,13 @@ const getBadgeForCollection = (item: PhotoCollection) => {
     return badge;
 };
 
-export const fetchCollectionNavigation = async (): Promise<Link[]> => {
+export const fetchCollectionNavigation = async (preview: boolean = false): Promise<Link[]> => {
     const query = `query {
-        collectionNavigationCollection(limit: 1, order: [sys_publishedAt_DESC]) {
+        collectionNavigationCollection(
+            limit: 1,
+            order: [sys_publishedAt_DESC],
+            preview: ${preview ? 'true' : 'false'}
+        ) {
             items {
                 collectionsCollection {
                     items {
@@ -213,7 +217,11 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
                             publishedAt
                             firstPublishedAt
                         }
-                        photosCollection(where:{isFeatured:true}, limit:1) {
+                        photosCollection(
+                            preview: ${preview ? 'true' : 'false'},
+                            where: {isFeatured:true},
+                            limit: 1
+                        ) {
                             items {
                                 base64
                                 thumbnail: photo {
@@ -228,7 +236,7 @@ export const fetchCollectionNavigation = async (): Promise<Link[]> => {
             }
         }
     }`;
-    const response: any = await fetchContent(query);
+    const response: any = await fetchContent(query, preview);
     const items =
         response?.data?.collectionNavigationCollection?.items?.[0]?.collectionsCollection?.items
             ?.filter((item: PhotoCollection) => !!item?.slug)
