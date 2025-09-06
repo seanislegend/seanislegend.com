@@ -38,6 +38,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'TwoInARow', photos: [3, 34]},
         {layout: 'ThreeInARowWithPadding', photos: [17, 10, 26]},
         {layout: 'SixInARow', photos: [44, 50, 24, 25, 13, 39]},
+        {layout: 'ContentSection', sections: [0]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [36, 41, 43, 49, 19, 18]},
         {layout: 'ThreeInARowWithPadding', photos: [21, 7, 12]},
         {layout: 'FourInARow', photos: [32, 47, 40, 48]},
