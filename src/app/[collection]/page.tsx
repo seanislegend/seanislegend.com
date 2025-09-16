@@ -3,7 +3,7 @@ import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchAllTags, fetchCollection} from '@/utils/contentful';
-import {getCollectionSeo, getTagSeo} from '@/utils/helpers';
+import {getCollectionSeo} from '@/utils/helpers';
 import CollectionPage from './collection-page';
 import TagPage from './tag-page';
 
@@ -57,13 +57,6 @@ export const generateMetadata = async ({params}: Props): Promise<Metadata | null
     const allParams = await params;
     const collection = await fetchCollection(allParams.collection);
     if (!collection) return null;
-
-    if (collection.isTagPage) {
-        const tag = collection?.tagsCollection?.items[0];
-        if (!tag) return null;
-
-        return getTagSeo(tag as Tag);
-    }
 
     const collectionSeo = getCollectionSeo(collection);
     const meta = {...config.seo, ...collectionSeo};
