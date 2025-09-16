@@ -35,7 +35,7 @@ export default defineConfig({
         // }
     ],
     webServer: {
-        command: process.env.SKIP_BUILD ? 'bun start' : 'bun dev',
+        command: process.env.SKIP_BUILD ? 'bun start:test' : 'bun dev:test',
         url: 'http://localhost:3000',
         reuseExistingServer: !process.env.CI,
         env: {

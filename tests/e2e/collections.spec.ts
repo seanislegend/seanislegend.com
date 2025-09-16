@@ -84,7 +84,7 @@ test.describe('Collections', () => {
         test('should display a tags section', async ({page}) => {
             await expect(page.getByTestId('tags-list')).toBeVisible();
             await page.getByTestId('tags-list').getByText('Example tag 1').click();
-            await expect(page).toHaveURL('/tags/example-tag-1');
+            await expect(page).toHaveURL('/example-tag-1-photography');
         });
 
         test.describe('Optional views', () => {

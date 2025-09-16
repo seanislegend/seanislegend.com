@@ -49,7 +49,7 @@ test.describe('Services', () => {
         await expect(page.getByText('View more photos')).toBeVisible();
         await expect(page.getByText('View more photos')).toHaveAttribute(
             'href',
-            '/tags/service-offering-1'
+            '/service-offering-1-photography'
         );
     });
 
