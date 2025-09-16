@@ -40,7 +40,7 @@ const ServicesPage = async () => {
                                 {section.id && (
                                     <span>
                                         or{' '}
-                                        <TextLink href={`/tags/${section.id}`}>
+                                        <TextLink href={`/${section.id}-photography`}>
                                             View more photos
                                         </TextLink>
                                     </span>
