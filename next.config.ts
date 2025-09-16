@@ -67,7 +67,15 @@ const nextConfig: NextConfig = {
                 source: '/uppers-and-downers/:slug*',
                 destination: '/uppers-and-downers-coffee-and-beer-festival',
                 permanent: true
-            }
+            },
+            {source: '/tags/beer', destination: '/beer-photography', permanent: true},
+            {source: '/tags/brewery', destination: '/brewery-photography', permanent: true},
+            {source: '/tags/editorial', destination: '/editorial-photography', permanent: true},
+            {source: '/tags/event', destination: '/event-photography', permanent: true},
+            {source: '/tags/portrait', destination: '/portrait-photography', permanent: true},
+            {source: '/tags/pub-and-bar', destination: '/pub-and-bar-photography', permanent: true},
+            {source: '/tags/street', destination: '/street-photography', permanent: true},
+            {source: '/tags/travel', destination: '/travel-photography', permanent: true}
         ];
     },
     experimental: {reactCompiler: true},
