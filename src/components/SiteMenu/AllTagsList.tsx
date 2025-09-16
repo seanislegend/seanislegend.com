@@ -17,9 +17,6 @@ const AllTagsList: React.FC<Props> = ({items}) => {
             ])}
             data-testid="tags-list"
         >
-            <li>
-                <strong className="font-medium">Tags:</strong>
-            </li>
             {items.map((t: TagListItem) => (
                 <li key={t.slug}>
                     <TextLink href={`/${t.slug}-photography`}>{t.name}</TextLink>
