@@ -22,7 +22,7 @@ const AllTagsList: React.FC<Props> = ({items}) => {
             </li>
             {items.map((t: TagListItem) => (
                 <li key={t.slug}>
-                    <TextLink href={`/tags/${t.slug}`}>{t.name}</TextLink>
+                    <TextLink href={`/${t.slug}-photography`}>{t.name}</TextLink>
                 </li>
             ))}
         </ul>
