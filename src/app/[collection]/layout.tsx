@@ -1,11 +1,13 @@
 import {Suspense} from 'react';
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
-import CollectionLinksCarousel from '@/components/CollectionLinksCarousel';
+import CollectionLinksCarouselWrapper from '@/components/CollectionLinksCarousel';
+import CollectionLinksCarousel from '@/components/CollectionLinksCarousel/Carousel';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
-import {fetchCollection} from '@/utils/contentful';
+import AllTagsList from '@/components/SiteMenu/AllTagsList';
+import {fetchAllPhotosForTag, fetchCollection} from '@/utils/contentful';
 
 interface Props {
     params: Promise<{collection: string; photo?: string}>;
@@ -21,10 +23,27 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
 
     if (!collection) return notFound();
 
+    let allTagCollectionLinks: {href: string; label: string}[] = [];
     let ctas = [];
 
-    if (collection.slug !== 'home') {
+    if (collection.isTagPage) {
+        // if this is a tag page we'll need to get the tag from the collections list
+        // rather than rely on the collection slug which will be modified for seo
+        const tag = collection?.tagsCollection?.items[0];
+
+        if (tag) {
+            const {collections} = await fetchAllPhotosForTag(tag.slug);
+
+            if (collections) {
+                allTagCollectionLinks = collections.map((c: any) => ({
+                    href: `/${c.slug}`,
+                    label: c.pageTitle ?? c.title
+                }));
+            }
+        }
+    } else if (collection.slug !== 'home') {
         ctas.push({label: 'Get in touch', url: '/contact'});
+
         if (collection.ctaLabel && collection.ctaUrl) {
             ctas.push({label: collection.ctaLabel, url: collection.ctaUrl});
         }
@@ -45,7 +64,10 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
                     </div>
                 }
             >
-                {collection.slug === 'home' && <CollectionLinksCarousel />}
+                {collection.slug === 'home' && <CollectionLinksCarouselWrapper />}
+                {allTagCollectionLinks.length > 0 && (
+                    <CollectionLinksCarousel links={allTagCollectionLinks} />
+                )}
             </PageHeader>
             {children}
         </DefaultLayout>

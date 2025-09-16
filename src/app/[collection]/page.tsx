@@ -1,18 +1,17 @@
 import type {Metadata} from 'next';
 import {draftMode} from 'next/headers';
-import {notFound, permanentRedirect} from 'next/navigation';
-import PhotoCollection from '@/components/PhotoCollection';
-import PhotoCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
-import RelatedCollections from '@/components/PhotoCollection/RelatedCollections';
+import {notFound} from 'next/navigation';
 import config from '@/utils/config';
-import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
-import {getCollectionSeo} from '@/utils/helpers';
+import {fetchAllCollections, fetchAllTags, fetchCollection} from '@/utils/contentful';
+import {getCollectionSeo, getTagSeo} from '@/utils/helpers';
+import CollectionPage from './collection-page';
+import TagPage from './tag-page';
 
 interface Props {
     params: Promise<{collection: string}>;
 }
 
-const CollectionPage = async ({params}: Props) => {
+const CollectionOrTagPage = async ({params}: Props) => {
     const allParams = await params;
     const draftModeConfig = await draftMode();
     const collection = await fetchCollection(allParams.collection, draftModeConfig.isEnabled);
@@ -21,28 +20,37 @@ const CollectionPage = async ({params}: Props) => {
         notFound();
     }
 
-    return (
-        <>
-            <PhotoCollection
-                {...collection}
-                linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
-            />
-            {collection?.relatedCollectionsCollection &&
-                collection?.relatedCollectionsCollection?.items?.length > 0 && (
-                    <RelatedCollections items={collection.relatedCollectionsCollection.items} />
-                )}
-            {process.env.NEXT_PUBLIC_ADMIN_TOOLS === '1' && (
-                <PhotoCollectionAdminTools collection={collection} />
-            )}
-        </>
-    );
+    if (collection.isTagPage) {
+        // the tag itself differs from the collection slug. we can get the tag via
+        // the collection's tags list
+        const tag = collection?.tagsCollection?.items[0];
+        if (!tag) {
+            notFound();
+        }
+
+        return <TagPage tagSlug={tag.slug} />;
+    }
+
+    return <CollectionPage collection={collection} />;
 };
 
 export const generateStaticParams = async () => {
+    const allTags = await fetchAllTags();
     const allCollections = await fetchAllCollections();
-    if (!allCollections) return [];
+    const allParams: Record<string, string>[] = [];
 
-    return allCollections.map(collection => ({collection: collection.slug}));
+    if (allCollections) {
+        allCollections.forEach(collection => {
+            allParams.push({collection: collection.slug});
+        });
+    }
+    if (allTags) {
+        allTags.forEach(tag => {
+            allParams.push({collection: tag.slug});
+        });
+    }
+
+    return allParams;
 };
 
 export const generateMetadata = async ({params}: Props): Promise<Metadata | null> => {
@@ -50,9 +58,16 @@ export const generateMetadata = async ({params}: Props): Promise<Metadata | null
     const collection = await fetchCollection(allParams.collection);
     if (!collection) return null;
 
+    if (collection.isTagPage) {
+        const tag = collection?.tagsCollection?.items[0];
+        if (!tag) return null;
+
+        return getTagSeo(tag);
+    }
+
     const collectionSeo = getCollectionSeo(collection);
     const meta = {...config.seo, ...collectionSeo};
     return meta;
 };
 
-export default CollectionPage;
+export default CollectionOrTagPage;

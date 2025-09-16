@@ -280,6 +280,7 @@ export const fetchAllCollections = async (
                 ctaLabel
                 ctaUrl
                 isFeatured
+                isTagPage
                 showDescription
                 description
                 photoSort
@@ -361,6 +362,7 @@ export const fetchCollection = async (
                 ctaUrl
                 description
                 isFeatured
+                isTagPage
                 showDescription
                 pageTitle
                 photoSort
@@ -511,7 +513,7 @@ export const fetchAllTags = async () => {
         }
     }`;
     const response: any = await fetchContent(query);
-    return response.data?.tagCollection?.items;
+    return response.data?.tagCollection?.items as Tag[];
 };
 
 export const fetchAllPhotosForTag = async (tag: string) => {

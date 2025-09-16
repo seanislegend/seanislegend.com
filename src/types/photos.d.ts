@@ -35,15 +35,16 @@ interface PhotoCollection {
     };
     ctaLabel?: string;
     ctaUrl?: string;
+    description?: string;
+    isFeatured?: boolean;
+    isTagPage?: boolean;
     metaDescription?: string;
     metaTitle?: string;
+    pageTitle?: string;
+    photoSort?: 'asc' | 'desc';
     photosCollection: {
         items: Photo[];
     };
-    description?: string;
-    isFeatured?: boolean;
-    pageTitle?: string;
-    photoSort?: 'asc' | 'desc';
     relatedCollectionsCollection: {
         items: Pick<
             PhotoCollection,
