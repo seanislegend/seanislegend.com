@@ -45,7 +45,7 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
 
     const tags = await fetchAllTags();
     const tagItems = tags.map((tag: any) => ({
-        url: `${process.env.NEXT_PUBLIC_URL}/tags/${tag.slug}`,
+        url: `${process.env.NEXT_PUBLIC_URL}/${tag.slug}-photography`,
         priority: 0.8,
         lastModified: getLastModifiedDate(tag?.sys?.publishedAt).toISOString()
     }));
