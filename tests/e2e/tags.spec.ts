@@ -17,13 +17,13 @@ test.describe('Tags', () => {
 
         test('should link to detail pages', async ({page}) => {
             await page.getByText('Example tag 1').first().click();
-            await expect(page).toHaveURL('/tags/example-tag-1');
+            await expect(page).toHaveURL('/example-tag-1-photography');
         });
     });
 
     test.describe('Detail page', () => {
         test.beforeEach(async ({page}) => {
-            await page.goto('/tags/example-tag-1');
+            await page.goto('/example-tag-1-photography');
         });
 
         test('should load page successfully', async ({page}) => {
@@ -65,7 +65,7 @@ test.describe('Tags', () => {
 
         test('should link to all tags', async ({page}) => {
             await page.getByTestId('tags-list').first().click();
-            await expect(page).toHaveURL('/tags/example-tag-1');
+            await expect(page).toHaveURL('/example-tag-1-photography');
         });
     });
 });
