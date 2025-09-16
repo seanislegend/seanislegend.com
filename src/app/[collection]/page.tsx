@@ -62,7 +62,7 @@ export const generateMetadata = async ({params}: Props): Promise<Metadata | null
         const tag = collection?.tagsCollection?.items[0];
         if (!tag) return null;
 
-        return getTagSeo(tag);
+        return getTagSeo(tag as Tag);
     }
 
     const collectionSeo = getCollectionSeo(collection);
