@@ -28,7 +28,7 @@ const AboutPage = async () => {
                                     height={page.photo.height}
                                     placeholder="empty"
                                     priority={false}
-                                    quality={90}
+                                    quality={80}
                                     src={page.photo.url}
                                     width={page.photo.width}
                                 />
