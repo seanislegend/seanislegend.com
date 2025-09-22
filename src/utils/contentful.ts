@@ -269,7 +269,7 @@ export const fetchAllCollections = async (
             limit: 35,
             order: [date_DESC],
             preview: ${preview ? 'true' : 'false'},
-            where: {category_not: ""}
+            where: {category_not: "", isTagPage_not: true}
         ) {
             items {
                 title
