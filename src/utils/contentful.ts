@@ -1,5 +1,4 @@
 import {cache} from 'react';
-import 'server-only';
 
 const fetchContent = cache(async (query: string, preview: boolean = false) => {
     try {
