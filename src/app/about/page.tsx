@@ -17,9 +17,9 @@ const AboutPage = async () => {
                 description={page.content}
                 title={page.pageTitle}
                 titleAside={
-                    <div className="mt-8 grid grid-cols-12 gap-4">
-                        <div className="col-span-6 hidden md:block" />
-                        <div className="col-span-6 flex justify-end">
+                    <div className="mt-8 mb-4 grid grid-cols-12 gap-4">
+                        <div className="hidden sm:col-span-6 md:block" />
+                        <div className="col-span-8 flex justify-end sm:col-span-6">
                             {page.photo && (
                                 <Image
                                     alt="Portrait photo of Sean McEmerson"
