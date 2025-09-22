@@ -524,7 +524,7 @@ export const fetchAllPhotosForTag = async (tag: string) => {
                 slug
             }
         }
-        collectionCollection(where: {tags: {slug_contains: "${tag}"}}) {
+        collectionCollection(where: {tags: {slug_contains: "${tag}"}, isTagPage_not: true}) {
             items {
                 pageTitle
                 slug
