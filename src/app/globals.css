@@ -165,7 +165,7 @@
         [data-theme='light'] {
             --bg: var(--color-beige-950);
             --text: var(--color-beige-50);
-            --dimmed-text: var(--color-beige-800);
+            --dimmed-text: var(--color-beige-300);
             --title-text: var(--color-beige-50);
             --accent: var(--color-black);
             --button-bg: var(--color-beige-950);
