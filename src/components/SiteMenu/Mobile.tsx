@@ -1,15 +1,12 @@
 'use client';
 
 import {useEffect, useState} from 'react';
-import FocusLock from 'react-focus-lock';
 import {RemoveScroll} from 'react-remove-scroll';
-import {Link} from 'next-view-transitions';
 import {usePathname} from 'next/navigation';
-import Button from '@/components/Button';
 import {CrossIcon, MenuIcon} from '@/components/Icon';
 import {MENU_ITEMS} from '@/components/SiteMenu';
-import DynamicMenuCollection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
+import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
 import SiteMenuLink from './Link';
 
@@ -46,18 +43,50 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                         opacity: isMenuOpen ? 1 : 0.8
                     }}
                 >
-                    <FocusLock
+                    <div
                         key={isMenuOpen ? 'collections-open' : 'collections-closed'}
                         className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] overflow-y-auto duration-300 lg:hidden"
                     >
                         <Container>
                             <div className="flex h-full flex-col space-y-4 py-4">
                                 <nav
-                                    className="-mr-2 flex justify-end sm:-mr-3"
-                                    data-testid="mobile-menu-main-navigation"
+                                    className="-ml-2 flex flex-col space-y-2"
+                                    data-testid="mobile-menu-collections-navigation"
                                 >
+                                    <SiteMenuLink
+                                        className="!text-lg"
+                                        href="/collections"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Collections
+                                    </SiteMenuLink>
+                                    {links?.map(link => (
+                                        <SiteMenuLink
+                                            className="ml-6 space-y-2"
+                                            key={link.url}
+                                            href={link.url}
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            <span className="flex items-center gap-2">
+                                                <span>{link.title}</span>
+                                                {link.badge && <Badge>{link.badge} </Badge>}
+                                            </span>
+                                            <small className="text-dimmed-text block leading-tight normal-case">
+                                                {link.pageTitle}
+                                            </small>
+                                        </SiteMenuLink>
+                                    ))}
+                                    <SiteMenuLink
+                                        aria-hidden="true"
+                                        className="mt-2 mb-8 ml-6 text-sm"
+                                        href="/collections"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        View all collections
+                                    </SiteMenuLink>
                                     {MENU_ITEMS.map(link => (
                                         <SiteMenuLink
+                                            className="!text-lg"
                                             key={link.href}
                                             href={link.href}
                                             onClick={() => setIsMenuOpen(false)}
@@ -65,23 +94,6 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                             {link.label}
                                         </SiteMenuLink>
                                     ))}
-                                </nav>
-                                <nav
-                                    className="-mx-2 grid grid-cols-2 gap-1 sm:grid-cols-3 md:grid-cols-4"
-                                    data-testid="mobile-menu-collections-navigation"
-                                >
-                                    {links?.map(link => (
-                                        <DynamicMenuCollection
-                                            key={link.url}
-                                            hasNavigationWrapper={false}
-                                            link={link}
-                                        />
-                                    ))}
-                                    <span className="min-w-[200px]">
-                                        <Button className="mt-2 ml-2" href="/collections">
-                                            View all collections
-                                        </Button>
-                                    </span>
                                 </nav>
                                 <div
                                     className="pt-8 lg:hidden"
@@ -93,7 +105,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                 </div>
                             </div>
                         </Container>
-                    </FocusLock>
+                    </div>
                 </RemoveScroll>
             )}
             <div
