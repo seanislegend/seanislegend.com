@@ -12,7 +12,7 @@ const LinksPage = async () => {
     return (
         <DefaultLayout theme="dark">
             <PageHeader title="Links" />
-            <LinksList links={page.linksCollection?.items} />
+            <LinksList links={page.linksCollection?.items?.reverse()} />
             <div className="h-10 lg:h-20" />
         </DefaultLayout>
     );
