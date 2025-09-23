@@ -52,6 +52,15 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [11, 6, 12]},
         {layout: 'ContentSection', sections: [1]}
     ],
+    'david-bruce-a-life-in-beer': [
+        {layout: 'TwoInARow', photos: [8, 0]},
+        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [4, 10, 5]},
+        {layout: 'SixInARow', photos: [9, 14, 11, 20, 19, 21]},
+        {layout: 'ContentSection', sections: [0]},
+        {layout: 'FourInARow', photos: [6, 7, 12, 15]},
+        {layout: 'ThreeInARow', photos: [16, 17, 18]},
+        {layout: 'ContentSection', sections: [1]}
+    ],
     // e2e tests
     'example-collection-2': [
         {layout: 'FourInARow', photos: [0, 0, 0, 0]},
@@ -114,7 +123,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
     ],
     home: [
         {layout: 'SixInARow', photos: [6, 28, 8, 25, 35, 34]},
-        {layout: 'LandscapeTwoBigFourSmall', photos: [1, 0, 29, 11, 2, 26]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [26, 0, 29, 11, 2, 1]},
         {layout: 'ThreeInARow', photos: [10, 3, 31]},
         {layout: 'ContentSection', sections: [0]},
         {layout: 'FourInARow', photos: [32, 13, 15, 23]},
