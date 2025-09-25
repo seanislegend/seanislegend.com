@@ -206,7 +206,7 @@ const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent> = ({
         <Column className="order-1 col-span-6 md:order-1 md:col-span-4">
             {renderPhoto(photos, 0, 4)}
         </Column>
-        <Column className="order-2 col-span-6 md:order-1 md:col-span-4">
+        <Column className="order-2 col-span-12 md:order-1 md:col-span-6">
             {renderPhoto(photos, 1, 4)}
         </Column>
         <Column className="order-1 col-span-6 self-end md:order-1 md:col-span-4">
@@ -217,12 +217,24 @@ const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent> = ({
 
 const SixInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid>
-        <Column className="col-span-4 md:col-span-2">{renderPhoto(photos, 0, 2)}</Column>
-        <Column className="col-span-4 md:col-span-2">{renderPhoto(photos, 1, 2)}</Column>
-        <Column className="col-span-4 md:col-span-2">{renderPhoto(photos, 2, 2)}</Column>
-        <Column className="col-span-4 md:col-span-2">{renderPhoto(photos, 3, 2)}</Column>
-        <Column className="col-span-4 md:col-span-2">{renderPhoto(photos, 4, 2)}</Column>
-        <Column className="col-span-4 md:col-span-2">{renderPhoto(photos, 5, 2)}</Column>
+        <Column className="col-span-6 sm:col-span-4 md:col-span-2">
+            {renderPhoto(photos, 0, 2)}
+        </Column>
+        <Column className="col-span-6 sm:col-span-4 md:col-span-2">
+            {renderPhoto(photos, 1, 2)}
+        </Column>
+        <Column className="col-span-6 sm:col-span-4 md:col-span-2">
+            {renderPhoto(photos, 2, 2)}
+        </Column>
+        <Column className="col-span-6 sm:col-span-4 md:col-span-2">
+            {renderPhoto(photos, 3, 2)}
+        </Column>
+        <Column className="col-span-6 sm:col-span-4 md:col-span-2">
+            {renderPhoto(photos, 4, 2)}
+        </Column>
+        <Column className="col-span-6 sm:col-span-4 md:col-span-2">
+            {renderPhoto(photos, 5, 2)}
+        </Column>
     </Grid>
 );
 
