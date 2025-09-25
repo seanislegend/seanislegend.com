@@ -13,10 +13,9 @@ const revalidate = (path: string) => {
 
 const revalidatePathForType = async (body: any) => {
     const type = body?.sys?.contentType?.sys?.id ?? body?.sys?.type;
-    console.log('type', type);
     if (!type) return;
 
-    if (type === 'collection') {
+    if (type === 'collection' || type === 'editorial') {
         const slug = body?.fields?.slug?.[LOCALE];
         if (slug) {
             revalidate(`/${slug}`);
