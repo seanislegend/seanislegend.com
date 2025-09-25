@@ -1,6 +1,6 @@
 import {cache} from 'react';
 
-const fetchContent = cache(async (query: string, preview: boolean = false) => {
+export const fetchContent = cache(async (query: string, preview: boolean = false) => {
     try {
         const data = await fetch(
             `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT_ID}`,
