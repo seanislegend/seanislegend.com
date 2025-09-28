@@ -16,6 +16,11 @@ const handler = async ({params}: Props) => {
     const collection = await fetchCollection(allParams.collection);
     if (!collection) return;
 
+    const metaPhotos = collection.metaPhotosCollection.items;
+    if (metaPhotos.length > 0) {
+        return getOgImage(metaPhotos.map(p => p.photo.url));
+    }
+
     const photos = collection.photosCollection.items;
     if (!photos) return;
 

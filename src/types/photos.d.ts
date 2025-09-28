@@ -39,6 +39,11 @@ interface PhotoCollection {
     isFeatured?: boolean;
     isTagPage?: boolean;
     metaDescription?: string;
+    metaPhotosCollection: {
+        items: {
+            photo: Image;
+        }[];
+    };
     metaTitle?: string;
     pageTitle?: string;
     photoSort?: 'asc' | 'desc';
