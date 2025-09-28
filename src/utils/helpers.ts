@@ -85,7 +85,7 @@ export const getEditorialSeo = (page: Editorial) => {
             canonical: `${config.seo.alternates.canonical}/${page.slug}`
         },
         description,
-        openGraph: {description},
+        openGraph: {description, images: config.seo.openGraph.images[0].url},
         title,
         twitter: {description, title}
     };
