@@ -441,6 +441,15 @@ export const fetchCollection = async (
                         slug
                     }
                 }
+                metaPhotosCollection {
+                    items {
+                        photo {
+                            height
+                            width
+                            url(transform: {format: WEBP, width: 800})
+                        }
+                    }
+                }
             }
         }
     }`;
