@@ -446,7 +446,7 @@ export const fetchCollection = async (
                         photo {
                             height
                             width
-                            url(transform: {format: WEBP, width: 800})
+                            url(transform: {format: WEBP, width: 1200})
                         }
                     }
                 }
