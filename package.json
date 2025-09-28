@@ -20,7 +20,7 @@
     "dependencies": {
         "@base-ui-components/react": "^1.0.0-beta.2",
         "@vercel/analytics": "^1.5.0",
-        "@vercel/og": "^0.8.1",
+        "@vercel/og": "^0.8.5",
         "@vercel/speed-insights": "^1.2.0",
         "cambio": "^1.1.4",
         "clsx": "^2.1.1",
