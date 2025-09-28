@@ -30,7 +30,7 @@ const fetchAndEncodeImage = async (url: string): Promise<string> => {
 const returnResponse = (message: string, status: number) => new Response(message, {status});
 
 export const POST = async (request: Request) => {
-    const secret = request.headers.get('secret');
+    const secret = request.headers.get('X-SIL-Secret');
 
     if (secret !== webhookSecret) {
         return returnResponse('Unauthorized', 401);
