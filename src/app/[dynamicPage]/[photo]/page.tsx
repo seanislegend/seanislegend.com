@@ -7,7 +7,7 @@ import {fetchAllCollections, fetchCollection} from '@/utils/contentful';
 import {getPhotoSeo} from '@/utils/helpers';
 
 interface Props {
-    params: Promise<{collection: string; photo: string}>;
+    params: Promise<{dynamicPage: string; photo: string}>;
 }
 
 const getCollectionAndPhoto = async (
@@ -25,7 +25,7 @@ const PhotoPage = async ({params}: Props) => {
     const allParams = await params;
     const draftModeConfig = await draftMode();
     const {collection, photo} = await getCollectionAndPhoto(
-        allParams.collection,
+        allParams.dynamicPage,
         allParams.photo,
         draftModeConfig.isEnabled
     );
@@ -44,7 +44,7 @@ export const generateStaticParams = async () => {
     const slugs = allCollections
         .map(collection => {
             const photos = collection.photosCollection.items.map(photo => ({
-                collection: collection.slug,
+                dynamicPage: collection.slug,
                 photo: photo.slug
             }));
 
@@ -57,7 +57,7 @@ export const generateStaticParams = async () => {
 
 export const generateMetadata = async ({params}: Props): Promise<Metadata | null> => {
     const allParams = await params;
-    const {collection, photo} = await getCollectionAndPhoto(allParams.collection, allParams.photo);
+    const {collection, photo} = await getCollectionAndPhoto(allParams.dynamicPage, allParams.photo);
 
     if (!collection || !photo) {
         return config.seo;

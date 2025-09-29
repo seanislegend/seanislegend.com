@@ -6,7 +6,7 @@ interface Props {
     collection: PhotoCollection;
 }
 
-const CollectionPage = async ({collection}: Props) => (
+const CollectionPage: React.FC<Props> = ({collection}) => (
     <>
         <PhotoCollection
             {...collection}

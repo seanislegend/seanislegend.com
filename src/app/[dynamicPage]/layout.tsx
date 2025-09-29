@@ -1,16 +1,15 @@
 import {Suspense} from 'react';
-import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 import CollectionLinksCarouselWrapper from '@/components/CollectionLinksCarousel';
 import CollectionLinksCarousel from '@/components/CollectionLinksCarousel/Carousel';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
-import AllTagsList from '@/components/SiteMenu/AllTagsList';
-import {fetchAllPhotosForTag, fetchCollection} from '@/utils/contentful';
+import {fetchAllPhotosForTag} from '@/utils/contentful';
+import {resolvePageData} from '@/utils/pageResolver';
 
 interface Props {
-    params: Promise<{collection: string; photo?: string}>;
+    params: Promise<{dynamicPage: string; photo?: string}>;
 }
 
 const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = async ({
@@ -18,18 +17,23 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
     params
 }) => {
     const allParams = await params;
-    const draftModeConfig = await draftMode();
-    const collection = await fetchCollection(allParams.collection, draftModeConfig.isEnabled);
+    const pageData = await resolvePageData(allParams.dynamicPage);
 
-    if (!collection) return notFound();
+    if (pageData.type === 'not-found') {
+        return notFound();
+    } else if (pageData.type === 'editorial') {
+        // handle page layouts in the editorial page component
+        return children;
+    }
 
+    const collection = pageData.collection;
     let allTagCollectionLinks: {href: string; label: string}[] = [];
     let ctas = [];
 
     if (collection.isTagPage) {
         // if this is a tag page we'll need to get the tag from the collections list
         // rather than rely on the collection slug which will be modified for seo
-        const tag = collection?.tagsCollection?.items[0];
+        const tag = pageData.tag;
 
         if (tag) {
             const {collections} = await fetchAllPhotosForTag(tag.slug);

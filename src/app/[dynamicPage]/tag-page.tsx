@@ -8,7 +8,7 @@ interface Props {
     tagSlug: string;
 }
 
-const TagPage = async ({tagSlug}: Props) => {
+const TagPage: React.FC<Props> = async ({tagSlug}) => {
     const allTags = await fetchAllTags();
     const {contentSection, photos, tag} = await fetchAllPhotosForTag(tagSlug);
 
