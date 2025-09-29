@@ -28,7 +28,11 @@ const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}
                         return <span {...props} />;
                     }
                     return <MarkdownLink {...props} />;
-                }
+                },
+                ul: ({...props}) => (
+                    <ul {...props} className="list-inside pl-4 text-base 2xl:text-[17px]" />
+                ),
+                li: ({...props}) => <li {...props} className="list-disc" />
             }}
         >
             {children}
