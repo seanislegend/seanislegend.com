@@ -2,12 +2,12 @@ import {fetchCollection} from '@/utils/contentful';
 import {getOgImage} from '@/utils/og';
 
 interface Props {
-    params: Promise<{collection: string}>;
+    params: Promise<{dynamicPage: string}>;
 }
 
 const handler = async ({params}: Props) => {
     const allParams = await params;
-    const collection = await fetchCollection(allParams.collection);
+    const collection = await fetchCollection(allParams.dynamicPage);
     if (!collection) return;
 
     const photo = collection.photosCollection.items.filter((photo, index) => {

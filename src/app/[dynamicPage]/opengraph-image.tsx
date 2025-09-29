@@ -3,7 +3,7 @@ import {fetchCollection} from '@/utils/contentful';
 import {getOgImage} from '@/utils/og';
 
 interface Props {
-    params: Promise<{collection: string}>;
+    params: Promise<{dynamicPage: string}>;
 }
 
 const getFirstFourLandscapePhotos = (photos: Photo[]) => {
@@ -13,7 +13,7 @@ const getFirstFourLandscapePhotos = (photos: Photo[]) => {
 
 const handler = async ({params}: Props) => {
     const allParams = await params;
-    const collection = await fetchCollection(allParams.collection);
+    const collection = await fetchCollection(allParams.dynamicPage);
     if (!collection) return;
 
     const metaPhotos = collection.metaPhotosCollection.items;
