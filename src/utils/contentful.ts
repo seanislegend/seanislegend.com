@@ -85,6 +85,7 @@ export const fetchEditorialPage = async (slug: string) => {
                 content
                 ctaLabel
                 ctaUrl
+                isGenericPage
                 openGraphImage: photo {
                     url(transform: {width: 1000})
                 }
@@ -92,6 +93,15 @@ export const fetchEditorialPage = async (slug: string) => {
                     height
                     url(transform: {format: WEBP, width: 1000})
                     width
+                }
+                photosCollection {
+                    items {
+                        photo {
+                            height
+                            url(transform: {format: WEBP, width: 1000})
+                            width
+                        }
+                    }
                 }
                 photoNote
                 contentSectionsCollection(limit: 10) {
@@ -136,6 +146,34 @@ export const fetchEditorialPage = async (slug: string) => {
     const response: any = await fetchContent(query);
 
     return response.data?.editorialCollection?.items?.[0] || null;
+};
+
+export const fetchAllEditorialPages = async (
+    preview: boolean = false
+): Promise<Editorial[] | null> => {
+    const query = `query {
+        editorialCollection(
+            limit: 50,
+            order: [sys_publishedAt_DESC],
+            preview: ${preview ? 'true' : 'false'},
+            where: {isGenericPage: true}
+        ) {
+            items {
+                title
+                slug
+                pageTitle
+                metaTitle
+                metaDescription
+                sys {
+                    publishedAt
+                    firstPublishedAt
+                }
+            }
+        }
+    }`;
+    const response: any = await fetchContent(query, preview);
+
+    return response.data?.editorialCollection?.items || null;
 };
 
 export const fetchLinksPage = async () => {

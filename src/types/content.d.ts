@@ -1,11 +1,25 @@
+interface PageData {
+    type: 'collection' | 'editorial' | 'not-found';
+    collection?: any;
+    editorial?: any;
+    tag?: any;
+}
+
 interface Editorial {
     ctaLabel?: string;
     ctaUrl?: string;
     content?: string;
+    contentSectionsCollection?: {
+        items: ContentSection[];
+    };
+    isGenericPage?: boolean;
     metaDescription?: string;
     metaTitle?: string;
     openGraphImage?: {url: string};
     pageTitle?: string;
+    photosCollection?: {
+        items: Photo[];
+    };
     photo?: {height: number; width: number; url: string};
     photoNote?: string;
     slug: string;
@@ -13,7 +27,7 @@ interface Editorial {
 }
 
 interface PhotoGridPhoto {
-    linkedFrom: {
+    linkedFrom?: {
         collectionCollection: {
             items: {
                 title: string;
