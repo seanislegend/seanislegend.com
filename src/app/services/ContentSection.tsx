@@ -6,11 +6,11 @@ import TitleTextGrid from '@/components/UI/TitleTextGrid';
 import PhotosGrid from '@/app/services/PhotosGrid';
 
 interface Props {
-    ctaStyle: 'button' | 'link';
+    ctaStyle?: 'button' | 'link';
     sections: ContentSection[];
 }
 
-const ContentSections: React.FC<Props> = ({ctaStyle, sections}) => (
+const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
     <>
         {sections.map((section: ContentSection) => {
             const ctas: {label: string; url: string}[] = [];
