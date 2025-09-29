@@ -2,13 +2,11 @@
 
 import {useCallback, useEffect, useRef} from 'react';
 import {useSetAtom} from 'jotai';
-import Button from '@/components/Button';
-import ButtonList from '@/components/Button/List';
 import Markdown from '@/components/Markdown';
+import PageHeaderButtonList from '@/components/PageHeader/ButtonList';
 import Container from '@/components/UI/Container';
 import {Heading1} from '@/components/UI/Headings';
 import TitleTextGrid from '@/components/UI/TitleTextGrid';
-import {getExternalUrl} from '@/utils/helpers';
 import {pageHeaderDataAtom} from '@/utils/store';
 
 interface Props {
@@ -66,19 +64,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                         {description}
                     </Markdown>
                 )}
-                {ctas && ctas?.length > 0 && (
-                    <ButtonList className="mt-6 print:hidden">
-                        {ctas.map((cta, index) => (
-                            <Button
-                                key={cta.label}
-                                href={getExternalUrl(cta.url)}
-                                theme={index === 0 ? 'primary' : 'secondary'}
-                            >
-                                {cta.label}
-                            </Button>
-                        ))}
-                    </ButtonList>
-                )}
+                {ctas && ctas?.length > 0 && <PageHeaderButtonList ctas={ctas} />}
                 {children && children}
             </TitleTextGrid>
         </Container>
