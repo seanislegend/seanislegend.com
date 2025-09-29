@@ -1,6 +1,6 @@
 import {type MetadataRoute} from 'next';
 import {MENU_ITEMS} from '@/components/SiteMenu';
-import {fetchAllTags, fetchCollectionsForSitemap} from '@/utils/contentful';
+import {fetchAllEditorialPages, fetchAllTags, fetchCollectionsForSitemap} from '@/utils/contentful';
 
 const getLastModifiedDate = (date?: string) => {
     if (!date || !process.env.SITEMAP_LAST_MODIFIED_MINIMUM) return new Date();
@@ -50,7 +50,15 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
         lastModified: getLastModifiedDate(tag?.sys?.publishedAt).toISOString()
     }));
 
-    return [...linksItems, ...collectionItems, ...tagItems].filter(Boolean);
+    const editorialPages = await fetchAllEditorialPages();
+    const editorialItems =
+        editorialPages?.map((editorial: any) => ({
+            url: `${process.env.NEXT_PUBLIC_URL}/${editorial.slug}`,
+            priority: 1,
+            lastModified: getLastModifiedDate(editorial?.sys?.publishedAt).toISOString()
+        })) || [];
+
+    return [...linksItems, ...collectionItems, ...tagItems, ...editorialItems].filter(Boolean);
 };
 
 export default getCollectionSeo;
