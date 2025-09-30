@@ -123,12 +123,12 @@ export const layouts: Record<string, PhotoBlock[]> = {
     ],
     home: [
         {layout: 'SixInARow', photos: [6, 28, 8, 25, 35, 34]},
-        {layout: 'LandscapeTwoBigFourSmall', photos: [26, 0, 29, 11, 2, 1]},
-        {layout: 'ThreeInARow', photos: [10, 3, 31]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [26, 27, 4, 11, 2, 1]},
+        {layout: 'ThreeInARow', photos: [10, 23, 31]},
         {layout: 'ContentSection', sections: [0]},
-        {layout: 'FourInARow', photos: [32, 13, 15, 23]},
-        {layout: 'ThreeInARow', photos: [30, 27, 16]},
-        {layout: 'FourInARow', photos: [12, 36, 4, 37]}
+        {layout: 'FourInARow', photos: [0, 15, 30, 3]},
+        {layout: 'ThreeInARow', photos: [29, 16, 22]},
+        {layout: 'FourInARow', photos: [12, 36, 13, 37]}
     ],
     'hukins-hops-annual-hop-harvest': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 8]},
