@@ -38,16 +38,12 @@ const revalidatePathForType = async (body: any) => {
         data.contentSection.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
             revalidate(`/${editorial.slug}`);
         });
-    } else if (type === 'photogrid') {
-        // revalidate editorial pages and content sections that contain this photogrid
+    } else if (type === 'photoGrid') {
+        console.log(body.sys.id);
+        // revalidate editorial pages and content sections that contain this photoGrid
         const {data} = await fetchContent(`query {
-            photogrid(id: "${body.sys.id}") {
+            photoGrid(id: "${body.sys.id}") {
                 linkedFrom {
-                    editorialCollection {
-                        items {
-                            slug
-                        }
-                    }
                     contentSectionCollection {
                         items {
                             linkedFrom {
@@ -62,14 +58,10 @@ const revalidatePathForType = async (body: any) => {
                 }
             }
         }`);
-        if (!data?.photogrid) return;
+        if (!data?.photoGrid) return;
 
-        // revalidate editorial pages that directly contain this photogrid
-        data.photogrid.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
-            revalidate(`/${editorial.slug}`);
-        });
-        // revalidate editorial pages that contain content sections with this photogrid
-        data.photogrid.linkedFrom.contentSectionCollection.items.forEach((contentSection: any) => {
+        // revalidate editorial pages that contain content sections with this photoGrid
+        data.photoGrid.linkedFrom.contentSectionCollection.items.forEach((contentSection: any) => {
             contentSection.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
                 revalidate(`/${editorial.slug}`);
             });
