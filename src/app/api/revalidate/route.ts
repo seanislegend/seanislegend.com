@@ -65,6 +65,45 @@ const revalidatePathForType = async (body: any) => {
                 revalidate(`/${editorial.slug}`);
             });
         });
+    } else if (type === 'photoGridPhoto') {
+        // revalidate editorial pages that contain this photoGridPhoto
+        const {data} = await fetchContent(`query {
+            photoGridPhoto(id: "${body.sys.id}") {
+                linkedFrom {
+                    photoGridCollection(limit: 5) {
+                        items {
+                            linkedFrom {
+                                contentSectionCollection(limit: 5) {
+                                    items {
+                                        linkedFrom {
+                                            editorialCollection(limit: 5) {
+                                                items {
+                                                    slug
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }`);
+        if (!data?.photoGridPhoto) return;
+
+        // revalidate editorial pages that contain content sections with this photoGridPhoto
+        data.photoGridPhoto?.linkedFrom?.photoGridCollection?.items?.forEach((photoGrid: any) => {
+            photoGrid?.linkedFrom?.contentSectionCollection?.items?.forEach(
+                (contentSection: any) => {
+                    contentSection?.linkedFrom?.editorialCollection?.items?.forEach(
+                        (editorial: any) => {
+                            revalidate(`/${editorial.slug}`);
+                        }
+                    );
+                }
+            );
+        });
     } else if (type === 'photo') {
         const {data} = await fetchContent(`query {
             photo(id: "${body.sys.id}") {
