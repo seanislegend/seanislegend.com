@@ -39,7 +39,6 @@ const revalidatePathForType = async (body: any) => {
             revalidate(`/${editorial.slug}`);
         });
     } else if (type === 'photoGrid') {
-        console.log(body.sys.id);
         // revalidate editorial pages and content sections that contain this photoGrid
         const {data} = await fetchContent(`query {
             photoGrid(id: "${body.sys.id}") {
