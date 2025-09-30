@@ -20,6 +20,60 @@ const revalidatePathForType = async (body: any) => {
         if (slug) {
             revalidate(`/${slug}`);
         }
+    } else if (type === 'contentSection') {
+        // revalidate editorial pages that contain this content section
+        const {data} = await fetchContent(`query {
+            contentSection(id: "${body.sys.id}") {
+                linkedFrom {
+                    editorialCollection {
+                        items {
+                            slug
+                        }
+                    }
+                }
+            }
+        }`);
+        if (!data?.contentSection) return;
+
+        data.contentSection.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
+            revalidate(`/${editorial.slug}`);
+        });
+    } else if (type === 'photogrid') {
+        // revalidate editorial pages and content sections that contain this photogrid
+        const {data} = await fetchContent(`query {
+            photogrid(id: "${body.sys.id}") {
+                linkedFrom {
+                    editorialCollection {
+                        items {
+                            slug
+                        }
+                    }
+                    contentSectionCollection {
+                        items {
+                            linkedFrom {
+                                editorialCollection {
+                                    items {
+                                        slug
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }`);
+        if (!data?.photogrid) return;
+
+        // revalidate editorial pages that directly contain this photogrid
+        data.photogrid.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
+            revalidate(`/${editorial.slug}`);
+        });
+        // revalidate editorial pages that contain content sections with this photogrid
+        data.photogrid.linkedFrom.contentSectionCollection.items.forEach((contentSection: any) => {
+            contentSection.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
+                revalidate(`/${editorial.slug}`);
+            });
+        });
     } else if (type === 'photo') {
         const {data} = await fetchContent(`query {
             photo(id: "${body.sys.id}") {
@@ -39,6 +93,11 @@ const revalidatePathForType = async (body: any) => {
                             _id
                         }
                     }
+                    editorialCollection {
+                        items {
+                            slug
+                        }
+                    }
                 }
             }
         }`);
@@ -49,6 +108,9 @@ const revalidatePathForType = async (body: any) => {
         });
         data.photo.linkedFrom.collectionCollection.items.forEach((collection: any) => {
             revalidate(`/${collection.slug}`);
+        });
+        data.photo.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
+            revalidate(`/${editorial.slug}`);
         });
         // if used in a photo grid, revalidate the services page as this is the
         // only use case for this
