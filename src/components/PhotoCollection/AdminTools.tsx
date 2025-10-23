@@ -16,7 +16,7 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
     const usedPhotos = layout?.flatMap(item => item.photos);
 
     return (
-        <div className="sticky bottom-0 flex max-h-[30vh] flex-row gap-20 overflow-y-auto border-4 border-black/40 bg-black p-4 text-white shadow-xl">
+        <div className="fixed bottom-0 z-50 flex max-h-[30vh] w-full flex-row gap-20 overflow-y-auto border-4 border-black/40 bg-black p-4 text-white shadow-xl">
             <button className="sticky top-0 font-medium" onClick={() => setIsActive(!isActive)}>
                 {isActive ? 'Hide' : 'Show'} tools
             </button>
