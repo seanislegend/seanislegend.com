@@ -53,8 +53,10 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
         }
     }
 
+    const theme = collection.customTheme ?? 'light';
+
     return (
-        <DefaultLayout theme="light">
+        <DefaultLayout theme={theme}>
             <PageHeader
                 {...collection}
                 backUrl={`/${collection.slug}`}
