@@ -68,6 +68,7 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
     });
 
     return (
+<<<<<<< HEAD
         <div className="fixed bottom-0 z-50 flex max-h-[35vh] w-full flex-col gap-4 overflow-y-auto border-4 border-black/40 bg-black/90 px-4 text-white shadow-xl">
             <div className="sticky top-0 z-20 flex items-center justify-between bg-black/90 py-2">
                 <Button onClick={() => setIsActive(!isActive)}>
@@ -83,6 +84,22 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
                                 placeholder="Search titles..."
                                 type="search"
                                 value={filterText}
+=======
+        <div className="fixed bottom-0 z-50 flex max-h-[30vh] w-full flex-row gap-20 overflow-y-auto border-4 border-black/40 bg-black p-4 text-white shadow-xl">
+            <button className="sticky top-0 font-medium" onClick={() => setIsActive(!isActive)}>
+                {isActive ? 'Hide' : 'Show'} tools
+            </button>
+            {isActive && (
+                <div className="grid w-full grid-cols-12 gap-4">
+                    {collection?.photosCollection?.items.map((photo, index) => (
+                        <div key={photo.slug} className="relative col-span-1">
+                            <Image
+                                alt={photo.title}
+                                className={clsx({'opacity-30': usedPhotos?.includes(index)})}
+                                height={200}
+                                width={200}
+                                src={photo.thumbnail.url}
+>>>>>>> 5074294 (fix: Always position to bottom)
                             />
                         </div>
                         <div className="flex items-center gap-2">
