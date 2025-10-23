@@ -397,6 +397,7 @@ export const fetchCollection = async (
                 category
                 ctaLabel
                 ctaUrl
+                customTheme
                 description
                 isFeatured
                 isTagPage

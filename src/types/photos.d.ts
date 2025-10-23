@@ -35,6 +35,7 @@ interface PhotoCollection {
     };
     ctaLabel?: string;
     ctaUrl?: string;
+    customTheme?: string;
     description?: string;
     isFeatured?: boolean;
     isTagPage?: boolean;
