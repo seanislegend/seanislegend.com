@@ -92,7 +92,10 @@ const nextConfig: NextConfig = {
 
         return redirects;
     },
-    experimental: {reactCompiler: true},
+    experimental: {
+        serverComponentsHmrCache: true,
+        turbopackFileSystemCacheForDev: true
+    },
     images: {
         formats: ['image/avif', 'image/webp'],
         minimumCacheTTL: 31536000, // 1 year
@@ -102,6 +105,7 @@ const nextConfig: NextConfig = {
             {protocol: 'https', hostname: 'downloads.ctfassets.net'}
         ]
     },
+    reactCompiler: true,
     reactStrictMode: true
 };
 
