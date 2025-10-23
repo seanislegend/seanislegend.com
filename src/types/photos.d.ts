@@ -35,7 +35,10 @@ interface PhotoCollection {
     };
     ctaLabel?: string;
     ctaUrl?: string;
+<<<<<<< HEAD
     customHeader?: string;
+=======
+>>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
     customTheme?: string;
     description?: string;
     isFeatured?: boolean;

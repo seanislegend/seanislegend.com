@@ -397,8 +397,11 @@ export const fetchCollection = async (
                 category
                 ctaLabel
                 ctaUrl
+<<<<<<< HEAD
                 layoutType
                 customHeader
+=======
+>>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
                 customTheme
                 description
                 isFeatured
