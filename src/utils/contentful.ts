@@ -397,11 +397,8 @@ export const fetchCollection = async (
                 category
                 ctaLabel
                 ctaUrl
-<<<<<<< HEAD
                 layoutType
                 customHeader
-=======
->>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
                 customTheme
                 description
                 isFeatured
@@ -409,7 +406,7 @@ export const fetchCollection = async (
                 showDescription
                 pageTitle
                 photoSort
-                photosCollection(limit: 120) {
+                photosCollection(limit: 160) {
                     items {
                         linkedFrom {
                             collectionCollection(limit: 5) {
@@ -428,7 +425,13 @@ export const fetchCollection = async (
                         urlLabel
                         instagramUrl
                         instagramLabel
+                        hero: photo {
+                            height
+                            width
+                            url(transform: {format: WEBP, width: 2000})
+                        }
                         fullSize: photo {
+                            description
                             height
                             width
                             url(transform: {format: WEBP, width: 1800})
@@ -437,6 +440,7 @@ export const fetchCollection = async (
                             url(transform: {width: 1000})
                         }
                         thumbnail: photo {
+                            description
                             height
                             width
                             url(transform: {format: WEBP, width: 1600})

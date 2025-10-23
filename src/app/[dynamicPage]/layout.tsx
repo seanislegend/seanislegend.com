@@ -51,7 +51,6 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
         }
     }
 
-<<<<<<< HEAD
     const CustomHeader = photoCollectionHeaders[collection.customHeader];
     const PageHeader = CustomHeader || photoCollectionHeaders.default;
     const theme = collection.customTheme ?? 'light';
@@ -59,25 +58,6 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
     return (
         <DefaultLayout data-layout-type={collection.layoutType} theme={theme}>
             <PageHeader ctas={ctas} collection={collection}>
-=======
-    const theme = collection.customTheme ?? 'light';
-
-    return (
-        <DefaultLayout theme={theme}>
-            <PageHeader
-                {...collection}
-                backUrl={`/${collection.slug}`}
-                ctas={ctas.filter(Boolean) as {label: string; url: string}[]}
-                description={collection?.showDescription ? collection.description : null}
-                titleAside={
-                    <div className="hidden grow flex-col justify-end md:flex" key={collection.slug}>
-                        <Suspense>
-                            <BackToCollectionButton />
-                        </Suspense>
-                    </div>
-                }
-            >
->>>>>>> 53c00e7 (feat: Add new custom themes for collections)
                 {collection.slug === 'home' && <CollectionLinksCarouselWrapper />}
                 {allTagCollectionLinks.length > 0 && (
                     <CollectionLinksCarousel links={allTagCollectionLinks} />
