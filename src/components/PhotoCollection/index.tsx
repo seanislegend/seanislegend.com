@@ -1,3 +1,6 @@
+'use client';
+
+import PhotoCollectionBlocksThemeWrapper from '@/components/PhotoCollection/ThemeWrapper';
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Container from '@/components/UI/Container';
 import PhotoCollectionBlocks, {ContentSection} from './Blocks';
@@ -75,15 +78,21 @@ const PhotosCollection: React.FC<Props> = ({
         );
     };
 
+    const hasThemedLayout = layout?.some(block => block.theme);
+    const blocksProps = {
+        blocks: layoutWithTags ?? layout,
+        renderPhoto,
+        renderSection,
+        renderTags
+    };
+    const BlocksComponent = hasThemedLayout
+        ? PhotoCollectionBlocksThemeWrapper
+        : PhotoCollectionBlocks;
+
     return (
         <div className="animate-in animate-out fill-mode-forwards mx-4 opacity-0 transition-opacity delay-100 duration-500 md:mx-8">
             {layout ? (
-                <PhotoCollectionBlocks
-                    blocks={layoutWithTags ?? layout}
-                    renderPhoto={renderPhoto}
-                    renderSection={renderSection}
-                    renderTags={renderTags}
-                />
+                <BlocksComponent {...blocksProps} />
             ) : (
                 <>
                     <Grid>
