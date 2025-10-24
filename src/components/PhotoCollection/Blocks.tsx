@@ -123,12 +123,6 @@ const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent> = ({
     </Grid>
 );
 
-const One: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
-    <Grid>
-        <Column className="col-span-12">{renderPhoto(photos, 0, 12)}</Column>
-    </Grid>
-);
-
 const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid className="place-items-end">
         <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
@@ -340,7 +334,6 @@ const photoLayouts: Partial<Record<string, React.FC<any>>> = {
     LandscapeTwoBigFourSmall,
     LandscapeTwoBigTwoSmall,
     LandscapeTwoBigTwoMediumFourSmall,
-    One,
     OneLandScapeTwoPortrait,
     OnePortraitOneLandscapeMediumTwoLandscapeSmall,
     OnePortraitOneLandscapeMediumFourLandscapeSmall,
