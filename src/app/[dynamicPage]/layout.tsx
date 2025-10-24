@@ -56,7 +56,7 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
     const theme = collection.customTheme ?? 'light';
 
     return (
-        <DefaultLayout data-slug={collection.slug} theme={theme}>
+        <DefaultLayout data-layout-type={collection.layoutType} theme={theme}>
             <PageHeader ctas={ctas} collection={collection}>
                 {collection.slug === 'home' && <CollectionLinksCarouselWrapper />}
                 {allTagCollectionLinks.length > 0 && (

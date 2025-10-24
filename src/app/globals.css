@@ -301,10 +301,7 @@
     }
 }
 
-[data-slug='hop-harvest-green-hop-beer'] {
-    [data-slot='page-header'] {
-        @apply md:!px-0;
-    }
+[data-layout-type='editorial'] {
     .content-section {
         @apply !px-0 2xl:!px-8;
 
