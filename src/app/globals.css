@@ -85,6 +85,18 @@
     :root {
         --site-header-height: 3.125rem;
         --site-header-height-scrolled: 3.125rem;
+        --photo-bg: color-mix(in srgb, var(--color-black) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--color-black) 70%, transparent);
+        --link-text: var(--color-beige-black);
+        --link-text-hover: var(--color-black);
+        --overlay-bg: color-mix(in srgb, var(--color-black) 80%, transparent);
+        --light: var(--color-beige-50);
+        --dark: var(--color-black);
+
+        ::selection {
+            background-color: var(--color-beige-100);
+            color: var(--color-black);
+        }
     }
 
     @media (min-width: 64rem) {
@@ -106,18 +118,6 @@
         --secondary-button-bg: var(--color-beige-100);
         --secondary-button-bg-hover: var(--color-beige-100);
         --secondary-button-text: var(--color-black);
-        --photo-bg: color-mix(in srgb, var(--color-black) 40%, transparent);
-        --photo-bg-badge: color-mix(in srgb, var(--color-black) 70%, transparent);
-        --link-text: var(--color-beige-black);
-        --link-text-hover: var(--color-black);
-        --overlay-bg: color-mix(in srgb, var(--color-black) 80%, transparent);
-        --light: var(--color-beige-50);
-        --dark: var(--color-black);
-
-        ::selection {
-            background-color: var(--color-beige-100);
-            color: var(--color-black);
-        }
     }
 
     [data-theme='dark'] {
@@ -154,8 +154,8 @@
         --button-bg: #4a5434;
         --button-bg-hover: #3e472c;
         --button-text: #f3f2ec;
-        --photo-bg: #3b4427;
-        --photo-bg-badge: #4a5434;
+        --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
         --link-text: #f3f2ec;
         --link-text-hover: #d6d2c1;
     }
@@ -168,8 +168,8 @@
         --button-bg: #3e4b56;
         --button-bg-hover: #333e47;
         --button-text: #f3f2ec;
-        --photo-bg: #2f3841;
-        --photo-bg-badge: #3b4853;
+        --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
         --link-text: #f3f2ec;
         --link-text-hover: #d0d5d8;
     }
@@ -182,8 +182,8 @@
         --button-bg: #7a301c;
         --button-bg-hover: #662816;
         --button-text: #f3f2ec;
-        --photo-bg: #572114;
-        --photo-bg-badge: #6a2a18;
+        --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
         --link-text: #f3f2ec;
         --link-text-hover: #e3d4c6;
     }
@@ -202,6 +202,13 @@
             --color-beige-800: #40464a;
             --color-beige-900: #393d40;
             --color-beige-950: #1e2123;
+            --photo-bg: color-mix(in srgb, var(--color-black) 40%, transparent);
+            --photo-bg-badge: color-mix(in srgb, var(--color-black) 70%, transparent);
+            --link-text: var(--color-beige-50);
+            --link-text-hover: var(--color-beige-100);
+            --overlay-bg: color-mix(in srgb, var(--color-black) 90%, transparent);
+            --light: var(--color-black);
+            --dark: var(--color-black);
         }
 
         [data-theme='light'] {
@@ -216,13 +223,6 @@
             --secondary-button-bg: var(--color-beige-900);
             --secondary-button-bg-hover: var(--color-beige-900);
             --secondary-button-text: var(--color-beige-50);
-            --photo-bg: color-mix(in srgb, var(--color-black) 40%, transparent);
-            --photo-bg-badge: color-mix(in srgb, var(--color-black) 70%, transparent);
-            --link-text: var(--color-beige-50);
-            --link-text-hover: var(--color-beige-100);
-            --overlay-bg: color-mix(in srgb, var(--color-black) 90%, transparent);
-            --light: var(--color-black);
-            --dark: var(--color-black);
         }
 
         [data-theme='dark'] {
@@ -253,8 +253,8 @@
             --button-bg: #444b2f;
             --button-bg-hover: #3a4128;
             --button-text: #ece9de;
-            --photo-bg: #232818;
-            --photo-bg-badge: #3b422a;
+            --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
+            --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
             --link-text: #ece9de;
             --link-text-hover: #c7c3b3;
         }
@@ -267,8 +267,8 @@
             --button-bg: #3b4750;
             --button-bg-hover: #323c44;
             --button-text: #ece9de;
-            --photo-bg: #1f262c;
-            --photo-bg-badge: #344048;
+            --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
+            --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
             --link-text: #ece9de;
             --link-text-hover: #cdd3d6;
         }
@@ -281,8 +281,8 @@
             --button-bg: #612516;
             --button-bg-hover: #531f12;
             --button-text: #f1ede6;
-            --photo-bg: #38160e;
-            --photo-bg-badge: #502014;
+            --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
+            --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
             --link-text: #f1ede6;
             --link-text-hover: #d3c4b6;
         }
@@ -297,6 +297,25 @@
             --link-text: #000;
             --link-text-hover: #000;
             --overlay-bg: #fff;
+        }
+    }
+}
+
+[data-slug='hop-harvest-green-hop-beer'] {
+    [data-slot='page-header'] {
+        @apply md:!px-0;
+    }
+    .content-section {
+        @apply !px-0 2xl:!px-8;
+
+        > div {
+            @apply mt-24;
+        }
+        h2 {
+            @apply !text-3xl capitalize lg:!text-5xl;
+        }
+        p {
+            @apply max-w-4xl 2xl:max-w-5xl;
         }
     }
 }
