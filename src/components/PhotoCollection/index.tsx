@@ -12,13 +12,19 @@ import {layouts} from './layouts';
 interface Props
     extends Pick<
         PhotoCollection,
-        'contentSectionsCollection' | 'photosCollection' | 'slug' | 'tagsCollection' | 'title'
+        | 'contentSectionsCollection'
+        | 'layoutType'
+        | 'photosCollection'
+        | 'slug'
+        | 'tagsCollection'
+        | 'title'
     > {
     linksTo?: 'collection' | 'photo';
 }
 
 const PhotosCollection: React.FC<Props> = ({
     contentSectionsCollection,
+    layoutType,
     linksTo = 'photo',
     photosCollection,
     tagsCollection,
@@ -39,12 +45,16 @@ const PhotosCollection: React.FC<Props> = ({
         const photo = photos[blockPhotos[index]];
         if (!photo) return null;
 
-        let path = `/${photo.collection || slug}`;
+        let path = '';
 
-        if (linksTo === 'photo') {
-            path = `${path}/${photo.slug}#photo`;
-        } else {
-            path = `${path}#${photo.slug}`;
+        if (layoutType === 'photos') {
+            path = `/${photo.collection || slug}`;
+
+            if (linksTo === 'photo') {
+                path = `${path}/${photo.slug}#photo`;
+            } else {
+                path = `${path}#${photo.slug}`;
+            }
         }
 
         return (
