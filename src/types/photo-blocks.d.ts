@@ -1,11 +1,13 @@
 import {type PhotoBlockLayout} from '@/components/PhotoCollection/Blocks';
 
 interface PhotoBlock {
-    layout: PhotoBlockLayout;
+    items?: PhotoBlock[];
+    layout?: PhotoBlockLayout;
     photos?: number[];
     props?: Record<string, any>;
     sections?: number[];
     tags?: TagListItem[];
+    theme?: string;
 }
 
 interface PhotoBlockComponent {

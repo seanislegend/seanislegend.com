@@ -13,7 +13,7 @@ import {
     type SectionBlockComponent
 } from '@/types/photo-blocks';
 
-interface Props {
+export interface Props {
     blocks: PhotoBlock[];
     renderPhoto: (blockPhotos: number[], index: number) => React.ReactNode;
     renderSection: (section: number) => React.ReactNode;
@@ -373,7 +373,7 @@ const PhotoCollectionBlocks: React.FC<Props> = ({
                 );
             }
 
-            const Layout = photoLayouts[block.layout];
+            const Layout = photoLayouts[block.layout ?? ''];
             if (!Layout) return null;
 
             return (
