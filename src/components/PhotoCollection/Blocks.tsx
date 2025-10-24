@@ -123,6 +123,12 @@ const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent> = ({
     </Grid>
 );
 
+const One: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+    <Grid>
+        <Column className="col-span-12">{renderPhoto(photos, 0, 12)}</Column>
+    </Grid>
+);
+
 const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid className="place-items-end">
         <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
@@ -287,13 +293,7 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
 
 const contentSectionThemes = {
     default: 'py-4 lg:py-6',
-    callout: 'bg-accent rounded !p-6 lg:p-8 xl:p-12',
-    editorial: clsx([
-        '!px-0 2xl:!px-8',
-        '[&_h2]:!text-3xl [&_h2]:capitalize lg:[&_h2]:!text-5xl',
-        '[&>div]:mt-24',
-        '[&_p]:max-w-4xl 2xl:[&_p]:max-w-5xl'
-    ])
+    callout: 'bg-accent rounded !p-6 lg:p-8 xl:p-12'
 };
 
 export const ContentSection: React.FC<ContentSection> = ({
@@ -306,7 +306,7 @@ export const ContentSection: React.FC<ContentSection> = ({
     title
 }) => (
     <Container
-        className={clsx([contentSectionThemes[theme ?? 'default'], 'my-12'])}
+        className={clsx([contentSectionThemes[theme ?? 'default'], 'content-section my-12'])}
         data-testid="content-section"
     >
         <Column className="col-span-12 md:col-span-8">
@@ -340,6 +340,7 @@ const photoLayouts: Partial<Record<string, React.FC<any>>> = {
     LandscapeTwoBigFourSmall,
     LandscapeTwoBigTwoSmall,
     LandscapeTwoBigTwoMediumFourSmall,
+    One,
     OneLandScapeTwoPortrait,
     OnePortraitOneLandscapeMediumTwoLandscapeSmall,
     OnePortraitOneLandscapeMediumFourLandscapeSmall,
