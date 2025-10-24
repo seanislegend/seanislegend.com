@@ -40,6 +40,7 @@ interface PhotoCollection {
     description?: string;
     isFeatured?: boolean;
     isTagPage?: boolean;
+    layoutType?: 'editorial' | 'photos' | (string & {});
     metaDescription?: string;
     metaPhotosCollection: {
         items: {
