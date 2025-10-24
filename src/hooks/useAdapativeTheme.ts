@@ -2,7 +2,7 @@
 
 import {useCallback, useEffect, useRef} from 'react';
 
-const useAdapativeTheme = (sections: string[]) => {
+const useAdapativeTheme = (blocks: string[]) => {
     const observerRef = useRef<IntersectionObserver | null>(null);
     const visibleSectionsRef = useRef<Set<string>>(new Set());
     const sectionIntersectionMapRef = useRef<Map<HTMLElement, string>>(new Map());
@@ -51,8 +51,6 @@ const useAdapativeTheme = (sections: string[]) => {
                     if (currentTheme !== bestTheme) {
                         firstPageTheme.setAttribute('data-theme', bestTheme);
                     }
-                } else {
-                    firstPageTheme.removeAttribute('data-theme');
                 }
             },
             {rootMargin: '-10% 0px -10% 0px', threshold: [0, 0.1, 0.5, 0.9, 1.0]}
@@ -67,12 +65,12 @@ const useAdapativeTheme = (sections: string[]) => {
                     if (!observerRef.current) return;
                 }
 
-                const theme = sections[index];
+                const theme = blocks[index];
                 sectionIntersectionMapRef.current.set(element, theme);
                 observerRef.current.observe(element);
             }
         },
-        [sections, createObserver]
+        [blocks, createObserver]
     );
 
     useEffect(() => {
