@@ -20,7 +20,7 @@ const PageHeaderTitlePreview: React.FC = () => {
 
     return (
         <span
-            className={clsx('hidden truncate transition duration-300 md:inline-flex', {
+            className={clsx('hidden truncate transition-all duration-300 md:inline-flex', {
                 'pointer-events-none -translate-x-2 opacity-0': !isScrolled,
                 'translate-x-0 opacity-100': isScrolled
             })}
@@ -38,7 +38,7 @@ const PageHeaderTitlePreview: React.FC = () => {
                             <LeftArrowIcon className="h-5 w-5 fill-current" />
                             <span>Go to collection</span>
                         </span>
-                        <span className="duration-500 ease-in-out sm:group-hover:translate-x-1 sm:group-hover:opacity-0 sm:group-hover:blur-xs sm:group-hover:duration-200">
+                        <span className="duration-300 ease-in-out sm:group-hover:translate-x-1 sm:group-hover:opacity-0 sm:group-hover:blur-xs">
                             {children}
                         </span>
                     </Link>

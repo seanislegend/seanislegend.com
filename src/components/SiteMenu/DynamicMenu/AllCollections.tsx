@@ -15,7 +15,7 @@ const SiteHeaderAllCollections: React.FC<Props> = ({links}) => (
                     <NavigationMenu.Item
                         render={() => (
                             <TextLink className="group grow hover:no-underline" href={link.url}>
-                                <span className="inline-block transition-transform duration-500 ease-in-out group-hover:translate-x-1 group-hover:duration-100 group-data-[active=true]:underline">
+                                <span className="inline-block transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-data-[active=true]:underline">
                                     {link.title}
                                 </span>
                             </TextLink>

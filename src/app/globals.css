@@ -17,13 +17,14 @@
     --color-beige-800: #675145;
     --color-beige-900: #554339;
     --color-beige-950: #2d231d;
-
+    --color-sky-blue: #cedfe6;
     --color-theme-bg: var(--bg);
     --color-theme-text: var(--text);
     --color-dimmed-text: var(--dimmed-text);
     --color-title-text: var(--title-text);
     --color-accent: var(--accent);
     --color-button-bg: var(--button-bg);
+    --color-button-accent: var(--button-accent);
     --color-button-text: var(--button-text);
     --color-button-bg-hover: var(--button-bg-hover);
     --color-secondary-button-bg: var(--secondary-button-bg);
@@ -147,43 +148,34 @@
         }
     }
 
-<<<<<<< HEAD
     [data-theme='sky-blue'] {
-        --bg: #cedfe6;
+        --bg: var(--color-sky-blue);
         --text: #2e2d29;
         --dimmed-text: #5a6b72;
         --accent: #7fa2af;
         --button-bg: #7fa2af;
         --button-bg-hover: #6f91a0;
         --button-text: #faf7ef;
-        --photo-bg: #90b1bb;
-        --photo-bg-badge: #6e8b94;
+        --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
         --link-text: #5e6f7c;
         --link-text-hover: #4f5f6b;
     }
 
-=======
->>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
     [data-theme='olive-green'] {
         --bg: #555f3d;
         --text: #f3f2ec;
         --dimmed-text: #c7c3b3;
         --accent: #4a5434;
         --button-bg: #4a5434;
+        --button-accent: #3d432d;
         --button-bg-hover: #3e472c;
         --button-text: #f3f2ec;
-<<<<<<< HEAD
         --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
         --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
         --link-text: #f3f2ec;
         --link-text-hover: #d6d2c1;
         --active-theme: var(--bg);
-=======
-        --photo-bg: #3b4427;
-        --photo-bg-badge: #4a5434;
-        --link-text: #f3f2ec;
-        --link-text-hover: #d6d2c1;
->>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
     }
 
     [data-theme='blue-grey'] {
@@ -192,20 +184,14 @@
         --dimmed-text: #cdd3d6;
         --accent: #3e4b56;
         --button-bg: #3e4b56;
+        --button-accent: #323d44;
         --button-bg-hover: #333e47;
         --button-text: #f3f2ec;
-<<<<<<< HEAD
         --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
         --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
         --link-text: #f3f2ec;
         --link-text-hover: #d0d5d8;
         --active-theme: var(--bg);
-=======
-        --photo-bg: #2f3841;
-        --photo-bg-badge: #3b4853;
-        --link-text: #f3f2ec;
-        --link-text-hover: #d0d5d8;
->>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
     }
 
     [data-theme='amber-red'] {
@@ -214,20 +200,14 @@
         --dimmed-text: #e3d4c6;
         --accent: #7a301c;
         --button-bg: #7a301c;
+        --button-accent: #622617;
         --button-bg-hover: #662816;
         --button-text: #f3f2ec;
-<<<<<<< HEAD
         --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
         --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
         --link-text: #f3f2ec;
         --link-text-hover: #e3d4c6;
         --active-theme: var(--bg);
-=======
-        --photo-bg: #572114;
-        --photo-bg-badge: #6a2a18;
-        --link-text: #f3f2ec;
-        --link-text-hover: #e3d4c6;
->>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
     }
 
     @media (prefers-color-scheme: dark) {
@@ -293,20 +273,14 @@
             --dimmed-text: #b5b1a4;
             --accent: #444b2f;
             --button-bg: #444b2f;
+            --button-accent: #3b4028;
             --button-bg-hover: #3a4128;
             --button-text: #ece9de;
-<<<<<<< HEAD
             --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
             --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
             --link-text: #ece9de;
             --link-text-hover: #c7c3b3;
             --active-theme: var(--bg);
-=======
-            --photo-bg: #232818;
-            --photo-bg-badge: #3b422a;
-            --link-text: #ece9de;
-            --link-text-hover: #c7c3b3;
->>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
         }
 
         [data-theme='blue-grey'] {
@@ -315,20 +289,14 @@
             --dimmed-text: #b8bec2;
             --accent: #3b4750;
             --button-bg: #3b4750;
+            --button-accent: #323d44;
             --button-bg-hover: #323c44;
             --button-text: #ece9de;
-<<<<<<< HEAD
             --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
             --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
             --link-text: #ece9de;
             --link-text-hover: #cdd3d6;
             --active-theme: var(--bg);
-=======
-            --photo-bg: #1f262c;
-            --photo-bg-badge: #344048;
-            --link-text: #ece9de;
-            --link-text-hover: #cdd3d6;
->>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
         }
 
         [data-theme='amber-red'] {
@@ -337,20 +305,14 @@
             --dimmed-text: #d3c4b6;
             --accent: #612516;
             --button-bg: #612516;
+            --button-accent: #531f14;
             --button-bg-hover: #531f12;
             --button-text: #f1ede6;
-<<<<<<< HEAD
             --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
             --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
             --link-text: #f1ede6;
             --link-text-hover: #d3c4b6;
             --active-theme: var(--bg);
-=======
-            --photo-bg: #38160e;
-            --photo-bg-badge: #502014;
-            --link-text: #f1ede6;
-            --link-text-hover: #d3c4b6;
->>>>>>> bd1e4e2 (feat: Add new custom themes for collections)
         }
     }
 
@@ -374,6 +336,10 @@
         > div {
             @apply mt-24;
         }
+        > div:has(> div > figure:only-child) {
+            @apply mt-0;
+        }
+
         h2 {
             @apply !text-3xl normal-case lg:!text-5xl;
         }
@@ -388,5 +354,9 @@
                 @apply !text-xl lg:!text-2xl;
             }
         }
+    }
+
+    [data-slot='tab-navigation'] + section .content-section > div {
+        @apply mt-16;
     }
 }

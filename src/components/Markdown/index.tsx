@@ -8,12 +8,12 @@ interface Props {
 }
 
 export const BASE_TEXT_CLASS =
-    'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] text-sm leading-relaxed prose-blockquote:text-lg @2xl:prose-blockquote:text-xl';
+    'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] text-[15px] prose-blockquote:text-lg @2xl:prose-blockquote:text-xl';
 
 const MarkdownLink = (props: any) => (
     <a
         {...props}
-        className="text-link-text focus:ring-text underline underline-offset-2 transition duration-200 ease-in-out hover:decoration-2 focus:ring-2 focus:ring-offset-2 focus:outline-hidden sm:underline-offset-4 print:no-underline"
+        className="text-link-text focus:ring-text underline underline-offset-2 transition-all duration-300 ease-in-out hover:decoration-2 focus:ring-2 focus:ring-offset-2 focus:outline-hidden sm:underline-offset-4 print:no-underline"
     >
         {props.children}
     </a>
@@ -55,11 +55,13 @@ const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}
                     const author = parts[1];
 
                     return (
-                        <figure className="border-accent border-l-4 pl-4">
+                        <figure className="border-accent border-l-4 py-4 pl-8">
                             <blockquote>
-                                <p className="!text-lg italic lg:!text-xl xl:!text-2xl">{quote}</p>
+                                <p className="text-xl/snug! text-pretty italic lg:text-2xl/snug! xl:text-3xl/snug!">
+                                    &ldquo;{quote.trim()}&rdquo;
+                                </p>
                             </blockquote>
-                            <figcaption>— {author}</figcaption>
+                            <figcaption className="mt-4">&mdash; {author}</figcaption>
                         </figure>
                     );
                 }

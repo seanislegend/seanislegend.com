@@ -38,11 +38,11 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                     <NavigationMenu.Item>
                         <NavigationMenu.Trigger className={`${linkClasses} group`}>
                             <span className="inline-flex items-center gap-1.5">
-                                <span>Collections</span>
-                                <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-200 ease-in-out group-data-[popup-open]:rotate-180" />
+                                <span className="text-theme-text">Collections</span>
+                                <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
                             </span>
                         </NavigationMenu.Trigger>
-                        <NavigationMenu.Content className="h-full w-screen px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-[ending-style]:opacity-0 data-[ending-style]:data-[activation-direction=left]:translate-x-[50%] data-[ending-style]:data-[activation-direction=right]:translate-x-[-50%] data-[starting-style]:opacity-0 data-[starting-style]:data-[activation-direction=left]:translate-x-[-50%] data-[starting-style]:data-[activation-direction=right]:translate-x-[50%] lg:px-8">
+                        <NavigationMenu.Content className="h-full w-screen px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:opacity-0 data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] lg:px-8">
                             <div className="grid grid-cols-6 gap-2" data-testid="collections-grid">
                                 {links.map(link => (
                                     <Collection key={link.url} link={link} />
@@ -71,9 +71,9 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                 </NavigationMenu.List>
                 {isPortalReady && (
                     <NavigationMenu.Portal container={portal.current}>
-                        <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 hidden h-screen w-screen duration-500 data-[open]:block data-[open]:duration-200" />
+                        <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 hidden h-screen w-screen duration-500 data-open:block data-open:duration-300" />
                         <NavigationMenu.Positioner
-                            className="!left-0 z-50"
+                            className="left-0! z-50"
                             collisionAvoidance={{side: 'none'}}
                             positionMethod="fixed"
                             style={{
@@ -81,7 +81,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                 ['--easing' as string]: 'cubic-bezier(0.22, 1, 0.36, 1)'
                             }}
                         >
-                            <NavigationMenu.Popup className="data-[ending-style]:easing-[ease] relative z-50 mt-1 h-[var(--popup-height)] w-[var(--popup-width)] origin-[var(--transform-origin)] transition-[opacity,transform,width,height,translate] duration-[var(--duration)] ease-[var(--easing)] data-[ending-style]:-translate-y-2 data-[ending-style]:opacity-0 data-[ending-style]:duration-150 data-[starting-style]:-translate-y-2 data-[starting-style]:opacity-0">
+                            <NavigationMenu.Popup className="data-ending-style:easing-[ease] relative z-50 mt-1 h-[var(--popup-height)] w-[var(--popup-width)] origin-[var(--transform-origin)] transition-[opacity,transform,width,height,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:-translate-y-2 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:-translate-y-2 data-starting-style:opacity-0">
                                 <NavigationMenu.Viewport className="bg-theme-bg h-full w-full overflow-hidden pt-1" />
                             </NavigationMenu.Popup>
                         </NavigationMenu.Positioner>

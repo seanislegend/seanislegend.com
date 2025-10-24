@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 type ThumbnailPhoto = Pick<Photo['thumbnail'], 'height' | 'width' | 'url'>;
 interface Props extends ThumbnailPhoto {
+    alt?: string;
     base64?: string;
     columnSize?: number;
     fill?: boolean;
@@ -10,6 +11,7 @@ interface Props extends ThumbnailPhoto {
 }
 
 const ThumbnailImage: React.FC<Props> = ({
+    alt,
     base64,
     columnSize,
     fill,
@@ -34,7 +36,7 @@ const ThumbnailImage: React.FC<Props> = ({
             )}
         >
             <Image
-                alt=""
+                alt={alt || ''}
                 blurDataURL={base64 || ''}
                 className="w-full"
                 data-testid="photo-image"

@@ -9,7 +9,7 @@ const Theme: React.FC<Props> = ({children, className = '', theme, ...props}) => 
     <div
         className={clsx([
             className,
-            'bg-theme-bg text-theme-text transition-colors duration-200 ease-in-out'
+            'bg-theme-bg text-theme-text transition-colors duration-300 ease-in-out'
         ])}
         data-theme={theme}
         {...props}

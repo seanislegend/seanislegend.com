@@ -1,6 +1,5 @@
 'use client';
 
-import PhotoCollectionBlocksThemeWrapper from '@/components/PhotoCollection/ThemeWrapper';
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Container from '@/components/UI/Container';
 import PhotoCollectionBlocks, {ContentSection} from './Blocks';
@@ -47,7 +46,7 @@ const PhotosCollection: React.FC<Props> = ({
 
         let path = '';
 
-        if (layoutType === 'photos') {
+        if (layoutType !== 'editorial') {
             path = `/${photo.collection || slug}`;
 
             if (linksTo === 'photo') {
@@ -85,27 +84,21 @@ const PhotosCollection: React.FC<Props> = ({
     const renderTags = () => {
         if (!tags.length) return null;
         return (
-            <Container className="my-8 !px-0" key="tags">
+            <Container className="my-8 px-0!" key="tags">
                 <AllTagsList items={tags} />
             </Container>
         );
     };
 
-    const hasThemedLayout = layout?.some(block => block.theme);
-    const blocksProps = {
-        blocks: layoutWithTags ?? layout,
-        renderPhoto,
-        renderSection,
-        renderTags
-    };
-    const BlocksComponent = hasThemedLayout
-        ? PhotoCollectionBlocksThemeWrapper
-        : PhotoCollectionBlocks;
-
     return (
         <div className="animate-in animate-out fill-mode-forwards mx-4 opacity-0 transition-opacity delay-100 duration-500 md:mx-8">
             {layout ? (
-                <BlocksComponent {...blocksProps} />
+                <PhotoCollectionBlocks
+                    blocks={layoutWithTags ?? layout}
+                    renderPhoto={renderPhoto}
+                    renderSection={renderSection}
+                    renderTags={renderTags}
+                />
             ) : (
                 <>
                     <Grid>

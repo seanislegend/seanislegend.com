@@ -58,13 +58,13 @@ const PhotoCarousel: React.FC<Props> = ({collection, photo}) => {
                     <CarouselImage isActive={false} {...nextPhoto} />
                 </div>
                 <Link
-                    className="tap-transparent absolute top-0 left-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-hidden md:block"
+                    className="tap-transparent absolute top-0 left-0 z-10 hidden h-full w-1/2 cursor-[url(/images/left-arrow.svg)_15_15,pointer] bg-transparent focus:outline-hidden md:block"
                     href={prevPhotoUrl}
                     scroll={false}
                     type="button"
                 />
                 <Link
-                    className="tap-transparent absolute top-0 right-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,_pointer] bg-transparent focus:outline-hidden md:block"
+                    className="tap-transparent absolute top-0 right-0 z-10 hidden h-full w-1/2 cursor-[url(/images/right-arrow.svg)_15_15,pointer] bg-transparent focus:outline-hidden md:block"
                     href={nextPhotoUrl}
                     scroll={false}
                     type="button"
