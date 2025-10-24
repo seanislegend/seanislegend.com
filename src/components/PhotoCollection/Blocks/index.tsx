@@ -418,13 +418,7 @@ const TwoPortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderP
 
 const contentSectionThemes = {
     default: 'py-4 lg:py-6',
-    callout: 'bg-accent rounded !p-6 lg:p-8 xl:p-12',
-    editorial: clsx([
-        '!px-0 2xl:!px-8',
-        '[&_h2]:!text-3xl [&_h2]:capitalize lg:[&_h2]:!text-5xl',
-        '[&>div]:mt-24',
-        '[&_p]:max-w-4xl 2xl:[&_p]:max-w-5xl'
-    ])
+    callout: 'bg-accent rounded !p-6 lg:p-8 xl:p-12'
 };
 
 export const ContentSection: React.FC<ContentSection> = ({
