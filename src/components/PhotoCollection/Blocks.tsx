@@ -16,7 +16,7 @@ import {
 export interface Props {
     blocks: PhotoBlock[];
     renderPhoto: (blockPhotos: number[], index: number) => React.ReactNode;
-    renderSection: (section: number) => React.ReactNode;
+    renderSection: (section: number | string) => React.ReactNode;
     renderTags: () => React.ReactNode;
 }
 

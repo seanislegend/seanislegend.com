@@ -470,6 +470,7 @@ export const fetchCollection = async (
                         content
                         ctaLabel
                         ctaUrl
+                        id
                         secondaryCtaLabel
                         secondaryCtaUrl
                         theme

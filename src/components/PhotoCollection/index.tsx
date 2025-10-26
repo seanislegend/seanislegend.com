@@ -72,8 +72,11 @@ const PhotosCollection: React.FC<Props> = ({
         );
     };
 
-    const renderSection = (index: number) => {
-        const section = sections[index];
+    const renderSection = (index: number | string) => {
+        const section =
+            typeof index === 'number'
+                ? sections[index]
+                : sections.find(section => section.id === index);
         if (!section) return null;
 
         return <ContentSection key={section.title} {...section} />;
