@@ -88,7 +88,9 @@ const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({
 
 const LandscapeTwoBigTwoSmall: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid>
-        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+        <Column className="top-site-header sticky col-span-12 md:col-span-6">
+            {renderPhoto(photos, 0, 6)}
+        </Column>
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
                 <Column className="col-span-6 md:col-span-6">{renderPhoto(photos, 1, 6)}</Column>
@@ -136,7 +138,7 @@ const OnePortraitOneLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockCompone
     renderPhoto
 }) => (
     <Grid className="place-items-end">
-        <Column className="col-span-6">
+        <Column className="top-site-header sticky col-span-6">
             <Grid hasTestId={false}>
                 <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
@@ -203,7 +205,7 @@ const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent> = ({
     renderPhoto
 }) => (
     <Grid className="mx-auto">
-        <Column className="order-1 col-span-6 md:order-1 md:col-span-4">
+        <Column className="top-site-header sticky order-1 col-span-6 md:order-1 md:col-span-4">
             {renderPhoto(photos, 0, 4)}
         </Column>
         <Column className="order-2 col-span-12 md:order-1 md:col-span-4">
