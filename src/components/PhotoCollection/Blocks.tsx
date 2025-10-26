@@ -304,6 +304,7 @@ export const ContentSection: React.FC<ContentSection> = ({
     <Container
         className={clsx([contentSectionThemes[theme ?? 'default'], 'content-section my-12'])}
         data-testid="content-section"
+        data-theme={theme}
     >
         <Column className="col-span-12 md:col-span-8">
             <Heading2>{title}</Heading2>
