@@ -7,6 +7,7 @@ import Button from '@/components/Button';
 import {layouts} from '@/components/PhotoCollection/layouts';
 
 type SortOption = 'index' | 'title';
+type PhotoFilter = 'all' | 'used' | 'unused';
 
 interface Props {
     collection: PhotoCollection;
@@ -16,6 +17,7 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
     const [isActive, setIsActive] = useState(false);
     const [sortBy, setSortBy] = useState<SortOption>('index');
     const [filterText, setFilterText] = useState('');
+    const [photoFilter, setPhotoFilter] = useState<PhotoFilter>('all');
 
     const layout = layouts?.[collection.slug];
 
@@ -35,12 +37,28 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
             );
         }
 
+        // filter by photo usage
+        if (photoFilter !== 'all') {
+            const usedPhotoIndices =
+                layout?.flatMap(item => {
+                    if (item.theme && item.items) {
+                        return item.items.flatMap(themeItem => themeItem.photos || []);
+                    }
+                    return item.photos || [];
+                }) || [];
+
+            filtered = filtered.filter((photo, index) => {
+                const isUsed = usedPhotoIndices.includes(index);
+                return photoFilter === 'used' ? isUsed : !isUsed;
+            });
+        }
+
         // sort based on current sort option
         if (sortBy === 'title') {
             return [...filtered].sort((a, b) => a.title.localeCompare(b.title));
         }
         return filtered; // default to index order
-    }, [photos, sortBy, filterText]);
+    }, [photos, sortBy, filterText, photoFilter, layout]);
 
     const usedPhotos = layout?.flatMap(item => {
         if (item.theme && item.items) {
@@ -56,9 +74,9 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
                     {isActive ? 'Hide' : 'Show'} tools
                 </Button>
                 {isActive && (
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 space-x-4 divide-x divide-white/40">
                         <div className="flex items-center gap-2">
-                            <span className="text-sm">Filter:</span>
+                            <span className="text-sm">Search:</span>
                             <input
                                 className="rounded border border-white/20 bg-black/40 px-2 py-1 text-sm text-white placeholder-white/60 focus:border-white focus:outline-none"
                                 onChange={e => setFilterText(e.target.value)}
@@ -66,6 +84,29 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
                                 type="search"
                                 value={filterText}
                             />
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <span className="text-sm">Filter:</span>
+                            <div className="flex gap-2">
+                                <Button
+                                    onClick={() => setPhotoFilter('all')}
+                                    theme={photoFilter === 'all' ? 'primary' : 'secondary'}
+                                >
+                                    All
+                                </Button>
+                                <Button
+                                    onClick={() => setPhotoFilter('used')}
+                                    theme={photoFilter === 'used' ? 'primary' : 'secondary'}
+                                >
+                                    Used
+                                </Button>
+                                <Button
+                                    onClick={() => setPhotoFilter('unused')}
+                                    theme={photoFilter === 'unused' ? 'primary' : 'secondary'}
+                                >
+                                    Unused
+                                </Button>
+                            </div>
                         </div>
                         <div className="flex items-center gap-2">
                             <span className="text-sm">Sort by:</span>
