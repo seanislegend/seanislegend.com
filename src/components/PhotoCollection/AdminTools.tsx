@@ -13,7 +13,13 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
     const [isActive, setIsActive] = useState(false);
 
     const layout = layouts?.[collection.slug];
-    const usedPhotos = layout?.flatMap(item => item.photos);
+
+    const usedPhotos = layout?.flatMap(item => {
+        if (item.theme && item.items) {
+            return item.items.flatMap(themeItem => themeItem.photos || []);
+        }
+        return item.photos || [];
+    });
 
     return (
         <div className="fixed bottom-0 z-50 flex max-h-[30vh] w-full flex-row gap-20 overflow-y-auto border-4 border-black/40 bg-black p-4 text-white shadow-xl">
