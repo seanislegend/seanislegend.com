@@ -50,8 +50,8 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
     });
 
     return (
-        <div className="fixed bottom-0 z-50 flex max-h-[30vh] w-full flex-col gap-4 overflow-y-auto border-4 border-black/40 bg-black p-4 text-white shadow-xl">
-            <div className="flex items-center justify-between">
+        <div className="fixed bottom-0 z-50 flex max-h-[35vh] w-full flex-col gap-4 overflow-y-auto border-4 border-black/40 bg-black/90 px-4 text-white shadow-xl">
+            <div className="sticky top-0 z-20 flex items-center justify-between bg-black/90 py-2">
                 <Button onClick={() => setIsActive(!isActive)}>
                     {isActive ? 'Hide' : 'Show'} tools
                 </Button>
@@ -88,7 +88,7 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
                 )}
             </div>
             {isActive && (
-                <div className="grid w-full grid-cols-12 gap-4">
+                <div className="grid w-full grid-cols-12 gap-4 py-4">
                     {sortedPhotos.map((photo, sortedIndex) => {
                         const originalIndex = photos.findIndex(p => p.slug === photo.slug);
                         return (
