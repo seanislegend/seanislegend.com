@@ -5,7 +5,7 @@ interface PhotoBlock {
     layout?: PhotoBlockLayout;
     photos?: number[];
     props?: Record<string, any>;
-    sections?: number[];
+    sections?: number[] | string[];
     tags?: TagListItem[];
     theme?: string;
 }
@@ -17,7 +17,7 @@ interface PhotoBlockComponent {
 }
 
 interface SectionBlockComponent {
-    renderSection: (section: number) => React.ReactNode;
-    sections: number[];
+    renderSection: (section: number | string) => React.ReactNode;
+    sections: (string | number)[];
     [key: string]: any;
 }
