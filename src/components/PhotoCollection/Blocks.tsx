@@ -238,6 +238,8 @@ const SixInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     </Grid>
 );
 
+const Spacer: React.FC = () => <div className="h-8 w-full lg:h-10 xl:h-14 2xl:h-18" />;
+
 const ThreeInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid>
         <Column className="col-span-12 md:col-span-4">{renderPhoto(photos, 0, 4)}</Column>
@@ -341,6 +343,7 @@ const photoLayouts: Partial<Record<string, React.FC<any>>> = {
     OnePortraitTwoLandscapeMediumTwoLandscapeSmall,
     OnePortraitTwoTopAndBottomLandscape,
     SixInARow,
+    Spacer,
     ThreeInARow,
     ThreeInARowWithPadding,
     TwoInARow,
