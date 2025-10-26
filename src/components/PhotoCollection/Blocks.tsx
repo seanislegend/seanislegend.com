@@ -206,7 +206,7 @@ const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent> = ({
         <Column className="order-1 col-span-6 md:order-1 md:col-span-4">
             {renderPhoto(photos, 0, 4)}
         </Column>
-        <Column className="order-2 col-span-12 md:order-1 md:col-span-6">
+        <Column className="order-2 col-span-12 md:order-1 md:col-span-4">
             {renderPhoto(photos, 1, 4)}
         </Column>
         <Column className="order-1 col-span-6 self-end md:order-1 md:col-span-4">
