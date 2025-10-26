@@ -15,7 +15,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     return (
         <header
             className={clsx(
-                'bg-theme-bg h-site-header sticky top-0 z-50 flex items-center border-b-2 border-transparent px-4 transition-all duration-300 md:px-8 print:relative print:border-none',
+                'bg-theme-bg h-site-header sticky top-0 z-50 flex items-center border-b-2 border-transparent px-4 transition-all duration-500 md:px-8 print:relative print:border-none',
                 {'border-accent! h-site-header-scrolled': isScrolled}
             )}
             data-testid="site-header"

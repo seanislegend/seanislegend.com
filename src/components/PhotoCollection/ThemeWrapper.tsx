@@ -19,7 +19,6 @@ const PhotoCollectionBlocksThemeWrapper: React.FC<Props> = ({
                 <div
                     key={`${block.theme}-${index}`}
                     ref={sectionRef(index)}
-                    className="bg-theme-bg text-theme-text transition-colors duration-500"
                     data-testid="themed-section"
                 >
                     <PhotoCollectionBlocks
