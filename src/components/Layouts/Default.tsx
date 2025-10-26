@@ -7,7 +7,11 @@ interface Props extends React.ComponentProps<'div'> {
 }
 
 const DefaultLayout: React.FC<Props> = ({children, theme, ...props}) => (
-    <Theme className="default-layout flex grow flex-col sm:min-h-full" theme={theme} {...props}>
+    <Theme
+        className="default-layout flex grow flex-col transition-colors duration-500 sm:min-h-full"
+        theme={theme}
+        {...props}
+    >
         <SiteHeader />
         <main className="grow" data-testid="page-content" data-layout-main="default">
             {children}
