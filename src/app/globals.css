@@ -314,5 +314,13 @@
         p {
             @apply max-w-4xl 2xl:max-w-5xl;
         }
+        &[data-theme='editorial-section'] {
+            > div {
+                @apply mt-16 mb-4;
+            }
+            h2 {
+                @apply !text-xl capitalize lg:!text-2xl;
+            }
+        }
     }
 }
