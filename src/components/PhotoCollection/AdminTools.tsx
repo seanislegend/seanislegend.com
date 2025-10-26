@@ -15,6 +15,7 @@ interface Props {
 const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
     const [isActive, setIsActive] = useState(false);
     const [sortBy, setSortBy] = useState<SortOption>('index');
+    const [filterText, setFilterText] = useState('');
 
     const layout = layouts?.[collection.slug];
 
@@ -23,13 +24,23 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
         [collection?.photosCollection?.items]
     );
 
-    // sort photos based on current sort option
+    // sort and filter photos based on current options
     const sortedPhotos = useMemo(() => {
-        if (sortBy === 'title') {
-            return [...photos].sort((a, b) => a.title.localeCompare(b.title));
+        let filtered = photos;
+
+        // filter by title if filter text is provided
+        if (filterText.trim()) {
+            filtered = photos.filter(photo =>
+                photo.title.toLowerCase().includes(filterText.toLowerCase())
+            );
         }
-        return photos; // default to index order
-    }, [photos, sortBy]);
+
+        // sort based on current sort option
+        if (sortBy === 'title') {
+            return [...filtered].sort((a, b) => a.title.localeCompare(b.title));
+        }
+        return filtered; // default to index order
+    }, [photos, sortBy, filterText]);
 
     const usedPhotos = layout?.flatMap(item => {
         if (item.theme && item.items) {
@@ -46,20 +57,32 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
                 </Button>
                 {isActive && (
                     <div className="flex items-center gap-4">
-                        <span className="text-sm">Sort by:</span>
-                        <div className="flex gap-2">
-                            <Button
-                                onClick={() => setSortBy('index')}
-                                theme={sortBy === 'index' ? 'primary' : 'secondary'}
-                            >
-                                Index
-                            </Button>
-                            <Button
-                                onClick={() => setSortBy('title')}
-                                theme={sortBy === 'title' ? 'primary' : 'secondary'}
-                            >
-                                Title
-                            </Button>
+                        <div className="flex items-center gap-2">
+                            <span className="text-sm">Filter:</span>
+                            <input
+                                className="rounded border border-white/20 bg-black/40 px-2 py-1 text-sm text-white placeholder-white/60 focus:border-white focus:outline-none"
+                                onChange={e => setFilterText(e.target.value)}
+                                placeholder="Search titles..."
+                                type="search"
+                                value={filterText}
+                            />
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <span className="text-sm">Sort by:</span>
+                            <div className="flex gap-2">
+                                <Button
+                                    onClick={() => setSortBy('index')}
+                                    theme={sortBy === 'index' ? 'primary' : 'secondary'}
+                                >
+                                    Index
+                                </Button>
+                                <Button
+                                    onClick={() => setSortBy('title')}
+                                    theme={sortBy === 'title' ? 'primary' : 'secondary'}
+                                >
+                                    Title
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 )}
@@ -82,11 +105,9 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
                                 <div className="absolute top-2 left-2 bg-black/60 p-1">
                                     {originalIndex}
                                 </div>
-                                {sortBy === 'title' && (
-                                    <div className="absolute right-2 bottom-2 left-2 bg-black/60 p-1 text-xs">
-                                        {photo.title}
-                                    </div>
-                                )}
+                                <div className="absolute right-2 bottom-2 left-2 bg-black/60 p-1 text-xs">
+                                    {photo.title}
+                                </div>
                             </div>
                         );
                     })}
