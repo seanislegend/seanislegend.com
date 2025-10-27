@@ -19,7 +19,11 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
 }) => {
     const Comp = href ? Link : 'button';
     const classes = clsx([
+<<<<<<< HEAD
         'inline-block rounded-xs px-4 py-2 text-[13px] font-medium tracking-wider uppercase transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-hidden sm:px-4 sm:py-2 sm:text-sm',
+=======
+        'inline-block rounded-xs px-3 py-1.5 text-[13px] font-medium tracking-wider uppercase transition-colors focus:ring-2 focus:ring-offset-2 focus:outline-hidden sm:px-4 sm:py-2 sm:text-sm',
+>>>>>>> fb8221c (feat: Use consistent transitions and timings)
         className,
         {
             'bg-button-bg text-button-text hover:bg-button-bg-hover focus:ring-button-bg-hover':

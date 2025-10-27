@@ -25,6 +25,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 data-slot="page-header"
                 ref={containerRef}
             >
+<<<<<<< HEAD
                 <h1 className="text-pretty uppercase md:sr-only">
                     <span
                         className="font-black text-[#2C370B]"
@@ -32,6 +33,14 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                             fontSize: 'clamp(4rem, 12vw, 8rem)',
                             lineHeight: 'clamp(4rem, 12vw, 8rem)'
                         }}
+=======
+                <h1 className="overflow-hidden leading-none text-black uppercase underline-offset-4 group-hover:underline sm:whitespace-nowrap">
+                    <svg
+                        aria-hidden="true"
+                        className="h-auto w-full"
+                        fill="none"
+                        viewBox="0 0 644 44"
+>>>>>>> fb8221c (feat: Use consistent transitions and timings)
                     >
                         {title1}
                     </span>
@@ -59,6 +68,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                             d="M619.4 28.261c.59 3.717 3.245 6.077 7.611 6.077 3.068 0 5.192-1.239 5.133-3.54-.118-2.301-2.006-3.481-7.316-4.72-10.62-2.478-16.166-6.372-16.166-13.098 0-7.965 6.844-12.98 17.346-12.98 9.617 0 16.284 5.841 17.287 14.75l-11.386.472c-.295-3.835-2.655-6.136-6.195-6.136-3.363 0-5.605 1.652-5.31 4.13.177 2.478 3.067 3.481 7.02 4.366 10.502 2.006 16.402 6.195 16.402 13.039 0 8.083-6.962 12.921-16.992 12.921-10.915 0-18.348-5.664-18.938-14.75zM578.147 28.261c.59 3.717 3.245 6.077 7.611 6.077 3.068 0 5.192-1.239 5.133-3.54-.118-2.301-2.006-3.481-7.316-4.72-10.62-2.478-16.166-6.372-16.166-13.098 0-7.965 6.844-12.98 17.346-12.98 9.617 0 16.284 5.841 17.287 14.75l-11.387.472c-.295-3.835-2.655-6.136-6.195-6.136-3.363 0-5.605 1.652-5.31 4.13.177 2.478 3.068 3.481 7.021 4.366 10.502 2.006 16.402 6.195 16.402 13.039 0 8.083-6.962 12.921-16.992 12.921-10.915 0-18.349-5.664-18.939-14.75zM522.021 42.834 537.125.944h13.157l15.104 41.89h-11.8l-2.36-6.903h-15.104l-2.36 6.903zm17.169-15.871h9.027l-4.484-13.275zM488.248 42.834V.944h11.564v32.627h18.231v9.263zM482.236 42.834h-6.667l-.472-5.546c-2.183 4.071-6.785 6.49-12.744 6.49-11.741 0-20.178-9.204-20.178-21.83S450.612 0 463.238 0c9.912 0 16.815 5.605 18.88 15.281l-11.977.472c-.944-4.189-3.422-6.49-7.198-6.49-5.959 0-8.909 5.074-8.909 12.685 0 7.552 3.009 12.567 8.909 12.567 4.13 0 6.549-2.301 7.434-6.195h-7.552v-7.729h19.411zM404.242 43.778c-13.275 0-21.24-8.378-21.24-21.83 0-13.57 7.965-21.948 21.24-21.948s21.181 8.378 21.181 21.948c0 13.452-7.906 21.83-21.181 21.83m-9.263-21.83c0 7.965 3.363 12.567 9.263 12.567 5.959 0 9.322-4.602 9.322-12.567 0-8.024-3.363-12.685-9.322-12.685-5.9 0-9.263 4.661-9.263 12.685M380.439.944v9.263h-12.213v32.627h-11.623V10.207H344.39V.944zM296.325.944h31.034v9.263h-19.47v7.021h18.762v9.204h-18.762v7.139h19.942v9.263h-31.506zM252.421.944h11.741l13.865 23.895V.944h11.623v41.89h-12.095l-13.57-22.715v22.715h-11.564zM233.522.944h11.564v41.89h-11.564zM191.174 42.834V.944h15.812c12.449 0 18.585 3.481 18.585 11.623 0 4.897-3.009 7.847-8.673 8.555v.118c7.021.708 10.443 3.894 10.443 9.735 0 7.847-6.018 11.859-17.995 11.859zm11.564-8.85h7.021c3.363 0 6.018-1.298 6.018-4.307s-2.596-4.366-6.018-4.366h-7.021zm0-16.225h5.546c3.304 0 5.723-1.239 5.723-3.953 0-2.832-2.36-4.012-5.723-4.012h-5.546zM123.07.944h15.222l8.85 26.609L155.874.944h15.34v41.89h-11.623V18.408l-8.378 24.249h-8.201l-8.378-24.249v24.426H123.07zM97.142 43.778c-13.275 0-21.24-8.378-21.24-21.83C75.902 8.378 83.867 0 97.142 0s21.181 8.378 21.181 21.948c0 13.452-7.906 21.83-21.18 21.83m-9.263-21.83c0 7.965 3.363 12.567 9.263 12.567 5.959 0 9.322-4.602 9.322-12.567 0-8.024-3.363-12.685-9.322-12.685-5.9 0-9.263 4.661-9.263 12.685M56.242.944c8.555 0 15.576 4.248 15.576 12.508 0 5.546-2.832 8.968-7.847 10.325 4.661.472 6.962 2.655 7.257 7.257l.944 11.8H60.55l-.649-9.676c-.236-3.481-1.829-4.602-5.9-4.602h-6.195v14.278H36.241V.944zm-8.437 18.349h6.313c3.835 0 5.9-1.593 5.9-4.484 0-3.009-2.065-4.602-5.9-4.602h-6.313zM0 .944h30.621v9.263H11.564v7.552h17.995v9.204H11.564v15.871H0z"
                         />
                     </svg>
+<<<<<<< HEAD
                 </AnimateAppearence>
                 <span className="mt-4 flex items-baseline justify-between lg:mt-4 xl:mt-8">
                     <AnimateAppearence
@@ -69,6 +79,15 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                         initialY={10}
                     >
                         <svg className="h-auto w-full" fill="none" viewBox="0 0 381 21">
+=======
+                    <span className="mt-4 flex items-baseline justify-between sm:mt-8">
+                        <svg
+                            aria-hidden="true"
+                            className="h-auto w-7/12"
+                            fill="none"
+                            viewBox="0 0 381 21"
+                        >
+>>>>>>> fb8221c (feat: Use consistent transitions and timings)
                             <title>{title2}</title>
                             <path
                                 fill="#909732"
@@ -108,6 +127,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
             </section>
             {heroPhoto && (
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div className="-mt-32 w-full px-2 sm:-mt-38 lg:-mt-40 xl:-mt-48">
                     <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
 =======
@@ -117,6 +137,15 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                         alt={heroPhoto.title}
                         className="w-full rounded"
                         height={heroPhoto.hero.height}
+=======
+                <div className="w-full px-2">
+                    <Image
+                        alt={heroPhoto.title}
+                        blurDataURL={heroPhoto.base64 || ''}
+                        className="sticky top-0 z-50 w-full rounded"
+                        height={heroPhoto.fullSize.height}
+                        placeholder={heroPhoto.base64 ? 'blur' : 'empty'}
+>>>>>>> fb8221c (feat: Use consistent transitions and timings)
                         priority={true}
                         quality={80}
 <<<<<<< HEAD

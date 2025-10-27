@@ -39,12 +39,17 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                         <NavigationMenu.Trigger className={`${linkClasses} group`}>
                             <span className="inline-flex items-center gap-1.5">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <span className="text-theme-text">Collections</span>
                                 <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
 =======
                                 <span>Collections</span>
                                 <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-200 ease-in-out group-data-popup-open:rotate-180" />
 >>>>>>> da5321b (chore: Tailwind lint)
+=======
+                                <span className="text-theme-text">Collections</span>
+                                <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
+>>>>>>> fb8221c (feat: Use consistent transitions and timings)
                             </span>
                         </NavigationMenu.Trigger>
                         <NavigationMenu.Content className="h-full w-screen px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:opacity-0 data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] lg:px-8">
@@ -77,10 +82,14 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                 {isPortalReady && (
                     <NavigationMenu.Portal container={portal.current}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 hidden h-screen w-screen duration-500 data-open:block data-open:duration-300" />
 =======
                         <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 hidden h-screen w-screen duration-500 data-open:block data-open:duration-200" />
 >>>>>>> da5321b (chore: Tailwind lint)
+=======
+                        <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 hidden h-screen w-screen duration-500 data-open:block data-open:duration-300" />
+>>>>>>> fb8221c (feat: Use consistent transitions and timings)
                         <NavigationMenu.Positioner
                             className="left-0! z-50"
                             collisionAvoidance={{side: 'none'}}
