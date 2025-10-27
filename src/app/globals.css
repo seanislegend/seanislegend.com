@@ -147,6 +147,20 @@
         }
     }
 
+    [data-theme='sky-blue'] {
+        --bg: #cedfe6;
+        --text: #2e2d29;
+        --dimmed-text: #5a6b72;
+        --accent: #7fa2af;
+        --button-bg: #7fa2af;
+        --button-bg-hover: #6f91a0;
+        --button-text: #faf7ef;
+        --photo-bg: #90b1bb;
+        --photo-bg-badge: #6e8b94;
+        --link-text: #5e6f7c;
+        --link-text-hover: #4f5f6b;
+    }
+
     [data-theme='olive-green'] {
         --bg: #555f3d;
         --text: #f3f2ec;
@@ -316,7 +330,7 @@
             @apply mt-24;
         }
         h2 {
-            @apply !text-3xl capitalize lg:!text-5xl;
+            @apply !text-3xl normal-case lg:!text-5xl;
         }
         p {
             @apply max-w-4xl 2xl:max-w-5xl;
@@ -326,7 +340,7 @@
                 @apply mt-16 mb-4;
             }
             h2 {
-                @apply !text-xl capitalize lg:!text-2xl;
+                @apply !text-xl lg:!text-2xl;
             }
         }
     }
