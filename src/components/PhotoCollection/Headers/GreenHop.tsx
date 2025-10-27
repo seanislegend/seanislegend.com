@@ -70,7 +70,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                         height={heroPhoto.fullSize.height}
                         placeholder={heroPhoto.base64 ? 'blur' : 'empty'}
                         priority={true}
-                        quality={85}
+                        quality={80}
                         src={heroPhoto.fullSize.url}
                         width={heroPhoto.fullSize.width}
                     />
