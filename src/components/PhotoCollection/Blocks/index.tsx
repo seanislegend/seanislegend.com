@@ -186,7 +186,6 @@ const OnePortraitOneLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockCompone
 const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockComponent> = ({
     photos,
     renderPhoto,
-    reverse,
     reverse
 }) => (
     <Grid>
@@ -209,6 +208,7 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
                 </>
             )}
         >
+<<<<<<< HEAD:src/components/PhotoCollection/Blocks/index.tsx
     <<<<<<< HEAD
         <Condition
             condition={reverse}
@@ -229,6 +229,8 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
                 </>
             )}
         >
+=======
+>>>>>>> e14ecde (fix merge):src/components/PhotoCollection/Blocks.tsx
             <Column className="col-span-12 flex h-full flex-col justify-between gap-2 md:col-span-6 md:gap-4">
                 <Grid gridCols="grid-cols-12" hasTestId={false}>
                     <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
@@ -243,22 +245,6 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
                 </Grid>
             </Column>
         </Condition>
-=======
-        <Column className="col-span-12 flex h-full flex-col justify-between gap-2 md:col-span-6 md:gap-4">
-                <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
-                    <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
-                </Grid>
-                <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-12">{renderPhoto(photos, 3)}</Column>
-                </Grid>
-                <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-6">{renderPhoto(photos, 4, 6)}</Column>
-                    <Column className="col-span-6">{renderPhoto(photos, 5, 6)}</Column>
-                </Grid>
-            </Column>
-        </Condition>
->>>>>>> f2a1844 (feat: Reduce grid gaps on mobile)
     </Grid>
 );
 
