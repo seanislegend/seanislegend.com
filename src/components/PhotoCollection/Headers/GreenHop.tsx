@@ -56,13 +56,13 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     </span>
                 </h1>
                 {collection.description && (
-                    <Markdown className="prose-p:!text-base md:prose-p:!text-lg mt-12 max-w-4xl text-pretty sm:max-w-10/12 2xl:max-w-6xl">
+                    <Markdown className="prose-p:text-base! md:prose-p:text-lg! mt-12 max-w-4xl text-pretty sm:max-w-10/12 2xl:max-w-6xl">
                         {collection.description}
                     </Markdown>
                 )}
             </Container>
             {heroPhoto && (
-                <div className="mx-auto grid w-full max-w-[110rem] place-items-start">
+                <div className="mx-auto grid w-full max-w-440 place-items-start">
                     <Image
                         alt={heroPhoto.title}
                         blurDataURL={heroPhoto.base64 || ''}

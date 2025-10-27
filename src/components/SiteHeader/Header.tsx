@@ -20,7 +20,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
             )}
             data-testid="site-header"
         >
-            <div className="mx-auto flex w-full max-w-[110rem] items-center justify-between gap-8">
+            <div className="mx-auto flex w-full max-w-440 items-center justify-between gap-8">
                 <span className="relative z-30 flex flex-nowrap items-center gap-2">
                     <Link
                         aria-label="Home"

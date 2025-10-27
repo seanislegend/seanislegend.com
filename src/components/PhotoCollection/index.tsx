@@ -85,7 +85,7 @@ const PhotosCollection: React.FC<Props> = ({
     const renderTags = () => {
         if (!tags.length) return null;
         return (
-            <Container className="my-8 !px-0" key="tags">
+            <Container className="my-8 px-0!" key="tags">
                 <AllTagsList items={tags} />
             </Container>
         );
