@@ -1,6 +1,8 @@
 import {type PhotoBlockLayout} from '@/components/PhotoCollection/Blocks';
 
 interface PhotoBlock {
+    component?: string;
+    id?: string;
     items?: PhotoBlock[];
     layout?: PhotoBlockLayout;
     photos?: number[];
