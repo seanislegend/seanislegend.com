@@ -62,7 +62,7 @@ const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({
                         {renderPhoto(photos, 0, 8)}
                     </Column>
                     <Column className="col-span-12 h-full md:col-span-4">
-                        <div className="flex h-full flex-row justify-between gap-4 md:flex-col">
+                        <div className="flex h-full flex-row justify-between gap-2 md:flex-col md:gap-4">
                             {renderPhoto(photos, 1, 4)}
                             {renderPhoto(photos, 2, 4)}
                         </div>
@@ -72,7 +72,7 @@ const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({
             wrapper={() => (
                 <>
                     <Column className="col-span-12 h-full md:col-span-4">
-                        <div className="flex h-full flex-row justify-between gap-4 md:flex-col">
+                        <div className="flex h-full flex-row justify-between gap-2 md:flex-col md:gap-4">
                             {renderPhoto(photos, 0, 4)}
                             {renderPhoto(photos, 1, 4)}
                         </div>
@@ -152,7 +152,7 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
     renderPhoto
 }) => (
     <Grid>
-        <Column className="col-span-12 flex h-full flex-col justify-between gap-4 md:col-span-6">
+        <Column className="col-span-12 flex h-full flex-col justify-between gap-2 md:col-span-6 md:gap-4">
             <Grid gridCols="grid-cols-12" hasTestId={false}>
                 <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
                 <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
@@ -354,7 +354,7 @@ const PhotoCollectionBlocks: React.FC<Props> = ({
     renderSection,
     renderTags
 }) => (
-    <div className="space-y-4 lg:space-y-6" data-testid="blocks-container">
+    <div className="space-y-2 md:space-y-4 lg:space-y-6" data-testid="blocks-container">
         {blocks.map((block, index) => {
             const key = `${index}-${block.layout}`;
 
