@@ -3,7 +3,7 @@ import clsx from 'clsx';
 interface Props {
     asChild?: boolean;
     className?: string;
-    ref?: React.RefObject<HTMLDivElement>;
+    ref?: React.RefObject<HTMLDivElement | null>;
 }
 
 const Container: React.FC<React.PropsWithChildren<Props>> = ({
