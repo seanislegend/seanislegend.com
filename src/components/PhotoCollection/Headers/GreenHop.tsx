@@ -109,8 +109,13 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                         height={heroPhoto.hero.height}
                         priority={true}
                         quality={80}
+<<<<<<< HEAD
                         src={heroPhoto.hero.url}
                         width={heroPhoto.hero.width}
+=======
+                        src={heroPhoto.fullSize.url}
+                        width={heroPhoto.fullSize.width}
+>>>>>>> 6e14c22 (fix: Quality size)
                     />
                 </div>
             )}
