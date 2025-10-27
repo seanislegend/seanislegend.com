@@ -127,7 +127,9 @@ const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent> = ({
 
 const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid className="place-items-end">
-        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+        <Column className="col-span-12 flex h-full md:col-span-6 [&_span]:h-full [&>div]:h-full">
+            {renderPhoto(photos, 0, 6)}
+        </Column>
         <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 1, 3)}</Column>
         <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 2, 3)}</Column>
     </Grid>
@@ -171,15 +173,33 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
     </Grid>
 );
 
-const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderPhoto, reverse}) => (
     <Grid>
-        <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
-        <Column className="col-span-6 h-full">
-            <div className="flex h-full flex-col justify-between">
-                {renderPhoto(photos, 1, 6)}
-                {renderPhoto(photos, 2, 6)}
-            </div>
-        </Column>
+        <Condition
+            condition={reverse}
+            fallbackWrapper={() => (
+                <>
+                    <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+                    <Column className="col-span-6 h-full">
+                        <div className="flex h-full flex-col justify-between">
+                            {renderPhoto(photos, 1, 6)}
+                            {renderPhoto(photos, 2, 6)}
+                        </div>
+                    </Column>
+                </>
+            )}
+            wrapper={() => (
+                <>
+                    <Column className="col-span-6 h-full">
+                        <div className="flex h-full flex-col justify-between">
+                            {renderPhoto(photos, 1, 6)}
+                            {renderPhoto(photos, 2, 6)}
+                        </div>
+                    </Column>
+                    <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+                </>
+            )}
+        />
     </Grid>
 );
 
