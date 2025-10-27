@@ -127,7 +127,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
     ],
     'green-hop-beer': [
         {
-            theme: 'olive-green',
+            theme: 'sky-blue',
             component: 'Tabs',
             props: {
                 tabs: [
@@ -172,6 +172,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'LandscapeOneBigTwoMedium', photos: [65, 84, 43], props: {reverse: true}},
                 {layout: 'Spacer'},
                 {layout: 'LandscapeTwoBigFourSmall', photos: [15, 77, 32, 18, 116, 27]},
+                {layout: 'ContentSection', sections: ['fp-beer-recipe']},
+                {layout: 'OnePortraitTwoLandscape', photos: [79, 49, 5], props: {reverse: true}},
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [41, 118, 117]},
                 {layout: 'ContentSection', sections: ['beak-beer-recipe']},
                 {layout: 'OnePortraitTwoLandscape', photos: [89, 8, 11]},
                 {layout: 'ThreeInARow', photos: [20, 46, 14]},
@@ -184,10 +187,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoInARow', photos: [25, 80]},
                 {layout: 'ContentSection', sections: ['wbp-beer-recipe']},
                 {layout: 'ThreeInARow', photos: [75, 113, 82]},
-                {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [93, 63, 42]},
-                {layout: 'ContentSection', sections: ['fp-beer-recipe']},
-                {layout: 'OnePortraitTwoLandscape', photos: [79, 49, 5], props: {reverse: true}},
-                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [41, 118, 117]}
+                {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [93, 63, 42]}
             ]
         },
         {
@@ -197,19 +197,15 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['beer-section-intro']},
                 {
                     layout: 'OnePortraitOneLandscapeMediumFourLandscapeSmall',
-                    photos: [54, 39, 60, 76, 78, 87]
+                    photos: [54, 39, 60, 76, 78, 87],
+                    props: {reverse: true}
                 },
                 {layout: 'Spacer'},
                 {layout: 'TwoInARow', photos: [73, 45]},
-                {layout: 'Spacer'},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [40, 96, 69]},
                 {layout: 'ContentSection', sections: ['green-hop-festivals']},
                 {layout: 'OneLandScapeTwoPortrait', photos: [119, 51, 110]},
-                {layout: 'Spacer'},
-                {
-                    layout: 'ThreeInARow',
-                    photos: [88, 36, 111]
-                },
+                {layout: 'ThreeInARow', photos: [88, 36, 111]},
                 {layout: 'ContentSection', sections: ['footer']}
             ]
         }
