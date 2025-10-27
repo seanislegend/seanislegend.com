@@ -1,4 +1,4 @@
-import {useCallback, useEffect} from 'react';
+import {useEffect, useEffectEvent} from 'react';
 import {useSetAtom} from 'jotai';
 import {pageHeaderDataAtom} from '@/utils/store';
 
@@ -10,7 +10,7 @@ const useSiteHeaderTitle = (
 ) => {
     const setPageHeaderData = useSetAtom(pageHeaderDataAtom);
 
-    const updatePageHeaderData = useCallback(() => {
+    const updatePageHeaderData = useEffectEvent(() => {
         if (containerRef?.current && (pageTitle || title)) {
             setPageHeaderData({
                 height: containerRef.current.offsetHeight - 60,
@@ -18,7 +18,7 @@ const useSiteHeaderTitle = (
                 title: pageTitle ?? title ?? ''
             });
         }
-    }, [backUrl, pageTitle, setPageHeaderData, title]);
+    });
 
     useEffect(() => {
         updatePageHeaderData();
