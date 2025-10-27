@@ -157,6 +157,7 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
     reverse
 }) => (
     <Grid>
+<<<<<<< HEAD
         <Condition
             condition={reverse}
             fallbackWrapper={children => (
@@ -190,6 +191,22 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
                 </Grid>
             </Column>
         </Condition>
+=======
+        <Column className="col-span-12 flex h-full flex-col justify-between gap-2 md:col-span-6 md:gap-4">
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
+                <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
+                <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
+            </Grid>
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
+                <Column className="col-span-12">{renderPhoto(photos, 3)}</Column>
+            </Grid>
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
+                <Column className="col-span-6">{renderPhoto(photos, 4, 6)}</Column>
+                <Column className="col-span-6">{renderPhoto(photos, 5, 6)}</Column>
+            </Grid>
+        </Column>
+        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+>>>>>>> f2a1844 (feat: Reduce grid gaps on mobile)
     </Grid>
 );
 
