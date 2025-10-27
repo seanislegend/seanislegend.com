@@ -24,10 +24,10 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 data-slot="page-header"
                 ref={containerRef}
             >
-                <h1 className="text-title-text overflow-hidden leading-none uppercase underline-offset-4 group-hover:underline sm:whitespace-nowrap">
+                <h1 className="overflow-hidden leading-none text-black uppercase underline-offset-4 group-hover:underline sm:whitespace-nowrap">
                     <svg
                         aria-hidden="true"
-                        className="h-auto w-full text-white"
+                        className="h-auto w-full"
                         fill="none"
                         viewBox="0 0 644 44"
                     >
@@ -40,7 +40,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     <span className="mt-4 flex items-baseline justify-between sm:mt-8">
                         <svg
                             aria-hidden="true"
-                            className="h-auto w-7/12 text-white"
+                            className="h-auto w-7/12"
                             fill="none"
                             viewBox="0 0 381 21"
                         >
@@ -62,11 +62,11 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 )}
             </Container>
             {heroPhoto && (
-                <div className="mx-auto grid w-full max-w-440 place-items-start">
+                <div className="w-full px-2">
                     <Image
                         alt={heroPhoto.title}
                         blurDataURL={heroPhoto.base64 || ''}
-                        className="rounded"
+                        className="sticky top-0 z-50 w-full rounded"
                         height={heroPhoto.fullSize.height}
                         placeholder={heroPhoto.base64 ? 'blur' : 'empty'}
                         priority={true}

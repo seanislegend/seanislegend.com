@@ -33,7 +33,7 @@ const CollectionsPage = async () => {
                             key={collection.slug}
                             href={`/${collection.slug}`}
                         >
-                            <span className="col-span-12 flex gap-4 opacity-100 transition-opacity duration-200 md:col-span-5">
+                            <span className="col-span-12 flex gap-4 opacity-100 transition-opacity duration-300 md:col-span-5">
                                 <strong className="font-medium uppercase underline-offset-4 group-hover:underline lg:block">
                                     {collection.title}
                                 </strong>
@@ -46,7 +46,7 @@ const CollectionsPage = async () => {
                             {collection.description && (
                                 <Markdown
                                     allowLinks={false}
-                                    className="col-span-12 line-clamp-4 pl-[20%] opacity-100 transition-opacity duration-200 md:col-span-7 md:line-clamp-none md:pl-0"
+                                    className="col-span-12 line-clamp-4 pl-[20%] opacity-100 transition-opacity duration-300 md:col-span-7 md:line-clamp-none md:pl-0"
                                 >
                                     {collection.description}
                                 </Markdown>
@@ -69,7 +69,7 @@ const CollectionsPage = async () => {
                                             collection.photosCollection.items[0]?.thumbnail.width
                                         }
                                     />
-                                    <span className="bg-button-bg-hover text-button-text absolute right-2 bottom-2 z-40 flex h-full w-auto items-center gap-2 overflow-hidden p-1 sm:h-[2.25rem] sm:p-2 sm:px-3">
+                                    <span className="bg-button-bg-hover text-button-text absolute right-2 bottom-2 z-40 flex h-full w-auto items-center gap-2 overflow-hidden p-1 sm:h-9 sm:p-2 sm:px-3">
                                         <span className="text-sm font-medium uppercase">
                                             View collection
                                         </span>

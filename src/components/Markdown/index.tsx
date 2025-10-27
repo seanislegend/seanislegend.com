@@ -13,7 +13,7 @@ export const BASE_TEXT_CLASS =
 const MarkdownLink = (props: any) => (
     <a
         {...props}
-        className="text-link-text focus:ring-text underline underline-offset-2 transition duration-200 ease-in-out hover:decoration-2 focus:ring-2 focus:ring-offset-2 focus:outline-hidden sm:underline-offset-4 print:no-underline"
+        className="text-link-text focus:ring-text underline underline-offset-2 transition-all duration-300 ease-in-out hover:decoration-2 focus:ring-2 focus:ring-offset-2 focus:outline-hidden sm:underline-offset-4 print:no-underline"
     >
         {props.children}
     </a>

@@ -16,7 +16,7 @@ const TitleTextGrid: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
     <div
         {...props}
         className={clsx([
-            'grid-item grid grid-cols-12 gap-4 transition-opacity duration-200 sm:gap-8',
+            'grid-item grid grid-cols-12 gap-4 transition-opacity duration-300 sm:gap-8',
             props.className
         ])}
         ref={ref}

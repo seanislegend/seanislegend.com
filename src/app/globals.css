@@ -155,8 +155,8 @@
         --button-bg: #7fa2af;
         --button-bg-hover: #6f91a0;
         --button-text: #faf7ef;
-        --photo-bg: #90b1bb;
-        --photo-bg-badge: #6e8b94;
+        --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
+        --photo-bg-badge: color-mix(in srgb, var(--bg) 70%, transparent);
         --link-text: #5e6f7c;
         --link-text-hover: #4f5f6b;
     }
