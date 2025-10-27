@@ -87,6 +87,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     </AnimateAppearence>
                 </span>
                 {collection.description && (
+<<<<<<< HEAD
                     <AnimateAppearence
                         className="mt-6 max-w-4xl sm:max-w-10/12 md:mt-12 2xl:max-w-6xl"
                         delay={0.6}
@@ -98,11 +99,20 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                             {collection.description}
                         </Markdown>
                     </AnimateAppearence>
+=======
+                    <Markdown className="prose-p:text-base! md:prose-p:text-lg! mt-12 max-w-4xl text-pretty sm:max-w-10/12 2xl:max-w-6xl">
+                        {collection.description}
+                    </Markdown>
+>>>>>>> da5321b (chore: Tailwind lint)
                 )}
             </section>
             {heroPhoto && (
+<<<<<<< HEAD
                 <div className="-mt-32 w-full px-2 sm:-mt-38 lg:-mt-40 xl:-mt-48">
                     <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
+=======
+                <div className="mx-auto grid w-full max-w-440 place-items-start">
+>>>>>>> da5321b (chore: Tailwind lint)
                     <Image
                         alt={heroPhoto.title}
                         className="w-full rounded"

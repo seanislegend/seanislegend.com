@@ -57,9 +57,13 @@ const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}
                     return (
                         <figure className="border-accent border-l-4 py-4 pl-8">
                             <blockquote>
+<<<<<<< HEAD
                                 <p className="text-xl/snug! text-pretty italic lg:text-2xl/snug! xl:text-3xl/snug!">
                                     &ldquo;{quote.trim()}&rdquo;
                                 </p>
+=======
+                                <p className="text-lg! italic lg:text-xl! xl:text-2xl!">{quote}</p>
+>>>>>>> da5321b (chore: Tailwind lint)
                             </blockquote>
                             <figcaption className="mt-4">&mdash; {author}</figcaption>
                         </figure>

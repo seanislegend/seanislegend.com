@@ -21,7 +21,11 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
             data-testid="site-header"
         >
             <div className="mx-auto flex w-full max-w-440 items-center justify-between gap-8">
+<<<<<<< HEAD
                 <span className="relative z-30 flex flex-nowrap items-center">
+=======
+                <span className="relative z-30 flex flex-nowrap items-center gap-2">
+>>>>>>> da5321b (chore: Tailwind lint)
                     <Link
                         aria-label="Home"
                         className={clsx(
