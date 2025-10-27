@@ -127,7 +127,7 @@ const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent> = ({
 
 const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid className="place-items-end">
-        <Column className="col-span-12 flex h-full md:col-span-6 [&_span]:h-full [&>div]:h-full">
+        <Column className="col-span-12 flex h-full md:col-span-6 md:[&_span]:h-full md:[&>div]:h-full">
             {renderPhoto(photos, 0, 6)}
         </Column>
         <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 1, 3)}</Column>
@@ -153,23 +153,43 @@ const OnePortraitOneLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockCompone
 
 const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockComponent> = ({
     photos,
-    renderPhoto
+    renderPhoto,
+    reverse
 }) => (
     <Grid>
-        <Column className="col-span-12 flex h-full flex-col justify-between gap-2 md:col-span-6 md:gap-4">
-            <Grid gridCols="grid-cols-12" hasTestId={false}>
-                <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
-                <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
-            </Grid>
-            <Grid gridCols="grid-cols-12" hasTestId={false}>
-                <Column className="col-span-12">{renderPhoto(photos, 3)}</Column>
-            </Grid>
-            <Grid gridCols="grid-cols-12" hasTestId={false}>
-                <Column className="col-span-6">{renderPhoto(photos, 4, 6)}</Column>
-                <Column className="col-span-6">{renderPhoto(photos, 5, 6)}</Column>
-            </Grid>
-        </Column>
-        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+        <Condition
+            condition={reverse}
+            fallbackWrapper={children => (
+                <>
+                    {children}
+                    <Column className="col-span-12 md:col-span-6">
+                        {renderPhoto(photos, 0, 6)}
+                    </Column>
+                </>
+            )}
+            wrapper={children => (
+                <>
+                    <Column className="col-span-12 md:col-span-6">
+                        {renderPhoto(photos, 0, 6)}
+                    </Column>
+                    {children}
+                </>
+            )}
+        >
+            <Column className="col-span-12 flex h-full flex-col justify-between gap-4 md:col-span-6">
+                <Grid gridCols="grid-cols-12" hasTestId={false}>
+                    <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
+                    <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
+                </Grid>
+                <Grid gridCols="grid-cols-12" hasTestId={false}>
+                    <Column className="col-span-12">{renderPhoto(photos, 3)}</Column>
+                </Grid>
+                <Grid gridCols="grid-cols-12" hasTestId={false}>
+                    <Column className="col-span-6">{renderPhoto(photos, 4, 6)}</Column>
+                    <Column className="col-span-6">{renderPhoto(photos, 5, 6)}</Column>
+                </Grid>
+            </Column>
+        </Condition>
     </Grid>
 );
 
