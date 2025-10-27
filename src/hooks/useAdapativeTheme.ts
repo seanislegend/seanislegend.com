@@ -12,10 +12,16 @@ const useAdapativeTheme = (blocks: {id?: string; theme: string}[]) => {
         new Map()
     );
     const sectionVisibilityRef = useRef<Map<string, number>>(new Map());
+    const originalThemeRef = useRef<string>('');
 
     const handleIntersections = useEffectEvent((entries: IntersectionObserverEntry[]) => {
         const firstPageTheme = document.querySelector('[data-theme]');
         if (!firstPageTheme) return;
+
+        // store the original theme if not already stored
+        if (!originalThemeRef.current) {
+            originalThemeRef.current = firstPageTheme.getAttribute('data-theme') || 'light';
+        }
 
         entries.forEach(entry => {
             const block = sectionIntersectionMapRef.current.get(entry.target as HTMLElement);
@@ -64,6 +70,13 @@ const useAdapativeTheme = (blocks: {id?: string; theme: string}[]) => {
                 firstPageTheme.setAttribute('data-theme', bestTheme);
                 setActiveTheme({id: bestBlock.id || bestTheme, theme: bestTheme});
             }
+        } else {
+            // no visible sections - fallback to original theme
+            const currentTheme = firstPageTheme.getAttribute('data-theme');
+            if (currentTheme !== originalThemeRef.current) {
+                firstPageTheme.setAttribute('data-theme', originalThemeRef.current);
+                setActiveTheme({id: originalThemeRef.current, theme: originalThemeRef.current});
+            }
         }
     });
 
@@ -107,6 +120,7 @@ const useAdapativeTheme = (blocks: {id?: string; theme: string}[]) => {
             visibleSections.clear();
             sectionIntersectionMap.clear();
             sectionVisibility.clear();
+            originalThemeRef.current = '';
         };
     }, [setDefaultTheme]);
 
