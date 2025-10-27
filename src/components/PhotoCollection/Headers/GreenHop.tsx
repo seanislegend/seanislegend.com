@@ -1,37 +1,18 @@
-import {Suspense} from 'react';
+'use client';
+
+import {useRef} from 'react';
 import Image from 'next/image';
 import Markdown from '@/components/Markdown';
-import PageHeader from '@/components/PageHeader';
-import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
 import Container from '@/components/UI/Container';
-
-interface Props {
-    collection: PhotoCollection;
-    ctas?: {label: string; url: string}[];
-}
-
-const DefaultHeader: React.FC<React.PropsWithChildren<Props>> = ({children, collection, ctas}) => (
-    <PageHeader
-        {...collection}
-        backUrl={`/${collection.slug}`}
-        ctas={(ctas?.filter(Boolean) as {label: string; url: string}[]) ?? []}
-        description={collection?.showDescription ? collection.description : null}
-        titleAside={
-            <div className="hidden grow flex-col justify-end md:flex" key={collection.slug}>
-                <Suspense>
-                    <BackToCollectionButton />
-                </Suspense>
-            </div>
-        }
-    >
-        {children}
-    </PageHeader>
-);
+import useSiteHeaderTitle from '@/hooks/useSiteHeaderTitle';
+import {type Props} from './Default';
 
 const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    useSiteHeaderTitle(containerRef, collection.pageTitle || '', collection.title || '', '');
+
     const title1 = collection.pageTitle?.split(':')[0];
     const title2 = collection.pageTitle?.split(':')[1];
-
     // we add the hero photo here to get around collection layouts using thumbnail sizes
     // on the grid. for the hero we need the full size photo.
     const heroPhoto = collection.photosCollection.items[0];
@@ -41,6 +22,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
             <Container
                 className="animate-in fade-in slide-in-from-bottom-2 pt-6 pb-10 duration-500 sm:py-12 xl:py-20"
                 data-slot="page-header"
+                ref={containerRef}
             >
                 <h1 className="text-title-text overflow-hidden leading-none uppercase underline-offset-4 group-hover:underline sm:whitespace-nowrap">
                     <svg
@@ -69,7 +51,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                             />
                         </svg>
                         <span className="sm:text-md ml-2 text-sm opacity-50 lg:text-lg">
-                            Autumn 2025
+                            Harvest 2025
                         </span>
                     </span>
                 </h1>
@@ -83,7 +65,12 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 <div className="mx-auto grid w-full max-w-[110rem] place-items-start">
                     <Image
                         alt={heroPhoto.title}
+                        blurDataURL={heroPhoto.base64 || ''}
+                        className="rounded"
                         height={heroPhoto.fullSize.height}
+                        placeholder={heroPhoto.base64 ? 'blur' : 'empty'}
+                        priority={true}
+                        quality={85}
                         src={heroPhoto.fullSize.url}
                         width={heroPhoto.fullSize.width}
                     />
@@ -93,9 +80,4 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
     );
 };
 
-const photoCollectionHeaders: Record<string, React.FC<React.PropsWithChildren<Props>>> = {
-    default: DefaultHeader,
-    greenHop: GreenHopHeader
-};
-
-export default photoCollectionHeaders;
+export default GreenHopHeader;
