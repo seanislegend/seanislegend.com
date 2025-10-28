@@ -329,6 +329,7 @@
         > div {
             @apply mt-24;
         }
+
         h2 {
             @apply !text-3xl normal-case lg:!text-5xl;
         }
@@ -343,5 +344,9 @@
                 @apply !text-xl lg:!text-2xl;
             }
         }
+    }
+
+    [data-slot='tab-navigation'] + section .content-section > div {
+        @apply mt-16;
     }
 }

@@ -131,9 +131,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
             component: 'Tabs',
             props: {
                 tabs: [
-                    {id: 'harvest', label: 'Stage 1 – Harvest'},
-                    {id: 'brew', label: 'Stage 2 – Brew'},
-                    {id: 'celebrate', label: 'Stage 3 – Celebrate'}
+                    {id: 'harvest', label: 'Harvest'},
+                    {id: 'brew', label: 'Brew'},
+                    {id: 'celebrate', label: 'Celebrate'}
                 ]
             }
         },
@@ -169,8 +169,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
             id: 'brew',
             items: [
                 {layout: 'ContentSection', sections: ['brew-section-intro']},
-                {layout: 'ContentSection', sections: ['fp-beer-recipe']},
                 {layout: 'LandscapeOneBigTwoMedium', photos: [65, 84, 43], props: {reverse: true}},
+                {layout: 'ContentSection', sections: ['fp-beer-recipe']},
                 {layout: 'OnePortraitTwoLandscape', photos: [79, 49, 5], props: {reverse: true}},
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [41, 118, 117]},
                 {layout: 'ContentSection', sections: ['beak-beer-recipe']},
