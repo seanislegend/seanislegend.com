@@ -55,7 +55,7 @@ const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}
                     const author = parts[1];
 
                     return (
-                        <figure className="border-accent border-l-4 pl-4">
+                        <figure className="border-accent border-l-4 py-4 pl-4">
                             <blockquote>
                                 <p className="text-lg! italic lg:text-xl! xl:text-2xl!">{quote}</p>
                             </blockquote>

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import dynamic from 'next/dynamic';
 import Button from '@/components/Button';
 import ButtonList from '@/components/Button/List';
 import Markdown from '@/components/Markdown';
@@ -13,6 +14,8 @@ import {
     type PhotoBlockComponent,
     type SectionBlockComponent
 } from '@/types/photo-blocks';
+
+const CarouselPhotoBLock = dynamic(() => import('./Carousel'));
 
 export interface Props {
     blocks: PhotoBlock[];
@@ -384,7 +387,10 @@ const ContentSectionGroup: React.FC<SectionBlockComponent> = ({renderSection, se
 
 export type PhotoBlockLayout = keyof typeof photoLayouts;
 
-const photoLayouts: Partial<Record<string, React.FC<any>>> = {
+const photoLayouts: Partial<
+    Record<string, React.FC<PhotoBlockComponent> | React.ComponentType<PhotoBlockComponent>>
+> = {
+    CarouselPhotoBLock,
     FourInARow,
     LandscapeOneBigTwoMedium,
     LandscapeTwoBigFourSmall,
@@ -436,7 +442,7 @@ const PhotoCollectionBlocks: React.FC<Props> = ({
             return (
                 <Layout
                     key={key}
-                    photos={block.photos}
+                    photos={block.photos ?? []}
                     renderPhoto={renderPhoto}
                     {...block.props}
                 />
