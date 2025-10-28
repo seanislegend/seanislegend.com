@@ -195,6 +195,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div className="-mt-32 w-full px-2 sm:-mt-38 lg:-mt-40 xl:-mt-48">
                     <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
 =======
@@ -209,6 +210,10 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 =======
                 <div className="-mt-8 w-full px-2 lg:-mt-10 xl:-mt-14">
 >>>>>>> 9b7c06c (feat: Add animated entrance for blocks)
+=======
+                <div className="-mt-38 w-full px-2 lg:-mt-40 xl:-mt-44">
+                    <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
+>>>>>>> afa9840 (feat: Add gradient to reduce flash when scrolling between light/dark themes)
                     <Image
                         alt={heroPhoto.title}
                         className="sticky top-0 z-50 w-full rounded"
