@@ -396,6 +396,7 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
     reverse
 }) => (
     <Grid className="place-items-center">
+<<<<<<< HEAD:src/components/PhotoCollection/Blocks/index.tsx
         <Condition
             condition={reverse}
             fallbackWrapper={children => (
@@ -436,6 +437,18 @@ const TwoPortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderP
         <Column className="col-span-6 flex h-full flex-col justify-between gap-8 md:col-span-4">
             <div>{renderPhoto(photos, 2, 3)}</div>
             <div>{renderPhoto(photos, 3, 3)}</div>
+=======
+        <Column className="col-span-6 flex h-full items-center md:col-span-3">
+            {renderPhoto(photos, 0, 3)}
+        </Column>
+        <Column className="col-span-6 flex h-full items-center md:col-span-3">
+            {renderPhoto(photos, 1, 3)}
+        </Column>
+        <Column className="col-span-12 flex h-full md:col-span-6">
+            <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
+                {renderPhoto(photos, 2, 6)}
+            </div>
+>>>>>>> 8b59996 (feat: Improve mobile layouts):src/components/PhotoCollection/Blocks.tsx
         </Column>
     </Grid>
 );
