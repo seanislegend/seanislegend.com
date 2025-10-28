@@ -127,6 +127,20 @@ export const layouts: Record<string, PhotoBlock[]> = {
     ],
     'green-hop-beer': [
         {
+<<<<<<< HEAD
+=======
+            theme: 'sky-blue',
+            component: 'Tabs',
+            props: {
+                tabs: [
+                    {id: 'harvest', label: 'Harvest'},
+                    {id: 'brew', label: 'Brew'},
+                    {id: 'celebrate', label: 'Celebrate'}
+                ]
+            }
+        },
+        {
+>>>>>>> f03deb6 (feat: UI tweaks)
             theme: 'olive-green',
             id: 'harvest',
             items: [
@@ -163,8 +177,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
             id: 'brew',
             items: [
                 {layout: 'ContentSection', sections: ['brew-section-intro']},
-                {layout: 'ContentSection', sections: ['fp-beer-recipe']},
                 {layout: 'LandscapeOneBigTwoMedium', photos: [65, 84, 43], props: {reverse: true}},
+                {layout: 'ContentSection', sections: ['fp-beer-recipe']},
                 {layout: 'OnePortraitTwoLandscape', photos: [79, 49, 5], props: {reverse: true}},
                 {layout: 'ContentSection', sections: ['pullquote-2']},
                 {layout: 'FourInARow', photos: [147, 149, 41, 150], props: {reverse: true}},
