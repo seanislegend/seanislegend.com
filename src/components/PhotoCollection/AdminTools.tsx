@@ -66,6 +66,7 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
         }
         return item.photos || [];
     });
+    console.log(usedPhotos.sort());
 
     return (
         <div className="fixed bottom-0 z-50 flex max-h-[35vh] w-full flex-col gap-4 overflow-y-auto border-4 border-black/40 bg-black/90 px-4 text-white shadow-xl">
@@ -132,10 +133,18 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
                 <div className="grid w-full grid-cols-12 gap-4 py-4">
                     {sortedPhotos.map((photo, sortedIndex) => {
                         const originalIndex = photos.findIndex(p => p.sys?.id === photo.sys?.id);
+<<<<<<< HEAD
 
                         return (
                             <div
                                 key={`${photo.sys?.id} - ${originalIndex}`}
+=======
+                        console.log(originalIndex);
+
+                        return (
+                            <div
+                                key={`${photo.slug}-${originalIndex}`}
+>>>>>>> 989254c (fix: Admin tools UI fixes)
                                 className="relative col-span-1"
                             >
                                 <Image
