@@ -149,8 +149,13 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoInARow', photos: [58, 53]},
                 {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
                 {layout: 'TwoInARow', photos: [83, 74]},
+<<<<<<< HEAD
                 {layout: 'CarouselPhotoBLock', photos: [109, 136, 107, 61, 106, 26]},
                 {layout: 'LandscapeTwoBigFourSmall', photos: [56, 135, 153, 139, 138, 99]}
+=======
+                {layout: 'FourInARow', photos: [99, 109, 107, 106]},
+                {layout: 'ThreeInARow', photos: [71, 26, 56]}
+>>>>>>> cc2a8e5 (feat: UI tweaks)
             ]
         },
         {
@@ -166,6 +171,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['beak-beer-recipe']},
                 {layout: 'TwoInARow', photos: [15, 77]},
                 {layout: 'OnePortraitTwoLandscape', photos: [89, 8, 11]},
+<<<<<<< HEAD
                 {
                     layout: 'TwoPortraitOneLandscapeWithPadding',
                     photos: [121, 91, 64],
@@ -174,6 +180,11 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ThreeInARow', photos: [20, 32, 46]},
                 {layout: 'ContentSection', sections: ['pullquote-5']},
                 {layout: 'TwoInARow', photos: [133, 62]},
+=======
+                {layout: 'ThreeInARow', photos: [20, 46, 14]},
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [24, 91, 32]},
+                {layout: 'TwoInARow', photos: [62, 64]},
+>>>>>>> cc2a8e5 (feat: UI tweaks)
                 {layout: 'ContentSection', sections: ['ip-beer-recipe']},
                 {layout: 'OnePortraitSmallTwoLandscapeMedium', photos: [92, 30, 94]},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [31, 95, 97]},
@@ -197,11 +208,19 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 },
                 {layout: 'Spacer'},
                 {layout: 'TwoInARow', photos: [73, 45]},
+<<<<<<< HEAD
                 {layout: 'ContentSection', sections: ['green-hop-festivals']},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [40, 96, 69]},
                 {layout: 'ContentSection', sections: ['pullquote-3']},
                 {layout: 'OneLandScapeTwoPortrait', photos: [87, 102, 110]},
                 {layout: 'TwoPortraitTwoLandscape', photos: [88, 156, 154, 155]},
+=======
+                {layout: 'Spacer'},
+                {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [40, 96, 69]},
+                {layout: 'ContentSection', sections: ['green-hop-festivals']},
+                {layout: 'OneLandScapeTwoPortrait', photos: [87, 102, 110]},
+                {layout: 'ThreeInARow', photos: [88, 36, 111]},
+>>>>>>> cc2a8e5 (feat: UI tweaks)
                 {layout: 'ContentSection', sections: ['footer']}
             ]
         }

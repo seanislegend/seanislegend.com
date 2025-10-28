@@ -39,8 +39,12 @@ const AnimateAppearence: React.FC<React.PropsWithChildren<Props>> = ({
         <m.div
             initial={{opacity: 0, x: initialX, y: initialY}}
             transition={{delay, duration, ease}}
+<<<<<<< HEAD
             viewport={{once: true}}
 >>>>>>> 9b7c06c (feat: Add animated entrance for blocks)
+=======
+            viewport={{margin: '0px -20px 0px 100px', once: true}}
+>>>>>>> cc2a8e5 (feat: UI tweaks)
             whileInView={{opacity: 1, x: 0, y: 0}}
             {...props}
         >
