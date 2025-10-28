@@ -4,6 +4,7 @@ import ButtonList from '@/components/Button/List';
 import Markdown from '@/components/Markdown';
 import Column from '@/components/PhotoCollection/Column';
 import Grid from '@/components/PhotoCollection/Grid';
+import AnimateAppearence from '@/components/UI/AnimateAppearence';
 import Condition from '@/components/UI/Condition';
 import Container from '@/components/UI/Container';
 import {Heading2} from '@/components/UI/Headings';
@@ -343,26 +344,28 @@ export const ContentSection: React.FC<ContentSection> = ({
     theme,
     title
 }) => (
-    <Container
-        className={clsx([contentSectionThemes[theme ?? 'default'], 'content-section my-12'])}
-        data-testid="content-section"
-        data-theme={theme}
-    >
-        <Column className="col-span-12 md:col-span-8">
-            <Heading2>{title}</Heading2>
-            <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
-            {((ctaLabel && ctaUrl) || (secondaryCtaLabel && secondaryCtaUrl)) && (
-                <ButtonList className="mt-8">
-                    {ctaLabel && ctaUrl && <Button href={ctaUrl}>{ctaLabel}</Button>}
-                    {secondaryCtaLabel && secondaryCtaUrl && (
-                        <Button href={secondaryCtaUrl} theme="secondary">
-                            {secondaryCtaLabel}
-                        </Button>
-                    )}
-                </ButtonList>
-            )}
-        </Column>
-    </Container>
+    <AnimateAppearence delay={0.2} duration={2} initialY={20}>
+        <Container
+            className={clsx([contentSectionThemes[theme ?? 'default'], 'content-section my-12'])}
+            data-testid="content-section"
+            data-theme={theme}
+        >
+            <Column className="col-span-12 md:col-span-8">
+                <Heading2>{title}</Heading2>
+                <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
+                {((ctaLabel && ctaUrl) || (secondaryCtaLabel && secondaryCtaUrl)) && (
+                    <ButtonList className="mt-8">
+                        {ctaLabel && ctaUrl && <Button href={ctaUrl}>{ctaLabel}</Button>}
+                        {secondaryCtaLabel && secondaryCtaUrl && (
+                            <Button href={secondaryCtaUrl} theme="secondary">
+                                {secondaryCtaLabel}
+                            </Button>
+                        )}
+                    </ButtonList>
+                )}
+            </Column>
+        </Container>
+    </AnimateAppearence>
 );
 
 const ContentSectionGroup: React.FC<SectionBlockComponent> = ({renderSection, sections}) => (

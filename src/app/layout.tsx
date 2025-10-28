@@ -1,6 +1,7 @@
 import {Analytics} from '@vercel/analytics/react';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import {GeistSans} from 'geist/font/sans';
+import {LazyMotion, domAnimation} from 'motion/react';
 import {ViewTransitions} from 'next-view-transitions';
 import config, {jsonLd} from '@/utils/config';
 import './globals.css';
@@ -22,7 +23,7 @@ const RootLayout = async ({children}: Props) => (
                 />
             </head>
             <body className="flex grow flex-col sm:min-h-full">
-                {children}
+                <LazyMotion features={domAnimation}>{children}</LazyMotion>
                 {process.env.NODE_ENV === 'production' && (
                     <>
                         <Analytics />
