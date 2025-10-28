@@ -1,5 +1,11 @@
 import {draftMode} from 'next/headers';
+<<<<<<< HEAD
 import {getCollectionOpengraphImage} from '@/utils/collection-opengraph-image';
+=======
+import {layouts} from '@/components/PhotoCollection/layouts';
+import {fetchCollection} from '@/utils/contentful';
+import {getOgImage} from '@/utils/og';
+>>>>>>> 4ff8ed6 (feat: Support draft mode in OG routes)
 
 interface Props {
     params: Promise<{dynamicPage: string}>;
@@ -8,7 +14,36 @@ interface Props {
 const handler = async ({params}: Props) => {
     const allParams = await params;
     const draftModeConfig = await draftMode();
+<<<<<<< HEAD
     return getCollectionOpengraphImage(allParams.dynamicPage, draftModeConfig.isEnabled);
+=======
+    const collection = await fetchCollection(allParams.dynamicPage, draftModeConfig.isEnabled);
+    if (!collection) return;
+
+    console.log(collection);
+
+    const metaPhotos = collection.metaPhotosCollection.items;
+    if (metaPhotos.length > 0) {
+        return getOgImage(metaPhotos.map(p => p.photo.url));
+    }
+
+    const photos = collection.photosCollection.items;
+    if (!photos) return;
+
+    const layout = layouts?.[collection.slug];
+    if (!layout) {
+        const photoGroup = getFirstFourLandscapePhotos(photos);
+        return getOgImage(photoGroup);
+    }
+
+    const allPhotos = Object.values(layout)
+        .flatMap(layout => layout.photos)
+        .filter(photoIndex => photoIndex !== undefined)
+        .map(photoIndex => photos[photoIndex]);
+    const landscapePhotos = getFirstFourLandscapePhotos(allPhotos);
+
+    return getOgImage(landscapePhotos);
+>>>>>>> 4ff8ed6 (feat: Support draft mode in OG routes)
 };
 
 export const contentType = 'image/jpg';
