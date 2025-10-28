@@ -133,9 +133,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
             component: 'Tabs',
             props: {
                 tabs: [
-                    {id: 'harvest', label: 'Harvest'},
-                    {id: 'brew', label: 'Brew'},
-                    {id: 'celebrate', label: 'Celebrate'}
+                    {id: 'harvest', label: '1. Harvest'},
+                    {id: 'brew', label: '2. Brew'},
+                    {id: 'celebrate', label: '3. Celebrate'}
                 ]
             }
         },
@@ -146,12 +146,23 @@ export const layouts: Record<string, PhotoBlock[]> = {
             items: [
                 {layout: 'ContentSection', sections: ['hop-section-intro']},
                 {
+<<<<<<< HEAD
                     layout: 'ThreeInARow',
                     photos: [127, 128, 55]
                 },
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [129, 112, 146]},
                 {layout: 'TwoInARow', photos: [125, 126]},
                 {layout: 'TwoInARow', photos: [57, 4]},
+=======
+                    layout: 'ThreeInARowWithPadding',
+                    photos: [130, 127, 9]
+                },
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [128, 129, 125]},
+                {layout: 'TwoInARow', photos: [126, 57]},
+                {layout: 'Spacer'},
+                {layout: 'LandscapeOneBigTwoMedium', photos: [90, 86, 21]},
+                {layout: 'ThreeInARow', photos: [120, 108, 19]},
+>>>>>>> 66e6e2a (feat: Update layouts)
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
 <<<<<<< HEAD
                 {layout: 'OneLandscapeTwoPortraitEachSide', photos: [144, 142, 1, 145, 141]},
@@ -163,6 +174,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ThreeInARow', photos: [52, 123, 22]},
 =======
                 {layout: 'TwoInARow', photos: [13, 16]},
+<<<<<<< HEAD
                 {layout: 'CarouselPhotoBLock', photos: [12, 34, 23, 44, 47, 33]},
                 {layout: 'ThreeInARow', photos: [29, 66, 22]},
 >>>>>>> 25c0dd5 (feat: Add carousel blocks)
@@ -176,6 +188,15 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'FourInARow', photos: [99, 109, 107, 106]},
                 {layout: 'ThreeInARow', photos: [71, 26, 56]}
 >>>>>>> cc2a8e5 (feat: UI tweaks)
+=======
+                {layout: 'CarouselPhotoBLock', photos: [34, 6, 66, 23, 44, 47, 33, 12]},
+                {layout: 'ThreeInARow', photos: [52, 123, 22]},
+                {layout: 'TwoInARow', photos: [58, 53]},
+                {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
+                {layout: 'TwoInARow', photos: [83, 74]},
+                {layout: 'CarouselPhotoBLock', photos: [109, 136, 107, 106, 26, 61]},
+                {layout: 'LandscapeTwoBigFourSmall', photos: [56, 135, 71, 139, 138, 99]}
+>>>>>>> 66e6e2a (feat: Update layouts)
             ]
         },
         {
@@ -192,12 +213,16 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoInARow', photos: [15, 77]},
                 {layout: 'OnePortraitTwoLandscape', photos: [89, 8, 11]},
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 66e6e2a (feat: Update layouts)
                 {
                     layout: 'TwoPortraitOneLandscapeWithPadding',
                     photos: [121, 91, 64],
                     props: {reverse: true}
                 },
                 {layout: 'ThreeInARow', photos: [20, 32, 46]},
+<<<<<<< HEAD
                 {layout: 'ContentSection', sections: ['pullquote-5']},
                 {layout: 'TwoInARow', photos: [133, 62]},
 =======
@@ -205,6 +230,12 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [24, 91, 32]},
                 {layout: 'TwoInARow', photos: [62, 64]},
 >>>>>>> cc2a8e5 (feat: UI tweaks)
+=======
+                {
+                    layout: 'TwoInARowWithPadding',
+                    photos: [133, 62]
+                },
+>>>>>>> 66e6e2a (feat: Update layouts)
                 {layout: 'ContentSection', sections: ['ip-beer-recipe']},
                 {layout: 'OnePortraitSmallTwoLandscapeMedium', photos: [92, 30, 94]},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [31, 95, 97]},
