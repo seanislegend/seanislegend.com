@@ -66,6 +66,7 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
         }
         return item.photos || [];
     });
+    console.log(usedPhotos.sort());
 
     return (
         <div className="fixed bottom-0 z-50 flex max-h-[35vh] w-full flex-col gap-4 overflow-y-auto border-4 border-black/40 bg-black/90 px-4 text-white shadow-xl">
@@ -131,9 +132,14 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
             {isActive && (
                 <div className="grid w-full grid-cols-12 gap-4 py-4">
                     {sortedPhotos.map((photo, sortedIndex) => {
-                        const originalIndex = photos.findIndex(p => p.slug === photo.slug);
+                        const originalIndex = photos.findIndex(p => p.sys?.id === photo.sys?.id);
+                        console.log(originalIndex);
+
                         return (
-                            <div key={photo.slug} className="relative col-span-1">
+                            <div
+                                key={`${photo.slug}-${originalIndex}`}
+                                className="relative col-span-1"
+                            >
                                 <Image
                                     alt={photo.title}
                                     className={clsx({

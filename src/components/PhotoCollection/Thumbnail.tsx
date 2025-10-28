@@ -84,8 +84,8 @@ const PhotoThumbnail: React.FC<Props> = ({
                 base64={base64}
                 loading={loading}
             />
+            {id && <PhotoEditButton id={id} />}
         </Condition>
-        {id && <PhotoEditButton id={id} />}
     </>
 );
 
