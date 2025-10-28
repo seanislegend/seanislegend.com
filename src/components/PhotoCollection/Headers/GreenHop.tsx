@@ -212,6 +212,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     <Image
                         alt={heroPhoto.title}
                         className="sticky top-0 z-50 w-full rounded"
+<<<<<<< HEAD
                         height={heroPhoto.fullSize.height}
 <<<<<<< HEAD
                         placeholder={heroPhoto.base64 ? 'blur' : 'empty'}
@@ -227,6 +228,13 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                         src={heroPhoto.fullSize.url}
                         width={heroPhoto.fullSize.width}
 >>>>>>> 6e14c22 (fix: Quality size)
+=======
+                        height={heroPhoto.hero.height}
+                        priority={true}
+                        quality={85}
+                        src={heroPhoto.hero.url}
+                        width={heroPhoto.hero.width}
+>>>>>>> 6b9976b (feat: Add original size hero image)
                     />
                 </div>
             )}
