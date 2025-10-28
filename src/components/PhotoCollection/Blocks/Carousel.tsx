@@ -8,6 +8,7 @@ const CarouselPhotoBLock: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}
     ]);
 
     return (
+<<<<<<< HEAD
         <div className="relative mx-auto max-w-440">
             <div className="relative overflow-hidden" ref={emblaRef}>
                 <div className="flex cursor-grab gap-x-2 active:cursor-grabbing">
@@ -25,6 +26,18 @@ const CarouselPhotoBLock: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}
                 </div>
                 <div className="from-theme-bg absolute top-0 left-0 h-full w-20 bg-linear-to-r to-transparent" />
                 <div className="from-theme-bg absolute top-0 right-0 h-full w-20 bg-linear-to-l to-transparent" />
+=======
+        <div className="-mx-4 overflow-hidden md:-mx-8" ref={emblaRef}>
+            <div className="flex gap-x-2">
+                {photos.map((photo, index) => (
+                    <div
+                        key={photo}
+                        className="max-w-6/12 flex-[0_0_100%] sm:max-w-4/12 lg:max-w-3/12"
+                    >
+                        {renderPhoto(photos, index, 4)}
+                    </div>
+                ))}
+>>>>>>> 25c0dd5 (feat: Add carousel blocks)
             </div>
         </div>
     );

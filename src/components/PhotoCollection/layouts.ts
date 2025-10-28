@@ -153,6 +153,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoInARow', photos: [125, 126]},
                 {layout: 'TwoInARow', photos: [57, 4]},
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
+<<<<<<< HEAD
                 {layout: 'OneLandscapeTwoPortraitEachSide', photos: [144, 142, 1, 145, 141]},
                 {layout: 'LandscapeOneBigTwoMedium', photos: [90, 86, 21]},
                 {layout: 'ThreeInARow', photos: [120, 19, 108]},
@@ -160,6 +161,11 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoInARow', photos: [13, 16]},
                 {layout: 'CarouselPhotoBLock', photos: [34, 66, 101, 6, 12, 33, 47, 44]},
                 {layout: 'ThreeInARow', photos: [52, 123, 22]},
+=======
+                {layout: 'TwoInARow', photos: [13, 16]},
+                {layout: 'CarouselPhotoBLock', photos: [12, 34, 23, 44, 47, 33]},
+                {layout: 'ThreeInARow', photos: [29, 66, 22]},
+>>>>>>> 25c0dd5 (feat: Add carousel blocks)
                 {layout: 'TwoInARow', photos: [58, 53]},
                 {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
                 {layout: 'TwoInARow', photos: [83, 74]},

@@ -55,7 +55,11 @@ const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}
                     const author = parts[1];
 
                     return (
+<<<<<<< HEAD
                         <figure className="border-accent border-l-4 py-4 pl-8">
+=======
+                        <figure className="border-accent border-l-4 py-4 pl-4">
+>>>>>>> 25c0dd5 (feat: Add carousel blocks)
                             <blockquote>
 <<<<<<< HEAD
                                 <p className="text-xl/snug! text-pretty italic lg:text-2xl/snug! xl:text-3xl/snug!">
