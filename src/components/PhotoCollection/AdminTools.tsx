@@ -135,7 +135,7 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
 
                         return (
                             <div
-                                key={`${photo.slug}-${originalIndex}`}
+                                key={`${photo.sys?.id} - ${originalIndex}`}
                                 className="relative col-span-1"
                             >
                                 <Image
