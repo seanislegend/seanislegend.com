@@ -425,6 +425,11 @@ export const fetchCollection = async (
                         urlLabel
                         instagramUrl
                         instagramLabel
+                        hero: photo {
+                            height
+                            width
+                            url(transform: {format: WEBP, width: 2000})
+                        }
                         fullSize: photo {
                             height
                             width

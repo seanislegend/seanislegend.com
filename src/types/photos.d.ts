@@ -12,6 +12,7 @@ interface Photo {
     date?: string;
     description?: string;
     fullSize: Image;
+    hero: Image;
     id?: string;
     instagramLabel?: string;
     instagramUrl?: string;

@@ -84,11 +84,11 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     <Image
                         alt={heroPhoto.title}
                         className="sticky top-0 z-50 w-full rounded"
-                        height={heroPhoto.fullSize.height}
+                        height={heroPhoto.hero.height}
                         priority={true}
-                        quality={80}
-                        src={heroPhoto.fullSize.url}
-                        width={heroPhoto.fullSize.width}
+                        quality={85}
+                        src={heroPhoto.hero.url}
+                        width={heroPhoto.hero.width}
                     />
                 </div>
             )}
