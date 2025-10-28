@@ -80,7 +80,8 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 )}
             </Container>
             {heroPhoto && (
-                <div className="-mt-8 w-full px-2 lg:-mt-10 xl:-mt-14">
+                <div className="-mt-38 w-full px-2 lg:-mt-40 xl:-mt-44">
+                    <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
                     <Image
                         alt={heroPhoto.title}
                         className="sticky top-0 z-50 w-full rounded"
