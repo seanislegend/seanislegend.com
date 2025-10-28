@@ -131,9 +131,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
             component: 'Tabs',
             props: {
                 tabs: [
-                    {id: 'harvest', label: 'Harvest'},
-                    {id: 'brew', label: 'Brew'},
-                    {id: 'celebrate', label: 'Celebrate'}
+                    {id: 'harvest', label: '1. Harvest'},
+                    {id: 'brew', label: '2. Brew'},
+                    {id: 'celebrate', label: '3. Celebrate'}
                 ]
             }
         },
@@ -144,21 +144,23 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['hop-section-intro']},
                 {layout: 'TwoInARow', photos: [1, 4]},
                 {
-                    layout: 'TwoInARowWithPadding',
-                    photos: [9, 55]
+                    layout: 'ThreeInARowWithPadding',
+                    photos: [130, 127, 9]
                 },
-                {layout: 'TwoInARow', photos: [57, 52]},
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [128, 129, 125]},
+                {layout: 'TwoInARow', photos: [126, 57]},
+                {layout: 'Spacer'},
                 {layout: 'LandscapeOneBigTwoMedium', photos: [90, 86, 21]},
-                {layout: 'ThreeInARow', photos: [98, 7, 108]},
+                {layout: 'ThreeInARow', photos: [120, 108, 19]},
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
                 {layout: 'TwoInARow', photos: [13, 16]},
-                {layout: 'CarouselPhotoBLock', photos: [12, 34, 23, 44, 47, 33]},
-                {layout: 'ThreeInARow', photos: [29, 66, 22]},
+                {layout: 'CarouselPhotoBLock', photos: [34, 6, 66, 23, 44, 47, 33, 12]},
+                {layout: 'ThreeInARow', photos: [52, 123, 22]},
                 {layout: 'TwoInARow', photos: [58, 53]},
                 {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
                 {layout: 'TwoInARow', photos: [83, 74]},
-                {layout: 'FourInARow', photos: [99, 109, 107, 106]},
-                {layout: 'ThreeInARow', photos: [71, 26, 56]}
+                {layout: 'CarouselPhotoBLock', photos: [109, 136, 107, 106, 26, 61]},
+                {layout: 'LandscapeTwoBigFourSmall', photos: [56, 135, 71, 139, 138, 99]}
             ]
         },
         {
@@ -173,9 +175,16 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['beak-beer-recipe']},
                 {layout: 'TwoInARow', photos: [15, 77]},
                 {layout: 'OnePortraitTwoLandscape', photos: [89, 8, 11]},
-                {layout: 'ThreeInARow', photos: [20, 46, 14]},
-                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [24, 91, 32]},
-                {layout: 'TwoInARow', photos: [62, 64]},
+                {
+                    layout: 'TwoPortraitOneLandscapeWithPadding',
+                    photos: [121, 91, 64],
+                    props: {reverse: true}
+                },
+                {layout: 'ThreeInARow', photos: [20, 32, 46]},
+                {
+                    layout: 'TwoInARowWithPadding',
+                    photos: [133, 62]
+                },
                 {layout: 'ContentSection', sections: ['ip-beer-recipe']},
                 {layout: 'OnePortraitTwoLandscape', photos: [92, 30, 94]},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [31, 95, 97]},

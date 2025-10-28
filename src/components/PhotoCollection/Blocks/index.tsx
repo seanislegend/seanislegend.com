@@ -324,20 +324,40 @@ const TwoInARowWithPadding: React.FC<PhotoBlockComponent> = ({photos, renderPhot
 
 const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
     photos,
-    renderPhoto
+    renderPhoto,
+    reverse
 }) => (
     <Grid className="place-items-center">
-        <Column className="col-span-6 flex h-full items-center md:col-span-3">
-            {renderPhoto(photos, 0, 3)}
-        </Column>
-        <Column className="col-span-6 flex h-full items-center md:col-span-3">
-            {renderPhoto(photos, 1, 3)}
-        </Column>
-        <Column className="col-span-12 flex h-full md:col-span-6">
-            <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
-                {renderPhoto(photos, 2, 6)}
-            </div>
-        </Column>
+        <Condition
+            condition={reverse}
+            fallbackWrapper={children => (
+                <>
+                    {children}
+                    <Column className="col-span-12 flex h-full md:col-span-6">
+                        <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
+                            {renderPhoto(photos, 2, 6)}
+                        </div>
+                    </Column>
+                </>
+            )}
+            wrapper={children => (
+                <>
+                    <Column className="col-span-12 flex h-full md:col-span-6">
+                        <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
+                            {renderPhoto(photos, 2, 6)}
+                        </div>
+                    </Column>
+                    {children}
+                </>
+            )}
+        >
+            <Column className="col-span-6 flex h-full items-center md:col-span-3">
+                {renderPhoto(photos, 0, 3)}
+            </Column>
+            <Column className="col-span-6 flex h-full items-center md:col-span-3">
+                {renderPhoto(photos, 1, 3)}
+            </Column>
+        </Condition>
     </Grid>
 );
 
