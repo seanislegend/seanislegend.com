@@ -22,7 +22,7 @@ const AnimateAppearence: React.FC<React.PropsWithChildren<Props>> = ({
         <m.div
             initial={{opacity: 0, x: initialX, y: initialY}}
             transition={{delay, duration, ease}}
-            viewport={{once: true}}
+            viewport={{margin: '0px -20px 0px 100px', once: true}}
             whileInView={{opacity: 1, x: 0, y: 0}}
             {...props}
         >
