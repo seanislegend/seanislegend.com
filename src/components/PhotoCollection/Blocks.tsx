@@ -200,9 +200,11 @@ const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderP
             condition={reverse}
             fallbackWrapper={() => (
                 <>
-                    <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
-                    <Column className="col-span-6 h-full">
-                        <div className="flex h-full flex-col justify-between">
+                    <Column className="col-span-12 md:col-span-6">
+                        {renderPhoto(photos, 0, 6)}
+                    </Column>
+                    <Column className="col-span-12 h-full md:col-span-6">
+                        <div className="flex h-full flex-col justify-between gap-2 md:gap-0">
                             {renderPhoto(photos, 1, 6)}
                             {renderPhoto(photos, 2, 6)}
                         </div>
@@ -211,13 +213,15 @@ const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderP
             )}
             wrapper={() => (
                 <>
-                    <Column className="col-span-6 h-full">
-                        <div className="flex h-full flex-col justify-between">
+                    <Column className="col-span-12 h-full md:col-span-6">
+                        <div className="flex h-full flex-col justify-between gap-2 md:gap-0">
                             {renderPhoto(photos, 1, 6)}
                             {renderPhoto(photos, 2, 6)}
                         </div>
                     </Column>
-                    <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+                    <Column className="col-span-12 md:col-span-6">
+                        {renderPhoto(photos, 0, 6)}
+                    </Column>
                 </>
             )}
         />
@@ -301,8 +305,8 @@ const ThreeInARowWithPadding: React.FC<PhotoBlockComponent> = ({photos, renderPh
 
 const TwoInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
     <Grid>
-        <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
-        <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
+        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 1, 6)}</Column>
     </Grid>
 );
 
@@ -320,10 +324,14 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
     renderPhoto
 }) => (
     <Grid className="place-items-center">
-        <Column className="col-span-3 flex h-full items-center">{renderPhoto(photos, 0, 3)}</Column>
-        <Column className="col-span-3 flex h-full items-center">{renderPhoto(photos, 1, 3)}</Column>
-        <Column className="col-span-6 flex h-full">
-            <div className="mx-auto flex w-full max-w-[80%] items-center justify-center">
+        <Column className="col-span-6 flex h-full items-center md:col-span-3">
+            {renderPhoto(photos, 0, 3)}
+        </Column>
+        <Column className="col-span-6 flex h-full items-center md:col-span-3">
+            {renderPhoto(photos, 1, 3)}
+        </Column>
+        <Column className="col-span-12 flex h-full md:col-span-6">
+            <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
                 {renderPhoto(photos, 2, 6)}
             </div>
         </Column>
