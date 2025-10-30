@@ -231,6 +231,22 @@ const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderP
     </Grid>
 );
 
+const OnePortraitSmallTwoLandscapeMedium: React.FC<PhotoBlockComponent> = ({
+    photos,
+    renderPhoto,
+    reverse
+}) => (
+    <Grid>
+        <Column className="col-span-6 md:col-span-5">{renderPhoto(photos, 1, 6)}</Column>
+        <Column className="order-3 col-span-12 h-full md:order-2 md:col-span-2 [&_img]:object-cover [&_img,&_span]:h-full [&_span]:flex [&_span]:justify-center">
+            {renderPhoto(photos, 0, 6)}
+        </Column>
+        <Column className="order-2 col-span-6 md:order-3 md:col-span-5">
+            {renderPhoto(photos, 2, 6)}
+        </Column>
+    </Grid>
+);
+
 const OnePortraitTwoLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockComponent> = ({
     photos,
     renderPhoto
@@ -381,9 +397,9 @@ export const ContentSection: React.FC<ContentSection> = ({
             data-testid="content-section"
             data-theme={theme}
         >
-            <Column className="col-span-12 md:col-span-8">
+            <Column className="sm:w-10/12 md:w-8/12 xl:w-7/12">
                 <Heading2>{title}</Heading2>
-                <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
+                <Markdown className="mt-4 text-pretty">{content}</Markdown>
                 {((ctaLabel && ctaUrl) || (secondaryCtaLabel && secondaryCtaUrl)) && (
                     <ButtonList className="mt-8">
                         {ctaLabel && ctaUrl && <Button href={ctaUrl}>{ctaLabel}</Button>}
@@ -420,6 +436,7 @@ const photoLayouts: Partial<
     OnePortraitOneLandscapeMediumTwoLandscapeSmall,
     OnePortraitOneLandscapeMediumFourLandscapeSmall,
     OnePortraitTwoLandscape,
+    OnePortraitSmallTwoLandscapeMedium,
     OnePortraitTwoLandscapeMediumTwoLandscapeSmall,
     OnePortraitTwoTopAndBottomLandscape,
     SixInARow,

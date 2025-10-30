@@ -142,16 +142,16 @@ export const layouts: Record<string, PhotoBlock[]> = {
             id: 'harvest',
             items: [
                 {layout: 'ContentSection', sections: ['hop-section-intro']},
-                {layout: 'TwoInARow', photos: [1, 4]},
                 {
-                    layout: 'ThreeInARowWithPadding',
-                    photos: [130, 127, 9]
+                    layout: 'ThreeInARow',
+                    photos: [127, 128, 55]
                 },
-                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [128, 129, 125]},
-                {layout: 'TwoInARow', photos: [126, 57]},
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [9, 129, 1]},
+                {layout: 'TwoInARow', photos: [125, 126]},
+                {layout: 'TwoInARow', photos: [57, 4]},
                 {layout: 'Spacer'},
                 {layout: 'LandscapeOneBigTwoMedium', photos: [90, 86, 21]},
-                {layout: 'ThreeInARow', photos: [120, 108, 19]},
+                {layout: 'ThreeInARow', photos: [120, 19, 108]},
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
                 {layout: 'TwoInARow', photos: [13, 16]},
                 {layout: 'CarouselPhotoBLock', photos: [34, 6, 66, 23, 44, 47, 33, 12]},
@@ -186,7 +186,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                     photos: [133, 62]
                 },
                 {layout: 'ContentSection', sections: ['ip-beer-recipe']},
-                {layout: 'OnePortraitTwoLandscape', photos: [92, 30, 94]},
+                {layout: 'OnePortraitSmallTwoLandscapeMedium', photos: [92, 30, 94]},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [31, 95, 97]},
                 {layout: 'TwoInARow', photos: [48, 68]},
                 {layout: 'TwoInARow', photos: [25, 80]},
