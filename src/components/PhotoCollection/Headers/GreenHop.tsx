@@ -25,14 +25,22 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 data-slot="page-header"
                 ref={containerRef}
             >
-                <h1 className="sr-only">{collection.pageTitle}</h1>
-                <AnimateAppearence delay={0.2} duration={2} initialY={20}>
-                    <svg
-                        aria-hidden="true"
-                        className="h-auto w-full"
-                        fill="none"
-                        viewBox="0 0 644 44"
-                    >
+                <h1 className="text-pretty uppercase md:sr-only">
+                    <span className="text-[14vmin] leading-[13vmin] font-black text-[#2C370B] sm:text-[8vmin] sm:leading-[7vmin]">
+                        {title1}
+                    </span>
+                    <span className="mt-[2vmin] block text-[5vmin] leading-[5vmin] font-medium text-[#909732] uppercase sm:mt-[1vmin]">
+                        {title2}
+                    </span>
+                </h1>
+                <AnimateAppearence
+                    aria-hidden="true"
+                    className="hidden md:block"
+                    delay={0.2}
+                    duration={2}
+                    initialY={20}
+                >
+                    <svg className="h-auto w-full" fill="none" viewBox="0 0 644 44">
                         <title>{title1}</title>
                         <path
                             fill="#2C370B"
@@ -41,13 +49,14 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     </svg>
                 </AnimateAppearence>
                 <span className="mt-4 flex items-baseline justify-between lg:mt-4 xl:mt-8">
-                    <AnimateAppearence className="w-7/12" delay={0.6} duration={4} initialY={10}>
-                        <svg
-                            aria-hidden="true"
-                            className="h-auto w-full"
-                            fill="none"
-                            viewBox="0 0 381 21"
-                        >
+                    <AnimateAppearence
+                        aria-hidden="true"
+                        className="hidden w-7/12 md:block"
+                        delay={0.6}
+                        duration={4}
+                        initialY={10}
+                    >
+                        <svg className="h-auto w-full" fill="none" viewBox="0 0 381 21">
                             <title>{title2}</title>
                             <path
                                 fill="#909732"
@@ -56,7 +65,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                         </svg>
                     </AnimateAppearence>
                     <AnimateAppearence
-                        className="sm:text-md ml-2 text-sm text-[#909732] lg:text-lg"
+                        className="md:text-md -mt-2 text-sm text-[#909732] md:mt-0 md:ml-2 lg:text-lg"
                         delay={0.8}
                         duration={2}
                         initialX={-10}
@@ -67,20 +76,20 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 </span>
                 {collection.description && (
                     <AnimateAppearence
-                        className="mt-12 max-w-4xl sm:max-w-10/12 2xl:max-w-6xl"
+                        className="mt-6 max-w-4xl sm:max-w-10/12 md:mt-12 2xl:max-w-6xl"
                         delay={0.6}
                         duration={1}
                         ease="easeInOut"
                         initialY={0}
                     >
-                        <Markdown className="prose-p:text-base! lg:prose-p:text-lg! text-pretty">
+                        <Markdown className="sm:prose-p:text-base! lg:prose-p:text-lg! text-pretty">
                             {collection.description}
                         </Markdown>
                     </AnimateAppearence>
                 )}
             </Container>
             {heroPhoto && (
-                <div className="-mt-38 w-full px-2 lg:-mt-40 xl:-mt-44">
+                <div className="-mt-32 w-full px-2 lg:-mt-40 xl:-mt-44">
                     <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
                     <Image
                         alt={heroPhoto.title}
