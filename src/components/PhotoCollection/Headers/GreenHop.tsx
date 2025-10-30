@@ -47,6 +47,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 data-slot="page-header"
                 ref={containerRef}
             >
+<<<<<<< HEAD
                 <h1 className="sr-only">{collection.pageTitle}</h1>
                 <AnimateAppearence delay={0.2} duration={2} initialY={20}>
 >>>>>>> cc2a8e5 (feat: UI tweaks)
@@ -67,6 +68,13 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                             marginTop: 'clamp(1rem, 2vw, 1.5rem)'
                         }}
                     >
+=======
+                <h1 className="text-pretty uppercase md:sr-only">
+                    <span className="text-[14vmin] leading-[13vmin] font-black text-[#2C370B] sm:text-[8vmin] sm:leading-[7vmin]">
+                        {title1}
+                    </span>
+                    <span className="mt-[2vmin] block text-[5vmin] leading-[5vmin] font-medium text-[#909732] uppercase sm:mt-[1vmin]">
+>>>>>>> c2f5263 (feat: Improve mobile layout)
                         {title2}
                     </span>
                 </h1>
@@ -78,9 +86,12 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     initialY={20}
                 >
                     <svg className="h-auto w-full" fill="none" viewBox="0 0 644 44">
+<<<<<<< HEAD
 =======
                     >
 >>>>>>> cc2a8e5 (feat: UI tweaks)
+=======
+>>>>>>> c2f5263 (feat: Improve mobile layout)
                         <title>{title1}</title>
                         <path
                             fill="#2C370B"
@@ -107,6 +118,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 =======
                 </AnimateAppearence>
                 <span className="mt-4 flex items-baseline justify-between lg:mt-4 xl:mt-8">
+<<<<<<< HEAD
                     <AnimateAppearence className="w-7/12" delay={0.6} duration={4} initialY={10}>
 >>>>>>> cc2a8e5 (feat: UI tweaks)
                         <svg
@@ -118,6 +130,16 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> fb8221c (feat: Use consistent transitions and timings)
+=======
+                    <AnimateAppearence
+                        aria-hidden="true"
+                        className="hidden w-7/12 md:block"
+                        delay={0.6}
+                        duration={4}
+                        initialY={10}
+                    >
+                        <svg className="h-auto w-full" fill="none" viewBox="0 0 381 21">
+>>>>>>> c2f5263 (feat: Improve mobile layout)
                             <title>{title2}</title>
                             <path
                                 fill="#909732"
@@ -127,6 +149,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     </AnimateAppearence>
                     <AnimateAppearence
                         className="md:text-md -mt-2 text-sm text-[#909732] md:mt-0 md:ml-2 lg:text-lg"
+<<<<<<< HEAD
                         delay={0.8}
                         duration={2}
                         initialX={-10}
@@ -152,6 +175,8 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     </AnimateAppearence>
                     <AnimateAppearence
                         className="sm:text-md ml-2 text-sm text-[#909732] lg:text-lg"
+=======
+>>>>>>> c2f5263 (feat: Improve mobile layout)
                         delay={0.8}
                         duration={2}
                         initialX={-10}
@@ -162,8 +187,12 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                 </span>
                 {collection.description && (
                     <AnimateAppearence
+<<<<<<< HEAD
                         className="mt-12 max-w-4xl sm:max-w-10/12 2xl:max-w-6xl"
 >>>>>>> 9b7c06c (feat: Add animated entrance for blocks)
+=======
+                        className="mt-6 max-w-4xl sm:max-w-10/12 md:mt-12 2xl:max-w-6xl"
+>>>>>>> c2f5263 (feat: Improve mobile layout)
                         delay={0.6}
                         duration={1}
                         ease="easeInOut"
@@ -171,6 +200,9 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     >
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c2f5263 (feat: Improve mobile layout)
                         <Markdown className="sm:prose-p:text-base! lg:prose-p:text-lg! text-pretty">
                             {collection.description}
                         </Markdown>
@@ -196,6 +228,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div className="-mt-32 w-full px-2 sm:-mt-38 lg:-mt-40 xl:-mt-48">
                     <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
 =======
@@ -212,6 +245,9 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 >>>>>>> 9b7c06c (feat: Add animated entrance for blocks)
 =======
                 <div className="-mt-38 w-full px-2 lg:-mt-40 xl:-mt-44">
+=======
+                <div className="-mt-32 w-full px-2 lg:-mt-40 xl:-mt-44">
+>>>>>>> c2f5263 (feat: Improve mobile layout)
                     <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
 >>>>>>> afa9840 (feat: Add gradient to reduce flash when scrolling between light/dark themes)
                     <Image
