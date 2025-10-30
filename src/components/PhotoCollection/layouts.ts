@@ -147,6 +147,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['hop-section-intro']},
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     layout: 'ThreeInARow',
                     photos: [127, 128, 55]
                 },
@@ -156,13 +157,22 @@ export const layouts: Record<string, PhotoBlock[]> = {
 =======
                     layout: 'ThreeInARowWithPadding',
                     photos: [130, 127, 9]
+=======
+                    layout: 'ThreeInARow',
+                    photos: [127, 128, 55]
+>>>>>>> b66962e (feat: Add new layout)
                 },
-                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [128, 129, 125]},
-                {layout: 'TwoInARow', photos: [126, 57]},
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [9, 129, 1]},
+                {layout: 'TwoInARow', photos: [125, 126]},
+                {layout: 'TwoInARow', photos: [57, 4]},
                 {layout: 'Spacer'},
                 {layout: 'LandscapeOneBigTwoMedium', photos: [90, 86, 21]},
+<<<<<<< HEAD
                 {layout: 'ThreeInARow', photos: [120, 108, 19]},
 >>>>>>> 66e6e2a (feat: Update layouts)
+=======
+                {layout: 'ThreeInARow', photos: [120, 19, 108]},
+>>>>>>> b66962e (feat: Add new layout)
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
 <<<<<<< HEAD
                 {layout: 'OneLandscapeTwoPortraitEachSide', photos: [144, 142, 1, 145, 141]},

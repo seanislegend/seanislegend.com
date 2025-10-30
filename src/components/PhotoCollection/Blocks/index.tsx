@@ -501,9 +501,9 @@ export const ContentSection: React.FC<ContentSection> = ({
             data-testid="content-section"
             data-theme={theme}
         >
-            <Column className="col-span-12 md:col-span-8">
+            <Column className="sm:w-10/12 md:w-8/12 xl:w-7/12">
                 <Heading2>{title}</Heading2>
-                <Markdown className="mt-4 max-w-7xl text-pretty">{content}</Markdown>
+                <Markdown className="mt-4 text-pretty">{content}</Markdown>
                 {((ctaLabel && ctaUrl) || (secondaryCtaLabel && secondaryCtaUrl)) && (
                     <ButtonList className="mt-8">
                         {ctaLabel && ctaUrl && <Button href={ctaUrl}>{ctaLabel}</Button>}
