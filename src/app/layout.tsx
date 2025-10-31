@@ -15,6 +15,7 @@ const RootLayout = async ({children}: Props) => (
         <html
             lang="en"
             className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}
+            data-scroll-behavior="smooth"
         >
             <head>
                 <script
