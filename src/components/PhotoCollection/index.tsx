@@ -1,3 +1,6 @@
+'use client';
+
+import PhotoCollectionBlocksThemeWrapper from '@/components/PhotoCollection/ThemeWrapper';
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Container from '@/components/UI/Container';
 import PhotoCollectionBlocks, {ContentSection} from './Blocks';
@@ -9,13 +12,19 @@ import {layouts} from './layouts';
 interface Props
     extends Pick<
         PhotoCollection,
-        'contentSectionsCollection' | 'photosCollection' | 'slug' | 'tagsCollection' | 'title'
+        | 'contentSectionsCollection'
+        | 'layoutType'
+        | 'photosCollection'
+        | 'slug'
+        | 'tagsCollection'
+        | 'title'
     > {
     linksTo?: 'collection' | 'photo';
 }
 
 const PhotosCollection: React.FC<Props> = ({
     contentSectionsCollection,
+    layoutType,
     linksTo = 'photo',
     photosCollection,
     tagsCollection,
@@ -36,12 +45,16 @@ const PhotosCollection: React.FC<Props> = ({
         const photo = photos[blockPhotos[index]];
         if (!photo) return null;
 
-        let path = `/${photo.collection || slug}`;
+        let path = '';
 
-        if (linksTo === 'photo') {
-            path = `${path}/${photo.slug}#photo`;
-        } else {
-            path = `${path}#${photo.slug}`;
+        if (layoutType === 'photos') {
+            path = `/${photo.collection || slug}`;
+
+            if (linksTo === 'photo') {
+                path = `${path}/${photo.slug}#photo`;
+            } else {
+                path = `${path}#${photo.slug}`;
+            }
         }
 
         return (
@@ -59,8 +72,11 @@ const PhotosCollection: React.FC<Props> = ({
         );
     };
 
-    const renderSection = (index: number) => {
-        const section = sections[index];
+    const renderSection = (index: number | string) => {
+        const section =
+            typeof index === 'number'
+                ? sections[index]
+                : sections.find(section => section.id === index);
         if (!section) return null;
 
         return <ContentSection key={section.title} {...section} />;
@@ -69,21 +85,27 @@ const PhotosCollection: React.FC<Props> = ({
     const renderTags = () => {
         if (!tags.length) return null;
         return (
-            <Container className="my-8 !px-0" key="tags">
+            <Container className="my-8 px-0!" key="tags">
                 <AllTagsList items={tags} />
             </Container>
         );
     };
 
+    const hasThemedLayout = layout?.some(block => block.theme);
+    const blocksProps = {
+        blocks: layoutWithTags ?? layout,
+        renderPhoto,
+        renderSection,
+        renderTags
+    };
+    const BlocksComponent = hasThemedLayout
+        ? PhotoCollectionBlocksThemeWrapper
+        : PhotoCollectionBlocks;
+
     return (
         <div className="animate-in animate-out fill-mode-forwards mx-4 opacity-0 transition-opacity delay-100 duration-500 md:mx-8">
             {layout ? (
-                <PhotoCollectionBlocks
-                    blocks={layoutWithTags ?? layout}
-                    renderPhoto={renderPhoto}
-                    renderSection={renderSection}
-                    renderTags={renderTags}
-                />
+                <BlocksComponent {...blocksProps} />
             ) : (
                 <>
                     <Grid>

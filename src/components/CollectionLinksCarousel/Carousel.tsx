@@ -42,7 +42,7 @@ const CollectionLinksCarousel: React.FC<Props> = ({links = []}) => {
             ref={shuffleLinks}
         >
             <strong className="font-medium">Featured:</strong>
-            <div className="relative h-8 flex-grow overflow-hidden">
+            <div className="relative h-8 grow overflow-hidden">
                 {currentLink && (
                     <div
                         key={currentIndex}

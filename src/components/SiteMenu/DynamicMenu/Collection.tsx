@@ -38,7 +38,7 @@ const DynamicMenuCollection: React.FC<Props> = ({hasNavigationWrapper = true, li
                         alt={link.title}
                         blurDataURL={link.photo!.base64}
                         className={clsx(
-                            'absolute inset-0 object-cover transition-opacity duration-300 ease-in-out group-hover/link:opacity-60 hover:duration-100',
+                            'absolute inset-0 object-cover transition-opacity duration-300 ease-in-out group-hover/link:opacity-60',
                             isActive && 'opacity-60'
                         )}
                         fill={true}

@@ -1,3 +1,4 @@
+import {draftMode} from 'next/headers';
 import {layouts} from '@/components/PhotoCollection/layouts';
 import {fetchCollection} from '@/utils/contentful';
 import {getOgImage} from '@/utils/og';
@@ -13,8 +14,11 @@ const getFirstFourLandscapePhotos = (photos: Photo[]) => {
 
 const handler = async ({params}: Props) => {
     const allParams = await params;
-    const collection = await fetchCollection(allParams.dynamicPage);
+    const draftModeConfig = await draftMode();
+    const collection = await fetchCollection(allParams.dynamicPage, draftModeConfig.isEnabled);
     if (!collection) return;
+
+    console.log(collection);
 
     const metaPhotos = collection.metaPhotosCollection.items;
     if (metaPhotos.length > 0) {
@@ -35,8 +39,10 @@ const handler = async ({params}: Props) => {
         .filter(photoIndex => photoIndex !== undefined)
         .map(photoIndex => photos[photoIndex]);
     const landscapePhotos = getFirstFourLandscapePhotos(allPhotos);
+
     return getOgImage(landscapePhotos);
 };
 
-export const runtime = 'edge';
+export const contentType = 'image/jpg';
+
 export default handler;

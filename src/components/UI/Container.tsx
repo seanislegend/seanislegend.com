@@ -3,7 +3,7 @@ import clsx from 'clsx';
 interface Props {
     asChild?: boolean;
     className?: string;
-    ref?: React.RefObject<HTMLDivElement>;
+    ref?: React.RefObject<HTMLDivElement | null>;
 }
 
 const Container: React.FC<React.PropsWithChildren<Props>> = ({
@@ -13,7 +13,7 @@ const Container: React.FC<React.PropsWithChildren<Props>> = ({
     ref,
     ...props
 }) => (
-    <div {...props} className={clsx('mx-auto max-w-[90rem] px-4 md:px-8', className)} ref={ref}>
+    <div {...props} className={clsx('mx-auto max-w-360 px-4 md:px-8', className)} ref={ref}>
         {children}
     </div>
 );

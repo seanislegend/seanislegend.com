@@ -1,13 +1,12 @@
 'use client';
 
-import {useCallback, useEffect, useRef} from 'react';
-import {useSetAtom} from 'jotai';
+import {useRef} from 'react';
 import Markdown from '@/components/Markdown';
 import PageHeaderButtonList from '@/components/PageHeader/ButtonList';
 import Container from '@/components/UI/Container';
 import {Heading1} from '@/components/UI/Headings';
 import TitleTextGrid from '@/components/UI/TitleTextGrid';
-import {pageHeaderDataAtom} from '@/utils/store';
+import useSiteHeaderTitle from '@/hooks/useSiteHeaderTitle';
 
 interface Props {
     backUrl?: string;
@@ -31,21 +30,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     titleAside
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const setPageHeaderData = useSetAtom(pageHeaderDataAtom);
-
-    const updatePageHeaderData = useCallback(() => {
-        if (containerRef.current && (pageTitle || title)) {
-            setPageHeaderData({
-                height: containerRef.current.offsetHeight - 60,
-                path: backUrl ?? '',
-                title: pageTitle ?? title ?? ''
-            });
-        }
-    }, [backUrl, pageTitle, setPageHeaderData, title]);
-
-    useEffect(() => {
-        updatePageHeaderData();
-    }, [updatePageHeaderData]);
+    useSiteHeaderTitle(containerRef, pageTitle || '', title || '', backUrl || '');
 
     return (
         <Container>

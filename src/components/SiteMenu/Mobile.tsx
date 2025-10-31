@@ -54,7 +54,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                     data-testid="mobile-menu-collections-navigation"
                                 >
                                     <SiteMenuLink
-                                        className="!text-lg"
+                                        className="text-lg!"
                                         href="/collections"
                                         onClick={() => setIsMenuOpen(false)}
                                     >
@@ -86,7 +86,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                     </SiteMenuLink>
                                     {MENU_ITEMS.map(link => (
                                         <SiteMenuLink
-                                            className="!text-lg"
+                                            className="text-lg!"
                                             key={link.href}
                                             href={link.href}
                                             onClick={() => setIsMenuOpen(false)}

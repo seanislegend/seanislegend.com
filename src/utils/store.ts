@@ -5,3 +5,5 @@ export const pageHeaderDataAtom = atom<{height: number; path: string; title: str
     path: '',
     title: ''
 });
+
+export const activeThemeAtom = atom<{id: string; theme: string}>({id: '', theme: ''});
