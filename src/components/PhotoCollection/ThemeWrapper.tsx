@@ -1,5 +1,6 @@
 'use client';
 
+import {Activity, Suspense} from 'react';
 import PhotoCollectionTabNavigation from '@/components/PhotoCollection/TabNavigation';
 import useAdapativeTheme from '@/hooks/useAdapativeTheme';
 import PhotoCollectionBlocks from './Blocks';
@@ -21,21 +22,24 @@ const PhotoCollectionBlocksThemeWrapper: React.FC<Props> = ({
     return (
         <>
             {tabBlock && <PhotoCollectionTabNavigation tabs={tabBlock.props?.tabs} />}
-            {themedBlocks.map((block, index) => (
-                <section
-                    key={`${block.theme}-${index}`}
-                    id={block.id ?? ''}
-                    ref={sectionRef(index)}
-                    data-testid="themed-section"
-                >
-                    <PhotoCollectionBlocks
-                        blocks={block.items ?? []}
-                        renderPhoto={renderPhoto}
-                        renderSection={renderSection}
-                        renderTags={renderTags}
-                    />
-                </section>
-            ))}
+            <Suspense>
+                {themedBlocks.map((block, index) => (
+                    <Activity key={`${block.theme}-${index}`}>
+                        <section
+                            id={block.id ?? ''}
+                            ref={sectionRef(index)}
+                            data-testid="themed-section"
+                        >
+                            <PhotoCollectionBlocks
+                                blocks={block.items ?? []}
+                                renderPhoto={renderPhoto}
+                                renderSection={renderSection}
+                                renderTags={renderTags}
+                            />
+                        </section>
+                    </Activity>
+                ))}
+            </Suspense>
         </>
     );
 };
