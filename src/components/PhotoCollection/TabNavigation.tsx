@@ -15,7 +15,7 @@ const PhotoCollectionTabNavigation: React.FC<Props> = ({tabs}) => {
 
     return (
         <div
-            className="bg-active-theme/90 top-site-header-scrolled sticky z-50 -mx-4 overflow-x-auto px-1 whitespace-nowrap backdrop-blur-2xl transition-colors duration-500 will-change-transform md:-mx-8"
+            className="bg-active-theme/90 top-site-header-scrolled sticky z-50 -mx-4 overflow-x-auto px-2 whitespace-nowrap backdrop-blur-2xl transition-colors duration-500 will-change-transform md:-mx-8"
             data-slot="tab-navigation"
         >
             <ul className="flex w-full flex-row gap-1 py-1">
