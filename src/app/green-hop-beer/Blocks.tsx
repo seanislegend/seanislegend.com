@@ -16,7 +16,10 @@ const GreenHopBlocks: React.FC<Props> = ({layout, photos, sections}) => {
         if (!photo) return null;
         return (
             <PhotoThumbnail
+<<<<<<< HEAD
                 alt={photo.thumbnail?.description}
+=======
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
                 base64={photo.base64}
                 columnSize={columnSize}
                 id={photo.sys?.id}
@@ -31,7 +34,11 @@ const GreenHopBlocks: React.FC<Props> = ({layout, photos, sections}) => {
     const renderSection = (index: number | string) => {
         const section = sections.find(s => s.id === index);
         if (!section) return null;
+<<<<<<< HEAD
         return <ContentSection key={section.id ?? section.title} {...section} />;
+=======
+        return <ContentSection key={section.title} {...section} />;
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
     };
 
     const blocks = layout.items ?? [];

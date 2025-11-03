@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 'use client';
 
 import {useCallback, useEffect, useMemo, useRef} from 'react';
+=======
+import {useEffect, useRef} from 'react';
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
 import {useMotionValueEvent, useScroll} from 'framer-motion';
 import {useAtom} from 'jotai';
 import {activeThemeAtom} from '@/utils/store';
@@ -20,6 +24,7 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
     const containerScroll = useScroll({
         offset: ['start end', 'end end'],
         target: containerRef
+<<<<<<< HEAD
     });
     const section0Progress = useScroll({
         offset: ['80px end', 'end end'],
@@ -94,11 +99,59 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
 
         // check from last to first to find the most recent section in progress
         for (let i = progresses.length - 1; i >= 0; i--) {
+=======
+    }).scrollYProgress;
+    const section0Progress = useScroll({
+        offset: ['80px end', 'end end'],
+        target: sections[0]?.targetRef
+    }).scrollYProgress;
+    const section1Progress = useScroll({
+        offset: ['80px end', 'end end'],
+        target: sections[1]?.targetRef
+    }).scrollYProgress;
+    const section2Progress = useScroll({
+        offset: ['80px end', 'end end'],
+        target: sections[2]?.targetRef
+    }).scrollYProgress;
+    // add in the default theme which shows in the header
+    const sectionsWithDefault = [{id: 'default', theme: 'sky-blue'}, ...sections];
+
+    const updateTheme = (themeId: string) => {
+        if (themeId === activeTheme.theme) return;
+        if (!themeContainerRef.current) return;
+
+        const theme = sectionsWithDefault.find(section => section.theme === themeId);
+        if (!theme) return;
+
+        setActiveTheme(theme);
+        themeContainerRef.current.setAttribute('data-theme', theme.theme);
+    };
+
+    useMotionValueEvent(containerScroll, 'change', () => {
+        if (!themeContainerRef.current) return;
+
+        const firstSectionProgress = section0Progress.get();
+
+        // if the first element hasn't been scrolled yet, go back to default page theme
+        if (firstSectionProgress === 0) {
+            updateTheme('sky-blue');
+            return;
+        }
+
+        // check sections in reverse order to find the current section being viewed
+        // as user scrolls, earlier sections complete (progress = 1) and later sections become active
+        const progresses = [firstSectionProgress, section1Progress.get(), section2Progress.get()];
+
+        // check from last to first to find the most recent section in progress
+        for (let i = progresses.length - 1; i >= 0; i--) {
+            console.log(progresses[i], sections[i]);
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
             if (progresses[i] > 0 && sections[i]) {
                 updateTheme(sections[i].theme);
                 return;
             }
         }
+<<<<<<< HEAD
     }, [
         containerScroll,
         section0Progress,
@@ -109,13 +162,20 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
     ]);
 
     useMotionValueEvent(containerScroll.scrollYProgress, 'change', handleScroll);
+=======
+    });
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
 
     useEffect(() => {
         const firstPageTheme = document.querySelector('[data-theme]');
         if (!firstPageTheme) return;
         themeContainerRef.current = firstPageTheme as HTMLDivElement;
+<<<<<<< HEAD
         handleScroll();
     }, [handleScroll]);
+=======
+    }, []);
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
 };
 
 export default useTheme;

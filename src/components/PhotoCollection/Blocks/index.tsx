@@ -5,7 +5,6 @@ import ButtonList from '@/components/Button/List';
 import Markdown from '@/components/Markdown';
 import Column from '@/components/PhotoCollection/Column';
 import Grid from '@/components/PhotoCollection/Grid';
-import AnimateAppearence from '@/components/UI/AnimateAppearence';
 import Condition from '@/components/UI/Condition';
 import Container from '@/components/UI/Container';
 import {Heading2} from '@/components/UI/Headings';
@@ -473,14 +472,21 @@ export const ContentSection: React.FC<ContentSection> = ({
     theme,
     title
 }) => (
+<<<<<<< HEAD
 <<<<<<< HEAD:src/components/PhotoCollection/Blocks/index.tsx
+=======
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
     <Container
         className={clsx([contentSectionThemes[theme ?? 'default'], 'content-section my-12'])}
         data-testid="content-section"
         data-theme={theme}
     >
         <Column className="sm:w-10/12 md:w-8/12 xl:w-7/12">
+<<<<<<< HEAD
             {title && <Heading2>{title}</Heading2>}
+=======
+            <Heading2>{title}</Heading2>
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
             <Markdown className="mt-4 text-pretty">{content}</Markdown>
             {((ctaLabel && ctaUrl) || (secondaryCtaLabel && secondaryCtaUrl)) && (
                 <ButtonList className="mt-8">
@@ -494,6 +500,7 @@ export const ContentSection: React.FC<ContentSection> = ({
             )}
         </Column>
     </Container>
+<<<<<<< HEAD
 =======
     <AnimateAppearence delay={0.2} duration={2} initialY={20}>
         <Container
@@ -518,6 +525,8 @@ export const ContentSection: React.FC<ContentSection> = ({
         </Container>
     </AnimateAppearence>
 >>>>>>> 9b7c06c (feat: Add animated entrance for blocks):src/components/PhotoCollection/Blocks.tsx
+=======
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
 );
 
 const ContentSectionGroup: React.FC<SectionBlockComponent> = ({renderSection, sections}) => (

@@ -21,6 +21,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
     return (
         <>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <section
                 className="relative mx-auto px-4 py-8 sm:py-12 md:px-8 xl:pb-20 2xl:max-w-360"
 =======
@@ -44,6 +45,10 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 <<<<<<< HEAD
 =======
                 className="relative pt-6 pb-10 sm:py-12 xl:py-20"
+=======
+            <section
+                className="relative mx-auto px-4 py-8 sm:py-12 md:px-8 xl:pb-20 2xl:max-w-360"
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
                 data-slot="page-header"
                 ref={containerRef}
             >
@@ -70,11 +75,27 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                     >
 =======
                 <h1 className="text-pretty uppercase md:sr-only">
-                    <span className="text-[14vmin] leading-[13vmin] font-black text-[#2C370B] sm:text-[8vmin] sm:leading-[7vmin]">
+                    <span
+                        className="font-black text-[#2C370B]"
+                        style={{
+                            fontSize: 'clamp(4rem, 12vw, 8rem)',
+                            lineHeight: 'clamp(4rem, 12vw, 8rem)'
+                        }}
+                    >
                         {title1}
                     </span>
+<<<<<<< HEAD
                     <span className="mt-[2vmin] block text-[5vmin] leading-[5vmin] font-medium text-[#909732] uppercase sm:mt-[1vmin]">
 >>>>>>> c2f5263 (feat: Improve mobile layout)
+=======
+                    <span
+                        className="block leading-none font-medium text-[#909732] uppercase"
+                        style={{
+                            fontSize: 'clamp(1.5rem, 5vw, 3rem)',
+                            marginTop: 'clamp(1rem, 2vw, 1.5rem)'
+                        }}
+                    >
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
                         {title2}
                     </span>
                 </h1>
@@ -229,6 +250,9 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
                 <div className="-mt-32 w-full px-2 sm:-mt-38 lg:-mt-40 xl:-mt-48">
                     <div className="h-30 bg-linear-to-t from-[#cedfe6] to-transparent" />
 =======
@@ -252,6 +276,7 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
 >>>>>>> afa9840 (feat: Add gradient to reduce flash when scrolling between light/dark themes)
                     <Image
                         alt={heroPhoto.title}
+<<<<<<< HEAD
                         className="sticky top-0 z-50 w-full rounded"
 <<<<<<< HEAD
                         height={heroPhoto.fullSize.height}
@@ -270,9 +295,12 @@ const GreenHopHeader: React.FC<React.PropsWithChildren<Props>> = ({collection}) 
                         width={heroPhoto.fullSize.width}
 >>>>>>> 6e14c22 (fix: Quality size)
 =======
+=======
+                        className="w-full rounded"
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
                         height={heroPhoto.hero.height}
                         priority={true}
-                        quality={85}
+                        quality={80}
                         src={heroPhoto.hero.url}
                         width={heroPhoto.hero.width}
 >>>>>>> 6b9976b (feat: Add original size hero image)

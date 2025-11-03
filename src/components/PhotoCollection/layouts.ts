@@ -128,6 +128,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
     'green-hop-beer': [
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             theme: 'sky-blue',
             component: 'Tabs',
@@ -141,6 +142,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
         },
         {
 >>>>>>> f03deb6 (feat: UI tweaks)
+=======
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
             theme: 'olive-green',
             id: 'harvest',
             items: [
@@ -151,6 +154,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                     layout: 'ThreeInARow',
                     photos: [127, 128, 55]
                 },
+<<<<<<< HEAD
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [129, 112, 146]},
                 {layout: 'TwoInARow', photos: [125, 126]},
                 {layout: 'TwoInARow', photos: [57, 4]},
@@ -163,6 +167,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
 >>>>>>> b66962e (feat: Add new layout)
                 },
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [9, 129, 1]},
+=======
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [129, 112, 1]},
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
                 {layout: 'TwoInARow', photos: [125, 126]},
                 {layout: 'TwoInARow', photos: [57, 4]},
                 {layout: 'Spacer'},
@@ -172,6 +179,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
 >>>>>>> 66e6e2a (feat: Update layouts)
 =======
                 {layout: 'ThreeInARow', photos: [120, 19, 108]},
+<<<<<<< HEAD
 >>>>>>> b66962e (feat: Add new layout)
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
 <<<<<<< HEAD
@@ -200,11 +208,17 @@ export const layouts: Record<string, PhotoBlock[]> = {
 >>>>>>> cc2a8e5 (feat: UI tweaks)
 =======
                 {layout: 'CarouselPhotoBLock', photos: [34, 6, 66, 23, 44, 47, 33, 12]},
+=======
+                {layout: 'Spacer'},
+                // {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
+                {layout: 'TwoInARow', photos: [13, 16]},
+                {layout: 'CarouselPhotoBLock', photos: [34, 66, 23, 6, 12, 33, 47, 44]},
+>>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
                 {layout: 'ThreeInARow', photos: [52, 123, 22]},
                 {layout: 'TwoInARow', photos: [58, 53]},
                 {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
                 {layout: 'TwoInARow', photos: [83, 74]},
-                {layout: 'CarouselPhotoBLock', photos: [109, 136, 107, 106, 26, 61]},
+                {layout: 'CarouselPhotoBLock', photos: [109, 136, 107, 61, 106, 26]},
                 {layout: 'LandscapeTwoBigFourSmall', photos: [56, 135, 71, 139, 138, 99]}
 >>>>>>> 66e6e2a (feat: Update layouts)
             ]
@@ -214,8 +228,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
             id: 'brew',
             items: [
                 {layout: 'ContentSection', sections: ['brew-section-intro']},
-                {layout: 'LandscapeOneBigTwoMedium', photos: [65, 84, 43], props: {reverse: true}},
                 {layout: 'ContentSection', sections: ['fp-beer-recipe']},
+                {layout: 'LandscapeOneBigTwoMedium', photos: [65, 84, 43], props: {reverse: true}},
                 {layout: 'OnePortraitTwoLandscape', photos: [79, 49, 5], props: {reverse: true}},
                 {layout: 'ContentSection', sections: ['pullquote-2']},
                 {layout: 'FourInARow', photos: [147, 149, 41, 150], props: {reverse: true}},
