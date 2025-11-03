@@ -145,7 +145,7 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
         if (!themeContainerRef.current) return;
 
         const firstSectionProgress = section0Progress.scrollYProgress.get();
-        console.log(firstSectionProgress);
+
         // if the first element hasn't been scrolled yet, go back to default page theme
         if (firstSectionProgress === 0) {
             updateTheme('sky-blue');
