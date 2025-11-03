@@ -251,6 +251,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 },
                 {layout: 'ThreeInARow', photos: [20, 32, 46]},
 <<<<<<< HEAD
+<<<<<<< HEAD
                 {layout: 'ContentSection', sections: ['pullquote-5']},
                 {layout: 'TwoInARow', photos: [133, 62]},
 =======
@@ -270,6 +271,16 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'OneLandscapeOnePortrait', photos: [48, 148]},
                 {layout: 'ContentSection', sections: ['pullquote-4']},
                 {layout: 'TwoInARow', photos: [68, 80]},
+=======
+                {layout: 'ContentSection', sections: ['pullquote-5']},
+                {layout: 'TwoInARow', photos: [133, 62]},
+                {layout: 'ContentSection', sections: ['ip-beer-recipe']},
+                {layout: 'OnePortraitSmallTwoLandscapeMedium', photos: [92, 30, 94]},
+                {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [31, 95, 97]},
+                {layout: 'TwoInARow', photos: [48, 68]},
+                {layout: 'ContentSection', sections: ['pullquote-4']},
+                {layout: 'TwoInARow', photos: [25, 80]},
+>>>>>>> fec0233 (chore: Update quotes)
                 {layout: 'ContentSection', sections: ['wbp-beer-recipe']},
                 {layout: 'ThreeInARow', photos: [75, 27, 82]},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [93, 63, 42]}
