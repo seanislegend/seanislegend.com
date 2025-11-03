@@ -8,7 +8,11 @@ interface Props {
 }
 
 export const BASE_TEXT_CLASS =
+<<<<<<< HEAD
     'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] text-[15px] prose-blockquote:text-lg @2xl:prose-blockquote:text-xl';
+=======
+    'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] text-[15px] leading-relaxed prose-blockquote:text-lg @2xl:prose-blockquote:text-xl';
+>>>>>>> 2cb674e (feat: Improve mobile UI)
 
 const MarkdownLink = (props: any) => (
     <a
