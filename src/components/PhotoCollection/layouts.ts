@@ -210,7 +210,6 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'CarouselPhotoBLock', photos: [34, 6, 66, 23, 44, 47, 33, 12]},
 =======
                 {layout: 'Spacer'},
-                // {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
                 {layout: 'TwoInARow', photos: [13, 16]},
                 {layout: 'CarouselPhotoBLock', photos: [34, 66, 23, 6, 12, 33, 47, 44]},
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
@@ -218,6 +217,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoInARow', photos: [58, 53]},
                 {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
                 {layout: 'TwoInARow', photos: [83, 74]},
+                {layout: 'ContentSection', sections: ['pullquote-1']},
                 {layout: 'CarouselPhotoBLock', photos: [109, 136, 107, 61, 106, 26]},
                 {layout: 'LandscapeTwoBigFourSmall', photos: [56, 135, 71, 139, 138, 99]}
 >>>>>>> 66e6e2a (feat: Update layouts)
@@ -232,7 +232,11 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'LandscapeOneBigTwoMedium', photos: [65, 84, 43], props: {reverse: true}},
                 {layout: 'OnePortraitTwoLandscape', photos: [79, 49, 5], props: {reverse: true}},
                 {layout: 'ContentSection', sections: ['pullquote-2']},
+<<<<<<< HEAD
                 {layout: 'FourInARow', photos: [147, 149, 41, 150], props: {reverse: true}},
+=======
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [41, 118, 117]},
+>>>>>>> 23966e5 (chore: Update arrangement)
                 {layout: 'ContentSection', sections: ['beak-beer-recipe']},
                 {layout: 'TwoInARow', photos: [15, 77]},
                 {layout: 'OnePortraitTwoLandscape', photos: [89, 8, 11]},
@@ -284,6 +288,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'Spacer'},
                 {layout: 'TwoInARow', photos: [73, 45]},
 <<<<<<< HEAD
+<<<<<<< HEAD
                 {layout: 'ContentSection', sections: ['green-hop-festivals']},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [40, 96, 69]},
                 {layout: 'ContentSection', sections: ['pullquote-3']},
@@ -292,7 +297,11 @@ export const layouts: Record<string, PhotoBlock[]> = {
 =======
                 {layout: 'Spacer'},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [40, 96, 69]},
+=======
+>>>>>>> 23966e5 (chore: Update arrangement)
                 {layout: 'ContentSection', sections: ['green-hop-festivals']},
+                {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [40, 96, 69]},
+                {layout: 'ContentSection', sections: ['pullquote-3']},
                 {layout: 'OneLandScapeTwoPortrait', photos: [87, 102, 110]},
                 {layout: 'ThreeInARow', photos: [88, 36, 111]},
 >>>>>>> cc2a8e5 (feat: UI tweaks)
