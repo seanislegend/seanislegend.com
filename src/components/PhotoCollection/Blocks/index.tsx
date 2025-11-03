@@ -483,10 +483,14 @@ export const ContentSection: React.FC<ContentSection> = ({
     >
         <Column className="sm:w-10/12 md:w-8/12 xl:w-7/12">
 <<<<<<< HEAD
+<<<<<<< HEAD
             {title && <Heading2>{title}</Heading2>}
 =======
             <Heading2>{title}</Heading2>
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+            {title && <Heading2>{title}</Heading2>}
+>>>>>>> b325194 (feat: Only render section list when there are multiple)
             <Markdown className="mt-4 text-pretty">{content}</Markdown>
             {((ctaLabel && ctaUrl) || (secondaryCtaLabel && secondaryCtaUrl)) && (
                 <ButtonList className="mt-8">
