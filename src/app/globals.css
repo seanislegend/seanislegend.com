@@ -337,11 +337,17 @@
             @apply mt-24;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         > div:has(> div > figure:only-child) {
             @apply mt-0;
         }
 =======
 >>>>>>> f03deb6 (feat: UI tweaks)
+=======
+        > div:has(> div > figure:only-child) {
+            @apply mt-0;
+        }
+>>>>>>> c98fda3 (feat: Improve typography)
 
         h2 {
             @apply !text-3xl normal-case lg:!text-5xl;
