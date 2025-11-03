@@ -10,11 +10,15 @@ const CarouselPhotoBLock: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}
     return (
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="relative mx-auto max-w-440">
             <div className="relative overflow-hidden" ref={emblaRef}>
                 <div className="flex cursor-grab gap-x-2 active:cursor-grabbing">
 =======
         <div className="-mx-4 md:-mx-8">
+=======
+        <div className="mx-auto max-w-440">
+>>>>>>> 985b955 (feat: Add container)
             <div className="relative overflow-hidden" ref={emblaRef}>
                 <div className="flex gap-x-2">
 >>>>>>> 2cb674e (feat: Improve mobile UI)
