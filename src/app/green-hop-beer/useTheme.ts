@@ -144,8 +144,11 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
 
         // check from last to first to find the most recent section in progress
         for (let i = progresses.length - 1; i >= 0; i--) {
+<<<<<<< HEAD
             console.log(progresses[i], sections[i]);
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+>>>>>>> 9a04b6b (chore: Remove logs)
             if (progresses[i] > 0 && sections[i]) {
                 updateTheme(sections[i].theme);
                 return;
