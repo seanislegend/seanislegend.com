@@ -25,7 +25,7 @@ const GreenHopNavigationButton: React.FC<Props> = ({id, label, targetRef}) => {
     return (
         <>
             <m.div
-                className="absolute top-0 left-0 z-51 h-full w-full rounded bg-white/10"
+                className="absolute top-0 left-0 z-51 h-full w-full bg-white/10"
                 style={{originX: 0, scaleX: scrollYProgress}}
             />
             <Link

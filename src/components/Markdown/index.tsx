@@ -9,10 +9,14 @@ interface Props {
 
 export const BASE_TEXT_CLASS =
 <<<<<<< HEAD
+<<<<<<< HEAD
     'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] text-[15px] prose-blockquote:text-lg @2xl:prose-blockquote:text-xl';
 =======
     'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] text-[15px] leading-relaxed prose-blockquote:text-lg @2xl:prose-blockquote:text-xl';
 >>>>>>> 2cb674e (feat: Improve mobile UI)
+=======
+    'dark:prose-invert prose-p:tracking-[.0185rem] md:prose-p:text-base md:prose-p:leading-normal 2xl:prose-p:text-[17px] text-[15px] prose-blockquote:text-lg @2xl:prose-blockquote:text-xl';
+>>>>>>> 6937ca2 (feat: Mobile UI improvements)
 
 const MarkdownLink = (props: any) => (
     <a
@@ -77,7 +81,7 @@ const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}
                         <figure className="border-accent border-l-4 py-4 pl-8">
                             <blockquote>
                                 <p className="text-xl/snug! text-pretty italic lg:text-2xl/snug! xl:text-3xl/snug!">
-                                    &ldquo;{quote}&rdquo;
+                                    &ldquo;{quote.trim()}&rdquo;
                                 </p>
 >>>>>>> c98fda3 (feat: Improve typography)
                             </blockquote>

@@ -55,16 +55,19 @@ const GreenHopNavigation: React.FC<Props> = ({containerRef, items}) => {
         <AnimatePresence>
             {isVisible && (
                 <m.div
-                    className="h-site-header-scrolled fixed top-2 right-0 z-50 mr-2"
+                    className="xl:h-site-header-scrolled top-site-header-scrolled bg-theme-bg/95 sticky right-0 z-50 p-1 xl:fixed xl:top-2 xl:mr-2 xl:bg-transparent xl:p-0"
                     data-slot="tab-navigation"
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
                     exit={{opacity: 0}}
                     transition={{duration: 0.3, ease: 'easeInOut'}}
                 >
-                    <ul className="flex w-full flex-row items-center justify-end gap-x-2">
+                    <ul className="flex w-full flex-row items-center gap-x-2 xl:justify-end">
                         {items.map(item => (
-                            <li key={item.id} className="bg-accent relative rounded">
+                            <li
+                                key={item.id}
+                                className="bg-accent relative w-full overflow-hidden rounded xl:w-auto"
+                            >
                                 <Button {...item} />
                             </li>
                         ))}
