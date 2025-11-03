@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 26c10d7 (feat: Redesign navigation)
 'use client';
 
 import {useCallback, useEffect, useMemo, useRef} from 'react';

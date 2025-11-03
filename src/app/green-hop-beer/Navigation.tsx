@@ -1,5 +1,6 @@
 'use client';
 
+<<<<<<< HEAD
 import {use} from 'react';
 import clsx from 'clsx';
 import {useAtomValue} from 'jotai';
@@ -28,6 +29,50 @@ const GreenHopNavigation: React.FC = () => {
                 ))}
             </ul>
         </nav>
+=======
+import {useState} from 'react';
+import {AnimatePresence, useMotionValueEvent, useScroll} from 'motion/react';
+import * as m from 'motion/react-m';
+import Button from './Button';
+
+interface Props {
+    containerRef: React.RefObject<HTMLDivElement | null>;
+    items: GreenHopNavigationItem[];
+}
+
+const GreenHopNavigation: React.FC<Props> = ({containerRef, items}) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const {scrollYProgress} = useScroll({target: containerRef, offset: ['start end', 'end end']});
+
+    useMotionValueEvent(scrollYProgress, 'change', () => {
+        const newIsVisible = scrollYProgress.get() > 0;
+        if (newIsVisible !== isVisible) {
+            setIsVisible(newIsVisible);
+        }
+    });
+
+    return (
+        <AnimatePresence>
+            {isVisible && (
+                <m.div
+                    className="h-site-header-scrolled fixed top-2 right-0 z-50 mr-2"
+                    data-slot="tab-navigation"
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{duration: 0.3, ease: 'easeInOut'}}
+                >
+                    <ul className="flex w-full flex-row items-center justify-end gap-x-2">
+                        {items.map(item => (
+                            <li key={item.id} className="bg-accent relative rounded">
+                                <Button {...item} />
+                            </li>
+                        ))}
+                    </ul>
+                </m.div>
+            )}
+        </AnimatePresence>
+>>>>>>> 26c10d7 (feat: Redesign navigation)
     );
 };
 

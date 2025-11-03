@@ -20,8 +20,8 @@ const GreenHopSections: React.FC = () => {
 import {useRef} from 'react';
 import {layouts} from '@/components/PhotoCollection/layouts';
 import Blocks from './Blocks';
+import Navigation from './Navigation';
 import useTheme from './useTheme';
-import Tab from '@/app/green-hop-beer/Tab';
 
 interface Props {
     collection: PhotoCollection;
@@ -37,6 +37,7 @@ const GreenHopSections: React.FC<Props> = ({collection}) => {
     const photos = collection.photosCollection.items;
     const sections = collection.contentSectionsCollection?.items || [];
     const layout = layouts?.['green-hop-beer'];
+<<<<<<< HEAD
 <<<<<<< HEAD
     const shareText =
         'From Bine to Glass: A behind-the-scenes look at the 2025 hop harvest from @seanislegend, following fresh green hops from Hukins Hops in Kent to breweries like Five Points and Beak as they brew with them within hours of picking.';
@@ -80,25 +81,19 @@ const GreenHopSections: React.FC<Props> = ({collection}) => {
         </div>
 =======
     const tabs = [
+=======
+    const navItems: GreenHopNavigationItem[] = [
+>>>>>>> 26c10d7 (feat: Redesign navigation)
         {id: 'harvest', label: 'Harvest', targetRef: harvestRef, theme: 'olive-green'},
         {id: 'brew', label: 'Brew', targetRef: brewRef, theme: 'blue-grey'},
         {id: 'celebrate', label: 'Celebrate', targetRef: celebrateRef, theme: 'amber-red'}
     ];
 
-    useTheme(containerRef, tabs);
+    useTheme(containerRef, navItems);
 
     return (
         <>
-            <div
-                className="bg-active-theme/90 top-site-header-scrolled border-accent sticky z-50 overflow-x-auto border-2 border-t-0 whitespace-nowrap backdrop-blur-2xl transition-colors duration-500 will-change-transform"
-                data-slot="tab-navigation"
-            >
-                <ul className="divide-accent flex w-full flex-row divide-x-2">
-                    {tabs.map((tab, index) => (
-                        <Tab key={tab.id} index={index} {...tab} />
-                    ))}
-                </ul>
-            </div>
+            <Navigation containerRef={containerRef} items={navItems} />
             <div className="px-4 md:px-8" ref={containerRef}>
                 <section id="harvest" ref={harvestRef}>
                     <Blocks layout={layout[0]} photos={photos} sections={sections} />
