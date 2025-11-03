@@ -35,10 +35,14 @@ const GreenHopBlocks: React.FC<Props> = ({layout, photos, sections}) => {
         const section = sections.find(s => s.id === index);
         if (!section) return null;
 <<<<<<< HEAD
+<<<<<<< HEAD
         return <ContentSection key={section.id ?? section.title} {...section} />;
 =======
         return <ContentSection key={section.title} {...section} />;
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+        return <ContentSection key={section.id ?? section.title} {...section} />;
+>>>>>>> 1b8a0fc (fix: Use ID for keys)
     };
 
     const blocks = layout.items ?? [];
