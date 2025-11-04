@@ -95,7 +95,11 @@ const GreenHopSections: React.FC<Props> = ({collection}) => {
         <>
             <Navigation containerRef={containerRef} items={navItems} />
             <div className="px-4 md:px-8" ref={containerRef}>
-                <section id="harvest" ref={harvestRef}>
+                <section
+                    className="[&_.content-section>div:first-of-type]:mt-16!"
+                    id="harvest"
+                    ref={harvestRef}
+                >
                     <Blocks layout={layout[0]} photos={photos} sections={sections} />
                 </section>
                 <section id="brew" ref={brewRef}>
