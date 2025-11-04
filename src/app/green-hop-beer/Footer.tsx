@@ -1,8 +1,13 @@
 'use client';
 
+<<<<<<< HEAD
 import {useState} from 'react';
 import coverImage from '../../../public/images/green-hop-zine-cover-preview.jpg';
 import Image from 'next/image';
+=======
+import {Activity, useState} from 'react';
+import Button from '@/components/Button';
+>>>>>>> db8bfdd (feat: Add newsletter subscribe)
 import Markdown from '@/components/Markdown';
 import {Heading2} from '@/components/UI/Headings';
 import NewsletterForm from './Newsletter/Form';
@@ -11,6 +16,7 @@ const GreenHopFooter = () => {
     const [showNewsletterForm, setShowNewsletterForm] = useState(false);
 
     return (
+<<<<<<< HEAD
         <footer className="bg-accent mt-4 gap-8 rounded p-8 md:mt-8 xl:gap-16 xl:py-12">
             <div className="mx-auto flex max-w-300 flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex shrink-0 items-center justify-center sm:w-[200px] sm:py-8 md:w-[280px] xl:w-[350px]">
@@ -32,6 +38,26 @@ const GreenHopFooter = () => {
                     <div className="mt-4 sm:max-w-100">
                         <NewsletterForm />
                     </div>
+=======
+        <footer className="bg-accent mt-4 flex flex-col justify-between gap-8 rounded p-8 sm:flex-row md:mt-8 xl:gap-16 xl:py-12">
+            <div className="w-[200px] shrink-0 md:w-[280px] xl:w-[350px]">Image here</div>
+            <div className="grow">
+                <Heading2>From Bine to Glass &mdash; Print Edition</Heading2>
+                <Markdown className="mt-4 text-pretty sm:max-w-10/12">
+                    Be the first to know when the print edition launches. Including additional
+                    photography and content, this will be a limited edition print run. Register your
+                    interest to receive 10% off the final price when it becomes available.
+                </Markdown>
+                <div className="mt-4">
+                    <Activity mode={showNewsletterForm ? 'visible' : 'hidden'}>
+                        <NewsletterForm />
+                    </Activity>
+                    {!showNewsletterForm && (
+                        <Button onClick={() => setShowNewsletterForm(true)} theme="black">
+                            Register interest
+                        </Button>
+                    )}
+>>>>>>> db8bfdd (feat: Add newsletter subscribe)
                 </div>
             </div>
         </footer>

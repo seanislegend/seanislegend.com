@@ -1,7 +1,10 @@
 'use server';
 
 import {track} from '@vercel/analytics/server';
+<<<<<<< HEAD
 import {checkBotId} from 'botid/server';
+=======
+>>>>>>> db8bfdd (feat: Add newsletter subscribe)
 import {Resend} from 'resend';
 import isEmail from 'validator/es/lib/isEmail';
 
@@ -17,6 +20,7 @@ export const subscribeToNewsletter = async (
     prevState: SubscribeState | null,
     formData: FormData
 ): Promise<SubscribeState> => {
+<<<<<<< HEAD
     const verification = await checkBotId();
     if (verification.isBot) {
         return {
@@ -26,6 +30,8 @@ export const subscribeToNewsletter = async (
         };
     }
 
+=======
+>>>>>>> db8bfdd (feat: Add newsletter subscribe)
     const email = formData.get('email') as string;
 
     try {

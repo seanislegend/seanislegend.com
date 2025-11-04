@@ -1,7 +1,10 @@
 import {Activity, useActionState} from 'react';
 import clsx from 'clsx';
 import Markdown from '@/components/Markdown';
+<<<<<<< HEAD
 import TextLink from '@/components/UI/TextLink';
+=======
+>>>>>>> db8bfdd (feat: Add newsletter subscribe)
 import SubmitButton from './Submit';
 import {type SubscribeState, subscribeToNewsletter} from './actions';
 
@@ -31,6 +34,10 @@ const NewsletterForm = () => {
                                 id="email"
                                 name="email"
                                 placeholder="you@example.com"
+<<<<<<< HEAD
+=======
+                                ref={node => node?.focus()}
+>>>>>>> db8bfdd (feat: Add newsletter subscribe)
                                 required
                                 type="email"
                             />
@@ -47,6 +54,7 @@ const NewsletterForm = () => {
                     </Markdown>
                 )}
             </form>
+<<<<<<< HEAD
             <small className="text-dimmed-text text-xs">
                 By continuing you agree to the{' '}
                 <a
@@ -59,6 +67,8 @@ const NewsletterForm = () => {
                 </a>
                 .
             </small>
+=======
+>>>>>>> db8bfdd (feat: Add newsletter subscribe)
         </div>
     );
 };

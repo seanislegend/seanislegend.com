@@ -20,6 +20,7 @@ const GreenHopSections: React.FC = () => {
 import {useRef} from 'react';
 import {layouts} from '@/components/PhotoCollection/layouts';
 import Blocks from './Blocks';
+import Footer from './Footer';
 import Navigation from './Navigation';
 import useTheme from './useTheme';
 
@@ -107,6 +108,7 @@ const GreenHopSections: React.FC<Props> = ({collection}) => {
                 </section>
                 <section id="celebrate" ref={celebrateRef}>
                     <Blocks layout={layout[2]} photos={photos} sections={sections} />
+                    <Footer />
                 </section>
             </div>
         </>
