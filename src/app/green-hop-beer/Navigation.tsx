@@ -33,7 +33,7 @@ const GreenHopNavigation: React.FC = () => {
 import {useState} from 'react';
 import {AnimatePresence, useMotionValueEvent, useScroll} from 'motion/react';
 import * as m from 'motion/react-m';
-import Button from './Button';
+import Button from './NavigationButton';
 
 interface Props {
     containerRef: React.RefObject<HTMLDivElement | null>;
