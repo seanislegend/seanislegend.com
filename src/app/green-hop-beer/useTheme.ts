@@ -69,6 +69,7 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
     const handleScroll = useCallback(() => {
         if (!themeContainerRef.current) return;
 
+<<<<<<< HEAD
         // check sections in reverse order to find the current section being viewed
         // as user scrolls, earlier sections complete (progress = 1) and later sections become active
         const progresses = [
@@ -155,13 +156,42 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
             return;
         }
 
+=======
+>>>>>>> 1522c72 (feat: Improve theme detection for scroll restoration)
         // check sections in reverse order to find the current section being viewed
         // as user scrolls, earlier sections complete (progress = 1) and later sections become active
         const progresses = [
-            firstSectionProgress,
+            section0Progress.scrollYProgress.get(),
             section1Progress.scrollYProgress.get(),
             section2Progress.scrollYProgress.get()
         ];
+
+        // if all progresses are 0, scroll tracking may not have started, but doesn't mean we're at the top
+        // so we need to check current container scroll and then find the closest section
+        if (progresses.every(p => p === 0)) {
+            const containerY = containerScroll.scrollY.get();
+            const closestSection = sections.reduce((closest, section) => {
+                const sectionY = section.targetRef.current?.offsetTop ?? 0;
+                return Math.abs(containerY - sectionY) <
+                    Math.abs(containerY - (closest.targetRef.current?.offsetTop ?? 0))
+                    ? section
+                    : closest;
+            }, sections[0]);
+
+            // if the first section is the closest section, we need to check if we're near this
+            // section or if we're near the header (which requires a different theme, but is not
+            // part of the sections we track progress of)
+            if (closestSection.id === sections[0].id) {
+                const containerY = containerScroll.scrollY.get();
+                const sectionY = sections[0].targetRef.current?.offsetTop ?? 0;
+                if (containerY < sectionY + 100) {
+                    updateTheme('sky-blue');
+                    return;
+                }
+            }
+
+            updateTheme(closestSection.theme);
+        }
 
         // check from last to first to find the most recent section in progress
         for (let i = progresses.length - 1; i >= 0; i--) {
@@ -177,6 +207,9 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
         }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1522c72 (feat: Improve theme detection for scroll restoration)
     }, [
         containerScroll,
         section0Progress,
@@ -185,6 +218,7 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
         sections,
         updateTheme
     ]);
+<<<<<<< HEAD
 
     useMotionValueEvent(containerScroll.scrollYProgress, 'change', handleScroll);
 =======
@@ -192,6 +226,8 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
 =======
     }, [section0Progress, section1Progress, section2Progress, sections, updateTheme]);
+=======
+>>>>>>> 1522c72 (feat: Improve theme detection for scroll restoration)
 
     useMotionValueEvent(containerScroll.scrollYProgress, 'change', handleScroll);
 >>>>>>> 4dcae18 (feat: Add default theme change before scroll)
