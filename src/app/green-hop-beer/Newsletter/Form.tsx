@@ -35,9 +35,12 @@ const NewsletterForm = () => {
                                 name="email"
                                 placeholder="you@example.com"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                                 ref={node => node?.focus()}
 >>>>>>> db8bfdd (feat: Add newsletter subscribe)
+=======
+>>>>>>> 235a780 (feat: Remove steps from form)
                                 required
                                 type="email"
                             />

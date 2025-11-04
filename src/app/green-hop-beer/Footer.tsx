@@ -1,6 +1,7 @@
 'use client';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {useState} from 'react';
 import coverImage from '../../../public/images/green-hop-zine-cover-preview.jpg';
 import Image from 'next/image';
@@ -8,6 +9,9 @@ import Image from 'next/image';
 import {Activity, useState} from 'react';
 import Button from '@/components/Button';
 >>>>>>> db8bfdd (feat: Add newsletter subscribe)
+=======
+import {useState} from 'react';
+>>>>>>> 235a780 (feat: Remove steps from form)
 import Markdown from '@/components/Markdown';
 import {Heading2} from '@/components/UI/Headings';
 import NewsletterForm from './Newsletter/Form';
@@ -49,6 +53,7 @@ const GreenHopFooter = () => {
                     interest to receive 10% off the final price when it becomes available.
                 </Markdown>
                 <div className="mt-4">
+<<<<<<< HEAD
                     <Activity mode={showNewsletterForm ? 'visible' : 'hidden'}>
                         <NewsletterForm />
                     </Activity>
@@ -58,6 +63,9 @@ const GreenHopFooter = () => {
                         </Button>
                     )}
 >>>>>>> db8bfdd (feat: Add newsletter subscribe)
+=======
+                    <NewsletterForm />
+>>>>>>> 235a780 (feat: Remove steps from form)
                 </div>
             </div>
         </footer>
