@@ -25,6 +25,9 @@ const GreenHopNavigationButton: React.FC<Props> = ({id, label, targetRef}) => {
 
     return (
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6a8d225 (feat: Add accents for buttons)
         <Link
             className={clsx(
                 'text-theme-text bg-accent relative z-52 block overflow-hidden rounded px-8 py-4 text-center text-xs leading-0 font-medium uppercase underline-offset-4 transition duration-300 ease-in-out md:text-[13px]',
@@ -35,6 +38,7 @@ const GreenHopNavigationButton: React.FC<Props> = ({id, label, targetRef}) => {
         >
             <m.span
                 className="bg-button-accent absolute top-0 left-0 z-51 h-full w-full"
+<<<<<<< HEAD
                 style={{originX: 0, scaleX: scrollYProgress}}
             />
             <span className="relative z-52">{label}</span>
@@ -57,6 +61,12 @@ const GreenHopNavigationButton: React.FC<Props> = ({id, label, targetRef}) => {
             </Link>
         </>
 >>>>>>> 6d69635 (chore: Rename)
+=======
+                style={{originX: 0, scaleX: scrollYProgress}}
+            />
+            <span className="relative z-52">{label}</span>
+        </Link>
+>>>>>>> 6a8d225 (feat: Add accents for buttons)
     );
 };
 
