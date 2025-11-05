@@ -5,6 +5,7 @@
 import {useState} from 'react';
 import coverImage from '../../../public/images/green-hop-zine-cover-preview.jpg';
 import Image from 'next/image';
+<<<<<<< HEAD
 =======
 import {Activity, useState} from 'react';
 import Button from '@/components/Button';
@@ -12,6 +13,8 @@ import Button from '@/components/Button';
 =======
 import {useState} from 'react';
 >>>>>>> 235a780 (feat: Remove steps from form)
+=======
+>>>>>>> b331690 (feat Add zine cover)
 import Markdown from '@/components/Markdown';
 import {Heading2} from '@/components/UI/Headings';
 import NewsletterForm from './Newsletter/Form';
@@ -21,6 +24,9 @@ const GreenHopFooter = () => {
 
     return (
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b331690 (feat Add zine cover)
         <footer className="bg-accent mt-4 gap-8 rounded p-8 md:mt-8 xl:gap-16 xl:py-12">
             <div className="mx-auto flex max-w-300 flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex shrink-0 items-center justify-center sm:w-[200px] sm:py-8 md:w-[280px] xl:w-[350px]">
@@ -42,6 +48,7 @@ const GreenHopFooter = () => {
                     <div className="mt-4 sm:max-w-100">
                         <NewsletterForm />
                     </div>
+<<<<<<< HEAD
 =======
         <footer className="bg-accent mt-4 flex flex-col justify-between gap-8 rounded p-8 sm:flex-row md:mt-8 xl:gap-16 xl:py-12">
             <div className="w-[200px] shrink-0 md:w-[280px] xl:w-[350px]">Image here</div>
@@ -66,6 +73,8 @@ const GreenHopFooter = () => {
 =======
                     <NewsletterForm />
 >>>>>>> 235a780 (feat: Remove steps from form)
+=======
+>>>>>>> b331690 (feat Add zine cover)
                 </div>
             </div>
         </footer>
