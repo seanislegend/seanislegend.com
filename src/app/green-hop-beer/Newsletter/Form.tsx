@@ -2,9 +2,13 @@ import {Activity, useActionState} from 'react';
 import clsx from 'clsx';
 import Markdown from '@/components/Markdown';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import TextLink from '@/components/UI/TextLink';
 =======
 >>>>>>> db8bfdd (feat: Add newsletter subscribe)
+=======
+import TextLink from '@/components/UI/TextLink';
+>>>>>>> 9ce4c35 (feat: Add privacy policy)
 import SubmitButton from './Submit';
 import {type SubscribeState, subscribeToNewsletter} from './actions';
 
@@ -58,6 +62,9 @@ const NewsletterForm = () => {
                 )}
             </form>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9ce4c35 (feat: Add privacy policy)
             <small className="text-dimmed-text text-xs">
                 By continuing you agree to the{' '}
                 <a
@@ -70,8 +77,11 @@ const NewsletterForm = () => {
                 </a>
                 .
             </small>
+<<<<<<< HEAD
 =======
 >>>>>>> db8bfdd (feat: Add newsletter subscribe)
+=======
+>>>>>>> 9ce4c35 (feat: Add privacy policy)
         </div>
     );
 };
