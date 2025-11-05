@@ -155,6 +155,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                     photos: [127, 128, 55]
                 },
 <<<<<<< HEAD
+<<<<<<< HEAD
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [129, 112, 146]},
                 {layout: 'TwoInARow', photos: [125, 126]},
                 {layout: 'TwoInARow', photos: [57, 4]},
@@ -170,8 +171,13 @@ export const layouts: Record<string, PhotoBlock[]> = {
 =======
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [129, 112, 1]},
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [129, 112, 146]},
+>>>>>>> 75557d8 (feat: Add new blocks)
                 {layout: 'TwoInARow', photos: [125, 126]},
                 {layout: 'TwoInARow', photos: [57, 4]},
+                {layout: 'Spacer'},
+                {layout: 'OneLandscapeTwoPortraitEachSide', photos: [143, 142, 1, 144, 145]},
                 {layout: 'Spacer'},
                 {layout: 'LandscapeOneBigTwoMedium', photos: [90, 86, 21]},
 <<<<<<< HEAD
@@ -233,10 +239,14 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'OnePortraitTwoLandscape', photos: [79, 49, 5], props: {reverse: true}},
                 {layout: 'ContentSection', sections: ['pullquote-2']},
 <<<<<<< HEAD
+<<<<<<< HEAD
                 {layout: 'FourInARow', photos: [147, 149, 41, 150], props: {reverse: true}},
 =======
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [41, 118, 117]},
 >>>>>>> 23966e5 (chore: Update arrangement)
+=======
+                {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [147, 41, 117]},
+>>>>>>> 75557d8 (feat: Add new blocks)
                 {layout: 'ContentSection', sections: ['beak-beer-recipe']},
                 {layout: 'TwoInARow', photos: [15, 77]},
                 {layout: 'OnePortraitTwoLandscape', photos: [89, 8, 11]},
@@ -277,10 +287,14 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['ip-beer-recipe']},
                 {layout: 'OnePortraitSmallTwoLandscapeMedium', photos: [92, 30, 94]},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [31, 95, 97]},
-                {layout: 'TwoInARow', photos: [48, 68]},
+                {layout: 'OneLandscapeOnePortrait', photos: [48, 148]},
                 {layout: 'ContentSection', sections: ['pullquote-4']},
+<<<<<<< HEAD
                 {layout: 'TwoInARow', photos: [25, 80]},
 >>>>>>> fec0233 (chore: Update quotes)
+=======
+                {layout: 'TwoInARow', photos: [68, 80]},
+>>>>>>> 75557d8 (feat: Add new blocks)
                 {layout: 'ContentSection', sections: ['wbp-beer-recipe']},
                 {layout: 'ThreeInARow', photos: [75, 27, 82]},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [93, 63, 42]}
