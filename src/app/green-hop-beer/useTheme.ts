@@ -166,9 +166,10 @@ const useTheme = (containerRef: Props['containerRef'], sections: Props['sections
             section2Progress.scrollYProgress.get()
         ];
 
-        // if all progresses are 0, scroll tracking may not have started, but doesn't mean we're at the top
-        // so we need to check current container scroll and then find the closest section
-        if (progresses.every(p => p === 0)) {
+        // if all progresses are effectively 0, scroll tracking may not have started,
+        // but doesn't mean we're at the top, so we need to check current container scroll and then find
+        // the closest section. we also have a small threshold to account for debounced scroll events
+        if (progresses.every(p => p < 0.05)) {
             const containerY = containerScroll.scrollY.get();
             const closestSection = sections.reduce((closest, section) => {
                 const sectionY = section.targetRef.current?.offsetTop ?? 0;
