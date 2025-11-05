@@ -1,6 +1,7 @@
 'use client';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {use} from 'react';
 import {track} from '@vercel/analytics/react';
 import {layouts} from '@/components/PhotoCollection/layouts';
@@ -18,26 +19,34 @@ const GreenHopSections: React.FC = () => {
     useTheme(refs.container, navItems);
 =======
 import {useRef} from 'react';
+=======
+import {use} from 'react';
+import dynamic from 'next/dynamic';
+>>>>>>> 6b7e938 (feat: Simplify prop usage)
 import {layouts} from '@/components/PhotoCollection/layouts';
 import Blocks from './Blocks';
-import Footer from './Footer';
-import Navigation from './Navigation';
+import {GreenHopContext} from './ContextWrapper';
 import useTheme from './useTheme';
 
-interface Props {
-    collection: PhotoCollection;
-}
+const Footer = dynamic(() => import('./Footer'), {ssr: false});
 
+<<<<<<< HEAD
 const GreenHopSections: React.FC<Props> = ({collection}) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const harvestRef = useRef<HTMLDivElement>(null);
     const brewRef = useRef<HTMLDivElement>(null);
     const celebrateRef = useRef<HTMLDivElement>(null);
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+const GreenHopSections: React.FC = () => {
+    const {collection, navItems, refs} = use(GreenHopContext);
+    useTheme(refs.container, navItems);
+>>>>>>> 6b7e938 (feat: Simplify prop usage)
 
     const photos = collection.photosCollection.items;
     const sections = collection.contentSectionsCollection?.items || [];
     const layout = layouts?.['green-hop-beer'];
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     const shareText =
@@ -113,6 +122,26 @@ const GreenHopSections: React.FC<Props> = ({collection}) => {
             </div>
         </>
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+
+    return (
+        <div className="px-4 md:px-8" ref={refs.container}>
+            <section
+                className="[&_.content-section>div:first-of-type]:mt-16!"
+                id="harvest"
+                ref={refs.harvest}
+            >
+                <Blocks layout={layout[0]} photos={photos} sections={sections} />
+            </section>
+            <section id="brew" ref={refs.brew}>
+                <Blocks layout={layout[1]} photos={photos} sections={sections} />
+            </section>
+            <section id="celebrate" ref={refs.celebrate}>
+                <Blocks layout={layout[2]} photos={photos} sections={sections} />
+                <Footer />
+            </section>
+        </div>
+>>>>>>> 6b7e938 (feat: Simplify prop usage)
     );
 };
 

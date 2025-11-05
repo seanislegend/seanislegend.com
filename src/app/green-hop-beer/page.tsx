@@ -15,6 +15,7 @@ import {fetchCollection} from '@/utils/contentful';
 import {getCollectionSeo} from '@/utils/helpers';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ContextWrapper from './ContextWrapper';
 import Layout from './Layout';
 import Navigation from './Navigation';
@@ -23,6 +24,11 @@ import Navigation from './Navigation';
 =======
 import Layout from './Layout';
 >>>>>>> 26c10d7 (feat: Redesign navigation)
+=======
+import ContextWrapper from './ContextWrapper';
+import Layout from './Layout';
+import Navigation from './Navigation';
+>>>>>>> 6b7e938 (feat: Simplify prop usage)
 import PageHeader from './PageHeader';
 import Sections from './Sections';
 
@@ -47,6 +53,7 @@ const GreenHopPage = async () => {
                 <Navigation />
                 <Sections />
             </ContextWrapper>
+<<<<<<< HEAD
             {process.env.NEXT_PUBLIC_ADMIN_TOOLS === '1' && (
                 <PhotosCollectionAdminTools collection={collection} />
             )}
@@ -58,6 +65,8 @@ const GreenHopPage = async () => {
 >>>>>>> 26c10d7 (feat: Redesign navigation)
             <PageHeader collection={collection} />
             <Sections collection={collection} />
+=======
+>>>>>>> 6b7e938 (feat: Simplify prop usage)
             {process.env.NEXT_PUBLIC_ADMIN_TOOLS === '1' && (
                 <PhotosCollectionAdminTools collection={collection} />
             )}
