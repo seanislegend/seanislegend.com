@@ -201,10 +201,14 @@
         --accent: #7a301c;
         --button-bg: #7a301c;
 <<<<<<< HEAD
+<<<<<<< HEAD
         --button-accent: #622617;
 =======
         --button-accent: #622616;
 >>>>>>> 6a8d225 (feat: Add accents for buttons)
+=======
+        --button-accent: #622617;
+>>>>>>> 64b3171 (feat: Add button accents for dark more)
         --button-bg-hover: #662816;
         --button-text: #f3f2ec;
         --photo-bg: color-mix(in srgb, var(--bg) 40%, transparent);
