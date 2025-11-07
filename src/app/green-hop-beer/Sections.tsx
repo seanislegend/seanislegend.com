@@ -24,6 +24,7 @@ import {use} from 'react';
 import dynamic from 'next/dynamic';
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
 import {layouts} from '@/components/PhotoCollection/layouts';
+import ShareButtons from '@/components/ShareButtons';
 import Blocks from './Blocks';
 import {GreenHopContext} from './ContextWrapper';
 import useTheme from './useTheme';
@@ -142,6 +143,12 @@ const GreenHopSections: React.FC = () => {
                 ref={refs.celebrate}
             >
                 <Blocks layout={layout[2]} photos={photos} sections={sections} />
+                <div className="-mt-8">
+                    <ShareButtons
+                        path="/green-hop-beer"
+                        text="From Bine to Glass: Brewing with green hops from the 2025 harvest."
+                    />
+                </div>
                 <Footer />
             </section>
         </div>
