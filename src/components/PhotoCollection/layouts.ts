@@ -186,6 +186,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
 =======
                 {layout: 'ThreeInARow', photos: [120, 19, 108]},
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> b66962e (feat: Add new layout)
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
 <<<<<<< HEAD
@@ -216,6 +217,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'CarouselPhotoBLock', photos: [34, 6, 66, 23, 44, 47, 33, 12]},
 =======
                 {layout: 'Spacer'},
+=======
+                {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
+>>>>>>> 37a62a8 (feat: Update layouts)
                 {layout: 'TwoInARow', photos: [13, 16]},
                 {layout: 'CarouselPhotoBLock', photos: [34, 66, 23, 6, 12, 33, 47, 44]},
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
@@ -223,7 +227,6 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoInARow', photos: [58, 53]},
                 {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
                 {layout: 'TwoInARow', photos: [83, 74]},
-                {layout: 'ContentSection', sections: ['pullquote-1']},
                 {layout: 'CarouselPhotoBLock', photos: [109, 136, 107, 61, 106, 26]},
                 {layout: 'LandscapeTwoBigFourSmall', photos: [56, 135, 71, 139, 138, 99]}
 >>>>>>> 66e6e2a (feat: Update layouts)

@@ -127,7 +127,7 @@ const GreenHopSections: React.FC = () => {
     return (
         <div className="px-4 md:px-8" ref={refs.container}>
             <section
-                className="[&_.content-section>div:first-of-type]:mt-16!"
+                className="[&_.content-section>div:first-child]:mt-16!"
                 id="harvest"
                 ref={refs.harvest}
             >
@@ -136,7 +136,11 @@ const GreenHopSections: React.FC = () => {
             <section id="brew" ref={refs.brew}>
                 <Blocks layout={layout[1]} photos={photos} sections={sections} />
             </section>
-            <section id="celebrate" ref={refs.celebrate}>
+            <section
+                className="[&_.content-section:last-child>div:last-of-type]:mt-0!"
+                id="celebrate"
+                ref={refs.celebrate}
+            >
                 <Blocks layout={layout[2]} photos={photos} sections={sections} />
                 <Footer />
             </section>
