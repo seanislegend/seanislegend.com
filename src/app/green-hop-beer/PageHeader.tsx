@@ -2,6 +2,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {use, useRef, useState} from 'react';
 import * as m from 'motion/react-m';
 =======
@@ -10,6 +11,10 @@ import {useRef} from 'react';
 =======
 import {use, useRef} from 'react';
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
+=======
+import {use, useRef, useState} from 'react';
+import * as m from 'motion/react-m';
+>>>>>>> af831ee (feat: Improve animations)
 import Image from 'next/image';
 import Markdown from '@/components/Markdown';
 import AnimateAppearence from '@/components/UI/AnimateAppearence';
@@ -39,6 +44,7 @@ import {GreenHopContext} from './ContextWrapper';
 const GreenHopHeader: React.FC = () => {
     const {collection} = use(GreenHopContext);
     const headerRef = useRef<HTMLDivElement>(null);
+    const [hasPhotoLoaded, setHasPhotoLoaded] = useState(false);
     useSiteHeaderTitle(headerRef, collection.pageTitle || '', collection.title || '', '');
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
 
@@ -59,6 +65,7 @@ const GreenHopHeader: React.FC = () => {
                             aria-hidden="true"
                             as="span"
                             className="font-black text-[#2C370B]"
+<<<<<<< HEAD
                             duration={2}
                             initialY={20}
 =======
@@ -73,6 +80,8 @@ const GreenHopHeader: React.FC = () => {
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
 =======
                             delay={0.2}
+=======
+>>>>>>> af831ee (feat: Improve animations)
                             duration={2}
                             initialY={20}
 >>>>>>> 313633c (feat: Update animated entrace for mobile)
@@ -101,7 +110,6 @@ const GreenHopHeader: React.FC = () => {
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
 =======
                             className="block leading-none font-medium text-[#909732] uppercase"
-                            delay={0.2}
                             duration={2}
                             initialY={20}
 >>>>>>> 313633c (feat: Update animated entrace for mobile)
@@ -118,6 +126,7 @@ const GreenHopHeader: React.FC = () => {
                     <AnimateAppearence
                         aria-hidden="true"
                         className="hidden md:block"
+<<<<<<< HEAD
                         duration={2}
                         initialY={20}
                     >
@@ -228,6 +237,8 @@ const GreenHopHeader: React.FC = () => {
                         aria-hidden="true"
                         className="hidden md:block"
                         delay={0.6}
+=======
+>>>>>>> af831ee (feat: Improve animations)
                         duration={2}
                         initialY={20}
                     >
@@ -293,7 +304,7 @@ const GreenHopHeader: React.FC = () => {
                         <AnimateAppearence
                             aria-hidden="true"
                             className="hidden w-7/12 md:block"
-                            delay={0.6}
+                            delay={0.2}
                             duration={4}
                             initialY={10}
                         >
@@ -307,7 +318,7 @@ const GreenHopHeader: React.FC = () => {
                         </AnimateAppearence>
                         <AnimateAppearence
                             className="md:text-md -mt-2 text-sm text-[#909732] md:mt-0 md:ml-2 lg:text-lg"
-                            delay={0.4}
+                            delay={0.2}
                             duration={2}
                         >
                             Harvest 2025
@@ -330,15 +341,22 @@ const GreenHopHeader: React.FC = () => {
             </section>
             <div className="-mt-32 w-full sm:-mt-38 lg:-mt-40 xl:-mt-48">
                 <div className="from-sky-blue h-30 bg-linear-to-t to-transparent" />
-                <Image
-                    alt={heroPhoto.title}
-                    className="w-full"
-                    height={heroPhoto.hero.height}
-                    priority={true}
-                    quality={80}
-                    src={heroPhoto.hero.url}
-                    width={heroPhoto.hero.width}
-                />
+                <m.div
+                    animate={{opacity: hasPhotoLoaded ? 1 : 0}}
+                    initial={{opacity: 0}}
+                    transition={{duration: 2}}
+                >
+                    <Image
+                        alt={heroPhoto.title}
+                        className="w-full"
+                        height={heroPhoto.hero.height}
+                        onLoad={() => setHasPhotoLoaded(true)}
+                        priority={true}
+                        quality={80}
+                        src={heroPhoto.hero.url}
+                        width={heroPhoto.hero.width}
+                    />
+                </m.div>
             </div>
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
         </>
