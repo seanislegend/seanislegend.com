@@ -228,8 +228,12 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
                 {layout: 'TwoInARow', photos: [83, 74]},
                 {layout: 'CarouselPhotoBLock', photos: [109, 136, 107, 61, 106, 26]},
+<<<<<<< HEAD
                 {layout: 'LandscapeTwoBigFourSmall', photos: [56, 135, 71, 139, 138, 99]}
 >>>>>>> 66e6e2a (feat: Update layouts)
+=======
+                {layout: 'LandscapeTwoBigFourSmall', photos: [56, 135, 153, 139, 138, 99]}
+>>>>>>> 238c090 (chore: Layout tweaks)
             ]
         },
         {
@@ -243,6 +247,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['pullquote-2']},
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 {layout: 'FourInARow', photos: [147, 149, 41, 150], props: {reverse: true}},
 =======
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [41, 118, 117]},
@@ -250,6 +255,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
 =======
                 {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [147, 41, 117]},
 >>>>>>> 75557d8 (feat: Add new blocks)
+=======
+                {layout: 'FourInARow', photos: [147, 149, 41, 150], props: {reverse: true}},
+>>>>>>> 238c090 (chore: Layout tweaks)
                 {layout: 'ContentSection', sections: ['beak-beer-recipe']},
                 {layout: 'TwoInARow', photos: [15, 77]},
                 {layout: 'OnePortraitTwoLandscape', photos: [89, 8, 11]},

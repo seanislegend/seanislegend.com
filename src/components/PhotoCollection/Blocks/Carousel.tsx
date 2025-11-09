@@ -11,6 +11,7 @@ const CarouselPhotoBLock: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="relative mx-auto max-w-440">
             <div className="relative overflow-hidden" ref={emblaRef}>
                 <div className="flex cursor-grab gap-x-2 active:cursor-grabbing">
@@ -22,6 +23,11 @@ const CarouselPhotoBLock: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}
             <div className="relative overflow-hidden" ref={emblaRef}>
                 <div className="flex gap-x-2">
 >>>>>>> 2cb674e (feat: Improve mobile UI)
+=======
+        <div className="relative mx-auto max-w-440">
+            <div className="relative overflow-hidden" ref={emblaRef}>
+                <div className="flex cursor-grab gap-x-2 active:cursor-grabbing">
+>>>>>>> 238c090 (chore: Layout tweaks)
                     {photos.map((photo, index) => (
                         <div
                             key={photo}
