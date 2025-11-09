@@ -3,9 +3,13 @@ import * as m from 'motion/react-m';
 
 interface Props extends HTMLMotionProps<'div'> {
 <<<<<<< HEAD
+<<<<<<< HEAD
     as?: keyof typeof m;
 =======
 >>>>>>> 9b7c06c (feat: Add animated entrance for blocks)
+=======
+    as?: keyof typeof m;
+>>>>>>> c1b1bb9 (feat: Allow different elements for animations)
     delay?: number;
     duration?: number;
     ease?: Easing;
@@ -15,9 +19,13 @@ interface Props extends HTMLMotionProps<'div'> {
 
 const AnimateAppearence: React.FC<React.PropsWithChildren<Props>> = ({
 <<<<<<< HEAD
+<<<<<<< HEAD
     as = 'div',
 =======
 >>>>>>> 9b7c06c (feat: Add animated entrance for blocks)
+=======
+    as = 'div',
+>>>>>>> c1b1bb9 (feat: Allow different elements for animations)
     children,
     delay = 0,
     duration = 0.5,
@@ -27,6 +35,7 @@ const AnimateAppearence: React.FC<React.PropsWithChildren<Props>> = ({
     ...props
 }) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     const Component = m[as] as React.ComponentType<HTMLMotionProps<'div'>>;
 
     return (
@@ -35,8 +44,12 @@ const AnimateAppearence: React.FC<React.PropsWithChildren<Props>> = ({
             transition={{delay, duration, ease}}
             viewport={{margin: '0px -20px 0px 100px', once: true}}
 =======
+=======
+    const Component = m[as] as React.ComponentType<HTMLMotionProps<'div'>>;
+
+>>>>>>> c1b1bb9 (feat: Allow different elements for animations)
     return (
-        <m.div
+        <Component
             initial={{opacity: 0, x: initialX, y: initialY}}
             transition={{delay, duration, ease}}
 <<<<<<< HEAD
@@ -50,10 +63,14 @@ const AnimateAppearence: React.FC<React.PropsWithChildren<Props>> = ({
         >
             {children}
 <<<<<<< HEAD
+<<<<<<< HEAD
         </Component>
 =======
         </m.div>
 >>>>>>> 9b7c06c (feat: Add animated entrance for blocks)
+=======
+        </Component>
+>>>>>>> c1b1bb9 (feat: Allow different elements for animations)
     );
 };
 
