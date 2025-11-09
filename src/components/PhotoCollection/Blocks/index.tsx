@@ -458,6 +458,17 @@ const TwoPortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderP
     </Grid>
 );
 
+const TwoPortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+    <Grid>
+        <Column className="col-span-12 md:col-span-4">{renderPhoto(photos, 0, 4)}</Column>
+        <Column className="col-span-6 md:col-span-4">{renderPhoto(photos, 1, 4)}</Column>
+        <Column className="col-span-6 flex h-full flex-col justify-between gap-8 md:col-span-4">
+            <div>{renderPhoto(photos, 2, 3)}</div>
+            <div>{renderPhoto(photos, 3, 3)}</div>
+        </Column>
+    </Grid>
+);
+
 const contentSectionThemes = {
     default: 'py-4 lg:py-6',
     callout: 'bg-accent rounded !p-6 lg:p-8 xl:p-12'
