@@ -81,6 +81,7 @@ const CopyToClipboard: React.FC<Props> = ({text, url}) => {
                 'hover:bg-accent group relative flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out',
                 {'pointer-events-none': wasCopied}
             )}
+            title="Copy to clipboard"
         >
             <m.span
                 animate={wasCopied ? 'visible' : 'hidden'}

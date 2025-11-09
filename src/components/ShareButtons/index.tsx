@@ -112,6 +112,7 @@ const ShareButtons: React.FC<Props> = ({path, text}) => {
                     href={`https://x.com/share?text=${encodeURIComponent(text)}&url=${url}`}
                     onClick={() => handleClick('x')}
                     target="_blank"
+                    title="Share on X"
                 >
                     <XIcon className="size-5" />
                 </a>
@@ -120,6 +121,7 @@ const ShareButtons: React.FC<Props> = ({path, text}) => {
                     href={`https://threads.net/intent/post?text=${encodeURIComponent(text)}&url=${url}`}
                     onClick={() => handleClick('threads')}
                     target="_blank"
+                    title="Share on Threads"
                 >
                     <ThreadsIcon className="size-5" />
                 </a>
@@ -128,6 +130,7 @@ const ShareButtons: React.FC<Props> = ({path, text}) => {
                     href={`https://bsky.app/intent/compose?text=${encodeURIComponent(`${text} ${url}`)}`}
                     onClick={() => handleClick('bluesky')}
                     target="_blank"
+                    title="Share on Bluesky"
                 >
                     <BlueskyIcon className="size-5" />
                 </a>
