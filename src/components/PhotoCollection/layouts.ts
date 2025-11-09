@@ -180,8 +180,12 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'Spacer'},
 =======
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing']},
+<<<<<<< HEAD
 >>>>>>> 43f7a82 (feat: Update layouts)
                 {layout: 'OneLandscapeTwoPortraitEachSide', photos: [143, 142, 1, 144, 145]},
+=======
+                {layout: 'OneLandscapeTwoPortraitEachSide', photos: [144, 142, 1, 145, 141]},
+>>>>>>> 35a2f2d (feat: Add new layouts)
                 {layout: 'LandscapeOneBigTwoMedium', photos: [90, 86, 21]},
 <<<<<<< HEAD
                 {layout: 'ThreeInARow', photos: [120, 108, 19]},
@@ -346,8 +350,12 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [40, 96, 69]},
                 {layout: 'ContentSection', sections: ['pullquote-3']},
                 {layout: 'OneLandScapeTwoPortrait', photos: [87, 102, 110]},
+<<<<<<< HEAD
                 {layout: 'ThreeInARow', photos: [88, 36, 111]},
 >>>>>>> cc2a8e5 (feat: UI tweaks)
+=======
+                {layout: 'TwoPortraitTwoLandscape', photos: [88, 36, 154, 155]},
+>>>>>>> 35a2f2d (feat: Add new layouts)
                 {layout: 'ContentSection', sections: ['footer']}
             ]
         }
