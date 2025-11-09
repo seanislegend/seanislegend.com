@@ -11,9 +11,13 @@ const getFirstFourLandscapePhotos = (photos: Photo[]) => {
 
 export const getCollectionOpengraphImage = async (slug: string, isDraft: boolean) => {
     const collection = await fetchCollection(slug, isDraft);
+<<<<<<< HEAD
     if (!collection) {
         return Response.json({error: 'Error rendering image'}, {status: 404});
     }
+=======
+    if (!collection) return;
+>>>>>>> 3f0d2ab (feat: Update opengraph images)
 
     const metaPhotos = collection.metaPhotosCollection.items;
     if (metaPhotos.length > 0) {
@@ -21,9 +25,13 @@ export const getCollectionOpengraphImage = async (slug: string, isDraft: boolean
     }
 
     const photos = collection.photosCollection.items;
+<<<<<<< HEAD
     if (!photos) {
         return Response.json({error: 'Error rendering image'}, {status: 404});
     }
+=======
+    if (!photos) return;
+>>>>>>> 3f0d2ab (feat: Update opengraph images)
 
     const layout = layouts?.[collection.slug];
     if (!layout) {

@@ -1,16 +1,21 @@
 import {draftMode} from 'next/headers';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {getCollectionOpengraphImage} from '@/utils/collection-opengraph-image';
 =======
 import {layouts} from '@/components/PhotoCollection/layouts';
 import {fetchCollection} from '@/utils/contentful';
 import {getOgImage} from '@/utils/og';
 >>>>>>> 4ff8ed6 (feat: Support draft mode in OG routes)
+=======
+import {getCollectionOpengraphImage} from '@/utils/collection-opengraph-image';
+>>>>>>> 3f0d2ab (feat: Update opengraph images)
 
 interface Props {
     params: Promise<{dynamicPage: string}>;
 }
 
+<<<<<<< HEAD
 const handler = async ({params}: Props) => {
     const allParams = await params;
     const draftModeConfig = await draftMode();
@@ -44,6 +49,12 @@ const handler = async ({params}: Props) => {
 
     return getOgImage(landscapePhotos);
 >>>>>>> 4ff8ed6 (feat: Support draft mode in OG routes)
+=======
+export const handler = async ({params}: Props) => {
+    const allParams = await params;
+    const draftModeConfig = await draftMode();
+    return getCollectionOpengraphImage(allParams.dynamicPage, draftModeConfig.isEnabled);
+>>>>>>> 3f0d2ab (feat: Update opengraph images)
 };
 
 export const contentType = 'image/jpg';

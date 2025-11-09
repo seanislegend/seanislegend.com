@@ -1,5 +1,8 @@
 import type {Metadata} from 'next';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3f0d2ab (feat: Update opengraph images)
 import {draftMode} from 'next/headers';
 import {notFound} from 'next/navigation';
 =======
@@ -34,11 +37,16 @@ import Sections from './Sections';
 
 const GreenHopPage = async () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     const draftModeConfig = await draftMode();
     const collection = await fetchCollection('green-hop-beer', draftModeConfig.isEnabled);
 =======
     const collection = await fetchCollection('green-hop-beer', true);
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+    const draftModeConfig = await draftMode();
+    const collection = await fetchCollection('green-hop-beer', draftModeConfig.isEnabled);
+>>>>>>> 3f0d2ab (feat: Update opengraph images)
 
     if (!collection) {
         notFound();
@@ -81,11 +89,16 @@ const GreenHopPage = async () => {
 
 export const generateMetadata = async (): Promise<Metadata | null> => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     const draftModeConfig = await draftMode();
     const collection = await fetchCollection('green-hop-beer', draftModeConfig.isEnabled);
 =======
     const collection = await fetchCollection('green-hop-beer');
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+    const draftModeConfig = await draftMode();
+    const collection = await fetchCollection('green-hop-beer', draftModeConfig.isEnabled);
+>>>>>>> 3f0d2ab (feat: Update opengraph images)
     if (!collection) return null;
 
     const collectionSeo = getCollectionSeo(collection);
