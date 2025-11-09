@@ -64,10 +64,18 @@ const GreenHopHeader: React.FC = () => {
 =======
             <section className="bg-sky-blue" data-slot="page-header" ref={headerRef}>
                 <div className="relative mx-auto px-4 py-8 sm:py-12 md:px-8 xl:pb-20 2xl:max-w-360">
-                    <h1 className="text-pretty uppercase md:sr-only">
-                        <span
+                    <h1 className="text-balance uppercase md:sr-only">
+                        <AnimateAppearence
+                            aria-hidden="true"
+                            as="span"
                             className="font-black text-[#2C370B]"
+<<<<<<< HEAD
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
+=======
+                            delay={0.2}
+                            duration={2}
+                            initialY={20}
+>>>>>>> 313633c (feat: Update animated entrace for mobile)
                             style={{
                                 fontSize: 'clamp(4rem, 12vw, 8rem)',
                                 lineHeight: 'clamp(4rem, 12vw, 8rem)'
@@ -75,10 +83,14 @@ const GreenHopHeader: React.FC = () => {
                         >
                             {title1}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 313633c (feat: Update animated entrace for mobile)
                         </AnimateAppearence>
                         <AnimateAppearence
                             aria-hidden="true"
                             as="span"
+<<<<<<< HEAD
                             className="block leading-none font-medium text-[#909732] uppercase"
                             duration={2}
                             initialY={20}
@@ -87,12 +99,19 @@ const GreenHopHeader: React.FC = () => {
                         <span
                             className="block leading-none font-medium text-[#909732] uppercase"
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
+=======
+                            className="block leading-none font-medium text-[#909732] uppercase"
+                            delay={0.2}
+                            duration={2}
+                            initialY={20}
+>>>>>>> 313633c (feat: Update animated entrace for mobile)
                             style={{
                                 fontSize: 'clamp(1.5rem, 5vw, 3rem)',
                                 marginTop: 'clamp(1rem, 2vw, 1.5rem)'
                             }}
                         >
                             {title2}
+<<<<<<< HEAD
 <<<<<<< HEAD
                         </AnimateAppearence>
                     </h1>
@@ -200,12 +219,15 @@ const GreenHopHeader: React.FC = () => {
                 <span className="mt-4 flex items-baseline justify-between lg:mt-4 xl:mt-8">
 =======
                         </span>
+=======
+                        </AnimateAppearence>
+>>>>>>> 313633c (feat: Update animated entrace for mobile)
                     </h1>
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
                     <AnimateAppearence
                         aria-hidden="true"
                         className="hidden md:block"
-                        delay={0.2}
+                        delay={0.6}
                         duration={2}
                         initialY={20}
                     >
@@ -285,23 +307,21 @@ const GreenHopHeader: React.FC = () => {
                         </AnimateAppearence>
                         <AnimateAppearence
                             className="md:text-md -mt-2 text-sm text-[#909732] md:mt-0 md:ml-2 lg:text-lg"
-                            delay={0.8}
+                            delay={0.4}
                             duration={2}
-                            initialX={-10}
-                            initialY={0}
                         >
                             Harvest 2025
                         </AnimateAppearence>
                     </span>
                     {collection.description && (
                         <AnimateAppearence
-                            className="mt-6 max-w-4xl sm:max-w-10/12 md:mt-12 2xl:max-w-6xl"
+                            className="mt-6 md:mt-12 md:max-w-10/12 2xl:max-w-6xl"
                             delay={0.6}
                             duration={1}
                             ease="easeInOut"
                             initialY={0}
                         >
-                            <Markdown className="sm:prose-p:text-base! lg:prose-p:text-lg! text-pretty">
+                            <Markdown className="sm:prose-p:text-base! lg:prose-p:text-lg! sm:text-pretty">
                                 {collection.description}
                             </Markdown>
                         </AnimateAppearence>
