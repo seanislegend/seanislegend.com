@@ -17,9 +17,13 @@ const GreenHopBlocks: React.FC<Props> = ({layout, photos, sections}) => {
         return (
             <PhotoThumbnail
 <<<<<<< HEAD
+<<<<<<< HEAD
                 alt={photo.thumbnail?.description}
 =======
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+                alt={photo.thumbnail?.description}
+>>>>>>> 2446f81 (feat: Add alt text to images)
                 base64={photo.base64}
                 columnSize={columnSize}
                 id={photo.sys?.id}
