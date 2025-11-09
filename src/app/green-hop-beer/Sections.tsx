@@ -21,8 +21,11 @@ const GreenHopSections: React.FC = () => {
 import {useRef} from 'react';
 =======
 import {use} from 'react';
+<<<<<<< HEAD
 import dynamic from 'next/dynamic';
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
+=======
+>>>>>>> 43f7a82 (feat: Update layouts)
 import {layouts} from '@/components/PhotoCollection/layouts';
 import ShareButtons from '@/components/ShareButtons';
 import Container from '@/components/UI/Container';
@@ -30,7 +33,7 @@ import Blocks from './Blocks';
 import {GreenHopContext} from './ContextWrapper';
 import useTheme from './useTheme';
 
-const Footer = dynamic(() => import('./Footer'), {ssr: false});
+// const Footer = dynamic(() => import('./Footer'), {ssr: false});
 
 <<<<<<< HEAD
 const GreenHopSections: React.FC<Props> = ({collection}) => {
@@ -150,7 +153,7 @@ const GreenHopSections: React.FC = () => {
                         text="From Bine to Glass: Brewing with green hops from the 2025 harvest."
                     />
                 </Container>
-                <Footer />
+                {/* <Footer /> */}
             </section>
         </div>
 >>>>>>> 6b7e938 (feat: Simplify prop usage)
