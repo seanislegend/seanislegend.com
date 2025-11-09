@@ -407,10 +407,14 @@ export const fetchCollection = async (
                 pageTitle
                 photoSort
 <<<<<<< HEAD
+<<<<<<< HEAD
                 photosCollection(limit: 160) {
 =======
                 photosCollection(limit: 150) {
 >>>>>>> 9fd2b6a (feat: Increase max photo limit)
+=======
+                photosCollection(limit: 160) {
+>>>>>>> 52d5b99 (chore: Increase photo limit)
                     items {
                         linkedFrom {
                             collectionCollection(limit: 5) {
