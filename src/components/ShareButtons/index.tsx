@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a76904a (feat: Add tooltips for share actions)
 import {Tooltip} from '@base-ui-components/react/tooltip';
 import {track} from '@vercel/analytics';
 import {BlueskyIcon, ThreadsIcon, XIcon} from '@/components/Icon';
@@ -59,6 +62,9 @@ const ShareButtons: React.FC<Props> = ({
         <div className="flex flex-row items-center gap-3">
             <span className="text-sm uppercase">Share</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a76904a (feat: Add tooltips for share actions)
             <Tooltip.Provider>
                 <ul className="flex flex-row gap-1">
                     <li>
@@ -120,6 +126,7 @@ const ShareButtons: React.FC<Props> = ({
                     </li>
                 </ul>
             </Tooltip.Provider>
+<<<<<<< HEAD
 =======
             <ul className="flex flex-row gap-1">
                 <li>
@@ -160,6 +167,8 @@ const ShareButtons: React.FC<Props> = ({
                 </li>
             </ul>
 >>>>>>> ba848b9 (feat: Add share buttons)
+=======
+>>>>>>> a76904a (feat: Add tooltips for share actions)
         </div>
     );
 };

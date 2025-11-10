@@ -2,18 +2,26 @@
 
 import {useState} from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {Tooltip} from '@base-ui-components/react/tooltip';
 =======
 >>>>>>> ba848b9 (feat: Add share buttons)
+=======
+import {Tooltip} from '@base-ui-components/react/tooltip';
+>>>>>>> a76904a (feat: Add tooltips for share actions)
 import {track} from '@vercel/analytics';
 import clsx from 'clsx';
 import * as m from 'motion/react-m';
 import {CheckIcon} from '@/components/Icon/Check';
 import {ClipboardIcon} from '@/components/Icon/Copy';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import ShareButtonTooltip from '@/components/ShareButtons/Tooltip';
 =======
 >>>>>>> ba848b9 (feat: Add share buttons)
+=======
+import ShareButtonTooltip from '@/components/ShareButtons/Tooltip';
+>>>>>>> a76904a (feat: Add tooltips for share actions)
 
 interface Props {
     text: string;
@@ -34,6 +42,9 @@ const CopyToClipboard: React.FC<Props> = ({text, url}) => {
 
     return (
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a76904a (feat: Add tooltips for share actions)
         <Tooltip.Root delay={0}>
             <Tooltip.Trigger
                 render={
@@ -44,6 +55,7 @@ const CopyToClipboard: React.FC<Props> = ({text, url}) => {
                         )}
                     />
                 }
+<<<<<<< HEAD
             >
                 <m.span
                     animate={wasCopied ? 'visible' : 'hidden'}
@@ -111,6 +123,39 @@ const CopyToClipboard: React.FC<Props> = ({text, url}) => {
             </m.button>
         </span>
 >>>>>>> ba848b9 (feat: Add share buttons)
+=======
+            >
+                <m.span
+                    animate={wasCopied ? 'visible' : 'hidden'}
+                    className="absolute inset-0 z-10 flex items-center justify-center"
+                    initial="hidden"
+                    transition={{duration: 0.3, ease: 'easeInOut'}}
+                    variants={{
+                        hidden: {opacity: 0, scale: 0.4},
+                        visible: {opacity: 1, scale: 1}
+                    }}
+                >
+                    <CheckIcon className="size-5 fill-current" />
+                </m.span>
+                <m.button
+                    animate={wasCopied ? 'hidden' : 'visible'}
+                    className="relative z-20"
+                    initial="visible"
+                    onClick={handleClick}
+                    title="Copy to clipboard"
+                    transition={{duration: 0.1, ease: 'easeInOut'}}
+                    type="button"
+                    variants={{
+                        hidden: {opacity: 0, scale: 0.4},
+                        visible: {opacity: 1, scale: 1}
+                    }}
+                >
+                    <ClipboardIcon className="bg-theme-bg group-hover:bg-accent size-5 fill-current transition-colors duration-200 ease-out" />
+                </m.button>
+            </Tooltip.Trigger>
+            <ShareButtonTooltip>Copy share link to clipboard</ShareButtonTooltip>
+        </Tooltip.Root>
+>>>>>>> a76904a (feat: Add tooltips for share actions)
     );
 };
 
