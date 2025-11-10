@@ -344,6 +344,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['pullquote-3']},
                 {layout: 'OneLandScapeTwoPortrait', photos: [87, 102, 110]},
                 {layout: 'TwoPortraitTwoLandscape', photos: [88, 156, 154, 155]},
+<<<<<<< HEAD
 =======
                 {layout: 'Spacer'},
                 {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [40, 96, 69]},
@@ -359,6 +360,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
 =======
                 {layout: 'TwoPortraitTwoLandscape', photos: [88, 36, 154, 155]},
 >>>>>>> 35a2f2d (feat: Add new layouts)
+=======
+>>>>>>> eb5ed4e (chore: Update layouts)
                 {layout: 'ContentSection', sections: ['footer']}
             ]
         }
