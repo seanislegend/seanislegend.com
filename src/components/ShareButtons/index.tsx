@@ -124,7 +124,7 @@ const ShareButtons: React.FC<Props> = ({
             <ul className="flex flex-row gap-1">
                 <li>
                     <a
-                        className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
+                        className="flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out hover:bg-[#000] hover:[&_svg]:scale-90"
                         href={`https://x.com/share?text=${encodeURIComponent(twitterText || text)}&url=${url}`}
                         onClick={() => handleClick('x')}
                         target="_blank"
@@ -135,7 +135,7 @@ const ShareButtons: React.FC<Props> = ({
                 </li>
                 <li>
                     <a
-                        className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
+                        className="flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out hover:bg-[#000] hover:[&_svg]:scale-90"
                         href={`https://threads.net/intent/post?text=${encodeURIComponent(threadsText || text)}&url=${url}`}
                         onClick={() => handleClick('threads')}
                         target="_blank"
@@ -146,7 +146,7 @@ const ShareButtons: React.FC<Props> = ({
                 </li>
                 <li>
                     <a
-                        className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
+                        className="flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out hover:bg-[#0085FF] hover:[&_svg]:scale-90"
                         href={`https://bsky.app/intent/compose?text=${encodeURIComponent(`${blueskyText || text} ${url}`)}`}
                         onClick={() => handleClick('bluesky')}
                         target="_blank"
@@ -156,7 +156,7 @@ const ShareButtons: React.FC<Props> = ({
                     </a>
                 </li>
                 <li>
-                    <CopyToClipboard text={text} url={url} />
+                    <CopyToClipboard text={clipboardText || text} url={url} />
                 </li>
             </ul>
 >>>>>>> ba848b9 (feat: Add share buttons)
