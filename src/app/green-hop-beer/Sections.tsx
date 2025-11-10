@@ -147,11 +147,20 @@ const GreenHopSections: React.FC = () => {
                 ref={refs.celebrate}
             >
                 <Blocks layout={layout[2]} photos={photos} sections={sections} />
-                <Container className="-mt-8">
+                <Container className="content-section -mt-8">
                     <ShareButtons
                         path="/green-hop-beer"
-                        text="From Bine to Glass: Brewing with green hops from the 2025 harvest."
+                        text="From Bine to Glass: Brewing with green ho ps from the 2025 harvest."
                     />
+                    <em className="mt-8 block text-sm text-balance opacity-50 sm:w-10/12 md:w-8/12 xl:w-7/12">
+                        Sean McEmerson is a London-based photographer specialising in capturing the
+                        stories of UK beer, breweries and the people behind them. His photography
+                        also focuses on the beauty of people, everyday life, and his travel
+                        experiences.{' '}
+                        <TextLink href="/" onClick={() => track('see-more-work-click')}>
+                            See more work.
+                        </TextLink>
+                    </em>
                 </Container>
                 {/* <Footer /> */}
             </section>
