@@ -16,6 +16,7 @@ interface Props {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const handler = async ({params}: Props) => {
     const allParams = await params;
     const draftModeConfig = await draftMode();
@@ -51,6 +52,9 @@ const handler = async ({params}: Props) => {
 >>>>>>> 4ff8ed6 (feat: Support draft mode in OG routes)
 =======
 export const handler = async ({params}: Props) => {
+=======
+const handler = async ({params}: Props) => {
+>>>>>>> 7936980 (feat: Add 404 response for missing collection/photos)
     const allParams = await params;
     const draftModeConfig = await draftMode();
     return getCollectionOpengraphImage(allParams.dynamicPage, draftModeConfig.isEnabled);
