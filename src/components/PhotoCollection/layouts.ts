@@ -204,6 +204,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'ContentSection', sections: ['hukins-green-hop-processing-2']},
                 {layout: 'TwoInARow', photos: [13, 16]},
                 {layout: 'CarouselPhotoBLock', photos: [34, 66, 101, 6, 12, 33, 47, 44]},
+<<<<<<< HEAD
                 {layout: 'ThreeInARow', photos: [52, 123, 22]},
 =======
                 {layout: 'TwoInARow', photos: [13, 16]},
@@ -234,6 +235,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
                 {layout: 'TwoInARow', photos: [13, 16]},
                 {layout: 'CarouselPhotoBLock', photos: [34, 66, 23, 6, 12, 33, 47, 44]},
 >>>>>>> 9fb203f (refactor: Isolate theme and layout abstractions added for green hop collection)
+=======
+>>>>>>> 23f089c (feat: Update layouts)
                 {layout: 'ThreeInARow', photos: [52, 123, 22]},
                 {layout: 'TwoInARow', photos: [58, 53]},
                 {layout: 'ContentSection', sections: ['wbp-hop-pickers']},
