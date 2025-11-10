@@ -78,10 +78,9 @@ const CopyToClipboard: React.FC<Props> = ({text, url}) => {
 =======
         <span
             className={clsx(
-                'hover:bg-accent group relative flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out',
+                'hover:bg-accent group relative flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out hover:[&_svg]:scale-90',
                 {'pointer-events-none': wasCopied}
             )}
-            title="Copy to clipboard"
         >
             <m.span
                 animate={wasCopied ? 'visible' : 'hidden'}
@@ -100,6 +99,7 @@ const CopyToClipboard: React.FC<Props> = ({text, url}) => {
                 className="relative z-20"
                 initial="visible"
                 onClick={handleClick}
+                title="Copy to clipboard"
                 transition={{duration: 0.1, ease: 'easeInOut'}}
                 type="button"
                 variants={{

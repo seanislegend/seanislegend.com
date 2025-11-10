@@ -24,16 +24,31 @@ const ShareButtons: React.FC<Props> = ({
 }) => {
 =======
 import {track} from '@vercel/analytics';
-import {BlueskyIcon, InstagramIcon, ThreadsIcon, XIcon} from '@/components/Icon';
+import {BlueskyIcon, ThreadsIcon, XIcon} from '@/components/Icon';
 import CopyToClipboard from '@/components/ShareButtons/CopyToClipboard';
 
 interface Props {
+    blueskyText?: string;
+    clipboardText?: string;
     path: string;
     text: string;
+    threadsText?: string;
+    twitterText?: string;
 }
 
+<<<<<<< HEAD
 const ShareButtons: React.FC<Props> = ({path, text}) => {
 >>>>>>> ba848b9 (feat: Add share buttons)
+=======
+const ShareButtons: React.FC<Props> = ({
+    blueskyText,
+    clipboardText,
+    path,
+    text,
+    threadsText,
+    twitterText
+}) => {
+>>>>>>> ba46d40 (feat: Support different text for each share action)
     const handleClick = (platform: string) => {
         track('share-click', {platform});
     };
@@ -107,34 +122,42 @@ const ShareButtons: React.FC<Props> = ({path, text}) => {
             </Tooltip.Provider>
 =======
             <ul className="flex flex-row gap-1">
-                <a
-                    className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
-                    href={`https://x.com/share?text=${encodeURIComponent(text)}&url=${url}`}
-                    onClick={() => handleClick('x')}
-                    target="_blank"
-                    title="Share on X"
-                >
-                    <XIcon className="size-5" />
-                </a>
-                <a
-                    className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
-                    href={`https://threads.net/intent/post?text=${encodeURIComponent(text)}&url=${url}`}
-                    onClick={() => handleClick('threads')}
-                    target="_blank"
-                    title="Share on Threads"
-                >
-                    <ThreadsIcon className="size-5" />
-                </a>
-                <a
-                    className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
-                    href={`https://bsky.app/intent/compose?text=${encodeURIComponent(`${text} ${url}`)}`}
-                    onClick={() => handleClick('bluesky')}
-                    target="_blank"
-                    title="Share on Bluesky"
-                >
-                    <BlueskyIcon className="size-5" />
-                </a>
-                <CopyToClipboard text={text} url={url} />
+                <li>
+                    <a
+                        className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
+                        href={`https://x.com/share?text=${encodeURIComponent(twitterText || text)}&url=${url}`}
+                        onClick={() => handleClick('x')}
+                        target="_blank"
+                        title="Share on X"
+                    >
+                        <XIcon className="size-5" />
+                    </a>
+                </li>
+                <li>
+                    <a
+                        className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
+                        href={`https://threads.net/intent/post?text=${encodeURIComponent(threadsText || text)}&url=${url}`}
+                        onClick={() => handleClick('threads')}
+                        target="_blank"
+                        title="Share on Threads"
+                    >
+                        <ThreadsIcon className="size-5" />
+                    </a>
+                </li>
+                <li>
+                    <a
+                        className="hover:bg-accent flex size-9 items-center justify-center overflow-hidden rounded transition duration-200 ease-out"
+                        href={`https://bsky.app/intent/compose?text=${encodeURIComponent(`${blueskyText || text} ${url}`)}`}
+                        onClick={() => handleClick('bluesky')}
+                        target="_blank"
+                        title="Share on Bluesky"
+                    >
+                        <BlueskyIcon className="size-5" />
+                    </a>
+                </li>
+                <li>
+                    <CopyToClipboard text={text} url={url} />
+                </li>
             </ul>
 >>>>>>> ba848b9 (feat: Add share buttons)
         </div>
