@@ -1,10 +1,8 @@
-import {Suspense} from 'react';
 import {notFound} from 'next/navigation';
 import CollectionLinksCarouselWrapper from '@/components/CollectionLinksCarousel';
 import CollectionLinksCarousel from '@/components/CollectionLinksCarousel/Carousel';
 import DefaultLayout from '@/components/Layouts/Default';
-import PageHeader from '@/components/PageHeader';
-import BackToCollectionButton from '@/components/PageHeader/BackToCollectionButton';
+import photoCollectionHeaders from '@/components/PhotoCollection/Headers';
 import {fetchAllPhotosForTag} from '@/utils/contentful';
 import {resolvePageData} from '@/utils/pageResolver';
 
@@ -53,21 +51,13 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
         }
     }
 
+    const CustomHeader = photoCollectionHeaders[collection.customHeader];
+    const PageHeader = CustomHeader || photoCollectionHeaders.default;
+    const theme = collection.customTheme ?? 'light';
+
     return (
-        <DefaultLayout theme="light">
-            <PageHeader
-                {...collection}
-                backUrl={`/${collection.slug}`}
-                ctas={ctas.filter(Boolean) as {label: string; url: string}[]}
-                description={collection?.showDescription ? collection.description : null}
-                titleAside={
-                    <div className="hidden grow flex-col justify-end md:flex" key={collection.slug}>
-                        <Suspense>
-                            <BackToCollectionButton />
-                        </Suspense>
-                    </div>
-                }
-            >
+        <DefaultLayout data-layout-type={collection.layoutType} theme={theme}>
+            <PageHeader ctas={ctas} collection={collection}>
                 {collection.slug === 'home' && <CollectionLinksCarouselWrapper />}
                 {allTagCollectionLinks.length > 0 && (
                     <CollectionLinksCarousel links={allTagCollectionLinks} />

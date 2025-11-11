@@ -1,3 +1,5 @@
+'use client';
+
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Container from '@/components/UI/Container';
 import PhotoCollectionBlocks, {ContentSection} from './Blocks';
@@ -9,13 +11,19 @@ import {layouts} from './layouts';
 interface Props
     extends Pick<
         PhotoCollection,
-        'contentSectionsCollection' | 'photosCollection' | 'slug' | 'tagsCollection' | 'title'
+        | 'contentSectionsCollection'
+        | 'layoutType'
+        | 'photosCollection'
+        | 'slug'
+        | 'tagsCollection'
+        | 'title'
     > {
     linksTo?: 'collection' | 'photo';
 }
 
 const PhotosCollection: React.FC<Props> = ({
     contentSectionsCollection,
+    layoutType,
     linksTo = 'photo',
     photosCollection,
     tagsCollection,
@@ -36,12 +44,16 @@ const PhotosCollection: React.FC<Props> = ({
         const photo = photos[blockPhotos[index]];
         if (!photo) return null;
 
-        let path = `/${photo.collection || slug}`;
+        let path = '';
 
-        if (linksTo === 'photo') {
-            path = `${path}/${photo.slug}#photo`;
-        } else {
-            path = `${path}#${photo.slug}`;
+        if (layoutType !== 'editorial') {
+            path = `/${photo.collection || slug}`;
+
+            if (linksTo === 'photo') {
+                path = `${path}/${photo.slug}#photo`;
+            } else {
+                path = `${path}#${photo.slug}`;
+            }
         }
 
         return (
@@ -59,8 +71,11 @@ const PhotosCollection: React.FC<Props> = ({
         );
     };
 
-    const renderSection = (index: number) => {
-        const section = sections[index];
+    const renderSection = (index: number | string) => {
+        const section =
+            typeof index === 'number'
+                ? sections[index]
+                : sections.find(section => section.id === index);
         if (!section) return null;
 
         return <ContentSection key={section.title} {...section} />;
@@ -69,7 +84,7 @@ const PhotosCollection: React.FC<Props> = ({
     const renderTags = () => {
         if (!tags.length) return null;
         return (
-            <Container className="my-8 !px-0" key="tags">
+            <Container className="my-8 px-0!" key="tags">
                 <AllTagsList items={tags} />
             </Container>
         );
