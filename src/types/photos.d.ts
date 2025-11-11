@@ -1,6 +1,7 @@
 declare module 'react-use-keypress';
 
 interface Image {
+    description?: string;
     height: number;
     width: number;
     url: string;
@@ -12,6 +13,7 @@ interface Photo {
     date?: string;
     description?: string;
     fullSize: Image;
+    hero: Image;
     id?: string;
     instagramLabel?: string;
     instagramUrl?: string;
@@ -35,9 +37,12 @@ interface PhotoCollection {
     };
     ctaLabel?: string;
     ctaUrl?: string;
+    customHeader?: string;
+    customTheme?: string;
     description?: string;
     isFeatured?: boolean;
     isTagPage?: boolean;
+    layoutType?: 'editorial' | 'photos' | (string & {});
     metaDescription?: string;
     metaPhotosCollection: {
         items: {

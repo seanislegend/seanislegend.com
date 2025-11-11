@@ -397,13 +397,16 @@ export const fetchCollection = async (
                 category
                 ctaLabel
                 ctaUrl
+                layoutType
+                customHeader
+                customTheme
                 description
                 isFeatured
                 isTagPage
                 showDescription
                 pageTitle
                 photoSort
-                photosCollection(limit: 120) {
+                photosCollection(limit: 160) {
                     items {
                         linkedFrom {
                             collectionCollection(limit: 5) {
@@ -422,7 +425,13 @@ export const fetchCollection = async (
                         urlLabel
                         instagramUrl
                         instagramLabel
+                        hero: photo {
+                            height
+                            width
+                            url(transform: {format: WEBP, width: 2000})
+                        }
                         fullSize: photo {
+                            description
                             height
                             width
                             url(transform: {format: WEBP, width: 1800})
@@ -431,6 +440,7 @@ export const fetchCollection = async (
                             url(transform: {width: 1000})
                         }
                         thumbnail: photo {
+                            description
                             height
                             width
                             url(transform: {format: WEBP, width: 1600})
@@ -467,6 +477,7 @@ export const fetchCollection = async (
                         content
                         ctaLabel
                         ctaUrl
+                        id
                         secondaryCtaLabel
                         secondaryCtaUrl
                         theme
