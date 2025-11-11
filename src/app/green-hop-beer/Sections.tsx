@@ -20,7 +20,7 @@ const GreenHopSections: React.FC = () => {
     const sections = collection.contentSectionsCollection?.items || [];
     const layout = layouts?.['green-hop-beer'];
     const shareText =
-        'From Bine to Glass: A behind-the-scenes look at the 2025 hop harvest from @seanislegend, following fresh green hops from Hukins Hops in Kent to breweries like Five Points and Beak as they brew with them within hours of picking.';
+        'From Bine to Glass: A behind-the-scenes look at the 2025 hop harvest, following fresh green hops from Hukins Hops in Kent to breweries like Five Points and Beak as they brew with them only hours after picking.';
 
     return (
         <div className="px-4 md:px-8" ref={refs.container}>
