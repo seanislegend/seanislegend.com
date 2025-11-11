@@ -343,6 +343,9 @@
         h2 {
             @apply !text-3xl normal-case lg:!text-5xl;
         }
+        h3 {
+            @apply normal-case;
+        }
         p {
             @apply max-w-4xl 2xl:max-w-5xl;
         }

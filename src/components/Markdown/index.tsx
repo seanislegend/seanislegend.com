@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import clsx from 'clsx';
+import {Heading3} from '@/components/UI/Headings';
 
 interface Props {
     allowLinks?: boolean;
@@ -32,6 +33,7 @@ const Markdown: React.FC<Props> = ({allowLinks = true, children, className = ''}
                 ul: ({...props}) => (
                     <ul {...props} className="list-inside pl-4 text-base 2xl:text-[17px]" />
                 ),
+                h3: ({...props}) => <Heading3 {...props} />,
                 li: ({...props}) => <li {...props} className="list-disc" />,
                 blockquote: ({...props}) => {
                     // to get the quote text we need to find it in contentful's blockquote format

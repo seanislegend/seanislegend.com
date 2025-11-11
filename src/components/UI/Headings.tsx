@@ -9,3 +9,9 @@ export const Heading2: React.FC<React.PropsWithChildren> = ({children}) => (
         {children}
     </h2>
 );
+
+export const Heading3: React.FC<React.PropsWithChildren> = ({children}) => (
+    <h3 className="text-title-text max-w-5xl space-x-2 text-xl leading-tight font-medium text-balance break-normal uppercase underline-offset-4 group-hover:underline md:leading-tight lg:text-2xl">
+        {children}
+    </h3>
+);
