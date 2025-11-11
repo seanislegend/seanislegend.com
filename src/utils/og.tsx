@@ -19,15 +19,12 @@ const generatedOneImage = async (photo: string) => {
     return new ImageResponse(
         (
             <ImageWrapper>
-                <div
+                <img
                     key={photo}
                     tw="w-full h-full absolute"
+                    src={photo.replace('fm=webp', '').replace('w=1800', 'w=800')}
                     style={{
-                        backgroundImage: `url(${photo
-                            .replace('fm=webp', '')
-                            .replace('w=1800', 'w=800')})`,
-                        backgroundSize: '100% 100%',
-                        backgroundPosition: '0 center'
+                        objectFit: 'cover'
                     }}
                 />
             </ImageWrapper>
