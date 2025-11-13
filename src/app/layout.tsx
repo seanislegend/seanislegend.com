@@ -3,6 +3,7 @@ import {SpeedInsights} from '@vercel/speed-insights/next';
 import {GeistSans} from 'geist/font/sans';
 import {LazyMotion, domAnimation} from 'motion/react';
 import {ViewTransitions} from 'next-view-transitions';
+import Script from 'next/script';
 import config, {jsonLd} from '@/utils/config';
 import './globals.css';
 
@@ -23,6 +24,22 @@ const RootLayout = async ({children}: Props) => (
                 />
             </head>
             <body className="flex grow flex-col sm:min-h-full">
+                {process.env.GOOGLE_ADVERTISING_ID && (
+                    <Script
+                        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ADVERTISING_ID}`}
+                        strategy="afterInteractive"
+                    />
+                )}
+                {process.env.GOOGLE_ADVERTISING_ID && (
+                    <Script id="google-analytics" strategy="afterInteractive">
+                        {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', '${process.env.GOOGLE_ADVERTISING_ID}');
+                    `}
+                    </Script>
+                )}
                 <LazyMotion features={domAnimation}>{children}</LazyMotion>
                 {process.env.NODE_ENV === 'production' && (
                     <>
