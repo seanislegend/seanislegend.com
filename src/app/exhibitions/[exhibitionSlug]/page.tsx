@@ -1,15 +1,12 @@
 import type {Metadata} from 'next';
-import Image from 'next/image';
 import {notFound} from 'next/navigation';
 import Button from '@/components/Button';
 import DefaultLayout from '@/components/Layouts/Default';
 import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
-import Condition from '@/components/UI/Condition';
 import Container from '@/components/UI/Container';
 import {Heading4} from '@/components/UI/Headings';
-import TextLink from '@/components/UI/TextLink';
 import config from '@/utils/config';
 import {fetchExhibition} from '@/utils/contentful';
 
