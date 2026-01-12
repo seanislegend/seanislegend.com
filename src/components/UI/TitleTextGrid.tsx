@@ -21,7 +21,7 @@ const TitleTextGrid: React.FC<React.HTMLAttributes<HTMLDivElement> & Props> = ({
         ])}
         ref={ref}
     >
-        <div className="col-span-12 flex flex-col space-y-4 md:col-span-6">{heading}</div>
+        <div className="relative col-span-12 flex flex-col space-y-4 md:col-span-6">{heading}</div>
         <div className="col-span-1 sm:col-span-4 md:hidden" />
         <div className="hidden xl:col-span-1 xl:block" />
         <div className="col-span-11 sm:col-span-8 md:col-span-6 xl:col-span-5">
