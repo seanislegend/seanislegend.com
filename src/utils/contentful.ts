@@ -648,3 +648,67 @@ export const fetchAllPhotosForTag = async (tag: string) => {
         tag: tagData
     };
 };
+
+export const fetchExhibition = async (slug: string, preview: boolean = false) => {
+    const query = `query {
+        exhibitionCollection(
+            limit: 1,
+            preview: ${preview ? 'true' : 'false'},
+            where: {OR: [{slug: "${slug}"}, {sys: {id: "${slug}"}}]}
+        ) {
+            items {
+                address
+                addressDirectionsUrl
+                collaborator
+                description
+                detailsUrl
+                endDate
+                pageTitle
+                slug
+                startDate
+                title
+                openGraphImage {
+                    url(transform: {width: 1000})
+                }
+                photosCollection {
+                    items {
+                        date
+                        description
+                        location
+                        slug
+                        title
+                        photo {
+                            hero: photo {
+                                height
+                                width
+                                url(transform: {format: WEBP, width: 2000})
+                            }
+                            fullSize: photo {
+                                description
+                                height
+                                width
+                                url(transform: {format: WEBP, width: 1800})
+                            }
+                            openGraphImage: photo {
+                                url(transform: {width: 1000})
+                            }
+                            thumbnail: photo {
+                                description
+                                height
+                                width
+                                url(transform: {format: WEBP, width: 1600})
+                            }
+                            base64
+                            sys {
+                                id
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }`;
+    const response: any = await fetchContent(query, preview);
+
+    return response?.data?.exhibitionCollection?.items?.[0] || null;
+};
