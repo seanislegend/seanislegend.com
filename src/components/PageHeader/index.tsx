@@ -16,6 +16,7 @@ interface Props {
     }[];
     description?: string | null;
     pageTitle?: string;
+    subtitle?: string;
     title?: string;
     titleAside?: React.ReactNode;
 }
@@ -26,6 +27,7 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
     ctas,
     description,
     pageTitle,
+    subtitle,
     title,
     titleAside
 }) => {
@@ -38,6 +40,11 @@ const PageHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 className="pt-6 pb-10 sm:py-12 xl:py-20"
                 heading={
                     <>
+                        {subtitle && (
+                            <span className="mb-2 block text-sm font-medium text-gray-500 uppercase sm:absolute sm:-top-6">
+                                {subtitle}
+                            </span>
+                        )}
                         <Heading1>{pageTitle || title}</Heading1>
                         {titleAside}
                     </>
