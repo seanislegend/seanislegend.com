@@ -662,6 +662,7 @@ export const fetchExhibition = async (slug: string, preview: boolean = false) =>
                 collaborator
                 description
                 detailsUrl
+                detailsUrlLabel
                 endDate
                 pageTitle
                 slug
