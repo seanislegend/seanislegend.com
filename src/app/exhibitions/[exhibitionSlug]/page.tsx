@@ -1,7 +1,9 @@
 import type {Metadata} from 'next';
 import Image from 'next/image';
 import {notFound} from 'next/navigation';
+import Button from '@/components/Button';
 import DefaultLayout from '@/components/Layouts/Default';
+import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Condition from '@/components/UI/Condition';
@@ -41,51 +43,40 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                         {exhibition.startDate && exhibition.endDate && (
                             <div>
                                 <Heading4>Dates</Heading4>
-                                <p>
-                                    {new Date(exhibition.startDate).toLocaleDateString('en-GB', {
+                                <Markdown>
+                                    {`${new Date(exhibition.startDate).toLocaleDateString('en-GB', {
                                         day: 'numeric',
                                         month: 'long',
                                         year: 'numeric'
-                                    })}{' '}
-                                    –{' '}
-                                    {new Date(exhibition.endDate).toLocaleDateString('en-GB', {
-                                        day: 'numeric',
-                                        month: 'long',
-                                        year: 'numeric'
-                                    })}
-                                </p>
+                                    })} - ${new Date(exhibition.endDate).toLocaleDateString(
+                                        'en-GB',
+                                        {
+                                            day: 'numeric',
+                                            month: 'long',
+                                            year: 'numeric'
+                                        }
+                                    )}`}
+                                </Markdown>
                             </div>
                         )}
                         {exhibition.address && (
                             <div>
                                 <Heading4>Address</Heading4>
-                                <p>
-                                    <Condition
-                                        condition={exhibition.addressDirectionsUrl}
-                                        wrapper={children => (
-                                            <TextLink href={exhibition.addressDirectionsUrl}>
-                                                {children}
-                                            </TextLink>
-                                        )}
-                                    >
-                                        {exhibition.address}
-                                    </Condition>
-                                </p>
+                                <Markdown>
+                                    {exhibition.addressDirectionsUrl
+                                        ? `[${exhibition.address}](${exhibition.addressDirectionsUrl})`
+                                        : exhibition.address}
+                                </Markdown>
                             </div>
                         )}
                         {exhibition.collaborator && (
-                            <p>In collaboration with {exhibition.collaborator}</p>
+                            <Markdown>{`In collaboration with ${exhibition.collaborator}`}</Markdown>
                         )}
                         {exhibition.detailsUrl && (
                             <p>
-                                <a
-                                    className="text-blue-600 hover:underline"
-                                    href={exhibition.detailsUrl}
-                                    rel="noopener noreferrer"
-                                    target="_blank"
-                                >
-                                    More details
-                                </a>
+                                <Button href={exhibition.detailsUrl} theme="secondary">
+                                    {exhibition.detailsUrlLabel || 'More details'}
+                                </Button>
                             </p>
                         )}
                     </div>

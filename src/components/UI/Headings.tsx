@@ -17,7 +17,7 @@ export const Heading3: React.FC<React.PropsWithChildren> = ({children}) => (
 );
 
 export const Heading4: React.FC<React.PropsWithChildren> = ({children}) => (
-    <h4 className="text-title-text text-lg leading-tight font-medium text-balance break-normal uppercase md:leading-tight">
+    <h4 className="text-title-text mb-1 text-base leading-tight font-medium text-balance break-normal uppercase md:leading-tight">
         {children}
     </h4>
 );
