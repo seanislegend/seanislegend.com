@@ -97,7 +97,6 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                         );
                     })}
                 </div>
-                <div className="mt-8">{allParams.photoSlug}</div>
             </Container>
         </DefaultLayout>
     );
