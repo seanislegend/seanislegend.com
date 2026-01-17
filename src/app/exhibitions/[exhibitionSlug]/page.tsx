@@ -22,7 +22,7 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
         notFound();
     }
 
-    console.log(exhibition);
+    const firstPhotos = exhibition.photosCollection?.items.slice(0, 4);
 
     return (
         <DefaultLayout theme="light">
@@ -81,7 +81,7 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
             </PageHeader>
             <Container className="my-8">
                 <div className="grid grid-cols-12 gap-4">
-                    {exhibition.photosCollection?.items.map((photo: ExhibitionPhoto) => {
+                    {firstPhotos.map((photo: ExhibitionPhoto) => {
                         if (!photo.photo?.thumbnail) return null;
                         return (
                             <div
