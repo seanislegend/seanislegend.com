@@ -4,6 +4,7 @@ import Button from '@/components/Button';
 import DefaultLayout from '@/components/Layouts/Default';
 import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
+import PageHeaderButtonList from '@/components/PageHeader/ButtonList';
 import CarouselImage from '@/components/PhotoCarousel/Image';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
@@ -34,14 +35,24 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
     return (
         <DefaultLayout theme="light">
             <PageHeader
-                ctas={[
-                    {label: 'Request a print', url: '/contact'},
-                    {label: 'View exhibition', url: `/exhibitions/${exhibition.slug}`}
-                ]}
                 description={photo.description}
                 pageTitle={exhibition.pageTitle}
                 subtitle="Exhibitions"
-            />
+            >
+                <div className="mt-2 space-y-4">
+                    {(photo.location || photo.date) && (
+                        <p className="text-sm text-gray-500">
+                            {`${photo.location}${photo.date ? `. ${photo.date}.` : ''}`}
+                        </p>
+                    )}
+                    <PageHeaderButtonList
+                        ctas={[
+                            {label: 'Request a print', url: '/contact'},
+                            {label: 'View exhibition', url: `/exhibitions/${exhibition.slug}`}
+                        ]}
+                    />
+                </div>
+            </PageHeader>
             <Container>
                 <CarouselImage
                     {...photo}
