@@ -22,7 +22,9 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
         notFound();
     }
 
-    const featuredPhotos = exhibition.photosCollection.items.filter(p => p.isFeatured);
+    const featuredPhotos = exhibition.photosCollection.items.filter(
+        (p: ExhibitionPhoto) => p.isFeatured
+    );
 
     return (
         <DefaultLayout theme="light">
