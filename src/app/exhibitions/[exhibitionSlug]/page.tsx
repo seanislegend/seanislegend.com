@@ -22,7 +22,7 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
         notFound();
     }
 
-    const firstPhotos = exhibition.photosCollection?.items.slice(0, 4);
+    const featuredPhotos = exhibition.photosCollection.items.filter(p => p.isFeatured);
 
     return (
         <DefaultLayout theme="light">
@@ -81,7 +81,7 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
             </PageHeader>
             <Container className="my-8">
                 <div className="grid grid-cols-12 gap-4">
-                    {firstPhotos.map((photo: ExhibitionPhoto) => {
+                    {featuredPhotos.map((photo: ExhibitionPhoto) => {
                         if (!photo.photo?.thumbnail) return null;
                         return (
                             <div
