@@ -4,7 +4,7 @@ import Button from '@/components/Button';
 import DefaultLayout from '@/components/Layouts/Default';
 import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
-import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
+import PhotoThumbnail from '@/components/PhotoCollection/Thumbnail';
 import Container from '@/components/UI/Container';
 import {Heading4} from '@/components/UI/Headings';
 import config from '@/utils/config';
@@ -88,12 +88,15 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                                 key={photo.slug}
                                 className="col-span-6 md:col-span-4 lg:col-span-3"
                             >
-                                <ThumbnailImage
+                                <PhotoThumbnail
                                     alt={photo.title}
                                     base64={photo.photo?.base64}
                                     loading="lazy"
                                     columnSize={4}
-                                    {...photo.photo?.thumbnail}
+                                    path={`/exhibitions/${exhibition.slug}/${photo.slug}`}
+                                    slug={photo.slug}
+                                    title={photo.title}
+                                    thumbnail={photo.photo?.thumbnail}
                                 />
                             </div>
                         );
