@@ -1,6 +1,7 @@
 interface ExhibitionPhoto {
     date?: string;
     description?: string;
+    isFeatured?: boolean;
     location?: string;
     photo?: Photo;
     slug: string;
