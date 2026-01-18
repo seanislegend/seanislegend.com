@@ -4,6 +4,7 @@ import Button from '@/components/Button';
 import DefaultLayout from '@/components/Layouts/Default';
 import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
+import CarouselImage from '@/components/PhotoCarousel/Image';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
 import {Heading2, Heading4} from '@/components/UI/Headings';
@@ -22,82 +23,35 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
         notFound();
     }
 
+    const photo = exhibition.photosCollection?.items.find(
+        (p: ExhibitionPhoto) => p.slug === allParams.photoSlug
+    );
+
+    if (!photo) {
+        notFound();
+    }
+
     return (
         <DefaultLayout theme="light">
             <PageHeader
-                description={exhibition.description}
+                ctas={[
+                    {label: 'Request a print', url: '/contact'},
+                    {label: 'View exhibition', url: `/exhibitions/${exhibition.slug}`}
+                ]}
+                description={photo.description}
                 pageTitle={exhibition.pageTitle}
                 subtitle="Exhibitions"
-                title={exhibition.title}
-            >
-                {(exhibition.startDate ||
-                    exhibition.endDate ||
-                    exhibition.address ||
-                    exhibition.collaborator) && (
-                    <div className="mt-6 space-y-4">
-                        {exhibition.startDate && exhibition.endDate && (
-                            <div>
-                                <Heading4>Dates</Heading4>
-                                <Markdown>
-                                    {`${new Date(exhibition.startDate).toLocaleDateString('en-GB', {
-                                        day: 'numeric',
-                                        month: 'long',
-                                        year: 'numeric'
-                                    })} - ${new Date(exhibition.endDate).toLocaleDateString(
-                                        'en-GB',
-                                        {
-                                            day: 'numeric',
-                                            month: 'long',
-                                            year: 'numeric'
-                                        }
-                                    )}`}
-                                </Markdown>
-                            </div>
-                        )}
-                        {exhibition.address && (
-                            <div>
-                                <Heading4>Address</Heading4>
-                                <Markdown>
-                                    {exhibition.addressDirectionsUrl
-                                        ? `[${exhibition.address}](${exhibition.addressDirectionsUrl})`
-                                        : exhibition.address}
-                                </Markdown>
-                            </div>
-                        )}
-                        {exhibition.collaborator && (
-                            <Markdown>{`In collaboration with ${exhibition.collaborator}`}</Markdown>
-                        )}
-                        {exhibition.detailsUrl && (
-                            <p>
-                                <Button href={exhibition.detailsUrl} theme="secondary">
-                                    {exhibition.detailsUrlLabel || 'More details'}
-                                </Button>
-                            </p>
-                        )}
-                    </div>
-                )}
-            </PageHeader>
-            <Container className="my-8">
-                <div className="grid grid-cols-12 gap-4">
-                    {exhibition.photosCollection?.items.map((photo: ExhibitionPhoto) => {
-                        if (!photo.photo?.thumbnail) return null;
-                        return (
-                            <div
-                                key={photo.slug}
-                                className="col-span-6 md:col-span-4 lg:col-span-3"
-                            >
-                                <ThumbnailImage
-                                    alt={photo.title}
-                                    base64={photo.photo?.base64}
-                                    loading="lazy"
-                                    columnSize={4}
-                                    {...photo.photo?.thumbnail}
-                                />
-                            </div>
-                        );
-                    })}
-                </div>
+            />
+            <Container>
+                <CarouselImage
+                    {...photo}
+                    base64={photo.photo?.base64}
+                    fullSize={photo.photo?.fullSize}
+                    isActive={true}
+                    title={photo.title}
+                />
             </Container>
+            <PageHeader description={exhibition.description}></PageHeader>
         </DefaultLayout>
     );
 };
