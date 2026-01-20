@@ -7,6 +7,7 @@ import CarouselImage from '@/components/PhotoCarousel/Image';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchExhibition} from '@/utils/contentful';
+import ExhibitionHeader from '@/app/exhibitions/a-beers-place-the-kings-arms/header';
 
 interface Props {
     params: Promise<{exhibitionSlug: string; photoSlug: string}>;
@@ -31,6 +32,9 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
 
     return (
         <>
+            <div className="mb-8 px-4 md:mx-auto md:max-w-220">
+                <Markdown>{photo.description}</Markdown>
+            </div>
             <Container className="mb-20 max-w-300!">
                 <CarouselImage
                     {...photo}
@@ -39,18 +43,14 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                     isActive={true}
                     title={photo.title}
                 />
-                <div className="mt-4 space-y-4 md:mx-auto md:mt-10 md:max-w-220">
-                    <Markdown>{photo.description}</Markdown>
-                    {exhibition.detailsUrl && (
-                        <p>
-                            <Button href={exhibition.detailsUrl} theme="secondary">
-                                {exhibition.detailsUrlLabel || 'More details'}
-                            </Button>
-                        </p>
-                    )}
-                </div>
+                {exhibition.detailsUrl && (
+                    <Button className="mt-4" href={exhibition.detailsUrl} theme="secondary">
+                        {exhibition.detailsUrlLabel || 'More details'}
+                    </Button>
+                )}
             </Container>
             <Photos exhibition={exhibition} activePhotoId={photo.slug} />
+            <ExhibitionHeader exhibition={exhibition} />
         </>
     );
 };
