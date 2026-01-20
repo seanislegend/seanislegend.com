@@ -38,7 +38,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                 </span>
             </div>
             <SwipeableContainer activeElementId={activePhotoId}>
-                <div className="flex gap-[30px] md:gap-[60px] [&_a]:duration-300 [&_a]:ease-in-out [&_a]:hover:-translate-y-1 [&_a]:hover:opacity-70 [&_span,&_img]:absolute [&_span,&_img]:h-full [&_span,&_img]:w-full [&_span,&_img]:object-cover [&_span,&_img]:object-center">
+                <div className="flex gap-[30px] md:gap-[60px] [&_a]:duration-300 [&_a]:ease-in-out [&_a]:md:hover:-translate-y-1 [&_a]:md:hover:opacity-70 [&_span,&_img]:absolute [&_span,&_img]:h-full [&_span,&_img]:w-full [&_span,&_img]:object-cover [&_span,&_img]:object-center">
                     <div className="mb-20 flex flex-row">
                         <div className="flex w-[500px] flex-col gap-[30px] md:w-[560px] md:gap-[50px]">
                             <div className="flex w-[440px] flex-row gap-[20px] md:gap-[40px]">
