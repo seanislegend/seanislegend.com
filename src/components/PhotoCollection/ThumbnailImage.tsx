@@ -7,6 +7,7 @@ interface Props extends ThumbnailPhoto {
     base64?: string;
     columnSize?: number;
     fill?: boolean;
+    id?: string;
     loading?: 'eager' | 'lazy';
 }
 
@@ -16,6 +17,7 @@ const ThumbnailImage: React.FC<Props> = ({
     columnSize,
     fill,
     height,
+    id,
     loading = 'lazy',
     width,
     url
@@ -34,6 +36,7 @@ const ThumbnailImage: React.FC<Props> = ({
                     'aspect-2/3': imageWidth < imageHeight
                 }
             )}
+            id={id}
         >
             <Image
                 alt={alt || ''}

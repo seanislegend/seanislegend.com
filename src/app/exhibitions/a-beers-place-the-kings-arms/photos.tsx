@@ -5,16 +5,18 @@ import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import SwipeableContainer from '@/components/UI/SwipeableContainer';
 
 interface Props {
+    activePhotoId?: string;
     exhibition: Exhibition;
 }
 
-const ExhibitionPhotos: React.FC<Props> = ({exhibition}) => {
+const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
     const renderPhoto = (index: number) => {
         if (!photos[index]?.photo?.thumbnail) return null;
         return (
             <ThumbnailImage
                 alt={photos[index].title}
                 base64={photos[index].photo?.base64}
+                id={photos[index].slug}
                 loading="lazy"
                 columnSize={4}
                 {...photos[index].photo?.thumbnail}
@@ -26,7 +28,7 @@ const ExhibitionPhotos: React.FC<Props> = ({exhibition}) => {
     if (!photos.length) return null;
 
     return (
-        <SwipeableContainer>
+        <SwipeableContainer activeElementId={activePhotoId}>
             <div className="flex gap-[30px] md:gap-[60px] [&_a]:duration-300 [&_a]:ease-in-out [&_a]:hover:-translate-y-1 [&_a]:hover:opacity-70 [&_span,&_img]:absolute [&_span,&_img]:h-full [&_span,&_img]:w-full [&_span,&_img]:object-cover [&_span,&_img]:object-center">
                 <div className="mb-20 flex flex-row">
                     <div className="flex w-[500px] flex-col gap-[30px] md:w-[560px] md:gap-[50px]">

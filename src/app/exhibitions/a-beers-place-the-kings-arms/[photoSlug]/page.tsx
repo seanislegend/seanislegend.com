@@ -50,7 +50,7 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                     )}
                 </div>
             </Container>
-            <Photos exhibition={exhibition} />
+            <Photos exhibition={exhibition} activePhotoId={photo.slug} />
         </>
     );
 };

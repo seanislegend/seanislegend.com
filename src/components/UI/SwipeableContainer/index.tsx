@@ -4,6 +4,7 @@ import {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 import {animate, motion, useMotionValue} from 'motion/react';
 
 interface Props {
+    activeElementId?: string;
     children: React.ReactNode;
     className?: string;
 }
@@ -11,7 +12,7 @@ interface Props {
 const isTouchDevice = () =>
     typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
-const SwipeableContainer: React.FC<Props> = ({children, className = ''}) => {
+const SwipeableContainer: React.FC<Props> = ({activeElementId, children, className = ''}) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const hasDraggedRef = useRef(false);
@@ -37,7 +38,22 @@ const SwipeableContainer: React.FC<Props> = ({children, className = ''}) => {
         });
 
         if (!hasInitializedRef.current && maxScroll > 0) {
-            animate(x, -maxScroll / 2, {
+            let targetX = -maxScroll / 2;
+
+            if (activeElementId) {
+                const activeElement = content.querySelector(`#${activeElementId}`) as HTMLElement;
+                if (activeElement) {
+                    const elementRect = activeElement.getBoundingClientRect();
+                    const contentRect = content.getBoundingClientRect();
+                    const elementCenter =
+                        elementRect.left - contentRect.left + elementRect.width / 2;
+                    const containerCenter = container.clientWidth / 2;
+                    targetX = -(elementCenter - containerCenter);
+                    targetX = Math.max(-maxScroll, Math.min(0, targetX));
+                }
+            }
+
+            animate(x, targetX, {
                 duration: 0.6,
                 ease: [0.25, 0.1, 0.25, 1]
             });
@@ -48,7 +64,7 @@ const SwipeableContainer: React.FC<Props> = ({children, className = ''}) => {
                 x.set(-maxScroll);
             }
         }
-    }, [x]);
+    }, [x, activeElementId]);
 
     useEffect(() => {
         hasInitializedRef.current = false;
