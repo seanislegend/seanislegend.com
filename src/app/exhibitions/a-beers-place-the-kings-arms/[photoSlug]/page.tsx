@@ -1,0 +1,85 @@
+import Photos from '../photos';
+import type {Metadata} from 'next';
+import {notFound} from 'next/navigation';
+import Button from '@/components/Button';
+import Markdown from '@/components/Markdown';
+import CarouselImage from '@/components/PhotoCarousel/Image';
+import Container from '@/components/UI/Container';
+import config from '@/utils/config';
+import {fetchExhibition} from '@/utils/contentful';
+
+interface Props {
+    params: Promise<{exhibitionSlug: string; photoSlug: string}>;
+}
+
+const ExhibitionPage: React.FC<Props> = async ({params}) => {
+    const allParams = await params;
+    const exhibitionSlug = 'a-beers-place-the-kings-arms';
+    const exhibition = await fetchExhibition(exhibitionSlug);
+
+    if (!exhibition) {
+        notFound();
+    }
+
+    const photo = exhibition.photosCollection?.items.find(
+        (p: ExhibitionPhoto) => p.slug === allParams.photoSlug
+    );
+
+    if (!photo) {
+        notFound();
+    }
+
+    return (
+        <>
+            <Container className="mb-20 max-w-300!">
+                <CarouselImage
+                    {...photo}
+                    base64={photo.photo?.base64}
+                    fullSize={photo.photo?.fullSize}
+                    isActive={true}
+                    title={photo.title}
+                />
+                <div className="mt-4 space-y-4 md:mx-auto md:mt-10 md:max-w-220">
+                    <Markdown>{photo.description}</Markdown>
+                    {exhibition.detailsUrl && (
+                        <p>
+                            <Button href={exhibition.detailsUrl} theme="secondary">
+                                {exhibition.detailsUrlLabel || 'More details'}
+                            </Button>
+                        </p>
+                    )}
+                </div>
+            </Container>
+            <Photos exhibition={exhibition} />
+        </>
+    );
+};
+
+export const generateMetadata = async ({params}: Props): Promise<Metadata | null> => {
+    const allParams = await params;
+    const exhibition = await fetchExhibition(allParams.exhibitionSlug);
+
+    if (!exhibition) {
+        return null;
+    }
+
+    const title = `${exhibition.title} | ${config.titleTemplate}`;
+    const description = exhibition.description
+        ? exhibition.description.substring(0, 160)
+        : `Exhibition: ${exhibition.title}`;
+    const openGraphImage =
+        exhibition.openGraphImage?.url ??
+        exhibition.photosCollection?.items[0]?.photo?.thumbnail?.url;
+
+    return {
+        alternates: {
+            canonical: `${config.seo.alternates.canonical}/exhibitions/${exhibition.slug}`
+        },
+        description,
+        openGraph: {description, images: [openGraphImage]},
+        title,
+        twitter: {card: 'summary_large_image', description, title}
+    };
+};
+
+export default ExhibitionPage;
