@@ -92,9 +92,10 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                 </TitleTextGrid>
                 {featuredPhotos.length > 0 && (
                     <div className="flex flex-row gap-4">
-                        {featuredPhotos.map(photo => (
-                            <ThumbnailImage key={photo.slug} {...photo.photo?.thumbnail} />
-                        ))}
+                        {featuredPhotos.map((photo: ExhibitionPhoto) => {
+                            if (!photo.photo?.thumbnail) return null;
+                            return <ThumbnailImage key={photo.slug} {...photo.photo?.thumbnail} />;
+                        })}
                     </div>
                 )}
             </Container>
