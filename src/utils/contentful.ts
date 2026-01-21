@@ -679,6 +679,7 @@ export const fetchExhibition = async (slug: string, preview: boolean = false) =>
                         slug
                         title
                         isFeatured
+                        buyUrl
                         photo {
                             hero: photo {
                                 height

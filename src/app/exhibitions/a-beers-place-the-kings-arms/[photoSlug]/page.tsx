@@ -8,6 +8,7 @@ import CarouselImage from '@/components/PhotoCarousel/Image';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchExhibition} from '@/utils/contentful';
+import ExhibitionPhotoOrderSuccessMessage from '@/app/exhibitions/a-beers-place-the-kings-arms/[photoSlug]/order-success-message';
 import {photoBorders} from '@/app/exhibitions/a-beers-place-the-kings-arms/borders';
 import ExhibitionHeader from '@/app/exhibitions/a-beers-place-the-kings-arms/header';
 
@@ -36,6 +37,7 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
     return (
         <>
             <div className="mb-8 px-4 md:mx-auto md:max-w-220">
+                <ExhibitionPhotoOrderSuccessMessage />
                 <Markdown>{`__Photo__: ${photo.description}`}</Markdown>
             </div>
             <Container className="mb-14 max-w-300! md:mb-20">
@@ -51,9 +53,9 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                     </div>
                 </div>
                 <div className="mt-4 flex gap-2 sm:justify-between md:flex-row">
-                    {exhibition.detailsUrl && (
-                        <Button href={exhibition.detailsUrl} theme="secondary">
-                            {exhibition.detailsUrlLabel || 'More details'}
+                    {photo.buyUrl && (
+                        <Button href={photo.buyUrl} theme="secondary">
+                            Order print
                         </Button>
                     )}
                     <Button href={`/exhibitions/${exhibition.slug}`} theme="black">

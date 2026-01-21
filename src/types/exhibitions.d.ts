@@ -1,4 +1,5 @@
 interface ExhibitionPhoto {
+    buyUrl?: string;
     date?: string;
     description?: string;
     isFeatured?: boolean;
