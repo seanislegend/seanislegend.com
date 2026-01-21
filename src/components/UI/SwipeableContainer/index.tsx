@@ -9,19 +9,13 @@ interface Props {
     className?: string;
 }
 
-const isTouchDevice = () =>
-    typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-
 const SwipeableContainer: React.FC<Props> = ({activeElementId, children, className = ''}) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const hasDraggedRef = useRef(false);
     const draggedLinkRef = useRef<HTMLAnchorElement | null>(null);
     const hasInitializedRef = useRef(false);
-
     const [constraints, setConstraints] = useState({left: 0, right: 0});
-    const [touch] = useState(isTouchDevice);
-
     const x = useMotionValue(0);
 
     const updateConstraints = useCallback(() => {
@@ -71,8 +65,6 @@ const SwipeableContainer: React.FC<Props> = ({activeElementId, children, classNa
     }, [children]);
 
     useLayoutEffect(() => {
-        if (touch) return;
-
         updateConstraints();
 
         const resizeObserver = new ResizeObserver(updateConstraints);
@@ -86,10 +78,10 @@ const SwipeableContainer: React.FC<Props> = ({activeElementId, children, classNa
             resizeObserver.disconnect();
             window.removeEventListener('resize', updateConstraints);
         };
-    }, [children, touch, updateConstraints]);
+    }, [children, updateConstraints]);
 
     useEffect(() => {
-        if (touch || !contentRef.current) return;
+        if (!contentRef.current) return;
 
         const content = contentRef.current;
 
@@ -121,20 +113,7 @@ const SwipeableContainer: React.FC<Props> = ({activeElementId, children, classNa
             content.removeEventListener('dragstart', handleDragStart, true);
             content.removeEventListener('click', handleClick, true);
         };
-    }, [touch]);
-
-    if (touch) {
-        return (
-            <div
-                ref={containerRef}
-                className={`w-full overflow-x-auto overscroll-x-contain scroll-smooth px-4 md:px-8 ${className}`}
-            >
-                <div ref={contentRef} className="flex flex-nowrap">
-                    {children}
-                </div>
-            </div>
-        );
-    }
+    }, []);
 
     return (
         <div

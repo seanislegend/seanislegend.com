@@ -32,17 +32,17 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
     return (
         <>
             <div className="mx-auto mb-4 flex max-w-300 px-4 md:justify-end">
-                <span className="inline-flex items-center gap-x-2">
+                <span className="inline-flex items-center gap-x-1">
                     <GrabIcon />
-                    <span className="text-sm">
+                    <span className="translate-y-px text-sm">
                         <span className="hidden md:inline">Drag</span>
-                        <span className="inline md:hidden">Swipe</span> to scroll through the photos
+                        <span className="inline md:hidden">Swipe</span> to scroll through all photos
                     </span>
                 </span>
             </div>
             <SwipeableContainer activeElementId={activePhotoId}>
-                <div className="flex gap-[30px] md:gap-[60px] [&_a]:duration-300 [&_a]:ease-in-out [&_a]:md:hover:-translate-y-1 [&_a]:md:hover:opacity-70 [&_span,&_img]:absolute [&_span,&_img]:h-full [&_span,&_img]:w-full [&_span,&_img]:object-cover [&_span,&_img]:object-center">
-                    <div className="mb-20 flex flex-row">
+                <div className="mb-4 flex gap-[30px] md:gap-[60px] [&_a]:duration-300 [&_a]:ease-in-out [&_a]:md:hover:-translate-y-1 [&_a]:md:hover:opacity-70 [&_span,&_img]:absolute [&_span,&_img]:h-full [&_span,&_img]:w-full [&_span,&_img]:object-cover [&_span,&_img]:object-center">
+                    <div className="flex flex-row">
                         <div className="flex w-[500px] flex-col gap-[30px] md:w-[560px] md:gap-[50px]">
                             <div className="flex w-[440px] flex-row gap-[20px] md:gap-[40px]">
                                 <Link
@@ -136,7 +136,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="mb-20 flex flex-row gap-[20px]">
+                    <div className="flex flex-row gap-[20px]">
                         <div className="mt-[44px] flex w-[220px]">
                             <Link
                                 href={`/exhibitions/${exhibition.slug}/${photos[10]?.slug}`}
@@ -208,7 +208,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="mb-20 ml-[20px] flex flex-col items-center gap-[30px] md:ml-[40px] md:gap-[40px]">
+                    <div className="ml-[20px] flex flex-col items-center gap-[30px] md:ml-[40px] md:gap-[40px]">
                         <Link
                             href={`/exhibitions/${exhibition.slug}/${photos[18]?.slug}`}
                             className="relative h-[158px] w-[220px] shrink-0 border-6 border-[#000] bg-white"

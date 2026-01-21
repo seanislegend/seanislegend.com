@@ -1,0 +1,23 @@
+export const photoBorders: Record<number, string> = {
+    0: 'border-white',
+    1: 'border-[#000]',
+    2: 'border-[#000]',
+    3: 'border-[#000]',
+    4: 'border-[#000]',
+    5: 'border-[#000]',
+    6: 'border-[#caad80]',
+    7: 'border-white',
+    8: 'border-white',
+    9: 'border-[#000]',
+    10: 'border-[#000]',
+    11: 'border-white',
+    12: 'border-[#000]',
+    13: 'border-[#000]',
+    14: 'border-white',
+    15: 'border-[#000]',
+    16: 'border-white',
+    17: 'border-white',
+    18: 'border-[#000]',
+    19: 'border-white',
+    20: 'border-[#caad80]'
+};

@@ -1,4 +1,5 @@
 import Photos from '../photos';
+import clsx from 'clsx';
 import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import Button from '@/components/Button';
@@ -7,6 +8,7 @@ import CarouselImage from '@/components/PhotoCarousel/Image';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchExhibition} from '@/utils/contentful';
+import {photoBorders} from '@/app/exhibitions/a-beers-place-the-kings-arms/borders';
 import ExhibitionHeader from '@/app/exhibitions/a-beers-place-the-kings-arms/header';
 
 interface Props {
@@ -22,9 +24,10 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
         notFound();
     }
 
-    const photo = exhibition.photosCollection?.items.find(
+    const photoIndex = exhibition.photosCollection?.items.findIndex(
         (p: ExhibitionPhoto) => p.slug === allParams.photoSlug
     );
+    const photo = exhibition.photosCollection?.items[photoIndex];
 
     if (!photo) {
         notFound();
@@ -35,19 +38,28 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
             <div className="mb-8 px-4 md:mx-auto md:max-w-220">
                 <Markdown>{`__Photo__: ${photo.description}`}</Markdown>
             </div>
-            <Container className="mb-20 max-w-300!">
-                <CarouselImage
-                    {...photo}
-                    base64={photo.photo?.base64}
-                    fullSize={photo.photo?.fullSize}
-                    isActive={true}
-                    title={photo.title}
-                />
-                {exhibition.detailsUrl && (
-                    <Button className="mt-4" href={exhibition.detailsUrl} theme="secondary">
-                        {exhibition.detailsUrlLabel || 'More details'}
+            <Container className="mb-14 max-w-300! md:mb-20">
+                <div className={clsx('border-6 md:border-10', photoBorders[photoIndex])}>
+                    <div className="border-10 border-white md:border-10">
+                        <CarouselImage
+                            {...photo}
+                            base64={photo.photo?.base64}
+                            fullSize={photo.photo?.fullSize}
+                            isActive={true}
+                            title={photo.title}
+                        />
+                    </div>
+                </div>
+                <div className="mt-4 flex gap-2 sm:justify-between md:flex-row">
+                    {exhibition.detailsUrl && (
+                        <Button href={exhibition.detailsUrl} theme="secondary">
+                            {exhibition.detailsUrlLabel || 'More details'}
+                        </Button>
+                    )}
+                    <Button href={`/exhibitions/${exhibition.slug}`} theme="black">
+                        Back to exhibition
                     </Button>
-                )}
+                </div>
             </Container>
             <Photos exhibition={exhibition} activePhotoId={photo.slug} />
             <div className="px-4 md:mx-auto md:max-w-220">

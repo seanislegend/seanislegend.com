@@ -20,7 +20,7 @@ const ExhibitionPage: React.FC<LayoutProps<'/exhibitions/a-beers-place-the-kings
             <Container className="mb-10">
                 <Link href={`/exhibitions/${exhibitionSlug}`}>
                     <svg
-                        className="mx-auto my-10 h-auto max-w-full md:my-14"
+                        className="mx-auto my-10 h-auto w-full max-w-220 md:my-14"
                         height="104px"
                         width="855px"
                         viewBox="0 0 855 104"
