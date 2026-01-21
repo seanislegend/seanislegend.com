@@ -128,7 +128,6 @@ const SwipeableContainer: React.FC<Props> = ({activeElementId, children, classNa
             <div
                 ref={containerRef}
                 className={`w-full overflow-x-auto overscroll-x-contain scroll-smooth px-4 md:px-8 ${className}`}
-                style={{WebkitOverflowScrolling: 'touch'}}
             >
                 <div ref={contentRef} className="flex flex-nowrap">
                     {children}
