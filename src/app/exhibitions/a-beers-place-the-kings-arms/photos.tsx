@@ -34,7 +34,10 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
             <div className="mx-auto mb-4 flex max-w-300 px-4 md:justify-end">
                 <span className="inline-flex items-center gap-x-2">
                     <GrabIcon />
-                    <span className="text-sm">Drag to scroll through the photos</span>
+                    <span className="text-sm">
+                        <span className="hidden md:inline">Drag</span>
+                        <span className="inline md:hidden">Swipe</span> to scroll through the photos
+                    </span>
                 </span>
             </div>
             <SwipeableContainer activeElementId={activePhotoId}>

@@ -33,7 +33,7 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
     return (
         <>
             <div className="mb-8 px-4 md:mx-auto md:max-w-220">
-                <Markdown>{photo.description}</Markdown>
+                <Markdown>{`__Photo__: ${photo.description}`}</Markdown>
             </div>
             <Container className="mb-20 max-w-300!">
                 <CarouselImage
@@ -50,7 +50,9 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                 )}
             </Container>
             <Photos exhibition={exhibition} activePhotoId={photo.slug} />
-            <ExhibitionHeader exhibition={exhibition} />
+            <div className="px-4 md:mx-auto md:max-w-220">
+                <ExhibitionHeader exhibition={exhibition} />
+            </div>
         </>
     );
 };

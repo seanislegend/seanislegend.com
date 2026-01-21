@@ -7,10 +7,10 @@ interface Props {
 
 const ExhibitionHeader: React.FC<Props> = ({exhibition}) => (
     <>
-        <div className="mb-8 px-4 md:mx-auto md:max-w-220">
+        <div className="mb-8 md:mx-auto md:max-w-220">
             <Markdown className="text-pretty">{exhibition.description || ''}</Markdown>
         </div>
-        <div className="flex flex-col gap-4 px-4 text-xs md:mx-auto md:max-w-220 md:flex-row md:gap-10">
+        <div className="flex flex-col gap-4 text-xs md:mx-auto md:max-w-220 md:flex-row md:gap-10">
             <div>
                 {exhibition.startDate && exhibition.endDate && (
                     <div>
