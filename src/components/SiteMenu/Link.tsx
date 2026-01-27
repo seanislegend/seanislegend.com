@@ -20,7 +20,7 @@ const SiteHeaderLink: React.FC<React.PropsWithChildren<Props>> = ({
     ...props
 }) => {
     const pathname = usePathname();
-    const isActive = href && href !== '/' && pathname === href;
+    const isActive = href && href !== '/' && (pathname === href || pathname.startsWith(`${href}/`));
 
     return (
         <Link

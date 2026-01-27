@@ -1,6 +1,7 @@
 import SiteHeaderLink from './Link';
 
 export const MENU_ITEMS = [
+    {href: '/exhibitions', label: 'Exhibitions'},
     {href: '/services', label: 'Services'},
     {href: '/about', label: 'About'},
     {href: '/contact', label: 'Contact'}

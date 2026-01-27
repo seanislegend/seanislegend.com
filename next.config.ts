@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
     },
     async redirects() {
         const redirects = [
+            {
+                source: '/exhibitions',
+                destination: '/exhibitions/a-beers-place-the-kings-arms',
+                permanent: false
+            },
             {source: '/home', destination: '/', permanent: true},
             {
                 source: '/about-town/:slug*',
