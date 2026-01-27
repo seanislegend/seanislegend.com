@@ -15,7 +15,7 @@ interface Props {
 const DynamicPage: React.FC<Props> = async ({params}) => {
     const allParams = await params;
     const pageData = await resolvePageData(allParams.dynamicPage);
-
+    console.log(pageData.collection.photosCollection.items[45]);
     if (pageData.type === 'not-found') {
         notFound();
     } else if (pageData.type === 'collection') {
