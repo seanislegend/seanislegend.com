@@ -13,6 +13,24 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [6, 7, 8, 9]},
         {layout: 'ThreeInARow', photos: [3, 4, 5]}
     ],
+    'cask-ale-culture-the-fat-cat': [
+        {layout: 'LandscapeTwoBigFourSmall', photos: [3, 0, 38, 15, 29, 5]},
+        {layout: 'Spacer'},
+        {layout: 'TwoInARow', photos: [32, 43]},
+        {layout: 'Spacer'},
+        {layout: 'ThreeInARow', photos: [13, 42, 40]},
+        {layout: 'TwoInARowWithPadding', photos: [14, 31]},
+        {layout: 'ThreeInARow', photos: [12, 30, 45]},
+        {layout: 'Spacer'},
+        {layout: 'ThreeInARow', photos: [28, 24, 27]},
+        {layout: 'ThreeInARow', photos: [10, 34, 2]},
+        {layout: 'ContentSection', sections: [0]},
+        {layout: 'TwoInARow', photos: [11, 44]},
+        {layout: 'FourInARow', photos: [16, 17, 22, 36]},
+        {layout: 'Spacer'},
+        {layout: 'FourInARow', photos: [39, 33, 41, 7]},
+        {layout: 'ContentSection', sections: [1]}
+    ],
     'community-and-craft-beer-in-hebden-bridge': [
         {layout: 'TwoInARow', photos: [63, 17]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 61, 27, 8, 4, 46]},
