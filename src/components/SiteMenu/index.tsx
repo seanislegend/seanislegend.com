@@ -2,9 +2,10 @@ import SiteHeaderLink from './Link';
 
 export const MENU_ITEMS = [
     {href: '/exhibitions', label: 'Exhibitions'},
-    {href: '/services', label: 'Services'},
     {href: '/about', label: 'About'},
-    {href: '/contact', label: 'Contact'}
+    {href: '/contact', label: 'Contact'},
+    {href: '/services', label: 'Hire me'},
+    {href: 'https://seanislegendprints.square.site', label: 'Shop', theme: 'secondary'}
 ];
 
 const SiteHeaderMenu: React.FC = () => (
@@ -14,7 +15,7 @@ const SiteHeaderMenu: React.FC = () => (
     >
         <SiteHeaderLink href="/collections">Collections</SiteHeaderLink>
         {MENU_ITEMS.map(item => (
-            <SiteHeaderLink key={item.href} href={item.href}>
+            <SiteHeaderLink key={item.href} href={item.href} theme={item.theme}>
                 {item.label}
             </SiteHeaderLink>
         ))}

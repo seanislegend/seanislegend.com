@@ -64,7 +64,9 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                         <NavigationMenu.Item
                             key={item.href}
                             render={() => (
-                                <SiteHeaderLink href={item.href}>{item.label}</SiteHeaderLink>
+                                <SiteHeaderLink href={item.href} theme={item.theme}>
+                                    {item.label}
+                                </SiteHeaderLink>
                             )}
                         />
                     ))}
