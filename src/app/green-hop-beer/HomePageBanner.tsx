@@ -3,7 +3,7 @@ import Container from '@/components/UI/Container';
 import TextLink from '@/components/UI/TextLink';
 
 const GreenHopHomePageBanner: React.FC = () => (
-    <Container className="animate-in fade-in-0 mb-4 text-sm duration-1000 sm:text-base md:-mt-8 md:mb-8">
+    <Container className="animate-in fade-in-0 mb-4 max-w-456 text-sm duration-1000 sm:text-base md:-mt-8 md:mb-8">
         <div className="flex flex-col rounded bg-[#555f3d] px-4 py-2 text-[#ece9de] sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
                 <span className="hidden items-start sm:flex">
