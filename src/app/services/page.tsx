@@ -12,7 +12,11 @@ const ServicesPage = async () => {
 
     return (
         <DefaultLayout theme="light">
-            <PageHeader description={page.content} title={page.pageTitle} />
+            <PageHeader
+                description={page.content}
+                title={page.pageTitle}
+                pageTitle={page.pageTitle}
+            />
             <Container className="space-y-16 lg:space-y-24">
                 <ContentSections sections={page.contentSectionsCollection.items} />
             </Container>
