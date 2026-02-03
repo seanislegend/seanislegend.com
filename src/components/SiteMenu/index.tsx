@@ -6,7 +6,7 @@ export const MENU_ITEMS = [
     {href: '/about', label: 'About'},
     {href: '/contact', label: 'Contact'},
     {href: '/services', label: 'Hire me'},
-    {href: SHOP_URL, label: 'Shop', theme: 'secondary'}
+    {href: SHOP_URL, label: 'Shop', theme: 'primary'}
 ];
 
 const SiteHeaderMenu: React.FC = () => (

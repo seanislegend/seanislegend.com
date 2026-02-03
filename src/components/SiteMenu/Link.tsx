@@ -10,7 +10,7 @@ import {isExternalUrl} from '@/utils/helpers';
 interface Props extends LinkProps {
     className?: string;
     href: string;
-    theme?: 'ghost' | 'primary' | 'secondary' | (string & {});
+    theme?: 'ghost' | 'primary' | (string & {});
 }
 
 export const linkClasses =
@@ -31,7 +31,7 @@ const SiteHeaderLink: React.FC<React.PropsWithChildren<Props>> = ({
         <Link
             className={clsx([linkClasses, className], {
                 'bg-button-bg text-button-text hover:bg-button-bg-hover focus:ring-button-bg-hover':
-                    theme === 'secondary',
+                    theme === 'primary',
                 'text-theme-text data-[state=open]:bg-secondary-button-bg-hover data-popup-open:bg-secondary-button-bg-hover focus:ring-secondary-button-bg-hover hover:bg-secondary-button-bg-hover':
                     theme === 'ghost',
                 'bg-secondary-button-bg': isActive
