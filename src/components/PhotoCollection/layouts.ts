@@ -233,7 +233,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [2, 11, 18, 4]}
     ],
     home: [
-        {layout: 'SixInARow', photos: [6, 8, 41, 25, 28, 35]},
+        {layout: 'GreenHopFeaturedOneLandScapeTwoPortrait', photos: [47, 6, 8]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [46, 27, 4, 26, 2, 40]},
         {layout: 'ThreeInARow', photos: [10, 23, 31]},
         {layout: 'FourInARow', photos: [0, 45, 30, 3]},
@@ -243,8 +243,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
             props: {className: 'hidden md:grid'}
         },
         {layout: 'ThreeInARow', photos: [29, 16, 22]},
-        {layout: 'FourInARow', photos: [39, 15, 13, 37]},
-        {layout: 'SixInARow', photos: [43, 9, 44, 7, 19, 24], props: {className: 'hidden md:grid'}}
+        {layout: 'SixInARow', photos: [43, 9, 44, 7, 28, 24], props: {className: 'hidden md:grid'}},
+        {layout: 'FourInARow', photos: [39, 15, 13, 37]}
     ],
     'hukins-hops-annual-hop-harvest': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 8]},

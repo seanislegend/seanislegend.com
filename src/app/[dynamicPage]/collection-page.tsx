@@ -1,7 +1,6 @@
 import PhotoCollection from '@/components/PhotoCollection';
 import PhotoCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
 import RelatedCollections from '@/components/PhotoCollection/RelatedCollections';
-import GreenHopHomePageBanner from '@/app/green-hop-beer/HomePageBanner';
 
 interface Props {
     collection: PhotoCollection;
@@ -9,7 +8,6 @@ interface Props {
 
 const CollectionPage: React.FC<Props> = ({collection}) => (
     <>
-        {collection.slug === 'home' && <GreenHopHomePageBanner />}
         <PhotoCollection
             {...collection}
             linksTo={collection.slug === 'home' ? 'collection' : 'photo'}
