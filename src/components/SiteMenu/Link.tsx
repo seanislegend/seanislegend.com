@@ -14,7 +14,7 @@ interface Props extends LinkProps {
 }
 
 export const linkClasses =
-    'px-2 py-1.5 font-medium text-[14px] text-theme-text relative z-30 inline-block transition-colors duration-300 focus:outline-hidden flex-shrink-0 focus:ring-2 leading-none sm:leading-normal focus:ring-offset-2 uppercase rounded-xs';
+    'px-2.5 py-1.5 font-medium text-[14px] text-theme-text relative z-30 inline-block transition-colors duration-300 focus:outline-hidden flex-shrink-0 focus:ring-2 leading-none sm:leading-normal focus:ring-offset-2 uppercase rounded-xs';
 
 const SiteHeaderLink: React.FC<React.PropsWithChildren<Props>> = ({
     children,
