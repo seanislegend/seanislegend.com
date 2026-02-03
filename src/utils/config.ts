@@ -5,6 +5,8 @@ export const SITE_LINKS = [
     {label: 'Bluesky', url: 'https://bsky.app/profile/seanislegend.com'}
 ];
 
+export const SHOP_URL = 'https://seanislegendprints.square.site';
+
 export const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',

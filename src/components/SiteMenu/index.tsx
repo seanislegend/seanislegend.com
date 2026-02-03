@@ -1,3 +1,4 @@
+import {SHOP_URL} from '@/utils/config';
 import SiteHeaderLink from './Link';
 
 export const MENU_ITEMS = [
@@ -5,7 +6,7 @@ export const MENU_ITEMS = [
     {href: '/about', label: 'About'},
     {href: '/contact', label: 'Contact'},
     {href: '/services', label: 'Hire me'},
-    {href: 'https://seanislegendprints.square.site', label: 'Shop', theme: 'secondary'}
+    {href: SHOP_URL, label: 'Shop', theme: 'secondary'}
 ];
 
 const SiteHeaderMenu: React.FC = () => (

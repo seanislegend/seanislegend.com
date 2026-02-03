@@ -1,5 +1,6 @@
 import {withBotId} from 'botid/next/config';
 import type {NextConfig} from 'next';
+import {SHOP_URL} from '@/utils/config';
 import {fetchAllTags} from '@/utils/contentful';
 
 // https://nextjs.org/docs/advanced-features/security-headers
@@ -33,6 +34,7 @@ const nextConfig: NextConfig = {
     },
     async redirects() {
         const redirects = [
+            {source: '/shop', destination: SHOP_URL, permanent: false},
             {
                 source: '/exhibitions',
                 destination: '/exhibitions/a-beers-place-the-kings-arms',
