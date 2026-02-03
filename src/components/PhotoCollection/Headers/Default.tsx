@@ -20,6 +20,7 @@ const DefaultHeader: React.FC<React.PropsWithChildren<Props>> = ({children, coll
                 </Suspense>
             </div>
         }
+        pageTitle={collection.pageTitle ?? collection.title}
     >
         {children}
     </PageHeader>
