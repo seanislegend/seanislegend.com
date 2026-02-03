@@ -233,10 +233,10 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [2, 11, 18, 4]}
     ],
     home: [
+        {layout: 'LandscapeTwoBigFourSmall', photos: [46, 27, 4, 26, 0, 40]},
         {layout: 'GreenHopFeaturedOneLandScapeTwoPortrait', photos: [47, 6, 8]},
-        {layout: 'LandscapeTwoBigFourSmall', photos: [46, 27, 4, 26, 2, 40]},
         {layout: 'ThreeInARow', photos: [10, 23, 31]},
-        {layout: 'FourInARow', photos: [0, 45, 30, 3]},
+        {layout: 'FourInARow', photos: [2, 45, 30, 3]},
         {
             layout: 'SixInARow',
             photos: [12, 36, 38, 42, 32, 5],
