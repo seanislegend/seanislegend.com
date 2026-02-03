@@ -41,7 +41,7 @@ const SiteHeaderLink: React.FC<React.PropsWithChildren<Props>> = ({
             {...(isExternal ? {target: '_blank', rel: 'noopener noreferrer'} : {})}
         >
             {children}
-            {isExternal && <ArrowSquareOutIcon className="size-3" />}
+            {isExternal && <ArrowSquareOutIcon className="size-3 fill-current" />}
         </Link>
     );
 };
