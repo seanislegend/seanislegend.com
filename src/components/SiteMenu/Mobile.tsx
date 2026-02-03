@@ -53,6 +53,16 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                     className="-ml-2 flex flex-col space-y-2"
                                     data-testid="mobile-menu-collections-navigation"
                                 >
+                                    {MENU_ITEMS.map(link => (
+                                        <SiteMenuLink
+                                            className="text-lg!"
+                                            key={link.href}
+                                            href={link.href}
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            {link.label}
+                                        </SiteMenuLink>
+                                    ))}
                                     <SiteMenuLink
                                         className="text-lg!"
                                         href="/collections"
@@ -84,16 +94,6 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                     >
                                         View all collections
                                     </SiteMenuLink>
-                                    {MENU_ITEMS.map(link => (
-                                        <SiteMenuLink
-                                            className="text-lg!"
-                                            key={link.href}
-                                            href={link.href}
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            {link.label}
-                                        </SiteMenuLink>
-                                    ))}
                                 </nav>
                                 <div
                                     className="pt-8 lg:hidden"
