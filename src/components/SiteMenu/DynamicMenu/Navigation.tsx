@@ -2,7 +2,7 @@
 
 import {useLayoutEffect, useRef, useState} from 'react';
 import {MENU_ITEMS} from '../';
-import SiteHeaderLink, {linkClasses} from '../Link';
+import SiteHeaderLink, {ghostLinkClasses, linkClasses} from '../Link';
 import {NavigationMenu} from '@base-ui-components/react/navigation-menu';
 import {usePathname} from 'next/navigation';
 import Button from '@/components/Button';
@@ -36,7 +36,9 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
             <NavigationMenu.Root closeDelay={300} data-testid="main-navigation" key={pathname}>
                 <NavigationMenu.List className="relative z-30 hidden flex-row items-center gap-1 lg:flex">
                     <NavigationMenu.Item>
-                        <NavigationMenu.Trigger className={`${linkClasses} group`}>
+                        <NavigationMenu.Trigger
+                            className={`${linkClasses} ${ghostLinkClasses} group`}
+                        >
                             <span className="inline-flex items-center gap-1.5">
                                 <span className="text-theme-text">Collections</span>
                                 <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
