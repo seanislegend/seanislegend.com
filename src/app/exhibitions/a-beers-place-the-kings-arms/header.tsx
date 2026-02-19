@@ -1,3 +1,4 @@
+import Button from '@/components/Button';
 import Markdown from '@/components/Markdown';
 import {Heading4} from '@/components/UI/Headings';
 
@@ -40,6 +41,13 @@ const ExhibitionHeader: React.FC<Props> = ({exhibition}) => (
                 </div>
             )}
         </div>
+        {exhibition.detailsUrl && (
+            <div className="mt-4 md:mx-auto md:max-w-220">
+                <Button className="mt-4" href={exhibition.detailsUrl} theme="secondary">
+                    {exhibition.detailsUrlLabel || 'More details'}
+                </Button>
+            </div>
+        )}
     </>
 );
 

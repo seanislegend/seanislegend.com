@@ -1,6 +1,5 @@
 import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
-import Button from '@/components/Button';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchExhibition} from '@/utils/contentful';
@@ -21,15 +20,6 @@ const ExhibitionPage: React.FC = async () => {
                 <ExhibitionHeader exhibition={exhibition} />
             </Container>
             <Photos exhibition={exhibition} />
-            <Container>
-                {exhibition.detailsUrl && (
-                    <p className="text-center">
-                        <Button href={exhibition.detailsUrl} theme="secondary">
-                            {exhibition.detailsUrlLabel || 'More details'}
-                        </Button>
-                    </p>
-                )}
-            </Container>
         </>
     );
 };

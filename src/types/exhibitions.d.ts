@@ -15,6 +15,7 @@ interface Exhibition {
     collaborator?: string;
     description?: string;
     detailsUrl?: string;
+    detailsUrlLabel?: string;
     endDate?: string;
     photosCollection?: {
         items: ExhibitionPhoto[];
