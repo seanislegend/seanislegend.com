@@ -48,9 +48,8 @@ const GreenHopSections: React.FC = () => {
                         text={shareText}
                     />
                     <em className="mt-8 block text-sm text-balance opacity-50 sm:w-10/12 md:w-8/12 xl:w-7/12">
-                        Sean McEmerson is a London-based photographer specialising in capturing the
-                        stories of UK beer, breweries and the people behind them. His work has been
-                        published on{' '}
+                        Sean McEmerson is a London-based photographer. His beer and brewery
+                        photography has been published on{' '}
                         <TextLink
                             href="https://www.goodbeerhunting.com"
                             rel="noopener noreferrer"
