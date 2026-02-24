@@ -4,7 +4,7 @@ import {notFound} from 'next/navigation';
 import PhotosCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
 import config from '@/utils/config';
 import {fetchCollection} from '@/utils/contentful';
-import {getCollectionSeo} from '@/utils/helpers';
+import {getCollectionSeo, getPhotoAlbumJsonLd} from '@/utils/helpers';
 import ContextWrapper from './ContextWrapper';
 import Layout from './Layout';
 import Navigation from './Navigation';
@@ -19,8 +19,13 @@ const GreenHopPage = async () => {
         notFound();
     }
 
+    const photoAlbumJsonLd = getPhotoAlbumJsonLd(collection);
     return (
         <Layout>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{__html: JSON.stringify(photoAlbumJsonLd)}}
+            />
             <ContextWrapper collection={collection}>
                 <PageHeader />
                 <Navigation />

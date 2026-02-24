@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchAllEditorialPages, fetchAllTags} from '@/utils/contentful';
-import {getCollectionSeo, getEditorialSeo} from '@/utils/helpers';
+import {getCollectionSeo, getEditorialSeo, getPhotoAlbumJsonLd} from '@/utils/helpers';
 import {resolvePageData} from '@/utils/pageResolver';
 import CollectionPage from './collection-page';
 import EditorialPage from './editorial-page';
@@ -30,9 +30,19 @@ const DynamicPage: React.FC<Props> = async ({params}) => {
             return <TagPage tagSlug={tag.slug} />;
         }
 
-        return <CollectionPage collection={pageData.collection} />;
+        const photoAlbumJsonLd = getPhotoAlbumJsonLd(pageData.collection);
+        return (
+            <>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{__html: JSON.stringify(photoAlbumJsonLd)}}
+                />
+                <CollectionPage collection={pageData.collection} />
+            </>
+        );
     } else if (pageData.type === 'editorial') {
-        return <EditorialPage editorial={pageData.editorial} />;
+        const tags = await fetchAllTags();
+        return <EditorialPage editorial={pageData.editorial} tags={tags ?? []} />;
     }
 
     // fallback - should not reach here
@@ -70,12 +80,18 @@ export const generateMetadata = async ({params}: Props): Promise<Metadata | null
 
     if (pageData.type === 'collection') {
         const collectionSeo = getCollectionSeo(pageData.collection);
-        const meta = {...config.seo, ...collectionSeo};
-        return meta;
+        return {
+            ...config.seo,
+            ...collectionSeo,
+            openGraph: {...config.seo.openGraph, ...collectionSeo.openGraph}
+        };
     } else if (pageData.type === 'editorial') {
         const editorialSeo = getEditorialSeo(pageData.editorial);
-        const meta = {...config.seo, ...editorialSeo};
-        return meta;
+        return {
+            ...config.seo,
+            ...editorialSeo,
+            openGraph: {...config.seo.openGraph, ...editorialSeo.openGraph}
+        };
     }
 
     return null;

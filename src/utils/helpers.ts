@@ -10,12 +10,58 @@ export const getExternalUrl = (url: string = '') => {
     return `${url}?utm_source=seanislegend.com&utm_medium=referral`;
 };
 
+const CONTENTFUL_IMAGE_ORIGIN = 'https://images.ctfassets.net';
+const REWRITE_IMAGE_PREFIX = `${process.env.NEXT_PUBLIC_URL}/images/photos`;
+
+export const toRewriteImageUrl = (url: string | undefined): string | undefined => {
+    if (!url) return undefined;
+    if (!url.startsWith(CONTENTFUL_IMAGE_ORIGIN)) return url;
+    const path = url.slice(CONTENTFUL_IMAGE_ORIGIN.length);
+    return `${REWRITE_IMAGE_PREFIX}${path}`;
+};
+
 const titleWithCategoryPrefix = (title: string, category?: string) => {
     if (category) {
         return `${title} | ${category} ${config.titleTemplate}`;
     } else {
         return `${title} | ${config.titleTemplate}`;
     }
+};
+
+const getCollectionCanonicalUrl = (collection: PhotoCollection) =>
+    `${config.seo.alternates.canonical}${collection.slug === 'home' ? '' : `/${collection.slug}`}`;
+
+export const getPhotoAlbumJsonLd = (collection: PhotoCollection): Record<string, unknown> => {
+    const url = getCollectionCanonicalUrl(collection);
+    const name = collection.pageTitle || collection.title;
+    const description =
+        collection.metaDescription ||
+        (collection.description ? removeMarkdown(collection.description) : undefined);
+    const photos = collection.photosCollection?.items ?? [];
+    const firstPhoto = photos[0];
+    const primaryImage = toRewriteImageUrl(
+        firstPhoto?.hero?.url ||
+            firstPhoto?.fullSize?.url ||
+            collection.metaPhotosCollection?.items?.[0]?.photo?.url
+    );
+    const associatedMedia = photos.slice(0, 4).map((photo, index) => ({
+        '@type': 'ImageObject',
+        name: photo.title,
+        position: index + 1,
+        url: toRewriteImageUrl(photo.hero?.url || photo.fullSize?.url || photo.thumbnail?.url)
+    }));
+
+    const schema: Record<string, unknown> = {
+        '@context': 'https://schema.org',
+        '@type': 'ImageGallery',
+        name,
+        url
+    };
+    if (description) schema.abstract = description;
+    if (associatedMedia.length) schema.associatedMedia = associatedMedia;
+    if (collection.sys?.firstPublishedAt) schema.datePublished = collection.sys.firstPublishedAt;
+    if (primaryImage) schema.primaryImageOfPage = {'@type': 'ImageObject', url: primaryImage};
+    return schema;
 };
 
 export const getCollectionSeo = (collection: PhotoCollection) => {

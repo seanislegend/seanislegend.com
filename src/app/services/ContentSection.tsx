@@ -1,5 +1,6 @@
 import Markdown from '@/components/Markdown';
 import PageHeaderButtonList from '@/components/PageHeader/ButtonList';
+import PublishedWorkLogos from '@/components/PublishedWorkLogos';
 import {Heading2} from '@/components/UI/Headings';
 import TextLink from '@/components/UI/TextLink';
 import TitleTextGrid from '@/components/UI/TitleTextGrid';
@@ -32,7 +33,20 @@ const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
                     {section.photoGrid?.photosCollection?.items && (
                         <PhotosGrid photos={section.photoGrid.photosCollection.items} />
                     )}
-                    <TitleTextGrid className="mt-8" heading={<Heading2>{section.title}</Heading2>}>
+                    <TitleTextGrid
+                        className="mt-8"
+                        heading={
+                            <>
+                                <Heading2>{section.title}</Heading2>
+                                {section.title === 'Editorial photography' && (
+                                    <>
+                                        <PublishedWorkLogos theme="light" />
+                                        <div className="mb-4" />
+                                    </>
+                                )}
+                            </>
+                        }
+                    >
                         <Markdown className="max-w-2xl text-pretty 2xl:max-w-5xl">
                             {section.content}
                         </Markdown>
