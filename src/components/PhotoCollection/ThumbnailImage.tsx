@@ -9,6 +9,7 @@ interface Props extends ThumbnailPhoto {
     fill?: boolean;
     id?: string;
     loading?: 'eager' | 'lazy';
+    priority?: boolean;
 }
 
 const ThumbnailImage: React.FC<Props> = ({
@@ -19,6 +20,7 @@ const ThumbnailImage: React.FC<Props> = ({
     height,
     id,
     loading = 'lazy',
+    priority,
     width,
     url
 }) => {
@@ -45,7 +47,8 @@ const ThumbnailImage: React.FC<Props> = ({
                 data-testid="photo-image"
                 fill={fill}
                 placeholder={base64 ? 'blur' : 'empty'}
-                loading={loading}
+                loading={priority ? undefined : loading}
+                priority={priority}
                 quality={80}
                 src={url}
                 {...(fill ? {} : {height: imageHeight, width: imageWidth})}

@@ -10,9 +10,10 @@ interface Props extends ThumbnailPhoto {
     alt?: string;
     columnSize?: number;
     label?: string;
-    loading?: 'eager' | 'lazy';
     linksTo?: 'collection' | 'photo';
+    loading?: 'eager' | 'lazy';
     path: string;
+    priority?: boolean;
     [key: string]: any;
 }
 
@@ -25,6 +26,7 @@ const PhotoThumbnail: React.FC<Props> = ({
     linksTo,
     loading = 'lazy',
     path,
+    priority,
     slug,
     thumbnail,
     title,
@@ -81,11 +83,12 @@ const PhotoThumbnail: React.FC<Props> = ({
         >
             <ThumbnailImage
                 alt={alt}
+                base64={base64}
                 columnSize={columnSize}
                 fill={props?.fill}
-                {...thumbnail}
-                base64={base64}
                 loading={loading}
+                priority={priority}
+                {...thumbnail}
             />
             {id && <PhotoEditButton id={id} />}
         </Condition>
