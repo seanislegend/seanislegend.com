@@ -4,7 +4,6 @@ import {useAtomValue} from 'jotai';
 import {Link} from 'next-view-transitions';
 import {usePathname} from 'next/navigation';
 import {LeftArrowIcon} from '@/components/Icon/LeftArrow';
-import Condition from '@/components/UI/Condition';
 import useScrollStatus from '@/hooks/useScrollStatus';
 import {pageHeaderDataAtom} from '@/utils/store';
 
@@ -31,28 +30,22 @@ const PageHeaderTitlePreview: React.FC = () => {
         >
             <span className="mx-2 shrink-0">&mdash;</span>
             <span className="flex min-w-0 overflow-hidden">
-                <Condition
-                    condition={pageHeaderData.path && !isPathEqualToPageHeaderPath}
-                    fallbackWrapper={children => (
-                        <span className="block max-w-full min-w-0 truncate">{children}</span>
-                    )}
-                    wrapper={children => (
-                        <Link
-                            className="group relative inline-block max-w-full min-w-0 truncate underline underline-offset-4 hover:underline"
-                            href={pageHeaderData.path}
-                        >
-                            <span className="sm:group-o absolute top-0 bottom-0 left-0 flex translate-x-2 items-center gap-1 opacity-0 blur-xs duration-300 ease-in-out sm:group-hover:translate-x-0 sm:group-hover:opacity-100 sm:group-hover:blur-none">
-                                <LeftArrowIcon className="h-5 w-5 fill-current" />
-                                <span>Go to collection</span>
-                            </span>
-                            <span className="block truncate duration-300 ease-in-out sm:group-hover:translate-x-1 sm:group-hover:opacity-0 sm:group-hover:blur-xs">
-                                {children}
-                            </span>
-                        </Link>
-                    )}
-                >
-                    {pageHeaderData.title}
-                </Condition>
+                {pageHeaderData.path && !isPathEqualToPageHeaderPath ? (
+                    <Link
+                        className="group relative inline-block max-w-full min-w-0 truncate underline underline-offset-4 hover:underline"
+                        href={pageHeaderData.path}
+                    >
+                        <span className="sm:group-o absolute top-0 bottom-0 left-0 flex translate-x-2 items-center gap-1 opacity-0 blur-xs duration-300 ease-in-out sm:group-hover:translate-x-0 sm:group-hover:opacity-100 sm:group-hover:blur-none">
+                            <LeftArrowIcon className="h-5 w-5 fill-current" />
+                            <span>Go to collection</span>
+                        </span>
+                        <span className="block truncate duration-300 ease-in-out sm:group-hover:translate-x-1 sm:group-hover:opacity-0 sm:group-hover:blur-xs">
+                            {pageHeaderData.title}
+                        </span>
+                    </Link>
+                ) : (
+                    <span className="block max-w-full min-w-0 truncate">{pageHeaderData.title}</span>
+                )}
             </span>
         </span>
     );

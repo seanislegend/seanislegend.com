@@ -44,7 +44,9 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                 data-testid="collections-grid"
                             >
                                 {links.map(link => (
-                                    <Collection key={link.url} link={link} />
+                                    <NavigationMenu.Item key={link.url}>
+                                        <Collection link={link} />
+                                    </NavigationMenu.Item>
                                 ))}
                             </div>
                             <div className="my-4 flex items-center justify-between sm:flex-row">

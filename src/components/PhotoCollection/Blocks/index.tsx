@@ -6,7 +6,6 @@ import ButtonList from '@/components/Button/List';
 import Markdown from '@/components/Markdown';
 import Column from '@/components/PhotoCollection/Column';
 import Grid from '@/components/PhotoCollection/Grid';
-import Condition from '@/components/UI/Condition';
 import Container from '@/components/UI/Container';
 import {Heading2} from '@/components/UI/Headings';
 import {
@@ -117,65 +116,61 @@ const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({
     reverse
 }) => (
     <Grid>
-        <Condition
-            condition={reverse}
-            fallbackWrapper={() => (
-                <>
-                    <Column className="col-span-12 md:col-span-8">
+        {reverse ? (
+            <>
+                <Column className="col-span-12 h-full md:col-span-4">
+                    <div className="flex h-full flex-row justify-between gap-2 md:flex-col md:gap-4">
                         <PhotoSlot
                             blockPhotos={photos}
                             index={0}
-                            columnSize={8}
+                            columnSize={4}
                             {...photoSlotProps}
                         />
-                    </Column>
-                    <Column className="col-span-12 h-full md:col-span-4">
-                        <div className="flex h-full flex-row justify-between gap-2 md:flex-col md:gap-4">
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={1}
-                                columnSize={4}
-                                {...photoSlotProps}
-                            />
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={2}
-                                columnSize={4}
-                                {...photoSlotProps}
-                            />
-                        </div>
-                    </Column>
-                </>
-            )}
-            wrapper={() => (
-                <>
-                    <Column className="col-span-12 h-full md:col-span-4">
-                        <div className="flex h-full flex-row justify-between gap-2 md:flex-col md:gap-4">
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={0}
-                                columnSize={4}
-                                {...photoSlotProps}
-                            />
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={1}
-                                columnSize={4}
-                                {...photoSlotProps}
-                            />
-                        </div>
-                    </Column>
-                    <Column className="col-span-12 md:col-span-8">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={1}
+                            columnSize={4}
+                            {...photoSlotProps}
+                        />
+                    </div>
+                </Column>
+                <Column className="col-span-12 md:col-span-8">
+                    <PhotoSlot
+                        blockPhotos={photos}
+                        index={2}
+                        columnSize={8}
+                        {...photoSlotProps}
+                    />
+                </Column>
+            </>
+        ) : (
+            <>
+                <Column className="col-span-12 md:col-span-8">
+                    <PhotoSlot
+                        blockPhotos={photos}
+                        index={0}
+                        columnSize={8}
+                        {...photoSlotProps}
+                    />
+                </Column>
+                <Column className="col-span-12 h-full md:col-span-4">
+                    <div className="flex h-full flex-row justify-between gap-2 md:flex-col md:gap-4">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={1}
+                            columnSize={4}
+                            {...photoSlotProps}
+                        />
                         <PhotoSlot
                             blockPhotos={photos}
                             index={2}
-                            columnSize={8}
+                            columnSize={4}
                             {...photoSlotProps}
                         />
-                    </Column>
-                </>
-            )}
-        />
+                    </div>
+                </Column>
+            </>
+        )}
     </Grid>
 );
 
@@ -332,83 +327,73 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
     PhotoSlot,
     photos,
     reverse
-}) => (
-    <Grid>
-        <Condition
-            condition={reverse}
-            fallbackWrapper={children => (
-                <>
-                    {children}
-                    <Column className="col-span-12 md:col-span-6">
-                        <PhotoSlot
-                            blockPhotos={photos}
-                            index={0}
-                            columnSize={6}
-                            {...photoSlotProps}
-                        />
-                    </Column>
-                </>
+}) => {
+    const portrait = (
+        <Column className="col-span-12 md:col-span-6">
+            <PhotoSlot
+                blockPhotos={photos}
+                index={0}
+                columnSize={6}
+                {...photoSlotProps}
+            />
+        </Column>
+    );
+    const smallPhotos = (
+        <Column className="col-span-12 flex h-full flex-col justify-between gap-2 md:col-span-6 md:gap-4">
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
+                <Column className="col-span-6">
+                    <PhotoSlot
+                        blockPhotos={photos}
+                        index={1}
+                        columnSize={6}
+                        {...photoSlotProps}
+                    />
+                </Column>
+                <Column className="col-span-6">
+                    <PhotoSlot
+                        blockPhotos={photos}
+                        index={2}
+                        columnSize={6}
+                        {...photoSlotProps}
+                    />
+                </Column>
+            </Grid>
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
+                <Column className="col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={3} {...photoSlotProps} />
+                </Column>
+            </Grid>
+            <Grid gridCols="grid-cols-12" hasTestId={false}>
+                <Column className="col-span-6">
+                    <PhotoSlot
+                        blockPhotos={photos}
+                        index={4}
+                        columnSize={6}
+                        {...photoSlotProps}
+                    />
+                </Column>
+                <Column className="col-span-6">
+                    <PhotoSlot
+                        blockPhotos={photos}
+                        index={5}
+                        columnSize={6}
+                        {...photoSlotProps}
+                    />
+                </Column>
+            </Grid>
+        </Column>
+    );
+
+    return (
+        <Grid>
+            {reverse ? (
+                <>{portrait}{smallPhotos}</>
+            ) : (
+                <>{smallPhotos}{portrait}</>
             )}
-            wrapper={children => (
-                <>
-                    <Column className="col-span-12 md:col-span-6">
-                        <PhotoSlot
-                            blockPhotos={photos}
-                            index={0}
-                            columnSize={6}
-                            {...photoSlotProps}
-                        />
-                    </Column>
-                    {children}
-                </>
-            )}
-        >
-            <Column className="col-span-12 flex h-full flex-col justify-between gap-2 md:col-span-6 md:gap-4">
-                <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-6">
-                        <PhotoSlot
-                            blockPhotos={photos}
-                            index={1}
-                            columnSize={6}
-                            {...photoSlotProps}
-                        />
-                    </Column>
-                    <Column className="col-span-6">
-                        <PhotoSlot
-                            blockPhotos={photos}
-                            index={2}
-                            columnSize={6}
-                            {...photoSlotProps}
-                        />
-                    </Column>
-                </Grid>
-                <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-12">
-                        <PhotoSlot blockPhotos={photos} index={3} {...photoSlotProps} />
-                    </Column>
-                </Grid>
-                <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-6">
-                        <PhotoSlot
-                            blockPhotos={photos}
-                            index={4}
-                            columnSize={6}
-                            {...photoSlotProps}
-                        />
-                    </Column>
-                    <Column className="col-span-6">
-                        <PhotoSlot
-                            blockPhotos={photos}
-                            index={5}
-                            columnSize={6}
-                            {...photoSlotProps}
-                        />
-                    </Column>
-                </Grid>
-            </Column>
-        </Condition>
-    </Grid>
-);
+        </Grid>
+    );
+};
 
 const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({
     photoSlotProps,
@@ -417,65 +402,61 @@ const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({
     reverse
 }) => (
     <Grid>
-        <Condition
-            condition={reverse}
-            fallbackWrapper={() => (
-                <>
-                    <Column className="col-span-12 md:col-span-6">
+        {reverse ? (
+            <>
+                <Column className="col-span-12 h-full md:col-span-6">
+                    <div className="flex h-full flex-col justify-between gap-2 md:gap-0">
                         <PhotoSlot
                             blockPhotos={photos}
-                            index={0}
+                            index={1}
                             columnSize={6}
                             {...photoSlotProps}
                         />
-                    </Column>
-                    <Column className="col-span-12 h-full md:col-span-6">
-                        <div className="flex h-full flex-col justify-between gap-2 md:gap-0">
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={1}
-                                columnSize={6}
-                                {...photoSlotProps}
-                            />
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={2}
-                                columnSize={6}
-                                {...photoSlotProps}
-                            />
-                        </div>
-                    </Column>
-                </>
-            )}
-            wrapper={() => (
-                <>
-                    <Column className="col-span-12 h-full md:col-span-6">
-                        <div className="flex h-full flex-col justify-between gap-2 md:gap-0">
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={1}
-                                columnSize={6}
-                                {...photoSlotProps}
-                            />
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={2}
-                                columnSize={6}
-                                {...photoSlotProps}
-                            />
-                        </div>
-                    </Column>
-                    <Column className="col-span-12 md:col-span-6">
                         <PhotoSlot
                             blockPhotos={photos}
-                            index={0}
+                            index={2}
                             columnSize={6}
                             {...photoSlotProps}
                         />
-                    </Column>
-                </>
-            )}
-        />
+                    </div>
+                </Column>
+                <Column className="col-span-12 md:col-span-6">
+                    <PhotoSlot
+                        blockPhotos={photos}
+                        index={0}
+                        columnSize={6}
+                        {...photoSlotProps}
+                    />
+                </Column>
+            </>
+        ) : (
+            <>
+                <Column className="col-span-12 md:col-span-6">
+                    <PhotoSlot
+                        blockPhotos={photos}
+                        index={0}
+                        columnSize={6}
+                        {...photoSlotProps}
+                    />
+                </Column>
+                <Column className="col-span-12 h-full md:col-span-6">
+                    <div className="flex h-full flex-col justify-between gap-2 md:gap-0">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={1}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={2}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
+                    </div>
+                </Column>
+            </>
+        )}
     </Grid>
 );
 
@@ -640,46 +621,45 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
     reverse
 }) => (
     <Grid className="place-items-center">
-        <Condition
-            condition={reverse}
-            fallbackWrapper={children => (
-                <>
-                    {children}
-                    <Column className="col-span-12 flex h-full md:col-span-6">
-                        <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={2}
-                                columnSize={6}
-                                {...photoSlotProps}
-                            />
-                        </div>
-                    </Column>
-                </>
-            )}
-            wrapper={children => (
-                <>
-                    <Column className="col-span-12 flex h-full md:col-span-6">
-                        <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
-                            <PhotoSlot
-                                blockPhotos={photos}
-                                index={2}
-                                columnSize={6}
-                                {...photoSlotProps}
-                            />
-                        </div>
-                    </Column>
-                    {children}
-                </>
-            )}
-        >
-            <Column className="col-span-6 flex h-full items-center md:col-span-3">
-                <PhotoSlot blockPhotos={photos} index={0} columnSize={3} {...photoSlotProps} />
-            </Column>
-            <Column className="col-span-6 flex h-full items-center md:col-span-3">
-                <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
-            </Column>
-        </Condition>
+        {reverse ? (
+            <>
+                <Column className="col-span-12 flex h-full md:col-span-6">
+                    <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={2}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
+                    </div>
+                </Column>
+                <Column className="col-span-6 flex h-full items-center md:col-span-3">
+                    <PhotoSlot blockPhotos={photos} index={0} columnSize={3} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6 flex h-full items-center md:col-span-3">
+                    <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
+                </Column>
+            </>
+        ) : (
+            <>
+                <Column className="col-span-6 flex h-full items-center md:col-span-3">
+                    <PhotoSlot blockPhotos={photos} index={0} columnSize={3} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6 flex h-full items-center md:col-span-3">
+                    <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-12 flex h-full md:col-span-6">
+                    <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={2}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
+                    </div>
+                </Column>
+            </>
+        )}
     </Grid>
 );
 
