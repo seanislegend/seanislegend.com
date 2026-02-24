@@ -18,6 +18,7 @@ const RootLayout = async ({children}: Props) => (
             className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}
         >
             <head>
+                <link rel="preconnect" href="https://images.ctfassets.net" />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
