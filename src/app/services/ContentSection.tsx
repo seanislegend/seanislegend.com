@@ -40,7 +40,7 @@ const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
                                 <Heading2>{section.title}</Heading2>
                                 {section.title === 'Editorial photography' && (
                                     <>
-                                        <PublishedWorkLogos />
+                                        <PublishedWorkLogos theme="light" />
                                         <div className="mb-4" />
                                     </>
                                 )}
