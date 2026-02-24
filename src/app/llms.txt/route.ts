@@ -52,8 +52,8 @@ export async function GET() {
 
     const filteredCollections =
         collections?.filter(
-            (c: {photosCollection?: {items: unknown[]}}) =>
-                c.photosCollection?.items?.length > 0
+            (c: {photosCollection?: {items?: unknown[]}}) =>
+                (c.photosCollection?.items?.length ?? 0) > 0
         ) ?? [];
 
     const collectionLines = filteredCollections
