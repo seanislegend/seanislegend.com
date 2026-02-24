@@ -1,5 +1,5 @@
 import removeMarkdown from 'remove-markdown';
-import config from '@/utils/config';
+import config, {SITE_LINKS} from '@/utils/config';
 
 export const isExternalUrl = (url: string | undefined) => {
     return url?.toString().startsWith('http');
@@ -61,6 +61,33 @@ export const getPhotoAlbumJsonLd = (collection: PhotoCollection): Record<string,
     if (associatedMedia.length) schema.associatedMedia = associatedMedia;
     if (collection.sys?.firstPublishedAt) schema.datePublished = collection.sys.firstPublishedAt;
     if (primaryImage) schema.primaryImageOfPage = {'@type': 'ImageObject', url: primaryImage};
+    return schema;
+};
+
+export const getBlogPostingJsonLd = (collection: PhotoCollection): Record<string, unknown> => {
+    const url = getCollectionCanonicalUrl(collection);
+    const name = collection.pageTitle || collection.title;
+    const description =
+        collection.metaDescription ||
+        (collection.description ? removeMarkdown(collection.description) : undefined);
+
+    const schema: Record<string, unknown> = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: name,
+        url,
+        author: {
+            '@type': 'Person',
+            name: 'Sean McEmerson',
+            url: config.seo.alternates.canonical,
+            sameAs: SITE_LINKS.map(link => link.url)
+        }
+    };
+
+    if (description) schema.description = description;
+    if (collection.sys?.firstPublishedAt) schema.datePublished = collection.sys.firstPublishedAt;
+    if (collection.sys?.publishedAt) schema.dateModified = collection.sys.publishedAt;
+
     return schema;
 };
 

@@ -4,7 +4,7 @@ import {notFound} from 'next/navigation';
 import PhotosCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
 import config from '@/utils/config';
 import {fetchCollection} from '@/utils/contentful';
-import {getCollectionSeo, getPhotoAlbumJsonLd} from '@/utils/helpers';
+import {getBlogPostingJsonLd, getCollectionSeo, getPhotoAlbumJsonLd} from '@/utils/helpers';
 import ContextWrapper from './ContextWrapper';
 import Layout from './Layout';
 import Navigation from './Navigation';
@@ -20,11 +20,33 @@ const GreenHopPage = async () => {
     }
 
     const photoAlbumJsonLd = getPhotoAlbumJsonLd(collection);
+    const blogPostingJsonLd = getBlogPostingJsonLd(collection);
+    const breadcrumbJsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            {'@type': 'ListItem', position: 1, name: 'Home', item: process.env.NEXT_PUBLIC_URL},
+            {
+                '@type': 'ListItem',
+                position: 2,
+                name: collection.pageTitle || collection.title,
+                item: `${process.env.NEXT_PUBLIC_URL}/green-hop-beer`
+            }
+        ]
+    };
     return (
         <Layout>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{__html: JSON.stringify(photoAlbumJsonLd)}}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{__html: JSON.stringify(blogPostingJsonLd)}}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{__html: JSON.stringify(breadcrumbJsonLd)}}
             />
             <ContextWrapper collection={collection}>
                 <PageHeader />
