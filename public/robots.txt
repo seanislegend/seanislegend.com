@@ -1,4 +1,40 @@
+Sitemap: https://www.seanislegend.com/sitemap.xml
+
 User-agent: *
 Disallow: */open-graph*
 Allow: /
-Sitemap: https://www.seanislegend.com/sitemap.xml
+
+# allow citation crawlers (search, attribution, links back)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# block training crawlers (no content/images for model training)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: PiplBot
+Disallow: /
