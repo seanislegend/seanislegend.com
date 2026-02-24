@@ -3,16 +3,33 @@ import Image from 'next/image';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import PublishedWorkLogos from '@/components/PublishedWorkLogos';
-import Container from '@/components/UI/Container';
-import config from '@/utils/config';
+import config, {SITE_LINKS} from '@/utils/config';
 import {fetchEditorialPage} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
 
+const getPersonJsonLd = (imageUrl?: string) => {
+    const schema: Record<string, unknown> = {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        description: config.seo.description,
+        name: 'Sean McEmerson',
+        sameAs: SITE_LINKS.map(link => link.url),
+        url: 'https://www.seanislegend.com'
+    };
+    if (imageUrl) schema.image = imageUrl;
+    return schema;
+};
+
 const AboutPage = async () => {
     const page = await fetchEditorialPage('about');
+    const personJsonLd = getPersonJsonLd(page.photo?.url);
 
     return (
         <DefaultLayout theme="dark">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{__html: JSON.stringify(personJsonLd)}}
+            />
             <PageHeader
                 description={page.content}
                 title={page.pageTitle}
