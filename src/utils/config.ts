@@ -10,11 +10,16 @@ export const SHOP_URL = 'https://seanislegendprints.square.site';
 export const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Sean McEmerson Photography',
+    address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'GB',
+        addressLocality: 'London'
+    },
+    areaServed: ['London', 'South of England', 'England', 'Scotland'],
     description:
         'London-based photographer specialising in beer, brewery, editorial and event photography.',
-    url: 'https://www.seanislegend.com',
-    areaServed: ['London', 'South of England', 'England', 'Scotland'],
+    image: 'https://www.seanislegend.com/images/og.jpg',
+    name: 'Sean McEmerson Photography',
     hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Photography Services',
@@ -71,8 +76,10 @@ export const jsonLd = {
             }
         ]
     },
-    sameAs: SITE_LINKS.map(link => link.url)
+    sameAs: SITE_LINKS.map(link => link.url),
+    url: 'https://www.seanislegend.com'
 };
+
 
 const config = {
     titleTemplate: 'photography by Sean McEmerson',
