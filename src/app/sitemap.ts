@@ -11,6 +11,14 @@ const getLastModifiedDate = (date?: string) => {
     return lastModified.getTime() > minimum.getTime() ? lastModified : minimum;
 };
 
+const STATIC_PATHS: MetadataRoute.Sitemap = [
+    {
+        url: `${process.env.NEXT_PUBLIC_URL}/collections`,
+        priority: 1,
+        lastModified: new Date().toISOString()
+    }
+];
+
 const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
     const linksItems = MENU_ITEMS.filter(item => !item.href.includes('http')).map(item => ({
         url: `${process.env.NEXT_PUBLIC_URL}${item.href}`,
@@ -58,7 +66,13 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
             lastModified: getLastModifiedDate(editorial?.sys?.publishedAt).toISOString()
         })) || [];
 
-    return [...linksItems, ...collectionItems, ...tagItems, ...editorialItems].filter(Boolean);
+    return [
+        ...linksItems,
+        ...STATIC_PATHS,
+        ...collectionItems,
+        ...tagItems,
+        ...editorialItems
+    ].filter(Boolean);
 };
 
 export default getCollectionSeo;
