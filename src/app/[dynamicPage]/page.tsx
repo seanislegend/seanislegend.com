@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchAllEditorialPages, fetchAllTags} from '@/utils/contentful';
-import {getCollectionSeo, getEditorialSeo} from '@/utils/helpers';
+import {getCollectionSeo, getEditorialSeo, getPhotoAlbumJsonLd} from '@/utils/helpers';
 import {resolvePageData} from '@/utils/pageResolver';
 import CollectionPage from './collection-page';
 import EditorialPage from './editorial-page';
@@ -30,7 +30,16 @@ const DynamicPage: React.FC<Props> = async ({params}) => {
             return <TagPage tagSlug={tag.slug} />;
         }
 
-        return <CollectionPage collection={pageData.collection} />;
+        const photoAlbumJsonLd = getPhotoAlbumJsonLd(pageData.collection);
+        return (
+            <>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{__html: JSON.stringify(photoAlbumJsonLd)}}
+                />
+                <CollectionPage collection={pageData.collection} />
+            </>
+        );
     } else if (pageData.type === 'editorial') {
         return <EditorialPage editorial={pageData.editorial} />;
     }
