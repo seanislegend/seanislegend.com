@@ -50,7 +50,23 @@ const GreenHopSections: React.FC = () => {
                     <em className="mt-8 block text-sm text-balance opacity-50 sm:w-10/12 md:w-8/12 xl:w-7/12">
                         Sean McEmerson is a London-based photographer specialising in capturing the
                         stories of UK beer, breweries and the people behind them. His work has been
-                        published on Good Beer Hunting and Pellicle.{' '}
+                        published on{' '}
+                        <TextLink
+                            href="https://www.goodbeerhunting.com"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            Good Beer Hunting
+                        </TextLink>{' '}
+                        and{' '}
+                        <TextLink
+                            href="https://pelliclemag.com"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            Pellicle
+                        </TextLink>
+                        .{' '}
                         <TextLink href="/" onClick={() => track('see-more-work-click')}>
                             See more work.
                         </TextLink>

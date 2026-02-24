@@ -499,6 +499,10 @@ export const fetchCollection = async (
                         }
                     }
                 }
+                sys {
+                    publishedAt
+                    firstPublishedAt
+                }
             }
         }
     }`;

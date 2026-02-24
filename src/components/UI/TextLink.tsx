@@ -7,6 +7,8 @@ import {usePathname} from 'next/navigation';
 
 interface Props extends LinkProps {
     className?: string;
+    rel?: string;
+    target?: string;
 }
 
 const TextLink: React.FC<React.PropsWithChildren<Props>> = ({children, className, ...props}) => {
