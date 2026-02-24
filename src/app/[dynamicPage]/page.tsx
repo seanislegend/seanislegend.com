@@ -41,7 +41,8 @@ const DynamicPage: React.FC<Props> = async ({params}) => {
             </>
         );
     } else if (pageData.type === 'editorial') {
-        return <EditorialPage editorial={pageData.editorial} />;
+        const tags = await fetchAllTags();
+        return <EditorialPage editorial={pageData.editorial} tags={tags ?? []} />;
     }
 
     // fallback - should not reach here

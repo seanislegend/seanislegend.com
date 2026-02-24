@@ -31,6 +31,10 @@ const AboutPage = async () => {
                 dangerouslySetInnerHTML={{__html: JSON.stringify(personJsonLd)}}
             />
             <PageHeader
+                ctas={[
+                    {label: 'Hire me', url: '/services'},
+                    {label: 'Contact', url: '/contact'}
+                ]}
                 description={page.content}
                 title={page.pageTitle}
                 titleAside={
