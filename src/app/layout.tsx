@@ -4,6 +4,7 @@ import {GeistSans} from 'geist/font/sans';
 import {LazyMotion, domAnimation} from 'motion/react';
 import {ViewTransitions} from 'next-view-transitions';
 import Script from 'next/script';
+import MotionConfigProvider from '@/components/MotionConfigProvider';
 import config, {jsonLd} from '@/utils/config';
 import './globals.css';
 
@@ -41,7 +42,9 @@ const RootLayout = async ({children}: Props) => (
                     `}
                     </Script>
                 )}
-                <LazyMotion features={domAnimation}>{children}</LazyMotion>
+                <LazyMotion features={domAnimation}>
+                    <MotionConfigProvider>{children}</MotionConfigProvider>
+                </LazyMotion>
                 {process.env.NODE_ENV === 'production' && (
                     <>
                         <Analytics />

@@ -13,7 +13,7 @@ export const getExternalUrl = (url: string = '') => {
 const CONTENTFUL_IMAGE_ORIGIN = 'https://images.ctfassets.net';
 const REWRITE_IMAGE_PREFIX = `${process.env.NEXT_PUBLIC_URL}/images/photos`;
 
-export const toRewriteImageUrl = (url: string | undefined): string | undefined => {
+const toRewriteImageUrl = (url: string | undefined): string | undefined => {
     if (!url) return undefined;
     if (!url.startsWith(CONTENTFUL_IMAGE_ORIGIN)) return url;
     const path = url.slice(CONTENTFUL_IMAGE_ORIGIN.length);

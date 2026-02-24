@@ -1,6 +1,6 @@
 'use client';
 
-import {useLayoutEffect, useRef, useState} from 'react';
+import {useLayoutEffect, useState} from 'react';
 import {MENU_ITEMS} from '../';
 import SiteHeaderLink, {ghostLinkClasses, linkClasses} from '../Link';
 import {NavigationMenu} from '@base-ui-components/react/navigation-menu';
@@ -18,17 +18,11 @@ interface Props {
 
 const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
     const pathname = usePathname();
-    const portal = useRef<HTMLElement>(null);
-    const [isPortalReady, setIsPortalReady] = useState(false);
+    const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
 
     useLayoutEffect(() => {
-        if (!portal.current) {
-            const $portal = document.querySelector<HTMLElement>('[data-layout-main="default"]');
-            if ($portal) {
-                portal.current = $portal;
-                setIsPortalReady(true);
-            }
-        }
+        const $portal = document.querySelector<HTMLElement>('[data-layout-main="default"]');
+        if ($portal) setPortalContainer($portal);
     }, []);
 
     return (
@@ -76,17 +70,19 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                         />
                     ))}
                 </NavigationMenu.List>
-                {isPortalReady && (
-                    <NavigationMenu.Portal container={portal.current}>
+                {portalContainer && (
+                    <NavigationMenu.Portal container={portalContainer}>
                         <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 hidden h-screen w-screen duration-500 data-open:block data-open:duration-300" />
                         <NavigationMenu.Positioner
                             className="left-0! z-50"
                             collisionAvoidance={{side: 'none'}}
                             positionMethod="fixed"
-                            style={{
-                                ['--duration' as string]: '0.35s',
-                                ['--easing' as string]: 'cubic-bezier(0.22, 1, 0.36, 1)'
-                            }}
+                            style={
+                                {
+                                    '--duration': '0.35s',
+                                    '--easing': 'cubic-bezier(0.22, 1, 0.36, 1)'
+                                } as React.CSSProperties
+                            }
                         >
                             <NavigationMenu.Popup className="data-ending-style:easing-[ease] relative z-50 mt-1 h-[var(--popup-height)] w-[var(--popup-width)] origin-[var(--transform-origin)] transition-[opacity,transform,width,height,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:-translate-y-2 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:-translate-y-2 data-starting-style:opacity-0">
                                 <NavigationMenu.Viewport className="bg-theme-bg h-full w-full overflow-hidden pt-1" />
@@ -95,7 +91,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                     </NavigationMenu.Portal>
                 )}
             </NavigationMenu.Root>
-            <SiteMenuMobile links={links} />
+            <SiteMenuMobile key={`mobile-${pathname}`} links={links} />
         </>
     );
 };

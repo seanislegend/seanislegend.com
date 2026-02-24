@@ -1,7 +1,7 @@
 'use client';
 
 import {useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
-import {animate, motion, useMotionValue} from 'motion/react';
+import {animate, m, useMotionValue, useReducedMotion} from 'motion/react';
 
 interface Props {
     activeElementId?: string;
@@ -10,6 +10,7 @@ interface Props {
 }
 
 const SwipeableContainer: React.FC<Props> = ({activeElementId, children, className = ''}) => {
+    const shouldReduceMotion = useReducedMotion();
     const containerRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
     const hasDraggedRef = useRef(false);
@@ -48,7 +49,7 @@ const SwipeableContainer: React.FC<Props> = ({activeElementId, children, classNa
             }
 
             animate(x, targetX, {
-                duration: 0.6,
+                duration: shouldReduceMotion ? 0 : 0.6,
                 ease: [0.25, 0.1, 0.25, 1]
             });
             hasInitializedRef.current = true;
@@ -58,7 +59,7 @@ const SwipeableContainer: React.FC<Props> = ({activeElementId, children, classNa
                 x.set(-maxScroll);
             }
         }
-    }, [x, activeElementId]);
+    }, [activeElementId, shouldReduceMotion, x]);
 
     useEffect(() => {
         hasInitializedRef.current = false;
@@ -120,7 +121,7 @@ const SwipeableContainer: React.FC<Props> = ({activeElementId, children, classNa
             ref={containerRef}
             className={`max-w-[100vw] touch-none overflow-hidden px-4 md:px-8 ${className}`}
         >
-            <motion.div
+            <m.div
                 ref={contentRef}
                 className="flex cursor-grab active:cursor-grabbing"
                 drag="x"
@@ -149,7 +150,7 @@ const SwipeableContainer: React.FC<Props> = ({activeElementId, children, classNa
                 style={{x}}
             >
                 {children}
-            </motion.div>
+            </m.div>
         </div>
     );
 };

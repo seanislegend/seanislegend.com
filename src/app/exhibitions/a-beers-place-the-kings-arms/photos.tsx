@@ -6,26 +6,30 @@ import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
 import SwipeableContainer from '@/components/UI/SwipeableContainer';
 
+interface PhotoThumbnailProps {
+    photo: ExhibitionPhoto | null | undefined;
+}
+
+const ExhibitionPhotoThumbnail: React.FC<PhotoThumbnailProps> = ({photo}) => {
+    if (!photo?.photo?.thumbnail) return null;
+    return (
+        <ThumbnailImage
+            alt={photo.title}
+            base64={photo.photo?.base64}
+            id={photo.slug}
+            loading="lazy"
+            columnSize={4}
+            {...photo.photo?.thumbnail}
+        />
+    );
+};
+
 interface Props {
     activePhotoId?: string;
     exhibition: Exhibition;
 }
 
 const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
-    const renderPhoto = (index: number) => {
-        if (!photos[index]?.photo?.thumbnail) return null;
-        return (
-            <ThumbnailImage
-                alt={photos[index].title}
-                base64={photos[index].photo?.base64}
-                id={photos[index].slug}
-                loading="lazy"
-                columnSize={4}
-                {...photos[index].photo?.thumbnail}
-            />
-        );
-    };
-
     const photos = exhibition.photosCollection?.items || [];
     if (!photos.length) return null;
 
@@ -50,7 +54,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                     href={`/exhibitions/${exhibition.slug}/${photos[1]?.slug}`}
                                 >
                                     <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                        {renderPhoto(1)}
+                                        <ExhibitionPhotoThumbnail photo={photos[1]} />
                                     </div>
                                 </Link>
                                 <Link
@@ -58,7 +62,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                     className="relative h-[158px] w-[220px] shrink-0 border-6 border-[#000] bg-white"
                                 >
                                     <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                        {renderPhoto(2)}
+                                        <ExhibitionPhotoThumbnail photo={photos[2]} />
                                     </div>
                                 </Link>
                             </div>
@@ -68,7 +72,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                     className="relative h-[118px] w-[160px] shrink-0 border-6 border-white bg-gray-50"
                                 >
                                     <div className="absolute top-1/2 left-1/2 h-[85%] w-[92.5%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                        {renderPhoto(0)}
+                                        <ExhibitionPhotoThumbnail photo={photos[0]} />
                                     </div>
                                 </Link>
                                 <Link
@@ -76,7 +80,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                     className="relative h-[110px] w-[135px] shrink-0 border-6 border-[#000] bg-white"
                                 >
                                     <div className="absolute top-1/2 left-1/2 h-[80%] w-[92.5%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                        {renderPhoto(5)}
+                                        <ExhibitionPhotoThumbnail photo={photos[5]} />
                                     </div>
                                 </Link>
                                 <Link
@@ -84,7 +88,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                     className="relative h-[103px] w-[155px] shrink-0 border-6 border-[#caad80] bg-white"
                                 >
                                     <div className="absolute top-1/2 left-1/2 h-[95%] w-[95%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                        {renderPhoto(6)}
+                                        <ExhibitionPhotoThumbnail photo={photos[6]} />
                                     </div>
                                 </Link>
                             </div>
@@ -95,7 +99,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative h-[220px] w-[165px] shrink-0 border-6 border-[#000] bg-white"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(3)}
+                                    <ExhibitionPhotoThumbnail photo={photos[3]} />
                                 </div>
                             </Link>
                             <Link
@@ -103,7 +107,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative h-[158px] w-[220px] shrink-0 border-6 border-[#000] bg-white"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(9)}
+                                    <ExhibitionPhotoThumbnail photo={photos[9]} />
                                 </div>
                             </Link>
                         </div>
@@ -113,7 +117,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative h-[158px] w-[220px] shrink-0 border-6 border-[#000] bg-white"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(4)}
+                                    <ExhibitionPhotoThumbnail photo={photos[4]} />
                                 </div>
                             </Link>
                             <div className="flex h-full flex-col items-end justify-between pt-[20px]">
@@ -122,7 +126,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                     className="relative h-[85px] w-[110px] shrink-0 border-6 border-white bg-gray-50"
                                 >
                                     <div className="absolute top-1/2 left-1/2 h-[80%] w-[87.5%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                        {renderPhoto(8)}
+                                        <ExhibitionPhotoThumbnail photo={photos[8]} />
                                     </div>
                                 </Link>
                                 <Link
@@ -130,7 +134,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                     className="relative h-[85px] w-[110px] shrink-0 self-start border-6 border-white bg-gray-50"
                                 >
                                     <div className="absolute top-1/2 left-1/2 h-[80%] w-[87.5%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                        {renderPhoto(7)}
+                                        <ExhibitionPhotoThumbnail photo={photos[7]} />
                                     </div>
                                 </Link>
                             </div>
@@ -143,7 +147,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative h-[158px] w-[220px] shrink-0 border-6 border-[#000] bg-white"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(10)}
+                                    <ExhibitionPhotoThumbnail photo={photos[10]} />
                                 </div>
                             </Link>
                         </div>
@@ -152,7 +156,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 href={`/exhibitions/${exhibition.slug}/${photos[11]?.slug}`}
                                 className="relative block h-[207px] w-[293px] border-10 border-white"
                             >
-                                {renderPhoto(11)}
+                                <ExhibitionPhotoThumbnail photo={photos[11]} />
                             </Link>
                         </div>
                         <div className="flex w-[135px] flex-col gap-[20px] md:gap-[40px]">
@@ -161,7 +165,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative h-[110px] w-[135px] shrink-0 border-6 border-[#000] bg-white"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[80%] w-[92.5%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(12)}
+                                    <ExhibitionPhotoThumbnail photo={photos[12]} />
                                 </div>
                             </Link>
                             <Link
@@ -169,7 +173,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative h-[160px] w-[118px] shrink-0 border-6 border-white bg-gray-50"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(14)}
+                                    <ExhibitionPhotoThumbnail photo={photos[14]} />
                                 </div>
                             </Link>
                         </div>
@@ -179,7 +183,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative h-[158px] w-[220px] shrink-0 border-6 border-[#000] bg-white"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(13)}
+                                    <ExhibitionPhotoThumbnail photo={photos[13]} />
                                 </div>
                             </Link>
                             <div className="flex w-[123px] flex-row gap-[30px]">
@@ -188,7 +192,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                     className="relative h-[110px] w-[135px] shrink-0 border-6 border-[#000] bg-white"
                                 >
                                     <div className="absolute top-1/2 left-1/2 h-[80%] w-[92.5%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                        {renderPhoto(15)}
+                                        <ExhibitionPhotoThumbnail photo={photos[15]} />
                                     </div>
                                 </Link>
                                 <div className="flex w-[220px] flex-col gap-[20px] md:gap-[40px]">
@@ -196,13 +200,13 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                         href={`/exhibitions/${exhibition.slug}/${photos[16]?.slug}`}
                                         className="relative h-[52px] w-[73px] shrink-0 border-6 border-white [&_img]:h-[40px]!"
                                     >
-                                        {renderPhoto(16)}
+                                        <ExhibitionPhotoThumbnail photo={photos[16]} />
                                     </Link>
                                     <Link
                                         href={`/exhibitions/${exhibition.slug}/${photos[17]?.slug}`}
                                         className="relative h-[52px] w-[73px] shrink-0 border-6 border-white [&_img]:h-[40px]!"
                                     >
-                                        {renderPhoto(17)}
+                                        <ExhibitionPhotoThumbnail photo={photos[17]} />
                                     </Link>
                                 </div>
                             </div>
@@ -214,7 +218,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                             className="relative h-[158px] w-[220px] shrink-0 border-6 border-[#000] bg-white"
                         >
                             <div className="absolute top-1/2 left-1/2 h-[70%] w-[85%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                {renderPhoto(18)}
+                                <ExhibitionPhotoThumbnail photo={photos[18]} />
                             </div>
                         </Link>
                         <div className="flex w-[220px] flex-row justify-between gap-[10px]">
@@ -223,7 +227,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative h-[160px] w-[118px] shrink-0 border-6 border-white bg-gray-50"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[65%] w-[75%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(19)}
+                                    <ExhibitionPhotoThumbnail photo={photos[19]} />
                                 </div>
                             </Link>
                             <Link
@@ -231,7 +235,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                                 className="relative mt-[30px] h-[155px] w-[103px] shrink-0 border-6 border-[#caad80] bg-white"
                             >
                                 <div className="absolute top-1/2 left-1/2 h-[95%] w-[95%] -translate-x-1/2 -translate-y-1/2 border-white">
-                                    {renderPhoto(20)}
+                                    <ExhibitionPhotoThumbnail photo={photos[20]} />
                                 </div>
                             </Link>
                         </div>
