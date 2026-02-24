@@ -1,4 +1,7 @@
-import {BlueskyIcon, InstagramIcon, ThreadsIcon, XIcon} from '@/components/Icon';
+import {BlueskyIcon} from '@/components/Icon/Bluesky';
+import {InstagramIcon} from '@/components/Icon/Instagram';
+import {ThreadsIcon} from '@/components/Icon/Threads';
+import {XIcon} from '@/components/Icon/X';
 import {SITE_LINKS} from '@/utils/config';
 
 const ICONS: {[key: string]: any} = {

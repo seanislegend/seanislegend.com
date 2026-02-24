@@ -1,6 +1,8 @@
 import {Tooltip} from '@base-ui-components/react/tooltip';
 import {track} from '@vercel/analytics';
-import {BlueskyIcon, ThreadsIcon, XIcon} from '@/components/Icon';
+import {BlueskyIcon} from '@/components/Icon/Bluesky';
+import {ThreadsIcon} from '@/components/Icon/Threads';
+import {XIcon} from '@/components/Icon/X';
 import CopyToClipboard from '@/components/ShareButtons/CopyToClipboard';
 import ShareButtonTooltip from '@/components/ShareButtons/Tooltip';
 

@@ -2,7 +2,8 @@
 
 import {useState} from 'react';
 import {RemoveScroll} from 'react-remove-scroll';
-import {CrossIcon, MenuIcon} from '@/components/Icon';
+import {CrossIcon} from '@/components/Icon/Cross';
+import {MenuIcon} from '@/components/Icon/Menu';
 import {MENU_ITEMS} from '@/components/SiteMenu';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 import Badge from '@/components/UI/Badge';

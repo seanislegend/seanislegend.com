@@ -10,8 +10,6 @@ import Blocks from './Blocks';
 import {GreenHopContext} from './ContextWrapper';
 import useTheme from './useTheme';
 
-// const Footer = dynamic(() => import('./Footer'), {ssr: false});
-
 const GreenHopSections: React.FC = () => {
     const {collection, navItems, refs} = use(GreenHopContext);
     useTheme(refs.container, navItems);
@@ -71,7 +69,6 @@ const GreenHopSections: React.FC = () => {
                         </TextLink>
                     </em>
                 </Container>
-                {/* <Footer /> */}
             </section>
         </div>
     );

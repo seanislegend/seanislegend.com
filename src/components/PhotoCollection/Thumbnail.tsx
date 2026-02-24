@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {Link} from 'next-view-transitions';
-import {RightArrowIcon} from '@/components/Icon';
+import {RightArrowIcon} from '@/components/Icon/RightArrow';
 import PhotoEditButton from '@/components/PhotoCollection/EditButton';
 import Condition from '@/components/UI/Condition';
 import ThumbnailImage from './ThumbnailImage';

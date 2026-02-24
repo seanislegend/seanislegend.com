@@ -3,7 +3,7 @@ import {Link} from 'next-view-transitions';
 import {draftMode} from 'next/headers';
 import Image from 'next/image';
 import {redirect} from 'next/navigation';
-import {RightArrowIcon} from '@/components/Icon';
+import {RightArrowIcon} from '@/components/Icon/RightArrow';
 import DefaultLayout from '@/components/Layouts/Default';
 import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';

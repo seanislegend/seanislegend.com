@@ -14,6 +14,7 @@ interface Props {
 
 const DynamicPage: React.FC<Props> = async ({params}) => {
     const allParams = await params;
+    const tagsPromise = fetchAllTags();
     const pageData = await resolvePageData(allParams.dynamicPage);
 
     if (pageData.type === 'not-found') {
@@ -41,7 +42,7 @@ const DynamicPage: React.FC<Props> = async ({params}) => {
             </>
         );
     } else if (pageData.type === 'editorial') {
-        const tags = await fetchAllTags();
+        const tags = await tagsPromise;
         return <EditorialPage editorial={pageData.editorial} tags={tags ?? []} />;
     }
 
