@@ -21,11 +21,10 @@ const generatedOneImage = async (photo: string) => {
             <ImageWrapper>
                 <img
                     key={photo}
-                    tw="w-full h-full absolute"
+                    alt=""
                     src={photo.replace('fm=webp', '').replace('w=1800', 'w=800')}
-                    style={{
-                        objectFit: 'cover'
-                    }}
+                    style={{objectFit: 'cover'}}
+                    tw="w-full h-full absolute"
                 />
             </ImageWrapper>
         ),

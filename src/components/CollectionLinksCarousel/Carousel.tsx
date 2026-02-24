@@ -3,6 +3,8 @@
 import {useEffect, useState} from 'react';
 import {Link} from 'next-view-transitions';
 
+const DEFAULT_LINKS: HrefLink[] = [];
+
 interface Props {
     links: HrefLink[];
 }
@@ -12,7 +14,7 @@ const shuffle = (array: any[]) => {
     return array.sort(() => Math.random() - 0.5);
 };
 
-const CollectionLinksCarousel: React.FC<Props> = ({links = []}) => {
+const CollectionLinksCarousel: React.FC<Props> = ({links = DEFAULT_LINKS}) => {
     const [shuffledLinks, setShuffledLinks] = useState<HrefLink[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPaused, setIsPaused] = useState(false);

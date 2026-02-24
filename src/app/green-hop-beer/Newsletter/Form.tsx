@@ -49,14 +49,12 @@ const NewsletterForm = () => {
             </form>
             <small className="text-dimmed-text text-xs">
                 By continuing you agree to the{' '}
-                <a
+                <TextLink
                     className="underline underline-offset-2 hover:decoration-2 focus:ring-2 focus:ring-offset-2 focus:outline-hidden"
                     href="/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
                 >
                     privacy policy
-                </a>
+                </TextLink>
                 .
             </small>
         </div>

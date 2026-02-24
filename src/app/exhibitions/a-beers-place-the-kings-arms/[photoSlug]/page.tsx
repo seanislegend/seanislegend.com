@@ -1,3 +1,4 @@
+import {Suspense} from 'react';
 import Photos from '../photos';
 import clsx from 'clsx';
 import type {Metadata} from 'next';
@@ -37,7 +38,9 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
     return (
         <>
             <div className="mb-8 px-4 md:mx-auto md:max-w-220">
-                <ExhibitionPhotoOrderSuccessMessage />
+                <Suspense>
+                    <ExhibitionPhotoOrderSuccessMessage />
+                </Suspense>
                 <Markdown>{`__Photo__: ${photo.description}`}</Markdown>
             </div>
             <Container className="mb-14 max-w-300! md:mb-20">

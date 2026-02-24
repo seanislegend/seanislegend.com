@@ -2,7 +2,7 @@
 
 import PhotoCollectionBlocks, {ContentSection} from '@/components/PhotoCollection/Blocks';
 import PhotoThumbnail from '@/components/PhotoCollection/Thumbnail';
-import {PhotoBlock} from '@/types/photo-blocks';
+import {type PhotoBlock, type PhotoSlotProps} from '@/types/photo-blocks';
 
 interface Props {
     layout: PhotoBlock;
@@ -10,24 +10,29 @@ interface Props {
     sections: ContentSection[];
 }
 
-const GreenHopBlocks: React.FC<Props> = ({layout, photos, sections}) => {
-    const renderPhoto = (blockPhotos: number[], index: number, columnSize?: number) => {
-        const photo = photos[blockPhotos[index]];
-        if (!photo) return null;
-        return (
-            <PhotoThumbnail
-                alt={photo.thumbnail?.description}
-                base64={photo.base64}
-                columnSize={columnSize}
-                id={photo.sys?.id}
-                path=""
-                slug={photo.slug}
-                title={photo.title}
-                thumbnail={photo.thumbnail}
-            />
-        );
-    };
+const GreenHopPhotoSlot: React.FC<PhotoSlotProps> = ({
+    blockPhotos,
+    columnSize,
+    index,
+    photos
+}) => {
+    const photo = photos[blockPhotos[index]];
+    if (!photo) return null;
+    return (
+        <PhotoThumbnail
+            alt={photo.thumbnail?.description}
+            base64={photo.base64}
+            columnSize={columnSize}
+            id={photo.sys?.id}
+            path=""
+            slug={photo.slug}
+            title={photo.title}
+            thumbnail={photo.thumbnail}
+        />
+    );
+};
 
+const GreenHopBlocks: React.FC<Props> = ({layout, photos, sections}) => {
     const renderSection = (index: number | string) => {
         const section = sections.find(s => s.id === index);
         if (!section) return null;
@@ -39,7 +44,8 @@ const GreenHopBlocks: React.FC<Props> = ({layout, photos, sections}) => {
     return (
         <PhotoCollectionBlocks
             blocks={blocks}
-            renderPhoto={renderPhoto}
+            photoSlotProps={{photos}}
+            PhotoSlot={GreenHopPhotoSlot}
             renderSection={renderSection}
         />
     );

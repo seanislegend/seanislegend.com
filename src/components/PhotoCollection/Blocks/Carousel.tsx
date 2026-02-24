@@ -2,7 +2,11 @@ import AutoScroll from 'embla-carousel-auto-scroll';
 import useEmblaCarousel from 'embla-carousel-react';
 import {PhotoBlockComponent} from '@/types/photo-blocks';
 
-const CarouselPhotoBLock: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => {
+const CarouselPhotoBLock: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => {
     const [emblaRef] = useEmblaCarousel({loop: true}, [
         AutoScroll({speed: 1, startDelay: 0, stopOnInteraction: false, stopOnMouseEnter: true})
     ]);
@@ -16,7 +20,12 @@ const CarouselPhotoBLock: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}
                             key={photo}
                             className="max-w-8/12 flex-[0_0_100%] sm:max-w-4/12 lg:max-w-3/12"
                         >
-                            {renderPhoto(photos, index, 4)}
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={index}
+                                columnSize={4}
+                                {...photoSlotProps}
+                            />
                             {index === photos.length - 1 && (
                                 <div className="bg-theme-bg absolute top-0 right-0 z-20 h-full w-2" />
                             )}

@@ -1,8 +1,7 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {RemoveScroll} from 'react-remove-scroll';
-import {usePathname} from 'next/navigation';
 import {CrossIcon, MenuIcon} from '@/components/Icon';
 import {MENU_ITEMS} from '@/components/SiteMenu';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
@@ -15,14 +14,9 @@ interface Props {
 }
 
 const SiteMenuMobile: React.FC<Props> = ({links}) => {
-    const pathname = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const ToggleButtonIcon = isMenuOpen ? CrossIcon : MenuIcon;
-
-    useEffect(() => {
-        setIsMenuOpen(false);
-    }, [pathname]);
 
     return (
         <>

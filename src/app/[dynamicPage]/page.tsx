@@ -50,9 +50,11 @@ const DynamicPage: React.FC<Props> = async ({params}) => {
 };
 
 export const generateStaticParams = async () => {
-    const allTags = await fetchAllTags();
-    const allCollections = await fetchAllCollections();
-    const allEditorialPages = await fetchAllEditorialPages();
+    const [allTags, allCollections, allEditorialPages] = await Promise.all([
+        fetchAllTags(),
+        fetchAllCollections(),
+        fetchAllEditorialPages()
+    ]);
     const allParams: Record<string, string>[] = [];
 
     if (allCollections) {

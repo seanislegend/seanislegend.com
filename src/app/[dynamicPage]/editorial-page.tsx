@@ -6,12 +6,14 @@ import Container from '@/components/UI/Container';
 import ContentSections from '@/app/services/ContentSection';
 import PhotosGrid from '@/app/services/PhotosGrid';
 
+const DEFAULT_TAGS: TagListItem[] = [];
+
 interface Props {
     editorial: Editorial;
     tags?: TagListItem[];
 }
 
-const EditorialPage: React.FC<Props> = ({editorial, tags = []}) => (
+const EditorialPage: React.FC<Props> = ({editorial, tags = DEFAULT_TAGS}) => (
     <DefaultLayout theme="light">
         <PageHeader
             backUrl={`/${editorial.slug}`}

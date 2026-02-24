@@ -12,34 +12,46 @@ import {Heading2} from '@/components/UI/Headings';
 import {
     type PhotoBlock,
     type PhotoBlockComponent,
+    type PhotoSlotComponentType,
+    type PhotoSlotProps,
     type SectionBlockComponent
 } from '@/types/photo-blocks';
 
 const CarouselPhotoBLock = dynamic(() => import('./Carousel'));
 
-export interface Props {
+interface Props {
     blocks: PhotoBlock[];
-    renderPhoto: (blockPhotos: number[], index: number) => React.ReactNode;
+    photoSlotProps: Omit<PhotoSlotProps, 'blockPhotos' | 'columnSize' | 'fillContainer' | 'index'>;
+    PhotoSlot: PhotoSlotComponentType;
     renderSection: (section: number | string) => React.ReactNode;
     renderTags?: () => React.ReactNode;
 }
 
-const FourInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const FourInARow: React.FC<PhotoBlockComponent> = ({photoSlotProps, PhotoSlot, photos}) => (
     <Grid>
-        <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 0, 3)}</Column>
-        <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 1, 3)}</Column>
-        <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 2, 3)}</Column>
-        <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 3, 3)}</Column>
+        <Column className="col-span-6 md:col-span-3">
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={3} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-3">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-3">
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={3} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-3">
+            <PhotoSlot blockPhotos={photos} index={3} columnSize={3} {...photoSlotProps} />
+        </Column>
     </Grid>
 );
 
 const GreenHopFeaturedOneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = ({
-    photos,
-    renderPhoto
+    photoSlotProps,
+    PhotoSlot,
+    photos
 }) => (
     <Grid className="place-items-end">
         <Column className="relative col-span-12 flex h-full overflow-hidden rounded md:col-span-6 md:md:[&_span]:h-full md:md:[&>div]:h-full">
-            {renderPhoto(photos, 0, 6)}
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
             <Link
                 href="/green-hop-beer"
                 className="group absolute inset-0 z-50 flex items-end bg-linear-to-t from-[#2f3523]/70 to-transparent p-4 text-white transition-colors duration-300 ease-in-out hover:bg-[#2f3523]/40 md:p-6"
@@ -54,33 +66,54 @@ const GreenHopFeaturedOneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = (
                 </div>
             </Link>
         </Column>
-        <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 1, 3)}</Column>
-        <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 2, 3)}</Column>
+        <Column className="col-span-6 md:col-span-3">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-3">
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={3} {...photoSlotProps} />
+        </Column>
     </Grid>
 );
 
-const LandscapeTwoBigFourSmall: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const LandscapeTwoBigFourSmall: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => (
     <Grid>
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
-                <Column className="col-span-12">{renderPhoto(photos, 0)}</Column>
-                <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
-                <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
+                <Column className="col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={0} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={1} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={2} columnSize={6} {...photoSlotProps} />
+                </Column>
             </Grid>
         </Column>
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
-                <Column className="col-span-6">{renderPhoto(photos, 3, 6)}</Column>
-                <Column className="col-span-6">{renderPhoto(photos, 4, 6)}</Column>
-                <Column className="col-span-12">{renderPhoto(photos, 5)}</Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={3} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={4} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={5} {...photoSlotProps} />
+                </Column>
             </Grid>
         </Column>
     </Grid>
 );
 
 const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
     photos,
-    renderPhoto,
     reverse
 }) => (
     <Grid>
@@ -89,12 +122,27 @@ const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({
             fallbackWrapper={() => (
                 <>
                     <Column className="col-span-12 md:col-span-8">
-                        {renderPhoto(photos, 0, 8)}
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={0}
+                            columnSize={8}
+                            {...photoSlotProps}
+                        />
                     </Column>
                     <Column className="col-span-12 h-full md:col-span-4">
                         <div className="flex h-full flex-row justify-between gap-2 md:flex-col md:gap-4">
-                            {renderPhoto(photos, 1, 4)}
-                            {renderPhoto(photos, 2, 4)}
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={1}
+                                columnSize={4}
+                                {...photoSlotProps}
+                            />
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={2}
+                                columnSize={4}
+                                {...photoSlotProps}
+                            />
                         </div>
                     </Column>
                 </>
@@ -103,12 +151,27 @@ const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({
                 <>
                     <Column className="col-span-12 h-full md:col-span-4">
                         <div className="flex h-full flex-row justify-between gap-2 md:flex-col md:gap-4">
-                            {renderPhoto(photos, 0, 4)}
-                            {renderPhoto(photos, 1, 4)}
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={0}
+                                columnSize={4}
+                                {...photoSlotProps}
+                            />
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={1}
+                                columnSize={4}
+                                {...photoSlotProps}
+                            />
                         </div>
                     </Column>
                     <Column className="col-span-12 md:col-span-8">
-                        {renderPhoto(photos, 2, 8)}
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={2}
+                            columnSize={8}
+                            {...photoSlotProps}
+                        />
                     </Column>
                 </>
             )}
@@ -116,103 +179,158 @@ const LandscapeOneBigTwoMedium: React.FC<PhotoBlockComponent> = ({
     </Grid>
 );
 
-const LandscapeTwoBigTwoSmall: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const LandscapeTwoBigTwoSmall: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => (
     <Grid>
         <Column className="top-site-header sticky col-span-12 md:col-span-6">
-            {renderPhoto(photos, 0, 6)}
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
         </Column>
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
-                <Column className="col-span-6 md:col-span-6">{renderPhoto(photos, 1, 6)}</Column>
-                <Column className="col-span-6 md:col-span-6">{renderPhoto(photos, 2, 6)}</Column>
-                <Column className="col-span-12 md:col-span-12">{renderPhoto(photos, 3)}</Column>
+                <Column className="col-span-6 md:col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={1} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6 md:col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={2} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-12 md:col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={3} {...photoSlotProps} />
+                </Column>
             </Grid>
         </Column>
     </Grid>
 );
 
 const LandscapeTwoBigTwoMediumFourSmall: React.FC<PhotoBlockComponent> = ({
-    photos,
-    renderPhoto
+    photoSlotProps,
+    PhotoSlot,
+    photos
 }) => (
     <Grid>
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
-                <Column className="col-span-12">{renderPhoto(photos, 0)}</Column>
-                <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 1, 3)}</Column>
-                <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 2, 3)}</Column>
-                <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 3, 3)}</Column>
-                <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 4, 3)}</Column>
+                <Column className="col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={0} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6 md:col-span-3">
+                    <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6 md:col-span-3">
+                    <PhotoSlot blockPhotos={photos} index={2} columnSize={3} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6 md:col-span-3">
+                    <PhotoSlot blockPhotos={photos} index={3} columnSize={3} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6 md:col-span-3">
+                    <PhotoSlot blockPhotos={photos} index={4} columnSize={3} {...photoSlotProps} />
+                </Column>
             </Grid>
         </Column>
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
-                <Column className="col-span-6">{renderPhoto(photos, 5, 6)}</Column>
-                <Column className="col-span-6">{renderPhoto(photos, 6, 6)}</Column>
-                <Column className="col-span-12">{renderPhoto(photos, 7)}</Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={5} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={6} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={7} {...photoSlotProps} />
+                </Column>
             </Grid>
         </Column>
     </Grid>
 );
 
-const OneLandscapeOnePortrait: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const OneLandscapeOnePortrait: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => (
     <Grid>
         <Column className="relative col-span-12 md:col-span-6 xl:col-span-7">
-            {renderPhoto(photos, 0, 7)}
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={7} {...photoSlotProps} />
         </Column>
         <Column className="relative col-span-12 h-full md:col-span-6 xl:col-span-5 [&_img]:max-h-full [&_img]:object-contain [&_img]:object-center [&_span]:bg-transparent md:[&_span]:absolute md:md:[&_span]:h-full md:[&_span]:w-full md:md:[&>div]:h-full">
-            {renderPhoto(photos, 1, 3)}
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
         </Column>
     </Grid>
 );
 
-const OneLandscapeTwoPortraitEachSide: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const OneLandscapeTwoPortraitEachSide: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => (
     <Grid className="place-items-end">
         <Column className="relative col-span-6 flex h-full md:col-span-2 md:[&_span]:absolute md:md:[&_span]:h-full md:[&_span]:w-full md:md:[&>div]:h-full">
-            {renderPhoto(photos, 0, 3)}
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={3} {...photoSlotProps} />
         </Column>
         <Column className="relative col-span-6 flex h-full md:col-span-2 md:[&_span]:absolute md:md:[&_span]:h-full md:[&_span]:w-full md:md:[&>div]:h-full">
-            {renderPhoto(photos, 1, 3)}
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
         </Column>
-        <Column className="relative col-span-12 md:col-span-4">{renderPhoto(photos, 2, 3)}</Column>
-        <Column className="relative hidden h-full md:col-span-2 md:flex md:[&_span]:absolute md:md:[&_span]:h-full md:[&_span]:w-full md:md:[&>div]:h-full">
-            {renderPhoto(photos, 3, 3)}
+        <Column className="relative col-span-12 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={3} {...photoSlotProps} />
         </Column>
         <Column className="relative hidden h-full md:col-span-2 md:flex md:[&_span]:absolute md:md:[&_span]:h-full md:[&_span]:w-full md:md:[&>div]:h-full">
-            {renderPhoto(photos, 4, 3)}
+            <PhotoSlot blockPhotos={photos} index={3} columnSize={3} {...photoSlotProps} />
+        </Column>
+        <Column className="relative hidden h-full md:col-span-2 md:flex md:[&_span]:absolute md:md:[&_span]:h-full md:[&_span]:w-full md:md:[&>div]:h-full">
+            <PhotoSlot blockPhotos={photos} index={4} columnSize={3} {...photoSlotProps} />
         </Column>
     </Grid>
 );
 
-const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const OneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => (
     <Grid className="place-items-end">
         <Column className="col-span-12 flex h-full md:col-span-6 md:md:[&_span]:h-full md:md:[&>div]:h-full">
-            {renderPhoto(photos, 0, 6)}
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
         </Column>
-        <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 1, 3)}</Column>
-        <Column className="col-span-6 md:col-span-3">{renderPhoto(photos, 2, 3)}</Column>
+        <Column className="col-span-6 md:col-span-3">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-3">
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={3} {...photoSlotProps} />
+        </Column>
     </Grid>
 );
 
 const OnePortraitOneLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockComponent> = ({
-    photos,
-    renderPhoto
+    photoSlotProps,
+    PhotoSlot,
+    photos
 }) => (
     <Grid className="place-items-end">
         <Column className="top-site-header sticky col-span-6">
             <Grid hasTestId={false}>
-                <Column className="col-span-6">{renderPhoto(photos, 0, 6)}</Column>
-                <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
-                <Column className="col-span-12">{renderPhoto(photos, 2)}</Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={1} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={2} {...photoSlotProps} />
+                </Column>
             </Grid>
         </Column>
-        <Column className="col-span-6">{renderPhoto(photos, 3, 6)}</Column>
+        <Column className="col-span-6">
+            <PhotoSlot blockPhotos={photos} index={3} columnSize={6} {...photoSlotProps} />
+        </Column>
     </Grid>
 );
 
 const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
     photos,
-    renderPhoto,
     reverse
 }) => (
     <Grid>
@@ -222,14 +340,24 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
                 <>
                     {children}
                     <Column className="col-span-12 md:col-span-6">
-                        {renderPhoto(photos, 0, 6)}
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={0}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
                     </Column>
                 </>
             )}
             wrapper={children => (
                 <>
                     <Column className="col-span-12 md:col-span-6">
-                        {renderPhoto(photos, 0, 6)}
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={0}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
                     </Column>
                     {children}
                 </>
@@ -237,34 +365,84 @@ const OnePortraitOneLandscapeMediumFourLandscapeSmall: React.FC<PhotoBlockCompon
         >
             <Column className="col-span-12 flex h-full flex-col justify-between gap-2 md:col-span-6 md:gap-4">
                 <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
-                    <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
+                    <Column className="col-span-6">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={1}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
+                    </Column>
+                    <Column className="col-span-6">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={2}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
+                    </Column>
                 </Grid>
                 <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-12">{renderPhoto(photos, 3)}</Column>
+                    <Column className="col-span-12">
+                        <PhotoSlot blockPhotos={photos} index={3} {...photoSlotProps} />
+                    </Column>
                 </Grid>
                 <Grid gridCols="grid-cols-12" hasTestId={false}>
-                    <Column className="col-span-6">{renderPhoto(photos, 4, 6)}</Column>
-                    <Column className="col-span-6">{renderPhoto(photos, 5, 6)}</Column>
+                    <Column className="col-span-6">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={4}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
+                    </Column>
+                    <Column className="col-span-6">
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={5}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
+                    </Column>
                 </Grid>
             </Column>
         </Condition>
     </Grid>
 );
 
-const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderPhoto, reverse}) => (
+const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos,
+    reverse
+}) => (
     <Grid>
         <Condition
             condition={reverse}
             fallbackWrapper={() => (
                 <>
                     <Column className="col-span-12 md:col-span-6">
-                        {renderPhoto(photos, 0, 6)}
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={0}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
                     </Column>
                     <Column className="col-span-12 h-full md:col-span-6">
                         <div className="flex h-full flex-col justify-between gap-2 md:gap-0">
-                            {renderPhoto(photos, 1, 6)}
-                            {renderPhoto(photos, 2, 6)}
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={1}
+                                columnSize={6}
+                                {...photoSlotProps}
+                            />
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={2}
+                                columnSize={6}
+                                {...photoSlotProps}
+                            />
                         </div>
                     </Column>
                 </>
@@ -273,12 +451,27 @@ const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderP
                 <>
                     <Column className="col-span-12 h-full md:col-span-6">
                         <div className="flex h-full flex-col justify-between gap-2 md:gap-0">
-                            {renderPhoto(photos, 1, 6)}
-                            {renderPhoto(photos, 2, 6)}
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={1}
+                                columnSize={6}
+                                {...photoSlotProps}
+                            />
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={2}
+                                columnSize={6}
+                                {...photoSlotProps}
+                            />
                         </div>
                     </Column>
                     <Column className="col-span-12 md:col-span-6">
-                        {renderPhoto(photos, 0, 6)}
+                        <PhotoSlot
+                            blockPhotos={photos}
+                            index={0}
+                            columnSize={6}
+                            {...photoSlotProps}
+                        />
                     </Column>
                 </>
             )}
@@ -287,115 +480,163 @@ const OnePortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderP
 );
 
 const OnePortraitSmallTwoLandscapeMedium: React.FC<PhotoBlockComponent> = ({
-    photos,
-    renderPhoto,
-    reverse
+    photoSlotProps,
+    PhotoSlot,
+    photos
 }) => (
     <Grid>
-        <Column className="col-span-6 md:col-span-5">{renderPhoto(photos, 1, 6)}</Column>
+        <Column className="col-span-6 md:col-span-5">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={6} {...photoSlotProps} />
+        </Column>
         <Column className="order-3 col-span-12 h-full md:order-2 md:col-span-2 [&_img]:object-cover [&_img,&_span]:h-full [&_span]:flex [&_span]:justify-center">
-            {renderPhoto(photos, 0, 6)}
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
         </Column>
         <Column className="order-2 col-span-6 md:order-3 md:col-span-5">
-            {renderPhoto(photos, 2, 6)}
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={6} {...photoSlotProps} />
         </Column>
     </Grid>
 );
 
 const OnePortraitTwoLandscapeMediumTwoLandscapeSmall: React.FC<PhotoBlockComponent> = ({
-    photos,
-    renderPhoto
+    photoSlotProps,
+    PhotoSlot,
+    photos
 }) => (
     <Grid className="place-items-end">
-        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
+        <Column className="col-span-12 md:col-span-6">
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
+        </Column>
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
-                <Column className="col-span-6">{renderPhoto(photos, 1, 6)}</Column>
-                <Column className="col-span-6">{renderPhoto(photos, 2, 6)}</Column>
-                <Column className="col-span-12">{renderPhoto(photos, 3)}</Column>
-                <Column className="col-span-12">{renderPhoto(photos, 4)}</Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={1} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-6">
+                    <PhotoSlot blockPhotos={photos} index={2} columnSize={6} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={3} {...photoSlotProps} />
+                </Column>
+                <Column className="col-span-12">
+                    <PhotoSlot blockPhotos={photos} index={4} {...photoSlotProps} />
+                </Column>
             </Grid>
         </Column>
     </Grid>
 );
 
 const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent> = ({
-    photos,
-    renderPhoto
+    photoSlotProps,
+    PhotoSlot,
+    photos
 }) => (
     <Grid className="mx-auto">
         <Column className="top-site-header sticky order-1 col-span-6 md:order-1 md:col-span-4">
-            {renderPhoto(photos, 0, 4)}
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={4} {...photoSlotProps} />
         </Column>
         <Column className="order-2 col-span-12 md:order-1 md:col-span-4">
-            {renderPhoto(photos, 1, 4)}
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={4} {...photoSlotProps} />
         </Column>
         <Column className="order-1 col-span-6 self-end md:order-1 md:col-span-4">
-            {renderPhoto(photos, 2, 4)}
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={4} {...photoSlotProps} />
         </Column>
     </Grid>
 );
 
-const SixInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto, ...props}) => (
+const SixInARow: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos,
+    ...props
+}) => (
     <Grid {...props} className="hidden xl:grid">
         <Column className="col-span-6 sm:col-span-4 md:col-span-2">
-            {renderPhoto(photos, 0, 2)}
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={2} {...photoSlotProps} />
         </Column>
         <Column className="col-span-6 sm:col-span-4 md:col-span-2">
-            {renderPhoto(photos, 1, 2)}
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={2} {...photoSlotProps} />
         </Column>
         <Column className="col-span-6 sm:col-span-4 md:col-span-2">
-            {renderPhoto(photos, 2, 2)}
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={2} {...photoSlotProps} />
         </Column>
         <Column className="col-span-6 sm:col-span-4 md:col-span-2">
-            {renderPhoto(photos, 3, 2)}
+            <PhotoSlot blockPhotos={photos} index={3} columnSize={2} {...photoSlotProps} />
         </Column>
         <Column className="col-span-6 sm:col-span-4 md:col-span-2">
-            {renderPhoto(photos, 4, 2)}
+            <PhotoSlot blockPhotos={photos} index={4} columnSize={2} {...photoSlotProps} />
         </Column>
         <Column className="col-span-6 sm:col-span-4 md:col-span-2">
-            {renderPhoto(photos, 5, 2)}
+            <PhotoSlot blockPhotos={photos} index={5} columnSize={2} {...photoSlotProps} />
         </Column>
     </Grid>
 );
 
 const Spacer: React.FC = () => <div className="h-8 w-full lg:h-10 xl:h-14 2xl:h-18" />;
 
-const ThreeInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const ThreeInARow: React.FC<PhotoBlockComponent> = ({photoSlotProps, PhotoSlot, photos}) => (
     <Grid>
-        <Column className="col-span-12 md:col-span-4">{renderPhoto(photos, 0, 4)}</Column>
-        <Column className="col-span-6 md:col-span-4">{renderPhoto(photos, 1, 4)}</Column>
-        <Column className="col-span-6 md:col-span-4">{renderPhoto(photos, 2, 4)}</Column>
+        <Column className="col-span-12 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={4} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={4} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={4} {...photoSlotProps} />
+        </Column>
     </Grid>
 );
 
-const ThreeInARowWithPadding: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const ThreeInARowWithPadding: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => (
     <Grid className="md:px-20">
-        <Column className="col-span-12 md:col-span-4">{renderPhoto(photos, 0, 4)}</Column>
-        <Column className="col-span-6 md:col-span-4">{renderPhoto(photos, 1, 4)}</Column>
-        <Column className="col-span-6 md:col-span-4">{renderPhoto(photos, 2, 4)}</Column>
+        <Column className="col-span-12 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={4} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={4} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={2} columnSize={4} {...photoSlotProps} />
+        </Column>
     </Grid>
 );
 
-const TwoInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const TwoInARow: React.FC<PhotoBlockComponent> = ({photoSlotProps, PhotoSlot, photos}) => (
     <Grid>
-        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 0, 6)}</Column>
-        <Column className="col-span-12 md:col-span-6">{renderPhoto(photos, 1, 6)}</Column>
+        <Column className="col-span-12 md:col-span-6">
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-12 md:col-span-6">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={6} {...photoSlotProps} />
+        </Column>
     </Grid>
 );
 
-const TwoInARowWithPadding: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const TwoInARowWithPadding: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => (
     <Grid>
         <Column className="hidden md:col-span-1 md:block" />
-        <Column className="col-span-6 md:col-span-5">{renderPhoto(photos, 0, 5)}</Column>
-        <Column className="col-span-6 md:col-span-5">{renderPhoto(photos, 1, 5)}</Column>
+        <Column className="col-span-6 md:col-span-5">
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={5} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-5">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={5} {...photoSlotProps} />
+        </Column>
         <Column className="hidden md:col-span-1 md:block" />
     </Grid>
 );
 
 const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
     photos,
-    renderPhoto,
     reverse
 }) => (
     <Grid className="place-items-center">
@@ -406,7 +647,12 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
                     {children}
                     <Column className="col-span-12 flex h-full md:col-span-6">
                         <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
-                            {renderPhoto(photos, 2, 6)}
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={2}
+                                columnSize={6}
+                                {...photoSlotProps}
+                            />
                         </div>
                     </Column>
                 </>
@@ -415,7 +661,12 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
                 <>
                     <Column className="col-span-12 flex h-full md:col-span-6">
                         <div className="mx-auto flex w-full items-center justify-center md:max-w-[80%]">
-                            {renderPhoto(photos, 2, 6)}
+                            <PhotoSlot
+                                blockPhotos={photos}
+                                index={2}
+                                columnSize={6}
+                                {...photoSlotProps}
+                            />
                         </div>
                     </Column>
                     {children}
@@ -423,22 +674,34 @@ const TwoPortraitOneLandscapeWithPadding: React.FC<PhotoBlockComponent> = ({
             )}
         >
             <Column className="col-span-6 flex h-full items-center md:col-span-3">
-                {renderPhoto(photos, 0, 3)}
+                <PhotoSlot blockPhotos={photos} index={0} columnSize={3} {...photoSlotProps} />
             </Column>
             <Column className="col-span-6 flex h-full items-center md:col-span-3">
-                {renderPhoto(photos, 1, 3)}
+                <PhotoSlot blockPhotos={photos} index={1} columnSize={3} {...photoSlotProps} />
             </Column>
         </Condition>
     </Grid>
 );
 
-const TwoPortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({photos, renderPhoto}) => (
+const TwoPortraitTwoLandscape: React.FC<PhotoBlockComponent> = ({
+    photoSlotProps,
+    PhotoSlot,
+    photos
+}) => (
     <Grid>
-        <Column className="col-span-12 md:col-span-4">{renderPhoto(photos, 0, 4)}</Column>
-        <Column className="col-span-6 md:col-span-4">{renderPhoto(photos, 1, 4)}</Column>
+        <Column className="col-span-12 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={0} columnSize={4} {...photoSlotProps} />
+        </Column>
+        <Column className="col-span-6 md:col-span-4">
+            <PhotoSlot blockPhotos={photos} index={1} columnSize={4} {...photoSlotProps} />
+        </Column>
         <Column className="col-span-6 flex h-full flex-col justify-between gap-8 md:col-span-4">
-            <div>{renderPhoto(photos, 2, 3)}</div>
-            <div>{renderPhoto(photos, 3, 3)}</div>
+            <div>
+                <PhotoSlot blockPhotos={photos} index={2} columnSize={3} {...photoSlotProps} />
+            </div>
+            <div>
+                <PhotoSlot blockPhotos={photos} index={3} columnSize={3} {...photoSlotProps} />
+            </div>
         </Column>
     </Grid>
 );
@@ -518,7 +781,8 @@ const photoLayouts: Partial<
 
 const PhotoCollectionBlocks: React.FC<Props> = ({
     blocks,
-    renderPhoto,
+    photoSlotProps,
+    PhotoSlot,
     renderSection,
     renderTags
 }) => (
@@ -552,8 +816,9 @@ const PhotoCollectionBlocks: React.FC<Props> = ({
             return (
                 <Layout
                     key={key}
+                    photoSlotProps={photoSlotProps}
+                    PhotoSlot={PhotoSlot}
                     photos={block.photos ?? []}
-                    renderPhoto={renderPhoto}
                     {...block.props}
                 />
             );

@@ -1,5 +1,13 @@
 import {type PhotoBlockLayout} from '@/components/PhotoCollection/Blocks';
 
+export interface PhotoSlotProps {
+    blockPhotos: number[];
+    columnSize?: number;
+    fillContainer?: boolean;
+    index: number;
+    [key: string]: any;
+}
+
 interface PhotoBlock {
     component?: string;
     id?: string;
@@ -12,9 +20,13 @@ interface PhotoBlock {
     theme?: string;
 }
 
+/** component that accepts at least PhotoSlotProps; may accept additional props from photoSlotProps */
+export type PhotoSlotComponentType = React.ComponentType<PhotoSlotProps & Record<string, unknown>>;
+
 interface PhotoBlockComponent {
+    photoSlotProps: Omit<PhotoSlotProps, 'blockPhotos' | 'columnSize' | 'fillContainer' | 'index'>;
+    PhotoSlot: PhotoSlotComponentType;
     photos: number[];
-    renderPhoto: (photos: number[], index: number, columnSize?: number) => React.ReactNode;
     [key: string]: any;
 }
 

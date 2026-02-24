@@ -1,13 +1,72 @@
 'use client';
 
-import {useRef} from 'react';
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Container from '@/components/UI/Container';
+import type {PhotoSlotComponentType} from '@/types/photo-blocks';
 import PhotoCollectionBlocks, {ContentSection} from './Blocks';
 import Column from './Column';
 import Grid from './Grid';
 import PhotoThumbnail from './Thumbnail';
 import {layouts} from './layouts';
+
+interface BlockPhotoProps {
+    blockPhotos: number[];
+    columnSize?: number;
+    fillContainer?: boolean;
+    index: number;
+    layoutType?: 'editorial' | 'photos' | (string & {});
+    linksTo: 'collection' | 'photo';
+    photos: Photo[];
+    slug: string;
+}
+
+interface TagsSectionProps {
+    tags: TagListItem[];
+}
+
+const TagsSection: React.FC<TagsSectionProps> = ({tags}) => {
+    if (!tags.length) return null;
+    return (
+        <Container className="my-8 px-0!" key="tags">
+            <AllTagsList items={tags} />
+        </Container>
+    );
+};
+
+const BlockPhoto: React.FC<BlockPhotoProps> = ({
+    blockPhotos,
+    columnSize,
+    fillContainer,
+    index,
+    layoutType,
+    linksTo,
+    photos,
+    slug
+}) => {
+    const photo = photos[blockPhotos[index]];
+    if (!photo) return null;
+    const priority = blockPhotos[index] === 0;
+    let path = '';
+    if (layoutType !== 'editorial') {
+        path = `/${photo.collection || slug}`;
+        if (linksTo === 'photo') path = `${path}/${photo.slug}#photo`;
+        else path = `${path}#${photo.slug}`;
+    }
+    return (
+        <PhotoThumbnail
+            base64={photo.base64}
+            columnSize={columnSize}
+            fill={fillContainer}
+            id={photo.sys?.id}
+            linksTo={linksTo}
+            path={path}
+            priority={priority}
+            slug={photo.slug}
+            thumbnail={photo.thumbnail}
+            title={photo.title}
+        />
+    );
+};
 
 interface Props
     extends Pick<
@@ -35,46 +94,7 @@ const PhotosCollection: React.FC<Props> = ({
     const tags = tagsCollection?.items || [];
     const layout = layouts?.[slug];
     const layoutWithTags = layout ? [...layout, {layout: 'Tags'}] : null;
-    const firstImageRef = useRef(false);
-
-    const renderPhoto = (
-        blockPhotos: number[],
-        index: number,
-        columnSize?: number,
-        fillContainer?: boolean
-    ) => {
-        const photo = photos[blockPhotos[index]];
-        if (!photo) return null;
-        const priority = !firstImageRef.current;
-        if (priority) firstImageRef.current = true;
-
-        let path = '';
-
-        if (layoutType !== 'editorial') {
-            path = `/${photo.collection || slug}`;
-
-            if (linksTo === 'photo') {
-                path = `${path}/${photo.slug}#photo`;
-            } else {
-                path = `${path}#${photo.slug}`;
-            }
-        }
-
-        return (
-            <PhotoThumbnail
-                base64={photo.base64}
-                columnSize={columnSize}
-                fill={fillContainer}
-                id={photo.sys?.id}
-                linksTo={linksTo}
-                path={path}
-                priority={priority}
-                slug={photo.slug}
-                thumbnail={photo.thumbnail}
-                title={photo.title}
-            />
-        );
-    };
+    const photoIndices = photos.map((_, i) => i);
 
     const renderSection = (index: number | string) => {
         const section =
@@ -86,23 +106,15 @@ const PhotosCollection: React.FC<Props> = ({
         return <ContentSection key={section.title} {...section} />;
     };
 
-    const renderTags = () => {
-        if (!tags.length) return null;
-        return (
-            <Container className="my-8 px-0!" key="tags">
-                <AllTagsList items={tags} />
-            </Container>
-        );
-    };
-
     return (
         <div className="animate-in animate-out fill-mode-forwards mx-4 opacity-0 transition-opacity delay-100 duration-500 md:mx-8">
             {layout ? (
                 <PhotoCollectionBlocks
                     blocks={layoutWithTags ?? layout}
-                    renderPhoto={renderPhoto}
+                    photoSlotProps={{layoutType, linksTo, photos, slug}}
+                    PhotoSlot={BlockPhoto as unknown as PhotoSlotComponentType}
                     renderSection={renderSection}
-                    renderTags={renderTags}
+                    renderTags={() => <TagsSection tags={tags} />}
                 />
             ) : (
                 <>
@@ -112,14 +124,18 @@ const PhotosCollection: React.FC<Props> = ({
                                 key={photo.slug}
                                 className="col-span-6 md:col-span-4 lg:col-span-3 2xl:col-span-2"
                             >
-                                {renderPhoto(
-                                    photos.map((_, i) => i),
-                                    index
-                                )}
+                                <BlockPhoto
+                                    blockPhotos={photoIndices}
+                                    index={index}
+                                    layoutType={layoutType}
+                                    linksTo={linksTo}
+                                    photos={photos}
+                                    slug={slug}
+                                />
                             </Column>
                         ))}
                     </Grid>
-                    {renderTags()}
+                    <TagsSection tags={tags} />
                 </>
             )}
         </div>

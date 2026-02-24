@@ -50,6 +50,7 @@ const ThumbnailImage: React.FC<Props> = ({
                 loading={priority ? undefined : loading}
                 priority={priority}
                 quality={80}
+                sizes="(max-width: 768px) 100vw, 50vw"
                 src={url}
                 {...(fill ? {} : {height: imageHeight, width: imageWidth})}
             />
