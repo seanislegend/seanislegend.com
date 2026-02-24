@@ -12,7 +12,7 @@ const getLastModifiedDate = (date?: string) => {
 };
 
 const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
-    const linksItems = MENU_ITEMS.map(item => ({
+    const linksItems = MENU_ITEMS.filter(item => !item.href.includes('http')).map(item => ({
         url: `${process.env.NEXT_PUBLIC_URL}${item.href}`,
         priority: 1,
         lastModified: getLastModifiedDate().toISOString()
