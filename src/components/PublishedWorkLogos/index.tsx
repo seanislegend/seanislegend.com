@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import gbhLogo from '@/../public/images/logos/good-beer-hunting.png';
+import pellicleLogoLight from '@/../public/images/logos/pellicle-light.png';
 import pellicleLogo from '@/../public/images/logos/pellicle.png';
 
-const PublishedWorkLogos: React.FC = () => (
+interface Props {
+    theme?: 'light' | 'dark';
+}
+
+const PublishedWorkLogos: React.FC<Props> = ({theme = 'dark'}) => (
     <div data-testid="published-work-logos">
         <h2 className="font-medium uppercase underline-offset-4 group-hover:underline lg:block">
             Published in
@@ -24,7 +29,12 @@ const PublishedWorkLogos: React.FC = () => (
                 target="_blank"
                 title="Pellicle"
             >
-                <Image src={pellicleLogo} alt="Pellicle" width={168} height={85} />
+                <Image
+                    src={theme === 'light' ? pellicleLogoLight : pellicleLogo}
+                    alt="Pellicle"
+                    width={168}
+                    height={85}
+                />
             </a>
         </div>
     </div>
