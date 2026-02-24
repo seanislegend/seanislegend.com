@@ -80,12 +80,18 @@ export const generateMetadata = async ({params}: Props): Promise<Metadata | null
 
     if (pageData.type === 'collection') {
         const collectionSeo = getCollectionSeo(pageData.collection);
-        const meta = {...config.seo, ...collectionSeo};
-        return meta;
+        return {
+            ...config.seo,
+            ...collectionSeo,
+            openGraph: {...config.seo.openGraph, ...collectionSeo.openGraph}
+        };
     } else if (pageData.type === 'editorial') {
         const editorialSeo = getEditorialSeo(pageData.editorial);
-        const meta = {...config.seo, ...editorialSeo};
-        return meta;
+        return {
+            ...config.seo,
+            ...editorialSeo,
+            openGraph: {...config.seo.openGraph, ...editorialSeo.openGraph}
+        };
     }
 
     return null;
