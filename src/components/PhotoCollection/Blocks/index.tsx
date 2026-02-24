@@ -337,7 +337,7 @@ const OnePortraitTwoTopAndBottomLandscape: React.FC<PhotoBlockComponent> = ({
 );
 
 const SixInARow: React.FC<PhotoBlockComponent> = ({photos, renderPhoto, ...props}) => (
-    <Grid {...props}>
+    <Grid {...props} className="hidden xl:grid">
         <Column className="col-span-6 sm:col-span-4 md:col-span-2">
             {renderPhoto(photos, 0, 2)}
         </Column>

@@ -11,7 +11,7 @@ export const MENU_ITEMS = [
 
 const SiteHeaderMenu: React.FC = () => (
     <nav
-        className="row -mr-2 hidden items-center gap-1 lg:flex"
+        className="row -mr-2 hidden items-center gap-1 xl:flex"
         data-testid="main-navigation-static"
     >
         <SiteHeaderLink href="/collections">Collections</SiteHeaderLink>

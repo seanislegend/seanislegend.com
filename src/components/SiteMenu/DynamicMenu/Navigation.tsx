@@ -34,7 +34,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
     return (
         <>
             <NavigationMenu.Root closeDelay={300} data-testid="main-navigation" key={pathname}>
-                <NavigationMenu.List className="relative z-30 hidden flex-row items-center gap-1 lg:flex">
+                <NavigationMenu.List className="relative z-30 hidden flex-row items-center gap-1 xl:flex">
                     <NavigationMenu.Item>
                         <NavigationMenu.Trigger
                             className={`${linkClasses} ${ghostLinkClasses} group`}
@@ -44,14 +44,17 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                 <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
                             </span>
                         </NavigationMenu.Trigger>
-                        <NavigationMenu.Content className="h-full w-screen px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:opacity-0 data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] lg:px-8">
-                            <div className="grid grid-cols-6 gap-2" data-testid="collections-grid">
+                        <NavigationMenu.Content className="h-full w-screen px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:opacity-0 data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] xl:px-8">
+                            <div
+                                className="grid grid-cols-4 gap-2 xl:grid-cols-6"
+                                data-testid="collections-grid"
+                            >
                                 {links.map(link => (
                                     <Collection key={link.url} link={link} />
                                 ))}
                             </div>
                             <div className="my-4 flex items-center justify-between sm:flex-row">
-                                <span className="hidden lg:block">
+                                <span className="hidden xl:block">
                                     <AllTagsList items={tags} />
                                 </span>
                                 <span>
