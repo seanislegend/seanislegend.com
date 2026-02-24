@@ -1,5 +1,6 @@
 'use client';
 
+import {useRef} from 'react';
 import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import Container from '@/components/UI/Container';
 import PhotoCollectionBlocks, {ContentSection} from './Blocks';
@@ -34,6 +35,7 @@ const PhotosCollection: React.FC<Props> = ({
     const tags = tagsCollection?.items || [];
     const layout = layouts?.[slug];
     const layoutWithTags = layout ? [...layout, {layout: 'Tags'}] : null;
+    const firstImageRef = useRef(false);
 
     const renderPhoto = (
         blockPhotos: number[],
@@ -43,6 +45,8 @@ const PhotosCollection: React.FC<Props> = ({
     ) => {
         const photo = photos[blockPhotos[index]];
         if (!photo) return null;
+        const priority = !firstImageRef.current;
+        if (priority) firstImageRef.current = true;
 
         let path = '';
 
@@ -64,9 +68,10 @@ const PhotosCollection: React.FC<Props> = ({
                 id={photo.sys?.id}
                 linksTo={linksTo}
                 path={path}
+                priority={priority}
                 slug={photo.slug}
-                title={photo.title}
                 thumbnail={photo.thumbnail}
+                title={photo.title}
             />
         );
     };
