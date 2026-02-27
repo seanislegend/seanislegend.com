@@ -5,6 +5,7 @@ import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchEditorialPage} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
+import ContactForm from './ContactForm';
 
 const ContactPage = async () => {
     const page = await fetchEditorialPage('contact');
@@ -12,6 +13,9 @@ const ContactPage = async () => {
     return (
         <DefaultLayout theme="dark">
             <PageHeader title={page.pageTitle} description={page.content} />
+            <Container className="pb-16">
+                <ContactForm />
+            </Container>
         </DefaultLayout>
     );
 };
