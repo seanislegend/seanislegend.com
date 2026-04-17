@@ -150,7 +150,6 @@ const ContactForm = () => {
                         </FormField>
                     </div>
                 )}
-
                 {enquiryType === 'hiring' && (
                     <div className="animate-in fade-in slide-in-from-bottom-1 space-y-2 duration-300 md:space-y-3">
                         <FormField error={errors.company} htmlFor="company" label="Company">
@@ -162,7 +161,6 @@ const ContactForm = () => {
                                 type="text"
                             />
                         </FormField>
-
                         <FormField error={errors.location} htmlFor="location" label="Location">
                             <input
                                 {...register('location')}
@@ -172,7 +170,6 @@ const ContactForm = () => {
                                 type="text"
                             />
                         </FormField>
-
                         <FormField
                             error={errors.budget}
                             hint="Optional, but a rough budget is a good starting point"
@@ -184,11 +181,10 @@ const ContactForm = () => {
                                 aria-describedby="budget-hint"
                                 className={getFieldControlClassName(!!errors.budget)}
                                 id="budget"
-                                placeholder="e.g. day rate, project range (optional)"
+                                placeholder="Your budget. E.g. day rate, project range (optional)"
                                 type="text"
                             />
                         </FormField>
-
                         <FormField
                             error={errors.description}
                             htmlFor="description"
@@ -206,7 +202,6 @@ const ContactForm = () => {
                         </FormField>
                     </div>
                 )}
-
                 {enquiryType === 'other' && (
                     <div className="animate-in fade-in slide-in-from-bottom-1 duration-300">
                         <FormField error={errors.message} htmlFor="message" label="Message">
@@ -222,7 +217,6 @@ const ContactForm = () => {
                         </FormField>
                     </div>
                 )}
-
                 {enquiryType && (
                     <div className="animate-in fade-in duration-300">
                         <Button
