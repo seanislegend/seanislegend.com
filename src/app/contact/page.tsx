@@ -5,13 +5,16 @@ import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchEditorialPage} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
+import ContactForm from './Form';
 
 const ContactPage = async () => {
     const page = await fetchEditorialPage('contact');
 
     return (
         <DefaultLayout theme="dark">
-            <PageHeader title={page.pageTitle} description={page.content} />
+            <PageHeader title={page.pageTitle} description={page.content}>
+                <ContactForm />
+            </PageHeader>
         </DefaultLayout>
     );
 };
