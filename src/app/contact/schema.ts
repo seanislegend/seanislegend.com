@@ -1,5 +1,11 @@
 import {z} from 'zod';
 
+export const enquiryLabels: Record<EnquiryType, string> = {
+    hiring: 'Hiring',
+    other: 'Other',
+    prints: 'Prints'
+};
+
 export const enquiryTypes = ['other', 'hiring', 'prints'] as const;
 export type EnquiryType = (typeof enquiryTypes)[number];
 
