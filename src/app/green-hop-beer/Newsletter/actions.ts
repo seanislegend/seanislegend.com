@@ -37,9 +37,18 @@ export const subscribeToNewsletter = async (
             };
         }
 
+        const segmentId = process.env.RESEND_AUDIENCE_ID;
+        if (!segmentId) {
+            return {
+                error: true,
+                message: 'Failed to subscribe. Please try again later.',
+                success: false
+            };
+        }
+
         await resend.contacts.create({
-            audienceId: process.env.RESEND_AUDIENCE_ID,
-            email
+            email,
+            segments: [{id: segmentId}]
         });
         await track('green-hop-beer-newsletter-subscribe', {
             date: new Date().toISOString()

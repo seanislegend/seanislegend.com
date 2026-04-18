@@ -27,7 +27,7 @@ const CopyToClipboard: React.FC<Props> = ({text, url}) => {
     };
 
     return (
-        <Tooltip.Root delay={0}>
+        <Tooltip.Root>
             <Tooltip.Trigger
                 render={
                     <span

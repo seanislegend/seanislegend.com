@@ -32,10 +32,10 @@ const ShareButtons: React.FC<Props> = ({
     return (
         <div className="flex flex-row items-center gap-3">
             <span className="text-sm uppercase">Share</span>
-            <Tooltip.Provider>
+            <Tooltip.Provider delay={0}>
                 <ul className="flex flex-row gap-1">
                     <li>
-                        <Tooltip.Root delay={0}>
+                        <Tooltip.Root>
                             <Tooltip.Trigger
                                 render={
                                     <a
@@ -53,7 +53,7 @@ const ShareButtons: React.FC<Props> = ({
                         </Tooltip.Root>
                     </li>
                     <li>
-                        <Tooltip.Root delay={0}>
+                        <Tooltip.Root>
                             <Tooltip.Trigger
                                 render={
                                     <a
@@ -71,7 +71,7 @@ const ShareButtons: React.FC<Props> = ({
                         </Tooltip.Root>
                     </li>
                     <li>
-                        <Tooltip.Root delay={0}>
+                        <Tooltip.Root>
                             <Tooltip.Trigger
                                 render={
                                     <a
