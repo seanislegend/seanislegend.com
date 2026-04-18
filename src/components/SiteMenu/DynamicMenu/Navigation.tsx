@@ -3,7 +3,7 @@
 import {useLayoutEffect, useState} from 'react';
 import {MENU_ITEMS} from '../';
 import SiteHeaderLink, {ghostLinkClasses, linkClasses} from '../Link';
-import {NavigationMenu} from '@base-ui-components/react/navigation-menu';
+import {NavigationMenu} from '@base-ui/react/navigation-menu';
 import {usePathname} from 'next/navigation';
 import Button from '@/components/Button';
 import {CaretDownIcon} from '@/components/Icon/CaretDown';

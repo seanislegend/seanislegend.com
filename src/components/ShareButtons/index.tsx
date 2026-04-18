@@ -1,4 +1,4 @@
-import {Tooltip} from '@base-ui-components/react/tooltip';
+import {Tooltip} from '@base-ui/react/tooltip';
 import {track} from '@vercel/analytics';
 import {BlueskyIcon} from '@/components/Icon/Bluesky';
 import {ThreadsIcon} from '@/components/Icon/Threads';

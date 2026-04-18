@@ -1,7 +1,7 @@
 'use client';
 
 import {useState} from 'react';
-import {Tooltip} from '@base-ui-components/react/tooltip';
+import {Tooltip} from '@base-ui/react/tooltip';
 import {track} from '@vercel/analytics';
 import clsx from 'clsx';
 import * as m from 'motion/react-m';
