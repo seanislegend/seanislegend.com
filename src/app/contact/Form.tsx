@@ -1,6 +1,6 @@
 'use client';
 
-import {useActionState, useEffect} from 'react';
+import {startTransition, useActionState, useEffect} from 'react';
 import {Controller, type FieldError, type Path, useForm, useWatch} from 'react-hook-form';
 import {Radio} from '@base-ui/react/radio';
 import {RadioGroup} from '@base-ui/react/radio-group';
@@ -13,19 +13,37 @@ import FormField, {
     getFieldControlClassName
 } from '@/components/FormField';
 import {type ContactState, submitContactForm} from './actions';
-import {type ContactFormData, type EnquiryType, contactSchema, enquiryTypes} from './schema';
+import {
+    type ContactFormData,
+    type EnquiryType,
+    contactSchema,
+    enquiryLabels,
+    enquiryTypes
+} from './schema';
 import ContactSuccess from '@/app/contact/Success';
-
-const enquiryLabels: Record<EnquiryType, string> = {
-    hiring: 'Hiring',
-    other: 'Other',
-    prints: 'Prints'
-};
 
 const submitLabels: Record<EnquiryType, string> = {
     hiring: 'Send job details',
     other: 'Send message',
     prints: 'Send print enquiry'
+};
+
+const toSubmissionFormData = (data: ContactFormData): FormData => {
+    const formData = new FormData();
+    formData.append('email', data.email);
+    formData.append('enquiryType', data.enquiryType);
+    formData.append('name', data.name);
+    if (data.enquiryType === 'hiring') {
+        formData.append('budget', data.budget ?? '');
+        formData.append('company', data.company);
+        formData.append('description', data.description);
+        formData.append('location', data.location);
+    } else if (data.enquiryType === 'other') {
+        formData.append('message', data.message);
+    } else {
+        formData.append('photoDetails', data.photoDetails);
+    }
+    return formData;
 };
 
 const ContactForm = () => {
@@ -37,12 +55,12 @@ const ContactForm = () => {
     const {
         control,
         formState: {errors: rawErrors},
+        handleSubmit,
         register,
         setError
     } = useForm<ContactFormData>({
         defaultValues: {
             email: '',
-            enquiryType: 'other',
             message: '',
             name: ''
         },
@@ -62,16 +80,23 @@ const ContactForm = () => {
     }, [setError, state?.fieldErrors]);
 
     const errors = rawErrors as Record<string, FieldError | undefined>;
-    const budget = useWatch({control, defaultValue: '', name: 'budget'});
     const enquiryType = useWatch({control, name: 'enquiryType'});
-    const wasSubmitted = state?.success && !state?.error;
+    const wasSubmitted = state?.success === true;
 
     if (wasSubmitted) {
         return <ContactSuccess message={state?.message || ''} />;
     }
 
     return (
-        <form action={formAction} className="mt-8 w-full">
+        <form
+            className="mt-8 w-full"
+            noValidate
+            onSubmit={handleSubmit(values => {
+                startTransition(() => {
+                    formAction(toSubmissionFormData(values));
+                });
+            })}
+        >
             {state?.error && state.message ? <FormErrorBanner message={state.message} /> : null}
             <div className="grid w-full gap-x-8 gap-y-2 md:gap-y-3">
                 <FormField error={errors.name} htmlFor="name" label="Name">
@@ -93,8 +118,8 @@ const ContactForm = () => {
                     />
                 </FormField>
                 <div className="pb-4">
-                    <span className="sr-only" id="enquiryType-label">
-                        Enquiry type
+                    <span className="mb-2 block text-sm" id="enquiryType-label">
+                        What do you want to chat about?
                     </span>
                     <Controller
                         control={control}
@@ -217,18 +242,16 @@ const ContactForm = () => {
                         </FormField>
                     </div>
                 )}
-                {enquiryType && (
-                    <div className="animate-in fade-in duration-300">
-                        <Button
-                            className={clsx({'pointer-events-none opacity-60': isPending})}
-                            disabled={isPending}
-                            theme="primary"
-                            type="submit"
-                        >
-                            {isPending ? 'Sending...' : submitLabels[enquiryType]}
-                        </Button>
-                    </div>
-                )}
+                <div className="animate-in fade-in duration-300">
+                    <Button
+                        className={clsx({'pointer-events-none opacity-60': isPending})}
+                        disabled={isPending}
+                        theme="primary"
+                        type="submit"
+                    >
+                        {isPending ? 'Sending...' : enquiryType ? submitLabels[enquiryType] : 'Send message'}
+                    </Button>
+                </div>
             </div>
         </form>
     );

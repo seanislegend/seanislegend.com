@@ -45,7 +45,7 @@ const ContactSuccess: React.FC<Props> = ({message}) => (
                 }}
             />
         </m.svg>
-        <p>{message}</p>
+        <p className="font-medium">{message}</p>
     </div>
 );
 
