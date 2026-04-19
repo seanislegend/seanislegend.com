@@ -20,7 +20,13 @@ const PublishedWorkLogos: React.FC<Props> = ({theme = 'dark'}) => (
                 target="_blank"
                 title="Good Beer Hunting"
             >
-                <Image src={gbhLogo} alt="Good Beer Hunting" width={75} height={85} />
+                <Image
+                    className="h-18 w-auto"
+                    src={gbhLogo}
+                    alt="Good Beer Hunting"
+                    width={75}
+                    height={85}
+                />
             </a>
             <a
                 className="transition-opacity duration-300 ease-in-out hover:opacity-80"
@@ -30,6 +36,7 @@ const PublishedWorkLogos: React.FC<Props> = ({theme = 'dark'}) => (
                 title="Pellicle"
             >
                 <Image
+                    className="h-18 w-auto"
                     src={theme === 'light' ? pellicleLogoLight : pellicleLogo}
                     alt="Pellicle"
                     width={168}
