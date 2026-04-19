@@ -77,7 +77,7 @@ const PhotoThumbnail: React.FC<Props> = ({
                                 View {linksTo === 'collection' ? 'collection' : 'photo'}
                             </span>
                         </span>
-                        <span className="bg-button-bg-hover text-button-text absolute right-0 bottom-0 z-40 size-6 p-1 xl:size-7">
+                        <span className="bg-button-bg-hover text-button-text absolute right-0 bottom-0 z-40 flex size-6 items-center justify-center p-1 xl:size-9">
                             <RightArrowIcon className="absolute size-4 fill-current xl:size-5" />
                         </span>
                     </span>
