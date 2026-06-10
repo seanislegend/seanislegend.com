@@ -249,8 +249,8 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [2, 11, 18, 4]}
     ],
     home: [
-        {layout: 'LandscapeTwoBigFourSmall', photos: [46, 27, 11, 26, 52, 40]},
         {layout: 'GreenHopFeaturedOneLandScapeTwoPortrait', photos: [47, 51, 8]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [46, 27, 11, 26, 52, 40]},
         {layout: 'Spacer'},
         {layout: 'ThreeInARow', photos: [29, 16, 22]},
         {layout: 'FourInARow', photos: [13, 0, 30, 3]},
