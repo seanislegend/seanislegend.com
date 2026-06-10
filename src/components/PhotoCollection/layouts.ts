@@ -31,6 +31,22 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [39, 33, 41, 7]},
         {layout: 'ContentSection', sections: [1]}
     ],
+    'chiltern-brewery-pub-aylesbury': [
+        {layout: 'LandscapeOneBigTwoMedium', photos: [2, 43, 16]},
+        {layout: 'Spacer'},
+        {layout: 'TwoInARow', photos: [17, 7]},
+        {layout: 'OnePortraitTwoLandscape', photos: [34, 28, 14]},
+        {layout: 'Spacer'},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [20, 30, 27, 10, 24, 25]},
+        {layout: 'Spacer'},
+        {layout: 'TwoInARow', photos: [40, 38]},
+        {layout: 'ContentSection', sections: [0]},
+        {layout: 'ThreeInARow', photos: [4, 15, 9]},
+        {layout: 'ThreeInARowWithPadding', photos: [12, 22, 19]},
+        {layout: 'ThreeInARow', photos: [33, 29, 1]},
+        {layout: 'Spacer'},
+        {layout: 'ContentSection', sections: [1]}
+    ],
     'community-and-craft-beer-in-hebden-bridge': [
         {layout: 'TwoInARow', photos: [63, 17]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 61, 27, 8, 4, 46]},
@@ -233,18 +249,14 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [2, 11, 18, 4]}
     ],
     home: [
-        {layout: 'LandscapeTwoBigFourSmall', photos: [46, 27, 4, 26, 0, 40]},
-        {layout: 'GreenHopFeaturedOneLandScapeTwoPortrait', photos: [47, 6, 8]},
-        {layout: 'ThreeInARow', photos: [10, 23, 31]},
-        {layout: 'FourInARow', photos: [2, 45, 30, 3]},
-        {
-            layout: 'SixInARow',
-            photos: [12, 36, 38, 42, 32, 5],
-            props: {className: 'hidden md:grid'}
-        },
+        {layout: 'LandscapeTwoBigFourSmall', photos: [46, 27, 11, 26, 52, 40]},
+        {layout: 'GreenHopFeaturedOneLandScapeTwoPortrait', photos: [47, 51, 8]},
+        {layout: 'Spacer'},
         {layout: 'ThreeInARow', photos: [29, 16, 22]},
-        {layout: 'SixInARow', photos: [43, 9, 44, 7, 28, 24], props: {className: 'hidden md:grid'}},
-        {layout: 'FourInARow', photos: [39, 15, 13, 37]}
+        {layout: 'FourInARow', photos: [13, 0, 30, 3]},
+        {layout: 'Spacer'},
+        {layout: 'ThreeInARow', photos: [10, 2, 31]},
+        {layout: 'SixInARow', photos: [48, 9, 44, 7, 28, 6], props: {className: 'hidden md:grid'}}
     ],
     'hukins-hops-annual-hop-harvest': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 8]},
@@ -345,6 +357,24 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'LandscapeOneBigTwoMedium', photos: [32, 44, 31], props: {reverse: true}},
         {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [9, 11, 10]},
         {layout: 'FourInARow', photos: [18, 13, 25, 36]},
+        {layout: 'ContentSection', sections: [1]}
+    ],
+    'the-sutton-arms-pub-clerkenwell': [
+        {layout: 'LandscapeOneBigTwoMedium', photos: [21, 9, 11]},
+        {layout: 'Spacer'},
+        {layout: 'OnePortraitTwoLandscape', photos: [4, 16, 41]},
+        {layout: 'Spacer'},
+        {layout: 'ThreeInARow', photos: [10, 30, 7]},
+        {layout: 'ThreeInARow', photos: [12, 34, 25]},
+        {layout: 'Spacer'},
+        {layout: 'OnePortraitTwoTopAndBottomLandscape', photos: [38, 37, 39]},
+        {layout: 'Spacer'},
+        {layout: 'ThreeInARow', photos: [36, 32, 28]},
+        {layout: 'FourInARow', photos: [1, 8, 17, 23]},
+        {layout: 'ContentSection', sections: [0]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [22, 19, 31, 5, 29, 24]},
+        {layout: 'Spacer'},
+        {layout: 'ThreeInARow', photos: [26, 14, 35]},
         {layout: 'ContentSection', sections: [1]}
     ],
     'travelling-across-india': [
