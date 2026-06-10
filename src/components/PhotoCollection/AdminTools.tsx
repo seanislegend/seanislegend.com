@@ -1,6 +1,6 @@
 'use client';
 
-import {useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import Button from '@/components/Button';
@@ -66,6 +66,27 @@ const PhotosCollectionAdminTools: React.FC<Props> = ({collection}) => {
         }
         return item.photos || [];
     });
+
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key !== 't' || event.metaKey || event.ctrlKey || event.altKey) return;
+
+            const target = event.target;
+            if (
+                target instanceof HTMLElement &&
+                (target.isContentEditable ||
+                    target.closest('input, textarea, select, [contenteditable="true"]'))
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+            setIsActive(prev => !prev);
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, []);
 
     return (
         <div className="fixed bottom-0 z-50 flex max-h-[35vh] w-full flex-col gap-4 overflow-y-auto border-4 border-black/40 bg-black/90 px-4 text-white shadow-xl">
