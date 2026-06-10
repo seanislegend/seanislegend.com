@@ -31,7 +31,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                         data-testid="site-header-logo"
                         href="/"
                     >
-                        <span className="text-theme-text absolute top-0 bottom-0 left-0 flex translate-x-2 items-center gap-1 opacity-0 transition-all duration-300 ease-in-out will-change-transform sm:group-hover:translate-x-0 sm:group-hover:opacity-100">
+                        <span className="text-theme-text absolute top-0 bottom-0 left-0 flex translate-x-2 items-center gap-1 opacity-0 blur-xs transition-all duration-300 ease-in-out will-change-transform sm:group-hover:translate-x-0 sm:group-hover:opacity-100 sm:group-hover:blur-none">
                             <LeftArrowIcon className="h-5 w-5 fill-current" />
                             <span>Go to homepage</span>
                         </span>

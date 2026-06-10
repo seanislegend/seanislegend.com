@@ -35,7 +35,7 @@ const PageHeaderTitlePreview: React.FC = () => {
                         className="group relative inline-block max-w-full min-w-0 truncate underline underline-offset-4 hover:underline"
                         href={pageHeaderData.path}
                     >
-                        <span className="sm:group-o absolute top-0 bottom-0 left-0 flex translate-x-2 items-center gap-1 opacity-0 blur-xs duration-300 ease-in-out sm:group-hover:translate-x-0 sm:group-hover:opacity-100 sm:group-hover:blur-none">
+                        <span className="absolute top-0 bottom-0 left-0 flex translate-x-2 items-center gap-1 opacity-0 blur-xs transition-all duration-300 ease-in-out sm:group-hover:translate-x-0 sm:group-hover:opacity-100 sm:group-hover:blur-none">
                             <LeftArrowIcon className="h-5 w-5 fill-current" />
                             <span>Go to collection</span>
                         </span>
