@@ -1,3 +1,4 @@
+import Button from '@/components/Button';
 import Markdown from '@/components/Markdown';
 import PageHeaderButtonList from '@/components/PageHeader/ButtonList';
 import PublishedWorkLogos from '@/components/PublishedWorkLogos';
@@ -38,6 +39,13 @@ const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
                         heading={
                             <>
                                 <Heading2>{section.title}</Heading2>
+                                {section.id && (
+                                    <span className="-mt-3 inline-block">
+                                        <TextLink href={`/${section.id}-photography`}>
+                                            View more photos
+                                        </TextLink>
+                                    </span>
+                                )}
                                 {section.title === 'Editorial photography' && (
                                     <>
                                         <PublishedWorkLogos theme="light" />
@@ -56,21 +64,13 @@ const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
                             </div>
                         )}
                         {ctaStyle === 'link' && (
-                            <div className="mt-4">
-                                <TextLink
+                            <div className="mt-4 flex items-center gap-x-2">
+                                <Button
                                     href={`${section?.ctaUrl ?? '/contact'}?service=${section.title}`}
                                 >
-                                    {section?.ctaLabel ?? 'Ask'} about{' '}
-                                    {section?.title?.toLowerCase()}
-                                </TextLink>{' '}
-                                {section.id && (
-                                    <span>
-                                        or{' '}
-                                        <TextLink href={`/${section.id}-photography`}>
-                                            View more photos
-                                        </TextLink>
-                                    </span>
-                                )}
+                                    {section?.ctaLabel ?? 'Discuss'} a{' '}
+                                    {section?.title?.toLowerCase()} shoot
+                                </Button>{' '}
                             </div>
                         )}
                     </TitleTextGrid>
