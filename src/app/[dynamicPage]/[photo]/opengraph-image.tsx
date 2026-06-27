@@ -18,5 +18,4 @@ const handler = async ({params}: Props) => {
     return getOgImage([photo.fullSize.url]);
 };
 
-export const runtime = 'edge';
 export default handler;
