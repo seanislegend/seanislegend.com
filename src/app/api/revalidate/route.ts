@@ -15,7 +15,8 @@ const revalidate = (tag: string) => {
     if (process.env.NODE_ENV === 'development') {
         console.log(`Revalidating tag: ${tag}`);
     }
-    revalidateTag(tag);
+    // 'max' marks the tag stale and serves stale-while-revalidate on next visit
+    revalidateTag(tag, 'max');
 };
 
 const revalidateForType = async (body: any) => {

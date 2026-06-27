@@ -14,6 +14,10 @@ import TitleTextGrid from '@/components/UI/TitleTextGrid';
 import config from '@/utils/config';
 import {fetchExhibition} from '@/utils/contentful';
 
+// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
+// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+export const instant = false;
+
 interface Props {
     params: Promise<{exhibitionSlug: string}>;
 }
