@@ -4,18 +4,25 @@ import {useAtomValue} from 'jotai';
 import {Link} from 'next-view-transitions';
 import {usePathname} from 'next/navigation';
 import {LeftArrowIcon} from '@/components/Icon/LeftArrow';
+import useMounted from '@/hooks/useMounted';
 import useScrollStatus from '@/hooks/useScrollStatus';
 import {pageHeaderDataAtom} from '@/utils/store';
 
 const PageHeaderTitlePreview: React.FC = () => {
     const pathname = usePathname();
+    const mounted = useMounted();
     const pageHeaderData = useAtomValue(pageHeaderDataAtom);
     const {isScrolled} = useScrollStatus(pageHeaderData?.height);
 
     if (!pageHeaderData) return null;
 
+    // `/` is rewritten to `/home`, so usePathname differs between the prerender and
+    // the browser. Gate on mount so server and first client render agree, then
+    // normalise `/` to `/home` so the link is correctly hidden on the homepage.
+    const normalizedPathname = pathname === '/' ? '/home' : pathname;
     const pageHeaderPathMinusAnchor = pageHeaderData.path.split('#')[0];
-    const isPathEqualToPageHeaderPath = pathname === pageHeaderPathMinusAnchor;
+    const isPathEqualToPageHeaderPath =
+        mounted && normalizedPathname === pageHeaderPathMinusAnchor;
 
     return (
         <span

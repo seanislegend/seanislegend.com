@@ -6,11 +6,16 @@ import {usePathname} from 'next/navigation';
 import {LeftArrowIcon} from '@/components/Icon/LeftArrow';
 import Logo from '@/components/Logo';
 import PageHeaderTitlePreview from '@/components/SiteHeader/PageHeaderTitlePreview';
+import useMounted from '@/hooks/useMounted';
 import useScrollStatus from '@/hooks/useScrollStatus';
 
 const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
     const pathname = usePathname();
+    const mounted = useMounted();
     const {isScrolled} = useScrollStatus();
+    // `/` is rewritten to `/home`, so usePathname differs between the prerender and
+    // the browser. Gate on mount so server and first client render agree.
+    const isHome = mounted && (pathname === '/' || pathname === '/home');
 
     return (
         <header
@@ -26,7 +31,7 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
                         aria-label="Home"
                         className={clsx(
                             'group relative inline-flex shrink-0 items-center py-2 text-sm outline-hidden md:text-base',
-                            {'pointer-events-none': pathname === '/'}
+                            {'pointer-events-none': isHome}
                         )}
                         data-testid="site-header-logo"
                         href="/"
