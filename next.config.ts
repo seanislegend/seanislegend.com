@@ -1,7 +1,7 @@
 import {withBotId} from 'botid/next/config';
 import type {NextConfig} from 'next';
 import {SHOP_URL} from '@/utils/config';
-import {fetchAllTags} from '@/utils/contentful';
+import {fetchAllTagsUncached} from '@/utils/contentful';
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const securityHeaders = [
@@ -81,7 +81,7 @@ const nextConfig: NextConfig = {
             }
         ];
 
-        const tags = await fetchAllTags();
+        const tags = await fetchAllTagsUncached();
 
         if (tags.length > 0) {
             tags.forEach(tag => {

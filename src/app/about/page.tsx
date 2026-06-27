@@ -7,10 +7,6 @@ import config, {SITE_LINKS} from '@/utils/config';
 import {fetchEditorialPage} from '@/utils/contentful';
 import {getEditorialSeo} from '@/utils/helpers';
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
-
 const getPersonJsonLd = (imageUrl?: string) => {
     const schema: Record<string, unknown> = {
         '@context': 'https://schema.org',
