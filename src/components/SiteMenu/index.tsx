@@ -4,7 +4,7 @@ import SiteHeaderLink from './Link';
 export const MENU_ITEMS = [
     {href: '/exhibitions', label: 'Exhibitions'},
     {href: '/about', label: 'About'},
-    {href: '/services', label: 'Hire me'},
+    {href: '/services', label: 'Services'},
     {href: '/contact', label: 'Contact'},
     {href: SHOP_URL, label: 'Shop', theme: 'primary'}
 ];

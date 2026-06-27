@@ -32,7 +32,7 @@ const AboutPage = async () => {
             />
             <PageHeader
                 ctas={[
-                    {label: 'Hire me', url: '/services'},
+                    {label: 'Services', url: '/services'},
                     {label: 'Contact', url: '/contact'}
                 ]}
                 description={page.content}

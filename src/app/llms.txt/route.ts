@@ -1,11 +1,7 @@
 import {cacheLife, cacheTag} from 'next/cache';
 import {NextResponse} from 'next/server';
-import {
-    fetchAllEditorialPages,
-    fetchAllTags,
-    fetchCollectionsForSitemap
-} from '@/utils/contentful';
-import {SITE_LINKS, SHOP_URL} from '@/utils/config';
+import {SHOP_URL, SITE_LINKS} from '@/utils/config';
+import {fetchAllEditorialPages, fetchAllTags, fetchCollectionsForSitemap} from '@/utils/contentful';
 
 const BASE = process.env.NEXT_PUBLIC_URL || 'https://www.seanislegend.com';
 
@@ -37,7 +33,7 @@ const staticBody = `# Sean McEmerson Photography
 - Collections: ${BASE}/collections
 - About: ${BASE}/about
 - Exhibitions: ${BASE}/exhibitions
-- Hire me: ${BASE}/services
+- Services: ${BASE}/services
 - Shop: ${SHOP_URL}
 - Sitemap: ${BASE}/sitemap.xml
 `;
@@ -68,10 +64,7 @@ const getLlmsBody = async () => {
 
     const tagLines =
         tags
-            ?.map(
-                (t: {name: string; slug: string}) =>
-                    `- ${t.name}: ${BASE}/${t.slug}-photography`
-            )
+            ?.map((t: {name: string; slug: string}) => `- ${t.name}: ${BASE}/${t.slug}-photography`)
             .join('\n') ?? '';
 
     const editorialLines =
