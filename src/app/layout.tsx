@@ -21,8 +21,9 @@ interface Props {
 const RootLayout = async ({children}: Props) => (
     <ViewTransitions>
         <html
-            lang="en"
             className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}
+            data-scroll-behavior="smooth"
+            lang="en"
         >
             <head>
                 <link rel="preconnect" href="https://images.ctfassets.net" />
