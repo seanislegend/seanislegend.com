@@ -26,7 +26,7 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
 
     const collection = pageData.collection;
     let allTagCollectionLinks: {href: string; label: string}[] = [];
-    let ctas = [];
+    const ctas = [];
 
     if (collection.isTagPage) {
         // if this is a tag page we'll need to get the tag from the collections list

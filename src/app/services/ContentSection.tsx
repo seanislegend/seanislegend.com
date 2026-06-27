@@ -17,13 +17,13 @@ const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
             const ctas: {label: string; url: string}[] = [];
 
             if (ctaStyle === 'button') {
-                if (sections[0].ctaLabel && sections[0].ctaUrl) {
-                    ctas.push({label: sections[0].ctaLabel, url: sections[0].ctaUrl});
+                if (section.ctaLabel && section.ctaUrl) {
+                    ctas.push({label: section.ctaLabel, url: section.ctaUrl});
                 }
-                if (sections[0].secondaryCtaLabel && sections[0].secondaryCtaUrl) {
+                if (section.secondaryCtaLabel && section.secondaryCtaUrl) {
                     ctas.push({
-                        label: sections[0].secondaryCtaLabel,
-                        url: sections[0].secondaryCtaUrl
+                        label: section.secondaryCtaLabel,
+                        url: section.secondaryCtaUrl
                     });
                 }
             }

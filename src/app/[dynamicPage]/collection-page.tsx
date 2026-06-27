@@ -1,6 +1,11 @@
+import dynamic from 'next/dynamic';
 import PhotoCollection from '@/components/PhotoCollection';
-import PhotoCollectionAdminTools from '@/components/PhotoCollection/AdminTools';
 import RelatedCollections from '@/components/PhotoCollection/RelatedCollections';
+
+const PhotoCollectionAdminTools =
+    process.env.NEXT_PUBLIC_ADMIN_TOOLS === '1'
+        ? dynamic(() => import('@/components/PhotoCollection/AdminTools'))
+        : null;
 
 interface Props {
     collection: PhotoCollection;
@@ -16,9 +21,7 @@ const CollectionPage: React.FC<Props> = ({collection}) => (
             collection?.relatedCollectionsCollection?.items?.length > 0 && (
                 <RelatedCollections items={collection.relatedCollectionsCollection.items} />
             )}
-        {process.env.NEXT_PUBLIC_ADMIN_TOOLS === '1' && (
-            <PhotoCollectionAdminTools collection={collection} />
-        )}
+        {PhotoCollectionAdminTools && <PhotoCollectionAdminTools collection={collection} />}
     </>
 );
 

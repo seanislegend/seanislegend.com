@@ -107,7 +107,7 @@ const PhotosCollection: React.FC<Props> = ({
     };
 
     return (
-        <div className="animate-in animate-out fill-mode-forwards mx-4 opacity-0 transition-opacity delay-100 duration-500 md:mx-8">
+        <div className="animate-in fade-in fill-mode-backwards mx-4 delay-100 duration-1000 md:mx-8">
             {layout ? (
                 <PhotoCollectionBlocks
                     blocks={layoutWithTags ?? layout}

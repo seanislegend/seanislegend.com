@@ -31,7 +31,7 @@ const sortPhotos = (collection: PhotoCollection) => {
 
     return order === 'asc'
         ? collection.photosCollection.items
-        : collection.photosCollection.items.reverse();
+        : collection.photosCollection.items.toReversed();
 };
 
 const addLinkedFromCollection = (items: any[]) => {
@@ -577,7 +577,7 @@ export const fetchAllTags = async () => {
     return response.data?.tagCollection?.items as Tag[];
 };
 
-export const fetchAllPhotosForTag = async (tag: string) => {
+export const fetchAllPhotosForTag = cache(async (tag: string) => {
     const query = `query {
         tagCollection(where: {slug: "${tag}"}, limit: 1) {
             items {
@@ -651,7 +651,7 @@ export const fetchAllPhotosForTag = async (tag: string) => {
         photos: photosWithCollection,
         tag: tagData
     };
-};
+});
 
 export const fetchExhibition = async (slug: string, preview: boolean = false) => {
     const query = `query {

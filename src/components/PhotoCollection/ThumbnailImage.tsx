@@ -27,6 +27,8 @@ const ThumbnailImage: React.FC<Props> = ({
     // calculate the scaling factor based on 12-column grid
     const imageHeight = columnSize ? Math.floor(height * (columnSize / 12)) : height;
     const imageWidth = columnSize ? Math.floor(width * (columnSize / 12)) : width;
+    const ratio = imageWidth / imageHeight;
+    const is43 = ratio >= 1 && Math.abs(ratio - 4 / 3) < 0.1;
 
     return (
         <span
@@ -34,8 +36,9 @@ const ThumbnailImage: React.FC<Props> = ({
                 'relative z-20 block min-h-[50px] overflow-hidden rounded-xs group-focus:outline-hidden',
                 {
                     'h-full': fill,
-                    'aspect-3/2': imageWidth > imageHeight,
-                    'aspect-2/3': imageWidth < imageHeight
+                    'aspect-2/3': ratio < 1,
+                    'aspect-3/2': ratio >= 1 && !is43,
+                    'h-full bg-[#000] object-cover': !is43
                 }
             )}
             id={id}
