@@ -81,5 +81,3 @@ export const POST = async (request: Request) => {
         return returnResponse(message, 500);
     }
 };
-
-export const dynamic = 'force-dynamic';
