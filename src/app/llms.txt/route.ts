@@ -1,3 +1,4 @@
+import {cacheLife, cacheTag} from 'next/cache';
 import {NextResponse} from 'next/server';
 import {
     fetchAllEditorialPages,
@@ -7,8 +8,6 @@ import {
 import {SITE_LINKS, SHOP_URL} from '@/utils/config';
 
 const BASE = process.env.NEXT_PUBLIC_URL || 'https://www.seanislegend.com';
-
-export const revalidate = 3600;
 
 const staticBody = `# Sean McEmerson Photography
 
@@ -43,7 +42,11 @@ const staticBody = `# Sean McEmerson Photography
 - Sitemap: ${BASE}/sitemap.xml
 `;
 
-export async function GET() {
+const getLlmsBody = async () => {
+    'use cache';
+    cacheTag('contentful', 'collections', 'editorials', 'tags');
+    cacheLife('hours');
+
     const [collections, tags, editorialPages] = await Promise.all([
         fetchCollectionsForSitemap(),
         fetchAllTags(),
@@ -79,7 +82,7 @@ export async function GET() {
             )
             .join('\n') ?? '';
 
-    const body = [
+    return [
         staticBody,
         '',
         '## Collections (citable)',
@@ -94,6 +97,10 @@ export async function GET() {
         '',
         editorialLines
     ].join('\n');
+};
+
+export async function GET() {
+    const body = await getLlmsBody();
 
     return new NextResponse(body, {
         headers: {

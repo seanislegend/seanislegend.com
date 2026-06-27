@@ -1,25 +1,40 @@
-import {revalidatePath} from 'next/cache';
+import {revalidateTag} from 'next/cache';
 import {NextRequest} from 'next/server';
 import {fetchContent} from '@/utils/contentful';
 
 const LOCALE = process.env.CONTENTFUL_LOCALE ?? '';
 
-const revalidate = (path: string) => {
+// Cache tags mirror the `cacheTag()` calls in `@/utils/contentful`:
+//   contentful            – global, busts every cached Contentful read
+//   collections           – the collection list / navigation / sitemap
+//   collection:<slug>     – a single collection page (and its photo detail pages)
+//   editorials            – the editorial list
+//   editorial:<slug>      – a single editorial page ('services' included)
+//   tag:<slug>            – a single tag page
+const revalidate = (tag: string) => {
     if (process.env.NODE_ENV === 'development') {
-        console.log(`Revalidating: ${path}`);
+        console.log(`Revalidating tag: ${tag}`);
     }
-    revalidatePath(path);
+    revalidateTag(tag);
 };
 
-const revalidatePathForType = async (body: any) => {
+const revalidateForType = async (body: any) => {
     const type = body?.sys?.contentType?.sys?.id ?? body?.sys?.type;
     if (!type) return;
 
-    if (type === 'collection' || type === 'editorial') {
+    if (type === 'collection') {
         const slug = body?.fields?.slug?.[LOCALE];
         if (slug) {
-            revalidate(`/${slug}`);
+            revalidate(`collection:${slug}`);
         }
+        // the collection list, navigation and sitemap all need refreshing too
+        revalidate('collections');
+    } else if (type === 'editorial') {
+        const slug = body?.fields?.slug?.[LOCALE];
+        if (slug) {
+            revalidate(`editorial:${slug}`);
+        }
+        revalidate('editorials');
     } else if (type === 'contentSection') {
         // revalidate editorial pages that contain this content section
         const {data} = await fetchContent(`query {
@@ -36,10 +51,10 @@ const revalidatePathForType = async (body: any) => {
         if (!data?.contentSection) return;
 
         data.contentSection.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
-            revalidate(`/${editorial.slug}`);
+            revalidate(`editorial:${editorial.slug}`);
         });
     } else if (type === 'photoGrid') {
-        // revalidate editorial pages and content sections that contain this photoGrid
+        // revalidate editorial pages that contain this photoGrid
         const {data} = await fetchContent(`query {
             photoGrid(id: "${body.sys.id}") {
                 linkedFrom {
@@ -59,10 +74,9 @@ const revalidatePathForType = async (body: any) => {
         }`);
         if (!data?.photoGrid) return;
 
-        // revalidate editorial pages that contain content sections with this photoGrid
         data.photoGrid.linkedFrom.contentSectionCollection.items.forEach((contentSection: any) => {
             contentSection.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
-                revalidate(`/${editorial.slug}`);
+                revalidate(`editorial:${editorial.slug}`);
             });
         });
     } else if (type === 'photoGridPhoto') {
@@ -92,13 +106,12 @@ const revalidatePathForType = async (body: any) => {
         }`);
         if (!data?.photoGridPhoto) return;
 
-        // revalidate editorial pages that contain content sections with this photoGridPhoto
         data.photoGridPhoto?.linkedFrom?.photoGridCollection?.items?.forEach((photoGrid: any) => {
             photoGrid?.linkedFrom?.contentSectionCollection?.items?.forEach(
                 (contentSection: any) => {
                     contentSection?.linkedFrom?.editorialCollection?.items?.forEach(
                         (editorial: any) => {
-                            revalidate(`/${editorial.slug}`);
+                            revalidate(`editorial:${editorial.slug}`);
                         }
                     );
                 }
@@ -134,18 +147,23 @@ const revalidatePathForType = async (body: any) => {
         if (!data?.photo) return;
 
         data.photo.tagsCollection.items.forEach((tag: any) => {
-            revalidate(`/${tag.slug}-photography`);
+            revalidate(`tag:${tag.slug}`);
         });
         data.photo.linkedFrom.collectionCollection.items.forEach((collection: any) => {
-            revalidate(`/${collection.slug}`);
+            // collection:<slug> covers both the collection page and its photo detail pages
+            revalidate(`collection:${collection.slug}`);
         });
+        // featured thumbnails appear in collection lists / navigation
+        if (data.photo.linkedFrom.collectionCollection.items.length > 0) {
+            revalidate('collections');
+        }
         data.photo.linkedFrom.editorialCollection.items.forEach((editorial: any) => {
-            revalidate(`/${editorial.slug}`);
+            revalidate(`editorial:${editorial.slug}`);
         });
         // if used in a photo grid, revalidate the services page as this is the
         // only use case for this
         if (data.photo.linkedFrom.photoGridPhotoCollection.items.length > 0) {
-            revalidate(`/services`);
+            revalidate('editorial:services');
         }
     } else if (type === 'Asset') {
         const {data} = await fetchContent(`query {
@@ -162,7 +180,7 @@ const revalidatePathForType = async (body: any) => {
                                 }
                             }
                         }
-                    }   
+                    }
                     editorialCollection {
                         items {
                             slug
@@ -174,16 +192,12 @@ const revalidatePathForType = async (body: any) => {
         if (!data?.asset) return;
 
         data.asset.linkedFrom.editorialCollection.items.forEach((page: any) => {
-            revalidate(`/${page.slug}`);
+            revalidate(`editorial:${page.slug}`);
         });
         data.asset.linkedFrom.photoCollection.items.forEach((photo: any) => {
-            // for each photo we need to revalidate the collection it belongs to
+            // collection:<slug> covers the collection page and its photo detail pages
             photo.linkedFrom.collectionCollection.items.forEach((collection: any) => {
-                revalidate(`/${collection.slug}`);
-                // home page does not nest photos in a collection
-                if (collection.slug !== 'home') {
-                    revalidate(`/${collection.slug}/${photo.slug}`);
-                }
+                revalidate(`collection:${collection.slug}`);
             });
         });
     }
@@ -199,7 +213,7 @@ export const POST = async (request: NextRequest) => {
     }
 
     const body = await request.json();
-    await revalidatePathForType(body);
+    await revalidateForType(body);
 
     return Response.json({success: true});
 };

@@ -1,3 +1,4 @@
+import {cacheLife, cacheTag} from 'next/cache';
 import {cache} from 'react';
 
 export const fetchContent = cache(async (query: string, preview: boolean = false) => {
@@ -74,6 +75,10 @@ const getFormattedCollection = (collection: any) => {
 };
 
 export const fetchEditorialPage = async (slug: string) => {
+    'use cache';
+    cacheTag('contentful', `editorial:${slug}`);
+    cacheLife('days');
+
     const query = `query {
         editorialCollection(where: {slug: "${slug}"}, limit: 1) {
             items {
@@ -151,6 +156,10 @@ export const fetchEditorialPage = async (slug: string) => {
 export const fetchAllEditorialPages = async (
     preview: boolean = false
 ): Promise<Editorial[] | null> => {
+    'use cache';
+    cacheTag('contentful', 'editorials');
+    cacheLife('days');
+
     const query = `query {
         editorialCollection(
             limit: 50,
@@ -177,6 +186,10 @@ export const fetchAllEditorialPages = async (
 };
 
 export const fetchLinksPage = async () => {
+    'use cache';
+    cacheTag('contentful', 'links');
+    cacheLife('days');
+
     const query = `query {
         linksPageCollection(limit: 1, order: [sys_publishedAt_DESC]) {
             items {
@@ -237,6 +250,19 @@ const getBadgeForCollection = (item: PhotoCollection) => {
 };
 
 export const fetchCollectionNavigation = async (preview: boolean = false): Promise<Link[]> => {
+    if (preview) return fetchCollectionNavigationData(true);
+    return fetchCollectionNavigationCached();
+};
+
+const fetchCollectionNavigationCached = async (): Promise<Link[]> => {
+    'use cache';
+    cacheTag('contentful', 'navigation', 'collections');
+    cacheLife('days');
+
+    return fetchCollectionNavigationData(false);
+};
+
+const fetchCollectionNavigationData = async (preview: boolean): Promise<Link[]> => {
     const query = `query {
         collectionNavigationCollection(
             limit: 1,
@@ -298,6 +324,19 @@ export const fetchCollectionNavigation = async (preview: boolean = false): Promi
 export const fetchAllCollections = async (
     preview: boolean = false
 ): Promise<PhotoCollection[] | null> => {
+    if (preview) return fetchAllCollectionsData(true);
+    return fetchAllCollectionsCached();
+};
+
+const fetchAllCollectionsCached = async (): Promise<PhotoCollection[] | null> => {
+    'use cache';
+    cacheTag('contentful', 'collections');
+    cacheLife('days');
+
+    return fetchAllCollectionsData(false);
+};
+
+const fetchAllCollectionsData = async (preview: boolean): Promise<PhotoCollection[] | null> => {
     // NB: We will need to batch fetch collections.
     // Because of the nesting involved with this query, Contentful errors because of
     // the max complexity allowed. Once we exceed this limit we will need to write the
@@ -380,6 +419,22 @@ export const fetchAllCollections = async (
 export const fetchCollection = async (
     slug: string,
     preview: boolean = false
+): Promise<PhotoCollection | null> => {
+    if (preview) return fetchCollectionData(slug, true);
+    return fetchCollectionCached(slug);
+};
+
+const fetchCollectionCached = async (slug: string): Promise<PhotoCollection | null> => {
+    'use cache';
+    cacheTag('contentful', `collection:${slug}`);
+    cacheLife('days');
+
+    return fetchCollectionData(slug, false);
+};
+
+const fetchCollectionData = async (
+    slug: string,
+    preview: boolean
 ): Promise<PhotoCollection | null> => {
     // This call is used by both page ISR where we know the content slug and
     // in revalidation calls, where we only know the entry ID.
@@ -531,6 +586,10 @@ export const fetchCollection = async (
 };
 
 export const fetchCollectionsForSitemap = async () => {
+    'use cache';
+    cacheTag('contentful', 'collections');
+    cacheLife('days');
+
     const query = `query {
         collectionCollection(where: {category_not: ""}, limit: 35) {
             items {
@@ -577,7 +636,11 @@ export const fetchAllTags = async () => {
     return response.data?.tagCollection?.items as Tag[];
 };
 
-export const fetchAllPhotosForTag = cache(async (tag: string) => {
+export const fetchAllPhotosForTag = async (tag: string) => {
+    'use cache';
+    cacheTag('contentful', `tag:${tag}`);
+    cacheLife('days');
+
     const query = `query {
         tagCollection(where: {slug: "${tag}"}, limit: 1) {
             items {
@@ -651,9 +714,22 @@ export const fetchAllPhotosForTag = cache(async (tag: string) => {
         photos: photosWithCollection,
         tag: tagData
     };
-});
+};
 
 export const fetchExhibition = async (slug: string, preview: boolean = false) => {
+    if (preview) return fetchExhibitionData(slug, true);
+    return fetchExhibitionCached(slug);
+};
+
+const fetchExhibitionCached = async (slug: string) => {
+    'use cache';
+    cacheTag('contentful', `exhibition:${slug}`);
+    cacheLife('days');
+
+    return fetchExhibitionData(slug, false);
+};
+
+const fetchExhibitionData = async (slug: string, preview: boolean = false) => {
     const query = `query {
         exhibitionCollection(
             limit: 1,

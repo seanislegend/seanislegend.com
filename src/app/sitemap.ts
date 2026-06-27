@@ -1,3 +1,4 @@
+import {cacheLife, cacheTag} from 'next/cache';
 import {type MetadataRoute} from 'next';
 import {MENU_ITEMS} from '@/components/SiteMenu';
 import {fetchAllEditorialPages, fetchAllTags, fetchCollectionsForSitemap} from '@/utils/contentful';
@@ -11,15 +12,19 @@ const getLastModifiedDate = (date?: string) => {
     return lastModified.getTime() > minimum.getTime() ? lastModified : minimum;
 };
 
-const STATIC_PATHS: MetadataRoute.Sitemap = [
-    {
-        url: `${process.env.NEXT_PUBLIC_URL}/collections`,
-        priority: 1,
-        lastModified: new Date().toISOString()
-    }
-];
-
 const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
+    'use cache';
+    cacheTag('contentful', 'collections', 'editorials', 'tags');
+    cacheLife('days');
+
+    const staticPaths: MetadataRoute.Sitemap = [
+        {
+            url: `${process.env.NEXT_PUBLIC_URL}/collections`,
+            priority: 1,
+            lastModified: getLastModifiedDate().toISOString()
+        }
+    ];
+
     const linksItems = MENU_ITEMS.filter(item => !item.href.includes('http')).map(item => ({
         url: `${process.env.NEXT_PUBLIC_URL}${item.href}`,
         priority: 1,
@@ -68,7 +73,7 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
 
     return [
         ...linksItems,
-        ...STATIC_PATHS,
+        ...staticPaths,
         ...collectionItems,
         ...tagItems,
         ...editorialItems
