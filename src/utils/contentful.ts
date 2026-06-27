@@ -622,7 +622,7 @@ export const fetchCollectionsForSitemap = async () => {
     return response.data?.collectionCollection?.items;
 };
 
-export const fetchAllTags = async () => {
+const fetchAllTagsData = async () => {
     const query = `query {
         tagCollection(limit: 100, order: [name_ASC]) {
             items {
@@ -635,6 +635,18 @@ export const fetchAllTags = async () => {
     const response: any = await fetchContent(query);
     return response.data?.tagCollection?.items as Tag[];
 };
+
+export const fetchAllTags = async () => {
+    'use cache';
+    cacheTag('contentful', 'tags');
+    cacheLife('days');
+
+    return fetchAllTagsData();
+};
+
+// next.config.ts evaluates redirects outside of a request/render scope, where the
+// `use cache` directive is unavailable. It must use this uncached variant.
+export const fetchAllTagsUncached = fetchAllTagsData;
 
 export const fetchAllPhotosForTag = async (tag: string) => {
     'use cache';

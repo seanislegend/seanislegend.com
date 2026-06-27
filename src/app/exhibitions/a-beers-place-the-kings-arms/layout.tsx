@@ -5,10 +5,6 @@ import Markdown from '@/components/Markdown';
 import Container from '@/components/UI/Container';
 import {fetchExhibition} from '@/utils/contentful';
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
-
 const ExhibitionPage: React.FC<LayoutProps<'/exhibitions/a-beers-place-the-kings-arms'>> = async ({
     children
 }) => {

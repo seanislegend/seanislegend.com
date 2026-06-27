@@ -8,8 +8,10 @@ import MotionConfigProvider from '@/components/MotionConfigProvider';
 import config, {jsonLd} from '@/utils/config';
 import './globals.css';
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
+// Deliberate Cache Components block. next-view-transitions' <ViewTransitions>
+// provider calls usePathname() and wraps <html>, so it cannot be moved behind a
+// <Suspense> boundary. This opt-out covers the whole route subtree; individual
+// routes still partial-prerender their cached content.
 export const instant = false;
 
 interface Props {
