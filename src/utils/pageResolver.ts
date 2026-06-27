@@ -1,7 +1,8 @@
+import {cache} from 'react';
 import {draftMode} from 'next/headers';
 import {fetchCollection, fetchEditorialPage} from '@/utils/contentful';
 
-export const resolvePageData = async (slug: string): Promise<PageData> => {
+export const resolvePageData = cache(async (slug: string): Promise<PageData> => {
     const draftModeConfig = await draftMode();
 
     // first try to fetch as a collection. this is used by photo collections
@@ -25,4 +26,4 @@ export const resolvePageData = async (slug: string): Promise<PageData> => {
     }
 
     return {type: 'not-found'};
-};
+});

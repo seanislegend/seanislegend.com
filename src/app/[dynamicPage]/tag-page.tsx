@@ -9,8 +9,10 @@ interface Props {
 }
 
 const TagPage: React.FC<Props> = async ({tagSlug}) => {
-    const allTags = await fetchAllTags();
-    const {contentSection, photos, tag} = await fetchAllPhotosForTag(tagSlug);
+    const [allTags, {contentSection, photos, tag}] = await Promise.all([
+        fetchAllTags(),
+        fetchAllPhotosForTag(tagSlug)
+    ]);
 
     if (!photos?.length || !tag) {
         return null;

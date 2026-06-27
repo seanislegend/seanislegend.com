@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import {Link} from 'next-view-transitions';
+import {Fragment} from 'react';
 import dynamic from 'next/dynamic';
 import Button from '@/components/Button';
 import ButtonList from '@/components/Button/List';
@@ -724,7 +725,9 @@ export const ContentSection: React.FC<ContentSection> = ({
 
 const ContentSectionGroup: React.FC<SectionBlockComponent> = ({renderSection, sections}) => (
     <div className="space-y-8" data-testid="content-section-group">
-        {sections.map(section => renderSection(section))}
+        {sections.map(section => (
+            <Fragment key={section}>{renderSection(section)}</Fragment>
+        ))}
     </div>
 );
 
@@ -772,7 +775,7 @@ const PhotoCollectionBlocks: React.FC<Props> = ({
 
             if (block.layout === 'Tags') {
                 if (!renderTags) return null;
-                return renderTags();
+                return <Fragment key={key}>{renderTags()}</Fragment>;
             } else if (block.layout === 'ContentSection') {
                 if (!block.sections) return null;
 
@@ -787,7 +790,7 @@ const PhotoCollectionBlocks: React.FC<Props> = ({
                     );
                 }
 
-                return renderSection(block.sections[0]);
+                return <Fragment key={key}>{renderSection(block.sections[0])}</Fragment>;
             }
 
             const Layout = photoLayouts[block.layout ?? ''];

@@ -34,9 +34,13 @@ const EditorialPage: React.FC<Props> = ({editorial, tags = DEFAULT_TAGS}) => (
             {editorial.content && <Markdown>{editorial.content}</Markdown>}
         </PageHeader>
         <Container className="space-y-16 lg:space-y-24">
-            {editorial.contentSectionsCollection?.items?.map((section, index) => (
-                <ContentSections key={section.id || index} ctaStyle="button" sections={[section]} />
-            ))}
+            {editorial.contentSectionsCollection?.items &&
+                editorial.contentSectionsCollection.items.length > 0 && (
+                    <ContentSections
+                        ctaStyle="button"
+                        sections={editorial.contentSectionsCollection.items}
+                    />
+                )}
             {tags.length > 0 && (
                 <section className="space-y-4">
                     <h2 className="text-sm font-medium text-gray-500 uppercase">Categories</h2>
