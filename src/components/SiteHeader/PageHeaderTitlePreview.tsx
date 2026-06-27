@@ -14,15 +14,15 @@ const PageHeaderTitlePreview: React.FC = () => {
     const pageHeaderData = useAtomValue(pageHeaderDataAtom);
     const {isScrolled} = useScrollStatus(pageHeaderData?.height);
 
-    if (!pageHeaderData) return null;
+    // This is a scroll-driven, client-only affordance whose data (pageHeaderData)
+    // and pathname are only reliable in the browser: the atom is empty during the
+    // prerender but populated on the client, and `/` is rewritten to `/home`.
+    // Render nothing until mounted so the server and first client render agree.
+    if (!mounted || !pageHeaderData) return null;
 
-    // `/` is rewritten to `/home`, so usePathname differs between the prerender and
-    // the browser. Gate on mount so server and first client render agree, then
-    // normalise `/` to `/home` so the link is correctly hidden on the homepage.
     const normalizedPathname = pathname === '/' ? '/home' : pathname;
     const pageHeaderPathMinusAnchor = pageHeaderData.path.split('#')[0];
-    const isPathEqualToPageHeaderPath =
-        mounted && normalizedPathname === pageHeaderPathMinusAnchor;
+    const isPathEqualToPageHeaderPath = normalizedPathname === pageHeaderPathMinusAnchor;
 
     return (
         <span
