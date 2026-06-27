@@ -22,6 +22,7 @@ const buildEmailPayload = (data: ContactFormData) => {
     const extraRows =
         data.enquiryType === 'hiring'
             ? [
+                  ...(data.service ? [{label: 'Service', value: data.service}] : []),
                   {label: 'Company', value: data.company},
                   {label: 'Role / project', value: data.description},
                   {label: 'Location', value: data.location},
@@ -39,7 +40,9 @@ const buildEmailPayload = (data: ContactFormData) => {
     ];
 
     return {
-        subject: `Contact form: ${enquiryLabels[data.enquiryType]}`,
+        subject: `Contact form: ${enquiryLabels[data.enquiryType]}${
+            data.enquiryType === 'hiring' && data.service ? ` - ${data.service}` : ''
+        }`,
         text: rows.map(({label, value}) => `${label}: ${value}`).join('\n\n')
     };
 };

@@ -60,7 +60,7 @@ const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
                                 <TextLink
                                     href={`${section?.ctaUrl ?? '/contact'}?service=${section.title}`}
                                 >
-                                    {section?.ctaLabel ?? 'Enquire'} about{' '}
+                                    {section?.ctaLabel ?? 'Ask'} about{' '}
                                     {section?.title?.toLowerCase()}
                                 </TextLink>{' '}
                                 {section.id && (

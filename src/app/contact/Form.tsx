@@ -33,6 +33,9 @@ const toSubmissionFormData = (data: ContactFormData): FormData => {
     formData.append('email', data.email);
     formData.append('enquiryType', data.enquiryType);
     formData.append('name', data.name);
+    if (data.service) {
+        formData.append('service', data.service);
+    }
     if (data.enquiryType === 'hiring') {
         formData.append('budget', data.budget ?? '');
         formData.append('company', data.company);
@@ -46,7 +49,11 @@ const toSubmissionFormData = (data: ContactFormData): FormData => {
     return formData;
 };
 
-const ContactForm = () => {
+interface Props {
+    initialService?: string;
+}
+
+const ContactForm: React.FC<Props> = ({initialService = ''}) => {
     const [state, formAction, isPending] = useActionState<ContactState | null, FormData>(
         submitContactForm,
         null
@@ -61,8 +68,10 @@ const ContactForm = () => {
     } = useForm<ContactFormData>({
         defaultValues: {
             email: '',
+            enquiryType: initialService ? 'hiring' : undefined,
             message: '',
-            name: ''
+            name: '',
+            service: initialService
         },
         mode: 'onTouched',
         resolver: zodResolver(contactSchema)
@@ -99,6 +108,7 @@ const ContactForm = () => {
         >
             {state?.error && state.message ? <FormErrorBanner message={state.message} /> : null}
             <div className="grid w-full gap-x-8 gap-y-2 md:gap-y-3">
+                <input {...register('service')} type="hidden" />
                 <FormField error={errors.name} htmlFor="name" label="Name">
                     <input
                         {...register('name')}
@@ -191,7 +201,7 @@ const ContactForm = () => {
                                 {...register('location')}
                                 className={getFieldControlClassName(!!errors.location)}
                                 id="location"
-                                placeholder="Location (name of location or address works)"
+                                placeholder="Location or address"
                                 type="text"
                             />
                         </FormField>
@@ -206,7 +216,7 @@ const ContactForm = () => {
                                 aria-describedby="budget-hint"
                                 className={getFieldControlClassName(!!errors.budget)}
                                 id="budget"
-                                placeholder="Your budget. E.g. day rate, project range (optional)"
+                                placeholder="Budget or project range (optional)"
                                 type="text"
                             />
                         </FormField>
@@ -214,15 +224,17 @@ const ContactForm = () => {
                             error={errors.description}
                             htmlFor="description"
                             label="Job description"
+                            hint="A few lines is fine. Include dates or deadlines if you have them."
                         >
                             <textarea
                                 {...register('description')}
+                                aria-describedby="description-hint"
                                 className={getFieldControlClassName(
                                     !!errors.description,
                                     'min-h-28 resize-y'
                                 )}
                                 id="description"
-                                placeholder="Project summary, timeline, one-off or ongoing"
+                                placeholder="Project summary, dates, deliverables, one-off or ongoing"
                             />
                         </FormField>
                     </div>
@@ -249,7 +261,11 @@ const ContactForm = () => {
                         theme="primary"
                         type="submit"
                     >
-                        {isPending ? 'Sending...' : enquiryType ? submitLabels[enquiryType] : 'Send message'}
+                        {isPending
+                            ? 'Sending...'
+                            : enquiryType
+                              ? submitLabels[enquiryType]
+                              : 'Send message'}
                     </Button>
                 </div>
             </div>

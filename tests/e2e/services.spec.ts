@@ -35,12 +35,11 @@ test.describe('Services', () => {
     });
 
     test('should display service offering enquiry link using service title', async ({page}) => {
-        await expect(
-            page.getByText('Enquire about service offering 1 title example')
-        ).toBeVisible();
-        await expect(
-            page.getByText('Enquire about service offering 1 title example')
-        ).toHaveAttribute('href', '/contact?service=Service offering 1 title example');
+        await expect(page.getByText('Ask about service offering 1 title example')).toBeVisible();
+        await expect(page.getByText('Ask about service offering 1 title example')).toHaveAttribute(
+            'href',
+            '/contact?service=Service offering 1 title example'
+        );
     });
 
     test('should use the content section ID to view more photos with the same tag', async ({

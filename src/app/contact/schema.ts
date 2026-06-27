@@ -6,13 +6,14 @@ export const enquiryLabels: Record<EnquiryType, string> = {
     prints: 'Prints'
 };
 
-export const enquiryTypes = ['other', 'hiring', 'prints'] as const;
+export const enquiryTypes = ['hiring', 'prints', 'other'] as const;
 export type EnquiryType = (typeof enquiryTypes)[number];
 
 const baseSchema = z.object({
     name: z.string().min(1, "What's your name?"),
     email: z.string().email("That email address doesn't look right."),
-    enquiryType: z.enum(enquiryTypes, {message: 'What do you want to chat about?'})
+    enquiryType: z.enum(enquiryTypes, {message: 'What do you want to chat about?'}),
+    service: z.string().optional()
 });
 
 const printsSchema = baseSchema.extend({
