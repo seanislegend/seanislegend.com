@@ -45,3 +45,5 @@ data/
 .env.production
 .*rules
 .env.test
+
+spikes/
