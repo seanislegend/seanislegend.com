@@ -5,11 +5,11 @@ interface Props extends Photo {
     isActive: boolean;
 }
 
-const CarouselImage: React.FC<Props> = ({base64, fullSize, isActive, title}) => {
+const CarouselImage: React.FC<Props> = ({alt, base64, fullSize, isActive, title}) => {
     if (!fullSize) return null;
     return (
         <Image
-            alt={title}
+            alt={alt || title}
             blurDataURL={base64 || ''}
             className={clsx(
                 'animate-in fade-in h-full w-full overflow-hidden rounded-xs object-contain transition-all duration-500 ease-in-out',

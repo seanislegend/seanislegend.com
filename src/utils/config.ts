@@ -93,7 +93,7 @@ const config = {
         openGraph: {
             images: [
                 {
-                    alt: '',
+                    alt: 'Beer and brewery photography by Sean McEmerson',
                     height: 630,
                     url: 'https://www.seanislegend.com/images/og.jpg',
                     width: 1200

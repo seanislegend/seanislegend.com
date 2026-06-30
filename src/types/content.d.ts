@@ -27,6 +27,7 @@ interface Editorial {
 }
 
 interface PhotoGridPhoto {
+    alt?: string;
     linkedFrom?: {
         collectionCollection: {
             items: {

@@ -54,6 +54,7 @@ const BlockPhoto: React.FC<BlockPhotoProps> = ({
     }
     return (
         <PhotoThumbnail
+            alt={photo.alt}
             base64={photo.base64}
             columnSize={columnSize}
             fill={fillContainer}
@@ -68,16 +69,15 @@ const BlockPhoto: React.FC<BlockPhotoProps> = ({
     );
 };
 
-interface Props
-    extends Pick<
-        PhotoCollection,
-        | 'contentSectionsCollection'
-        | 'layoutType'
-        | 'photosCollection'
-        | 'slug'
-        | 'tagsCollection'
-        | 'title'
-    > {
+interface Props extends Pick<
+    PhotoCollection,
+    | 'contentSectionsCollection'
+    | 'layoutType'
+    | 'photosCollection'
+    | 'slug'
+    | 'tagsCollection'
+    | 'title'
+> {
     linksTo?: 'collection' | 'photo';
 }
 
