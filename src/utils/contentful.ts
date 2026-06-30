@@ -124,6 +124,7 @@ export const fetchEditorialPage = async (slug: string) => {
                                 items {
                                     label
                                     photo {
+                                        alt
                                         linkedFrom {
                                             collectionCollection(limit: 3) {
                                                 items {
@@ -287,6 +288,7 @@ const fetchCollectionNavigationData = async (preview: boolean): Promise<Link[]> 
                             limit: 1
                         ) {
                             items {
+                                alt
                                 base64
                                 thumbnail: photo {
                                     height
@@ -386,6 +388,7 @@ const fetchAllCollectionsData = async (preview: boolean): Promise<PhotoCollectio
                             width
                             url(transform: {format: WEBP, width: 800})
                         }
+                        alt
                         base64
                     }
                 }
@@ -503,6 +506,7 @@ const fetchCollectionData = async (
                             width
                             url(transform: {format: WEBP, width: 1600})
                         }
+                        alt
                         base64
                         sys {
                             id
@@ -516,6 +520,7 @@ const fetchCollectionData = async (
                         pageTitle
                         photosCollection(limit: 1, where: {isFeatured: true}) {
                             items {
+                                alt
                                 base64
                                 thumbnail: photo {
                                     height  
@@ -676,6 +681,7 @@ export const fetchAllPhotosForTag = async (tag: string) => {
                 title
                 slug
                 url
+                alt
                 base64
                 thumbnail: photo {
                     height  
@@ -796,6 +802,7 @@ const fetchExhibitionData = async (slug: string, preview: boolean = false) => {
                                 width
                                 url(transform: {format: WEBP, width: 1600})
                             }
+                            alt
                             base64
                             sys {
                                 id

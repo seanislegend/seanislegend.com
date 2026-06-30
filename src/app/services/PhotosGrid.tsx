@@ -24,6 +24,7 @@ const PhotosGridItem: React.FC<PhotoGridItem> = ({photo, label}) => {
     return (
         <div key={photo.photo.url} className="flex w-full items-center">
             <Thumbnail
+                alt={photo.alt || label}
                 linksTo={path ? 'collection' : undefined}
                 height={height}
                 path={path}

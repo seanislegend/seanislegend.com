@@ -35,7 +35,7 @@ const PhotoThumbnail: React.FC<Props> = ({
         return (
             <>
                 <Link
-                    aria-label={`View photo: ${title}`}
+                    aria-label={alt || title}
                     className={clsx(
                         'group/photo focus:ring-text bg-accent relative block w-full overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
                         {'block h-full': props?.fill}
@@ -43,11 +43,11 @@ const PhotoThumbnail: React.FC<Props> = ({
                     data-testid="photo-link"
                     href={path}
                     id={slug}
-                    title={`View photo: ${title}`}
+                    title={alt || title}
                     {...props}
                 >
                     <ThumbnailImage
-                        alt={alt}
+                        alt={alt || title}
                         base64={base64}
                         className="transition duration-300 ease-in-out group-hover/photo:opacity-70"
                         columnSize={columnSize}
@@ -71,7 +71,7 @@ const PhotoThumbnail: React.FC<Props> = ({
             data-testid="photo-wrapper"
         >
             <ThumbnailImage
-                alt={alt}
+                alt={alt || title}
                 base64={base64}
                 columnSize={columnSize}
                 fill={props?.fill}
