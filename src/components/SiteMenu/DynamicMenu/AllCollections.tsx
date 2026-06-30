@@ -24,7 +24,7 @@ const SiteHeaderAllCollections: React.FC<Props> = ({links}) => (
                 </li>
             ))}
         </ul>
-        <NavigationMenu.Item render={() => <Button href="/collections">View all</Button>} />
+        <NavigationMenu.Item render={() => <Button href="/commercial">View all</Button>} />
     </>
 );
 

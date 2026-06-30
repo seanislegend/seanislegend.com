@@ -1,25 +1,29 @@
 import {expect, test} from '@playwright/test';
 
 test.describe('Collections', () => {
-    test.describe('List page', () => {
-        test.beforeEach(async ({page}) => {
+    test.describe('List pages', () => {
+        test('should redirect the legacy /collections url to /commercial', async ({page}) => {
             await page.goto('/collections');
+            await expect(page).toHaveURL('/commercial');
         });
 
-        test('should load page successfully', async ({page}) => {
-            await expect(page).toHaveTitle(/All photo collections/);
+        test('should load the commercial page successfully', async ({page}) => {
+            await page.goto('/commercial');
+            await expect(page).toHaveTitle(/Commercial photography/);
         });
 
-        test('should display a list of collections', async ({page}) => {
-            await expect(page.getByText('Example collection 1', {exact: true})).toBeVisible();
-            await expect(page.getByText('Example collection 1 description.')).toBeVisible();
-            await expect(page.getByText('Example collection 2', {exact: true})).toBeVisible();
-            await expect(page.getByText('Example collection 2 description.')).toBeVisible();
+        test('should load the personal page successfully', async ({page}) => {
+            await page.goto('/personal');
+            await expect(page).toHaveTitle(/Personal photography/);
         });
 
         test('should link to a collection detail page', async ({page}) => {
-            await page.getByText('Example collection 1', {exact: true}).click();
-            await expect(page).toHaveURL('/example-collection-1');
+            await page.goto('/personal');
+            const firstCollection = page.locator('a.link-item').first();
+            await expect(firstCollection).toBeVisible();
+            const href = await firstCollection.getAttribute('href');
+            await firstCollection.click();
+            await expect(page).toHaveURL(href!);
         });
     });
 

@@ -11,7 +11,10 @@ const NotFound = () => (
                 photo or collection, look through the links below.
             </p>
             <ButtonList className="mt-8">
-                <Button href="/collections">View all collections</Button>
+                <Button href="/commercial">Commercial work</Button>
+                <Button href="/personal" theme="secondary">
+                    Personal work
+                </Button>
                 <Button href="/tags" theme="secondary">
                     View all tags
                 </Button>

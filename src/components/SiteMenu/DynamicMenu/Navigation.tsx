@@ -66,8 +66,8 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                             </p>
                                             <AllTagsList items={tags} />
                                         </div>
-                                        <Button className="mr-[2px] shrink-0" href="/collections">
-                                            View all collections
+                                        <Button className="mr-[2px] shrink-0" href={`/${key}`}>
+                                            View all {label.toLowerCase()}
                                         </Button>
                                     </div>
                                 </NavigationMenu.Content>
