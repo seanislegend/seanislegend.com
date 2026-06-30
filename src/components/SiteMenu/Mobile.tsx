@@ -73,7 +73,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                             <div className="flex flex-col space-y-2" key={key}>
                                                 <SiteMenuLink
                                                     className="text-lg!"
-                                                    href="/collections"
+                                                    href={`/${key}`}
                                                     onClick={() => setIsMenuOpen(false)}
                                                 >
                                                     {label}
@@ -99,14 +99,6 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                             </div>
                                         );
                                     })}
-                                    <SiteMenuLink
-                                        aria-hidden="true"
-                                        className="mt-2 mb-8 ml-6 text-sm"
-                                        href="/collections"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        View all collections
-                                    </SiteMenuLink>
                                 </nav>
                                 <div
                                     className="pt-8 xl:hidden"

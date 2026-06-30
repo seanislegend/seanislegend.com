@@ -355,6 +355,7 @@ const fetchAllCollectionsData = async (preview: boolean): Promise<PhotoCollectio
                 slug
                 pageTitle
                 category
+                workType
                 ctaLabel
                 ctaUrl
                 isFeatured

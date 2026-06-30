@@ -19,7 +19,12 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
 
     const staticPaths: MetadataRoute.Sitemap = [
         {
-            url: `${process.env.NEXT_PUBLIC_URL}/collections`,
+            url: `${process.env.NEXT_PUBLIC_URL}/commercial`,
+            priority: 1,
+            lastModified: getLastModifiedDate().toISOString()
+        },
+        {
+            url: `${process.env.NEXT_PUBLIC_URL}/personal`,
             priority: 1,
             lastModified: getLastModifiedDate().toISOString()
         }
