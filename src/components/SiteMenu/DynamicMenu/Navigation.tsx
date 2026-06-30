@@ -48,7 +48,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                         <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
                                     </span>
                                 </NavigationMenu.Trigger>
-                                <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] h-full w-screen list-none px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 data-starting-style:opacity-0 xl:px-8">
+                                <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] animate-menu-card-in h-full w-screen list-none px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 xl:px-8">
                                     <div
                                         className="grid grid-cols-4 gap-2 xl:grid-cols-6"
                                         data-testid={`${key}-collections-grid`}
@@ -86,19 +86,19 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                 </NavigationMenu.List>
                 {portalContainer && (
                     <NavigationMenu.Portal container={portalContainer}>
-                        <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 hidden h-screen w-screen duration-500 data-open:block data-open:duration-300" />
+                        <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 h-screen w-screen transition-opacity duration-300 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0" />
                         <NavigationMenu.Positioner
                             className="left-0! z-50"
                             collisionAvoidance={{side: 'none'}}
                             positionMethod="fixed"
                             style={
                                 {
-                                    '--duration': '0.35s',
+                                    '--duration': '0.26s',
                                     '--easing': 'cubic-bezier(0.22, 1, 0.36, 1)'
                                 } as React.CSSProperties
                             }
                         >
-                            <NavigationMenu.Popup className="data-ending-style:easing-[ease] relative z-50 mt-1 h-[var(--popup-height)] w-[var(--popup-width)] origin-[var(--transform-origin)] transition-[opacity,transform,width,height,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:-translate-y-2 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:-translate-y-2 data-starting-style:opacity-0">
+                            <NavigationMenu.Popup className="data-ending-style:easing-[ease] relative z-50 mt-1 h-[var(--popup-height)] w-[var(--popup-width)] origin-[var(--transform-origin)] transition-[opacity,transform,width,height,translate,scale] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:-translate-y-1 data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:-translate-y-1 data-starting-style:scale-[0.97] data-starting-style:opacity-0">
                                 <NavigationMenu.Viewport className="bg-theme-bg h-full w-full overflow-hidden pt-1" />
                             </NavigationMenu.Popup>
                         </NavigationMenu.Positioner>
