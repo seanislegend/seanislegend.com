@@ -1,5 +1,5 @@
 import Logo from '@/components/Logo';
-import SiteHeaderMenu from '@/components/SiteMenu';
+import SiteHeaderMenu, {MENU_ITEMS} from '@/components/SiteMenu';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 
 const SiteFooter: React.FC = () => (
@@ -11,7 +11,7 @@ const SiteFooter: React.FC = () => (
             <Logo className="text-sm" />
             <SocialLinks />
         </div>
-        <SiteHeaderMenu />
+        <SiteHeaderMenu items={MENU_ITEMS} />
     </footer>
 );
 

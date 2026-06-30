@@ -4,7 +4,7 @@ import {useState} from 'react';
 import {RemoveScroll} from 'react-remove-scroll';
 import {CrossIcon} from '@/components/Icon/Cross';
 import {MenuIcon} from '@/components/Icon/Menu';
-import {MENU_ITEMS} from '@/components/SiteMenu';
+import {HEADER_MENU_ITEMS} from '@/components/SiteMenu';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
@@ -53,7 +53,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                     className="-ml-2 flex flex-col space-y-2"
                                     data-testid="mobile-menu-collections-navigation"
                                 >
-                                    {MENU_ITEMS.map(link => (
+                                    {HEADER_MENU_ITEMS.map(link => (
                                         <SiteMenuLink
                                             className="text-lg!"
                                             key={link.href}

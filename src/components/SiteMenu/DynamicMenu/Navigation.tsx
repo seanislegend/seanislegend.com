@@ -1,7 +1,7 @@
 'use client';
 
 import {useLayoutEffect, useState} from 'react';
-import {MENU_ITEMS} from '../';
+import {HEADER_MENU_ITEMS} from '../';
 import SiteHeaderLink, {ghostLinkClasses, linkClasses} from '../Link';
 import {NavigationMenu} from '@base-ui/react/navigation-menu';
 import {usePathname} from 'next/navigation';
@@ -73,7 +73,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                             </NavigationMenu.Item>
                         );
                     })}
-                    {MENU_ITEMS.map(item => (
+                    {HEADER_MENU_ITEMS.map(item => (
                         <NavigationMenu.Item
                             key={item.href}
                             render={() => (

@@ -9,13 +9,19 @@ export const MENU_ITEMS = [
     {href: SHOP_URL, label: 'Shop', theme: 'primary'}
 ];
 
-const SiteHeaderMenu: React.FC = () => (
+export const HEADER_MENU_ITEMS = MENU_ITEMS.filter(item => item.href !== '/exhibitions');
+
+interface Props {
+    items?: typeof MENU_ITEMS;
+}
+
+const SiteHeaderMenu: React.FC<Props> = ({items = HEADER_MENU_ITEMS}) => (
     <nav
         className="row -mr-2 hidden items-center gap-1 xl:flex"
         data-testid="main-navigation-static"
     >
         <SiteHeaderLink href="/collections">Collections</SiteHeaderLink>
-        {MENU_ITEMS.map(item => (
+        {items.map(item => (
             <SiteHeaderLink key={item.href} href={item.href} theme={item.theme}>
                 {item.label}
             </SiteHeaderLink>
