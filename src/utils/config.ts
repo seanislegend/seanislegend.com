@@ -121,8 +121,7 @@ const config = {
             card: 'summary_large_image',
             creator: '@seanislegend',
             image: 'https://www.seanislegend.com/images/og.jpg',
-            site: '@seanislegend',
-            title: 'Beer, street, travel photography by @seanislegend'
+            site: '@seanislegend'
         },
         icons: {
             shortcut: '/images/favicon-32x32.png'
