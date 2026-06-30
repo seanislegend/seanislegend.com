@@ -33,7 +33,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
     return (
         <>
             <NavigationMenu.Root closeDelay={300} data-testid="main-navigation" key={pathname}>
-                <NavigationMenu.List className="relative z-30 hidden flex-row items-center gap-1 xl:flex">
+                <NavigationMenu.List className="relative z-30 hidden flex-row items-center gap-1 lg:flex">
                     {WORK_TYPES.map(({key, label}) => {
                         const workTypeLinks = links.filter(link => link.workType === key);
                         if (!workTypeLinks.length) return null;
@@ -50,7 +50,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                 </NavigationMenu.Trigger>
                                 <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] animate-menu-card-in h-full w-screen list-none px-4 pt-3 pb-7 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 xl:px-8">
                                     <div
-                                        className="grid auto-rows-[0px] grid-cols-5 grid-rows-[repeat(2,auto)] gap-2.5 overflow-hidden xl:grid-cols-6"
+                                        className="grid auto-rows-[0px] grid-cols-4 grid-rows-[repeat(2,auto)] gap-2.5 overflow-hidden xl:grid-cols-5 2xl:grid-cols-6"
                                         data-testid={`${key}-collections-grid`}
                                     >
                                         {workTypeLinks.map(link => (
@@ -59,7 +59,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                             </NavigationMenu.Item>
                                         ))}
                                     </div>
-                                    <div className="border-accent mt-7 flex items-start justify-between gap-8 border-t pt-5">
+                                    <div className="flex items-start justify-between gap-8 pt-6">
                                         <div className="hidden min-w-0 xl:block">
                                             <p className="text-dimmed-text text-sm">
                                                 Browse by category

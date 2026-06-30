@@ -27,7 +27,7 @@ const PageHeaderTitlePreview: React.FC = () => {
     return (
         <span
             className={clsx(
-                'hidden max-w-full min-w-0 overflow-hidden transition-all duration-300 lg:inline-flex',
+                'hidden max-w-full min-w-0 overflow-hidden transition-all duration-300 xl:inline-flex',
                 {
                     'pointer-events-none -translate-x-2 opacity-0': !isScrolled,
                     'translate-x-0 opacity-100': isScrolled
@@ -51,7 +51,9 @@ const PageHeaderTitlePreview: React.FC = () => {
                         </span>
                     </Link>
                 ) : (
-                    <span className="block max-w-full min-w-0 truncate">{pageHeaderData.title}</span>
+                    <span className="block max-w-full min-w-0 truncate">
+                        {pageHeaderData.title}
+                    </span>
                 )}
             </span>
         </span>

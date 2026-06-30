@@ -27,7 +27,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
     return (
         <>
             <button
-                className="relative z-30 size-6 focus:ring-2 focus:outline-none xl:hidden print:hidden"
+                className="relative z-30 size-6 focus:ring-2 focus:outline-none lg:hidden print:hidden"
                 data-testid="mobile-menu-toggle"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
@@ -36,7 +36,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
             </button>
             {isMenuOpen && (
                 <RemoveScroll
-                    className="top-site-header absolute left-0 z-100 w-full xl:hidden print:hidden"
+                    className="top-site-header absolute left-0 z-100 w-full lg:hidden print:hidden"
                     data-testid="mobile-menu"
                     style={{
                         height: isMenuOpen ? '100vh' : '0',
@@ -45,7 +45,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 >
                     <div
                         key={isMenuOpen ? 'collections-open' : 'collections-closed'}
-                        className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] overflow-y-auto duration-300 xl:hidden"
+                        className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] overflow-y-auto duration-300 lg:hidden"
                     >
                         <Container>
                             <div className="flex h-full flex-col space-y-4 py-4">
@@ -101,7 +101,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                     })}
                                 </nav>
                                 <div
-                                    className="pt-8 xl:hidden"
+                                    className="pt-8 lg:hidden"
                                     style={{
                                         paddingBottom: `calc(6rem + env(safe-area-inset-bottom, 0px))`
                                     }}
@@ -114,7 +114,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                 </RemoveScroll>
             )}
             <div
-                className="bg-overlay-bg top-site-header fixed right-0 left-0 z-20 h-0 xl:hidden"
+                className="bg-overlay-bg top-site-header fixed right-0 left-0 z-20 h-0 lg:hidden"
                 style={{height: isMenuOpen ? '100vh' : '0', opacity: isMenuOpen ? 0.8 : 0}}
             />
         </>
