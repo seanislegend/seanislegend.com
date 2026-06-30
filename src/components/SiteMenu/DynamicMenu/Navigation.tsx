@@ -50,7 +50,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                 </NavigationMenu.Trigger>
                                 <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] animate-menu-card-in h-full w-screen list-none px-4 pt-3 pb-7 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 xl:px-8">
                                     <div
-                                        className="grid grid-cols-[repeat(auto-fill,minmax(12.5rem,1fr))] gap-2.5"
+                                        className="grid auto-rows-[0px] grid-cols-5 grid-rows-[repeat(2,auto)] gap-2.5 overflow-hidden xl:grid-cols-6"
                                         data-testid={`${key}-collections-grid`}
                                     >
                                         {workTypeLinks.map(link => (
