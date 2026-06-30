@@ -15,9 +15,9 @@ export const jsonLd = {
         addressCountry: 'GB',
         addressLocality: 'London'
     },
-    areaServed: ['London', 'South of England', 'England', 'Scotland'],
+    areaServed: ['London', 'United Kingdom'],
     description:
-        'London-based photographer specialising in beer, brewery, editorial and event photography.',
+        'London-based photographer, available for commissions across the UK, documenting breweries, pubs, festivals, travel and everyday life with honest, detail-driven photographs.',
     image: 'https://www.seanislegend.com/images/og.jpg',
     name: 'Sean McEmerson Photography',
     hasOfferCatalog: {
@@ -86,7 +86,7 @@ const config = {
     seo: {
         title: 'Beer, street, travel photography by Sean McEmerson',
         description:
-            'I am a London-based photographer specialising in capturing the stories of UK beer, breweries and the people behind them. My photography also focuses on the beauty of people, everyday life and my travel experiences.',
+            'I am a London-based photographer, available for commissions across the UK, specialising in capturing the stories of UK beer, breweries and the people behind them. My photography also focuses on the beauty of people, everyday life and my travel experiences.',
         alternates: {
             canonical: 'https://www.seanislegend.com'
         },

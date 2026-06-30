@@ -7,7 +7,7 @@ const BASE = process.env.NEXT_PUBLIC_URL || 'https://www.seanislegend.com';
 
 const staticBody = `# Sean McEmerson Photography
 
-> London-based photographer specialising in beer, brewery, editorial and event photography. I capture the stories of UK beer, breweries and the people behind them, plus street, travel and everyday life.
+> London-based photographer, available for commissions across the UK, documenting breweries, pubs, festivals, travel and everyday life. Honest photographs of people doing what they do, places with texture, and the subtle details that make a scene stand out.
 
 ## Contact
 
