@@ -43,8 +43,8 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
                 }));
             }
         }
-    } else if (collection.slug !== 'home') {
-        ctas.push({label: 'Get in touch', url: '/contact'});
+    } else {
+        ctas.push({label: 'Book a shoot', url: '/contact?service=Photography hire'});
 
         if (collection.ctaLabel && collection.ctaUrl) {
             ctas.push({label: collection.ctaLabel, url: collection.ctaUrl});
