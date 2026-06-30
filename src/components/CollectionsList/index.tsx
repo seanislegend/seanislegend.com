@@ -1,4 +1,3 @@
-import type {Metadata} from 'next';
 import {Link} from 'next-view-transitions';
 import {draftMode} from 'next/headers';
 import Image from 'next/image';
@@ -9,22 +8,30 @@ import Markdown from '@/components/Markdown';
 import PageHeader from '@/components/PageHeader';
 import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
-import config from '@/utils/config';
 import {fetchAllCollections} from '@/utils/contentful';
-import {getEditorialSeo} from '@/utils/helpers';
 
-const CollectionsPage = async () => {
+interface Props {
+    title: string;
+    workType: NonNullable<PhotoCollection['workType']>;
+}
+
+const CollectionsList = async ({title, workType}: Props) => {
     const draftModeConfig = await draftMode();
     const collections = await fetchAllCollections(draftModeConfig.isEnabled);
     if (!collections) redirect('/');
 
     const sortedCollections = collections
-        .filter(collection => collection.slug !== collection.category && collection.slug !== 'home')
+        .filter(
+            collection =>
+                collection.slug !== collection.category &&
+                collection.slug !== 'home' &&
+                (collection.workType === 'commercial' ? 'commercial' : 'personal') === workType
+        )
         .sort((a, b) => a.title.localeCompare(b.title));
 
     return (
         <DefaultLayout theme="light">
-            <PageHeader title="All photo collections" />
+            <PageHeader title={title} />
             <Container>
                 <div className="lg:[&:has(.link-item:hover)_.link-item:not(:hover)]:opacity-50">
                     {sortedCollections.map(collection => (
@@ -70,9 +77,7 @@ const CollectionsPage = async () => {
                                         }
                                     />
                                     <span className="bg-button-bg-hover text-button-text absolute right-2 bottom-2 z-40 flex h-full w-auto items-center gap-2 overflow-hidden p-1 sm:h-9 sm:p-2 sm:px-3">
-                                        <span className="text-sm font-medium uppercase">
-                                            View collection
-                                        </span>
+                                        <span className="text-sm font-medium uppercase">View</span>
                                         <RightArrowIcon className="h-5 w-5 fill-current" />
                                     </span>
                                 </span>
@@ -86,11 +91,4 @@ const CollectionsPage = async () => {
     );
 };
 
-export const generateMetadata = async (): Promise<Metadata | null> => {
-    return {
-        ...config.seo,
-        ...getEditorialSeo({slug: 'collections', title: 'All photo collections'})
-    };
-};
-
-export default CollectionsPage;
+export default CollectionsList;

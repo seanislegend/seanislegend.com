@@ -30,7 +30,8 @@ const staticBody = `# Sean McEmerson Photography
 ## Key links
 
 - Home: ${BASE}
-- Collections: ${BASE}/collections
+- Commercial work: ${BASE}/commercial
+- Personal work: ${BASE}/personal
 - About: ${BASE}/about
 - Exhibitions: ${BASE}/exhibitions
 - Services: ${BASE}/services

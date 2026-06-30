@@ -20,7 +20,8 @@ const SiteHeaderMenu: React.FC<Props> = ({items = HEADER_MENU_ITEMS}) => (
         className="row -mr-2 hidden items-center gap-1 xl:flex"
         data-testid="main-navigation-static"
     >
-        <SiteHeaderLink href="/collections">Collections</SiteHeaderLink>
+        <SiteHeaderLink href="/commercial">Commercial</SiteHeaderLink>
+        <SiteHeaderLink href="/personal">Personal</SiteHeaderLink>
         {items.map(item => (
             <SiteHeaderLink key={item.href} href={item.href} theme={item.theme}>
                 {item.label}

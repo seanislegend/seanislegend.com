@@ -36,6 +36,7 @@ const nextConfig: NextConfig = {
     async redirects() {
         const redirects = [
             {source: '/privacy-policy', destination: '/privacy', permanent: true},
+            {source: '/collections', destination: '/commercial', permanent: true},
             {source: '/shop', destination: SHOP_URL, permanent: false},
             {
                 source: '/exhibitions',
