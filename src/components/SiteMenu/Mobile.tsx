@@ -14,6 +14,11 @@ interface Props {
     links: Link[];
 }
 
+const WORK_TYPES: {key: NonNullable<Link['workType']>; label: string}[] = [
+    {key: 'commercial', label: 'Commercial'},
+    {key: 'personal', label: 'Personal'}
+];
+
 const SiteMenuMobile: React.FC<Props> = ({links}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -58,29 +63,42 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                             {link.label}
                                         </SiteMenuLink>
                                     ))}
-                                    <SiteMenuLink
-                                        className="text-lg!"
-                                        href="/collections"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        Collections
-                                    </SiteMenuLink>
-                                    {links?.map(link => (
-                                        <SiteMenuLink
-                                            className="ml-6 space-y-2"
-                                            key={link.url}
-                                            href={link.url}
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            <span className="flex items-center gap-2">
-                                                <span>{link.title}</span>
-                                                {link.badge && <Badge>{link.badge} </Badge>}
-                                            </span>
-                                            <small className="text-dimmed-text block leading-tight normal-case">
-                                                {link.pageTitle}
-                                            </small>
-                                        </SiteMenuLink>
-                                    ))}
+                                    {WORK_TYPES.map(({key, label}) => {
+                                        const workTypeLinks = links?.filter(
+                                            link => link.workType === key
+                                        );
+                                        if (!workTypeLinks?.length) return null;
+
+                                        return (
+                                            <div className="flex flex-col space-y-2" key={key}>
+                                                <SiteMenuLink
+                                                    className="text-lg!"
+                                                    href="/collections"
+                                                    onClick={() => setIsMenuOpen(false)}
+                                                >
+                                                    {label}
+                                                </SiteMenuLink>
+                                                {workTypeLinks.map(link => (
+                                                    <SiteMenuLink
+                                                        className="ml-6 space-y-2"
+                                                        key={link.url}
+                                                        href={link.url}
+                                                        onClick={() => setIsMenuOpen(false)}
+                                                    >
+                                                        <span className="flex items-center gap-2">
+                                                            <span>{link.title}</span>
+                                                            {link.badge && (
+                                                                <Badge>{link.badge} </Badge>
+                                                            )}
+                                                        </span>
+                                                        <small className="text-dimmed-text block leading-tight normal-case">
+                                                            {link.pageTitle}
+                                                        </small>
+                                                    </SiteMenuLink>
+                                                ))}
+                                            </div>
+                                        );
+                                    })}
                                     <SiteMenuLink
                                         aria-hidden="true"
                                         className="mt-2 mb-8 ml-6 text-sm"

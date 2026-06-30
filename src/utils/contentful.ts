@@ -276,6 +276,7 @@ const fetchCollectionNavigationData = async (preview: boolean): Promise<Link[]> 
                         slug
                         pageTitle
                         category
+                        workType
                         sys {
                             publishedAt
                             firstPublishedAt
@@ -314,7 +315,8 @@ const fetchCollectionNavigationData = async (preview: boolean): Promise<Link[]> 
                     published: item?.sys?.publishedAt,
                     pageTitle: item?.pageTitle ?? item?.title,
                     title: item.title,
-                    url: `/${item.slug}`
+                    url: `/${item.slug}`,
+                    workType: item?.workType === 'commercial' ? 'commercial' : 'personal'
                 };
             });
 
