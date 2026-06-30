@@ -48,9 +48,9 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                         <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
                                     </span>
                                 </NavigationMenu.Trigger>
-                                <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] animate-menu-card-in h-full w-screen list-none px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 xl:px-8">
+                                <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] animate-menu-card-in h-full w-screen list-none px-4 pt-3 pb-7 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 xl:px-8">
                                     <div
-                                        className="grid grid-cols-4 gap-2 xl:grid-cols-6"
+                                        className="grid grid-cols-[repeat(auto-fill,minmax(12.5rem,1fr))] gap-2.5"
                                         data-testid={`${key}-collections-grid`}
                                     >
                                         {workTypeLinks.map(link => (
@@ -59,15 +59,16 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                             </NavigationMenu.Item>
                                         ))}
                                     </div>
-                                    <div className="my-4 flex items-center justify-between sm:flex-row">
-                                        <span className="hidden xl:block">
+                                    <div className="border-accent mt-7 flex items-start justify-between gap-8 border-t pt-5">
+                                        <div className="hidden min-w-0 xl:block">
+                                            <p className="text-dimmed-text text-sm">
+                                                Browse by category
+                                            </p>
                                             <AllTagsList items={tags} />
-                                        </span>
-                                        <span>
-                                            <Button className="mr-[2px]" href="/collections">
-                                                View all collections
-                                            </Button>
-                                        </span>
+                                        </div>
+                                        <Button className="mr-[2px] shrink-0" href="/collections">
+                                            View all collections
+                                        </Button>
                                     </div>
                                 </NavigationMenu.Content>
                             </NavigationMenu.Item>

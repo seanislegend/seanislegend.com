@@ -19,7 +19,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link, ...props}) => {
         <Link
             href={link.url}
             className={clsx(
-                'group/link bg-theme-black focus:ring-theme-text @container/navitem relative flex aspect-4/3 w-full flex-col justify-end overflow-hidden rounded-xs border-2 focus:ring-2 focus:outline-hidden',
+                'group/link bg-theme-black focus-visible:ring-theme-text @container/navitem relative flex aspect-4/3 w-full flex-col justify-end overflow-hidden rounded-xs border-2 focus-visible:ring-2 focus-visible:outline-hidden',
                 {'border-accent': isActive, 'border-transparent': !isActive}
             )}
             scroll={true}
@@ -30,10 +30,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link, ...props}) => {
                 <Image
                     alt={link.title}
                     blurDataURL={link.photo!.base64}
-                    className={clsx(
-                        'absolute inset-0 object-cover transition-opacity duration-300 ease-in-out group-hover/link:opacity-60',
-                        isActive && 'opacity-60'
-                    )}
+                    className="absolute inset-0 object-cover transition-opacity duration-300 ease-in-out group-hover/link:opacity-60"
                     fill={true}
                     placeholder="blur"
                     quality={80}
@@ -41,17 +38,21 @@ const DynamicMenuCollection: React.FC<Props> = ({link, ...props}) => {
                     src={link.photo.thumbnail.url}
                 />
             )}
-            <div className="absolute bottom-0 left-0 flex h-[60%] w-full flex-col justify-end bg-linear-to-t from-black to-transparent px-4 py-3">
+            <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-[68%] bg-linear-to-t from-black/90 via-black/35 to-transparent"
+            />
+            <div className="relative flex flex-col justify-end gap-1 px-4 py-3.5">
                 {(isActive || link.badge) && (
-                    <span className="mb-1 flex flex-wrap gap-1">
-                        {isActive && <Badge>This collection </Badge>}
-                        {link.badge && <Badge>{link.badge} </Badge>}
+                    <span className="flex flex-wrap gap-1">
+                        {isActive && <Badge>This collection</Badge>}
+                        {link.badge && <Badge>{link.badge}</Badge>}
                     </span>
                 )}
                 {link.title && (
                     <h4
                         className={clsx(
-                            'text-beige-50 text-sm leading-tight font-medium tracking-tight text-balance uppercase underline-offset-4 group-hover/link:underline sm:text-base 2xl:text-lg 2xl:leading-tight',
+                            'text-beige-50 text-sm leading-snug font-medium tracking-tight text-balance uppercase underline-offset-4 [text-shadow:0_1px_3px_rgb(0_0_0/0.45)] group-hover/link:underline sm:text-base 2xl:text-lg',
                             isActive && 'underline'
                         )}
                     >
@@ -59,7 +60,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link, ...props}) => {
                     </h4>
                 )}
                 {link.pageTitle && (
-                    <p className="text-beige-50 mt-1 hidden text-[12px] leading-tight text-balance sm:text-[14px] @min-[160px]/navitem:block">
+                    <p className="text-beige-50/85 hidden text-[12px] leading-snug text-balance [text-shadow:0_1px_2px_rgb(0_0_0/0.45)] sm:text-[13px] @min-[150px]/navitem:line-clamp-2">
                         {link.pageTitle}
                     </p>
                 )}

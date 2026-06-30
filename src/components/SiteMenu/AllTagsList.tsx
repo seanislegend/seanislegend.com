@@ -13,7 +13,7 @@ const AllTagsList: React.FC<Props> = ({items}) => {
         <ul
             className={clsx([
                 BASE_TEXT_CLASS,
-                'mt-4 flex flex-row flex-wrap gap-x-3 sm:gap-x-4 sm:gap-y-2'
+                'flex flex-row flex-wrap gap-x-3 sm:gap-x-4 sm:gap-y-2'
             ])}
             data-testid="tags-list"
         >
