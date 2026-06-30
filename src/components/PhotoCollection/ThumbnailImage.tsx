@@ -5,6 +5,7 @@ type ThumbnailPhoto = Pick<Photo['thumbnail'], 'height' | 'width' | 'url'>;
 interface Props extends ThumbnailPhoto {
     alt?: string;
     base64?: string;
+    className?: string;
     columnSize?: number;
     fill?: boolean;
     id?: string;
@@ -15,6 +16,7 @@ interface Props extends ThumbnailPhoto {
 const ThumbnailImage: React.FC<Props> = ({
     alt,
     base64,
+    className,
     columnSize,
     fill,
     height,
@@ -39,7 +41,8 @@ const ThumbnailImage: React.FC<Props> = ({
                     'aspect-2/3': ratio < 1,
                     'aspect-3/2': ratio >= 1 && !is43,
                     'h-full bg-[#000] object-cover': !is43
-                }
+                },
+                className
             )}
             id={id}
         >
