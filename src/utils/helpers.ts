@@ -170,14 +170,6 @@ export const getEditorialSeo = (page: Editorial) => {
     };
 };
 
-export const getTagSeo = (tag: Tag) => {
-    return getEditorialSeo({
-        metaDescription: tag.description || `Photos tagged with "${tag.slug}".`,
-        slug: `/${tag.slug}-photography`,
-        title: `${tag.name} photos`
-    });
-};
-
 // A collection can be considered new if it's been published in the last 4 months.
 export const isCollectionNew = (date: string | undefined) => {
     if (!date) return false;
