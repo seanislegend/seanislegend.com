@@ -1,5 +1,5 @@
 import removeMarkdown from 'remove-markdown';
-import config, {SITE_LINKS} from '@/utils/config';
+import config, {imageLicensing, SITE_LINKS} from '@/utils/config';
 
 export const isExternalUrl = (url: string | undefined) => {
     return url?.toString().startsWith('http');
@@ -46,9 +46,10 @@ export const getPhotoAlbumJsonLd = (collection: PhotoCollection): Record<string,
     );
     const associatedMedia = photos.slice(0, 4).map((photo, index) => ({
         '@type': 'ImageObject',
+        ...imageLicensing,
         name: photo.title,
         position: index + 1,
-        url: toRewriteImageUrl(photo.hero?.url || photo.fullSize?.url || photo.thumbnail?.url)
+        contentUrl: toRewriteImageUrl(photo.hero?.url || photo.fullSize?.url || photo.thumbnail?.url)
     }));
 
     const schema: Record<string, unknown> = {
@@ -60,7 +61,12 @@ export const getPhotoAlbumJsonLd = (collection: PhotoCollection): Record<string,
     if (description) schema.abstract = description;
     if (associatedMedia.length) schema.associatedMedia = associatedMedia;
     if (collection.sys?.firstPublishedAt) schema.datePublished = collection.sys.firstPublishedAt;
-    if (primaryImage) schema.primaryImageOfPage = {'@type': 'ImageObject', url: primaryImage};
+    if (primaryImage)
+        schema.primaryImageOfPage = {
+            '@type': 'ImageObject',
+            ...imageLicensing,
+            contentUrl: primaryImage
+        };
     return schema;
 };
 

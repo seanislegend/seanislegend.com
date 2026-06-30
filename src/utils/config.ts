@@ -7,6 +7,20 @@ export const SITE_LINKS = [
 
 export const SHOP_URL = 'https://seanislegendprints.square.site';
 
+const SITE_URL = 'https://www.seanislegend.com';
+
+export const imageLicensing = {
+    acquireLicensePage: `${SITE_URL}/contact`,
+    copyrightNotice: '© Sean McEmerson',
+    creator: {
+        '@type': 'Person',
+        name: 'Sean McEmerson',
+        url: SITE_URL
+    },
+    creditText: 'Sean McEmerson',
+    license: `${SITE_URL}/contact`
+};
+
 export const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -79,7 +93,6 @@ export const jsonLd = {
     sameAs: SITE_LINKS.map(link => link.url),
     url: 'https://www.seanislegend.com'
 };
-
 
 const config = {
     titleTemplate: 'photography by Sean McEmerson',
