@@ -36,7 +36,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
             </button>
             {isMenuOpen && (
                 <RemoveScroll
-                    className="top-site-header absolute left-0 z-30 w-full xl:hidden print:hidden"
+                    className="top-site-header absolute left-0 z-100 w-full xl:hidden print:hidden"
                     data-testid="mobile-menu"
                     style={{
                         height: isMenuOpen ? '100vh' : '0',

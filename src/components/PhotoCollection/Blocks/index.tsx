@@ -54,7 +54,7 @@ const GreenHopFeaturedOneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = (
             <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
             <Link
                 href="/green-hop-beer"
-                className="group absolute inset-0 z-50 flex items-end bg-linear-to-t from-[#2f3523]/70 to-transparent p-4 text-white transition-colors duration-300 ease-in-out hover:bg-[#2f3523]/40 md:p-6"
+                className="group absolute inset-0 z-10 flex items-end bg-linear-to-t from-[#2f3523]/70 to-transparent p-4 text-white transition-colors duration-300 ease-in-out hover:bg-[#2f3523]/40 md:p-6"
             >
                 <div className="flex w-full flex-col md:gap-1">
                     <span className="lg:text-lg">
