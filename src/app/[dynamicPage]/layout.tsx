@@ -44,7 +44,7 @@ const CollectionPageSharedLayout: React.FC<React.PropsWithChildren<Props>> = asy
             }
         }
     } else {
-        ctas.push({label: 'Book a shoot', url: '/contact?service=Photography hire'});
+        ctas.push({label: 'View work', url: '/commercial'});
 
         if (collection.ctaLabel && collection.ctaUrl) {
             ctas.push({label: collection.ctaLabel, url: collection.ctaUrl});
