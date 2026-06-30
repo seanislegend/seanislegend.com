@@ -11,6 +11,7 @@ interface Link {
     title: string;
     type?: string;
     url: string;
+    workType?: 'commercial' | 'personal';
 }
 
 interface LinksPage {

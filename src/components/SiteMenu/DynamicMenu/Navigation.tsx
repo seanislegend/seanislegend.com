@@ -16,6 +16,11 @@ interface Props {
     tags: Tag[];
 }
 
+const WORK_TYPES: {key: NonNullable<Link['workType']>; label: string}[] = [
+    {key: 'commercial', label: 'Commercial'},
+    {key: 'personal', label: 'Personal'}
+];
+
 const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
     const pathname = usePathname();
     const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
@@ -29,38 +34,45 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
         <>
             <NavigationMenu.Root closeDelay={300} data-testid="main-navigation" key={pathname}>
                 <NavigationMenu.List className="relative z-30 hidden flex-row items-center gap-1 xl:flex">
-                    <NavigationMenu.Item>
-                        <NavigationMenu.Trigger
-                            className={`${linkClasses} ${ghostLinkClasses} group`}
-                        >
-                            <span className="inline-flex items-center gap-1.5">
-                                <span className="text-theme-text">Collections</span>
-                                <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
-                            </span>
-                        </NavigationMenu.Trigger>
-                        <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] h-full w-screen list-none px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 data-starting-style:opacity-0 xl:px-8">
-                            <div
-                                className="grid grid-cols-4 gap-2 xl:grid-cols-6"
-                                data-testid="collections-grid"
-                            >
-                                {links.map(link => (
-                                    <NavigationMenu.Item key={link.url}>
-                                        <Collection link={link} />
-                                    </NavigationMenu.Item>
-                                ))}
-                            </div>
-                            <div className="my-4 flex items-center justify-between sm:flex-row">
-                                <span className="hidden xl:block">
-                                    <AllTagsList items={tags} />
-                                </span>
-                                <span>
-                                    <Button className="mr-[2px]" href="/collections">
-                                        View all collections
-                                    </Button>
-                                </span>
-                            </div>
-                        </NavigationMenu.Content>
-                    </NavigationMenu.Item>
+                    {WORK_TYPES.map(({key, label}) => {
+                        const workTypeLinks = links.filter(link => link.workType === key);
+                        if (!workTypeLinks.length) return null;
+
+                        return (
+                            <NavigationMenu.Item key={key}>
+                                <NavigationMenu.Trigger
+                                    className={`${linkClasses} ${ghostLinkClasses} group`}
+                                >
+                                    <span className="inline-flex items-center gap-1.5">
+                                        <span className="text-theme-text">{label}</span>
+                                        <CaretDownIcon className="h-3 w-3 fill-current transition-transform duration-300 ease-in-out group-data-popup-open:rotate-180" />
+                                    </span>
+                                </NavigationMenu.Trigger>
+                                <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] h-full w-screen list-none px-4 transition-[opacity,transform,translate] duration-[var(--duration)] ease-[var(--easing)] data-ending-style:opacity-0 data-starting-style:opacity-0 xl:px-8">
+                                    <div
+                                        className="grid grid-cols-4 gap-2 xl:grid-cols-6"
+                                        data-testid={`${key}-collections-grid`}
+                                    >
+                                        {workTypeLinks.map(link => (
+                                            <NavigationMenu.Item key={link.url}>
+                                                <Collection link={link} />
+                                            </NavigationMenu.Item>
+                                        ))}
+                                    </div>
+                                    <div className="my-4 flex items-center justify-between sm:flex-row">
+                                        <span className="hidden xl:block">
+                                            <AllTagsList items={tags} />
+                                        </span>
+                                        <span>
+                                            <Button className="mr-[2px]" href="/collections">
+                                                View all collections
+                                            </Button>
+                                        </span>
+                                    </div>
+                                </NavigationMenu.Content>
+                            </NavigationMenu.Item>
+                        );
+                    })}
                     {MENU_ITEMS.map(item => (
                         <NavigationMenu.Item
                             key={item.href}

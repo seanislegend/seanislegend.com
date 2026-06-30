@@ -64,6 +64,7 @@ interface PhotoCollection {
     showInMenu?: boolean;
     showDescription?: boolean;
     slug: string;
+    workType?: 'commercial' | 'personal';
     sys?: {
         firstPublishedAt: string;
         publishedAt: string;

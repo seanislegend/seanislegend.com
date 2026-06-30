@@ -49,12 +49,12 @@ test.describe('Site furniture', () => {
         });
 
         test('should display a dynamic collections menu', async ({page}) => {
-            // hover over the collections trigger to open the menu
-            await page.getByRole('button', {name: /collections/i}).hover();
+            // hover over the personal work-type trigger to open the menu
+            await page.getByRole('button', {name: /personal/i}).hover();
             // navigation menu is rendered inside a portal inside main page layout,
             // otherwise base ui renders into body by default
             const mainNavigationPortal = page.getByTestId('page-content');
-            const collectionsGrid = mainNavigationPortal.getByTestId('collections-grid');
+            const collectionsGrid = mainNavigationPortal.getByTestId('personal-collections-grid');
             await expect(collectionsGrid).toBeVisible();
             // links to all collections
             await expect(mainNavigationPortal.getByText('View all collections')).toBeVisible();
@@ -63,22 +63,22 @@ test.describe('Site furniture', () => {
         });
 
         test('should link to collections in the dynamic menu', async ({page}) => {
-            // hover over the collections trigger to open the menu
-            await page.getByRole('button', {name: /collections/i}).hover();
+            // hover over the personal work-type trigger to open the menu
+            await page.getByRole('button', {name: /personal/i}).hover();
             const mainNavigationPortal = page.getByTestId('page-content');
-            const collectionsGrid = mainNavigationPortal.getByTestId('collections-grid');
+            const collectionsGrid = mainNavigationPortal.getByTestId('personal-collections-grid');
             await collectionsGrid.getByText('Example collection 1', {exact: true}).click();
             await expect(page).toHaveURL('/example-collection-1');
         });
 
         test('should handle keyboard navigation', async ({page}) => {
             const mainNavigationPortal = page.getByTestId('page-content');
-            const collectionsGrid = mainNavigationPortal.getByTestId('collections-grid');
+            const collectionsGrid = mainNavigationPortal.getByTestId('personal-collections-grid');
             // test keyboard navigation - press escape to close menu
             await page.keyboard.press('Escape');
             await expect(collectionsGrid).not.toBeVisible();
             // test opening menu with keyboard
-            await page.getByRole('button', {name: /collections/i}).focus();
+            await page.getByRole('button', {name: /personal/i}).focus();
             await page.keyboard.press('Enter');
             await expect(collectionsGrid).toBeVisible();
         });
