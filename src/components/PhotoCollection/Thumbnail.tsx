@@ -20,6 +20,7 @@ const PhotoThumbnail: React.FC<Props> = ({
     alt,
     base64,
     columnSize,
+    hasViewButton = true,
     id,
     label,
     linksTo,
@@ -56,9 +57,11 @@ const PhotoThumbnail: React.FC<Props> = ({
                         priority={priority}
                         {...thumbnail}
                     />
-                    <span className="bg-button-bg text-button-text absolute right-2 bottom-2 z-40 flex translate-y-2 items-center gap-1.5 rounded-xs px-2.5 py-1.5 text-xs font-semibold uppercase opacity-0 transition duration-150 ease-in-out group-hover/photo:translate-y-0 group-hover/photo:opacity-100 group-hover/photo:duration-300 xl:text-sm">
-                        {linksTo === 'collection' ? 'View more' : 'View photo'}
-                    </span>
+                    {hasViewButton && (
+                        <span className="bg-button-bg text-button-text absolute right-2 bottom-2 z-40 flex translate-y-2 items-center gap-1.5 rounded-xs px-2.5 py-1.5 text-xs font-semibold uppercase opacity-0 transition duration-150 ease-in-out group-hover/photo:translate-y-0 group-hover/photo:opacity-100 group-hover/photo:duration-300 xl:text-sm">
+                            {linksTo === 'collection' ? 'View more' : 'View photo'}
+                        </span>
+                    )}
                 </Link>
                 {id && <PhotoEditButton id={id} />}
             </>

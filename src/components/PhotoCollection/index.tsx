@@ -13,6 +13,7 @@ interface BlockPhotoProps {
     blockPhotos: number[];
     columnSize?: number;
     fillContainer?: boolean;
+    hasViewButton?: boolean;
     index: number;
     layoutType?: 'editorial' | 'photos' | (string & {});
     linksTo: 'collection' | 'photo';
@@ -37,6 +38,7 @@ const BlockPhoto: React.FC<BlockPhotoProps> = ({
     blockPhotos,
     columnSize,
     fillContainer,
+    hasViewButton,
     index,
     layoutType,
     linksTo,
@@ -58,6 +60,7 @@ const BlockPhoto: React.FC<BlockPhotoProps> = ({
             base64={photo.base64}
             columnSize={columnSize}
             fill={fillContainer}
+            hasViewButton={hasViewButton}
             id={photo.sys?.id}
             linksTo={linksTo}
             path={path}

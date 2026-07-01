@@ -51,12 +51,19 @@ const GreenHopFeaturedOneLandScapeTwoPortrait: React.FC<PhotoBlockComponent> = (
 }) => (
     <Grid className="place-items-end">
         <Column className="relative col-span-12 flex h-full overflow-hidden rounded md:col-span-6 md:md:[&_span]:h-full md:md:[&>div]:h-full">
-            <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
+            <PhotoSlot
+                blockPhotos={photos}
+                columnSize={6}
+                hasViewButton={false}
+                index={0}
+                {...photoSlotProps}
+            />
             <Link
                 href="/green-hop-beer"
-                className="group absolute inset-0 z-20 flex items-end bg-linear-to-t from-[#2f3523]/70 to-transparent p-4 text-white transition-colors duration-300 ease-in-out hover:bg-[#2f3523]/40 md:p-6"
+                className="group absolute inset-0 z-30 flex items-end p-4 text-white md:p-6"
             >
-                <div className="flex w-full flex-col md:gap-1">
+                <span className="absolute bottom-0 left-0 z-10 h-[180px]! w-full bg-linear-to-t from-[#2f3523] to-transparent transition-colors duration-300 ease-in-out group-hover:from-black" />
+                <div className="relative z-20 flex w-full flex-col md:gap-1">
                     <span className="lg:text-lg">
                         <strong>From Bine to Glass:</strong> <span>Brewing with Green Hops</span>
                     </span>
