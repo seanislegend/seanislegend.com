@@ -16,10 +16,7 @@ interface Props {
 }
 
 const SiteHeaderMenu: React.FC<Props> = ({items = HEADER_MENU_ITEMS}) => (
-    <nav
-        className="row -mr-2 hidden items-center gap-1 lg:flex"
-        data-testid="main-navigation-static"
-    >
+    <nav className="row hidden items-center gap-1 lg:flex" data-testid="main-navigation-static">
         <SiteHeaderLink href="/commercial">Commercial</SiteHeaderLink>
         <SiteHeaderLink href="/personal">Personal</SiteHeaderLink>
         {items.map(item => (
