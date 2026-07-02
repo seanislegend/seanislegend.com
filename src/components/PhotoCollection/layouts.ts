@@ -47,7 +47,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'Spacer'},
         {layout: 'ContentSection', sections: [1]}
     ],
-    'community-and-craft-beer-in-hebden-bridge': [
+    'hebden-bridge-craft-beer': [
         {layout: 'TwoInARow', photos: [63, 17]},
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 61, 27, 8, 4, 46]},
         {layout: 'Spacer'},
