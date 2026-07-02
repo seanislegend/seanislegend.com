@@ -79,6 +79,11 @@ const nextConfig: NextConfig = {
                 source: '/uppers-and-downers/:slug*',
                 destination: '/uppers-and-downers-coffee-and-beer-festival',
                 permanent: true
+            },
+            {
+                source: '/community-and-craft-beer-in-hebden-bridge/:slug*',
+                destination: '/hebden-bridge-craft-beer',
+                permanent: true
             }
         ];
 
