@@ -11,16 +11,18 @@ const CopyrightText = () => (
 
 const SiteFooter: React.FC = () => (
     <footer
-        className="border-accent mx-auto mt-8 flex w-full max-w-440 flex-col items-center gap-4 border-t-2 px-4 py-4 sm:flex-row sm:justify-between md:px-0 print:border-none"
+        className="border-accent mt-8 border-t-2 px-4 py-4 md:px-8 print:border-none"
         data-testid="site-footer"
     >
-        <div className="flex w-full items-center justify-between gap-4 md:justify-start print:hidden!">
-            <Suspense>
-                <CopyrightText />
-            </Suspense>
-            <SocialLinks />
+        <div className="mx-auto flex w-full max-w-440 flex-col items-center gap-4 sm:flex-row sm:justify-between">
+            <div className="flex w-full items-center justify-between gap-4 md:justify-start print:hidden!">
+                <Suspense>
+                    <CopyrightText />
+                </Suspense>
+                <SocialLinks />
+            </div>
+            <SiteHeaderMenu items={MENU_ITEMS} />
         </div>
-        <SiteHeaderMenu items={MENU_ITEMS} />
     </footer>
 );
 
