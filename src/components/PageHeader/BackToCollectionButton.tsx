@@ -8,9 +8,9 @@ import {pageHeaderDataAtom} from '@/utils/store';
 
 const BackToCollectionButton: React.FC = () => {
     const setPageHeaderData = useSetAtom(pageHeaderDataAtom);
-    const params = useParams<{collection: string; photo?: string}>();
+    const params = useParams<{dynamicPage: string; photo?: string}>();
 
-    const path = `/${params.collection}#${params.photo}`;
+    const path = `/${params.dynamicPage}#${params.photo}`;
 
     const updatePageHeaderData = useCallback(() => {
         if (params.photo) {
