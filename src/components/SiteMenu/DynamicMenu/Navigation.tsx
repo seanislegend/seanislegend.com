@@ -106,7 +106,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                     </NavigationMenu.Portal>
                 )}
             </NavigationMenu.Root>
-            <SiteMenuMobile key={`mobile-${pathname}`} links={links} />
+            <SiteMenuMobile key={`mobile-${pathname}`} links={links} tags={tags} />
         </>
     );
 };

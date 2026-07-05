@@ -2,9 +2,13 @@
 
 import {useState} from 'react';
 import {RemoveScroll} from 'react-remove-scroll';
+import {AnimatePresence} from 'motion/react';
+import * as m from 'motion/react-m';
+import {CaretDownIcon} from '@/components/Icon/CaretDown';
 import {CrossIcon} from '@/components/Icon/Cross';
 import {MenuIcon} from '@/components/Icon/Menu';
 import {HEADER_MENU_ITEMS} from '@/components/SiteMenu';
+import AllTagsList from '@/components/SiteMenu/AllTagsList';
 import SocialLinks from '@/components/SiteMenu/SocialLinks';
 import Badge from '@/components/UI/Badge';
 import Container from '@/components/UI/Container';
@@ -12,6 +16,7 @@ import SiteMenuLink from './Link';
 
 interface Props {
     links: Link[];
+    tags: Tag[];
 }
 
 const WORK_TYPES: {key: NonNullable<Link['workType']>; label: string}[] = [
@@ -19,7 +24,82 @@ const WORK_TYPES: {key: NonNullable<Link['workType']>; label: string}[] = [
     {key: 'personal', label: 'Personal'}
 ];
 
-const SiteMenuMobile: React.FC<Props> = ({links}) => {
+interface CollapsibleSectionProps {
+    label: string;
+    testId?: string;
+    children: React.ReactNode;
+}
+
+const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({label, testId, children}) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="bg-accent/50 flex flex-col rounded-lg p-1">
+            <button
+                aria-expanded={isOpen}
+                className="flex items-center justify-between px-2.5 py-1.5 text-[16px] font-medium uppercase focus:outline-none"
+                data-testid={testId}
+                onClick={() => setIsOpen(prev => !prev)}
+                type="button"
+            >
+                <span>{label}</span>
+                <CaretDownIcon
+                    className={`h-3 w-3 shrink-0 fill-current transition-transform duration-300 ease-in-out ${
+                        isOpen ? 'rotate-180' : ''
+                    }`}
+                />
+            </button>
+            <AnimatePresence initial={false}>
+                {isOpen && (
+                    <m.div
+                        animate={{height: 'auto', opacity: 1}}
+                        className="overflow-hidden"
+                        exit={{height: 0, opacity: 0}}
+                        initial={{height: 0, opacity: 0}}
+                        transition={{duration: 0.3, ease: [0.22, 1, 0.36, 1]}}
+                    >
+                        <div className="py-2">{children}</div>
+                    </m.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
+
+interface WorkTypeSectionProps {
+    label: string;
+    typeKey: NonNullable<Link['workType']>;
+    links: Link[];
+    onNavigate: () => void;
+}
+
+const WorkTypeSection: React.FC<WorkTypeSectionProps> = ({label, typeKey, links, onNavigate}) => (
+    <CollapsibleSection label={label} testId={`mobile-menu-worktype-toggle-${typeKey}`}>
+        <div className="flex flex-col space-y-2">
+            {links.map(link => (
+                <SiteMenuLink
+                    className="ml-4 space-y-2"
+                    key={link.url}
+                    href={link.url}
+                    onClick={onNavigate}
+                >
+                    <span className="flex items-center gap-2">
+                        <span>{link.title}</span>
+                        {link.badge && <Badge>{link.badge} </Badge>}
+                    </span>
+                    <small className="text-dimmed-text block text-[12px] leading-tight normal-case">
+                        {link.pageTitle}
+                    </small>
+                </SiteMenuLink>
+            ))}
+            <SiteMenuLink className="ml-4 text-[16px]" href={`/${typeKey}`} onClick={onNavigate}>
+                View all {label.toLowerCase()}
+            </SiteMenuLink>
+        </div>
+    </CollapsibleSection>
+);
+
+const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const ToggleButtonIcon = isMenuOpen ? CrossIcon : MenuIcon;
@@ -55,7 +135,7 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                 >
                                     {HEADER_MENU_ITEMS.map(link => (
                                         <SiteMenuLink
-                                            className="text-lg!"
+                                            className="text-[16px]"
                                             key={link.href}
                                             href={link.href}
                                             onClick={() => setIsMenuOpen(false)}
@@ -70,35 +150,25 @@ const SiteMenuMobile: React.FC<Props> = ({links}) => {
                                         if (!workTypeLinks?.length) return null;
 
                                         return (
-                                            <div className="flex flex-col space-y-2" key={key}>
-                                                <SiteMenuLink
-                                                    className="text-lg!"
-                                                    href={`/${key}`}
-                                                    onClick={() => setIsMenuOpen(false)}
-                                                >
-                                                    {label}
-                                                </SiteMenuLink>
-                                                {workTypeLinks.map(link => (
-                                                    <SiteMenuLink
-                                                        className="ml-6 space-y-2"
-                                                        key={link.url}
-                                                        href={link.url}
-                                                        onClick={() => setIsMenuOpen(false)}
-                                                    >
-                                                        <span className="flex items-center gap-2">
-                                                            <span>{link.title}</span>
-                                                            {link.badge && (
-                                                                <Badge>{link.badge} </Badge>
-                                                            )}
-                                                        </span>
-                                                        <small className="text-dimmed-text block leading-tight normal-case">
-                                                            {link.pageTitle}
-                                                        </small>
-                                                    </SiteMenuLink>
-                                                ))}
-                                            </div>
+                                            <WorkTypeSection
+                                                key={key}
+                                                label={label}
+                                                links={workTypeLinks}
+                                                onNavigate={() => setIsMenuOpen(false)}
+                                                typeKey={key}
+                                            />
                                         );
                                     })}
+                                    {tags?.length > 0 && (
+                                        <CollapsibleSection
+                                            label="Browse by category"
+                                            testId="mobile-menu-tags-toggle"
+                                        >
+                                            <div className="ml-4">
+                                                <AllTagsList items={tags} variant="stack" />
+                                            </div>
+                                        </CollapsibleSection>
+                                    )}
                                 </nav>
                                 <div
                                     className="pt-8 lg:hidden"
