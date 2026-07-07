@@ -37,7 +37,7 @@ const RelatedCollections = ({items}: Props) => {
                                                 thumbnail:
                                                     item.photosCollection?.items?.[0]?.thumbnail
                                             },
-                                            title: '',
+                                            title: item.title,
                                             url: `/${item.slug}`
                                         }}
                                     />
