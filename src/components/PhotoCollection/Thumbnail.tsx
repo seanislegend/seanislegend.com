@@ -13,6 +13,7 @@ interface Props extends ThumbnailPhoto {
     loading?: 'eager' | 'lazy';
     path: string;
     priority?: boolean;
+    sizes?: string;
     [key: string]: any;
 }
 
@@ -27,6 +28,7 @@ const PhotoThumbnail: React.FC<Props> = ({
     loading = 'lazy',
     path,
     priority,
+    sizes,
     slug,
     thumbnail,
     title,
@@ -55,6 +57,7 @@ const PhotoThumbnail: React.FC<Props> = ({
                         fill={props?.fill}
                         loading={loading}
                         priority={priority}
+                        sizes={sizes}
                         {...thumbnail}
                     />
                     {hasViewButton && (
@@ -80,6 +83,7 @@ const PhotoThumbnail: React.FC<Props> = ({
                 fill={props?.fill}
                 loading={loading}
                 priority={priority}
+                sizes={sizes}
                 {...thumbnail}
             />
             {id && <PhotoEditButton id={id} />}

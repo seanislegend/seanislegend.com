@@ -25,6 +25,7 @@ const PhotoMasonry: React.FC<Props> = ({items}) => (
                     base64={item.base64}
                     id={item.sys?.id}
                     path={item.collection ? `/${item.collection}#${item.slug}` : ''}
+                    sizes="(max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                     slug={''}
                     title={item.title}
                     thumbnail={item.thumbnail}

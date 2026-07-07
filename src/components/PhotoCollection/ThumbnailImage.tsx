@@ -11,6 +11,7 @@ interface Props extends ThumbnailPhoto {
     id?: string;
     loading?: 'eager' | 'lazy';
     priority?: boolean;
+    sizes?: string;
 }
 
 const ThumbnailImage: React.FC<Props> = ({
@@ -23,6 +24,7 @@ const ThumbnailImage: React.FC<Props> = ({
     id,
     loading = 'lazy',
     priority,
+    sizes,
     width,
     url
 }) => {
@@ -31,6 +33,11 @@ const ThumbnailImage: React.FC<Props> = ({
     const imageWidth = columnSize ? Math.floor(width * (columnSize / 12)) : width;
     const ratio = imageWidth / imageHeight;
     const is43 = ratio >= 1 && Math.abs(ratio - 4 / 3) < 0.1;
+    const derivedSizes =
+        sizes ??
+        (columnSize
+            ? `(max-width: 768px) 100vw, ${Math.max(Math.round((columnSize / 12) * 100), 10)}vw`
+            : '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1536px) 25vw, 17vw');
 
     return (
         <span
@@ -56,7 +63,7 @@ const ThumbnailImage: React.FC<Props> = ({
                 loading={priority ? undefined : loading}
                 priority={priority}
                 quality={80}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={derivedSizes}
                 src={url}
                 {...(fill ? {} : {height: imageHeight, width: imageWidth})}
             />
