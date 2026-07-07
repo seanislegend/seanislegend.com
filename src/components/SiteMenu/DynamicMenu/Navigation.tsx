@@ -5,10 +5,10 @@ import {HEADER_MENU_ITEMS} from '../';
 import SiteHeaderLink, {ghostLinkClasses, linkClasses} from '../Link';
 import {NavigationMenu} from '@base-ui/react/navigation-menu';
 import {usePathname} from 'next/navigation';
-import Button from '@/components/Button';
 import {CaretDownIcon} from '@/components/Icon/CaretDown';
 import Categories from '@/components/SiteMenu/DynamicMenu/Categories';
 import Collection from '@/components/SiteMenu/DynamicMenu/Collection';
+import ViewAll from '@/components/SiteMenu/DynamicMenu/ViewAll';
 import SiteMenuMobile from '@/components/SiteMenu/Mobile';
 
 interface Props {
@@ -58,11 +58,14 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                                 <Collection link={link} />
                                             </NavigationMenu.Item>
                                         ))}
-                                    </div>
-                                    <div className="flex items-center justify-end pt-6">
-                                        <Button className="mr-[2px] shrink-0" href={`/${key}`}>
-                                            View all {label.toLowerCase()}
-                                        </Button>
+                                        <NavigationMenu.Item
+                                            render={() => (
+                                                <ViewAll
+                                                    href={`/${key}`}
+                                                    label={label.toLowerCase()}
+                                                />
+                                            )}
+                                        />
                                     </div>
                                 </NavigationMenu.Content>
                             </NavigationMenu.Item>
