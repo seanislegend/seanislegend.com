@@ -200,9 +200,6 @@ export const fetchLinksPage = async () => {
                     items {
                         ...on Link {
                             type: __typename
-                            openGraphImage: photo {
-                                url(transform: {width: 1000})
-                            }
                             thumbnail: photo {
                                 height
                                 width
@@ -497,9 +494,6 @@ const fetchCollectionData = async (
                             width
                             url(transform: {format: WEBP, width: 1800})
                         }
-                        openGraphImage: photo {
-                            url(transform: {width: 1000})
-                        }
                         thumbnail: photo {
                             description
                             height
@@ -792,9 +786,6 @@ const fetchExhibitionData = async (slug: string, preview: boolean = false) => {
                                 height
                                 width
                                 url(transform: {format: WEBP, width: 1800})
-                            }
-                            openGraphImage: photo {
-                                url(transform: {width: 1000})
                             }
                             thumbnail: photo {
                                 description
