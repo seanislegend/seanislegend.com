@@ -30,7 +30,7 @@ const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
             }
 
             return (
-                <div key={section.title}>
+                <div key={section.title} id={section.id}>
                     {section.photoGrid?.photosCollection?.items && (
                         <PhotosGrid photos={section.photoGrid.photosCollection.items} />
                     )}
