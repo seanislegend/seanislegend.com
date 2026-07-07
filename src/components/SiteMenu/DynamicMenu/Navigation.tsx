@@ -7,7 +7,7 @@ import {NavigationMenu} from '@base-ui/react/navigation-menu';
 import {usePathname} from 'next/navigation';
 import Button from '@/components/Button';
 import {CaretDownIcon} from '@/components/Icon/CaretDown';
-import AllTagsList from '@/components/SiteMenu/AllTagsList';
+import Categories from '@/components/SiteMenu/DynamicMenu/Categories';
 import Collection from '@/components/SiteMenu/DynamicMenu/Collection';
 import SiteMenuMobile from '@/components/SiteMenu/Mobile';
 
@@ -59,13 +59,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                             </NavigationMenu.Item>
                                         ))}
                                     </div>
-                                    <div className="flex items-start justify-between gap-8 pt-6">
-                                        <div className="hidden min-w-0 xl:block">
-                                            <p className="text-dimmed-text text-sm">
-                                                Browse by category
-                                            </p>
-                                            <AllTagsList items={tags} />
-                                        </div>
+                                    <div className="flex items-center justify-end pt-6">
                                         <Button className="mr-[2px] shrink-0" href={`/${key}`}>
                                             View all {label.toLowerCase()}
                                         </Button>
@@ -74,6 +68,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                             </NavigationMenu.Item>
                         );
                     })}
+                    <Categories tags={tags} />
                     {HEADER_MENU_ITEMS.map(item => (
                         <NavigationMenu.Item
                             key={item.href}
@@ -89,8 +84,10 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                     <NavigationMenu.Portal container={portalContainer}>
                         <NavigationMenu.Backdrop className="bg-overlay-bg fixed top-0 left-0 z-40 h-screen w-screen transition-opacity duration-300 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0" />
                         <NavigationMenu.Positioner
-                            className="left-0! z-50"
-                            collisionAvoidance={{side: 'none'}}
+                            align="start"
+                            className="z-50"
+                            collisionAvoidance={{align: 'shift', side: 'none'}}
+                            collisionPadding={0}
                             positionMethod="fixed"
                             style={
                                 {
