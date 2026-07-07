@@ -5,7 +5,7 @@ import PageHeader from '@/components/PageHeader';
 import PublishedWorkLogos from '@/components/PublishedWorkLogos';
 import config, {SITE_LINKS} from '@/utils/config';
 import {fetchEditorialPage} from '@/utils/contentful';
-import {getEditorialSeo} from '@/utils/helpers';
+import {getEditorialSeo, jsonLdScriptProps} from '@/utils/helpers';
 
 const getPersonJsonLd = (imageUrl?: string) => {
     const schema: Record<string, unknown> = {
@@ -26,10 +26,7 @@ const AboutPage = async () => {
 
     return (
         <DefaultLayout theme="dark">
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{__html: JSON.stringify(personJsonLd)}}
-            />
+            <script {...jsonLdScriptProps(personJsonLd)} />
             <PageHeader
                 ctas={[
                     {label: 'Services', url: '/services'},

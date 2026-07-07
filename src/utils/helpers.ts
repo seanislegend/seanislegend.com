@@ -147,6 +147,8 @@ export const getPhotoSeo = (collection: PhotoCollection, photo: Photo) => {
 };
 
 export const getEditorialSeo = (page: Editorial) => {
+    if (!page) return {};
+
     let title = page.pageTitle || page.title;
     let description = removeMarkdown(`${page?.content?.substring(0, 160)}...`);
 
@@ -169,6 +171,18 @@ export const getEditorialSeo = (page: Editorial) => {
         twitter: {description, title}
     };
 };
+
+// serialize for embedding inside a <script> tag: escape characters that could
+// terminate the tag or open html context.
+export const jsonLdScriptProps = (data: unknown) => ({
+    type: 'application/ld+json',
+    dangerouslySetInnerHTML: {
+        __html: JSON.stringify(data)
+            .replace(/</g, '\\u003c')
+            .replace(/>/g, '\\u003e')
+            .replace(/&/g, '\\u0026')
+    }
+});
 
 // A collection can be considered new if it's been published in the last 4 months.
 export const isCollectionNew = (date: string | undefined) => {

@@ -57,11 +57,6 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
             changeFrequency:
                 collection.publishedAt === collection.firstPublishedAt ? 'monthly' : 'weekly'
         };
-        const filteredPhotoItems = collection.photosCollection?.items?.filter((i: any) => i);
-
-        if (collection.slug === 'home' || !filteredPhotoItems.length) {
-            return [...acc, collectionItem];
-        }
 
         return [...acc, collectionItem];
     }, [] as any[]);

@@ -26,10 +26,10 @@ export const subscribeToNewsletter = async (
         };
     }
 
-    const email = formData.get('email') as string;
+    const email = formData.get('email');
 
     try {
-        if (!isEmail(email)) {
+        if (typeof email !== 'string' || !isEmail(email)) {
             return {
                 error: true,
                 message: 'Invalid email address',

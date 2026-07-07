@@ -1,5 +1,6 @@
 import {Suspense} from 'react';
 import type {Metadata} from 'next';
+import {notFound} from 'next/navigation';
 import DefaultLayout from '@/components/Layouts/Default';
 import PageHeader from '@/components/PageHeader';
 import Container from '@/components/UI/Container';
@@ -27,6 +28,7 @@ const ContactFormFromSearchParams = async ({searchParams}: Props) => {
 
 const ContactPage = async ({searchParams}: Props) => {
     const page = await fetchEditorialPage('contact');
+    if (!page) notFound();
 
     return (
         <DefaultLayout theme="dark">
@@ -41,6 +43,7 @@ const ContactPage = async ({searchParams}: Props) => {
 
 export const generateMetadata = async (): Promise<Metadata | null> => {
     const page = await fetchEditorialPage('contact');
+    if (!page) return null;
     return {...config.seo, ...getEditorialSeo(page)};
 };
 

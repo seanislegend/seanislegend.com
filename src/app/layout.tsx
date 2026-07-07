@@ -6,6 +6,7 @@ import {ViewTransitions} from 'next-view-transitions';
 import Script from 'next/script';
 import MotionConfigProvider from '@/components/MotionConfigProvider';
 import config, {jsonLd} from '@/utils/config';
+import {jsonLdScriptProps} from '@/utils/helpers';
 import './globals.css';
 
 // Deliberate Cache Components block. next-view-transitions' <ViewTransitions>
@@ -27,10 +28,7 @@ const RootLayout = async ({children}: Props) => (
         >
             <head>
                 <link rel="preconnect" href="https://images.ctfassets.net" />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
-                />
+                <script {...jsonLdScriptProps(jsonLd)} />
             </head>
             <body className="flex grow flex-col sm:min-h-full">
                 {process.env.GOOGLE_ADVERTISING_ID && (
