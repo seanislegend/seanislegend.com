@@ -1,5 +1,6 @@
 'use server';
 
+import {checkBotId} from 'botid/server';
 import {Resend} from 'resend';
 import {type ContactFormData, contactSchema, enquiryLabels} from './schema';
 
@@ -51,6 +52,9 @@ export const submitContactForm = async (
     prevState: ContactState | null,
     formData: FormData
 ): Promise<ContactState> => {
+    const verification = await checkBotId();
+    if (verification.isBot) return errorResponse;
+
     const raw = Object.fromEntries(formData.entries());
     const result = contactSchema.safeParse(raw);
 

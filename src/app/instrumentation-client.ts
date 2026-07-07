@@ -1,5 +1,8 @@
 import {initBotId} from 'botid/client/core';
 
 initBotId({
-    protect: [{method: 'POST', path: '/green-hop-beer'}]
+    protect: [
+        {method: 'POST', path: '/contact'},
+        {method: 'POST', path: '/green-hop-beer'}
+    ]
 });
