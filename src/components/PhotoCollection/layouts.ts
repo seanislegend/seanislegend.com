@@ -409,7 +409,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 1, 2, 3, 4, 5]},
         {layout: 'FourInARow', photos: [6, 8, 7, 9]}
     ],
-    'woodshedding-two-cask-pour-stout': [
+    'woodshedding-high-low-pressure-stout': [
         {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [5, 16, 7]},
         {layout: 'Spacer'},
         {layout: 'ThreeInARow', photos: [8, 3, 15]},
