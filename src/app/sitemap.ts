@@ -27,6 +27,11 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
             url: `${process.env.NEXT_PUBLIC_URL}/personal`,
             priority: 1,
             lastModified: getLastModifiedDate().toISOString()
+        },
+        {
+            url: `${process.env.NEXT_PUBLIC_URL}/categories`,
+            priority: 1,
+            lastModified: getLastModifiedDate().toISOString()
         }
     ];
 

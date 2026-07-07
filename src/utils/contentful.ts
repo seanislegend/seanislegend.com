@@ -650,6 +650,82 @@ export const fetchAllTags = async () => {
 // `use cache` directive is unavailable. It must use this uncached variant.
 export const fetchAllTagsUncached = fetchAllTagsData;
 
+// Each category is a collection flagged as a tag page (e.g. the "beer" tag has a
+// "beer-photography" collection). We render those collections' curated titles and
+// descriptions, and pull a representative preview photo from the collection's tag,
+// since the category collections themselves don't store photos.
+const fetchCategoriesData = async (): Promise<Category[]> => {
+    const query = `query {
+        collectionCollection(limit: 50, order: [title_ASC], where: {isTagPage: true}) {
+            items {
+                description
+                slug
+                title
+                tagsCollection(limit: 1) {
+                    items {
+                        slug
+                        linkedFrom {
+                            photoCollection(limit: 50) {
+                                items {
+                                    base64
+                                    isFeatured
+                                    sys {
+                                        publishedAt
+                                    }
+                                    thumbnail: photo {
+                                        height
+                                        width
+                                        url(transform: {format: WEBP, width: 800})
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }`;
+    const response: any = await fetchContent(query);
+    const items = response.data?.collectionCollection?.items ?? [];
+
+    return items.reduce((acc: Category[], collection: any) => {
+        const tag = collection.tagsCollection?.items?.[0];
+
+        // Only keep the canonical category collection for each tag (e.g. the "beer"
+        // tag maps to "beer-photography", not SEO variants like "london-beer-photography").
+        if (!tag || collection.slug !== `${tag.slug}-photography`) return acc;
+
+        // prefer the most recently updated featured photo as the preview, falling
+        // back to the first available photo
+        const photos = tag.linkedFrom?.photoCollection?.items ?? [];
+        const previewPhoto =
+            [...photos]
+                .filter((photo: any) => photo?.isFeatured)
+                .sort(
+                    (a: any, b: any) =>
+                        new Date(b?.sys?.publishedAt ?? 0).getTime() -
+                        new Date(a?.sys?.publishedAt ?? 0).getTime()
+                )[0] ?? photos[0];
+
+        acc.push({
+            description: collection.description,
+            previewPhoto,
+            slug: collection.slug,
+            title: collection.title
+        });
+
+        return acc;
+    }, []);
+};
+
+export const fetchCategories = async () => {
+    'use cache';
+    cacheTag('contentful', 'collections', 'tags');
+    cacheLife('days');
+
+    return fetchCategoriesData();
+};
+
 export const fetchAllPhotosForTag = async (tag: string) => {
     'use cache';
     cacheTag('contentful', `tag:${tag}`);

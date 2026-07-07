@@ -75,3 +75,10 @@ interface Tag {
 }
 
 type TagListItem = Pick<Tag, 'name' | 'slug'>;
+
+interface Category {
+    description: string;
+    previewPhoto?: Pick<Photo, 'base64' | 'thumbnail'>;
+    slug: string;
+    title: string;
+}

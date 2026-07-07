@@ -8,7 +8,9 @@ interface Props {
 }
 
 const DynamicMenuCategories: React.FC<Props> = ({tags}) => {
-    if (!tags.length) return null;
+    const visibleTags = tags.filter(tag => tag.slug !== 'travel');
+
+    if (!visibleTags.length) return null;
 
     return (
         <NavigationMenu.Item>
@@ -20,7 +22,7 @@ const DynamicMenuCategories: React.FC<Props> = ({tags}) => {
             </NavigationMenu.Trigger>
             <NavigationMenu.Content className="data-ending-style:data-activation-direction=left:translate-x-[50%] data-ending-style:data-activation-direction=right:translate-x-[-50%] data-starting-style:data-activation-direction=left:translate-x-[-50%] data-starting-style:data-activation-direction=right:translate-x-[50%] animate-menu-card-in h-full w-[250px] list-none px-4 py-4 transition-[opacity,transform,translate] duration-(--duration) ease-(--easing) data-ending-style:opacity-0">
                 <ul className="grid grid-cols-1 gap-y-2.5" data-testid="categories-grid">
-                    {tags.map(tag => (
+                    {visibleTags.map(tag => (
                         <li key={tag.slug} className="flex">
                             <NavigationMenu.Item
                                 render={() => (
@@ -34,6 +36,18 @@ const DynamicMenuCategories: React.FC<Props> = ({tags}) => {
                             />
                         </li>
                     ))}
+                    <li className="border-accent mt-1 flex border-t-2 pt-2.5">
+                        <NavigationMenu.Item
+                            render={() => (
+                                <TextLink
+                                    className="group grow font-medium no-underline! hover:underline! active:underline!"
+                                    href="/categories"
+                                >
+                                    View all categories
+                                </TextLink>
+                            )}
+                        />
+                    </li>
                 </ul>
             </NavigationMenu.Content>
         </NavigationMenu.Item>
