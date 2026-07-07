@@ -74,7 +74,10 @@ interface WorkTypeSectionProps {
 }
 
 const WorkTypeSection: React.FC<WorkTypeSectionProps> = ({label, typeKey, links, onNavigate}) => (
-    <CollapsibleSection label={label} testId={`mobile-menu-worktype-toggle-${typeKey}`}>
+    <CollapsibleSection
+        label={`${label} photography`}
+        testId={`mobile-menu-worktype-toggle-${typeKey}`}
+    >
         <div className="flex flex-col space-y-2">
             {links.map(link => (
                 <SiteMenuLink
@@ -161,7 +164,7 @@ const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
                                     })}
                                     {tags?.length > 0 && (
                                         <CollapsibleSection
-                                            label="Browse by category"
+                                            label="Categories"
                                             testId="mobile-menu-tags-toggle"
                                         >
                                             <div className="ml-4">
