@@ -252,9 +252,9 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'GreenHopFeaturedOneLandScapeTwoPortrait', photos: [56, 8, 28]},
         {layout: 'FourInARow', photos: [48, 51, 6, 44], props: {className: 'hidden md:grid'}},
         {layout: 'Spacer'},
-        {layout: 'LandscapeTwoBigFourSmall', photos: [46, 27, 57, 11, 52, 26]},
+        {layout: 'LandscapeTwoBigFourSmall', photos: [46, 58, 57, 11, 52, 26]},
         {layout: 'Spacer'},
-        {layout: 'ThreeInARow', photos: [47, 54, 31]},
+        {layout: 'ThreeInARow', photos: [54, 59, 31]},
         {layout: 'FourInARow', photos: [53, 2, 45, 10]},
         {layout: 'Spacer'},
         {layout: 'LandscapeTwoBigFourSmall', photos: [29, 16, 22, 13, 3, 0]}
@@ -408,6 +408,17 @@ export const layouts: Record<string, PhotoBlock[]> = {
     'uppers-and-downers-coffee-and-beer-festival': [
         {layout: 'LandscapeTwoBigFourSmall', photos: [0, 1, 2, 3, 4, 5]},
         {layout: 'FourInARow', photos: [6, 8, 7, 9]}
+    ],
+    'woodshedding-two-cask-pour-stout': [
+        {layout: 'TwoPortraitOneLandscapeWithPadding', photos: [5, 16, 7]},
+        {layout: 'Spacer'},
+        {layout: 'ThreeInARow', photos: [8, 3, 15]},
+        {layout: 'Spacer'},
+        {layout: 'TwoInARow', photos: [2, 11]},
+        {layout: 'Spacer'},
+        {layout: 'LandscapeOneBigTwoMedium', photos: [0, 1, 9]},
+        {layout: 'Spacer'},
+        {layout: 'TwoPortraitTwoLandscape', photos: [12, 10, 6, 4]}
     ]
 };
 
