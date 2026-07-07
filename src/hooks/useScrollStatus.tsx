@@ -24,6 +24,7 @@ const useScrollStatus = (threshold: number = 50) => {
     }, [threshold]);
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- initial sync to the real scroll position on mount (page may load already scrolled)
         handleScroll();
         window.addEventListener('scroll', handleScroll, {passive: true});
 

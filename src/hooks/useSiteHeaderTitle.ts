@@ -22,7 +22,7 @@ const useSiteHeaderTitle = (
 
     useEffect(() => {
         updatePageHeaderData();
-    }, [updatePageHeaderData]);
+    }, []);
 };
 
 export default useSiteHeaderTitle;

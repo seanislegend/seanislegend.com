@@ -27,6 +27,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
 
     useLayoutEffect(() => {
         const $portal = document.querySelector<HTMLElement>('[data-layout-main="default"]');
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- portal target only exists in the dom after mount; state triggers the portal render
         if ($portal) setPortalContainer($portal);
     }, []);
 

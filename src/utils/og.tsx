@@ -19,6 +19,7 @@ const generatedOneImage = async (photo: string) => {
     return new ImageResponse(
         (
             <ImageWrapper>
+                {/* eslint-disable-next-line @next/next/no-img-element -- satori's ImageResponse only supports raw img, not next/image */}
                 <img
                     key={photo}
                     alt=""

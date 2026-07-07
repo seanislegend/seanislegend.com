@@ -1,5 +1,6 @@
 'use client';
 
+/* eslint-disable react-hooks/refs -- refs are provided via context and only forwarded to ref props here, never read during render */
 import {use} from 'react';
 import {track} from '@vercel/analytics/react';
 import {layouts} from '@/components/PhotoCollection/layouts';
