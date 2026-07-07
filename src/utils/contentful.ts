@@ -20,9 +20,18 @@ export const fetchContent = cache(async (query: string, preview: boolean = false
         );
         const response = await data.json();
 
+        if (!data.ok || response.errors) {
+            console.error(
+                'contentful fetchContent:',
+                data.status,
+                JSON.stringify(response.errors ?? response)
+            );
+            throw new Error('Contentful query failed');
+        }
+
         return response;
     } catch (error) {
-        console.log(error);
+        console.error('contentful fetchContent:', error);
         throw new Error('Could not fetch data from Contentful!');
     }
 });
