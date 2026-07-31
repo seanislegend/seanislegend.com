@@ -250,7 +250,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
     ],
     home: [
         {layout: 'GreenHopFeaturedOneLandScapeTwoPortrait', photos: [56, 8, 28]},
-        {layout: 'FourInARow', photos: [48, 51, 6, 44], props: {className: 'hidden md:grid'}},
+        {layout: 'FourInARow', photos: [48, 51, 6, 60], props: {className: 'hidden md:grid'}},
         {layout: 'Spacer'},
         {layout: 'LandscapeTwoBigFourSmall', photos: [46, 58, 57, 11, 52, 26]},
         {layout: 'Spacer'},
