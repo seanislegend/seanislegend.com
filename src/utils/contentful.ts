@@ -20,13 +20,23 @@ export const fetchContent = cache(async (query: string, preview: boolean = false
         );
         const response = await data.json();
 
-        if (!data.ok || response.errors) {
+        if (!data.ok || (response.errors && !response.data)) {
             console.error(
                 'contentful fetchContent:',
                 data.status,
                 JSON.stringify(response.errors ?? response)
             );
             throw new Error('Contentful query failed');
+        }
+
+        // Contentful can return partial errors (e.g. UNRESOLVABLE_LINK, when a linked
+        // entry is a draft or unpublished) alongside otherwise valid data, nulling out
+        // just the unresolvable items. Log these but don't fail the whole request.
+        if (response.errors) {
+            console.warn(
+                'contentful fetchContent: partial errors',
+                JSON.stringify(response.errors)
+            );
         }
 
         return response;
