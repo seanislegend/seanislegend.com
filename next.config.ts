@@ -84,6 +84,11 @@ const nextConfig: NextConfig = {
                 source: '/community-and-craft-beer-in-hebden-bridge/:slug*',
                 destination: '/hebden-bridge-craft-beer',
                 permanent: true
+            },
+            {
+                source: '/the-sutton-arms-pub-clerkenwell/:slug*',
+                destination: '/sutton-arms-pub-clerkenwell',
+                permanent: true
             }
         ];
 
