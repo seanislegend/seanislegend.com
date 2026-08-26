@@ -360,7 +360,7 @@ export const layouts: Record<string, PhotoBlock[]> = {
         {layout: 'FourInARow', photos: [18, 13, 25, 36]},
         {layout: 'ContentSection', sections: [1]}
     ],
-    'the-sutton-arms-pub-clerkenwell': [
+    'sutton-arms-pub-clerkenwell': [
         {layout: 'LandscapeOneBigTwoMedium', photos: [21, 9, 11]},
         {layout: 'Spacer'},
         {layout: 'OnePortraitTwoLandscape', photos: [4, 16, 41]},
