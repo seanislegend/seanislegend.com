@@ -91,26 +91,26 @@ const LandscapeTwoBigFourSmall: React.FC<PhotoBlockComponent> = ({
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
                 <Column className="col-span-12">
-                    <PhotoSlot blockPhotos={photos} index={0} {...photoSlotProps} />
+                    <PhotoSlot blockPhotos={photos} index={0} columnSize={6} {...photoSlotProps} />
                 </Column>
                 <Column className="col-span-6">
-                    <PhotoSlot blockPhotos={photos} index={1} columnSize={6} {...photoSlotProps} />
+                    <PhotoSlot blockPhotos={photos} index={1} columnSize={4} {...photoSlotProps} />
                 </Column>
                 <Column className="col-span-6">
-                    <PhotoSlot blockPhotos={photos} index={2} columnSize={6} {...photoSlotProps} />
+                    <PhotoSlot blockPhotos={photos} index={2} columnSize={4} {...photoSlotProps} />
                 </Column>
             </Grid>
         </Column>
         <Column className="col-span-12 md:col-span-6">
             <Grid hasTestId={false}>
                 <Column className="col-span-6">
-                    <PhotoSlot blockPhotos={photos} index={3} columnSize={6} {...photoSlotProps} />
+                    <PhotoSlot blockPhotos={photos} index={3} columnSize={64} {...photoSlotProps} />
                 </Column>
                 <Column className="col-span-6">
-                    <PhotoSlot blockPhotos={photos} index={4} columnSize={6} {...photoSlotProps} />
+                    <PhotoSlot blockPhotos={photos} index={4} columnSize={4} {...photoSlotProps} />
                 </Column>
                 <Column className="col-span-12">
-                    <PhotoSlot blockPhotos={photos} index={5} {...photoSlotProps} />
+                    <PhotoSlot blockPhotos={photos} index={5} columnSize={6} {...photoSlotProps} />
                 </Column>
             </Grid>
         </Column>
