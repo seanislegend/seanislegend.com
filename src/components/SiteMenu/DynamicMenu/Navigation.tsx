@@ -21,6 +21,15 @@ const WORK_TYPES: {key: NonNullable<Link['workType']>; label: string}[] = [
     {key: 'personal', label: 'Personal'}
 ];
 
+// the grid only shows two rows (4/5/6 columns at lg/xl/2xl), so hide any collections
+// that would push the "view all" card out of the last visible slot
+const getCollectionVisibilityClass = (index: number) => {
+    if (index >= 11) return 'hidden';
+    if (index >= 9) return 'hidden 2xl:block';
+    if (index >= 7) return 'hidden xl:block';
+    return undefined;
+};
+
 const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
     const pathname = usePathname();
     const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
@@ -54,8 +63,11 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
                                         className="grid auto-rows-[0px] grid-cols-4 grid-rows-[repeat(2,auto)] gap-2.5 overflow-hidden xl:grid-cols-5 2xl:grid-cols-6"
                                         data-testid={`${key}-collections-grid`}
                                     >
-                                        {workTypeLinks.map(link => (
-                                            <NavigationMenu.Item key={link.url}>
+                                        {workTypeLinks.map((link, index) => (
+                                            <NavigationMenu.Item
+                                                className={getCollectionVisibilityClass(index)}
+                                                key={link.url}
+                                            >
                                                 <Collection link={link} />
                                             </NavigationMenu.Item>
                                         ))}
