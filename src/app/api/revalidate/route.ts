@@ -15,6 +15,7 @@ const tagUrl = (slug: string) => `${process.env.NEXT_PUBLIC_URL}/${slug}-photogr
 //   collection:<slug>     – a single collection page (and its photo detail pages)
 //   editorials            – the editorial list
 //   editorial:<slug>      – a single editorial page ('services' included)
+//   links                 – the /links page and its links
 //   tag:<slug>            – a single tag page
 const revalidate = (tag: string) => {
     if (process.env.NODE_ENV === 'development') {
@@ -45,6 +46,10 @@ const revalidateForType = async (body: any) => {
             urls.add(pageUrl(slug));
         }
         revalidate('editorials');
+    } else if (type === 'linksPage' || type === 'link') {
+        // the links page and the links listed on it share a single cache tag
+        revalidate('links');
+        urls.add(pageUrl('links'));
     } else if (type === 'contentSection') {
         // revalidate editorial pages that contain this content section
         const {data} = await fetchContent(`query {
