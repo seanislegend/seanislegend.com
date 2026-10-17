@@ -16,7 +16,7 @@ interface Props {
 }
 
 const SiteHeaderMenu: React.FC<Props> = ({items = HEADER_MENU_ITEMS}) => (
-    <nav className="row hidden items-center gap-1 lg:flex" data-testid="main-navigation-static">
+    <nav aria-label="Main" className="row hidden items-center gap-1 lg:flex" data-testid="main-navigation-static">
         <SiteHeaderLink href="/commercial">Commercial</SiteHeaderLink>
         <SiteHeaderLink href="/personal">Personal</SiteHeaderLink>
         <SiteHeaderLink href="/categories">Categories</SiteHeaderLink>

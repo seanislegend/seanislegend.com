@@ -37,7 +37,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({label, testId, c
         <div className="bg-accent/50 flex flex-col rounded-lg p-1">
             <button
                 aria-expanded={isOpen}
-                className="flex items-center justify-between px-2.5 py-1.5 text-[16px] font-medium uppercase focus:outline-none"
+                className="flex items-center justify-between px-2.5 py-1.5 text-[16px] font-medium uppercase"
                 data-testid={testId}
                 onClick={() => setIsOpen(prev => !prev)}
                 type="button"
@@ -113,7 +113,7 @@ const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
                 aria-controls="mobile-menu"
                 aria-expanded={isMenuOpen}
                 aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-                className="relative z-30 size-6 focus:ring-2 focus:outline-none lg:hidden print:hidden"
+                className="relative z-30 size-6 lg:hidden print:hidden"
                 data-testid="mobile-menu-toggle"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 type="button"
@@ -137,6 +137,7 @@ const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
                         <Container>
                             <div className="flex h-full flex-col space-y-4 py-4">
                                 <nav
+                                    aria-label="Main"
                                     className="-ml-2 flex flex-col space-y-2"
                                     data-testid="mobile-menu-collections-navigation"
                                 >

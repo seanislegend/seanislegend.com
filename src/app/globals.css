@@ -91,6 +91,19 @@
     }
 }
 
+@layer base {
+    :focus-visible {
+        outline: 2px solid var(--color-theme-text);
+        outline-offset: 2px;
+    }
+
+    @media (forced-colors: active) {
+        [role='radio'][data-checked] > [data-checked] {
+            background: CanvasText;
+        }
+    }
+}
+
 @layer utilities {
     html {
         scroll-padding-top: calc(var(--site-header-height) + 4rem);
@@ -154,7 +167,7 @@
     [data-theme='dark'] {
         --bg: var(--color-black);
         --text: var(--color-beige-50);
-        --dimmed-text: var(--color-beige-800);
+        --dimmed-text: var(--color-beige-400);
         --title-text: var(--color-beige-50);
         --accent: var(--color-beige-950);
         --button-bg: #000;

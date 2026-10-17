@@ -25,7 +25,7 @@ const NewsletterForm = () => {
                                 aria-label="Email Address"
                                 aria-describedby={hasError ? 'email-error' : undefined}
                                 className={clsx(
-                                    'border-accent block w-full max-w-[500px] rounded border-2 bg-white px-3 py-2 text-base text-black focus:ring-2 focus:ring-white/20 focus:outline-none',
+                                    'border-accent block w-full max-w-[500px] rounded border-2 bg-white px-3 py-2 text-base text-black',
                                     {'border-red-200 bg-red-50 text-red-800': hasError}
                                 )}
                                 id="email"
@@ -50,7 +50,7 @@ const NewsletterForm = () => {
             <small className="text-dimmed-text text-xs">
                 By continuing you agree to the{' '}
                 <TextLink
-                    className="underline underline-offset-2 hover:decoration-2 focus:ring-2 focus:ring-offset-2 focus:outline-hidden"
+                    className="underline underline-offset-2 hover:decoration-2"
                     href="/privacy"
                 >
                     privacy policy

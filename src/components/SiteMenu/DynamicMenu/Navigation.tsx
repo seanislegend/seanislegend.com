@@ -42,7 +42,7 @@ const SiteHeaderDynamicMenuNavigation: React.FC<Props> = ({links, tags}) => {
 
     return (
         <>
-            <NavigationMenu.Root closeDelay={300} data-testid="main-navigation" key={pathname}>
+            <NavigationMenu.Root aria-label="Main" closeDelay={300} data-testid="main-navigation" key={pathname}>
                 <NavigationMenu.List className="relative z-30 hidden flex-row items-center gap-1 lg:flex">
                     {WORK_TYPES.map(({key, label}) => {
                         const workTypeLinks = links.filter(link => link.workType === key);

@@ -5,17 +5,18 @@ import clsx from 'clsx';
 const errorControlClassName = 'border-red-400 bg-red-950/20';
 
 const baseControlClassName =
-    'border-accent bg-white block w-full rounded border-2 bg-transparent px-2.5 py-2 md:px-3 md:py-2.5 text-base text-black placeholder:text-dimmed-text transition-colors focus:border-theme-text/40 focus:ring-2 focus:ring-white/20 focus:outline-none';
+    'border-accent bg-white block w-full rounded border-2 bg-transparent px-2.5 py-2 md:px-3 md:py-2.5 text-base text-black placeholder:text-dimmed-text transition-colors focus:border-theme-text/40';
 
 interface FieldErrorMessageProps {
     error?: FieldError;
+    name: string;
 }
 
-export const FieldErrorMessage = ({error}: FieldErrorMessageProps) => {
+export const FieldErrorMessage = ({error, name}: FieldErrorMessageProps) => {
     if (!error?.message) return null;
 
     return (
-        <p className="mt-1 text-red-400" role="alert">
+        <p className="mt-1 text-red-400" id={`${name}-error`} role="alert">
             {error.message}
         </p>
     );
@@ -42,7 +43,7 @@ interface FormFieldProps {
 
 const FormField = ({children, className, error, hint, htmlFor, label}: FormFieldProps) => (
     <div className={className}>
-        <label className="sr-only" htmlFor={htmlFor}>
+        <label className="mb-1 block text-sm" htmlFor={htmlFor}>
             {label}
         </label>
         {children}
@@ -51,9 +52,21 @@ const FormField = ({children, className, error, hint, htmlFor, label}: FormField
                 {hint}
             </p>
         ) : null}
-        <FieldErrorMessage error={error} />
+        <FieldErrorMessage error={error} name={htmlFor} />
     </div>
 );
+
+// links a control to its hint and error so screen readers announce them with the field
+export const getFieldA11yProps = (name: string, error?: FieldError, hasHint = false) => {
+    const describedBy = [hasHint && `${name}-hint`, error?.message && `${name}-error`]
+        .filter(Boolean)
+        .join(' ');
+
+    return {
+        'aria-describedby': describedBy || undefined,
+        'aria-invalid': !!error || undefined
+    };
+};
 
 export const getFieldControlClassName = (hasError: boolean, className?: string) =>
     clsx(baseControlClassName, hasError && errorControlClassName, className);

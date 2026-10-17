@@ -28,9 +28,8 @@ const SiteHeader: React.FC<React.PropsWithChildren> = ({children}) => {
             <div className="mx-auto flex w-full max-w-440 items-center justify-between gap-8">
                 <span className="relative z-30 flex flex-nowrap items-center">
                     <Link
-                        aria-label="Home"
                         className={clsx(
-                            'group relative inline-flex shrink-0 items-center py-2 text-sm outline-hidden md:text-base',
+                            'group relative inline-flex shrink-0 items-center py-2 text-sm md:text-base',
                             {'pointer-events-none': isHome}
                         )}
                         data-testid="site-header-logo"
