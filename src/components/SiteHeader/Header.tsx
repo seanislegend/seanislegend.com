@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import {Link} from 'next-view-transitions';
+import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {LeftArrowIcon} from '@/components/Icon/LeftArrow';
 import Logo from '@/components/Logo';

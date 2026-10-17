@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import {Link} from 'next-view-transitions';
+import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import Button from '@/components/Button';
 import DefaultLayout from '@/components/Layouts/Default';

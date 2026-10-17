@@ -1,4 +1,4 @@
-import {Link} from 'next-view-transitions';
+import Link from 'next/link';
 import {notFound} from 'next/navigation';
 import DefaultLayout from '@/components/Layouts/Default';
 import Markdown from '@/components/Markdown';

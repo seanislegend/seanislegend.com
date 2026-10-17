@@ -1,64 +1,58 @@
+import {ViewTransition} from 'react';
 import {Analytics} from '@vercel/analytics/react';
 import {SpeedInsights} from '@vercel/speed-insights/next';
 import {GeistSans} from 'geist/font/sans';
 import {LazyMotion, domAnimation} from 'motion/react';
-import {ViewTransitions} from 'next-view-transitions';
 import Script from 'next/script';
 import MotionConfigProvider from '@/components/MotionConfigProvider';
 import config, {jsonLd} from '@/utils/config';
 import {jsonLdScriptProps} from '@/utils/helpers';
 import './globals.css';
 
-// Deliberate Cache Components block. next-view-transitions' <ViewTransitions>
-// provider calls usePathname() and wraps <html>, so it cannot be moved behind a
-// <Suspense> boundary. This opt-out covers the whole route subtree; individual
-// routes still partial-prerender their cached content.
-export const instant = false;
-
 interface Props {
     children: React.ReactNode;
 }
 
 const RootLayout = async ({children}: Props) => (
-    <ViewTransitions>
-        <html
-            className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}
-            data-scroll-behavior="smooth"
-            lang="en"
-        >
-            <head>
-                <link rel="preconnect" href="https://images.ctfassets.net" />
-                <script {...jsonLdScriptProps(jsonLd)} />
-            </head>
-            <body className="flex grow flex-col sm:min-h-full">
-                {process.env.GOOGLE_ADVERTISING_ID && (
-                    <Script
-                        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ADVERTISING_ID}`}
-                        strategy="afterInteractive"
-                    />
-                )}
-                {process.env.GOOGLE_ADVERTISING_ID && (
-                    <Script id="google-analytics" strategy="afterInteractive">
-                        {`
+    <html
+        className={`flex min-h-full grow flex-col antialiased ${GeistSans.className}`}
+        data-scroll-behavior="smooth"
+        lang="en"
+    >
+        <head>
+            <link rel="preconnect" href="https://images.ctfassets.net" />
+            <script {...jsonLdScriptProps(jsonLd)} />
+        </head>
+        <body className="flex grow flex-col sm:min-h-full">
+            {process.env.GOOGLE_ADVERTISING_ID && (
+                <Script
+                    src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ADVERTISING_ID}`}
+                    strategy="afterInteractive"
+                />
+            )}
+            {process.env.GOOGLE_ADVERTISING_ID && (
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
                         gtag('js', new Date());
                         gtag('config', '${process.env.GOOGLE_ADVERTISING_ID}');
                     `}
-                    </Script>
-                )}
-                <LazyMotion features={domAnimation}>
-                    <MotionConfigProvider>{children}</MotionConfigProvider>
-                </LazyMotion>
-                {process.env.NODE_ENV === 'production' && (
-                    <>
-                        <Analytics />
-                        <SpeedInsights />
-                    </>
-                )}
-            </body>
-        </html>
-    </ViewTransitions>
+                </Script>
+            )}
+            <LazyMotion features={domAnimation}>
+                <MotionConfigProvider>
+                    <ViewTransition>{children}</ViewTransition>
+                </MotionConfigProvider>
+            </LazyMotion>
+            {process.env.NODE_ENV === 'production' && (
+                <>
+                    <Analytics />
+                    <SpeedInsights />
+                </>
+            )}
+        </body>
+    </html>
 );
 
 export const metadata = {

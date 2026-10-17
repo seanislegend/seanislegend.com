@@ -1,6 +1,6 @@
 'use client';
 
-import {Link} from 'next-view-transitions';
+import Link from 'next/link';
 import {GrabIcon} from '@/components/Icon/Grab';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
