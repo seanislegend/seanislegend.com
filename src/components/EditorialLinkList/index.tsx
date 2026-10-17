@@ -1,5 +1,5 @@
-import {Link} from 'next-view-transitions';
 import Image from 'next/image';
+import Link from 'next/link';
 import {RightArrowIcon} from '@/components/Icon/RightArrow';
 import DefaultLayout from '@/components/Layouts/Default';
 import Markdown from '@/components/Markdown';

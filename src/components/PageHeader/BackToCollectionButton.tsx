@@ -2,7 +2,7 @@
 
 import {useCallback, useEffect} from 'react';
 import {useSetAtom} from 'jotai';
-import {Link} from 'next-view-transitions';
+import Link from 'next/link';
 import {useParams} from 'next/navigation';
 import {pageHeaderDataAtom} from '@/utils/store';
 

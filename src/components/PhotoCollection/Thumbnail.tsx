@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import {Link} from 'next-view-transitions';
+import Link from 'next/link';
 import {RightArrowIcon} from '@/components/Icon/RightArrow';
 import PhotoEditButton from '@/components/PhotoCollection/EditButton';
 import ThumbnailImage from './ThumbnailImage';
