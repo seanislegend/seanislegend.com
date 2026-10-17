@@ -110,7 +110,9 @@ export const getCollectionSeo = (collection: PhotoCollection) => {
         title = collection.metaTitle;
     }
 
-    title = titleWithCategoryPrefix(title, collection.category);
+    if (collection.slug !== 'home') {
+        title = titleWithCategoryPrefix(title, collection.category);
+    }
 
     return {
         alternates: {

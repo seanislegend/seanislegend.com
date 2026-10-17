@@ -124,7 +124,11 @@ const config = {
             site: '@seanislegend'
         },
         icons: {
-            shortcut: '/images/favicon-32x32.png'
+            icon: [
+                {url: '/favicon.ico', sizes: '16x16 32x32'},
+                {url: '/images/favicon-32x32.png', sizes: '32x32', type: 'image/png'}
+            ],
+            apple: '/images/apple-touch-icon.png'
         }
     }
 };

@@ -110,6 +110,9 @@ const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
     return (
         <>
             <button
+                aria-controls="mobile-menu"
+                aria-expanded={isMenuOpen}
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                 className="relative z-30 size-6 focus:ring-2 focus:outline-none lg:hidden print:hidden"
                 data-testid="mobile-menu-toggle"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -128,6 +131,7 @@ const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
                 >
                     <div
                         key={isMenuOpen ? 'collections-open' : 'collections-closed'}
+                        id="mobile-menu"
                         className="bg-theme-bg animate-in fade-in slide-in-from-bottom-1.5 h-[calc(100vh-var(--site-header-height))] overflow-y-auto duration-300 lg:hidden"
                     >
                         <Container>
