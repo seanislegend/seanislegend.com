@@ -10,7 +10,7 @@ import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
 import {Heading2, Heading4} from '@/components/UI/Headings';
 import config from '@/utils/config';
-import {fetchExhibition} from '@/utils/contentful';
+import {fetchAllExhibitions, fetchExhibition} from '@/utils/contentful';
 
 interface Props {
     params: Promise<{exhibitionSlug: string; photoSlug: string}>;
@@ -92,6 +92,16 @@ export const generateMetadata = async ({params}: Props): Promise<Metadata | null
         title,
         twitter: {card: 'summary_large_image', description, title}
     };
+};
+
+export const generateStaticParams = async () => {
+    const exhibitions = await fetchAllExhibitions();
+    return exhibitions.flatMap(exhibition =>
+        exhibition.photosCollection.items.map(photo => ({
+            exhibitionSlug: exhibition.slug,
+            photoSlug: photo.slug
+        }))
+    );
 };
 
 export default ExhibitionPage;

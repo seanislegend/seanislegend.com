@@ -100,4 +100,13 @@ export const generateMetadata = async (): Promise<Metadata | null> => {
     };
 };
 
+export const generateStaticParams = async () => {
+    const exhibition = await fetchExhibition('a-beers-place-the-kings-arms');
+    if (!exhibition) return [];
+
+    return exhibition.photosCollection.items.map((photo: ExhibitionPhoto) => ({
+        photoSlug: photo.slug
+    }));
+};
+
 export default ExhibitionPage;
