@@ -15,7 +15,13 @@ jobs:
               with:
                   bun-version: latest
             - run: bun install
+            # next typegen loads next.config.ts, whose redirects fetch tags from Contentful
             - run: bun run typecheck
+              env:
+                  CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+                  CONTENTFUL_ENVIRONMENT_ID: ${{ secrets.CONTENTFUL_ENVIRONMENT_ID }}
+                  CONTENTFUL_DELIVERY_API_KEY: ${{ secrets.CONTENTFUL_DELIVERY_API_KEY }}
+                  CONTENTFUL_PREVIEW_API_KEY: ${{ secrets.CONTENTFUL_PREVIEW_API_KEY }}
             - run: bun run lint
     test:
         name: E2E Tests
