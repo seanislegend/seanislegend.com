@@ -12,7 +12,7 @@ import {Heading4} from '@/components/UI/Headings';
 import SwipeableContainer from '@/components/UI/SwipeableContainer';
 import TitleTextGrid from '@/components/UI/TitleTextGrid';
 import config from '@/utils/config';
-import {fetchExhibition} from '@/utils/contentful';
+import {fetchAllExhibitions, fetchExhibition} from '@/utils/contentful';
 
 interface Props {
     params: Promise<{exhibitionSlug: string}>;
@@ -128,6 +128,11 @@ export const generateMetadata = async ({params}: Props): Promise<Metadata | null
         title,
         twitter: {card: 'summary_large_image', description, title}
     };
+};
+
+export const generateStaticParams = async () => {
+    const exhibitions = await fetchAllExhibitions();
+    return exhibitions.map(exhibition => ({exhibitionSlug: exhibition.slug}));
 };
 
 export default ExhibitionPage;

@@ -903,3 +903,28 @@ const fetchExhibitionData = async (slug: string, preview: boolean = false) => {
 
     return response?.data?.exhibitionCollection?.items?.[0] || null;
 };
+
+export const fetchAllExhibitions = async () => {
+    'use cache';
+    cacheTag('contentful', 'exhibitions');
+    cacheLife('days');
+
+    const query = `query {
+        exhibitionCollection(limit: 100) {
+            items {
+                slug
+                photosCollection {
+                    items {
+                        slug
+                    }
+                }
+            }
+        }
+    }`;
+    const response: any = await fetchContent(query);
+
+    return (response?.data?.exhibitionCollection?.items ?? []) as {
+        slug: string;
+        photosCollection: {items: {slug: string}[]};
+    }[];
+};
