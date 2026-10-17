@@ -8,7 +8,6 @@ import PageHeader from '@/components/PageHeader';
 import PhotoThumbnail from '@/components/PhotoCollection/Thumbnail';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
-import SwipeableContainer from '@/components/UI/SwipeableContainer';
 import TitleTextGrid from '@/components/UI/TitleTextGrid';
 import config from '@/utils/config';
 import {fetchAllExhibitions, fetchExhibition} from '@/utils/contentful';

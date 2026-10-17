@@ -1,6 +1,6 @@
 'use client';
 
-import {useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {RemoveScroll} from 'react-remove-scroll';
 import {AnimatePresence} from 'motion/react';
 import * as m from 'motion/react-m';
@@ -104,6 +104,31 @@ const WorkTypeSection: React.FC<WorkTypeSectionProps> = ({label, typeKey, links,
 
 const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleButtonRef = useRef<HTMLButtonElement>(null);
+
+    // the menu covers the page, so take what's behind it out of the tab order and
+    // accessibility tree, and let escape close it
+    useEffect(() => {
+        if (!isMenuOpen) return;
+
+        const $background = [
+            document.querySelector('[data-layout-main]'),
+            document.querySelector('footer')
+        ].filter(Boolean) as HTMLElement[];
+        $background.forEach($el => $el.setAttribute('inert', ''));
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key !== 'Escape') return;
+            setIsMenuOpen(false);
+            toggleButtonRef.current?.focus();
+        };
+        document.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            $background.forEach($el => $el.removeAttribute('inert'));
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isMenuOpen]);
 
     const ToggleButtonIcon = isMenuOpen ? CrossIcon : MenuIcon;
 
@@ -116,6 +141,7 @@ const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
                 className="relative z-30 size-6 lg:hidden print:hidden"
                 data-testid="mobile-menu-toggle"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                ref={toggleButtonRef}
                 type="button"
             >
                 <ToggleButtonIcon className="text-theme-text h-auto w-6" />
