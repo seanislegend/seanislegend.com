@@ -48,14 +48,14 @@ test.describe('Collections', () => {
 
         test('should display title and description', async ({page}) => {
             await expect(
-                page.getByText('Example collection 1 page title', {exact: true})
+                page.getByRole('heading', {name: 'Example collection 1 page title', exact: true})
             ).toBeVisible();
             await expect(page.getByText('Example collection 1 description.')).toBeVisible();
         });
 
-        test('should display a get in touch cta', async ({page}) => {
-            await page.getByText('Get in touch').click();
-            await expect(page).toHaveURL('/contact');
+        test('should display a view work cta', async ({page}) => {
+            await page.getByRole('link', {name: 'View work'}).click();
+            await expect(page).toHaveURL('/commercial');
         });
 
         test('should display a custom cta link with referer', async ({page}) => {
@@ -77,11 +77,13 @@ test.describe('Collections', () => {
         });
 
         test('should display a related collections section', async ({page}) => {
-            await expect(page.getByTestId('related-collections')).toBeVisible();
-            await expect(
-                page.getByTestId('related-collections').getByText('Example collection 2')
-            ).toBeVisible();
-            await page.getByTestId('related-collections').getByText('Example collection 2').click();
+            const relatedCollections = page.getByTestId('related-collections');
+            const relatedLink = relatedCollections.getByRole('link', {
+                name: /Example collection 2/
+            });
+            await expect(relatedCollections).toBeVisible();
+            await expect(relatedLink).toBeVisible();
+            await relatedLink.click();
             await expect(page).toHaveURL('/example-collection-2');
         });
 
@@ -259,8 +261,10 @@ test.describe('Collections', () => {
 
         test('should allow navigation to previous photo', async ({page}) => {
             await page.getByText('Next photo').click();
-            await page.getByText('Previous photo').click();
             await expect(page).toHaveURL('/example-collection-1/example-photo-2-slug');
+            // the previous photo page stays mounted (hidden) after client-side navigation
+            await page.getByText('Previous photo').filter({visible: true}).click();
+            await expect(page).toHaveURL('/example-collection-1/example-photo-1-slug');
         });
 
         test('should allow navigation back to all photos', async ({page}) => {
@@ -269,9 +273,13 @@ test.describe('Collections', () => {
         });
 
         test('should allow keyboard navigation between photos', async ({page}) => {
-            await page.getByRole('main').focus();
-            await page.keyboard.press('ArrowRight');
-            await expect(page).toHaveURL('/example-collection-1/example-photo-2-slug');
+            // key presses before hydration are dropped, so retry until the listener is attached
+            await expect(async () => {
+                await page.keyboard.press('ArrowRight');
+                await expect(page).toHaveURL('/example-collection-1/example-photo-2-slug', {
+                    timeout: 1000
+                });
+            }).toPass();
             await page.keyboard.press('ArrowLeft');
             await expect(page).toHaveURL('/example-collection-1/example-photo-1-slug');
         });

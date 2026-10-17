@@ -3,20 +3,19 @@ import {expect, test} from '@playwright/test';
 test.describe('Tags', () => {
     test.describe('List page', () => {
         test.beforeEach(async ({page}) => {
-            await page.goto('/tags');
+            await page.goto('/categories');
         });
 
         test('should load page successfully', async ({page}) => {
-            await expect(page).toHaveTitle(/All tags/);
+            await expect(page).toHaveTitle(/Photography categories/);
         });
 
         test('should display all links', async ({page}) => {
-            await expect(page.getByTestId('link-list')).toBeVisible();
-            await expect(page.getByTestId('link-card')).toHaveCount(4);
+            await expect(page.locator('a.link-item')).toHaveCount(4);
         });
 
         test('should link to detail pages', async ({page}) => {
-            await page.getByText('Example tag 1').first().click();
+            await page.locator('a.link-item', {hasText: 'Example tag 1'}).click();
             await expect(page).toHaveURL('/example-tag-1-photography');
         });
     });
@@ -31,7 +30,9 @@ test.describe('Tags', () => {
         });
 
         test('should display title and description', async ({page}) => {
-            await expect(page.getByText('Example tag 1 photos', {exact: true})).toBeVisible();
+            await expect(
+                page.getByRole('heading', {name: 'Example tag 1 photos', exact: true})
+            ).toBeVisible();
             await expect(page.getByText('Example tag 1 description.')).toBeVisible();
         });
 
@@ -59,12 +60,14 @@ test.describe('Tags', () => {
 
         test('should display all tags', async ({page}) => {
             await expect(page.getByTestId('tags-list')).toBeVisible();
-            // 4 for each tag plus label item
-            await expect(page.getByTestId('tags-list').getByRole('listitem')).toHaveCount(5);
+            await expect(page.getByTestId('tags-list').getByRole('listitem')).toHaveCount(4);
         });
 
         test('should link to all tags', async ({page}) => {
-            await page.getByTestId('tags-list').first().click();
+            await page
+                .getByTestId('tags-list')
+                .getByRole('link', {name: /Example tag 1/})
+                .click();
             await expect(page).toHaveURL('/example-tag-1-photography');
         });
     });

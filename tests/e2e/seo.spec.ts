@@ -6,11 +6,14 @@ test.describe('SEO', () => {
     });
 
     test('should use json-ld for SEO on all pages', async ({page}) => {
-        const jsonLd = page.locator('script[type="application/ld+json"]');
-        await expect(jsonLd).toHaveCount(1);
+        // site-wide schema lives in the head; pages can add their own (e.g. ImageGallery) in main
+        await expect(page.locator('head script[type="application/ld+json"]')).toHaveCount(1);
 
-        const content = await jsonLd.textContent();
-        expect(content).toBeTruthy();
-        expect(() => JSON.parse(content!)).not.toThrow();
+        for (const content of await page
+            .locator('script[type="application/ld+json"]')
+            .allTextContents()) {
+            expect(content).toBeTruthy();
+            expect(() => JSON.parse(content)).not.toThrow();
+        }
     });
 });

@@ -20,7 +20,9 @@ test.describe('Services', () => {
     });
 
     test('should display title and description', async ({page}) => {
-        await expect(page.getByText('Services page title example', {exact: true})).toBeVisible();
+        await expect(
+            page.getByRole('heading', {name: 'Services page title example', exact: true})
+        ).toBeVisible();
         await expect(page.getByText('Services content example.')).toBeVisible();
     });
 
@@ -35,8 +37,11 @@ test.describe('Services', () => {
     });
 
     test('should display service offering enquiry link using service title', async ({page}) => {
-        await expect(page.getByText('Ask about service offering 1 title example')).toBeVisible();
-        await expect(page.getByText('Ask about service offering 1 title example')).toHaveAttribute(
+        const enquiryLink = page.getByRole('link', {
+            name: 'Discuss a service offering 1 title example shoot'
+        });
+        await expect(enquiryLink).toBeVisible();
+        await expect(enquiryLink).toHaveAttribute(
             'href',
             '/contact?service=Service offering 1 title example'
         );
