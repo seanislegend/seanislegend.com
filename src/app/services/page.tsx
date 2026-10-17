@@ -13,11 +13,6 @@ import ContentSections from '@/app/services/ContentSection';
 const ServicesPage = async () => {
     const page = await fetchEditorialPage('services');
 
-    const sections = page.contentSectionsCollection.items.map((section: ContentSection) => ({
-        ...section,
-        id: `${section.id}-photography`
-    }));
-
     return (
         <DefaultLayout theme="light">
             <PageHeader
@@ -26,7 +21,10 @@ const ServicesPage = async () => {
                 pageTitle={page.pageTitle}
             />
             <Container className="space-y-16 lg:space-y-24">
-                <ContentSections sections={sections} />
+                <ContentSections
+                    anchorSuffix="-photography"
+                    sections={page.contentSectionsCollection.items}
+                />
                 <TitleTextGrid
                     heading={<Heading2>Need photography for your brewery, pub, or event?</Heading2>}
                     className="border-accent border-t pt-8"

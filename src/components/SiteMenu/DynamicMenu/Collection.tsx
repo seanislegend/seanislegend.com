@@ -32,7 +32,7 @@ const DynamicMenuCollection: React.FC<Props> = ({link, ...props}) => {
                     blurDataURL={link.photo!.base64}
                     className="absolute inset-0 object-cover transition-opacity duration-300 ease-in-out group-hover/link:opacity-60"
                     fill={true}
-                    placeholder="blur"
+                    placeholder={link.photo.base64 ? 'blur' : 'empty'}
                     quality={80}
                     sizes="(max-width: 240px) 600px, (max-width: 768px) 700px, (max-width: 1024px) 800px"
                     src={link.photo.thumbnail.url}

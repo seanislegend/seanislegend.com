@@ -8,11 +8,12 @@ import TitleTextGrid from '@/components/UI/TitleTextGrid';
 import PhotosGrid from '@/app/services/PhotosGrid';
 
 interface Props {
+    anchorSuffix?: string;
     ctaStyle?: 'button' | 'link';
     sections: ContentSection[];
 }
 
-const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
+const ContentSections: React.FC<Props> = ({anchorSuffix = '', ctaStyle = 'link', sections}) => (
     <>
         {sections.map((section: ContentSection) => {
             const ctas: {label: string; url: string}[] = [];
@@ -30,7 +31,7 @@ const ContentSections: React.FC<Props> = ({ctaStyle = 'link', sections}) => (
             }
 
             return (
-                <div key={section.title} id={section.id}>
+                <div key={section.title} id={section.id && `${section.id}${anchorSuffix}`}>
                     {section.photoGrid?.photosCollection?.items && (
                         <PhotosGrid photos={section.photoGrid.photosCollection.items} />
                     )}
