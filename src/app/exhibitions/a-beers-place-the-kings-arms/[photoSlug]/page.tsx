@@ -14,7 +14,7 @@ import {photoBorders} from '@/app/exhibitions/a-beers-place-the-kings-arms/borde
 import ExhibitionHeader from '@/app/exhibitions/a-beers-place-the-kings-arms/header';
 
 interface Props {
-    params: Promise<{exhibitionSlug: string; photoSlug: string}>;
+    params: Promise<{photoSlug: string}>;
 }
 
 const ExhibitionPage: React.FC<Props> = async ({params}) => {
@@ -74,9 +74,8 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
     );
 };
 
-export const generateMetadata = async ({params}: Props): Promise<Metadata | null> => {
-    const allParams = await params;
-    const exhibition = await fetchExhibition(allParams.exhibitionSlug);
+export const generateMetadata = async (): Promise<Metadata | null> => {
+    const exhibition = await fetchExhibition('a-beers-place-the-kings-arms');
 
     if (!exhibition) {
         return null;
