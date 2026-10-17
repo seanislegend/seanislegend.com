@@ -40,7 +40,7 @@ const ExhibitionPhotos: React.FC<Props> = ({activePhotoId, exhibition}) => {
                     <GrabIcon />
                     <span className="translate-y-px text-sm">
                         <span className="hidden md:inline">Scroll</span>
-                        <span className="inline md:hidden">Swipe</span> to scroll through all photos
+                        <span className="inline md:hidden">Swipe</span> through all photos
                     </span>
                 </span>
             </div>
