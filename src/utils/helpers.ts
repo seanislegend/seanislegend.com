@@ -1,5 +1,5 @@
 import removeMarkdown from 'remove-markdown';
-import config, {imageLicensing, SITE_LINKS} from '@/utils/config';
+import config, {SITE_LINKS, imageLicensing} from '@/utils/config';
 
 export const isExternalUrl = (url: string | undefined) => {
     return url?.toString().startsWith('http');
@@ -49,7 +49,9 @@ export const getPhotoAlbumJsonLd = (collection: PhotoCollection): Record<string,
         ...imageLicensing,
         name: photo.title,
         position: index + 1,
-        contentUrl: toRewriteImageUrl(photo.hero?.url || photo.fullSize?.url || photo.thumbnail?.url)
+        contentUrl: toRewriteImageUrl(
+            photo.hero?.url || photo.fullSize?.url || photo.thumbnail?.url
+        )
     }));
 
     const schema: Record<string, unknown> = {
@@ -176,6 +178,19 @@ export const getEditorialSeo = (page: Editorial) => {
 
 // serialize for embedding inside a <script> tag: escape characters that could
 // terminate the tag or open html context.
+export const getBreadcrumbJsonLd = (
+    items: {name: string; path: string}[]
+): Record<string, unknown> => ({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [{name: 'Home', path: ''}, ...items].map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: `${process.env.NEXT_PUBLIC_URL}${item.path}`
+    }))
+});
+
 export const jsonLdScriptProps = (data: unknown) => ({
     type: 'application/ld+json',
     dangerouslySetInnerHTML: {

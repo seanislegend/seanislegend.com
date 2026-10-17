@@ -28,6 +28,7 @@ const RelatedCollections = ({items}: Props) => {
                             <div key={item.title} className="md:w-full">
                                 <div className="w-[55vw] snap-center flex-row min-[450px]:w-[40vw] md:w-full">
                                     <DynamicMenuCollection
+                                        headingLevel="h3"
                                         link={{
                                             badge: item.badge,
                                             pageTitle: item.pageTitle ?? item.title,

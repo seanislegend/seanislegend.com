@@ -8,11 +8,11 @@ import PageHeader from '@/components/PageHeader';
 import PhotoThumbnail from '@/components/PhotoCollection/Thumbnail';
 import ThumbnailImage from '@/components/PhotoCollection/ThumbnailImage';
 import Container from '@/components/UI/Container';
-import {Heading4} from '@/components/UI/Headings';
 import SwipeableContainer from '@/components/UI/SwipeableContainer';
 import TitleTextGrid from '@/components/UI/TitleTextGrid';
 import config from '@/utils/config';
 import {fetchAllExhibitions, fetchExhibition} from '@/utils/contentful';
+import {getBreadcrumbJsonLd, jsonLdScriptProps} from '@/utils/helpers';
 
 interface Props {
     params: Promise<{exhibitionSlug: string}>;
@@ -30,8 +30,13 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
         (p: ExhibitionPhoto) => p.isFeatured
     );
 
+    const breadcrumbJsonLd = getBreadcrumbJsonLd([
+        {name: exhibition.title, path: `/exhibitions/${exhibition.slug}`}
+    ]);
+
     return (
         <DefaultLayout theme="dark">
+            <script {...jsonLdScriptProps(breadcrumbJsonLd)} />
             <PageHeader
                 description={exhibition.description}
                 pageTitle={exhibition.pageTitle}
@@ -46,36 +51,44 @@ const ExhibitionPage: React.FC<Props> = async ({params}) => {
                         exhibition.collaborator) && (
                         <div className="mt-6 space-y-4">
                             {exhibition.startDate && exhibition.endDate && (
-                                <div>
-                                    <Heading4>Dates</Heading4>
-                                    <Markdown>
-                                        {`${new Date(exhibition.startDate).toLocaleDateString(
-                                            'en-GB',
-                                            {
-                                                day: 'numeric',
-                                                month: 'long',
-                                                year: 'numeric'
-                                            }
-                                        )} - ${new Date(exhibition.endDate).toLocaleDateString(
-                                            'en-GB',
-                                            {
-                                                day: 'numeric',
-                                                month: 'long',
-                                                year: 'numeric'
-                                            }
-                                        )}`}
-                                    </Markdown>
-                                </div>
+                                <dl>
+                                    <dt className="text-title-text mb-1 text-sm leading-tight font-semibold text-balance break-normal uppercase md:leading-tight">
+                                        Dates
+                                    </dt>
+                                    <dd>
+                                        <Markdown>
+                                            {`${new Date(exhibition.startDate).toLocaleDateString(
+                                                'en-GB',
+                                                {
+                                                    day: 'numeric',
+                                                    month: 'long',
+                                                    year: 'numeric'
+                                                }
+                                            )} - ${new Date(exhibition.endDate).toLocaleDateString(
+                                                'en-GB',
+                                                {
+                                                    day: 'numeric',
+                                                    month: 'long',
+                                                    year: 'numeric'
+                                                }
+                                            )}`}
+                                        </Markdown>
+                                    </dd>
+                                </dl>
                             )}
                             {exhibition.address && (
-                                <div>
-                                    <Heading4>Address</Heading4>
-                                    <Markdown>
-                                        {exhibition.addressDirectionsUrl
-                                            ? `[${exhibition.address}](${exhibition.addressDirectionsUrl})`
-                                            : exhibition.address}
-                                    </Markdown>
-                                </div>
+                                <dl>
+                                    <dt className="text-title-text mb-1 text-sm leading-tight font-semibold text-balance break-normal uppercase md:leading-tight">
+                                        Address
+                                    </dt>
+                                    <dd>
+                                        <Markdown>
+                                            {exhibition.addressDirectionsUrl
+                                                ? `[${exhibition.address}](${exhibition.addressDirectionsUrl})`
+                                                : exhibition.address}
+                                        </Markdown>
+                                    </dd>
+                                </dl>
                             )}
                             {exhibition.collaborator && (
                                 <Markdown>{`In collaboration with ${exhibition.collaborator}`}</Markdown>

@@ -1,7 +1,12 @@
-import {cacheLife, cacheTag} from 'next/cache';
 import {type MetadataRoute} from 'next';
+import {cacheLife, cacheTag} from 'next/cache';
 import {MENU_ITEMS} from '@/components/SiteMenu';
-import {fetchAllEditorialPages, fetchAllTags, fetchCollectionsForSitemap} from '@/utils/contentful';
+import {
+    fetchAllEditorialPages,
+    fetchAllExhibitions,
+    fetchAllTags,
+    fetchCollectionsForSitemap
+} from '@/utils/contentful';
 
 const getLastModifiedDate = (date?: string) => {
     if (!date || !process.env.SITEMAP_LAST_MODIFIED_MINIMUM) return new Date();
@@ -20,25 +25,24 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
     const staticPaths: MetadataRoute.Sitemap = [
         {
             url: `${process.env.NEXT_PUBLIC_URL}/commercial`,
-            priority: 1,
-            lastModified: getLastModifiedDate().toISOString()
+            priority: 1
         },
         {
             url: `${process.env.NEXT_PUBLIC_URL}/personal`,
-            priority: 1,
-            lastModified: getLastModifiedDate().toISOString()
+            priority: 1
         },
         {
             url: `${process.env.NEXT_PUBLIC_URL}/categories`,
-            priority: 1,
-            lastModified: getLastModifiedDate().toISOString()
+            priority: 1
         }
     ];
 
-    const linksItems = MENU_ITEMS.filter(item => !item.href.includes('http')).map(item => ({
+    // /exhibitions redirects to the latest exhibition, so list the exhibitions themselves
+    const linksItems = MENU_ITEMS.filter(
+        item => !item.href.includes('http') && item.href !== '/exhibitions'
+    ).map(item => ({
         url: `${process.env.NEXT_PUBLIC_URL}${item.href}`,
-        priority: 1,
-        lastModified: getLastModifiedDate().toISOString()
+        priority: 1
     }));
 
     const allCollections = await fetchCollectionsForSitemap();
@@ -76,13 +80,23 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
             lastModified: getLastModifiedDate(editorial?.sys?.publishedAt).toISOString()
         })) || [];
 
-    return [
+    const exhibitions = await fetchAllExhibitions();
+    const exhibitionItems = exhibitions.map(exhibition => ({
+        url: `${process.env.NEXT_PUBLIC_URL}/exhibitions/${exhibition.slug}`,
+        priority: 0.8
+    }));
+
+    const allItems = [
         ...linksItems,
         ...staticPaths,
         ...collectionItems,
         ...tagItems,
-        ...editorialItems
+        ...editorialItems,
+        ...exhibitionItems
     ].filter(Boolean);
+
+    // tag pages can share a slug with a collection, e.g. /beer-photography
+    return [...new Map(allItems.map(item => [item.url, item])).values()];
 };
 
 export default getCollectionSeo;

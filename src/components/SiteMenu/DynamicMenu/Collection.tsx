@@ -7,11 +7,12 @@ import {usePathname} from 'next/navigation';
 import Badge from '@/components/UI/Badge';
 
 interface Props {
+    headingLevel?: 'h3' | 'h4';
     link: Link;
     [key: string]: any;
 }
 
-const DynamicMenuCollection: React.FC<Props> = ({link, ...props}) => {
+const DynamicMenuCollection: React.FC<Props> = ({headingLevel: Heading = 'h4', link, ...props}) => {
     const pathname = usePathname();
     const isActive = pathname.startsWith(link.url);
 
@@ -50,14 +51,14 @@ const DynamicMenuCollection: React.FC<Props> = ({link, ...props}) => {
                     </span>
                 )}
                 {link.title && (
-                    <h4
+                    <Heading
                         className={clsx(
                             'text-beige-50 text-sm leading-snug font-medium tracking-tight text-balance uppercase underline-offset-4 [text-shadow:0_1px_3px_rgb(0_0_0/0.45)] group-hover/link:underline sm:text-base 2xl:text-lg',
                             isActive && 'underline'
                         )}
                     >
                         {link.title}
-                    </h4>
+                    </Heading>
                 )}
                 {link.pageTitle && (
                     <p className="text-beige-50/85 hidden text-[12px] leading-snug text-balance [text-shadow:0_1px_2px_rgb(0_0_0/0.45)] sm:text-[13px] @min-[150px]/navitem:line-clamp-2">
