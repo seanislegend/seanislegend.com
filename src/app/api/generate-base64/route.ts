@@ -7,8 +7,6 @@ const accessToken = process.env.CONTENTFUL_MANAGEMENT_API_KEY || '';
 const locale = process.env.CONTENTFUL_LOCALE || 'en-US';
 const webhookSecret = process.env.CONTENTFUL_WEBHOOK_SECRET || '';
 
-const client = createClient({accessToken});
-
 const fetchAndEncodeImage = async (url: string): Promise<string> => {
     const response = await fetch(url);
     const buffer = Buffer.from(await response.arrayBuffer());
@@ -43,6 +41,8 @@ export const POST = async (request: Request) => {
 
     // error handling for entry/environment is not implemented
     try {
+        // created per request, the management token isn't available at build time
+        const client = createClient({accessToken});
         const space = await client.getSpace(spaceId);
         const environment = await space.getEnvironment(environmentId);
         const asset = await environment.getAsset(photoId);
