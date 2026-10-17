@@ -9,7 +9,7 @@ interface Props {
 
 const DynamicMenuViewAll: React.FC<Props> = ({href, label}) => (
     <Link
-        className="group/link bg-secondary-button-bg text-theme-text hover:bg-accent focus-visible:ring-theme-text relative flex aspect-4/3 w-full flex-col items-center justify-center gap-2 rounded-sm border-2 border-transparent px-4 text-center transition-colors focus-visible:ring-2 focus-visible:outline-hidden"
+        className="group/link bg-secondary-button-bg text-theme-text hover:bg-accent relative flex aspect-4/3 w-full flex-col items-center justify-center gap-2 rounded-sm border-2 border-transparent px-4 text-center transition-colors focus-visible:-outline-offset-2"
         href={href}
         scroll={true}
     >

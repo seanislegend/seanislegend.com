@@ -40,6 +40,12 @@ const RootLayout = async ({children}: Props) => (
                     `}
                 </Script>
             )}
+            <a
+                className="text-beige-50 sr-only z-100 rounded-xs bg-black px-3 py-2 font-medium focus:not-sr-only focus:fixed focus:top-2 focus:left-2"
+                href="#main"
+            >
+                Skip to content
+            </a>
             <LazyMotion features={domAnimation}>
                 <MotionConfigProvider>
                     <ViewTransition>{children}</ViewTransition>

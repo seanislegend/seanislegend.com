@@ -17,7 +17,7 @@ const DefaultLayout: React.FC<Props> = ({children, theme, ...props}) => (
         <Suspense fallback={<div className="h-site-header" />}>
             <SiteHeader />
         </Suspense>
-        <main className="grow" data-testid="page-content" data-layout-main="default">
+        <main className="grow" data-testid="page-content" id="main" data-layout-main="default">
             {children}
         </main>
         <Suspense>

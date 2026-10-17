@@ -9,7 +9,7 @@ const GreenHopLayout: React.FC<React.PropsWithChildren> = ({children}) => (
         theme="sky-blue"
     >
         <SiteHeader />
-        <main className="grow" data-testid="page-content" data-layout-main="default">
+        <main className="grow" data-testid="page-content" id="main" data-layout-main="default">
             {children}
         </main>
         <SiteFooter />

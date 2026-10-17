@@ -10,6 +10,7 @@ import Button from '@/components/Button';
 import FormField, {
     FieldErrorMessage,
     FormErrorBanner,
+    getFieldA11yProps,
     getFieldControlClassName
 } from '@/components/FormField';
 import {type ContactState, submitContactForm} from './actions';
@@ -112,6 +113,8 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                 <FormField error={errors.name} htmlFor="name" label="Name">
                     <input
                         {...register('name')}
+                        {...getFieldA11yProps('name', errors.name)}
+                        autoComplete="name"
                         className={getFieldControlClassName(!!errors.name)}
                         id="name"
                         placeholder="Your name"
@@ -121,6 +124,8 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                 <FormField error={errors.email} htmlFor="email" label="Email">
                     <input
                         {...register('email')}
+                        {...getFieldA11yProps('email', errors.email)}
+                        autoComplete="email"
                         className={getFieldControlClassName(!!errors.email)}
                         id="email"
                         placeholder="Your email"
@@ -137,6 +142,7 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                         render={({field}) => (
                             <RadioGroup
                                 aria-labelledby="enquiryType-label"
+                                {...getFieldA11yProps('enquiryType', errors.enquiryType)}
                                 className={clsx(
                                     'flex flex-col gap-x-4 gap-y-2 md:flex-row',
                                     errors.enquiryType &&
@@ -153,7 +159,7 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                                         key={type}
                                     >
                                         <Radio.Root
-                                            className="border-accent data-checked:border-theme-text data-checked:bg-theme-text flex size-5 shrink-0 items-center justify-center rounded-full border-2 bg-white focus:ring-2 focus:ring-white/20 focus:outline-none"
+                                            className="border-accent data-checked:border-theme-text data-checked:bg-theme-text flex size-5 shrink-0 items-center justify-center rounded-full border-2 bg-white"
                                             value={type}
                                         >
                                             <Radio.Indicator className="bg-accent size-2 rounded-full" />
@@ -164,7 +170,7 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                             </RadioGroup>
                         )}
                     />
-                    <FieldErrorMessage error={errors.enquiryType} />
+                    <FieldErrorMessage error={errors.enquiryType} name="enquiryType" />
                 </div>
                 {enquiryType === 'prints' && (
                     <div className="animate-in fade-in slide-in-from-bottom-1 duration-300">
@@ -175,6 +181,7 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                         >
                             <textarea
                                 {...register('photoDetails')}
+                                {...getFieldA11yProps('photoDetails', errors.photoDetails)}
                                 className={getFieldControlClassName(
                                     !!errors.photoDetails,
                                     'min-h-28 resize-y'
@@ -190,6 +197,8 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                         <FormField error={errors.company} htmlFor="company" label="Company">
                             <input
                                 {...register('company')}
+                                {...getFieldA11yProps('company', errors.company)}
+                                autoComplete="organization"
                                 className={getFieldControlClassName(!!errors.company)}
                                 id="company"
                                 placeholder="Company"
@@ -199,6 +208,7 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                         <FormField error={errors.location} htmlFor="location" label="Location">
                             <input
                                 {...register('location')}
+                                {...getFieldA11yProps('location', errors.location)}
                                 className={getFieldControlClassName(!!errors.location)}
                                 id="location"
                                 placeholder="Location or address"
@@ -213,7 +223,7 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                         >
                             <input
                                 {...register('budget')}
-                                aria-describedby="budget-hint"
+                                {...getFieldA11yProps('budget', errors.budget, true)}
                                 className={getFieldControlClassName(!!errors.budget)}
                                 id="budget"
                                 placeholder="Budget or project range (optional)"
@@ -228,7 +238,7 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                         >
                             <textarea
                                 {...register('description')}
-                                aria-describedby="description-hint"
+                                {...getFieldA11yProps('description', errors.description, true)}
                                 className={getFieldControlClassName(
                                     !!errors.description,
                                     'min-h-28 resize-y'
@@ -244,6 +254,7 @@ const ContactForm: React.FC<Props> = ({initialService = ''}) => {
                         <FormField error={errors.message} htmlFor="message" label="Message">
                             <textarea
                                 {...register('message')}
+                                {...getFieldA11yProps('message', errors.message)}
                                 className={getFieldControlClassName(
                                     !!errors.message,
                                     'min-h-28 resize-y'

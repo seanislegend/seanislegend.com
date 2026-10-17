@@ -13,18 +13,22 @@ const PhotosGridItem: React.FC<PhotoGridItem> = ({photo, label}) => {
         const parentCollection = photo.linkedFrom?.collectionCollection?.items?.find(
             c => c.slug !== 'home'
         );
-        if (!parentCollection) return {path: '', slug: ''};
-        return {path: parentCollection?.slug, slug: photo.slug};
+        if (!parentCollection) return {path: '', slug: '', collectionTitle: ''};
+        return {
+            path: parentCollection?.slug,
+            slug: photo.slug,
+            collectionTitle: parentCollection.title
+        };
     };
 
     const maxWidth = 600;
     const height = photo.photo.height * (maxWidth / photo.photo.width);
-    const {path, slug} = getPathAndSlug();
+    const {path, slug, collectionTitle} = getPathAndSlug();
 
     return (
         <div key={photo.photo.url} className="flex w-full items-center">
             <Thumbnail
-                alt={photo.alt || label}
+                alt={photo.alt || label || collectionTitle}
                 linksTo={path ? 'collection' : undefined}
                 height={height}
                 path={path}

@@ -14,6 +14,7 @@ const GreenHopNavigation: React.FC = () => {
 
     return (
         <nav
+            aria-label="Sections"
             className={clsx(
                 'xl:h-site-header-scrolled top-site-header-scrolled bg-theme-bg/95 sticky right-0 z-50 p-1 transition-opacity duration-300 ease-in-out xl:fixed xl:top-2 xl:mr-2 xl:bg-transparent xl:p-0',
                 {'opacity-0': !activeTheme?.theme || activeTheme.theme === 'sky-blue'}

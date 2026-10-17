@@ -20,7 +20,7 @@ const DynamicMenuCollection: React.FC<Props> = ({headingLevel: Heading = 'h4', l
         <Link
             href={link.url}
             className={clsx(
-                'group/link bg-theme-black focus-visible:ring-theme-text @container/navitem relative flex aspect-4/3 w-full flex-col justify-end overflow-hidden rounded-sm border-2 focus-visible:ring-2 focus-visible:outline-hidden',
+                'group/link bg-theme-black @container/navitem relative flex aspect-4/3 w-full flex-col justify-end overflow-hidden rounded-sm border-2 focus-visible:-outline-offset-2',
                 {'border-accent': isActive, 'border-transparent': !isActive}
             )}
             scroll={true}

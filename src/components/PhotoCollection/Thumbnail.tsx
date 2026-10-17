@@ -38,9 +38,8 @@ const PhotoThumbnail: React.FC<Props> = ({
         return (
             <>
                 <Link
-                    aria-label={alt || title}
                     className={clsx(
-                        'group/photo focus:ring-text bg-accent relative block w-full overflow-hidden rounded-xs focus:ring-2 focus:ring-offset-2 focus:outline-hidden',
+                        'group/photo bg-accent relative block w-full overflow-hidden rounded-xs',
                         {'block h-full': props?.fill}
                     )}
                     data-testid="photo-link"
