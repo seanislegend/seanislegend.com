@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation';
 import config from '@/utils/config';
 import {fetchAllCollections, fetchAllEditorialPages, fetchAllTags} from '@/utils/contentful';
 import {
+    getBreadcrumbJsonLd,
     getCollectionSeo,
     getEditorialSeo,
     getPhotoAlbumJsonLd,
@@ -32,19 +33,51 @@ const DynamicPage: React.FC<Props> = async ({params}) => {
                 notFound();
             }
 
-            return <TagPage tagSlug={tag.slug} />;
+            const tagBreadcrumbJsonLd = getBreadcrumbJsonLd([
+                {name: 'Categories', path: '/categories'},
+                {
+                    name: pageData.collection.pageTitle || pageData.collection.title,
+                    path: `/${allParams.dynamicPage}`
+                }
+            ]);
+            return (
+                <>
+                    <script {...jsonLdScriptProps(tagBreadcrumbJsonLd)} />
+                    <TagPage tagSlug={tag.slug} />
+                </>
+            );
         }
 
         const photoAlbumJsonLd = getPhotoAlbumJsonLd(pageData.collection);
+        const breadcrumbJsonLd =
+            pageData.collection.slug !== 'home' &&
+            getBreadcrumbJsonLd([
+                {
+                    name: pageData.collection.pageTitle || pageData.collection.title,
+                    path: `/${pageData.collection.slug}`
+                }
+            ]);
         return (
             <>
                 <script {...jsonLdScriptProps(photoAlbumJsonLd)} />
+                {breadcrumbJsonLd && <script {...jsonLdScriptProps(breadcrumbJsonLd)} />}
                 <CollectionPage collection={pageData.collection} />
             </>
         );
     } else if (pageData.type === 'editorial') {
         const tags = await fetchAllTags();
-        return <EditorialPage editorial={pageData.editorial} tags={tags ?? []} />;
+        const breadcrumbJsonLd = getBreadcrumbJsonLd([
+            {
+                name: pageData.editorial.pageTitle || pageData.editorial.title,
+                path: `/${pageData.editorial.slug}`
+            }
+        ]);
+        return (
+            <>
+                <script {...jsonLdScriptProps(breadcrumbJsonLd)} />
+                <EditorialPage editorial={pageData.editorial} tags={tags ?? []} />
+            </>
+        );
     }
 
     // fallback - should not reach here

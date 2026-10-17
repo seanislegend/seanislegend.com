@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation';
 import Container from '@/components/UI/Container';
 import config from '@/utils/config';
 import {fetchExhibition} from '@/utils/contentful';
+import {getBreadcrumbJsonLd, jsonLdScriptProps} from '@/utils/helpers';
 import ExhibitionHeader from './header';
 import Photos from './photos';
 
@@ -14,8 +15,13 @@ const ExhibitionPage: React.FC = async () => {
         notFound();
     }
 
+    const breadcrumbJsonLd = getBreadcrumbJsonLd([
+        {name: exhibition.title, path: `/exhibitions/${exhibitionSlug}`}
+    ]);
+
     return (
         <>
+            <script {...jsonLdScriptProps(breadcrumbJsonLd)} />
             <Container className="mb-10 md:mb-20">
                 <ExhibitionHeader exhibition={exhibition} />
             </Container>

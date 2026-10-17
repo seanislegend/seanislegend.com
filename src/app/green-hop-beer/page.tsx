@@ -6,6 +6,7 @@ import config from '@/utils/config';
 import {fetchCollection} from '@/utils/contentful';
 import {
     getBlogPostingJsonLd,
+    getBreadcrumbJsonLd,
     getCollectionSeo,
     getPhotoAlbumJsonLd,
     jsonLdScriptProps
@@ -26,19 +27,9 @@ const GreenHopPage = async () => {
 
     const photoAlbumJsonLd = getPhotoAlbumJsonLd(collection);
     const blogPostingJsonLd = getBlogPostingJsonLd(collection);
-    const breadcrumbJsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-            {'@type': 'ListItem', position: 1, name: 'Home', item: process.env.NEXT_PUBLIC_URL},
-            {
-                '@type': 'ListItem',
-                position: 2,
-                name: collection.pageTitle || collection.title,
-                item: `${process.env.NEXT_PUBLIC_URL}/green-hop-beer`
-            }
-        ]
-    };
+    const breadcrumbJsonLd = getBreadcrumbJsonLd([
+        {name: collection.pageTitle || collection.title, path: '/green-hop-beer'}
+    ]);
     return (
         <Layout>
             <script {...jsonLdScriptProps(photoAlbumJsonLd)} />
