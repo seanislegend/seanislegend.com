@@ -60,4 +60,13 @@ export const metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_URL || '')
 };
 
+// the page background stays light in both schemes; dark mode only cools the palette
+export const viewport = {
+    colorScheme: 'light',
+    themeColor: [
+        {media: '(prefers-color-scheme: light)', color: '#faf7ef'},
+        {media: '(prefers-color-scheme: dark)', color: '#f5f6f6'}
+    ]
+};
+
 export default RootLayout;
