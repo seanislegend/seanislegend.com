@@ -10,6 +10,9 @@ export default defineConfig({
     retries: process.env.CI ? 2 : 0,
     workers: process.env.CI ? 1 : undefined,
     reporter: 'html',
+    // the dev server compiles routes on first request, which can push client-side
+    // navigations past the default 5s under parallel load
+    expect: {timeout: 10_000},
     use: {
         baseURL: 'http://localhost:3000',
         trace: 'on-first-retry',

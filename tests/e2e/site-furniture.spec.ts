@@ -23,7 +23,8 @@ test.describe('Site furniture', () => {
     });
 
     test.describe('Desktop', () => {
-        test.use({viewport: {width: 1200, height: 500}});
+        // xl breakpoint, the header title preview is hidden below it
+        test.use({viewport: {width: 1280, height: 500}});
 
         test('should display a main navigation', async ({page}) => {
             await expect(page.getByTestId('main-navigation')).toBeVisible();
@@ -39,7 +40,8 @@ test.describe('Site furniture', () => {
         });
 
         test('should have functioning main links', async ({page}) => {
-            const mainNavigation = page.getByTestId('main-navigation');
+            // previous pages stay mounted (hidden) after client-side navigation
+            const mainNavigation = page.getByTestId('main-navigation').filter({visible: true});
             await mainNavigation.getByText('About').click();
             await expect(page).toHaveURL('/about');
             await mainNavigation.getByText('Contact').click();
@@ -56,10 +58,15 @@ test.describe('Site furniture', () => {
             const mainNavigationPortal = page.getByTestId('page-content');
             const collectionsGrid = mainNavigationPortal.getByTestId('personal-collections-grid');
             await expect(collectionsGrid).toBeVisible();
-            // links to all collections
-            await expect(mainNavigationPortal.getByText('View all collections')).toBeVisible();
-            // links to all tags
-            await expect(mainNavigationPortal.getByTestId('tags-list')).toBeVisible();
+            // links to all collections of that work type
+            await expect(mainNavigationPortal.getByText('View all personal')).toBeVisible();
+        });
+
+        test('should display a categories menu', async ({page}) => {
+            await page.getByRole('button', {name: /categories/i}).hover();
+            const categoriesGrid = page.getByTestId('page-content').getByTestId('categories-grid');
+            await expect(categoriesGrid).toBeVisible();
+            await expect(categoriesGrid.getByText('View all categories')).toBeVisible();
         });
 
         test('should link to collections in the dynamic menu', async ({page}) => {
@@ -111,11 +118,15 @@ test.describe('Site furniture', () => {
         });
 
         test('should show main menu', async ({page}) => {
-            await expect(page.getByTestId('mobile-menu-main-navigation')).toBeVisible();
+            const navigation = page.getByTestId('mobile-menu-collections-navigation');
+            await expect(navigation.getByRole('link', {name: 'About'})).toBeVisible();
+            await expect(navigation.getByRole('link', {name: 'Services'})).toBeVisible();
+            await expect(navigation.getByRole('link', {name: 'Contact'})).toBeVisible();
         });
 
         test('should show collections menu', async ({page}) => {
             await expect(page.getByTestId('mobile-menu-collections-navigation')).toBeVisible();
+            await page.getByTestId('mobile-menu-worktype-toggle-personal').click();
             await expect(
                 page
                     .getByTestId('mobile-menu-collections-navigation')
@@ -129,8 +140,9 @@ test.describe('Site furniture', () => {
         });
 
         test('should link to collections in the mobile menu', async ({page}) => {
-            await page.getByText('View all collections').click();
-            await expect(page).toHaveURL('/collections');
+            await page.getByTestId('mobile-menu-worktype-toggle-personal').click();
+            await page.getByText('View all personal').click();
+            await expect(page).toHaveURL('/personal');
         });
     });
 });

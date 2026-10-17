@@ -17,7 +17,9 @@ test.describe('About', () => {
     });
 
     test('should display title and description', async ({page}) => {
-        await expect(page.getByText('Page title example', {exact: true})).toBeVisible();
+        await expect(
+            page.getByRole('heading', {name: 'Page title example', exact: true})
+        ).toBeVisible();
         await expect(page.getByText('Page content example.')).toBeVisible();
     });
 
