@@ -57,13 +57,13 @@ const EditorialLinkList: React.FC<Props> = ({items, title}) => (
                             </Markdown>
                         )}
                         {item.previewPhoto && (
-                            <span className="group-hover:animate-in group-hover:slide-in-from-top-10 slide-out-to-bottom-10 absolute top-1/2 left-4/12 z-30 hidden -translate-y-1/2 overflow-hidden rounded-xs opacity-0 transition-all duration-100 will-change-transform group-hover:opacity-100 sm:block">
+                            <span className="group-hover:animate-in group-hover:slide-in-from-top-10 slide-out-to-bottom-10 pointer-events-none absolute top-1/2 left-4/12 z-30 hidden -translate-y-1/2 overflow-hidden rounded-xs opacity-0 transition-all duration-100 will-change-transform group-hover:pointer-events-auto group-hover:opacity-100 sm:block">
                                 <Image
                                     alt=""
                                     blurDataURL={item.previewPhoto.base64}
                                     className="h-auto w-100 shadow-2xl"
                                     height={item.previewPhoto.thumbnail.height}
-                                    placeholder="blur"
+                                    placeholder={item.previewPhoto.base64 ? 'blur' : 'empty'}
                                     loading="lazy"
                                     quality={80}
                                     sizes="(max-width: 240px) 100vw, (max-width: 360px) 50vw, (max-width: 640px) 33vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
