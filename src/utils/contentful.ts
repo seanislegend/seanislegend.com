@@ -625,6 +625,9 @@ export const fetchCollectionsForSitemap = async () => {
                         thumbnail: photo {
                             url(transform: {format: WEBP, width: 800})
                         }
+                        fullSize: photo {
+                            url(transform: {width: 1600})
+                        }
                         sys {
                             publishedAt
                             firstPublishedAt

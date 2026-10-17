@@ -117,10 +117,15 @@ export const generateMetadata = async ({params}: Props): Promise<Metadata | null
 
     if (pageData.type === 'collection') {
         const collectionSeo = getCollectionSeo(pageData.collection);
+        // collections have a generated opengraph-image, which the default image would
+        // override. the homepage keeps the branded default
+        const {images: _defaultImages, ...defaultOpenGraph} = config.seo.openGraph;
+        const openGraph =
+            pageData.collection.slug === 'home' ? config.seo.openGraph : defaultOpenGraph;
         return {
             ...config.seo,
             ...collectionSeo,
-            openGraph: {...config.seo.openGraph, ...collectionSeo.openGraph}
+            openGraph: {...openGraph, ...collectionSeo.openGraph}
         };
     } else if (pageData.type === 'editorial') {
         const editorialSeo = getEditorialSeo(pageData.editorial);

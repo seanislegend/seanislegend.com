@@ -138,7 +138,7 @@ const SiteMenuMobile: React.FC<Props> = ({links, tags}) => {
                 aria-controls="mobile-menu"
                 aria-expanded={isMenuOpen}
                 aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-                className="relative z-30 size-6 lg:hidden print:hidden"
+                className="relative z-30 -m-2.5 flex size-11 items-center justify-center lg:hidden print:hidden"
                 data-testid="mobile-menu-toggle"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 ref={toggleButtonRef}

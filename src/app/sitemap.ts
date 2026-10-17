@@ -59,7 +59,10 @@ const getCollectionSeo = async (): Promise<MetadataRoute.Sitemap> => {
             priority: collection.slug === 'home' || collection.isFeatured ? 1 : 0.8,
             lastModified: getLastModifiedDate(collection?.sys?.publishedAt).toISOString(),
             changeFrequency:
-                collection.publishedAt === collection.firstPublishedAt ? 'monthly' : 'weekly'
+                collection.publishedAt === collection.firstPublishedAt ? 'monthly' : 'weekly',
+            images: collection.photosCollection.items
+                .map((photo: any) => photo?.fullSize?.url)
+                .filter(Boolean)
         };
 
         return [...acc, collectionItem];
