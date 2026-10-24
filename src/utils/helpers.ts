@@ -86,7 +86,7 @@ export const getBlogPostingJsonLd = (collection: PhotoCollection): Record<string
         url,
         author: {
             '@type': 'Person',
-            name: 'Sean McEmerson',
+            name: 'Sean McEmerson Photography',
             url: config.seo.alternates.canonical,
             sameAs: SITE_LINKS.map(link => link.url)
         }

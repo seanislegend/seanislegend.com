@@ -12,7 +12,7 @@ const getPersonJsonLd = (imageUrl?: string) => {
         '@context': 'https://schema.org',
         '@type': 'Person',
         description: config.seo.description,
-        name: 'Sean McEmerson',
+        name: 'Sean McEmerson Photography',
         sameAs: SITE_LINKS.map(link => link.url),
         url: 'https://www.seanislegend.com'
     };

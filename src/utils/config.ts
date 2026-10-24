@@ -14,7 +14,7 @@ export const imageLicensing = {
     copyrightNotice: '© Sean McEmerson',
     creator: {
         '@type': 'Person',
-        name: 'Sean McEmerson',
+        name: 'Sean McEmerson Photography',
         url: SITE_URL
     },
     creditText: 'Sean McEmerson',
